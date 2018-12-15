@@ -1,2 +1,0 @@
-# MrYellowWills.github.io
-blog
