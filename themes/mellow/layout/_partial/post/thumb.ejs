@@ -1,0 +1,19 @@
+<%
+    if ( _.isBoolean(src) ) {
+        const len = 10;
+        src = url_for( `/img/thumb/${ ( (total - index - 1) % total ) % len + 1 }.jpg` );
+    } else if ( _.isString(src) ) {
+        src = src[0] === "/" ? url_for(src) : url_for(post.path) + url_for(src);
+    } else if ( _.isArray(src) ) {
+        const len = src.length;
+        src = url_for( `/img/thumb/${ ( (total - index - 1) % total ) % len + 1 }.jpg` );
+    }
+%>
+<div class="item-thumb">
+    <a class="thumb-link" href="<%- url_for(post.path) %>"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="<%= src %>" alt="图片路径不正确">
+    <%- partial('title', { hasLink: true, tClass: "ab-title" }) %>
+</div>

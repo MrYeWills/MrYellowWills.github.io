@@ -1,0 +1,59 @@
+<head>
+    <meta charset="utf-8">
+    <% if(theme.canonical){ %>
+    <link rel="canonical" href="<%- (theme.canonical + url_for(page.path)).replace(/index\.html$/, "") %>">
+    <% }%>
+    <%
+        var title = page.title;
+
+        if (is_archive()){
+            title = theme.archives_title || 'Archives';
+
+            if (is_month()){
+            title += ': ' + page.year + '/' + page.month;
+            } else if (is_year()){
+            title += ': ' + page.year;
+            }
+        } else if (is_category()){
+            title = (theme.categories_title || 'Categories') + ': ' + page.category;
+        } else if (is_tag()){
+            title = (theme.tags_title || 'Tags') + ': ' + page.tag;
+        }
+    %>
+    <title><% if (title){ %><%= title %> | <% } %><%= config.title %><% if (config.subtitle){ %> | <%= config.subtitle %><% } %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%
+        var keyWords = config.keywords;
+        if(page.tags){
+        keyWords = [];
+
+        _.isArray(page.tags) ? ( keyWords = page.tags )
+            : page.tags.each(function(k){
+                keyWords.push(k.name);
+            });
+    }
+    %>
+    <meta name="keywords" content="<%= keyWords %>">
+    <%- favicon_tag(theme.favicon) %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="<%- url_for(theme_css('/css/style', cache)) %>">
+    <% if (!theme.valine.enable && theme.gitment.enable) { %>
+        <link rel="stylesheet" href="<%- url_for(theme_css('/css/third-party/gitment', cache)) %>">
+    <% } %>
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	<%- Boolean(page.reward) %>,
+            lv: JSON.parse('<%- JSON.stringify(theme.leancloud_visitors) %>'),
+            v: JSON.parse('<%- JSON.stringify(theme.valine) %>'),
+            g: JSON.parse('<%- JSON.stringify(theme.gitment) %>'),
+            d: JSON.parse('<%- JSON.stringify(theme.daovoice) %>')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    <% if(theme.daovoice.app_id){ %>
+        <script type="text/javascript" src="<%- url_for(theme_js('/js/plugins/daovoice', cache)) %>"></script>
+    <% }%>
+</head>
