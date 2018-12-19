@@ -340,8 +340,16 @@ resolve: {
     extensions: [".js", ".vue", ".json"] // 默认值: [".js",".json"]  模块名字可以省略的后缀名
   },
 ```
+#### 依赖包和业务js分离
+一般依赖包如loadsh，jq这些很少改变，而一般只改变业务js，分开打包后，依赖包js文件名，每次发布版本都是一样的，
+浏览器的http请求缓存机制，浏览器不会重复请求，直接拿浏览器缓存的依赖包js即可，可提高性能，减少流量。每次发布版本，
+只需要请求业务js。
+
 #### 设置外部依赖
 将笨重的很多页面都用到的js通过externals设置成外部依赖。
+
+#### 利用浏览器http缓解机制
+利用浏览器http缓解机制，可以提高速度，减少流量。(这个应该属于 项目性能优化范畴)
 
 ### 外部扩展(externals)
  把一个模块做成外部依赖也就是用cdn的方式依赖，不会打包到 js文件中。
@@ -377,6 +385,99 @@ resolve: {
 配置好后，执行npm start ，会自动在浏览器打开分析页面：
 ![](/image/webpack/analyzer.png)
 由图看出，loadsh.js的体积最大，经过分析，可以将loadsh.js做成外部依赖，从而减少打包后js的体积。
+
+### 分离 库与业务代码
+
+#### 配置方法一
+配置如下：
+```
+ output: {
+    filename: '[name].[hash].js', //定义库代码以外的代码打包成的js appIndex.54c949dd739536531ad5.js
+    chunkFilename: '[name].chunk.js',//定义库代码打包成的js customChunkNameQQ.chunk.js
+    path: path.resolve(__dirname, 'dist') //打包后输出的路径
+  },
+ optimization: {
+    splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: path.resolve(__dirname,'node_modules'),//匹配到的文件都将被一起打包成库js
+                 enforce: true,
+                 name: 'customChunkNameQQ',//定义打包后[name]值
+              }
+            }
+    }
+  },
+```
+库与业务代码分离 使用的是splitChunks配置，其实它是一个插件，被整合到webpack4了。
+这个插件的思路是，利用test匹配文件，只要匹配到的就打包成库js，剩下没有被匹配到的，就被打包成业务js；
+所以如果test匹配不到任何文件，将不会有库js生成，所有的js资源都会被剩下，都被打包到业务js中。
+
+以下就是一个例子，只有业务js生成：
+```
+ entry: {
+    appIndex:'./src/index.js'
+  },
+  optimization: {
+    splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: path.resolve(__dirname,'node_modules11'),//因为项目没有node_modules11目录,将只会有一个业务js生成
+                 enforce: true,
+                 name: 'customChunkNameQQ',
+              }
+            }
+    }
+ ```
+ **webpack打包的原则就是这样，如果没有插件,所有的js将被webpack系统打包成一个js，如果有插件做代码分离，插件匹配的部分将被插件打包成js，剩下的将被webpack系统打包成一个js，如果插件没有匹配到任何js，,所有的js将被webpack系统打包成一个js**
+
+还有其他几种定义方法：
+
+#### 显示配置方法(推荐)
+```
+//将'lodash','axios'两个库的代码合并打包成一个名字为customChunkNameQQ 的 js，文件；
+//剩下所有js包含其他依赖库和业务js将被合并打包成另个一个js。
+ entry: {
+    appIndex:'./src/index.js',
+    lodashAndAxios:['lodash','axios'],//显示定义需要将这些依赖库打成一个js
+  },
+  optimization: {
+    splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: 'lodashAndAxios', //一定要匹配entry对象内，key值，lodashAndAxios就是entry中的key值
+                 enforce: true,
+                 name: 'customChunkNameQQ',
+              }
+            }
+    }
+  },
+```
+
+#### 直接用test匹配方法
+上面的方法也可以写成如下，效果一样：
+```
+//将'lodash','axios'两个库的代码合并打包成一个名字为customChunkNameQQ 的 js，文件；
+//剩下所有js包含其他依赖库和业务js将被合并打包成另个一个js。
+ entry: {
+    appIndex:'./src/index.js',
+  },
+  optimization: {
+    splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: /lodash|axios/,  //直接使用test去匹配
+                 enforce: true,
+                 name: 'customChunkNameQQ',
+              }
+            }
+    }
+  },
+```
+
 
 ## webpack 黑知识
 
@@ -484,8 +585,163 @@ resolve: {
     extensions: [".js", ".vue", ".json"] // 默认值: [".js",".json"]  模块名字可以省略的后缀名
   },
 ```
+### [name]\[id]\[hash]\[chunkhash]
+#### [name]
+所有的name，默认为entry中定义的，如果entry的值为字符串，则默认为main。
+如：
+下面代码是entry为字符串时，[name] 为默认的main
+```
+entry: './src/index.js',
 
-### chunk值处理  chunk的处理
+  splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: path.resolve(__dirname,'node_modules'),
+                 enforce: true,
+              }
+            }
+          }
+
+ output: {
+    filename: '[name].[hash].js',//main.24673fe716edfcec07a9.js
+    chunkFilename: '[name].chunk.js', //commons~main.chunk.js 这里多了一个commons，是因为splitChunks的commons配置的，默认加commons
+    path: path.resolve(__dirname, 'dist')
+  },
+ new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'indexMyApp.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/tempHtml.html'),
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true, // 是否移除注释
+        removeAttributeQuotes: true // 移除属性的引号
+      }
+    }),
+  new MiniCssExtractPlugin({
+      filename: '[name][hash].css', // main24673fe716edfcec07a9.css
+      chunkFilename: '[id][hash].css'
+    })
+```
+下面代码是entry为对象时，[name] 为entry的key值，下面的例子，[name]就是appIndex：
+```
+entry: {
+  appIndex:'./src/index.js'
+},
+
+  splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: path.resolve(__dirname,'node_modules'),
+                 enforce: true,
+              }
+            }
+          }
+
+ output: {
+    filename: '[name].[hash].js',//appIndex.90feeea169ea4a86288d.js
+    chunkFilename: '[name].chunk.js', //commons~appIndex.chunk.js
+    path: path.resolve(__dirname, 'dist')
+  },
+ new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'indexMyApp.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/tempHtml.html'),
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true, // 是否移除注释
+        removeAttributeQuotes: true // 移除属性的引号
+      }
+    }),
+  new MiniCssExtractPlugin({
+      filename: '[name][hash].css', // appIndex90feeea169ea4a86288d.css
+      chunkFilename: '[id][hash].css'
+    })
+```
+
+可在插件中自定义对应模块的[name]，例如定义splitChunks模块下name: 'custom_chunkName'，他会覆盖entry中定义的name，由此splitChunks插件生成的文件将[name]值为custom_chunkName:
+
+```
+
+entry: {
+  appIndex:'./src/index.js'
+},
+
+  splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: path.resolve(__dirname,'node_modules'),
+                 enforce: true,
+                 name: 'custom_chunkName'
+              }
+            }
+          }
+
+ output: {
+    filename: '[name].[hash].js',//appIndex.c81ab09b0bd828f71845.js
+    chunkFilename: '[name].chunk.js', //customChunkNameQQ.chunk.js
+    path: path.resolve(__dirname, 'dist')
+  },
+  new MiniCssExtractPlugin({
+      filename: '[name][hash].css', // appIndexc81ab09b0bd828f71845.css
+      chunkFilename: '[id][hash].css'
+    })
+
+//其他跟上面代码一样，只列与上不同的代码：
+```
+当然你也可以直接通过filename定义splitChunks模块下输出文件的名字，这个优先级最高：
+
+```
+entry: {
+  appIndex:'./src/index.js'
+},
+  splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: path.resolve(__dirname,'node_modules'),
+                 enforce: true,
+                 name: 'customChunkNameQQ',
+                 filename: 'chunckNiceName.js',
+              }
+            }
+          }
+
+ output: {
+    filename: '[name].[hash].js',//appIndex.c81ab09b0bd828f71845.js
+    chunkFilename: '[name].chunk.js', //chunckNiceName.js
+    path: path.resolve(__dirname, 'dist')
+  },
+  new MiniCssExtractPlugin({
+      filename: '[name][hash].css', // appIndexc81ab09b0bd828f71845.css
+      chunkFilename: '[id][hash].css'
+    })
+
+//其他跟上面代码一样，只列与上不同的代码：
+```
+关于[name]小结：
+如果entry为字符串，name值默认为main；
+如果entry以对象形式，name值为对象的key值；
+各个插件(如css、js处理插件)可自定义本插件生成的js的文件名，或自定name值覆盖entry中定义的name值。
+
+#### [id]
+这个最简单，[id]其实就是数字1,2,3,4.....；
+```
+output: {
+    filename: '[name].[hash].js',
+    chunkFilename: '[id].chunk.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+```
+#### [hash]
+这就是一个hash码，值得注意的是，每次build的hash值都是相同的，也就是打包完成后，js\css文件名的hash值都是相同的。
+
+#### [chunkhash]
+
+
+### [chunkhash] 与 [hash]使用场景与异同，待看
 
 ### 对象，数组，option，字符串的写法
 
