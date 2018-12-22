@@ -461,6 +461,7 @@ resolve: {
 还有其他几种定义方法：
 
 #### 显示配置方法(推荐)
+注意下面这个示例配置有一点点问题
 ```
 //将'lodash','axios'两个库的代码合并打包成一个名字为customChunkNameQQ 的 js，文件；
 //剩下所有js包含其他依赖库和业务js将被合并打包成另个一个js。
@@ -481,7 +482,30 @@ resolve: {
     }
   },
 ```
-
+上面配置有些问题，打包后，会生成三个js：
+![](/image/webpack/verder2.png)
+所以修改以上配置，将cacheGroups.commons.name与cacheGroups.commons.test统一定义成entry中的lodashAndAxios这样生成的文件就正常了：
+```
+<!-- 正确配置方法 -->
+ entry: {
+    appIndex:'./src/index.js',
+    lodashAndAxios:['lodash','axios'],//显示定义需要将这些依赖库打成一个js
+  },
+  optimization: {
+    splitChunks: {
+            cacheGroups: {
+              commons: {
+                 chunks: 'initial',
+                 test: 'lodashAndAxios', //一定要匹配entry对象内，key值，lodashAndAxios就是entry中的key值
+                 enforce: true,
+                 name: 'lodashAndAxios',
+              }
+            }
+    }
+  },
+```
+打包结果为：
+![](/image/webpack/verder2.png)
 #### 直接用test匹配方法
 上面的方法也可以写成如下，效果一样：
 ```
@@ -559,7 +583,7 @@ module.exports = {
            chunks: 'initial',
            test: 'lodashAndAxios',
            enforce: true,
-           name: 'customChunkNameQQ',
+           name: 'lodashAndAxios',
         }
       }
     }
@@ -933,11 +957,161 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
   ],
 
 ```
+### 关于output
+单个入口是配置方法：
+```
+const config = {
+  entry: {
+    main: './path/to/my/entry/file.js'
+  }
+};
+const config = {
+  output: {
+    filename: 'bundle.js',
+    path: '/home/proj/public/assets'
+  }
+};
+```
+多个入口时配置方法：
+```
+{
+  entry: {
+    app: './src/app.js',
+    search: './src/search.js'
+  },
+  output: {
+    filename: '[name].js',//多个时，用占位符[name]的方式定义
+    path: __dirname + '/dist'
+  }
+}
+```
+### css\js是怎么嵌入html
+无论output出来一个或多个js，html-webpack-plugin都会将js、css嵌入到html内：
+```
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+new HtmlWebpackPlugin({
+      title: 'AICODER 全栈线下实习', // 默认值：Webpack App
+      filename: 'indexMyApp.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/tempHtml.html'),
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true, // 是否移除注释
+        removeAttributeQuotes: true // 移除属性的引号
+      }
+    }),
+```
 
+### 模板index.html的ejs写法与html-webpack-plugin配合
+模板文件index.html可以写ejs，ejs语法允许写js，然后每行用<%= %>包起来即可:
+![](/image/webpack/tpl1.png)
+![](/image/webpack/tpl2.png)
+![](/image/webpack/tpl3.png)
+![](/image/webpack/tpl4.png)
+![](/image/webpack/tpl5.png)
 
+注意：1.当有需求把一个js放在html 的header上，一个在body上时，可以定义模板script引用，此时必须设置inject为fasle，表示不适用插件默认嵌入。
+2.上面ejs模板上一定要写成htmlWebpackPlugin，否则undefined，目前不知道为什么写成HtmlWebpackPlugin就可以关联到插件html-webpack-plugin
 
-### [chunkhash] 与 [hash]使用场景与异同，待看
+### 多页面html的配置打包
+要生成多个html，就需要在webpack.config.js中多配置几次new  html-webpack-plugin
+![](/image/webpack/mutilPage1.png)
+![](/image/webpack/mutilPage2.png)
+![](/image/webpack/mutilPage3.png)
+![](/image/webpack/mutilPage4.png)
+![](/image/webpack/mutilPage5.png)
 
-### 对象，数组，option，字符串的写法
+### autoprefixer 配置 (postcss-loader)
+```
+要生成多个html，就需要在webpack.config.js中多配置几次new  html-webpack-plugin
+{
+  loader: 'postcss-loader',
+  options: {
+    ident: 'postcss',
+    sourceMap: true,
+    //根据中国使用浏览器情况统计，兼容使用率大于百分之0.15的所有浏览器
+    plugins: (loader) => [require('autoprefixer')({browsers: ['> 0.15% in CN']})] 
+  }
+}
+```
+```
+browsers: ['> 5% in US'] //根据美国使用浏览器情况统计，兼容使用率大于百分之5的所有浏览器
+browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
+```
+[点击查看更多](https://github.com/browserslist/browserslist#best-practices)
 
-### 图片处理路径：imge src， css url（绝对，相对）
+### html内img图片引用路径
+在html或ejs模板文件，此时如果写绝对路径引用图片是没问题的，如果要使用相对路径，就必须使用require，
+这是index.html文件：
+```
+  <div class=img>
+      <img src="${ require('./assets/img/WechatIMG92.jpeg') }"  alt="标志" />
+ </div>
+```
+这是ejs模板文件：
+![](/image/webpack/htmltpl.png)
+不过在项目中，所以类型的，对图片的引用，使用绝对路径都没问题，只有使用相对路径才会有以上问题。
+不过在css中，引用图片，使用相对路径和绝对路径都没问题。
+
+### 给图片指定生成目录
+```
+{
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
+        include: [path.resolve(__dirname, 'src/')],
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              //name既可以定义文件名字，也可以定义css生成路径，占位符[ext]是扩展externals的简写指图片扩展名
+              name: 'image/[name]_image.[ext]'
+            }
+          }
+        ]
+      }
+```
+
+### 带ejs的入口index.html模板文件示例
+对ejs的一点解释
+1. <%  %> 不输出显示到浏览器上的写法，专门用来运算js；
+2. <%=  %> 加了一个=后，输出显示到浏览器上的写法；
+完整示例看 看[github 仓库中的 ejsHtml 分支 demo ](https://github.com/YeWills/webpack-code/tree/ejsHtml)，对应的tag发布版本为ejsHtmlV1.0
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script
+  src="https://code.jquery.com/jquery-3.1.0.js"
+  integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+  crossorigin="anonymous">
+</script>
+ <% for (var key of htmlWebpackPlugin.files.css) { %>
+  <link href="<%= key %>" rel="stylesheet">
+ <% } %> 
+</head>
+<body>
+  <div id="dmo">我是模板文件自带的内容1</div>
+  <div class="box">
+    <% for (var key in htmlWebpackPlugin.files) { %>
+        <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files.css) %> 
+    <% } %> 
+  </div>
+  <div class=img>
+      <img src="${ require('./assets/img/WechatIMG92.jpeg') }"  alt="标志" />
+ </div>
+  <script
+  src="<%= htmlWebpackPlugin.files.chunks.appIndex.entry %>"></script>
+  <script
+  src="<%= htmlWebpackPlugin.files.chunks.lodashAndAxios.entry %>"></script>
+  
+</body>
+</html>
+```
+
+### 待了解：
+[chunkhash] 与 [hash]使用场景与异同，待看
+
