@@ -865,9 +865,16 @@ output: {
 ```
 #### [hash]
 这就是一个hash码，值得注意的是，每次build的hash值都是相同的，也就是打包完成后，js\css文件名的hash值都是相同的。
+hash一个典型特征是，只有有一个文件改变，那么重新打包后hash值将变化，所以使用hash输出文件名的都将变化，
+所以业务js，必须使用hash，而不能使用chunkhash。
 
-#### [chunkhash]
+#### [chunkhash]以及与[hash]的异同
+依赖库的源码，我们一般单独打包成一个库js，这个js必须使用chunkhash，
+chunkhash的原则是只要chunkhash对应的模块文件不变，就算其他文件有变化了，重新打包了，改变的是hash值，chunkhash值保持不变。
+**所以为了利用http缓存，对于依赖源码库js，必须使用chunkhash，业务js必须使用hash，否则将失去库与业务代码分离的意义**
 
+### dev模式禁chunkhash
+在dev模式下，只能用hash，不能使用chunkhash，否则报错。
 
 ### 模块解析规则与resolve
 #### 解析相对路径
@@ -917,46 +924,7 @@ module.exports = {
 - 对象：匹配所有属性值的条件
 
 
-##  webpack 插件更新
-### css分离插件
-webpack4.x弃用了extract-text-webpack-plugin，使用mini-css-extract-plugin代替，来做css从html中分离单独成一个css文件。
-```
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
- module: {
-    rules: [
-      {
-        test: /\.(sc|c|sa)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader, {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              sourceMap: true,
-              plugins: (loader) => [require('autoprefixer')({browsers: ['> 0.15% in CN']})]
-            }
-          }, {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name][hash].css', // 设置最终输出的文件名
-      chunkFilename: '[id][hash].css'
-    })
-  ],
 
-```
 ### 关于output
 单个入口是配置方法：
 ```
@@ -1110,6 +1078,47 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
   
 </body>
 </html>
+```
+
+##  webpack 插件更新
+### css分离插件
+webpack4.x弃用了extract-text-webpack-plugin，使用mini-css-extract-plugin代替，来做css从html中分离单独成一个css文件。
+```
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+ module: {
+    rules: [
+      {
+        test: /\.(sc|c|sa)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader, {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: (loader) => [require('autoprefixer')({browsers: ['> 0.15% in CN']})]
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name][hash].css', // 设置最终输出的文件名
+      chunkFilename: '[id][hash].css'
+    })
+  ],
+
 ```
 
 ### 待了解：
