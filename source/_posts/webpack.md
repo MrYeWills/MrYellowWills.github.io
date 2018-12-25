@@ -601,6 +601,16 @@ module.exports = {
 - 开发环境需要打印 debug 信息
 - 开发环境需要 live reload 或者 hot reload 的功能
 
+### 核心概念
+- Entry: 入口。
+- Module: 模块。在webpack里，一切皆模块，一个模块对应一个文件，webpack会从配置的entry开始递归找出所有依赖的模块。
+- Chunk: 代码块。一个Chunk由多个模块组合而成，用于代码合并和分割。             
+- loader: 模块转换器。
+- Plugin: 扩展插件。
+- Output: 输出结果。
+webpack 在启动后会从Entry里配置的Moule开始，递归解析Entry依赖的所有module，每找到一个module，就会根据配置的loader去找出对应的转换规则，对module进行转换后，再解析出当前module依赖的module。这些模块会以entry为单位进行分组，一个entry及其所有依赖的module被分到一个组也就是一个chunk，最后webpack会将所有chunk转换成文件输出。
+**在webpack中chunk概念很重要，也很不好理解，也容易被忽视，其实webpack目的是一个打包工具，然而将整个包打成几个代码块，都是由chunk控制，所以理解chunk对理解webpack，至关重要。**
+
 ## webpack 黑知识
 
 ### 合并两个webpack的js配置
@@ -873,6 +883,94 @@ hash一个典型特征是，只有有一个文件改变，那么重新打包后h
 chunkhash的原则是只要chunkhash对应的模块文件不变，就算其他文件有变化了，重新打包了，改变的是hash值，chunkhash值保持不变。
 **所以为了利用http缓存，对于依赖源码库js，必须使用chunkhash，业务js必须使用hash，否则将失去库与业务代码分离的意义**
 
+### 关于chunkFilename
+chunkFilename是用来配置无入口的chunk输出的名字的。
+1.代码如下，进行打包；
+```
+entry: {
+    appIndex:'./src/index.js',
+  },
+  mode: 'production',
+  output: {
+    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+           chunks: 'initial',
+           test: path.resolve(__dirname,'node_modules'),
+           enforce: true,
+        }
+      }
+    }
+  }
+```
+打包后生成：
+![](/image/webpack/chunkfilename1.png)
+因为splitChunks.cacheGroups.commons没有定义name，所以输出文件，默认加 commons~....js;
+
+2.与1其他配置不变，加上name，再打包：
+```
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          ...
+           name: 'lodashAndAxios'
+        }
+      }
+    }
+  }
+```
+打包后生成，我们发现，这个分离出来的代码块，用的是output.filename的配置：
+![](/image/webpack/chunkfilename2.png)
+
+3.与2其他配置不变，加上chunkfilename，再打包：
+```
+output: {
+    ...
+    chunkFilename: '[name]._chunk_[chunkhash].js',
+  },
+```
+打包后生成，我们发现，这个分离出来的代码块，用的是output.chunkFilename的配置：
+![](/image/webpack/chunkfilename3.png)
+
+这单独分离的代码，在entry中没有入口，只通过splitChunks.cacheGroups.test进行匹配，所以chunkFilename 是用来配置没有入口的名称的，
+如果不配置chunkFilename，将会根据filename输出。不配置splitChunks.cacheGroups.name，会给输出文件名默认加commons~
+
+### chunk的名称
+chunk的名称和entry的配置有关；
+- 如果entry是一个string或array，只会生成一个chunk，这是的chunk的名称就是main；
+- 如果entry是一个Object，就可能会出现多个chunk,这时chunk的名称是Object键值对中健的名称。
+
+### 从代码分离看chunk与minChunks
+```
+  entry: {
+    a: './path/to/my/entry/file.js',
+    b: './path/to/my/entry/app.js',
+  }
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          <!-- 如果不指定chunks，将会从现有的所有chunk中提取公共代码 -->
+           chunks: ['a','b'],//a、b是entry中的两个chunk，从a，b中抽取公共的代码，最终会形成一个名字为appCommon的js，和a.js和b.js
+           name: 'appCommon'
+        }
+      }
+    }
+  }
+```
+还有一个参数是minChunks，例如：
+```
+minChunks = 2;
+chunks = ['a','b','c','d','e']
+```
+只要在abcde模块中任意两个模块出现了公共代码的，都被提取。
+minChunks主要应对，很可能abcde没有一个公共代码，在所有模块中都有的情况。
+
 ### dev模式禁chunkhash
 在dev模式下，只能用hash，不能使用chunkhash，否则报错。
 
@@ -1080,6 +1178,10 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
 </html>
 ```
 
+### 两个横杠命令
+webpack --devtool source-map;
+发现凡是带两个--的命令，都是配置 webpack 的配置项。
+
 ##  webpack 插件更新
 ### css分离插件
 webpack4.x弃用了extract-text-webpack-plugin，使用mini-css-extract-plugin代替，来做css从html中分离单独成一个css文件。
@@ -1121,6 +1223,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 ```
 
-### 待了解：
-[chunkhash] 与 [hash]使用场景与异同，待看
+### webpack注意事项
+- 不要在生产环境下使用inline模式的source map，因为这会使js文件变得很大，而且会泄露源码。
+- 尽量写全名称，扩展名也写上 const common = require('./webpack.common.js');不要写成require('./webpack.common')，不利于编译查询。
+- 线上发布，或CDN优化配置，大部分与合理配置publicpath有关。
 
