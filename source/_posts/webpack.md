@@ -1182,7 +1182,20 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
 webpack --devtool source-map;
 发现凡是带两个--的命令，都是配置 webpack 的配置项。
 
-##  webpack 插件更新
+##  其他常用插件
+### ContextReplacementPlugin
+当项目用到moment时，务必使用此插件，可减少打包体积，以下代码为例，匹配moment/locale路径，只加载编译此路径下的/zh-cn|zh-hk|en/的文件。
+
+### ProvidePlugin
+配置全局变量，自动加载模块，不必到处import或require：
+例如设置$为全局变量，指向jq。
+new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery'
+})
+new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn|zh-hk|en/)
+
+##  webpack 版本变化
 ### css分离插件
 webpack4.x弃用了extract-text-webpack-plugin，使用mini-css-extract-plugin代替，来做css从html中分离单独成一个css文件。
 ```
