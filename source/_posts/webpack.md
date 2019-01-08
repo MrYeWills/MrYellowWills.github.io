@@ -6,7 +6,7 @@ categories: nihaocategories
 series: webpack
 ---
 
-## 老马教程笔记
+## webpack常用知识
 
 ### sourcemap的处理
 
@@ -294,88 +294,7 @@ base64压缩图片为一串DataURL的好处在于减少html页面的http请求�
 ![](/image/webpack/proxy2.jpg)
 ![](/image/webpack/proxy3.jpg)
 
-### 提高构建速度
-#### 升级到最新的webpack稳定版本
-这无疑是性能显著提升的
-#### babel-loader 的优化
-把 loader 应用的文件范围缩小,也就是说，配置loader的include来限定查询范围
-```
-rules: [ 
-  {
-    test: /\.jsx?/,
-    include: [ 
-      path.resolve(__dirname, 'src'), 
-      // 限定只在 src 目录下的 js/jsx 文件需要经 babel-loader 处理
-      // 通常我们需要 loader 处理的文件都是存放在 src 目录
-    ],
-    use: 'babel-loader',
-  },
-  // ...
-],
-```
-##### 设置exclude
-```
-resolve: {
-  modules: [
-    path.resolve(__dirname, 'node_modules'), // 使用绝对路径指定 node_modules，不做过多查询
-  ],
 
-  // 删除不必要的后缀自动补全，少了文件后缀的自动匹配，即减少了文件路径查询的工作
-  // 其他文件可以在编码时指定后缀，如 import('./index.scss')
-  extensions: [".js"], 
-
-  // 避免新增默认文件，编码时使用详细的文件路径，代码会更容易解读，也有益于提高构建速度
-  mainFiles: ['index'],
-},
-```
-##### 启用缓存
-总代码如下：
-```
-{
-    test: /\.js$/,
-    exclude: /(node_modules)/, // 加快编译速度，不包含node_modules文件夹内容
-    use: {
-      loader: 'babel-loader',
-      options: {
-        cacheDirectory: true // 启用缓存，提高编译速度，生成和开发都要如此设置
-      }
-    }
-  }
-```
-
-#### 生产下公共代码抽离 (待研究)
-假如一个组件使用了lodash，另外一个组件页面也用到了loadash，这个就是公共代码，将公共代码抽离可提高性能。
-安装好babel-plugin-transform-runtime 和 babel-runtime，然后修改..babelrc文件如下即可：
-```
-{
-  "presets": ["env"],
-  "plugins": [
-    ["transform-runtime", {
-      "helpers": true,
-      "polyfill": true,
-      "regenerator": true,
-      "moduleName": "babel-runtime"
-    }]
-  ]
-}
-```
-
-#### 使用花括号{}进行import
-例如 使用lodash，推荐这种写法import { filter } from 'lodash';
-用什么就花括号，取什么。
-
-#### 依赖包和业务js分离
-一般依赖包如loadsh，jq这些很少改变，而一般只改变业务js，分开打包后，依赖包js文件名，每次发布版本都是一样的，
-浏览器的http请求缓存机制，浏览器不会重复请求，直接拿浏览器缓存的依赖包js即可，可提高性能，减少流量。每次发布版本，
-只需要请求业务js。
-
-#### 设置外部依赖
-将笨重的很多页面都用到的js通过externals设置成外部依赖。
-
-#### 利用浏览器http缓解机制
-利用浏览器http缓解机制，可以提高速度，减少流量。(这个应该属于 项目性能优化范畴)
-
-#### 减少不必要的plugin
 
 ### 外部扩展(externals)
  把一个模块做成外部依赖也就是用cdn的方式依赖，不会打包到 js文件中。
@@ -878,9 +797,12 @@ output: {
 hash一个典型特征是，只有有一个文件改变，那么重新打包后hash值将变化，所以使用hash输出文件名的都将变化，
 所以业务js，必须使用hash，而不能使用chunkhash。
 
-#### [chunkhash]以及与[hash]的异同
+#### [chunkhash]及 [chunkhash]与[hash]的异同
 依赖库的源码，我们一般单独打包成一个库js，这个js必须使用chunkhash，
 chunkhash的原则是只要chunkhash对应的模块文件不变，就算其他文件有变化了，重新打包了，改变的是hash值，chunkhash值保持不变。
+**需特别注意的是，在一般情况下，修改文件和增加文件，webpack编译生成chunkhash的策略是不同的，上面所说的只适合修改文件的情况，如果增加文件或删除文件，就算库文件不变，还是会产生不同的chunkhash，原因在与webpack会根据总体文件，为每个文件设置一个index进行编译，增加或删除文件都会改变整体的index，从而导致chunkhash改变，为了防止这一情况，可配置webpack.HashedModuleIdsPlugin**
+对于 chunkhash与HashedModuleIdsPlugin 看参看 [这里](https://www.cnblogs.com/zhishaofei/p/8590627.html)
+
 **所以为了利用http缓存，对于依赖源码库js，必须使用chunkhash，业务js必须使用hash，否则将失去库与业务代码分离的意义**
 
 ### 关于chunkFilename
@@ -1182,9 +1104,331 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
 webpack --devtool source-map;
 发现凡是带两个--的命令，都是配置 webpack 的配置项。
 
+## 构建与性能优化
+
+构建与性能优化很多思路受益于kangshen，膜拜下大神。
+
+### 升级到最新的webpack稳定版本
+这无疑是性能显著提升的
+### babel-loader 的优化
+把 loader 应用的文件范围缩小,也就是说，配置loader的include来限定查询范围
+```
+rules: [ 
+  {
+    test: /\.jsx?/,
+    include: [ 
+      path.resolve(__dirname, 'src'), 
+      // 限定只在 src 目录下的 js/jsx 文件需要经 babel-loader 处理
+      // 通常我们需要 loader 处理的文件都是存放在 src 目录
+    ],
+    use: 'babel-loader',
+  },
+  // ...
+],
+```
+#### 设置exclude
+```
+resolve: {
+  modules: [
+    path.resolve(__dirname, 'node_modules'), // 使用绝对路径指定 node_modules，不做过多查询
+  ],
+
+  // 删除不必要的后缀自动补全，少了文件后缀的自动匹配，即减少了文件路径查询的工作
+  // 其他文件可以在编码时指定后缀，如 import('./index.scss')
+  extensions: [".js"], 
+
+  // 避免新增默认文件，编码时使用详细的文件路径，代码会更容易解读，也有益于提高构建速度
+  mainFiles: ['index'],
+},
+```
+#### 启用缓存
+总代码如下：
+```
+{
+    test: /\.js$/,
+    exclude: /(node_modules)/, // 加快编译速度，不包含node_modules文件夹内容
+    use: {
+      loader: 'babel-loader',
+      options: {
+        cacheDirectory: true // 启用缓存，提高编译速度，生成和开发都要如此设置
+      }
+    }
+  }
+```
+
+### 生产下库与业务js分离
+对于单页面应用 生产下库与业务js分离，可以利用浏览器http请求缓存机制，提高下一次访问速度。
+对于多页面应用 生产下库与业务js分离，可以利用浏览器http请求缓存机制，提高访问下一页的速度。
+
+更多信息，看[demo示例](https://github.com/YeWills/webpack-code/tree/master)
+
+```
+optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+           chunks: 'initial',
+           test: 'lodashAndAxios',
+           enforce: true,
+           name: 'lodashAndAxios',//对应覆盖entry.chunkFilename中的name占位符[name]
+        }
+      }
+    }
+  }
+```
+optimization.splitChunks.cacheGroups.chunks也可以是函数，例如：
+
+```
+optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+           chunks: 'all',
+           test: /\.(sc|c|sa)ss$/,
+           enforce: true,
+           name: 'styles',//对应覆盖entry.chunkFilename中的name占位符[name]
+        },
+        commons: {
+           chunks: (chunk) => {
+             return chunk.name !== 'styles';//避开上面定义的styles chunk
+           },
+           test: 'lodashAndAxios',
+           enforce: true,
+           name: 'lodashAndAxios',//对应覆盖entry.chunkFilename中的name占位符[name]
+        }
+      }
+    }
+  }
+```
+
+### 使用花括号{}进行import
+例如 使用lodash，推荐这种写法import { filter } from 'lodash';
+用什么就花括号，取什么。
+
+### 依赖包和业务js分离
+一般依赖包如loadsh，jq这些很少改变，而一般只改变业务js，分开打包后，依赖包js文件名，每次发布版本都是一样的，
+浏览器的http请求缓存机制，浏览器不会重复请求，直接拿浏览器缓存的依赖包js即可，可提高性能，减少流量。每次发布版本，
+只需要请求业务js。
+
+### 设置外部依赖
+将笨重的很多页面都用到的js通过externals设置成外部依赖。
+
+### 利用浏览器http缓解机制
+利用浏览器http缓解机制，库与js代码分离，可以提高速度，减少流量。(这个应该属于 项目性能优化范畴)
+
+### autodll-webpack-plugin
+该插件能够快速打包，能把第三方依赖的文件能提前进行预编译打包到一个文件里面去。提高了构建速度。因为很多第三方插件我们并不需要改动它，所以我们想这些第三方库在我们每次编译的时候不要再次构建它就好,可以非常明显提高rebuild速度
+该插件有两个作用：
+1、可以明显提高rebuild的速度；
+2、可以调试库源码；
+
+更多信息，看[demo示例](https://github.com/YeWills/webpack-code/tree/master)
+
+```
+const AutoDllPlugin = require('autodll-webpack-plugin');
+ new AutoDllPlugin({
+      filename: '[name]_chunk.js',
+      // 如果需要调试库源码，将inherit设置为true，是调试源码的尖刀利器，不过会影响rebuild速度
+      inherit: false,//当为false时，速度更快；当为true时，可以打开webpack没有压缩过的源码sourcemap调试
+      inject: true,
+      debug: true,
+      entry: {
+        appVendor: [
+          'axios',
+          'lodash'
+        ]
+      }
+    }),
+```
+
+### happypack
+webpack 只能一个loader处理完后处理下一个loader，这样，速度就慢，为了同时进行多线程loader，同时处理多个loader，可以使用happypack；
+配置happypack可以明显提高构建速度。
+- 其他的都好配置，就postcss-loader 比较特殊，必须要另外新建 postcss.config.js 否则报错；
+- happypack 重写原来loader配置时，基本上就是复制，不改变，只有postcss可能稍微改动下
+
+更多信息，看[demo示例](https://github.com/YeWills/webpack-code/tree/master)
+
+```
+const HappyPack = require('happypack');
+ module: {
+    rules: [
+      {
+        test: /\.(sc|c|sa)ss$/,
+        loader: 'happypack/loader?id=handerStyle'
+      }
+    ]
+  },
+
+ new HappyPack({
+      id:'handerStyle',
+      loaders:[
+        'style-loader', 
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        'postcss-loader', 
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ]
+    })
+
+```
+```
+//postcss.config.js
+module.exports = {
+  ident: 'postcss',
+  sourceMap: true,
+  plugins: {
+    'autoprefixer': {
+      browsers: ['> 0.15% in CN']
+    }
+  }
+}
+
+```
+### webpack-parallel-uglify-plugin
+生产环境配置。
+happypack是多线程操作loader进行多线程转译文件；与此相似，webpack-parallel-uglify-plugin是多线程进行压缩js，提高生产环境下的打包速度。
+更多信息，看[demo示例](https://github.com/YeWills/webpack-code/tree/master)
+```
+module.exports = {
+  plugins: [
+    // 使用 ParallelUglifyPlugin 并行压缩输出JS代码
+    new ParallelUglifyPlugin({
+      // 传递给 UglifyJS的参数如下：
+      uglifyJS: {
+        output: {
+          /*
+           是否输出可读性较强的代码，即会保留空格和制表符，默认为输出，为了达到更好的压缩效果，
+           可以设置为false
+          */
+          beautify: false,
+          /*
+           是否保留代码中的注释，默认为保留，为了达到更好的压缩效果，可以设置为false
+          */
+          comments: false
+        },
+        compress: {
+          /*
+           是否在UglifyJS删除没有用到的代码时输出警告信息，默认为输出，可以设置为false关闭这些作用
+           不大的警告
+          */
+          warnings: false,
+
+          /*
+           是否删除代码中所有的console语句，默认为不删除，开启后，会删除所有的console语句
+          */
+          drop_console: true,
+
+          /*
+           是否内嵌虽然已经定义了，但是只用到一次的变量，比如将 var x = 1; y = x, 转换成 y = 5, 默认为不
+           转换，为了达到更好的压缩效果，可以设置为false
+          */
+          collapse_vars: true,
+
+          /*
+           是否提取出现了多次但是没有定义成变量去引用的静态值，比如将 x = 'xxx'; y = 'xxx'  转换成
+           var a = 'xxxx'; x = a; y = a; 默认为不转换，为了达到更好的压缩效果，可以设置为false
+          */
+          reduce_vars: true
+        }
+      }
+    }),
+  ]
+}
+
+```
+
+### ContextReplacementPlugin
+配置ContextReplacementPlugin，是优化配置，下面章节《其他常用插件》有讲
+
+### webpack.HashedModuleIdsPlugin
+该插件会根据模块的相对路径生成一个四位数的hash作为模块id, 建议用于生产环境。
+用 HashedModuleIdsPlugin 可以轻松地实现 chunkhash 的稳定化，可以实现持久化缓存。
+建议生产配置使用，如果使用到了chunkhash，则最好配置HashedModuleIdsPlugin。
+更多请看章节2.7.4:《webpack 黑知识 之 [name][id][hash][chunkhash][name]》
+或看官网
+对于 chunkhash与HashedModuleIdsPlugin 看参看 [这里](https://www.cnblogs.com/zhishaofei/p/8590627.html)
+
+```
+  plugins: [
+    new webpack.HashedModuleIdsPlugin({
+      hashDigestLength: 20
+    })
+  ]
+```
+
+### webpack.NormalModuleReplacementPlugin
+webpack.NormalModuleReplacementPlugin(a,b)编译时，第一个参数通常是正则，第一个参数正则匹配到文件后，会将此文件替换为第二个参数，从而达到生产或开发时，编译不同文件的目的，比如生产和开发时编译不同的路由文件。
+所以配置时，在webpack.config.plugins中，位于最前面，保证webpack执行编译时，首先启用此插件替换文件。
+注意的是，此插件的第一个参数一般都设置为正则。
+```
+plugins:[
+  new webpack.NormalModuleReplacementPlugin(
+    /some\/path\/config\.development\.js/,
+    './config.production.js'
+  ),
+]
+
+```
+
+### webpack.optimize.OccurrenceOrderPlugin
+OccurrenceOrderPlugin插件：根据出现次数为每一个模块或者chunk设置id,经常使用的模块则会获取到较短的id(和前缀树类似)，这可以使id可预测并有效减少文件大小，建议使用在生产环境中～
+[参考](https://www.cnblogs.com/xuepei/p/7992423.html)
+有些说是可以优化排序输出
+```
+plugins:[
+  new webpack.optimize.OccurrenceOrderPlugin(),
+]
+
+```
+
+### webpack.optimize.AggressiveMergingPlugin
+AggressiveMergingPlugin用于合并块。
+AggressiveMergingPlugin用于解决如路由分配不合理，会打包出很多很小的文件，每个文件或许只有几k，却多了很多网络请求，得不偿失。
+用法很简单：
+```
+plugins:[
+  new webpack.optimize.AggressiveMergingPlugin(),
+]
+
+```
+
+### react-loadable 懒加载优化生产模式构建速度以及页面访问速度
+这条优化经验受kangshen启发，表示对大神的膜拜，具体思路是：
+利用react-loadable懒加载，将生产模式下的路由配合react-loadable懒加载，显示哪个路由页面，就编译加载某个路由页面，这样既提高webpack编译速度，又提高页面访问速度。
+将路由进行懒加载有一个弊端是只能看到你打开页面的报错，没有打开的页面报错你无法看到。
+
+react-loadable 是2017年5月左右才出现，到如今，GitHub上已经有一万多颗star，是可以比拟react-redux的插件，非常棒，项目中如果有用到懒加载，用这个框架非常好react-loadable
+
+### 减少不必要的plugin
+
 ##  其他常用插件
 ### ContextReplacementPlugin
 当项目用到moment时，务必使用此插件，可减少打包体积，以下代码为例，匹配moment/locale路径，只加载编译此路径下的/zh-cn|zh-hk|en/的文件。
+new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn|zh-hk|en/)
+
+### webpack.NormalModuleReplacementPlugin
+用法请看章节《构建与性能优化》
+
+### webpack.DefinePlugin
+此插件定义值时，都需加JSON.stringify。
+```
+plugins: [
+    new webpack.DefinePlugin({
+      'process.env.ASSET_PATH': JSON.stringify("5fa3b9"),
+      'process.env.FLAG': JSON.stringify(true)
+    })
+  ]
+```
 
 ### ProvidePlugin
 配置全局变量，自动加载模块，不必到处import或require：
@@ -1193,7 +1437,25 @@ new webpack.ProvidePlugin({
   $: 'jquery',
   jQuery: 'jquery'
 })
-new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn|zh-hk|en/)
+
+### webpack.optimize.OccurrenceOrderPlugin
+用法请看章节《构建与性能优化》
+
+### happypack
+用法请看章节《构建与性能优化》
+
+### AutoDllPlugin
+用法请看章节《构建与性能优化》
+
+### webpack-parallel-uglify-plugin
+用法请看章节《构建与性能优化》
+
+### webpack.HashedModuleIdsPlugin
+用法请看章节《构建与性能优化》
+
+### webpack.optimize.AggressiveMergingPlugin
+用法请看章节《构建与性能优化》
+
 
 ##  webpack 版本变化
 ### css分离插件
@@ -1241,3 +1503,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 - 尽量写全名称，扩展名也写上 const common = require('./webpack.common.js');不要写成require('./webpack.common')，不利于编译查询。
 - 线上发布，或CDN优化配置，大部分与合理配置publicpath有关。
 
+
+## 参考和学习资料
+[老马全栈VIP2_02_webpack4配置入门到进阶](https://ke.qq.com/course/321174)
+[webpack深入与实战](https://www.imooc.com/learn/802)
+[Vue+Webpack打造todo应用](https://www.imooc.com/learn/935)
+掘金小册-使用webpack定制前端开发环境
+吴浩麟-深入浅出webpack
+[webpack 插件官网](https://www.webpackjs.com/plugins/hashed-module-ids-plugin/)
+[webpack学习系列](https://segmentfault.com/a/1190000007479892)
+[WebPack 终极配置说明](https://www.mmxiaowu.com/article/58482332d4352863efb55465)
+[原创webpack demo 主要应用分支](https://github.com/YeWills/webpack-code/tree/master)
+[原创webpack demo 模板ejs语法分支](https://github.com/YeWills/webpack-code/tree/ejsHtml)
+[原创webpack demo 自定义merge config分支](https://github.com/YeWills/webpack-code/tree/webpack_custom_merge_demo)
