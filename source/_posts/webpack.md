@@ -294,6 +294,86 @@ base64压缩图片为一串DataURL的好处在于减少html页面的http请求�
 ![](/image/webpack/proxy2.jpg)
 ![](/image/webpack/proxy3.jpg)
 
+<<<<<<< HEAD
+=======
+### 提高构建速度
+#### 升级到最新的webpack稳定版本
+这无疑是性能显著提升的
+#### babel-loader 的优化
+把 loader 应用的文件范围缩小,也就是说，配置loader的include来限定查询范围
+```
+rules: [
+  {
+    test: /\.jsx?/,
+    include: [
+      path.resolve(__dirname, 'src'),
+      // 限定只在 src 目录下的 js/jsx 文件需要经 babel-loader 处理
+      // 通常我们需要 loader 处理的文件都是存放在 src 目录
+    ],
+    use: 'babel-loader',
+  },
+  // ...
+],
+```
+##### 设置exclude
+```
+resolve: {
+  modules: [
+    path.resolve(__dirname, 'node_modules'), // 使用绝对路径指定 node_modules，不做过多查询
+  ],
+
+  // 删除不必要的后缀自动补全，少了文件后缀的自动匹配，即减少了文件路径查询的工作
+  // 其他文件可以在编码时指定后缀，如 import('./index.scss')
+  extensions: [".js"],
+
+  // 避免新增默认文件，编码时使用详细的文件路径，代码会更容易解读，也有益于提高构建速度
+  mainFiles: ['index'],
+},
+```
+##### 启用缓存
+总代码如下：
+```
+{
+    test: /\.js$/,
+    exclude: /(node_modules)/, // 加快编译速度，不包含node_modules文件夹内容
+    use: {
+      loader: 'babel-loader',
+      options: {
+        cacheDirectory: true // 启用缓存，提高编译速度，生成和开发都要如此设置
+      }
+    }
+  }
+```
+
+#### 生产下公共代码抽离 (待研究)
+假如一个组件使用了lodash，另外一个组件页面也用到了loadash，这个就是公共代码，将公共代码抽离可提高性能。
+安装好babel-plugin-transform-runtime 和 babel-runtime，然后修改..babelrc文件如下即可：
+```
+{
+  "presets": ["env"],
+  "plugins": [
+    ["transform-runtime", {
+      "helpers": true,
+      "polyfill": true,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }]
+  ]
+}
+```
+
+#### 使用花括号{}进行import
+例如 使用lodash，推荐这种写法import { filter } from 'lodash';
+用什么就花括号，取什么。
+
+#### 依赖包和业务js分离
+一般依赖包如loadsh，jq这些很少改变，而一般只改变业务js，分开打包后，依赖包js文件名，每次发布版本都是一样的，
+浏览器的http请求缓存机制，浏览器不会重复请求，直接拿浏览器缓存的依赖包js即可，可提高性能，减少流量。每次发布版本，
+只需要请求业务js。
+
+#### 设置外部依赖
+将笨重的很多页面都用到的js通过externals设置成外部依赖。
+>>>>>>> 4f9f1b79c3e05bfdbeab5c7357586644227b8a07
 
 
 ### 外部扩展(externals)
@@ -451,7 +531,7 @@ base64压缩图片为一串DataURL的好处在于减少html页面的http请求�
 入口可以使用 entry 字段来进行配置，webpack 支持配置多个入口来进行构建：
 ```
 module.exports = {
-  entry: './src/index.js' 
+  entry: './src/index.js'
 }
 
 // 上述配置等同于
@@ -465,7 +545,7 @@ module.exports = {
 module.exports = {
   entry: {
     foo: './src/page-foo.js',
-    bar: './src/page-bar.js', 
+    bar: './src/page-bar.js',
     // ...
   }
 }
@@ -523,7 +603,7 @@ module.exports = {
 ### 核心概念
 - Entry: 入口。
 - Module: 模块。在webpack里，一切皆模块，一个模块对应一个文件，webpack会从配置的entry开始递归找出所有依赖的模块。
-- Chunk: 代码块。一个Chunk由多个模块组合而成，用于代码合并和分割。             
+- Chunk: 代码块。一个Chunk由多个模块组合而成，用于代码合并和分割。
 - loader: 模块转换器。
 - Plugin: 扩展插件。
 - Output: 输出结果。
@@ -607,9 +687,9 @@ devServer: {
       warnings: true,
       errors: true
     },
-    
+
     publicPath: '/', // 此路径下的打包文件可在浏览器中访问。（注意没有特殊要求，一定就设置为'/'）
-    
+
     proxy: { // 设置代理
       "/api": { // 访问api开头的请求，会跳转到  下面的target配置
         target: "http://192.168.0.102:8080",
@@ -775,7 +855,6 @@ entry: {
       filename: '[name][hash].css', // appIndexc81ab09b0bd828f71845.css
       chunkFilename: '[id][hash].css'
     })
-
 //其他跟上面代码一样，只列与上不同的代码：
 ```
 关于[name]小结：
@@ -801,8 +880,8 @@ hash一个典型特征是，只有有一个文件改变，那么重新打包后h
 依赖库的源码，我们一般单独打包成一个库js，这个js必须使用chunkhash，
 chunkhash的原则是只要chunkhash对应的模块文件不变，就算其他文件有变化了，重新打包了，改变的是hash值，chunkhash值保持不变。
 **需特别注意的是，在一般情况下，修改文件和增加文件，webpack编译生成chunkhash的策略是不同的，上面所说的只适合修改文件的情况，如果增加文件或删除文件，就算库文件不变，还是会产生不同的chunkhash，原因在与webpack会根据总体文件，为每个文件设置一个index进行编译，增加或删除文件都会改变整体的index，从而导致chunkhash改变，为了防止这一情况，可配置webpack.HashedModuleIdsPlugin**
+关于chunkhash的规则，更多请看章节3.12:《构建与性能优化 之 webpack.HashedModuleIdsPlugin》
 对于 chunkhash与HashedModuleIdsPlugin 看参看 [这里](https://www.cnblogs.com/zhishaofei/p/8590627.html)
-
 **所以为了利用http缓存，对于依赖源码库js，必须使用chunkhash，业务js必须使用hash，否则将失去库与业务代码分离的意义**
 
 ### 关于chunkFilename
@@ -920,7 +999,7 @@ module.exports = {
         path.resolve(__dirname, 'node_modules'), // 指定当前目录下的 node_modules 优先查找
         'node_modules', // 如果有一些类库是放在一些奇怪的地方的，你可以添加自定义的路径或者目录
       ],
-      mainFiles: ['index'], //当目录下没有 package.json 文件时，我们说会默认使用目录下的 index.js 这个文件,就是这个字段配置的。// 你可以添加其他默认使用的文件名 
+      mainFiles: ['index'], //当目录下没有 package.json 文件时，我们说会默认使用目录下的 index.js 这个文件,就是这个字段配置的。// 你可以添加其他默认使用的文件名
       extensions: [".js", ".vue", ".json"] // 默认值: [".js",".json"]  模块名字可以省略的后缀名
   },
 }
@@ -1017,7 +1096,7 @@ new HtmlWebpackPlugin({
     ident: 'postcss',
     sourceMap: true,
     //根据中国使用浏览器情况统计，兼容使用率大于百分之0.15的所有浏览器
-    plugins: (loader) => [require('autoprefixer')({browsers: ['> 0.15% in CN']})] 
+    plugins: (loader) => [require('autoprefixer')({browsers: ['> 0.15% in CN']})]
   }
 }
 ```
@@ -1079,14 +1158,14 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
 </script>
  <% for (var key of htmlWebpackPlugin.files.css) { %>
   <link href="<%= key %>" rel="stylesheet">
- <% } %> 
+ <% } %>
 </head>
 <body>
   <div id="dmo">我是模板文件自带的内容1</div>
   <div class="box">
     <% for (var key in htmlWebpackPlugin.files) { %>
-        <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files.css) %> 
-    <% } %> 
+        <%= key %> : <%= JSON.stringify(htmlWebpackPlugin.files.css) %>
+    <% } %>
   </div>
   <div class=img>
       <img src="${ require('./assets/img/WechatIMG92.jpeg') }"  alt="标志" />
@@ -1095,7 +1174,7 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
   src="<%= htmlWebpackPlugin.files.chunks.appIndex.entry %>"></script>
   <script
   src="<%= htmlWebpackPlugin.files.chunks.lodashAndAxios.entry %>"></script>
-  
+
 </body>
 </html>
 ```
@@ -1351,6 +1430,17 @@ module.exports = {
 配置ContextReplacementPlugin，是优化配置，下面章节《其他常用插件》有讲
 
 ### webpack.HashedModuleIdsPlugin
+打包中chunkhash的规则：
+当没有删除或增加文件，如果对于chunk的代码没有变化，chunkhash值不会变，可以起到浏览器缓存的作用；
+但当有删除或增加文件是，如果对应chunk的代码没有变化，打包是，chunkhash还是会变，这不是我们想要的结果，我们只希望对应chunk代码如果没变化，
+无论其他代码文件删除或增加，chunkhash都不变。
+（为什么会变，webpack自带打包策略是给每个文件配置了一个数字index，无论增加或删除一个文件，都会打乱整个 index，导致chunkhash变化，
+HashedModuleIdsPlugin，改变策略为，根据文件路径配置，所以达到了稳定chunkhash）
+为了达到以上效果，请配置HashedModuleIdsPlugin插件：
+new webpack.HashedModuleIdsPlugin({
+  hashDigestLength：20
+})
+
 该插件会根据模块的相对路径生成一个四位数的hash作为模块id, 建议用于生产环境。
 用 HashedModuleIdsPlugin 可以轻松地实现 chunkhash 的稳定化，可以实现持久化缓存。
 建议生产配置使用，如果使用到了chunkhash，则最好配置HashedModuleIdsPlugin。
