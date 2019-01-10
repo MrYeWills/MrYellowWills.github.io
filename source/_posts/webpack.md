@@ -1158,6 +1158,8 @@ resolve: {
 对于单页面应用 生产下库与业务js分离，可以利用浏览器http请求缓存机制，提高下一次访问速度。
 对于多页面应用 生产下库与业务js分离，可以利用浏览器http请求缓存机制，提高访问下一页的速度。
 
+更多详细库与业务js分离配置方法 请看 1.13章节 《webpack常用知识--分离 库与业务代码》
+
 更多信息，看[demo示例](https://github.com/YeWills/webpack-code/tree/master)
 
 ```
