@@ -205,14 +205,29 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="React-实战：设计模式和最佳实践"><a href="#React-实战：设计模式和最佳实践" class="headerlink" title="React 实战：设计模式和最佳实践"></a>React 实战：设计模式和最佳实践</h2>
+            <h2 id="hexo-常用知识"><a href="#hexo-常用知识" class="headerlink" title="hexo 常用知识"></a>hexo 常用知识</h2><h3 id="编译源码的github放置和hexo-g命令"><a href="#编译源码的github放置和hexo-g命令" class="headerlink" title="编译源码的github放置和hexo g命令"></a>编译源码的github放置和hexo g命令</h3><p>编译后源码会在public目录：YeWills.github.io/public/<br>将git仓库放在public中，<br>每次需要发布时，执行hexo g，然后在public目录下 git push;<br>hexo d 并不会删除publc目录的.git文件夹，只会增量叠加。<br>注意，不要执行hexo clean，它会删除public目录</p>
+<h3 id="写的文章放在哪里与-posts目录"><a href="#写的文章放在哪里与-posts目录" class="headerlink" title="写的文章放在哪里与_posts目录"></a>写的文章放在哪里与_posts目录</h3><p>YeWills.github.io/source/_posts/<br>所有的文章都放置于_posts目录下。</p>
+<h3 id="创建tag与categories相关事情"><a href="#创建tag与categories相关事情" class="headerlink" title="创建tag与categories相关事情"></a>创建tag与categories相关事情</h3><p>二者配置一样，以categories为例：<br>hexo new page categories<br>生成目录和文件：<br>YeWills.github.io/source/categories/index.md<br>修改index.md元数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>同时修改<br>YeWills.github.io/scaffolds/draft.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">tags: &#123;&#123; tags &#125;&#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>YeWills.github.io/scaffolds/page.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>YeWills.github.io/scaffolds/post.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags: &#123;&#123; tags &#125;&#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>如此便可以配置出categories的all或全部 的选项卡内容，如果没有以上步骤，也可以生成categories，但无法生产categories的all或全部 的选项卡内容；<br>且点击本主题左侧菜单栏categories会报404错误。</p>
+<p>这一步的配置内容，可看commit 哈希值 cbb06710ce7a40ade93</p>
+<h3 id="categories、tags两种配置方式"><a href="#categories、tags两种配置方式" class="headerlink" title="categories、tags两种配置方式"></a>categories、tags两种配置方式</h3><p>categories:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 推荐使用方法 method one,双横杠方式，可以配置多级，</span><br><span class="line">categories: </span><br><span class="line">- react</span><br><span class="line">- react读书笔记</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// method two,只能配置一个值</span><br><span class="line">categories: &quot;react&quot;</span><br></pre></td></tr></table></figure>
+<p>tags:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// method one</span><br><span class="line">tags:[react, react读书笔记]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// method two,只能配置一个值</span><br><span class="line">tags: react</span><br></pre></td></tr></table></figure>
+<h3 id="博客菜单栏左侧内容修改"><a href="#博客菜单栏左侧内容修改" class="headerlink" title="博客菜单栏左侧内容修改"></a>博客菜单栏左侧内容修改</h3><p>比如修改qq号码，名字，git地址，都可在这里修改YeWills.github.io/themes/mellow/_config.yml</p>
+<h3 id="博客菜单栏左侧菜单增减"><a href="#博客菜单栏左侧菜单增减" class="headerlink" title="博客菜单栏左侧菜单增减"></a>博客菜单栏左侧菜单增减</h3><p>比如修改qq号码，名字，git地址，都可在这里修改YeWills.github.io/themes/mellow/_config.yml<br>修改改文件的menu部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home:</span><br><span class="line">    text: HOME</span><br><span class="line">    url: /</span><br><span class="line">    icon: home</span><br><span class="line">  th-list:</span><br><span class="line">    text: CATEGORIES</span><br><span class="line">    url: /categories</span><br><span class="line">    icon: th-list</span><br><span class="line">  tags:</span><br><span class="line">    text: TAGS</span><br><span class="line">    url: /tags</span><br><span class="line">    icon: tags</span><br><span class="line">  archives:</span><br><span class="line">    text: ARCHIVES</span><br><span class="line">    url: /archives</span><br><span class="line">    icon: archives</span><br></pre></td></tr></table></figure></p>
+<p>如上，menu.th-list配置的是categories目录</p>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-13T04:52:46.000Z" itemprop="dateUpdated">2019-01-13 12:52:46</time>
+    Last updated: <time datetime="2019-01-13T08:24:54.000Z" itemprop="dateUpdated">2019-01-13 16:24:54</time>
 </span><br>
 
 
@@ -281,7 +296,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/01/13/react_design_pattern/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React Router</h4>
+      </a>
+    </div>
   
 
   
@@ -300,7 +322,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React-实战：设计模式和最佳实践"><span class="post-toc-number">1.</span> <span class="post-toc-text">React 实战：设计模式和最佳实践</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo-常用知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">hexo 常用知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译源码的github放置和hexo-g命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">编译源码的github放置和hexo g命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写的文章放在哪里与-posts目录"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">写的文章放在哪里与_posts目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建tag与categories相关事情"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建tag与categories相关事情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#categories、tags两种配置方式"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">categories、tags两种配置方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客菜单栏左侧内容修改"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">博客菜单栏左侧内容修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客菜单栏左侧菜单增减"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">博客菜单栏左侧菜单增减</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </div></div></aside>
