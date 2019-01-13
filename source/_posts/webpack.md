@@ -1,9 +1,10 @@
 ---
 title: webpack笔记
 date: {{ date }}
-tags: nihaotag
-categories: nihaocategories
-series: webpack
+tags: webpack
+categories: 
+- 前端工具
+series: 前端
 ---
 
 ## webpack常用知识

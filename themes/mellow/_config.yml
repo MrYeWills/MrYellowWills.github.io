@@ -63,14 +63,14 @@ avatar_link: / #默认为主页
 brand: /img/brand.jpg
 
 # 电子邮件
-email: 277133779@qq.com
+email: 601661706@qq.com
 
 # 电子邮件下方的链接图标
 ## 新连接规则[name]: url | icon
 ## 使用fontawesome图标，只需要写图标名。github -> icon-github | fa-github
 ## http://http://fontawesome.dashgame.com/
 menu_link: 
-  github: https://github.com/codefine | github
+  github: https://github.com/YeWills/YeWills.github.io/tree/blog_code | github
 
 # 添加新菜单项遵循以下规则
 ## menu:
@@ -100,10 +100,10 @@ menu:
     #text: ABOUT
     #url: /about
     #icon: user
-  demo:
-    text: CUSTOM
-    url: /custom
-    icon: plus-square
+  #demo:
+    #text: CUSTOM
+    #url: /custom
+    #icon: plus-square
   #github:
     #url: https://github.com/codefine
     #target: _blank
