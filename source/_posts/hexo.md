@@ -60,7 +60,7 @@ tags: {{ tags }}
 如此便可以配置出categories的all或全部 的选项卡内容，如果没有以上步骤，也可以生成categories，但无法生产categories的all或全部 的选项卡内容；
 且点击本主题左侧菜单栏categories会报404错误。
 
-这一步的配置内容，可看commit 哈希值 
+这一步的配置内容，可看commit 哈希值 cbb06710ce7a40ade93
 
 ### categories、tags两种配置方式
 categories:
