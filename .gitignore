@@ -6,5 +6,5 @@ node_modules/
 public/
 .deploy*/
 dist
-
+test.html
 .idea
