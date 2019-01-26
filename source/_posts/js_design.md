@@ -219,8 +219,191 @@ class People {
 }
 ```
 
+# 闭包
 
+[关于闭包详细知识，可参考我在几年前写的一篇博客，这里只摘取一些必要知识](https://blog.csdn.net/ybdt1201/article/details/53366613)，以下内容基本摘至这篇博客，如有疑问，点击进入了解。
+## 定义
 
+官方对闭包的定义：所谓“闭包”，指的是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。
 
+还有一种对闭包更直接明了的说法：[闭包就是有权访问另一个函数作用域中变量的函数。](https://www.cnblogs.com/tinkbell/p/3173293.html)
+分析这句话:
+　　1.闭包是定义在函数中的函数.
+　　2.闭包能访问函数内的私有变量.
+　　3.即使包含函数执行完了, 被闭包引用的变量也得不到释放.
+
+满足以上定义的，都可称之为闭包。
+
+## 两种定义方式
+闭包有两种定义方式，一种就是经典的return方式，一种就是new的方式。
+我目前看到的闭包就是这两种，应该也就这两种。
+网上有很多人列举了很多闭包方式，其实本质上都是对这两种方式的发展延伸而已。
+
+### return方式
+这种方式最经典，也最为常用，推荐这种写法。
+```
+function a() {
+    var num = 1;
+    return function (){
+        num++;
+        console.log(num);
+    }
+}
+```
+### new 方式
+这种方式之所以被认定为闭包，是因为以下两点理由，下面代码中：
+1、a是母函数
+2、inc是a执行后返回，相当于return的函数，此函数绑定了a的私有变量n， 这是决定inc是否为闭包的重要依据。
+```
+function a(){
+  var n = 0;
+  this.inc = function () {
+    n++;
+    console.log(n);
+  };
+}
+var cc = new a();
+cc.inc()//1
+cc.inc()//2
+```
+
+## 不是闭包的设计
+列举一下非闭包的设计方式，以此加深对闭包的理解
+很多人认为自运行匿名函数、命名空间设计模式和原型定义方式都是闭包，我觉得是不对的。
+
+### 自运行匿名函数：
+```
+//这不是闭包
+(function fn(){
+          var n = 8;
+           console.log(n) ;
+      })();
+```
+```
+//这一种是闭包的设计，但并不是因为它是自运行匿名函数的原因，而是因为匿名函数内部return了一个函数的原因，
+//这其实就是上面讲的两种闭包设计模式的第一种 return方式
+(function fn(){
+      var n = 8;
+      return function(){
+          console.log(n) ;
+      }
+  })();
+```
+### js的命名空间写法
+js的命名空间写法不能称之为闭包，它最多是使用了js关于引用对象一处改变，都受改变的特性。
+```
+//这是命名空间的写法，但不是闭包
+var obj = {
+  n:8,
+  count:function(){
+    this.n++;
+    console.log(this.n);
+  }
+}
+obj.count()//9
+obj.count()//10
+```
+### 原型定义方式
+还有一些把函数定义在原型上，这本质上也是运用了引用对象的特性，不是闭包：
+```
+//这不是闭包，是运用了引用对象的特性，才有对象元素值叠加的效果
+function a(){
+  this.n = 8;
+}
+a.prototype.count=function(){
+  this.n++;
+  console.log(this.n);
+}
+var obj = new a();
+obj.count()//9
+obj.count()//10
+```
+ 如果稍微换一下，就行不通了
+```
+//这不是闭包
+function a(){
+  this.n = 8;
+}
+a.prototype.count=function(){
+  this.n++;
+  console.log(this.n);
+}
+var newCount = (new a()).count;
+newCount()//NaN
+newCount()//NaN
+```
+
+## 闭包的用处
+
+### 定义私有变量
+若不想某些变量被其他函数访问，就可以写一个闭包设计，将变量定义为私有变量，只有闭包函数可以访问，达到其他函数无法访问的目的。
+
+### 保存变量值
+这是闭包最经典和关键意义所在，也是闭包函数存在的意义。闭包函数绑定了母函数的变量，每次执行完，此变量不销毁，达到保存变量值的目的。
+
+## 运用场景
+### 保存变量值。
+### 进行前后两次执行时的比较。
+#### react-redux的props状态比较
+比如react-redux就是通过闭包的这个特性，保存prop上一次状态，然后跟当前props比较。
+#### 节流和防抖
+这是性能优化经常使用的手段，可以网上查阅，都是用闭包来进行。
+#### for循环的使用
+错误写法，这种for达不到预期
+```
+//错误写法
+function foo(){
+    var arr = [];
+    for(var i = 0; i < 2; i++){
+        arr[i] = function(){
+            return i;
+        }
+    }
+    return arr;
+}
+var bar = foo();
+console.log(bar[0]());//2    
+```
+正确写法：
+```
+//正确写法
+//为什么能记住当时值，是因为是自运行的函数，每次都会执行一次
+function foo(){
+    var arr = [];
+    for(var i = 0; i < 2; i++){
+        arr[i] = (function fn(j){
+            return function test(){
+                return j;
+            }
+        })(i);
+    }
+    return arr;
+}
+var bar = foo();
+console.log(bar[0]());//0 
+```
+换一种写法，可能更容易理解
+```
+//正确写法
+function foo(){
+    var arr = [];
+    for(var i = 0; i < 2; i++){
+        arr[i] = (function fn(j){
+            var _j = j;//定义一个变量，更容易理解
+            return function test(){
+                return _j;
+            }
+        })(i);
+    }
+    return arr;
+}
+var bar = foo();
+console.log(bar[0]());//0 
+```
+## 对闭包的误解
+很多人认为闭包会增加内存，导致内存泄漏，这是错误的，是对闭包的误解。
+如果你不把变量定义为闭包访问的私有变量，你也一定会把这些变量定义在全局作用域上，全局作用上下文也是不销毁的，一样也是增加了内存。
+所以闭包并没有增加内存，更没有内存泄漏。
+如果增加了内存和内存泄漏，其实都是编码水平有待提高导致。
 
 
