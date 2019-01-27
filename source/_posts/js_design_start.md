@@ -28,15 +28,42 @@ js面向对象编程的核心概念是 类 和 实例(对象)。
 
 ## new 的理解
 
-关于new 的理解：
+[关于new 的理解](https://blog.csdn.net/zhouziyu2011/article/details/60143385)：
 
 ```
-var obj = new Base();
+var baseObj = new Base();
 //new操作符具体干了什么呢?其实很简单，就干了三件事情：
 var obj  = {};
+var result = Base.call(obj);
 obj.__proto__ = Base.prototype;
-Base.call(obj);
+
+if (typeof(result) === "object"){
+  baseObj = result;
+}else{
+  baseObj = obj;
+}
 ```
+
+下面是两个例子：
+```
+var Test = function(){
+            this.html = 1111;
+            // return {a:123};
+          }
+          var obj = new Test()
+          console.log(obj) //{html: 1111}
+```
+
+```
+var Test = function(){
+            this.html = 1111;
+            return {a:123};
+          }
+          var obj = new Test()
+          console.log(obj) //{a: 123}
+```
+
+
 
 下面将讲 面向对象编程三大特征 多态，继承，封装
 

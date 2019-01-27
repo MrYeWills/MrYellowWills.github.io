@@ -75,7 +75,7 @@ makeSound(new Dog);
 ```
 
 ### 优缺点
-优点：从上面代码例子中看到，开放封闭原则的代码，后期可维护性更高，扩展性更强，但有扩展新功能时，风险更小，要做的回归测试问题更少，因此维护、扩展成本更低。
+优点：从上面代码例子中看到，开放封闭原则的代码，后期可维护性更高，扩展性更强，当有扩展新功能时，风险更小，要做的回归测试问题更少，因此维护、扩展成本更低。
 缺点：在项目刚开始时，因为业务不熟，或业务不稳定，因此你很难抽象出 方法中永远变化的部分和永远不变化的部分进行封装。
 
 ### 接受第一次愚弄
@@ -90,4 +90,124 @@ makeSound(new Dog);
 准则3:快速建立原型（快速更早将功能骨架做好，先让用户用起来，然后客户边用边反馈，开发根据这个实施开发客户反馈需求）
 准则4:舍弃高效率而取可移植性（硬件升级或浏览器内核升级后，原来不高效的写法，因为计算机硬件提高，原来不高效写法不影响效率了）
 准则5:充分地抽象封装程序，以此达到程序复用性
+
+
+# js设计模式
+
+## 单例模式
+
+### 定义
+单例模式 定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+
+
+### 标准单例模式示例
+标准的单例模式示例，如下代码符合单例模式的几点定义：
+- Singletom是一个类；
+- new Singletom 是它点实例；
+- 全局范围内，可通过Singletom访问这个类。
+
+```
+//标准的单例模式示例
+var Singletom = function(name){
+            console.log(name)
+          }
+Singletom.getInstance = (function(){
+var instance = null;
+return function(name){
+    if(!instance){
+    instance = new Singletom(name);
+    }
+    return instance;
+}
+})()
+var a = Singletom.getInstance('sven1');
+var b = Singletom.getInstance('sven2');
+console.log(a === b)//true
+
+```
+
+### 优化的标准示例
+
+上面的标准示例，将new 实例和 管理是否有无两个功能放在一个函数内，违背了 单一职责原则，在此改造下：
+```
+//优化后的单例模式示例
+var CreateDiv = function(html){
+          this.html = html;
+          this.init()
+          }
+          
+CreateDiv.prototype.init = function(){
+    var div = document.createElement('div');
+    div.innerHTML = this.html;
+    document.body.appendChild(div);
+}
+
+var ProxySingletonCreateDiv = (function(){
+    var instance;
+    return function(html){
+    if(! instance){
+        instance = new CreateDiv(html);
+    }
+    return instance;
+    }
+})()
+var a = new ProxySingletonCreateDiv('sven1');
+var b = new ProxySingletonCreateDiv('sven2');
+console.log(a === b)//true
+
+```
+
+### 通用的单例模式示例
+
+我们不必拘泥于单例模式的定义，单例模式必须要求是一个类 和 实例，
+其实类也是一个函数，实例其实就是对call或apply的应用，我们不必拘泥于new 实例，大可 将 函数的直接执行 来 代替实例。
+单例模式的精神就是：
+- 有一个全局的函数（类）
+- 此函数被执行或被实例一次
+满足了以上两个条件，都可以称之为单例设计模式；
+下面写了一个经典 单例模式示例：
+
+```
+//优化后的单例模式示例
+var num = 0;
+var CreateDiv = function(...args){
+    num ++;
+    console.log(args[0],`一共执行了${num}次`);
+    var div = document.createElement('div');
+    div.innerHTML = this.html;
+    document.body.appendChild(div);
+    return div;
+}
+ProxySingletonCreateDiv 专门用来管理 函数是否执行
+var ProxySingletonCreateDiv = function(fn){
+    var instance;
+    return function(){
+    if(! instance){
+        instance = fn.apply(this, arguments);
+    }
+    return instance;
+    }
+}
+var a = ProxySingletonCreateDiv(CreateDiv);
+
+a('单例模式')//单例模式 一共执行了1次
+a('单例模式')//单例模式 一共执行了1次
+
+//如果我们要扩展，增加一个CreateFrame，只需这样做,非常容易扩展
+var CreateFrame = function(...args){
+    console.log(args[0]);
+    return true;
+}
+var f = ProxySingletonCreateDiv(CreateFrame);
+f('单例模式')//单例模式 一共执行了1次
+f('单例模式')//单例模式 一共执行了1次
+
+```
+
+### 应用场景
+购物车，登陆，redux 的 store都是单例模式的运用。
+
+### 如何写一个单例模式
+由上面例子看到，写一个单例模式的功能，基本上要借助闭包来实现。
+通过上面的例子看到，在单例模式中，请将管理单例 和 功能函数 分开编写。
 
