@@ -211,3 +211,114 @@ f('单例模式')//单例模式 一共执行了1次
 由上面例子看到，写一个单例模式的功能，基本上要借助闭包来实现。
 通过上面的例子看到，在单例模式中，请将管理单例 和 功能函数 分开编写。
 
+
+## 观察者模式
+
+### 示例
+#### 设计思路
+对上面例子解说，
+新闻公司通过 暴露出来一个接口attach，用来给订阅者(观察者)报名或参加订阅，
+新闻公司内部，用以下几个属性用来记录情况：
+this.foodState ---- 将要推送的 食品消息
+this.houseState ---- 将要推送的 房产消息
+this.foodObservers ---- 食品消息订阅者个人信息
+this.houseObservers ---- 房产消息订阅者个人信息
+this.deliveryType ---- 将要推送的消息的类别
+deliveryState ---- 推送消息
+notifyAllObservers  ---- 给每个订阅者打电话将消息通知给订阅者
+getState ---- 暴露给订阅者的API,订阅者接到通知消息的电话后，可通过公司提供的渠道网站或短信来看新闻
+
+订阅者：
+订阅者用以下几个属性来记录情况
+this.phoneNum ---- 订阅新闻需要提供给新闻公司的 手机号码
+this.subscribeType  ---- 订阅新闻需要提供给新闻公司的 新闻类别
+this.company  ---- 用来保存公司资料，刚开始是根据公司提供的报名方式attach进行报名，后期新闻发送消息是，
+                   可以通过公司提供的渠道(this.company.getState)查看消息，也可以针对新闻服务公司的服务态度，给公司反馈或投诉建议
+this.company.attach 通过公司对外暴露的接口，登记报名订阅。
+
+cellphone 订阅者对外暴露给新闻公司自己接收消息的方式。
+
+#### 示例小结
+新闻公司必须 对订阅者暴露 订阅方式attach；
+订阅者必须 对公司暴露 接收消息方式cellphone；
+因为订阅者要 保存公司的资料，例如获取订阅方式等等，所以订阅者必须设计一个属性用来保存公司这个对象总类；
+因为公司要 保存订阅者的资料，例如获取订阅者的接收方式等等，所以公司必须设计一个属性用来保存订阅者完整类；
+
+因为公司要 发送消息deliveryState，就要用一个属性来保存将要发的消息foodState，然后要执行打电话通知notifyAllObservers，
+通知完后，还要提供网站或app或短信等渠道getState，让订阅者查看新闻。
+
+#### 示例代码
+```
+// 主题，接收状态变化，触发每个观察者
+
+class NewsCompany {
+    constructor() {
+        this.foodState = 0
+        this.houseState = 0
+        this.foodObservers = []
+        this.houseObservers = []
+        this.deliveryType = 0
+    }
+    getState() {
+        if(this.deliveryType === 'food'){
+            return this.foodState
+        }
+        return this.houseState
+    }
+    deliveryState(state,deliveryType) {
+        if(deliveryType === 'food'){
+            this.foodState = state
+        }else{
+            this.houseState = state
+        }
+        this.deliveryType = deliveryType;
+        this.notifyAllObservers(deliveryType)
+    }
+    attach(observer) {
+        if(observer.subscribeType === 'food'){
+            this.foodObservers.push(observer)
+        }
+        if(observer.subscribeType === 'house'){
+            this.houseObservers.push(observer)
+        }
+    }
+    notifyAllObservers(type) {
+        const observers = type === 'food' ? this.foodObservers : this.houseObservers;
+        observers.forEach(observer => {
+            //发布消息，给每个订阅者留的电话打电话，通知订阅者
+            observer.cellphone()
+        })
+    }
+}
+
+// 观察者，等待被触发
+class Observer {
+    constructor(phoneNum, subscribeType ,company) {
+        this.phoneNum = phoneNum
+        //订阅的第一步，就必须获得订阅内容的资料或对象，我们把这个对象看成是新闻服务公司，这个新闻服务公司提供很多种类的新闻：房产新闻，食品新闻，体育新闻。。。。
+        this.company = company //必不可少，将公司资料保存下来，可以针对新闻服务公司的服务态度，给公司反馈或投诉建议
+        this.subscribeType = subscribeType
+        this.company.attach(this)//报名，参加订阅，这一步是不是可以理解为订阅.attach就是公司给订阅者的报名方式
+    }
+    //cellphone 新闻服务公司，有消息时会打电话给每个订阅者，cellphone模拟的是订阅者手机接到电话的行为
+    cellphone() {
+        console.log(`${this.phoneNum} 收到, state新闻: ${this.company.getState()}`)
+    }
+}
+// 测试代码
+let newsCompany = new NewsCompany()
+//对于新闻服务公司来说，他只需要知道 订阅者 电话号码 和 订阅内容即可，一个人可以有很多特性，例如名字，性别，爱好等等，
+//但对于新闻服务公司而言，它只需要知道订阅者的 手机号码 和 新闻类别，所以一个订阅者的对象，只需要具备手机号码和订阅新闻类别两个属性即可。
+//所以我们上面设计的订阅者类Observer，只有phoneNum, subscribeType 两个属性。
+//从观察者的角度看，它还需要 一个属性来将公司资料保存下来，可以针对新闻服务公司的服务态度，给公司反馈或投诉建议
+//基于以上，一个订阅者，需要设置三个属性，而cellphone是公司打电话来时，模拟订阅者手机接到电话的行为
+let o1 = new Observer('15099281126', 'food', newsCompany)
+let o2 = new Observer('15099281127', 'food', newsCompany)
+let o3 = new Observer('15099281128', 'food', newsCompany)
+newsCompany.deliveryState('奶制食品新闻','food');//给每个订阅者发布消息
+
+let o7 = new Observer('13899761271', 'house', newsCompany)
+let o8 = new Observer('13899761272', 'house', newsCompany)
+let o9 = new Observer('13899761273', 'house', newsCompany)
+newsCompany.deliveryState('房产新闻','house');//给每个订阅者发布消息
+```
