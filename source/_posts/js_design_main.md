@@ -126,7 +126,7 @@ console.log(a === b)//true
 
 ```
 
-### 优化的标准示例
+### 将以上 标准单例模式示例 优化
 
 上面的标准示例，将new 实例和 管理是否有无两个功能放在一个函数内，违背了 单一职责原则，在此改造下：
 ```
@@ -159,6 +159,7 @@ console.log(a === b)//true
 
 ### 通用的单例模式示例
 
+上面我们解释了标准的单例模式，这样可以更加容易理解单例模式是什么，在实际应用中，我们更偏向使用基于以上标准单例模式改造而来的通用的单例模式。
 我们不必拘泥于单例模式的定义，单例模式必须要求是一个类 和 实例，
 其实类也是一个函数，实例其实就是对call或apply的应用，我们不必拘泥于new 实例，大可 将 函数的直接执行 来 代替实例。
 单例模式的精神就是：
@@ -213,10 +214,10 @@ f('单例模式')//单例模式 一共执行了1次
 
 
 ## 观察者模式
-
-### 示例
+观察者模式也称为发布订阅模式
+### es6示例
 #### 设计思路
-对上面例子解说，
+对下面例子解说，
 新闻公司通过 暴露出来一个接口attach，用来给订阅者(观察者)报名或参加订阅，
 新闻公司内部，用以下几个属性用来记录情况：
 this.foodState ---- 将要推送的 食品消息
@@ -236,7 +237,7 @@ this.company  ---- 用来保存公司资料，刚开始是根据公司提供的�
                    可以通过公司提供的渠道(this.company.getState)查看消息，也可以针对新闻服务公司的服务态度，给公司反馈或投诉建议
 this.company.attach 通过公司对外暴露的接口，登记报名订阅。
 
-cellphone 订阅者对外暴露给新闻公司自己接收消息的方式。
+cellphone 订阅者对外暴露给新闻公司自己接收消息的方式，用来update。
 
 #### 示例小结
 新闻公司必须 对订阅者暴露 订阅方式attach；
@@ -248,6 +249,8 @@ cellphone 订阅者对外暴露给新闻公司自己接收消息的方式。
 通知完后，还要提供网站或app或短信等渠道getState，让订阅者查看新闻。
 
 #### 示例代码
+此代码针对上面解说而写的，此示例代码的好处是可以很好地先理解好观察者到底是一个什么东西。
+但此代码也有弊端，例如NewsCompany不易维护性，NewsCompany中维护了food，house，如果将来增加了money等等呢，需要改写NewsCompany内部。所以NewsCompany需要进一步优化。
 ```
 // 主题，接收状态变化，触发每个观察者
 
@@ -300,7 +303,7 @@ class Observer {
         this.subscribeType = subscribeType
         this.company.attach(this)//报名，参加订阅，这一步是不是可以理解为订阅.attach就是公司给订阅者的报名方式
     }
-    //cellphone 新闻服务公司，有消息时会打电话给每个订阅者，cellphone模拟的是订阅者手机接到电话的行为
+    //cellphone 新闻服务公司，有消息时会打电话给每个订阅者，cellphone模拟的是订阅者手机接到电话的行为，很多示例中将cellphone写作update，不过为了方便理解，在此写成cellphone
     cellphone() {
         console.log(`${this.phoneNum} 收到, state新闻: ${this.company.getState()}`)
     }
@@ -322,3 +325,203 @@ let o8 = new Observer('13899761272', 'house', newsCompany)
 let o9 = new Observer('13899761273', 'house', newsCompany)
 newsCompany.deliveryState('房产新闻','house');//给每个订阅者发布消息
 ```
+
+#### 示例代码优化及延伸方式一
+上面代码不易扩展，将上面代码优化：NewsCompany中去掉constructor，并且改写food与house切换，将cellphone改为callback不再统一管理callback：
+
+```
+class NewsCompany {
+    deliveryState(state,deliveryType) {
+        this[`${deliveryType}State`] = state;
+        this.deliveryType = deliveryType;
+        this.notifyAllObservers()
+    }
+    attach(observer) {
+        const {subscribeType} = observer;
+        if(!this[`${subscribeType}Observers`]){
+            this[`${subscribeType}Observers`] = [];
+        }
+        this[`${subscribeType}Observers`].push(observer);
+    }
+    notifyAllObservers() {
+        const observers = this[`${this.deliveryType}Observers`];
+        observers.forEach(observer => {
+            observer.callback(this[`${this.deliveryType}State`], this, observer)
+        })
+    }
+}
+
+// 观察者，等待被触发
+class Observer {
+    constructor(phoneNum, subscribeType ,company, callback) {
+        this.phoneNum = phoneNum
+        this.subscribeType = subscribeType
+        this.callback = callback
+        company.attach(this)//报名，参加订阅，
+    }
+}
+
+let newsCompany = new NewsCompany()
+//state, newsCompany, observerMyself 将newsCompany和observerMyself都传给callback，以备不时之需
+let o1 = new Observer('15099281126', 'food', newsCompany, (state, newsCompany, observerMyself)=>{
+    console.log(`15099281126 收到, state新闻: `,state)
+})
+let o2 = new Observer('15099281127', 'food', newsCompany, (state, newsCompany, observerMyself)=>{
+    console.log(`15099281127 收到, state新闻: `,state)
+})
+let o3 = new Observer('15099281128', 'food', newsCompany, (state, newsCompany, observerMyself)=>{
+    console.log(`15099281128 收到, state新闻: `,state)
+})
+newsCompany.deliveryState('奶制食品新闻','food');
+
+
+let o7 = new Observer('13899761271', 'house', newsCompany, (state, newsCompany, observerMyself)=>{
+    console.log(`13899761271 收到, state新闻: `,state)
+})
+let o8 = new Observer('13899761272', 'house', newsCompany, (state, newsCompany, observerMyself)=>{
+    console.log(`13899761272 收到, state新闻: `,state)
+})
+let o9 = new Observer('13899761273', 'house', newsCompany, (state, newsCompany, observerMyself)=>{
+    console.log(`13899761273 收到, state新闻: `,state)
+})
+newsCompany.deliveryState('房产新闻','house');
+```
+
+#### 示例代码优化及延伸方式二
+你会发现上面的phoneNum其实可有可无，NewsCompany保持跟上面不变，改造其他部分：
+删除phoneNum,
+将attach提取出来，
+删除Observer类，直接用参数来代替，
+参数因为可能会超过3个改成options对象方式容易扩展
+
+```
+
+let newsCompany = new NewsCompany()
+//state, newsCompany, observerMyself 将newsCompany和observerMyself都传给callback，以备不时之需
+newsCompany.attach({
+    subscribeType : 'food', 
+    callback: (state, newsCompany, observerMyself)=>{
+      console.log(`o1 订阅或观察者 收到, state新闻: `,state)
+    }
+})
+newsCompany.attach({
+    subscribeType : 'food', 
+    callback: (state, newsCompany, observerMyself)=>{
+      console.log(`o2 订阅或观察者 收到, state新闻: `,state)
+    }
+})
+newsCompany.attach({
+    subscribeType : 'food', 
+    callback: (state, newsCompany, observerMyself)=>{
+      console.log(`o3 订阅或观察者 收到, state新闻: `,state)
+    }
+})
+newsCompany.deliveryState('奶制食品新闻','food');
+
+```
+
+此时，你是否可以将attach想象成 addEventListener，deliveryState想象成fire或trigger。
+
+
+### es5示例
+由于js天生可以很优雅地使用花括号来构造一个对象，而不用通过class实例化，因此我们可很容易通过es5来写一个观察者与订阅模式示例：
+
+#### 示例代码
+```
+var Event = (function(){
+    var ClientList = {},
+    listen,
+    trigger,
+    remove;
+    listen = function(key, fn){
+        if(!ClientList[key]){
+            ClientList[key] = []
+        }
+        ClientList[key].push(fn);
+    }
+    trigger = function(){
+        var key = Array.prototype.shift.call(arguments),
+        fns = ClientList[key];
+        if(!fns || fns.listen === 0){
+            return false;
+        }
+        for(var i = 0; i<fns.length; i++){
+            fns[i].apply(this,arguments);
+        }
+    }
+    remove = function(key, fn){
+        var fns = ClientList[key];
+        if(!fns){
+            return false;
+        }
+        var fns = ClientList[key];
+        if(!fn){
+            fns && (fns.length = 0);
+        }else{
+            for (var l = fns.length -1;l>0;l--){
+                var _fn = fns[l];
+                if(_fn === fn){
+                    fns.splice(l,1);
+                }
+
+            }
+        };
+       
+    }
+    return {listen,trigger,remove}
+})()
+
+Event.listen('squeremeter88', function(price){
+    console.log('价格= '+price);
+})
+Event.listen('squeremeter88', function(price){
+    console.log('价格_111= '+price);
+})
+Event.trigger('squeremeter88', 20000);
+```
+
+当业务复杂后，可能出现命名污染的现象，这个时候，我们可以改写Event，通过Event.creat(namespace).listen(add),
+Event.creat(namespace).trigger(add),详细可看 《js设计模式》书
+
+#### 应用场景：
+
+一个按钮被点击时，出发一个div显示最新的count值。
+```
+<body>
+<button id="count">click</button>
+<div id="show"></div>
+<script>
+var a = (function(){
+    var count = 0;
+    var button = document.getElementById('count');
+    button.onclick = function(){
+        //Event 就是上面的Event不变。
+        Event.trigger('add', count++)
+    }
+})()
+var b = (function(){
+    var div = document.getElementById('show');
+    Event.listen('add', function(count){
+        div.innerHTML = count
+    })
+})()
+</script>
+</body>
+```
+### 应用场景
+网页事件绑定，promise的一系列then，还有react的生命周期函数其实都是定义callbase，是一种观察者模式
+
+### 定义
+它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。
+它的特征是，
+- 发布和订阅
+- 一对多（包含一对一）
+设计的原则：
+主题与观察者分离，不是主动触发而是被动监听，两者解耦。
+
+### 小结
+上面举例来es6和es5两种方式的观察者模式示例，es6和es5两种方式，各有各的优点，本质上也是一样的，为了便于直观理解观察者模式，可先行记忆es5示例的形式。
+
+### 优缺点
+缺点 观察者模式容易隐藏 代码逻辑，过量使用观察者模式，后期后期维护时，可能不好找入口的风险带来一些麻烦。
+优点 观察者模式可以用来很好地写异步编程，事件驱动编程。
