@@ -525,3 +525,145 @@ var b = (function(){
 ### 优缺点
 缺点 观察者模式容易隐藏 代码逻辑，过量使用观察者模式，后期后期维护时，可能不好找入口的风险带来一些麻烦。
 优点 观察者模式可以用来很好地写异步编程，事件驱动编程。
+
+
+## 状态模式
+
+### 反例
+举例一个常规编程，但这个编程是一个不好的例子--反例，下节会基于此做优化
+```
+var Light = function(){
+    this.state = 'off'
+    this.button = null
+}
+
+Light.prototype.init = function(){
+    var button = document.createElement('button'),
+    self = this;
+    this.button = document.body.appendChild(button);
+    this.button.innerHTML = '开关';
+    this.button.onclick = function(){
+        self.buttonWasPressed();
+    }
+}
+Light.prototype.buttonWasPressed = function(newState){
+   if(this.state === 'off'){
+       console.log('弱光');//用console来象征 状态行为
+       this.state = 'weakLight';
+   }else if(this.state === 'weakLight'){
+       console.log('高光');
+       this.state = 'strongLight';
+   }else if(this.state === 'strongLight'){
+       console.log('关灯');
+       this.state = 'off';
+   }
+}
+var light = new Light();
+light.init();
+```
+
+需求来了，如果再增加一个超级强光，那么就要改写buttonWasPressed，违反了开放封闭原则，而且Light.prototype.buttonWasPressed会越来越臃肿，
+代码中状态行为只有一句console.log(),但实际开发中，肯定不止这一句代码，基于以上两点理由，因为有必要 改写成下一节的示例代码
+
+### 标准状态模式示例
+将上节反例demo改造，优化，以下是标准状态模式demo：
+```
+//标准状态模式示例
+var LightState = function(nextState, stateCallback){
+    this.stateCallback = stateCallback;
+    this.nextState = nextState;
+}
+LightState.prototype.buttonWasPressed = function(){
+    this.stateCallback();//对应的行为
+    this.light.setState(this.nextState) //切换状态
+}
+
+var OffLightState = function(light){
+    this.light = light;
+}
+OffLightState.prototype = new LightState('weakLightState', function(){
+    console.log('弱光');//自定义对应的行为
+});
+
+var WeakLightState = function(light){
+    this.light = light;
+}
+WeakLightState.prototype = new LightState('strongLightState' ,function(){
+    console.log('强光');//自定义对应的行为
+});
+
+var StrongLightState = function(light){
+    this.light = light;
+}
+StrongLightState.prototype = new LightState('offLightState' , function(){
+    console.log('关灯');//自定义对应的行为
+});
+
+var LightContext = function(){
+    this.offLightState = new OffLightState(this)
+    this.weakLightState = new WeakLightState(this)
+    this.strongLightState = new StrongLightState(this)
+    this.button = null
+}
+
+LightContext.prototype.init = function(){
+    var button = document.createElement('button'),
+    self = this;
+    this.button = document.body.appendChild(button);
+    this.button.innerHTML = '开关';
+    this.currState = this.offLightState; //设置开始状态
+    this.button.onclick = function(){
+        self.currState.buttonWasPressed();
+    }
+}
+LightContext.prototype.setState = function(newState){
+   this.currState = this[newState]
+}
+
+var light = new LightContext();
+light.init();
+
+```
+
+当增加一个超级强光时：
+
+```
+var SuperStrongLightState = function(light){
+    this.light = light;
+}
+SuperStrongLightState.prototype = new LightState('offLightState' , function(){
+    console.log('关灯');//自定义对应的行为
+});
+
+...
+StrongLightState.prototype = new LightState('superStrongLightState' , function(){
+    ...
+});
+
+var LightContext = function(){
+...
+    this.superStrongLightState = new SuperStrongLightState(this)
+...
+}
+
+```
+
+
+### 状态模式的优缺点
+以上就是状态模式的魅力，符合开放封闭原则，可以不让buttonWasPressed臃肿，其实就是不让context无限臃肿。
+缺点 会增加代码量，把逻辑分散到状态类中，无法在一个地方就可以将逻辑不能一目了然。
+
+### 设计原则与定义
+状态模式，最重要的特征是定义状态类(如上的LightState)，并将逻辑分散到状态类中。
+将状态(LightState)与主体(LightContext)分离，状态变化的逻辑单独到每个状态类中(例如OffLightState)处理。
+
+状态模式的定义较晦涩：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。
+这个定义基本看不懂，可以忽视掉。
+状态模式的精髓在于 定义状态类，并状态对应的逻辑封装到状态类中。
+
+### 什么情况下使用状态模式
+如上面优缺点说的，
+当你不希望Light.prototype.buttonWasPressed太臃肿时；
+当每次有新需求你不希望每次都去修改Light.prototype.buttonWasPressed时；
+当你做的功能业务有太多状态变化，且每个状态逻辑较多时；
+那么就请使用状态模式吧
