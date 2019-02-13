@@ -667,3 +667,120 @@ var LightContext = function(){
 当每次有新需求你不希望每次都去修改Light.prototype.buttonWasPressed时；
 当你做的功能业务有太多状态变化，且每个状态逻辑较多时；
 那么就请使用状态模式吧
+
+
+## 代理模式
+
+## 两者代理模式的概念
+js中用得最多的虚拟代理和缓存代理；
+虚拟代理指通过代理，将一个函数延迟或等到真正需要执行的时候再执行，说白了就是延时下，例如下面例子中，等图片完全加载好后再执行真正的加载。
+缓存代理，如下例子中，指通过代理，不用每次都执行函数，开始执行完函数后，后期从缓存取，如果我计算或2+3，后面再2+3时，直接从缓存取。
+代理模式很简单直接通过以下两个例子来领略下代理模式；
+
+## 虚拟代理示例
+```
+var myImage = (function(){
+    var imgNode = document.createElement('img');
+    document.body.appendChild(imgNode);
+    return {
+        setSrc: function(src){
+            imgNode.src = src;
+        }
+    }
+})()
+
+var proxyImage = (function(){
+    var img = new Image;
+    img.onload = function(){
+        myImage.setSrc(this.src)
+    }
+    return {
+        setSrc:function(src){
+            myImage.setSrc('file:// /c:/user/abc.gif');
+            img.src = src;
+        }
+    }
+})()
+
+//myImage.setSrc('http://s9.knowsky.com/bizhi/l/20100615/2010112611%20(1).jpg')
+proxyImage.setSrc('http://s9.knowsky.com/bizhi/l/20100615/2010112611%20(1).jpg')
+```
+注意一个现象，myImage有一个setSrc接口，proxyImage也有一个setSrc接口，并且代理函数体内用了myImage.setSrc；
+
+### 缓存代理示例
+
+#### 简单版示例
+```
+var mult = function(){
+    console.log('开始计算乘积');
+    var a = 1;
+    for (var i =0, l = arguments.length; i<l; i++){
+        a = a*arguments[i]
+    }
+    return a;
+}
+
+
+var proxyMult = (function(){
+    var cache = {};
+    return function(){
+        var args = Array.prototype.join.call(arguments, ',');
+        if(args in cache){
+            return cache[args];
+        }
+        return cache[args] = mult.apply(this, arguments)
+    }
+})()
+console.log(proxyMult(1,2,3,4))
+console.log(proxyMult(1,2,3,4))
+```
+
+#### 延伸版示例
+
+```
+var plus = function(){
+    console.log('开始计算加和');
+    var a = 0;
+    for (var i =0, l = arguments.length; i<l; i++){
+        a = a+arguments[i];
+    }
+    return a;
+}
+
+var createProxyFactory = function(fn){
+    var cache = {};
+    return function(){
+        var args = Array.prototype.join.call(arguments, ',');
+        if(args in cache){
+            return cache[args];
+        }
+        return cache[args] = fn.apply(this, arguments)
+    }
+}
+
+var proxyMult = createProxyFactory(mult);
+
+console.log(proxyMult(11,2,3,4))
+console.log(proxyMult(11,2,3,4))
+```
+
+注意一个现象，proxyMult代理函数体内用了fn.apply,且mult与proxyMult接收的参数是一致的，可以认为二者接口一致。
+
+### 设计原则
+从上面的示例我们可以看到，
+设计一个代理模式，有一个小技巧：
+- 就是代理函数 要 提供跟被代理函数一摸一样的接口，或者有一摸一样的接收传参方式；
+- 代理函数体内 引用 被代理函数。
+
+
+
+
+
+
+
+
+
+
+
+
+
