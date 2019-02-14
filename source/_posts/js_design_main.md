@@ -773,7 +773,91 @@ console.log(proxyMult(11,2,3,4))
 - 代理函数体内 引用 被代理函数。
 
 
+## 策略模式
 
+```
+<form action="#" id="registerForm" method="POST">
+    请输入用户名：<input type="text" name="userName"/>
+    请输入密码：<input type="text" name="passWord" />
+    请输入手机号码：<input type="text" name="phoneNumber" />
+    <button>提交</button>
+</form>
+
+var strategies = {
+    isNonEmpty: function(value, errorMsg){
+        if(!value){
+            return errorMsg;
+        }
+    },
+    minLength: function(value, length, errorMsg){
+        if(value.length<length){
+            return errorMsg
+        }
+    },
+    isMobile: function(value, errorMsg){
+        if(!/13511112222/.test(value)){
+            return errorMsg;
+        }
+    }
+}
+var Validator = function(){
+    this.cache = [];
+}
+
+Validator.prototype.add = function(dom, rules){
+    var self = this;
+    for (var i = 0,rule; rule = rules[i++];){
+        (function(rule){
+            var strategyAry = rule.strategy.split(':');
+            var errorMsg = rule.errorMsg;
+            self.cache.push(function(){
+                var strategy = strategyAry.shift();
+                strategyAry.unshift(dom.value);
+                strategyAry.push(errorMsg);
+                return strategies[strategy].apply(dom, strategyAry);
+            })
+            console.log(this.cache)
+        })(rule)
+    }
+}
+Validator.prototype.start = function(){
+    for(var i= 0,validatorFunc; validatorFunc = this.cache[i++];){
+        var errorMsg = validatorFunc();
+        if(errorMsg){
+            return errorMsg;
+        }
+    }
+}
+
+
+var registerForm = document.getElementById('registerForm');
+var validataForm = function(){
+    var validator = new Validator();
+    validator.add(registerForm.userName,[{
+        strategy: 'isNonEmpty',
+        errorMsg: '不能为空'
+    },{
+        strategy: 'minLength:10',
+        errorMsg: '长度不能小于10'
+    }])
+    validator.add(registerForm.passWord,[{
+        strategy: 'isNonEmpty',
+        errorMsg: '不能为空'
+    }])
+
+    var errorMsg = validator.start();
+    return errorMsg;
+}
+
+registerForm.onsubmit = function(){
+    var errorMsg = validataForm();
+    if(errorMsg){
+        alert(errorMsg);
+        return false;
+    }
+}
+
+```
 
 
 
