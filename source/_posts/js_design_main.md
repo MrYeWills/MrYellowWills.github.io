@@ -775,14 +775,100 @@ console.log(proxyMult(11,2,3,4))
 
 ## 策略模式
 
+### 定义
+策略模式的思想：
+定义一系列的算法，把他们一个个封装起来，并且使他们可以相互替换。
+最代表性和关键的操作是将每种算法单独封装成类，或者函数。
+
+### 经典示例一
+下面看一个策略模式最代表的例子：
+
+#### 反例
+计算绩效奖金，最开始的写法：
 ```
+// 这是反例
+var calculateBonus = function(performanceLevel, salary){
+    if(performanceLevel === 'S'){
+        return salary*4;
+    }
+    if(performanceLevel === 'A'){
+        return salary*3;
+    }
+    if(performanceLevel === 'B'){
+        return salary*2;
+    }
+}
+calculateBonus('B', 20000);
+calculateBonus('S', 6000);
+```
+上面写法致命缺点在于，将来如果有更多的绩效等级，例如C、D、E、F...时，都需要在calculateBonus中增加代码逻辑；
+改进上面代码的关键，在于精简calculateBonus。
+
+#### 标准示例
+改进如下：
+```
+//标准策略模式示例
+var S = function(salary){
+    return salary*4;
+}
+var A = function(salary){
+    return salary*3;
+}
+var B = function(salary){
+    return salary*2;
+}
+
+var calculateBonus = function(func, salary){
+    return func(salary);
+}
+calculateBonus(B, 20000);
+calculateBonus(S, 6000);
+
+```
+改进后，将每个等级的逻辑封装成单独的类或函数，
+无论未来增加多少绩效逻辑，都将单独定义绩效逻辑类，不会影响现有类，同时calculateBonus都不变。
+改进用到的策略模式技巧：
+- 将算法类直接以算法名字命名
+
+### 经典示例二
+如果只需了解 策略模式，只需看以上内容即可，这部分内容只是再举例加深理解。
+
+下面再看一个经典测试模式示例
+#### 反例
+```
+//这是反例
 <form action="#" id="registerForm" method="POST">
     请输入用户名：<input type="text" name="userName"/>
     请输入密码：<input type="text" name="passWord" />
     请输入手机号码：<input type="text" name="phoneNumber" />
     <button>提交</button>
 </form>
+var registerForm = document.getElementById('registerForm');
+registerForm.onsubmit = function(){
+    if(registerForm.userName.value === ''){
+        alert('用户名不能为空');
+        return false;
+    }
+    if(registerForm.userName.length < 6){
+        alert('用户名不能少于6位');
+        return false;
+    }
+    if(registerForm.password.length < 6){
+        alert('密码不能少于6位');
+        return false;
+    }
+}
 
+```
+
+#### 标准示例
+对以上示例进行改进：
+- 将每种验证方法 封装成单独的类或函数，如strategies.isNonEmpty;
+- Validator可以看作是本节的第一个标准示例中的calculateBonus，
+  validataForm可以看作是calculateBonus(B, 20000);
+- 将验证Validator分两步逻辑，一步是逐条添加规则，一步是一次性验证所有规则
+```
+//将一系列 规则算法 封装成单独的函数
 var strategies = {
     isNonEmpty: function(value, errorMsg){
         if(!value){
@@ -803,7 +889,7 @@ var strategies = {
 var Validator = function(){
     this.cache = [];
 }
-
+//设计 添加 和 验证 规则的逻辑
 Validator.prototype.add = function(dom, rules){
     var self = this;
     for (var i = 0,rule; rule = rules[i++];){
@@ -816,7 +902,6 @@ Validator.prototype.add = function(dom, rules){
                 strategyAry.push(errorMsg);
                 return strategies[strategy].apply(dom, strategyAry);
             })
-            console.log(this.cache)
         })(rule)
     }
 }
@@ -829,7 +914,7 @@ Validator.prototype.start = function(){
     }
 }
 
-
+//为表单实际添加规则 和 验证
 var registerForm = document.getElementById('registerForm');
 var validataForm = function(){
     var validator = new Validator();
@@ -859,8 +944,75 @@ registerForm.onsubmit = function(){
 
 ```
 
+改进后，这种模式很好的适应了大型项目规则验证。
+
+### 编写策略模式技巧
+
+- 将策略算法 封装成单独函数或类；
+- 直接以算法名称 命名 函数和类，如上面经典示例一
 
 
+## 装饰者模式
+
+### 示例
+```
+var Plan = function(){}
+    Plan.prototype.fire = function(){
+        console.log('发射普通子弹');
+    }
+
+    var MissleDecorator = function(plan){
+        this.plan = plan;
+    }
+    MissleDecorator.prototype.fire = function(){
+        this.plan.fire();
+        console.log('发射导弹');
+    }
+
+    var AtomDecorator = function(plan){
+        this.plan = plan;
+    }
+    AtomDecorator.prototype.fire = function(){
+        this.plan.fire();
+        console.log('发射原子弹');
+    }
+    var plan = new Plan();
+    plan = new MissleDecorator(plan);
+    plan = new AtomDecorator(plan);
+    plan.fire();
+
+```
+
+装饰者，经常用到的小技巧，不改变原函数情况下，增加函数功能：
+```
+var a = function(){
+        alert(1)
+    }
+    var _a = a;
+    a = function(){
+        _a();
+        alert(2);
+    }
+    a();
+```
+```
+Function.prototype.before = function(beforefn){
+        var _self = this;//保存原函数的引用
+        return function(){//返回包含类原函数和新函数的代理函数
+            beforefn.apply(this,arguments);//执行新函数，且保证this不被劫持，新函数接受的参数
+            return _self.apply(this, arguments);//执行原函数，并且返回原函数的执行结果，并且保持this不被劫持
+        }
+    }
+
+    Function.prototype.after = function(afterfn){
+        var _self = this;
+        return function(){
+            var ret = _self.apply(this,arguments);
+            afterfn.apply(this,arguments);
+            return ret;
+        }
+    }
+```
 
 
 
