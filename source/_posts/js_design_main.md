@@ -84,7 +84,8 @@ makeSound(new Dog);
 我们将这条编码经验称之为 ‘接受第一次愚弄’，但永远不会被同样的招数击倒第二次。
 
 
-## unix／linux 设计哲学 的 几条准则
+## 其他准则
+下面是unix／linux 设计哲学 的 几条准则，对js编程依然有借鉴：
 准则1:小即是美
 准则2:让每个程序只做好一件事情
 准则3:快速建立原型（快速更早将功能骨架做好，先让用户用起来，然后客户边用边反馈，开发根据这个实施开发客户反馈需求）
@@ -326,7 +327,8 @@ let o9 = new Observer('13899761273', 'house', newsCompany)
 newsCompany.deliveryState('房产新闻','house');//给每个订阅者发布消息
 ```
 
-#### 示例代码优化及延伸方式一
+#### 优化及延伸方式一
+对示例代码优化及延伸方式一：
 上面代码不易扩展，将上面代码优化：NewsCompany中去掉constructor，并且改写food与house切换，将cellphone改为callback不再统一管理callback：
 
 ```
@@ -387,7 +389,8 @@ let o9 = new Observer('13899761273', 'house', newsCompany, (state, newsCompany, 
 newsCompany.deliveryState('房产新闻','house');
 ```
 
-#### 示例代码优化及延伸方式二
+#### 优化及延伸方式二
+对示例代码优化及延伸方式二：
 你会发现上面的phoneNum其实可有可无，NewsCompany保持跟上面不变，改造其他部分：
 删除phoneNum,
 将attach提取出来，
@@ -661,7 +664,8 @@ var LightContext = function(){
 这个定义基本看不懂，可以忽视掉。
 状态模式的精髓在于 定义状态类，并状态对应的逻辑封装到状态类中。
 
-### 什么情况下使用状态模式
+### 什么情况下使用
+什么情况下使用状态模式，
 如上面优缺点说的，
 当你不希望Light.prototype.buttonWasPressed太臃肿时；
 当每次有新需求你不希望每次都去修改Light.prototype.buttonWasPressed时；
@@ -671,13 +675,13 @@ var LightContext = function(){
 
 ## 代理模式
 
-## 两者代理模式的概念
+### 两者代理模式的概念
 js中用得最多的虚拟代理和缓存代理；
 虚拟代理指通过代理，将一个函数延迟或等到真正需要执行的时候再执行，说白了就是延时下，例如下面例子中，等图片完全加载好后再执行真正的加载。
 缓存代理，如下例子中，指通过代理，不用每次都执行函数，开始执行完函数后，后期从缓存取，如果我计算或2+3，后面再2+3时，直接从缓存取。
 代理模式很简单直接通过以下两个例子来领略下代理模式；
 
-## 虚拟代理示例
+### 虚拟代理示例
 ```
 var myImage = (function(){
     var imgNode = document.createElement('img');
