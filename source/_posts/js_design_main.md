@@ -954,47 +954,41 @@ registerForm.onsubmit = function(){
 
 ## 装饰者模式
 
-### 示例
+主要讲解es5装饰者模式的其中的两种实现方式：一个是定义类(构造函数)的方式，一个是修改超级函数Function原型的方式。
+下面对这两种方式分别讲解：
+
+### 构造函数方式
 ```
 var Plan = function(){}
-    Plan.prototype.fire = function(){
-        console.log('发射普通子弹');
-    }
+Plan.prototype.fire = function(){
+    console.log('发射普通子弹');
+}
 
-    var MissleDecorator = function(plan){
-        this.plan = plan;
-    }
-    MissleDecorator.prototype.fire = function(){
-        this.plan.fire();
-        console.log('发射导弹');
-    }
+var MissleDecorator = function(plan){
+    this.plan = plan;
+}
+MissleDecorator.prototype.fire = function(){
+    this.plan.fire();
+    console.log('发射导弹');
+}
 
-    var AtomDecorator = function(plan){
-        this.plan = plan;
-    }
-    AtomDecorator.prototype.fire = function(){
-        this.plan.fire();
-        console.log('发射原子弹');
-    }
-    var plan = new Plan();
-    plan = new MissleDecorator(plan);
-    plan = new AtomDecorator(plan);
-    plan.fire();
+var AtomDecorator = function(plan){
+    this.plan = plan;
+}
+AtomDecorator.prototype.fire = function(){
+    this.plan.fire();
+    console.log('发射原子弹');
+}
+var plan = new Plan();
+plan = new MissleDecorator(plan);
+plan = new AtomDecorator(plan);
+plan.fire();
 
 ```
 
-装饰者，经常用到的小技巧，不改变原函数情况下，增加函数功能：
-```
-var a = function(){
-        alert(1)
-    }
-    var _a = a;
-    a = function(){
-        _a();
-        alert(2);
-    }
-    a();
-```
+
+### Function原型方式
+
 ```
 Function.prototype.before = function(beforefn){
         var _self = this;//保存原函数的引用
@@ -1012,8 +1006,42 @@ Function.prototype.before = function(beforefn){
             return ret;
         }
     }
+    var func = function(param){
+        console.log(param);
+    }
+    func = func.before(function(param){
+        param.b = 'b';
+    })
+    func({a:'a'});//{a:'a', b:'b'}
 ```
 
+### es6中的修饰器（Decorator）
+```
+@testable
+class MyTestableClass {
+  // ...
+}
+function testable(target) {
+  target.isTestable = true;
+}
+MyTestableClass.isTestable // true
+```
+注意，修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。也就是说，修饰器本质就是编译时执行的函数。
+
+### 最常用的运用
+装饰者，经常用到的小技巧，不改变原函数情况下，增加函数功能：
+```
+var a = function(){
+        alert(1)
+    }
+    var _a = a;
+    a = function(){
+        _a();
+        alert(2);
+    }
+    a();
+```
+在开发中，我们常用这种方式，实现页面回退，加载等等事件时，增加功能。
 
 
 
