@@ -38,17 +38,6 @@
     </entry>
     
     <entry>
-      <title></title>
-      <link href="/2019/02/15/test/"/>
-      <url>/2019/02/15/test/</url>
-      
-        <content type="html"><![CDATA[<html><head><meta name="generator" content="Hexo 3.8.0"><title>222</title></head><body><div>6666</div><script>Function.prototype.before = function(beforefn){        var _self = this;//保存原函数的引用        return function(){//返回包含类原函数和新函数的代理函数            beforefn.apply(this,arguments);//执行新函数，且保证this不被劫持，新函数接受的参数            return _self.apply(this, arguments);//执行原函数，并且返回原函数的执行结果，并且保持this不被劫持        }    }    var func = function(param){        console.log(param);    }    func = func.before(function(param){        param.b = 'b';    })    func({a:'a'});    </script></body></html>]]></content>
-      
-      
-      
-    </entry>
-    
-    <entry>
       <title>js设计模式上(面向对象、闭包、命名空间)</title>
       <link href="/2019/01/23/js_design_start/"/>
       <url>/2019/01/23/js_design_start/</url>
