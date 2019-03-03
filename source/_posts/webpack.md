@@ -1643,7 +1643,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 [Vue+Webpack打造todo应用](https://www.imooc.com/learn/935)
 掘金小册-使用webpack定制前端开发环境
 吴浩麟-深入浅出webpack
-[webpack 插件官网](https://www.webpackjs.com/plugins/hashed-module-ids-plugin/)
+[webpack 官网](https://www.webpackjs.com/)
+此官网下的四个子模块文档：
+	[webpack 文档官网_概念](https://www.webpackjs.com/concepts/)
+	[webpack 文档官网_配置](https://www.webpackjs.com/configuration/)
+	[webpack 文档官网_API](https://www.webpackjs.com/api/)
+	[webpack 文档官网_指南](https://www.webpackjs.com/guides/)
+	[webpack 文档官网_loader](https://www.webpackjs.com/loaders/)
+	[webpack 文档官网_插件](https://www.webpackjs.com/plugins/)
 [webpack学习系列](https://segmentfault.com/a/1190000007479892)
 [WebPack 终极配置说明](https://www.mmxiaowu.com/article/58482332d4352863efb55465)
 [原创webpack demo 主要应用分支](https://github.com/YeWills/webpack-code/tree/master)
