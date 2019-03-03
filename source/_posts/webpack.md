@@ -45,6 +45,126 @@ series: 前端
   devtool: 'inline-source-map', // 开发阶段开启 sourcemap
 ```
 
+#### 要不要配置index.html
+有时候容易误解，webpack会自动生成index.html，这是不对的。
+入口文件index.html必须要自己手动配置例如：
+```
+//index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./index.js"></script>
+</body>
+</html>
+```
+其实webpack只是一个js打包器，会把index.html用到的js全部打包成一个js，就是上面的index.js。
+只是我们可以通过webpack的插件html-webpack-plugin，写一个index.html模板，不用手动输入index.js的引用，且不用每次手动将index.html拷贝到build目录。
+将上面的index.html，改成模板，其实就是就是去掉这句：
+```
+ <script src="./index.js"></script> 
+```
+改成的index.html如下：
+```
+//index.html模板
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+```
+所以在项目中，你必须写一个index.html，或者一个index.html模板。
+看这个章节加深 项目中index.html 的理解：《webpack常用知识 ---解决css文件或者js文件名字哈希值变化的问题》
+
+#### output.publicPath output.path exports.context devServer.publicPath
+- exports.context 与 output.path 
+ exports.context 是提供一个全局的根目录，为配置提供方便,你也可不配置；如果配置此目录下面的output.path 基于此目录。
+```
+  context: path.resolve(__dirname, 'src'),
+  output: {
+    path: 'version1.0.0',
+    publicPath: '/',
+    filename: 'assets/[name].[hash:8].js',
+  },
+```
+相当于
+```
+  output: {
+    path: path.resolve(__dirname, 'version1.0.0/version1.0.0'),
+    publicPath: '/',
+    filename: 'assets/[name].[hash:8].js',
+  },
+```
+
+- output.publicPath 
+ output.publicPath是给index.html文件内所以link或js引用，在原编辑结果下，在最左侧统一加一个目录，通常也可不配置。
+如：
+不加output.publicPath
+```
+  context: path.resolve(__dirname, 'src'),
+  output: {
+    path: 'version1.0.0',
+    filename: 'assets/[name].[hash:8].js',
+  },
+```
+编译出来的index.html为：
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>React App Pro</title>
+    <link rel="preload" href="assets/css/1.db782111.css"  as="style">
+    <link rel="preload" href="assets/css/style.db782111.css"  as="style">
+    <link rel="preload" href="assets/vendors.db782111.js" as="script">
+    <link rel="preload" href="assets/client.db782111.js" as="script">
+</head>
+  <body>
+    <div id="app"></div>
+  <script type="text/javascript" src="assets/vendors.db782111.js"></script>
+  <script type="text/javascript" src="assets/client.db782111.js"></script>
+  </body>
+</html>
+```
+加了output.publicPath
+```
+  context: path.resolve(__dirname, 'src'),
+  output: {
+    path: 'version1.0.0',
+    publicPath: '/',
+    filename: 'assets/[name].[hash:8].js',
+  },
+```
+编译出来的index.html每个引用路径前都加了一个'/'
+```
+<link rel="preload" href="/assets/css/1.2e0f42df.css"  as="style">
+<link rel="preload" href="/assets/css/style.2e0f42df.css"  as="style">
+<link rel="preload" href="/assets/vendors.2e0f42df.js" as="script">
+<link rel="preload" href="/assets/client.2e0f42df.js" as="script">
+<script type="text/javascript" src="/assets/vendors.2e0f42df.js"></script>
+<script type="text/javascript" src="/assets/client.2e0f42df.js"></script>
+```
+
+- devServer.publicPath
+这么没什么说的，默认配置为 '/'，大多时候我们不会去改，使用默认配置。
+
 ### 给css加前缀  postcss-loader
 
 [postcss-loader](https://www.webpackjs.com/loaders/postcss-loader/#options)有很多用处，其中之一就是给各个浏览器添加css3兼容样式。
@@ -70,6 +190,7 @@ series: 前端
         ]
       }
 ```
+如果配置了  postcss-loader，如果你还使用了happypack,就必须要 在根目录 (通常是webpack.comfig.js同级目录)配置 postcss.config.js。详细请看下面章节 《构建与性能优化--happypack》
 
 ### 抽离css样式文件
 
@@ -608,7 +729,7 @@ devServer: {
       errors: true
     },
 
-    publicPath: '/', // 此路径下的打包文件可在浏览器中访问。（注意没有特殊要求，一定就设置为'/'）
+    publicPath: '/', // 此路径下的打包文件可在浏览器中访问。（注意若无特殊要求，一定设置为'/',默认配置为 '/                   //'，大多时候我们不会去改，使用默认配置。）
 
     proxy: { // 设置代理
       "/api": { // 访问api开头的请求，会跳转到  下面的target配置
