@@ -9,11 +9,25 @@ series: 前端工具
 
 ## hexo 常用知识
 
-### 编译源码的github放置和hexo g命令
-编译后源码会在public目录：YeWills.github.io/public/
-将git仓库放在public中，
-每次需要发布时，执行hexo g，然后在public目录下 git push;
-hexo d 并不会删除publc目录的.git文件夹，只会增量叠加。
+
+### public目录 
+根目录执行hexo g 命令，会在根目录下生成一个public/ 文件夹，
+hexo g是一个编译源码的命令，编译后的源码，可以直接供GitHub网址生成博客。
+因此public/ 文件夹是用来将源码上传到github上，供github生成博客的。
+
+### 常用hexo命令
+#### 启动本地服务，看博客效果
+```
+hexo s
+```
+#### 发布到GitHub
+将git仓库放在public中，每次需要发布时，根目录下执行hexo g，然后在public目录下 git push;
+```
+hexo g
+
+```
+#### 其他命令
+hexo d 并不会删除publc目录的.git文件夹，只会增量叠加。 --目前没有用过；
 注意，不要执行hexo clean，它会删除public目录
 
 ### 写的文章放在哪里与_posts目录
