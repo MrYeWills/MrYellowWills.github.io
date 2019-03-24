@@ -155,8 +155,8 @@
         <h1 class="title">hexo笔记</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-01-13T04:51:29.000Z" itemprop="datePublished" class="page-time">
-  2019-01-13
+                <time datetime="2019-03-03T04:22:21.664Z" itemprop="datePublished" class="page-time">
+  2019-03-03
 </time>
 
 
@@ -189,7 +189,7 @@
     <div class="post-card">
         <h1 class="post-card-title">hexo笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-01-13 12:51:29" datetime="2019-01-13T04:51:29.000Z" itemprop="datePublished">2019-01-13</time>
+            <time class="post-time" title="2019-03-03 12:22:21" datetime="2019-03-03T04:22:21.664Z" itemprop="datePublished">2019-03-03</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
@@ -205,7 +205,10 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="hexo-常用知识"><a href="#hexo-常用知识" class="headerlink" title="hexo 常用知识"></a>hexo 常用知识</h2><h3 id="编译源码的github放置和hexo-g命令"><a href="#编译源码的github放置和hexo-g命令" class="headerlink" title="编译源码的github放置和hexo g命令"></a>编译源码的github放置和hexo g命令</h3><p>编译后源码会在public目录：YeWills.github.io/public/<br>将git仓库放在public中，<br>每次需要发布时，执行hexo g，然后在public目录下 git push;<br>hexo d 并不会删除publc目录的.git文件夹，只会增量叠加。<br>注意，不要执行hexo clean，它会删除public目录</p>
+            <h2 id="hexo-常用知识"><a href="#hexo-常用知识" class="headerlink" title="hexo 常用知识"></a>hexo 常用知识</h2><h3 id="public目录"><a href="#public目录" class="headerlink" title="public目录"></a>public目录</h3><p>根目录执行hexo g 命令，会在根目录下生成一个public/ 文件夹，<br>hexo g是一个编译源码的命令，编译后的源码，可以直接供GitHub网址生成博客。<br>因此public/ 文件夹是用来将源码上传到github上，供github生成博客的。</p>
+<h3 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h3><h4 id="启动本地服务，看博客效果"><a href="#启动本地服务，看博客效果" class="headerlink" title="启动本地服务，看博客效果"></a>启动本地服务，看博客效果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<h4 id="发布到GitHub"><a href="#发布到GitHub" class="headerlink" title="发布到GitHub"></a>发布到GitHub</h4><p>将git仓库放在public中，每次需要发布时，根目录下执行hexo g，然后在public目录下 git push;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><p>hexo d 并不会删除publc目录的.git文件夹，只会增量叠加。 –目前没有用过；<br>注意，不要执行hexo clean，它会删除public目录</p>
 <h3 id="写的文章放在哪里与-posts目录"><a href="#写的文章放在哪里与-posts目录" class="headerlink" title="写的文章放在哪里与_posts目录"></a>写的文章放在哪里与_posts目录</h3><p>YeWills.github.io/source/_posts/<br>所有的文章都放置于_posts目录下。</p>
 <h3 id="创建tag与categories相关事情"><a href="#创建tag与categories相关事情" class="headerlink" title="创建tag与categories相关事情"></a>创建tag与categories相关事情</h3><p>二者配置一样，以categories为例：<br>hexo new page categories<br>生成目录和文件：<br>YeWills.github.io/source/categories/index.md<br>修改index.md元数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
 <p>同时修改<br>YeWills.github.io/scaffolds/draft.md<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">tags: &#123;&#123; tags &#125;&#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
@@ -227,12 +230,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-13T08:24:54.000Z" itemprop="dateUpdated">2019-01-13 16:24:54</time>
+    Last updated: <time datetime="2019-03-24T15:00:39.921Z" itemprop="dateUpdated">2019-03-24 23:00:39</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/01/13/hexo/" target="_blank" rel="external">https://yewills.github.io/2019/01/13/hexo/</a>
+        转载注明出处，原文地址：<a href="/2019/03/03/hexo/" target="_blank" rel="external">https://yewills.github.io/2019/03/03/hexo/</a>
         
     </div>
     <footer>
@@ -261,7 +264,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/01/13/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/03/03/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -273,7 +276,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/01/13/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/03/03/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -299,20 +302,13 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2019/01/13/react_router/" id="post-prev" class="post-nav-link">
+      <a href="/2019/03/03/js_design_main/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">React Router</h4>
+        <h4 class="title">js设计模式下</h4>
       </a>
     </div>
   
 
-  
-    <div class="next">
-      <a href="/2019/01/12/webpack/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">webpack笔记</h4>
-      </a>
-    </div>
   
 </nav>
 
@@ -322,7 +318,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo-常用知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">hexo 常用知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译源码的github放置和hexo-g命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">编译源码的github放置和hexo g命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写的文章放在哪里与-posts目录"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">写的文章放在哪里与_posts目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建tag与categories相关事情"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建tag与categories相关事情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#categories、tags两种配置方式"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">categories、tags两种配置方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客菜单栏左侧内容修改"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">博客菜单栏左侧内容修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客菜单栏左侧菜单增减"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">博客菜单栏左侧菜单增减</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo-常用知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">hexo 常用知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#public目录"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">public目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用hexo命令"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">常用hexo命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动本地服务，看博客效果"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">启动本地服务，看博客效果</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#发布到GitHub"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">发布到GitHub</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他命令"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">其他命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写的文章放在哪里与-posts目录"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">写的文章放在哪里与_posts目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建tag与categories相关事情"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">创建tag与categories相关事情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#categories、tags两种配置方式"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">categories、tags两种配置方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客菜单栏左侧内容修改"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">博客菜单栏左侧内容修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客菜单栏左侧菜单增减"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">博客菜单栏左侧菜单增减</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </div></div></aside>
@@ -418,7 +414,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/01/13/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/03/03/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -430,7 +426,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/01/13/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/03/03/hexo/&title=《hexo笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -442,7 +438,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aSW7DMAwF0Nz/0g7QbRz1kxrgFk8rwzHUpy4IDnq94nX9rPH7mefFCxcXd5p7DdfnN/PHG+//7RtcXNzz3F6QGoPm98TFxX0+91sAWhXIcHFx/x83f8bFxf0r3KT4GacyeWGTHGNBrYaLizvBrbY5djxv7O/i4uIWudfE6gWj/PubHXBxcY9w8+JkBtd7H9VquLi427i9Rka1DTo+fP63cHFxz3B7zdBeElPFRV0cXFzcpdwkvageoDqSKRwGFxf3CHd+8LlqEJuESFxc3DPcZJiRN0fygzWLH1xc3CPccc9h5n2v+Clfv8DFxd3GzdOOXrskL5maQ1ZcXNwN3Goqk6cmefgrx11cXNxt3F7Y6l3RqN7JLPxHcXFxl3JnCpXqr7035UsYuLi409wkcORZUp6y5G2Um5kwLi7uZm4+Puldv8gHt9UxDC4u7j7uVVzzI9i81XKzPy4u7hFuvqqjlPwwvWPg4uLu5ubD0WrzNE+AcHFxn8mttjmqic6q0ImLi/tkbnKYans0Kn5wcXEfxq2OWHrD1PKdEVxc3G3cXvFTHakmA91fwhwuLu4RbrUUqQ5Rqi3Uxf1dXFzcGvcNJBZi6S0nUIEAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aSY6DQAwF0Nz/0vQB0sC3TVXSrVcrhBgeLCwP9XrF63hb7+evrzx72mvFwsXFHXOPy3XNej+uviU34OLi7ueeveDsmurrrwNZYsDFxf1mbi9BST4PFxf3P3GrxU+eJOHi4n6WOwk085JpSa2Gi4s74OYJyrrjJf1dXFzcFvcorsmgpdok/eUuXFzcLdz5ICQPRnnadDOOxcXF3cithpi8gHlqqwcuLu4ebq8l2huu5B9zk5Hh4uIu5vaCUTI4mZRANw0UXFzcxdy8FKkmLr1QdfZrcHFxd3LzwUm1LbKwVsPFxd3CrZY6vf9RTZ7KDVNcXNyHuElro5fWVJOYKFLh4uJu5FbHn9VWaX5vFMhwcXEXc1cUP5MQdtPZxcXF3cjNt1lUA1+e0BQCJS4u7kbuZHNVXjj1mq24uLjfwM1DTBK8eqOUQv6Fi4v7KPcorry10UubytNXXFzcBdz5lojkZZNuTfNjcHFxx9xng1ePUvgFuLi4G7nzQDMZnzRrNVxc3K/h9sar1XCGi4v7F7nV0cikqXo6SsHFxV3MnWy/SDZP5Js2bhIsXFzcLdze4LPXJL1+Wn4eFxd3GfcHIkPiMT4JCRsAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

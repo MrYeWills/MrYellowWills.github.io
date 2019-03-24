@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>《React 实战：设计模式和最佳实践》笔记 | Mr.Yellow.Wills</title>
+    <title>Categories: mongoose | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="react">
+    <meta name="keywords" content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
@@ -15,7 +15,7 @@
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	true,
+            reward:	false,
             lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
             v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
             g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -106,7 +106,7 @@
               </a>
             </li>
         
-            <li class="">
+            <li class=" active">
               <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>《React 实战：设计模式和最佳实践》笔记</span>
+            <span>Categories: mongoose</span>
             
         </div>
         
@@ -149,24 +149,46 @@
         
     </div>
 </header>
-<header class="content-header post-header">
+<header class="content-header categories-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">《React 实战：设计模式和最佳实践》笔记</h1>
+        <h1 class="title">Categories: mongoose</h1>
         <h5 class="subtitle">
-            
-                <time datetime="2019-01-12T10:32:40.000Z" itemprop="datePublished" class="page-time">
-  2019-01-12
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/react读书笔记/">react读书笔记</a></li></ul></li></ul>
-
             
         </h5>
         
     </div>
     
+<div class="tabs-bar container">
+    <nav class="tags-list">
+        <a href="/categories" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
+            ">All</a>
+        
+            <a href="/categories/前端工具/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">前端工具</a>
+            
+        
+            <a href="/categories/js/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">js</a>
+            
+        
+            <a href="/categories/mongoose/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">mongoose</a>
+            
+        
+            <a href="/categories/react/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">react</a>
+            
+        
+            <a href="/categories/mongoose/mongodb/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">mongodb</a>
+            
+        
+            <a href="/categories/react/React-Router/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">React Router</a>
+            
+        
+    </nav>
+    <!-- PC show more-->
+    <div class="tags-list-more">
+        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
+    </div>
+</div>
+
 
 </header>
 
@@ -183,157 +205,45 @@
     <div id="local-search-result"></div>
 </div>
 
-
-<div class="container body-wrap">
-    <article id="post-react_design_pattern" class="post-article article-type-post" itemprop="blogPost">
-    <div class="post-card">
-        <h1 class="post-card-title">《React 实战：设计模式和最佳实践》笔记</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-01-12 18:32:40" datetime="2019-01-12T10:32:40.000Z" itemprop="datePublished">2019-01-12</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/react读书笔记/">react读书笔记</a></li></ul></li></ul>
-
-
-
-            
-
-            
-
-
-            
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            
-            <h2 id="React-实战：设计模式和最佳实践"><a href="#React-实战：设计模式和最佳实践" class="headerlink" title="React 实战：设计模式和最佳实践"></a>React 实战：设计模式和最佳实践</h2>
-        </div>
-        
-<blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2019-01-13T04:37:31.000Z" itemprop="dateUpdated">2019-01-13 12:37:31</time>
-</span><br>
-
-
-        
-        转载注明出处，原文地址：<a href="/2019/01/12/react_design_pattern/" target="_blank" rel="external">https://yewills.github.io/2019/01/12/react_design_pattern/</a>
-        
-    </div>
-    <footer>
-        <a href="https://yewills.github.io">
-            <img src="/img/avatar.jpg" alt="Mr.Yellow">
-            Mr.Yellow
-        </a>
-    </footer>
-</blockquote>
-
-        
-            <div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-            
-        
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-            <div class="page-share-wrap">
+<div class="container body-wrap fade">
     
+            <div class="waterfall">
+                
+                    <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2019-03-24 16:26:12" datetime="2019-03-24T08:26:12.115Z" itemprop="datePublished">2019-03-24</time>
 
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
       
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/01/12/react_design_pattern/&title=《《React 实战：设计模式和最佳实践》笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/01/12/react_design_pattern/&title=《《React 实战：设计模式和最佳实践》笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/mongoose/">mongoose</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/mongoose/mongodb/">mongodb</a></li></ul></li></ul>
 
 
 
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-        </div>
-        
-            
-
-
-        
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/01/12/webpack/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">webpack笔记</h4>
-      </a>
-    </div>
-  
+
 
   
-</nav>
-
-
-    
-    
-        <aside class="post-widget">
-            <nav class="post-toc-wrap" id="post-toc">
-                <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React-实战：设计模式和最佳实践"><span class="post-toc-number">1.</span> <span class="post-toc-text">React 实战：设计模式和最佳实践</span></a></li></ol>
-            </nav>
-            <div class="toc-bar"><div>
-        </div></div></aside>
-    
-</article>
-
-    <div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        我们一起来让这个世界有趣一点
-        <i class="icon icon-quote-right"></i>
+    <h3 class="post-title " itemprop="name">
+      <a class="post-title-link" href="/2019/03/24/mongoose_mongodb/">mongoose 与 mongodb笔记</a>
     </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
+  
+
+
 
     
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongoose/">mongoose</a></li></ul>
 
+    </div>
+    
+  </article>
+</div>
+                
+            </div>
+        
+    
 </div>
 
         <footer class="footer">
@@ -396,7 +306,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/01/12/react_design_pattern/&title=《《React 实战：设计模式和最佳实践》笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/categories/mongoose/&title=Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -408,7 +318,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/01/12/react_design_pattern/&title=《《React 实战：设计模式和最佳实践》笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/categories/mongoose/&title=Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -420,7 +330,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aS27CQBAFQO5/abKNhDDvtU0iz5RXCNkw5UWrf49HfD1frt/f5/e/u/P1qcc3LgwMjNsynodXfk/7Co4x9f9iYGBswMh/+t0RkwDaBujkbBgYGBjH9yS/MyNhYGBgnGckIfI4mTv+TQwMDIxZEZvcnzfX/q0Wx8DAuCEj77r//eevzDcwMDBuxXiWV/Jskuq14fvDqTAwMJZmtK208+HyqoCLgYGxDyMPf+dzszbHSxpzjzaKY2Bg3JaRLEnMDn0m1SvWODAwMJZmzI4VBcG4iM2f/TBmwMDAWJqRL0a0TbdZQE+GncU8FgMD4+aMpMmVlKNnFiDysUG014aBgbEoo22HtWVtW9DWax8YGBgbMGbJXz5OaBt5+QAVAwNjB0YxJjxME5PQ2QbZYRqKgYGxAaNN5vI0sV01S0gYGBg7M679+zPFbd6Yw8DAWJvRlqPtkDJvqCWvBgMDA2O2KjFrtLXDyw8jVQwMjA0YeRqXl5fJs23iGK1cYGBgLMq46nNSfM4+f2jDYWBgbMCYpXr5cfOWXFswY2BgYLQjgSTstoE1WrbAwMBYlPEsr1k5WqR3beGKgYGxASO/ZsnibEh5pmDGwMBYldEG2XZg0L7FPFgPd9AwMDBuy5gFvryUvbaIxcDAwPgGo13XqItYDAwMjFEydzwWTf43T14xMDB2YLSLpG2gzJtxs0IaAwNjbcasdJytXMwOcdlQEwMD436MHwX4YL6JCm4nAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACO0lEQVR42u3ay07DMBAFUP7/p4PEtqS9dxyQ4hyvEIXEx4up5/H1Fa/jZ73+5nUlzzn7r/w5w4WBgXFbxvF2nb2gheVPO/vLD0eGgYHxAMb7IJtsLt9EEsrzvWFgYGCsBMF8i/kxYWBgYFwQ+N5uKw/rGBgYGLMkNimK5VvPA+7FuTgGBsYNGW1j4D9//sP+BgYGxk0YR7nyANpeFo+FhYGBsTdjvdSVXO/y0Y02ukbnhIGBsQUjH5hoi2KzBDg/lNP3YmBgbMqYhdp22Gv90vlhnxgYGNsxVgLr7Ho3e+YwfcXAwNiUMWsQJq9fD9lLYxYYGBg3ZyRbWRmYyBPU4bUSAwPjAYykHLZyTWwPqE2bMTAwnsCYhcX806SEl3wafW9gYGBszcjD7spVL0lK26QXAwPjCYy8HL9eqruqzfkhicXAwNiIkSeZ+fhFW5KbpbK/vBEDA+MxjCNes0th3gZIGqLF9CsGBsZtGbM2QNvCbIcqahIGBsbWjLzQf0GSuXDtSy6mGBgYuzKS9mE7xtqW9ds2atEYwMDA2I6Rp6xFfhyPVrSNh+gbAwMDYwvGsARfDm+1T8sPoqggYmBg3JZxlKsY1Rpd9doRWAwMjCcw2jDXvixJWWeNAQwMjKcx2qGKpFjfNkdnrdDh/RQDA+O2jGubi22rYL1gh4GBgdGWz/JUdhY5T6+GGBgYGOXF7tr25IeDwMDAeACjTWLbNDgv5OUHh4GB8RxG2xhoS29t07FtqWJgYGzN+AZ6NQo/XEsLHgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

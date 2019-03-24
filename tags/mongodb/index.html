@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>No title | Mr.Yellow.Wills</title>
+    <title>Tags: mongodb | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="">
@@ -15,7 +15,7 @@
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	true,
+            reward:	false,
             lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
             v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
             g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -113,7 +113,7 @@
               </a>
             </li>
         
-            <li class="">
+            <li class=" active">
               <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span></span>
+            <span>Tags: mongodb</span>
             
         </div>
         
@@ -149,22 +149,73 @@
         
     </div>
 </header>
-<header class="content-header post-header">
+<header class="content-header tags-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title"></h1>
+        <h1 class="title">Tags: mongodb</h1>
         <h5 class="subtitle">
-            
-                <time datetime="2019-01-24T15:43:32.000Z" itemprop="datePublished" class="page-time">
-  2019-01-24
-</time>
-
-
             
         </h5>
         
     </div>
     
+<div class="tabs-bar container">
+    <nav class="tags-list">
+        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
+            ">All</a>
+        
+            <a href="/tags/hexo/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">hexo</a>
+            
+        
+            <a href="/tags/js设计模式/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">js设计模式</a>
+            
+        
+            <a href="/tags/面向对象/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">面向对象</a>
+            
+        
+            <a href="/tags/闭包/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">闭包</a>
+            
+        
+            <a href="/tags/命名空间/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">命名空间</a>
+            
+        
+            <a href="/tags/webpack/" backup-style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">webpack</a>
+            
+        
+            <a href="/tags/mongoose/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">mongoose</a>
+            
+        
+            <a href="/tags/mongodb/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">mongodb</a>
+            
+        
+            <a href="/tags/单例模式/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">单例模式</a>
+            
+        
+            <a href="/tags/观察者模式/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">观察者模式</a>
+            
+        
+            <a href="/tags/状态模式/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">状态模式</a>
+            
+        
+            <a href="/tags/单一职责原则/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">单一职责原则</a>
+            
+        
+            <a href="/tags/开放封闭原则/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">开放封闭原则</a>
+            
+        
+            <a href="/tags/舍弃高效率而取可移植性/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">舍弃高效率而取可移植性</a>
+            
+        
+            <a href="/tags/react/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">react</a>
+            
+        
+    </nav>
+    <!-- PC show more-->
+    <div class="tags-list-more">
+        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
+    </div>
+</div>
+
 
 </header>
 
@@ -181,206 +232,47 @@
     <div id="local-search-result"></div>
 </div>
 
-
-<div class="container body-wrap">
-    <article id="post-test"
-  class="post-article article-type-post" itemprop="blogPost">
-    <div class="post-card">
-        <h1 class="post-card-title"></h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-01-24 23:43:32" datetime="2019-01-24T15:43:32.000Z" itemprop="datePublished">2019-01-24</time>
-
-            
-
-
-            
-
-            
-
-
-            
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            
-            <html>
-    <head><meta name="generator" content="Hexo 3.8.0">
-            <title>222</title>
-            <script>
-var makeSound = function(animal){
-  if(animal instanceof Duck){
-    console.log('嘎嘎嘎');
-  }else if(animal instanceof Chicken){
-    console.log('咯咯咯');
-  }
-}
-var Duck = function(){}
-var Chicken = function(){}
-makeSound(new Duck);
-makeSound(new Chicken);
-
-
-var makeSound = function(animal){
-  animal.sound();
-}
-var Duck = function(){}
-Duck.prototype.sound = function(){
-  console.log('嘎嘎嘎');
-}
-var Chicken = function(){}
-Chicken.prototype.sound = function(){
-  console.log('咯咯咯');
-}
-makeSound(new Duck);
-makeSound(new Chicken);
-
-
-var Dog = function(){}
-Dog.prototype.sound = function(){
-  console.log('汪汪汪');
-}
-makeSound(new Dog);
-
-
-
-
-
-
-
-            
-            </script>
-    </head>
-    <body>
-        <div>
-            6666
-        </div>
-    </body>
-</html>
-        </div>
-        
-<blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2019-01-27T07:13:57.000Z" itemprop="dateUpdated">2019-01-27 15:13:57</time>
-</span><br>
-
-
-        
-        转载注明出处，原文地址：<a href="/2019/01/24/test/" target="_blank" rel="external">https://yewills.github.io/2019/01/24/test/</a>
-        
-    </div>
-    <footer>
-        <a href="https://yewills.github.io">
-            <img src="/img/avatar.jpg" alt="Mr.Yellow">
-            Mr.Yellow
-        </a>
-    </footer>
-</blockquote>
-
-        
-            <div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-            
-        
-        <div class="post-footer">
-            
-            <div class="page-share-wrap">
+<div class="container body-wrap fade">
     
+            <div class="waterfall">
+                
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2019-03-24 16:26:12" datetime="2019-03-24T08:26:12.115Z" itemprop="datePublished">2019-03-24</time>
 
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
       
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/01/24/test/&title=Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/01/24/test/&title=Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      
-    </ul>
- </div>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/mongoose/">mongoose</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/mongoose/mongodb/">mongodb</a></li></ul></li></ul>
 
 
 
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-        </div>
-        
-            
-
-
-        
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/01/27/js_design_main/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">js设计模式</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="next">
-      <a href="/2019/01/23/js_design_start/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">js设计模式序(面向对象、闭包、命名空间)</h4>
-      </a>
-    </div>
-  
-</nav>
 
 
-    
-    
-</article>
-
-    <div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        我们一起来让这个世界有趣一点
-        <i class="icon icon-quote-right"></i>
+  
+    <h3 class="post-title " itemprop="name">
+      <a class="post-title-link" href="/2019/03/24/mongoose_mongodb/">mongoose 与 mongodb笔记</a>
     </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
+  
+
+
 
     
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongoose/">mongoose</a></li></ul>
 
+    </div>
+    
+  </article>
 </div>
+        
+            </div>
+        
+    
+</div>
+
 
         <footer class="footer">
     
@@ -442,7 +334,7 @@ makeSound(new Dog);
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/01/24/test/&title=《No title》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/tags/mongodb/&title=Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -454,7 +346,7 @@ makeSound(new Dog);
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/01/24/test/&title=《No title》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/tags/mongodb/&title=Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -466,7 +358,7 @@ makeSound(new Dog);
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuklEQVR42u3ay04DMQwF0P7/Tw9bJNrhOo7Tgk5WaFCTk40VPx6PeF3f1v3368fKd9u2cHFx29zrdnUOuL9G8t8nJ+Li4h7kJoclwet+n/sdkt/i4uL+Le7aywQXF/d/cBN08iTCxcX9fG4eaPInTrLPYK6Gi4vb4K4VOPb+PVLfxcXFXeJexbVWEl0rkj75FS4u7hFup6hRDUb9YgouLu5JbhKYkgN2pS6FHXBxcYe5/cxp12VaQxi4uLibuLsKl9ViaP54wsXFfRe3+pRJvlRDVbQPLi7uce6usuZg8oOLizvMrW7XaZ3mYetlIMPFxT3CrW5aDVu7iLi4uO/i5glPp2VSbdUs1ndxcXG3cpPt8hJnNYTlDyZcXNxpbj501QdVv0QFU1xc3DFu8uzoJ0XV8YtCTxgXF3eYmw9dVRu0/QEvXFzcaW6/gbrWlM2DGi4u7nlufyQiOaxTrVm8DC4ubpubB521pkg+kNEaucDFxR3gdsawkgvnqVEhV8PFxf0YbrUFm5dHCxkbLi7uh3H7wauae71speDi4g5zO8XN5Hu16fJLkxUXF3eY22l89in5hXFxcY9wvwD4GgsJqf/R5AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQU4DMQwF0N7/0sMWqe3wbSfRIL2sUAnpY2PF33m94nX9Wu+fv+9535mctmzh4uKOudftut+Tf33v/A9n4uLiHuR++4JkT0K5L2SJARcX98nc5CrTK4W4uLj/l1stZPeXHlxc3Cdz80KTlLC8IG7s1XBxcQfcPKXc9/OWfBcXF7fFvYpr0thUQ9IPf4WLi3uEmxeUZMiaX2JG34uLi3uEm29NmpP5S5Bm84OLi7uB2ws7kicX+b9a2ImLi3uQW40vJ2Fo0hpF8x9cXNyl3Oqjil6GORnNfkhxcHFxN3OT60vvIcXG5gcXF3czd9KczBF5/BrVXVxc3EXcpGwl6OoItkrExcU9yc2vMr1YpPfJH3UXFxd3M3cyAulFopMSiYuLe5I7aXKqoWfvaVf0jgwXF3cDt1qG8mi1OrAp92q4uLjbuL2bUT5krQ5uy7/GxcVdxL2Kqxpn5NFJoSfDxcXdzF32gqNVmKqFEhcX9yS3d0GplrneCV8DU1xc3CPc+QSmh66eg4uL+0zuZOC64PKEi4v7YG4vqeidsKCQ4eLitrjV8jQZsSTo8kwYFxd3KXdV6DlppZLoBBcX9wj3Bz0Pw0KPIlnHAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
