@@ -212,8 +212,10 @@ new P()
 问题：为什么new(function() {})()，new可以与()紧挨着，不用空格；
 因为(function() {})()是一个函数表达式语句，可以挨着，也可以不挨着，都不会报错
 你把new当成+ - ！ ~来看，就好理解了；
+```
 ~ function() {}; //不紧挨着，不报错
 ~function() {}; //紧挨着，不报错
+```
 
 #### 自运行 参考资料
 [JavaScript 小括号()分组运算符](http://www.softwhy.com/article-2022-1.html)
