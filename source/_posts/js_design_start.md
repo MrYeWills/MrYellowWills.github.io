@@ -28,6 +28,7 @@ js面向对象编程的核心概念是 类 和 实例(对象)。
 
 ## new 的理解
 
+### 关于new
 [关于new 的理解](https://blog.csdn.net/zhouziyu2011/article/details/60143385)：
 
 ```
@@ -62,8 +63,14 @@ var Test = function(){
           var obj = new Test()
           console.log(obj) //{a: 123}
 ```
-
-
+### new Fn() 与 new Fn的区别
+function Fn(){
+    this.name='weide';
+}
+console.log(new Fn) //Fn {name: "weide"}
+console.log(new Fn()) //Fn {name: "weide"}
+看起来二者没有区别，在构造函数Fn不用传参的时候，他们确实没有区别，只有当构造函数需要传参的时候，
+才必须使用小括号：new Fn()
 
 下面将讲 面向对象编程三大特征 多态，继承，封装
 
