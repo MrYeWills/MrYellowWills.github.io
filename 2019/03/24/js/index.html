@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>js笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="自运行函数写法形式">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>js笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">js笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-24T15:27:11.977Z" itemprop="datePublished" class="page-time">
+  2019-03-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-js" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">js笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-24 23:27:11" datetime="2019-03-24T15:27:11.977Z" itemprop="datePublished">2019-03-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="js-常用知识"><a href="#js-常用知识" class="headerlink" title="js 常用知识"></a>js 常用知识</h2><h3 id="自运行函数"><a href="#自运行函数" class="headerlink" title="自运行函数"></a>自运行函数</h3><h4 id="自运行函数的17种写法"><a href="#自运行函数的17种写法" class="headerlink" title="自运行函数的17种写法"></a>自运行函数的17种写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125;() );</span><br><span class="line">( function() &#123;&#125; )();</span><br><span class="line">[ function() &#123;&#125;() ];</span><br><span class="line"></span><br><span class="line">~ function() &#123;&#125;();</span><br><span class="line">! function() &#123;&#125;();</span><br><span class="line">+ function() &#123;&#125;();</span><br><span class="line">- function() &#123;&#125;();</span><br><span class="line"></span><br><span class="line">delete function() &#123;&#125;();</span><br><span class="line">typeof function() &#123;&#125;();</span><br><span class="line">void function() &#123;&#125;();</span><br><span class="line">new function() &#123;&#125;();</span><br><span class="line">new function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">var f = function() &#123;&#125;();</span><br><span class="line"></span><br><span class="line">1, function() &#123;&#125;();</span><br><span class="line">1 ^ function() &#123;&#125;();</span><br><span class="line">1 &gt; function() &#123;&#125;();</span><br><span class="line"></span><br><span class="line">;( function() &#123;&#125;() );</span><br></pre></td></tr></table></figure>
+<h4 id="函数表达式-和-函数声明"><a href="#函数表达式-和-函数声明" class="headerlink" title="函数表达式 和 函数声明"></a>函数表达式 和 函数声明</h4><p>要弄懂自运行函数的原理，需弄懂函数表达式 和 函数声明概念；<br>函数声明，也叫函数定义；<br><a href="https://www.cnblogs.com/lenther2002/p/5894964.html" target="_blank" rel="noopener">参考</a><br>Javascript中有2个语法都与function关键字有关，分别是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数声明：function FunctionName(FormalParameterList) &#123; FunctionBody &#125;</span><br><span class="line">函数表达式：function [FunctionName](FormalParameterList) &#123; FunctionBody &#125;</span><br></pre></td></tr></table></figure></p>
+<p>从语法的定义上看，这两者几乎是一模一样的（唯一的区别是函数表达式可以省略函数名称），那么就解释器而言，当遇到这个结构的语句时，判定为函数表达式还是函数定义呢？<br>就javascript的语法而言，如果一条语句是以function关键字开始，那么这段会被判定为函数定义(声明)；<br>如果不是以function关键字开始，那么就是函数表达式；</p>
+<p><strong>为什么要分清 函数表达式和函数声明呢?</strong><br>因为<a href="https://www.zhihu.com/question/20249179" target="_blank" rel="noopener">函数表达式是不能拿来直接用的</a>，必须在<strong>左侧</strong>有字符或表达式与这个函数表达式共同构成一句可执行的函数语句；<br>（之所以在左侧，不是右侧，是因为在不要行函数语句以关键字function开始，避免被识别为函数声明，导致报错）<br>函数声明是可以拿过来直接用；<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fn()&#123;&#125;</span><br><span class="line">fn()//不报错；</span><br><span class="line">function ()&#123;&#125;() //报错</span><br><span class="line">-function ()&#123;console.log(5)&#125;() //不报错 因为在funtion左侧有表达式-</span><br></pre></td></tr></table></figure></p>
+<h4 id="16种含函数表达式的不报错的函数语句"><a href="#16种含函数表达式的不报错的函数语句" class="headerlink" title="16种含函数表达式的不报错的函数语句"></a>16种含函数表达式的不报错的函数语句</h4><p>结合上节的知识，将《自运行函数的17种写法》整理下，以下17种包含了函数表达式的函数语句不报错,注意的是，<br>以下函数表达式内的函数体都将不会执行，至于如何执行，下面会讲。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125; );</span><br><span class="line">( function() &#123;&#125; );</span><br><span class="line">[ function() &#123;&#125; ];</span><br><span class="line"></span><br><span class="line">~ function() &#123;&#125;;</span><br><span class="line">! function() &#123;&#125;;</span><br><span class="line">+ function() &#123;&#125;;</span><br><span class="line">- function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">delete function() &#123;&#125;;</span><br><span class="line">typeof function() &#123;&#125;;</span><br><span class="line">void function() &#123;&#125;;</span><br><span class="line">new function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">var f = function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">1, function() &#123;&#125;;</span><br><span class="line">1 ^ function() &#123;&#125;;</span><br><span class="line">1 &gt; function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">;( function() &#123;&#125; );</span><br></pre></td></tr></table></figure>
+<h4 id="是否以function开始对js解释器很重要"><a href="#是否以function开始对js解释器很重要" class="headerlink" title="是否以function开始对js解释器很重要"></a>是否以function开始对js解释器很重要</h4><p><a href="https://www.zhihu.com/question/20249179" target="_blank" rel="noopener">参考</a><br>以下两种报错形式的原因分析：</p>
+<ul>
+<li>function (){ }()<br>期望是立即调用一个匿名函数表达式，结果是进行了函数声明，函数声明必须要有标识符做为函数名称。</li>
+<li>function g(){ }()<br>期望是立即调用一个具名函数表达式，结果是声明了函数 g。末尾的括号作为分组运算符，<strong>必须要提供表达式做为参数</strong>，这个表达式可以是一个值或一个语句，例如改成下面的就不会报错：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function g()&#123; &#125;(1) //不报错，因为末尾的小括号有值作为表达式</span><br><span class="line">function g()&#123; &#125;(1,2) //不报错</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上说明了，是否以function开始对js解释器很重要;<br>如果以function开始，js解释器会认为它是一个函数声明，此时就要符合函数声明的标准，否则报错；<br>如果function左侧还有表达式，js解释器会认为它是一个函数表达式，此时该函数表达式配合左右两侧的表达式就构成了一个函数语句,要符合函数语句标准；<br>（例如 var a = function(){} 这就是一条函数语句）</p>
+<h4 id="1种立即执行的函数声明形式"><a href="#1种立即执行的函数声明形式" class="headerlink" title="1种立即执行的函数声明形式"></a>1种立即执行的函数声明形式</h4><p>目前知道的，可以让函数声明内的函数体立即执行的只有这种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function g(a)&#123;console.log(a) &#125;(1) //不报错</span><br></pre></td></tr></table></figure></p>
+<p>注意，末尾小括号一定要有 表达式，原因查看《是否以function开始对js解释器很重要》<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function g(a)&#123;console.log(a) &#125;() //报错</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何让函数表达式、声明内的函数体立即执行"><a href="#如何让函数表达式、声明内的函数体立即执行" class="headerlink" title="如何让函数表达式、声明内的函数体立即执行"></a>如何让函数表达式、声明内的函数体立即执行</h4><p>如何让 函数表达式和函数声明 内的函数体立即执行呢；<br><strong>只能</strong>通过小括号();<br>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = function()&#123;console.log(&apos;work&apos;)&#125; //不打印</span><br><span class="line">var a = function()&#123;console.log(&apos;work&apos;)&#125;() //打印work</span><br></pre></td></tr></table></figure></p>
+<p>因此可以认为()是一个让立即执行的运算符，可以让函数表达式或函数声明内的函数体立即执行；</p>
+<h4 id="函数表达式、声明-与-立即执行-关系"><a href="#函数表达式、声明-与-立即执行-关系" class="headerlink" title="函数表达式、声明 与 立即执行 关系"></a>函数表达式、声明 与 立即执行 关系</h4><p>参看上面的《如何让函数表达式、声明内的函数体立即执行》</p>
+<h4 id="与-立即执行"><a href="#与-立即执行" class="headerlink" title="() 与 立即执行"></a>() 与 立即执行</h4><p>参看上面的《如何让函数表达式、声明内的函数体立即执行》</p>
+<h4 id="放在哪些位置可以让函数体立即执行"><a href="#放在哪些位置可以让函数体立即执行" class="headerlink" title="()放在哪些位置可以让函数体立即执行"></a>()放在哪些位置可以让函数体立即执行</h4><p>一般而言，() 紧跟在 function(){} 的花括号后面的位置，通过这样的方式让函数表达式或函数声明 内的函数体立刻执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = function()&#123;console.log(&apos;work&apos;)&#125;()</span><br><span class="line">~ function() &#123;&#125;()</span><br><span class="line">( function() &#123;&#125;() )</span><br><span class="line">function fn(t)&#123;console.log(t)&#125;(&apos;work&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>不过有个例外，请看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125;() ); //可以立即执行函数体</span><br><span class="line">( function() &#123;&#125; )(); //()放在了左侧(  )的右侧，不过也可以立即执行函数体</span><br></pre></td></tr></table></figure></p>
+<p>()紧跟在中括号后就不行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ function() &#123;&#125;()]; //不报错，这个函数语句其实就是一个数组</span><br><span class="line">[ function() &#123;&#125;](); //报错，因为[]是一个数组，数组不是方法，类似这种写法，都错：[]()</span><br></pre></td></tr></table></figure></p>
+<p><strong>小结，从目前看，小括号一般紧跟如上的花括号，也可跟在如上的 (  )后面。</strong>现在再回过头，看这《自运行函数的17种写法》应该就明白了吧</p>
+<h4 id="与-函数传参"><a href="#与-函数传参" class="headerlink" title="() 与 函数传参"></a>() 与 函数传参</h4><p>这个简单，不多介绍，一般自运行传参的方式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">( function(a) &#123;console.log(a)&#125; )(888) //888</span><br></pre></td></tr></table></figure></p>
+<p>注意的是，将()写在里面也是可以传参的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">( function(a) &#123;console.log(a)&#125;(888) ) //888</span><br></pre></td></tr></table></figure></p>
+<h4 id="分号-与-立即执行"><a href="#分号-与-立即执行" class="headerlink" title="分号 ; 与 立即执行"></a>分号 ; 与 立即执行</h4><p>有些人喜欢用分号;来配合函数表达式写一个自运行，;分号本来是用来给函数语句断句的；<br>所以用这个的好处就是自带断句功能，避免不必要的错误；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//会报错</span><br><span class="line">var f = function() &#123;&#125;;</span><br><span class="line">f()</span><br><span class="line">( function() &#123;&#125; )();</span><br></pre></td></tr></table></figure></p>
+<p>加分号;后不报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//会报错</span><br><span class="line">var f = function() &#123;&#125;;</span><br><span class="line">f()</span><br><span class="line">;( function() &#123;&#125; )();</span><br></pre></td></tr></table></figure></p>
+<h4 id="，-，！比（-）立即执行方式少一个字符"><a href="#，-，！比（-）立即执行方式少一个字符" class="headerlink" title="+，-，！比（ ）立即执行方式少一个字符"></a>+，-，！比（ ）立即执行方式少一个字符</h4><p>通过+，-，！这三个符号运行的匿名函数比（）运行的匿名函数可以减少一个字符的使用<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125; );</span><br><span class="line">~ function() &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>不过这不影响使用(  )还是+，-，！ 配合使用函数表达式，这里只是提取这个现象出来。</p>
+<h4 id="自运行-参考资料"><a href="#自运行-参考资料" class="headerlink" title="自运行 参考资料"></a>自运行 参考资料</h4><p><a href="http://www.softwhy.com/article-2022-1.html" target="_blank" rel="noopener">JavaScript 小括号()分组运算符</a><br><a href="https://www.cnblogs.com/lenther2002/p/5894964.html" target="_blank" rel="noopener">JS中函数定义和函数表达式的区别</a><br><a href="https://www.zhihu.com/question/20249179" target="_blank" rel="noopener">JavaScript 匿名函数有哪几种执行方式?</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-24T18:10:41.344Z" itemprop="dateUpdated">2019-03-25 02:10:41</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/03/24/js/" target="_blank" rel="external">https://yewills.github.io/2019/03/24/js/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自运行函数写法形式/">自运行函数写法形式</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/03/24/js/&title=《js笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/03/24/js/&title=《js笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/03/24/mongoose_mongodb/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mongoose 与 mongodb笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#js-常用知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">js 常用知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自运行函数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自运行函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自运行函数的17种写法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">自运行函数的17种写法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数表达式-和-函数声明"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">函数表达式 和 函数声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16种含函数表达式的不报错的函数语句"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">16种含函数表达式的不报错的函数语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是否以function开始对js解释器很重要"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">是否以function开始对js解释器很重要</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1种立即执行的函数声明形式"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">1种立即执行的函数声明形式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何让函数表达式、声明内的函数体立即执行"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">如何让函数表达式、声明内的函数体立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数表达式、声明-与-立即执行-关系"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">函数表达式、声明 与 立即执行 关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与-立即执行"><span class="post-toc-number">1.1.8.</span> <span class="post-toc-text">() 与 立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#放在哪些位置可以让函数体立即执行"><span class="post-toc-number">1.1.9.</span> <span class="post-toc-text">()放在哪些位置可以让函数体立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与-函数传参"><span class="post-toc-number">1.1.10.</span> <span class="post-toc-text">() 与 函数传参</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分号-与-立即执行"><span class="post-toc-number">1.1.11.</span> <span class="post-toc-text">分号 ; 与 立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#，-，！比（-）立即执行方式少一个字符"><span class="post-toc-number">1.1.12.</span> <span class="post-toc-text">+，-，！比（ ）立即执行方式少一个字符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自运行-参考资料"><span class="post-toc-number">1.1.13.</span> <span class="post-toc-text">自运行 参考资料</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/03/24/js/&title=《js笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/03/24/js/&title=《js笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQW7DMAwEwPz/0+61FytLSmEcYHQqClueXBYkpdcrXte/lT9593y+W3Ph4uJuc6/l2vnA3Q7r/d/8YFxc3EFu8rEEsd7n7sfn7+Li4j6Z2wu1dZDh4uL+LrdayuRv4eLiPo2bB836M+vIy0ulA70aLi7uBrc34Dj790fmu7i4uC3uVVz5sKM6hI3ewsXFHeHmgZIXK70dCoe7uLi4I9xk02q07bQuheYHFxf3w9zeSKJ6KFK9tlWe5eDi4m5zq5GUH7vuXMm6LaFwcXFHuL0rF0mh04uq5AoXLi7uJHc/hsqd1n7zg4uL+6WxyM61qmrz08xdXFzco9xTZcp+SRTtjIuLO8Jdx1P1/0kI5sOUcq+Gi4t7lNu7IPWJCIuKJ1xc3HFuEkB585MXNIVwxMXFHeRWxx/VUDvVVuHi4n6XWx1h9A5O8kYLFxd3hjvZ9hw4jsXFxR3h9q5EVGexzfFH8dAXFxf3LLcaXkmJs//um+YHFxd3hFsdiCSNUB5qh3s1XFzccW71CCQfjxY6Nlxc3IdxewFXjbPb53FxcQe5+XDzVNHTO9zFxcWd4fYOPqsFUH5Ye2y+i4uL2+H+AfiCpFP1/jXNAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
