@@ -298,6 +298,104 @@ class Router{
 }
 ```
 
+### koa-static
+#### 介绍 和 demo
+koa-static是静态资源请求中间件，这里写了一个[简单的demo](https://github.com/YeWills/koa-demo/tree/static-views)，可启动感受下，下面以该demo源码作为示例讲解koa-static；
+```
+app.use(serve(handlePath('../pages/static')))
+```
+通过图片可以看出项目静态文件目录结构
+![](/image/koa2/static.jpg)
+
+配置上面这句代码后，你讲可以在浏览器上运行可现实文件内容：
+```
+http://127.0.0.1:3000/css/style.css
+http://127.0.0.1:3000/img/films.jpg
+```
+
+注意哦，不是 http://127.0.0.1:3000/pages/static/css/style.css !!这个地址是找不到的，很多刚用koa-static时都会犯这个错，认为就是handlePath('../pages/static') 定义的url，然后就拼接成了：
+```
+//这个地址是访问不到的
+http://127.0.0.1:3000/pages/static/css/style.css
+```
+#### 理解koa-static
+koa-static是静态资源请求中间件，不过这样说，我们并不能直观理解koa-static是什么，原理是什么。
+我们大可将koa-static看成是一个 为提供目录下每个文件 配置路由的中间件，
+只要你提供一个文件的具体位置给koa-static，koa-static会结合路由的功能，为每个该文件位置下的文件配置一个 url 路由；
+这个url路由其实就是一个普通的接口url，我们将这个普通的url输入浏览器，回车就可以看到改接口url的返回内容；
+
+#### koa-static是个批量配置接口url的中间件
+所以，koa-static其实是一个很棒批量配置接口url的中间件，可以为你提供的文件目录下的所有文件批量配置好url接口，
+你就可以轻松通过此url接口访问此文件。
+
+### koa-views
+#### 介绍 和 demo
+
+如果我们只需要ctx.body只需要返回一段简单的代码如下，那么就用不到koa-views。
+```
+ ctx.response.body = '<h1>404 Not Found</h1>'
+```
+如果我们要ctx.response.body直接返回一个如下复杂的html，这个时候，再去拼接字符串太麻烦，
+koa-views就是让body返回html变得简单，你直接单独定义好一个html，然后直接引用此html即可，非常方便。
+koa-views可以用于**普通的html文件**，也可以用于模板引擎，用于模板引擎的时候，可通过ctx.state传值；
+```
+  let html = `
+    <h1>登录<\h1>
+    <form method = "POST" action= "/">
+    <p>用户名</p>
+    <input name="userName" /><br/>
+    <p>密码</p>
+    <input name="password" type="password" /><br/>
+    <button type="submit">submit</button>
+    </form>
+    `
+    ctx.body=html;
+
+```
+这里写了一个[简单的demo](https://github.com/YeWills/koa-demo/tree/static-views)，可启动感受下加深理解。
+此demo和《koa-static》demo是同一个
+
+#### koa-views的使用
+```
+const views = require('koa-views')
+app.use(views(handlePath('../pages')), {
+  extension: 'html'
+})
+app.use(async (ctx) => {
+  await ctx.render('index.html')
+})
+
+```
+#### index.html中静态文件的路径
+请结合上面demo源码看(此demo和《koa-static》demo是同一个)
+项目路径和请看参看 《koa-static》的图片
+
+```
+app.use(serve(handlePath('../pages/static')))
+```
+
+我们在《koa-static》中知道css和jpg的访问接口url是:
+```
+http://127.0.0.1:3000/css/style.css
+http://127.0.0.1:3000/img/films.jpg
+```
+
+此时，index.html的css和img的路径应该配置为如下，
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>东成西就</title>
+<link rel="stylesheet" href="/css/style.css"></head>
+<body>
+  <div class="films">东成西就就是棒！</div>
+  <img src="/img/films.jpg" />
+</body>
+</html>
+```
+
 ### 写一个中间件
 这里动手写一个logger中间件小demo，用来打印日志：
 原代码
