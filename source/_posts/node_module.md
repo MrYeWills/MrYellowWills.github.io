@@ -1,6 +1,5 @@
 ---
-title: node好用模块笔记
-date: {{ date }}
+title: node好用模块
 tags: [node node_modules]
 categories: 
 - [node, nodemon]

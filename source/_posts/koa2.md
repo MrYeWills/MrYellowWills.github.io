@@ -28,7 +28,6 @@ ctx.status  -- ctx.response.status 的别名
 另外 ctx.res 是 ctx.response 的别名；
 
 
-
 ### POST请求参数的获取
 koa 没有封装获取post请求参数的方法，要么通过ctx.req.on原生方式，要么通过koa-bodyparser
 #### 方式一：
@@ -228,15 +227,163 @@ app.use(async (ctx, next)=>{
 // two end
 // one end
 ```
-
 #### next()
 next()返回一个Promise对象，配合await使用，可以达到阻塞后面程序执行，等待 next() 返回类似reject()才最终执行nex()后面的程序。
 每个中间件必须使用next()，否则异常。
 
-### koa-bodyparser
-此中间件的作用 是 把POST请求的参数解析到ctx.request.body中，koa-bodyparser底层就是基于ctx.req.on实现的。
-其他信息见《koa-bodyparser导致ctx.req.on事件失效》  《POST请求参数的获取》
 
+
+### 两种鉴权方式
+一种是广泛使用的Cookie认证模式；
+一种是基于Token的认证模式, koa中可以结合jsonwebtoken 与 koa-jwt实现Token鉴权.
+[这里是一个基于Token的鉴权demo](https://github.com/YeWills/koa-demo/tree/router-Token)
+
+
+### 写一个返回文件的接口
+#### 使用fs实现的方式
+写一个接口，可以将本地的文件，返回给客户端,主要使用fs开完成，核心代码：
+```
+const fs = require('fs');
+const path = require('path');
+const extname = path.extname;
+
+
+const fpath = path.join(__dirname, './files/test.xlsx');
+const fstat = await stat(fpath);
+if (fstat.isFile()) {
+  ctx.type = extname(fpath);
+  ctx.body = fs.createReadStream(fpath);
+}
+
+
+function stat(file) {
+  return new Promise(function(resolve, reject) {
+    fs.stat(file, function(err, stat) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(stat);
+      }
+    });
+  });
+}
+```
+[完整demo](https://github.com/YeWills/koa-demo/tree/response-file);
+本demo 参考了 [koa 官网example](https://github.com/YeWills/examples)，koa 官网example挺好，展示了很多功能，如果有需求，可先到这里找示例实现。
+
+#### 使用koa-static实现的方式
+此方法参见《koa-static》，弊端是，无法自定义路由名称，只能以文件名称为接口url。
+
+### 写一个中间件
+这里动手写一个logger中间件小demo，用来打印日志：
+原代码
+```
+ app.use(async (ctx, next)=>{
+   console.log(ctx.method,ctx.host + ctx.url)
+   await next();
+   ctx.body = 'hellow world'
+ })
+```
+动手写一个logger中间件，用于打印日志，改造后如下：
+```
+const Koa = require('koa')
+const app = new Koa()
+const logger = async function(ctx, next){
+  console.log(ctx.method,ctx.host + ctx.url)
+  await next();
+}
+app.use(logger)
+app.use(async (ctx, next)=>{
+  ctx.body = 'hellow world'
+})
+app.listen(3000)
+
+```
+
+### ctx.state
+此属性，在做笔记为止，用的比较少，不用深究，用时再了解。
+Koa 还约定了一个中间件的存储空间 ctx.state。通过 state 可以存储一些数据，比如用户数据，版本信息等。如果你使用 webpack 打包的话，可以使用中间件，将加载资源的方法作为 ctx.state 的属性传入到 view 层，方便获取资源路径。[摘自此文](https://www.jianshu.com/p/d3afa36aa17a)
+
+
+
+## koa2黑知识
+
+### /favicon.ico
+我们常加载dom时，会看到有一个/favicon.ico请求，这个是Dom渲染时，默认自带的静态资源。
+
+### this 指向 ctx
+
+```
+app.use(async (ctx)=>{
+ this; //此this其实就是ctx，就是Context
+})
+console.log('run in 3000')
+```
+
+### koa-bodyparser导致ctx.req.on事件失效
+下面代码会报错，因为koa-bodyparser的底层就是基于ctx.req.on实现的，如果使用了koa-bodyparser，它可能会劫持ctx.req.on这个事件，导致ctx.req.on事件失效
+```
+app.use(bodyparser())
+app.use(async (ctx)=>{
+  let postdata='';
+  ctx.req.on('data', (data)=>{
+    postdata +=data;
+  })
+  ctx.req.on('end', ()=>{
+    console.log(postdata);
+  })
+})
+console.log('run in 3000')
+```
+解决的方法也简单，koa-bodyparser本来是为了方便获取ctx.req.on,使用了koa-bodyparser就没必要使用ctx.req.on。
+或者用kctx.req.on，就不要用koa-bodyparser；
+
+### koa2-cors解决跨域
+#### 使用
+var cors = require('koa2-cors');
+app.use(cors());
+#### 将koa2-cors放在最上面
+将koa2-cors放在最上面，让koa2-cors先于其他中间件执行：
+```
+app.use(cors()) // 解决跨域，跨域代码最好放在所有中间件前面
+const views = require('koa-views')
+const serve = require('koa-static')
+const { resolve } = require('path')
+const handlePath = path => resolve(__dirname, path)
+app.use(serve(handlePath('../pages/static')))
+app.use(views(handlePath('../pages')), {
+  extension: 'html'
+})
+app.use(async (ctx) => {
+  await ctx.render('index.html')
+})
+app.use(bodyparser())// 解析post参数
+app.use(router.routes())// 调用路由中间件
+app.use(router.allowedMethods())// 对异常状态码处理
+app.listen(3000, ()=>{
+  console.log('server is running at http://localhost:3000')
+})
+```
+
+### /home/:id/:name 路由对应的url
+router.get('/home'  ---对应 http://localhost:3000/home?id=01&name=admin
+router.get('/home/:id/:name'  ---对应 http://localhost:3000/home/01/admin
+
+
+### 跨域请求有时会发两次请求
+当前端fetch自定了header时，且接口跨域时，fetch一次，可能会发两次相同请求，两次请求一次是Request Method: OPTIONS的，
+一次是Request Method: GET的，
+原来fetch在发送真正的请求前, 会先发送一个方法为OPTIONS的预请求(preflight request), 用于试探服务端是否能接受真正的请求[详细原因参见这里](https://blog.csdn.net/cc1314_/article/details/78272329)；
+解决之道就是把自定义headers字段删掉后；
+或者不要使用require('koa2-cors')的方式解决跨域，可以通过服务端请求服务器的方式解决跨域；
+因为跨域是浏览器的限制机制，而服务器与服务器之间不存在跨域问题，具体思路：
+在同域名下通过 koa 截取 项目的所有fetch请求，然后使用 request 模块，通过 request 给另外域名下的服务器发请求。
+
+### 后台报错app有错误日志，也会报跨域错误
+如果配置了koa2-cors解决跨域，但请求时有跨域报错，可能是app.use内部程序执行报错，会导致后台响应异常，然后前台可能显示为跨域限制错误
+
+
+## koa2模块
 ### koa-router
 #### Usage
 ```
@@ -400,10 +547,9 @@ http://127.0.0.1:3000/img/films.jpg
 </html>
 ```
 
-### 两种鉴权方式
-一种是广泛使用的Cookie认证模式；
-一种是基于Token的认证模式, koa中可以结合jsonwebtoken 与 koa-jwt实现Token鉴权.
-[这里是一个基于Token的鉴权demo](https://github.com/YeWills/koa-demo/tree/router-Token)
+### koa-bodyparser
+此中间件的作用 是 把POST请求的参数解析到ctx.request.body中，koa-bodyparser底层就是基于ctx.req.on实现的。
+其他信息见《koa-bodyparser导致ctx.req.on事件失效》  《POST请求参数的获取》
 
 ### jsonwebtoken 与 koa-jwt
 jsonwebtoken 简称 JWT，用来实现Token的生成、校验和解码。
@@ -440,8 +586,8 @@ router.post('/api/login', async (ctx, next) => {
   })
 ```
 
-### querystring模块
-有以下作用
+### querystring
+querystring模块有以下作用
 ```
 const Querystring = require('querystring')
 Querystring.escape('id=1') //返回 id%3D1
@@ -453,8 +599,8 @@ querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' }) // 返回
 
 [这里有一个querystring的demo](https://github.com/YeWills/koa-demo/tree/http-request)
 
-### require('http')
-
+### http
+http说的是 require('http')模块。
 koa利用http直接从服务端向其他服务器发起请求，
 如下，koa服务端，接收到请求时，在路由函数体内，将请求参数重新组装，通过http，转发给对应服务器。
 这种方法好处之一是避免跨域问题。
@@ -490,9 +636,8 @@ router.get('/', async (ctx, next) => {
 koa-multer 用来做文件上传功能，需要配合 fs模块一起，比较简单，[这是文件上传koa-multer 和fs demo](https://github.com/YeWills/koa-demo/tree/web-pro)。
 
 
-### fs 模块
-demo和介绍，以下两个示例，使用fs做了一个文件上传和读取本地文件并返回给前台的功能：
-参见《koa-multer》《写一个返回文件的接口》
+### fs
+demo和介绍，参考《koa-multer》《写一个返回文件的接口》，这两部分都有demo，使用fs做了一个文件上传和读取本地文件并返回给前台的功能
 
 ### koa-json、log4js、ip
 [这里只放一个demo](https://github.com/YeWills/koa-demo/tree/pro-static)，不深入了解，用到的时候再深究，此demo包含koa-static、log4js与ip、koa-json、koa-nunjucks
@@ -502,148 +647,6 @@ koa-nunjucks是基于nunjucks的html 模板中间件。
 没有什么太复杂的需求，只是用koa玩玩，如果不用html模板，用koa-views就可以了，如果要用html模板，可以用koa-nunjucks，当然也可以用ejs模板，等等，有很多这方面的模板。
 这里只放一个demo，不过多解释，用到的时候再了解。
 [koa-nunjucks的使用demo](https://github.com/YeWills/koa-demo/tree/web-pro)
-
-### 写一个返回文件的接口
-#### 使用fs实现的方式
-写一个接口，可以将本地的文件，返回给客户端,主要使用fs开完成，核心代码：
-```
-const fs = require('fs');
-const path = require('path');
-const extname = path.extname;
-
-
-const fpath = path.join(__dirname, './files/test.xlsx');
-const fstat = await stat(fpath);
-if (fstat.isFile()) {
-  ctx.type = extname(fpath);
-  ctx.body = fs.createReadStream(fpath);
-}
-
-
-function stat(file) {
-  return new Promise(function(resolve, reject) {
-    fs.stat(file, function(err, stat) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(stat);
-      }
-    });
-  });
-}
-```
-[完整demo](https://github.com/YeWills/koa-demo/tree/response-file);
-本demo 参考了 [koa 官网example](https://github.com/YeWills/examples)
-
-#### 使用koa-static实现的方式
-此方法参见《koa-static》，弊端是，无法自定义路由名称，只能以文件名称为接口url。
-
-### 写一个中间件
-这里动手写一个logger中间件小demo，用来打印日志：
-原代码
-```
- app.use(async (ctx, next)=>{
-   console.log(ctx.method,ctx.host + ctx.url)
-   await next();
-   ctx.body = 'hellow world'
- })
-```
-动手写一个logger中间件，用于打印日志，改造后如下：
-```
-const Koa = require('koa')
-const app = new Koa()
-const logger = async function(ctx, next){
-  console.log(ctx.method,ctx.host + ctx.url)
-  await next();
-}
-app.use(logger)
-app.use(async (ctx, next)=>{
-  ctx.body = 'hellow world'
-})
-app.listen(3000)
-
-```
-
-### ctx.state
-Koa 还约定了一个中间件的存储空间 ctx.state。通过 state 可以存储一些数据，比如用户数据，版本信息等。如果你使用 webpack 打包的话，可以使用中间件，将加载资源的方法作为 ctx.state 的属性传入到 view 层，方便获取资源路径。[摘自此文](https://www.jianshu.com/p/d3afa36aa17a)
-
-
-
-## koa2黑知识
-
-### /favicon.ico
-我们常加载dom时，会看到有一个/favicon.ico请求，这个是Dom渲染时，默认自带的静态资源。
-
-### this 指向 ctx
-
-```
-app.use(async (ctx)=>{
- this; //此this其实就是ctx，就是Context
-})
-console.log('run in 3000')
-```
-
-### koa-bodyparser导致ctx.req.on事件失效
-下面代码会报错，因为koa-bodyparser的底层就是基于ctx.req.on实现的，如果使用了koa-bodyparser，它可能会劫持ctx.req.on这个事件，导致ctx.req.on事件失效
-```
-app.use(bodyparser())
-app.use(async (ctx)=>{
-  let postdata='';
-  ctx.req.on('data', (data)=>{
-    postdata +=data;
-  })
-  ctx.req.on('end', ()=>{
-    console.log(postdata);
-  })
-})
-console.log('run in 3000')
-```
-解决的方法也简单，koa-bodyparser本来是为了方便获取ctx.req.on,使用了koa-bodyparser就没必要使用ctx.req.on。
-或者用kctx.req.on，就不要用koa-bodyparser；
-
-### koa2-cors解决跨域
-#### 使用
-var cors = require('koa2-cors');
-app.use(cors());
-#### 将koa2-cors放在最上面
-将koa2-cors放在最上面，让koa2-cors先于其他中间件执行：
-```
-app.use(cors()) // 解决跨域，跨域代码最好放在所有中间件前面
-const views = require('koa-views')
-const serve = require('koa-static')
-const { resolve } = require('path')
-const handlePath = path => resolve(__dirname, path)
-app.use(serve(handlePath('../pages/static')))
-app.use(views(handlePath('../pages')), {
-  extension: 'html'
-})
-app.use(async (ctx) => {
-  await ctx.render('index.html')
-})
-app.use(bodyparser())// 解析post参数
-app.use(router.routes())// 调用路由中间件
-app.use(router.allowedMethods())// 对异常状态码处理
-app.listen(3000, ()=>{
-  console.log('server is running at http://localhost:3000')
-})
-```
-
-### /home/:id/:name 路由对应的url
-router.get('/home'  ---对应 http://localhost:3000/home?id=01&name=admin
-router.get('/home/:id/:name'  ---对应 http://localhost:3000/home/01/admin
-
-
-### 跨域请求有时会发两次请求
-当前端fetch自定了header时，且接口跨域时，fetch一次，可能会发两次相同请求，两次请求一次是Request Method: OPTIONS的，
-一次是Request Method: GET的，
-原来fetch在发送真正的请求前, 会先发送一个方法为OPTIONS的预请求(preflight request), 用于试探服务端是否能接受真正的请求[详细原因参见这里](https://blog.csdn.net/cc1314_/article/details/78272329)；
-解决之道就是把自定义headers字段删掉后；
-或者不要使用require('koa2-cors')的方式解决跨域，可以通过服务端请求服务器的方式解决跨域；
-因为跨域是浏览器的限制机制，而服务器与服务器之间不存在跨域问题，具体思路：
-在同域名下通过 koa 截取 项目的所有fetch请求，然后使用 request 模块，通过 request 给另外域名下的服务器发请求。
-
-### 后台报错app有错误日志，也会报跨域错误
-如果配置了koa2-cors解决跨域，但请求时有跨域报错，可能是app.use内部程序执行报错，会导致后台响应异常，然后前台可能显示为跨域限制错误
 
 ## RESTfull 和  http
 ### RESTful 规范
@@ -685,5 +688,4 @@ fragment 定位锚点，以#开头，可用于快速定位网页对应段落
 [koa github ](https://github.com/koajs/koa#readme)
 [koa example，挺好的官方示例，比较全，做需求时可先在这找示例](https://github.com/YeWills/examples)
 [koa2入门笔记](https://www.jianshu.com/p/d3afa36aa17a)
-[前端demo,可用于向后台发请求](https://github.com/YeWills/react-redux-demo/tree/films_new)
 [比较综合的示例，页面效果比较炫](https://github.com/YeWills/koa-demo/tree/pro-static)
