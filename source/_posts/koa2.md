@@ -27,8 +27,7 @@ ctx.status  -- ctx.response.status 的别名
 另外 ctx.req 是 ctx.request 的别名；
 另外 ctx.res 是 ctx.response 的别名；
 
-### ctx.state
-Koa 还约定了一个中间件的存储空间 ctx.state。通过 state 可以存储一些数据，比如用户数据，版本信息等。如果你使用 webpack 打包的话，可以使用中间件，将加载资源的方法作为 ctx.state 的属性传入到 view 层，方便获取资源路径。[摘自此文](https://www.jianshu.com/p/d3afa36aa17a)
+
 
 ### POST请求参数的获取
 koa 没有封装获取post请求参数的方法，要么通过ctx.req.on原生方式，要么通过koa-bodyparser
@@ -182,13 +181,158 @@ app.listen(3000)
 页面响应：
 ![](/image/koa2/status.png)
 
-
 #### 注意点：
 koa-bodyparser的底层也是使用ctx.req.on实现的，所以不能同时使用 koa-bodyparser与ctx.req.on，否则，可能报错，
 详见《koa2黑知识 -- koa-bodyparser导致ctx.req.on事件失效》
 
+### 如何在koa使用中间件
+#### 中间件是由app.use加载的
+中间件一般都通过 app.use 函数来加载中间件
+```
+const app = new Koa()
+app.use(cors());
+app.use(bodyparser())
+app.use(async (ctx, next)=>{
+  ctx.response.type='text';
+  ctx.response.body='<p/>999<p/>';
+})
+app.listen(3000)
+```
+#### 中间件执行顺序
+中间件在 koa中执行顺序，遵循洋葱模型方式：
+```
+![](/image/koa2/middle.jpg)
+```
+代码展示：
+```
+app.use(async (ctx, next)=>{
+  console.log('one start');
+  await next();
+  console.log('one end');
+})
+app.use(async (ctx, next)=>{
+  console.log('two start');
+  await next();
+  console.log('two end');
+})
+app.use(async (ctx, next)=>{
+  console.log('three start');
+  await next();
+  console.log('three end');
+})
+
+// one start
+// two start
+// three start
+// three end
+// two end
+// one end
+```
+
+#### next()
+next()返回一个Promise对象，配合await使用，可以达到阻塞后面程序执行，等待 next() 返回类似reject()才最终执行nex()后面的程序。
+每个中间件必须使用next()，否则异常。
+
+### koa-bodyparser
+此中间件的作用 是 把POST请求的参数解析到ctx.request.body中，koa-bodyparser底层就是基于ctx.req.on实现的。
+其他信息见《koa-bodyparser导致ctx.req.on事件失效》  《POST请求参数的获取》
+
+### koa-router
+#### Usage
+```
+const Koa = require('koa')
+const bodyparser = require('koa-bodyparser')
+const router = require('koa-router')()
+var cors = require('koa2-cors');
+const app = new Koa()
+ router.get('/', async (ctx, next) => {
+    ctx.response.body = `<h1>index page</h1>`
+})
+router.get('/home', async (ctx, next) => {
+    ctx.response.body = '<h1>HOME page</h1>'
+})
+router.get('/404', async (ctx, next) => {
+    ctx.response.body = '<h1>404 Not Found</h1>'
+})
+app.use(cors()) // 解决跨域
+app.use(bodyparser())// 解析post参数
+app.use(router.routes())// 注册路由中间件
+app.use(router.allowedMethods())// 对异常状态码处理
+app.listen(3000, ()=>{
+  console.log('server is running at http://localhost:3000')
+})
+```
+关键 是在最后使用
+```
+app.use(router.routes())// 调用路由中间件
+app.use(router.allowedMethods())// 对异常状态码处理
+```
+当然，如果你不想处理异常状态码，完全可以不使用router.allowedMethods(),单独使用router.routes()即可。
+
+#### 模拟路由中间件
+下面模拟路由写的中间件，可以加深对路由中间件的理解
+```
+class Router{
+  constructor(){
+    this._routers = [];
+  }
+  get(url, handler){
+    this._routers.push({
+      url:url,
+      method:'GET',
+      handler
+    })
+  }
+  routes(){
+    return async (ctx, next) => {
+      const {method, url} = ctx;
+      const matchedRouter = this._routers.find(r => r.method === method && r.url === url);
+      if( matchedRouter &&
+        matchedRouter.handler){
+          await matchedRouter.handler(context, next);
+        }else{
+          await next();
+        }
+    }
+  }
+}
+```
+
+### 写一个中间件
+这里动手写一个logger中间件小demo，用来打印日志：
+原代码
+```
+ app.use(async (ctx, next)=>{
+   console.log(ctx.method,ctx.host + ctx.url)
+   await next();
+   ctx.body = 'hellow world'
+ })
+```
+动手写一个logger中间件，用于打印日志，改造后如下：
+```
+const Koa = require('koa')
+const app = new Koa()
+const logger = async function(ctx, next){
+  console.log(ctx.method,ctx.host + ctx.url)
+  await next();
+}
+app.use(logger)
+app.use(async (ctx, next)=>{
+  ctx.body = 'hellow world'
+})
+app.listen(3000)
+
+```
+
+### ctx.state
+Koa 还约定了一个中间件的存储空间 ctx.state。通过 state 可以存储一些数据，比如用户数据，版本信息等。如果你使用 webpack 打包的话，可以使用中间件，将加载资源的方法作为 ctx.state 的属性传入到 view 层，方便获取资源路径。[摘自此文](https://www.jianshu.com/p/d3afa36aa17a)
+
+
+
 ## koa2黑知识
 
+### /favicon.ico
+我们常加载dom时，会看到有一个/favicon.ico请求，这个是Dom渲染时，默认自带的静态资源。
 
 ### this 指向 ctx
 
