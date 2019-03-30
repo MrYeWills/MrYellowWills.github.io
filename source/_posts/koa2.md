@@ -648,6 +648,12 @@ koa-nunjucks是基于nunjucks的html 模板中间件。
 这里只放一个demo，不过多解释，用到的时候再了解。
 [koa-nunjucks的使用demo](https://github.com/YeWills/koa-demo/tree/web-pro)
 
+### ejs pug puppeteer parcel-bundler
+暂时不用过多了解，用时深究，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
+### request-promise-native request glob 
+暂时不用过多了解，用时深究，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
+
+
 ## RESTfull 和  http
 ### RESTful 规范
 非RESTful规范定义的接口：
@@ -681,11 +687,29 @@ fragment 定位锚点，以#开头，可用于快速定位网页对应段落
 4** 请求错误 401 未授权 ； 403 禁止； 404 未找到；
 5** 和 6** 服务器错误  500 服务器内部错误； 503 服务不可用；
 
+## 相关demo
+### koa-demo
+主要的示例demo:[koa-demo](https://github.com/YeWills/koa-demo);
 
+### koa2_films
+很好的综合运行demo(含爬虫，mongodb，koa,前后端一体化编译开发):[koa2_films/koa_web](https://github.com/YeWills/koa2_films/tree/koa_web),
+此仓库其他分支还有单纯的 开发后台的分支;
+也有单纯的爬虫demo：[爬虫小demo](https://github.com/YeWills/koa2_films/tree/puppeteer)；
+还有一个分支为：[nodejs 异步io的理解 阻塞非阻塞，事件循环与驱动，单线程，子进程，进程通讯)events 框架demo](https://github.com/YeWills/koa2_films/tree/event_IO_loop)；
+
+### films_new
+[films_new](https://github.com/YeWills/react-redux-demo/tree/films_new)是react-redux-demo仓库下的分支。
+这是前端代码，用来像后台发起请求。
+
+### koa-miniprogram
+此项目为微信开发，《koa与node.js开发实战》 书第九章以后的代码，在此仓库，我整理成单独几份，暂时没有微信学习，将源码整理备份，以备以后用。
+其中[particle-css分支](https://github.com/YeWills/koa-miniprogram/tree/particle-css)挺好的一个css页面，同时还有超炫背景粒子-particlesJS插件的使用 效果：
 
 ## 参考和学习资料
+[koa与node.js开发实战]()
+[Koa2框架从0开始构建预告片网站]()
 [koa 官网](https://koajs.com/#context)
 [koa github ](https://github.com/koajs/koa#readme)
 [koa example，挺好的官方示例，比较全，做需求时可先在这找示例](https://github.com/YeWills/examples)
 [koa2入门笔记](https://www.jianshu.com/p/d3afa36aa17a)
-[比较综合的示例，页面效果比较炫](https://github.com/YeWills/koa-demo/tree/pro-static)
+

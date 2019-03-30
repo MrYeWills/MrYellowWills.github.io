@@ -10,6 +10,7 @@ series: 服务端
 
 ### nodemon
 一款用于 使用node启动的项目，监听当项目文件变动时，自动启动类似npm start命令的模块。
+[demo示例](https://github.com/YeWills/koa-demo/tree/master)
 
 #### Usage
 使用非常简单
