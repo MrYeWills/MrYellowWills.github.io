@@ -366,6 +366,10 @@ app.use(async (ctx) => {
 })
 
 ```
+
+#### render是koa-views集成到ctx的
+如上的代码，ctx本身没有render方法，只是使用koa-views中间件后，ctx才有这个方法的
+
 #### index.html中静态文件的路径
 请结合上面demo源码看(此demo和《koa-static》demo是同一个)
 项目路径和请看参看 《koa-static》的图片
@@ -395,6 +399,144 @@ http://127.0.0.1:3000/img/films.jpg
 </body>
 </html>
 ```
+
+### 两种鉴权方式
+一种是广泛使用的Cookie认证模式；
+一种是基于Token的认证模式, koa中可以结合jsonwebtoken 与 koa-jwt实现Token鉴权.
+[这里是一个基于Token的鉴权demo](https://github.com/YeWills/koa-demo/tree/router-Token)
+
+### jsonwebtoken 与 koa-jwt
+jsonwebtoken 简称 JWT，用来实现Token的生成、校验和解码。
+使用koa-jwt中间件可以将 jsonwebtoken与koa有机结合起来。
+jsonwebtoken 与 koa-jwt 的关系，就跟 redux 与react-redux的关系。
+[这里是一个基于Token的鉴权demo](https://github.com/YeWills/koa-demo/tree/router-Token)。
+
+使用方法：
+一般方案为：登录是，koa通过jsonwebtoken给用户一个Token编码，之后客户端发送请求时，在Header上都带上此Token码，
+后端接受请求时，验证此Token码进行鉴权。
+
+```
+const { sign } = require('jsonwebtoken');
+const secret = 'demo';
+const jwt = require('koa-jwt')({ secret });
+
+//生成Token，secret作为密钥开发者自定义设置，expiresIn为失效时间，不要设置太久
+//登陆成功后，后台通过jsonwebtoken为该用户生成Token编码，
+//客户端拿到Token编码后，下次发请求时，在Header中带上Token码
+router.post('/api/login', async (ctx, next) => {
+    const { username } = ctx.request.body;
+    const token = sign({ username }, secret, { expiresIn: '1h' });
+    ctx.body = {
+      message: 'Get Token Success',
+      code: 1,
+      token
+    };
+  })
+  //登录之后的接口请求，都要验证Token，所以都要在Header中将上一步登录是获得的Token传给后台
+    .get('/api/userInfo', jwt, async ctx => {
+    ctx.body = {
+      username: ctx.state.user.username
+    };
+  })
+```
+
+### querystring模块
+有以下作用
+```
+const Querystring = require('querystring')
+Querystring.escape('id=1') //返回 id%3D1
+Querystring.unescape('id%3D1') //返回 id=1
+querystring.parse('foo=bar&abc=xyz&abc=123') //返回 {foo: 'bar',abc: ['xyz', '123']}
+querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' }) // 返回 'foo=bar&baz=qux&baz=quux&corge='
+```
+[更多点击官网](http://nodejs.cn/api/querystring.html)
+
+[这里有一个querystring的demo](https://github.com/YeWills/koa-demo/tree/http-request)
+
+### require('http')
+
+koa利用http直接从服务端向其他服务器发起请求，
+如下，koa服务端，接收到请求时，在路由函数体内，将请求参数重新组装，通过http，转发给对应服务器。
+这种方法好处之一是避免跨域问题。
+
+```
+const Http = require('http');
+router.get('/', async (ctx, next) => {
+    let { kw } = ctx.query;
+    let resData = await new Promise((resolve, reject) => {
+          //http://m.maoyan.com/ajax/search?kw=捉妖记&cityId=10
+            Http.request({
+                hostname: 'm.maoyan.com',
+                path: '/ajax/search?' + Querystring.stringify({
+                    kw,
+                    cityId: 10
+                })
+            }, (res) => {
+                res.setEncoding('utf8');
+                let data = [];
+                res.on('data', (chunk) => {
+                    data.push(chunk)
+                }).on('end', () => {
+                    resolve(data.join(''));
+                });
+            }).end();
+        });
+    ctx.body = Render(JSON.parse(resData), kw);
+});
+```
+[完整http request的demo](https://github.com/YeWills/koa-demo/tree/http-request)
+
+### koa-multer
+koa-multer 用来做文件上传功能，需要配合 fs模块一起，比较简单，[这是文件上传koa-multer 和fs demo](https://github.com/YeWills/koa-demo/tree/web-pro)。
+
+
+### fs 模块
+demo和介绍，以下两个示例，使用fs做了一个文件上传和读取本地文件并返回给前台的功能：
+参见《koa-multer》《写一个返回文件的接口》
+
+### koa-json、log4js、ip
+[这里只放一个demo](https://github.com/YeWills/koa-demo/tree/pro-static)，不深入了解，用到的时候再深究，此demo包含koa-static、log4js与ip、koa-json、koa-nunjucks
+
+### koa-nunjucks
+koa-nunjucks是基于nunjucks的html 模板中间件。
+没有什么太复杂的需求，只是用koa玩玩，如果不用html模板，用koa-views就可以了，如果要用html模板，可以用koa-nunjucks，当然也可以用ejs模板，等等，有很多这方面的模板。
+这里只放一个demo，不过多解释，用到的时候再了解。
+[koa-nunjucks的使用demo](https://github.com/YeWills/koa-demo/tree/web-pro)
+
+### 写一个返回文件的接口
+#### 使用fs实现的方式
+写一个接口，可以将本地的文件，返回给客户端,主要使用fs开完成，核心代码：
+```
+const fs = require('fs');
+const path = require('path');
+const extname = path.extname;
+
+
+const fpath = path.join(__dirname, './files/test.xlsx');
+const fstat = await stat(fpath);
+if (fstat.isFile()) {
+  ctx.type = extname(fpath);
+  ctx.body = fs.createReadStream(fpath);
+}
+
+
+function stat(file) {
+  return new Promise(function(resolve, reject) {
+    fs.stat(file, function(err, stat) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(stat);
+      }
+    });
+  });
+}
+```
+[完整demo](https://github.com/YeWills/koa-demo/tree/response-file);
+本demo 参考了 [koa 官网example](https://github.com/YeWills/examples)
+
+#### 使用koa-static实现的方式
+此方法参见《koa-static》，弊端是，无法自定义路由名称，只能以文件名称为接口url。
 
 ### 写一个中间件
 这里动手写一个logger中间件小demo，用来打印日志：
@@ -460,8 +602,36 @@ console.log('run in 3000')
 或者用kctx.req.on，就不要用koa-bodyparser；
 
 ### koa2-cors解决跨域
+#### 使用
 var cors = require('koa2-cors');
 app.use(cors());
+#### 将koa2-cors放在最上面
+将koa2-cors放在最上面，让koa2-cors先于其他中间件执行：
+```
+app.use(cors()) // 解决跨域，跨域代码最好放在所有中间件前面
+const views = require('koa-views')
+const serve = require('koa-static')
+const { resolve } = require('path')
+const handlePath = path => resolve(__dirname, path)
+app.use(serve(handlePath('../pages/static')))
+app.use(views(handlePath('../pages')), {
+  extension: 'html'
+})
+app.use(async (ctx) => {
+  await ctx.render('index.html')
+})
+app.use(bodyparser())// 解析post参数
+app.use(router.routes())// 调用路由中间件
+app.use(router.allowedMethods())// 对异常状态码处理
+app.listen(3000, ()=>{
+  console.log('server is running at http://localhost:3000')
+})
+```
+
+### /home/:id/:name 路由对应的url
+router.get('/home'  ---对应 http://localhost:3000/home?id=01&name=admin
+router.get('/home/:id/:name'  ---对应 http://localhost:3000/home/01/admin
+
 
 ### 跨域请求有时会发两次请求
 当前端fetch自定了header时，且接口跨域时，fetch一次，可能会发两次相同请求，两次请求一次是Request Method: OPTIONS的，
@@ -475,7 +645,45 @@ app.use(cors());
 ### 后台报错app有错误日志，也会报跨域错误
 如果配置了koa2-cors解决跨域，但请求时有跨域报错，可能是app.use内部程序执行报错，会导致后台响应异常，然后前台可能显示为跨域限制错误
 
+## RESTfull 和  http
+### RESTful 规范
+非RESTful规范定义的接口：
+```
+router.get(/app/adduser)
+router.get(/app/edituser)
+router.get(/app/deleteuser)
+```
+基于RESTful规范设计的API，全局只提供唯一的URI /app/user
+设计如下：
+```
+router.post(/app/user) //新增用户id
+router.edit(/app/user:id) 编辑名字为id的用户
+router.delete(/app/user:id) 删除名字为id的用户
+```
+
+### URL 的7个部分组成：
+scheme:[//[user[:password]@]host[:post][/path][?query][#fragemnt]
+scheme:使用协议 如FTP、HTTP等
+user[:password] : 表示访问资源的用户和密码，常见于FTP协议
+host 主机
+port 端口
+path 访问资源路径
+query 请求数据，以？开头
+fragment 定位锚点，以#开头，可用于快速定位网页对应段落
+
+### 常用http状态码
+1** 消息   100 继续，继续响应剩余部分，如已完成，可忽略
+2** 成功   
+3** 重定向  301 永久移动； 302 临时移动； 304 未修改，请求资源对比上次没有修改
+4** 请求错误 401 未授权 ； 403 禁止； 404 未找到；
+5** 和 6** 服务器错误  500 服务器内部错误； 503 服务不可用；
+
+
+
 ## 参考和学习资料
 [koa 官网](https://koajs.com/#context)
 [koa github ](https://github.com/koajs/koa#readme)
+[koa example，挺好的官方示例，比较全，做需求时可先在这找示例](https://github.com/YeWills/examples)
 [koa2入门笔记](https://www.jianshu.com/p/d3afa36aa17a)
+[前端demo,可用于向后台发请求](https://github.com/YeWills/react-redux-demo/tree/films_new)
+[比较综合的示例，页面效果比较炫](https://github.com/YeWills/koa-demo/tree/pro-static)
