@@ -1,8 +1,8 @@
 ---
 title: node模块
-tags: [node node_modules]
+tags: [node , nodemon]
 categories: 
-- [node, nodemon]
+- [node]
 series: 服务端
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: koa2笔记
 date: {{ date }}
-tags: [koa2]
+tags: [koa2, 鉴权, content-type, RESTfull, 解决跨域, 截取前端请求 , 服务端转发请求]
 categories: 
 - [koa2]
 series: 服务端
@@ -160,6 +160,7 @@ text/html  -- ctx.response.type='html'
 image/png  -- ctx.response.type='image/png'
 text/plain  -- ctx.response.type='text'  浏览器默认text/plain
 
+
 ### 设置响应状态码
 通过ctx.status设置，ctx.status是ctx.response.status的别名
 ```
@@ -231,11 +232,35 @@ app.use(async (ctx, next)=>{
 next()返回一个Promise对象，配合await使用，可以达到阻塞后面程序执行，等待 next() 返回类似reject()才最终执行nex()后面的程序。
 每个中间件必须使用next()，否则异常。
 
+### 写一个中间件
+这里动手写一个logger中间件小demo，用来打印日志：
+原代码
+```
+ app.use(async (ctx, next)=>{
+   console.log(ctx.method,ctx.host + ctx.url)
+   await next();
+   ctx.body = 'hellow world'
+ })
+```
+动手写一个logger中间件，用于打印日志，改造后如下：
+```
+const Koa = require('koa')
+const app = new Koa()
+const logger = async function(ctx, next){
+  console.log(ctx.method,ctx.host + ctx.url)
+  await next();
+}
+app.use(logger)
+app.use(async (ctx, next)=>{
+  ctx.body = 'hellow world'
+})
+app.listen(3000)
 
+```
 
 ### 两种鉴权方式
 一种是广泛使用的Cookie认证模式；
-一种是基于Token的认证模式, koa中可以结合jsonwebtoken 与 koa-jwt实现Token鉴权.
+一种是基于Token的认证模式, koa中可以结合jsonwebtoken 与 koa-jwt实现Token鉴权.异步到这里了解更多《jsonwebtoken 与 koa-jwt》.
 [这里是一个基于Token的鉴权demo](https://github.com/YeWills/koa-demo/tree/router-Token)
 
 
@@ -274,31 +299,19 @@ function stat(file) {
 #### 使用koa-static实现的方式
 此方法参见《koa-static》，弊端是，无法自定义路由名称，只能以文件名称为接口url。
 
-### 写一个中间件
-这里动手写一个logger中间件小demo，用来打印日志：
-原代码
-```
- app.use(async (ctx, next)=>{
-   console.log(ctx.method,ctx.host + ctx.url)
-   await next();
-   ctx.body = 'hellow world'
- })
-```
-动手写一个logger中间件，用于打印日志，改造后如下：
-```
-const Koa = require('koa')
-const app = new Koa()
-const logger = async function(ctx, next){
-  console.log(ctx.method,ctx.host + ctx.url)
-  await next();
-}
-app.use(logger)
-app.use(async (ctx, next)=>{
-  ctx.body = 'hellow world'
-})
-app.listen(3000)
+### 截取前端请求方案
+koa启动服务，使用koa-view render 整个编译好的前端工程index.html, 此时index.html自然处于koa的同域名下，index.html发的每个请求都被koa 的app.use截取，在app.use内，再使用《服务端发起请求的方法》，组装数据，修改url，向指定服务器发起请求，而服务器之间请求没有跨域限制，成功的解决跨域。
+这种方式最理想，因为不用修改后台，因为很多公司升级改造时，后台可以给你提供测试用户账号，因为老的项目客户正在使用，不能修改放开跨域限制的代码,遇到这种场景，就必须使用以上解决跨域的方式。
+[服务端截取请求向另外服务器发请求的demo](https://github.com/YeWills/koa2_films/tree/forward-cors)
+参考《服务端发起请求的方法》了解更多
+参考《跨域请求有时会发两次请求》了解更多
 
-```
+### 服务端发起请求的方法
+服务端发起请求可以轻松实现，koa截取前端请求组装数据后 转发请求的功能。
+#### http方式
+参考《http》
+#### request方式
+参考《request-promise-native request》
 
 ### ctx.state
 此属性，在做笔记为止，用的比较少，不用深究，用时再了解。
@@ -338,11 +351,12 @@ console.log('run in 3000')
 解决的方法也简单，koa-bodyparser本来是为了方便获取ctx.req.on,使用了koa-bodyparser就没必要使用ctx.req.on。
 或者用kctx.req.on，就不要用koa-bodyparser；
 
-### koa2-cors解决跨域
-#### 使用
+### 跨域的两种解决方式
+#### koa2-cors解决跨域
+##### 使用
 var cors = require('koa2-cors');
 app.use(cors());
-#### 将koa2-cors放在最上面
+##### 将koa2-cors放在最上面
 将koa2-cors放在最上面，让koa2-cors先于其他中间件执行：
 ```
 app.use(cors()) // 解决跨域，跨域代码最好放在所有中间件前面
@@ -364,6 +378,17 @@ app.listen(3000, ()=>{
   console.log('server is running at http://localhost:3000')
 })
 ```
+##### 优缺点
+需要修改后台，需要后台放开跨域限制，如果后台已经投产，客户正在使用该后台，那么肯定不能放开跨域限制，这种跨域解决方法就满足不了需求。
+
+#### 服务端向服务端发请求解决跨域
+##### 实现方法
+参考《截取前端请求方案》
+参考《跨域请求有时会发两次请求》
+参考《跨域请求有时会发两次请求》
+这里有一个服务端截取前端请求，转发给指定服务器的[demo](https://github.com/YeWills/koa2_films/tree/forward-cors)，不过该demo只做了一个接口的转发,看本例了解下这种模式
+##### 优缺点
+优点是，不用修改后台，这种方法非常适合后台在使用，而要做产品升级的项目，缺点是，前端项目工程配置麻烦。
 
 ### /home/:id/:name 路由对应的url
 router.get('/home'  ---对应 http://localhost:3000/home?id=01&name=admin
@@ -377,13 +402,13 @@ router.get('/home/:id/:name'  ---对应 http://localhost:3000/home/01/admin
 解决之道就是把自定义headers字段删掉后；
 或者不要使用require('koa2-cors')的方式解决跨域，可以通过服务端请求服务器的方式解决跨域；
 因为跨域是浏览器的限制机制，而服务器与服务器之间不存在跨域问题，具体思路：
-在同域名下通过 koa 截取 项目的所有fetch请求，然后使用 request 模块，通过 request 给另外域名下的服务器发请求。
+在同域名下通过 koa 截取 项目的所有fetch请求，然后使用 request 模块，通过 request 给另外域名下的服务器发请求,[服务端截取请求向另外服务器发请求的demo](https://github.com/YeWills/koa2_films/tree/forward-cors)
 
 ### 后台报错app有错误日志，也会报跨域错误
 如果配置了koa2-cors解决跨域，但请求时有跨域报错，可能是app.use内部程序执行报错，会导致后台响应异常，然后前台可能显示为跨域限制错误
 
 
-## koa2模块
+## koa2模块上
 ### koa-router
 #### Usage
 ```
@@ -586,18 +611,6 @@ router.post('/api/login', async (ctx, next) => {
   })
 ```
 
-### querystring
-querystring模块有以下作用
-```
-const Querystring = require('querystring')
-Querystring.escape('id=1') //返回 id%3D1
-Querystring.unescape('id%3D1') //返回 id=1
-querystring.parse('foo=bar&abc=xyz&abc=123') //返回 {foo: 'bar',abc: ['xyz', '123']}
-querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' }) // 返回 'foo=bar&baz=qux&baz=quux&corge='
-```
-[更多点击官网](http://nodejs.cn/api/querystring.html)
-
-[这里有一个querystring的demo](https://github.com/YeWills/koa-demo/tree/http-request)
 
 ### http
 http说的是 require('http')模块。
@@ -632,12 +645,40 @@ router.get('/', async (ctx, next) => {
 ```
 [完整http request的demo](https://github.com/YeWills/koa-demo/tree/http-request)
 
+### request-promise-native request 
+以下是自己对request-promise-native request的直观理解，没有深入研究，对不对待考：
+request-promise-native 可能依赖 request，安装好request-promise-native会自动安装request，
+所以request-promise-native 和request是一回事，request-promise-native是request的增强版，
+他们都只做一件事，在服务器发起接口请求，与同为服务器发请求的http效果一样；
+与浏览器端发请求的fetch axios功能一样，作用的环境不一样而已。
+
+暂时不用过多了解，用时深究，这里有一个用到request-promise-native request的demo，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
+
 ### koa-multer
 koa-multer 用来做文件上传功能，需要配合 fs模块一起，比较简单，[这是文件上传koa-multer 和fs demo](https://github.com/YeWills/koa-demo/tree/web-pro)。
 
 
 ### fs
 demo和介绍，参考《koa-multer》《写一个返回文件的接口》，这两部分都有demo，使用fs做了一个文件上传和读取本地文件并返回给前台的功能
+
+
+## koa2模块下
+
+### koa2-cors
+参考《koa2-cors解决跨域》
+
+### querystring
+querystring模块有以下作用
+```
+const Querystring = require('querystring')
+Querystring.escape('id=1') //返回 id%3D1
+Querystring.unescape('id%3D1') //返回 id=1
+querystring.parse('foo=bar&abc=xyz&abc=123') //返回 {foo: 'bar',abc: ['xyz', '123']}
+querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' }) // 返回 'foo=bar&baz=qux&baz=quux&corge='
+```
+[更多点击官网](http://nodejs.cn/api/querystring.html)
+
+[这里有一个querystring的demo](https://github.com/YeWills/koa-demo/tree/http-request)
 
 ### koa-json、log4js、ip
 [这里只放一个demo](https://github.com/YeWills/koa-demo/tree/pro-static)，不深入了解，用到的时候再深究，此demo包含koa-static、log4js与ip、koa-json、koa-nunjucks
@@ -648,9 +689,9 @@ koa-nunjucks是基于nunjucks的html 模板中间件。
 这里只放一个demo，不过多解释，用到的时候再了解。
 [koa-nunjucks的使用demo](https://github.com/YeWills/koa-demo/tree/web-pro)
 
-### ejs pug puppeteer parcel-bundler
+### ejs pug 
 暂时不用过多了解，用时深究，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
-### request-promise-native request glob 
+### puppeteer parcel-bundler  glob
 暂时不用过多了解，用时深究，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
 
 
@@ -696,6 +737,7 @@ fragment 定位锚点，以#开头，可用于快速定位网页对应段落
 此仓库其他分支还有单纯的 开发后台的分支;
 也有单纯的爬虫demo：[爬虫小demo](https://github.com/YeWills/koa2_films/tree/puppeteer)；
 还有一个分支为：[nodejs 异步io的理解 阻塞非阻塞，事件循环与驱动，单线程，子进程，进程通讯)events 框架demo](https://github.com/YeWills/koa2_films/tree/event_IO_loop)；
+[服务端截取请求向另外服务器发请求的demo](https://github.com/YeWills/koa2_films/tree/forward-cors);
 
 ### films_new
 [films_new](https://github.com/YeWills/react-redux-demo/tree/films_new)是react-redux-demo仓库下的分支。
