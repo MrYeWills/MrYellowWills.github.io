@@ -318,4 +318,34 @@ bottom: 0;
 <div class="item">1</div>
 ```
 
+### 大汇集
 
+font-weight 默认为normal，normal对应数值为400，可以使用关键字 normal、bold等等，也可以使用数数值，都是100的整数：100、200、300、400等等
+text-transform 可以使英文单词首字母大写或者所有字母大写，或者所有字符小写的功能；
+word-spacing: 0.1em; 英文单词间距
+letter-spacing: 0.1em; 英文字母间距
+text-shadow ： 字体阴影效果
+text-overflow: ellipsis
+        clip : 不显示省略标记（...），而是简单的裁切
+        ellipsis : 当对象内文本溢出时显示省略标记（...）
+
+
+columns 可用来文本分多栏显示；
+pointer-events 可用来打开的禁止元素的事件响应，设置为none的时候，不会触发该元素的hover和click事件；
+
+### @font-face写法
+format 给浏览器提示，src内的文件类型是什么，方便浏览器阅读；
+font-face用的是后备机制写法，如下src写了很多，就是给不同设备的浏览器解析，增加兼容性；
+font-weight和font-style作为可选配置，如果配置了，那么在使用此字体时，必须设置与**这里一样的font-weight和font-style值时才起作用,这点很容易让人忽视**
+见P84《精通css 高级web标准解决方案》
+```
+   @font-face {
+	font-family: 'YourWebFontName';
+    font-weight: '400';
+	src: url('YourWebFontName.eot'); /* IE9 Compat Modes */
+	src: url('YourWebFontName.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+             url('YourWebFontName.woff') format('woff'), /* Modern Browsers */
+             url('YourWebFontName.ttf')  format('truetype'), /* Safari, Android, iOS */
+             url('YourWebFontName.svg#YourWebFontName') format('svg'); /* Legacy iOS */
+   }
+```
