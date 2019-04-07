@@ -349,3 +349,106 @@ font-weight和font-style作为可选配置，如果配置了，那么在使用�
              url('YourWebFontName.svg#YourWebFontName') format('svg'); /* Legacy iOS */
    }
 ```
+
+### margin:0 auto在inline-block失效
+如下，child将不居中；
+```
+    .wrap{
+            background: #00bcd4b5;
+            height: 90px;
+        }
+        .child{
+            display: inline-block;
+            height: 50px; 
+            width: 100px;
+            background: rebeccapurple;
+            margin: 0 auto;
+        }
+
+<body>
+    <div class="wrap">
+        <div class="child"></div>
+    </div>
+</body>
+```
+解决的方法就是从新设置 child 的display: block;
+```
+ .child{
+     <!-- 其他不变 -->
+      display: block;
+        }
+```
+为什么margin: 0 auto对inline-block无效呢，对于margin来说，auto是一个特殊关键字，在[以下是w3c关于margin的auto关键字执行机制的解释](https://www.w3schools.com/css/css_margin.asp)
+```
+You can set the margin property to auto to horizontally center the element within its container.
+The element will then take up the specified width, and the remaining space will be split equally between the left and right margins:
+可以将Margin属性设置为Auto，使元素在其容器内水平居中。
+元素将占用指定的宽度(就是自己的width)，剩余的空间将在左右页边距之间平均分配：
+```
+从上面的话中，我们知道，要想auto有效，必须提供如下条件---
+- 必须给元素设置宽度
+浏览器要将元素所处的行的宽度减去元素宽度，获得剩余宽度，然后平均分配；
+- 必须是块级元素
+必须是block元素，因为在block元素中，这一行只有这一个元素，如果不是block，例如是inline-block时，就算浏览器可以让元素居中，但是该行中还有其他行内元素，那么这个居中元素是覆盖还是将其他行内元素一起居中呢。
+所以非block元素，auto关键字无效。
+
+#### 注意
+- 这里说的是auto关键字无效，而不是margin这个属性失效，auto无效，你也可以给定一个具体值，margin都是有效的；
+- 对于img，button这些元素本身是有宽度的，可以不用设置宽度，只需指定display: block;就可以使用 margin:0 auto居中；
+- 对于行内元素，含inline-block，要让他们居中的最好方法是text-align,毕竟text-align是针对行内元素居中而创造的，这个故事告诉我们，对于不同类型的居中，虽然很多种方法都可以居中，但要选对规范的犯法;
+简单点就是，块级元素 使用 margin: 0 auto居中，行内元素使用text-align居中； 
+
+#### 敲黑板
+ 在现代浏览器中，如果要把一些东西水平居中，使用 display:flex; 对于不兼容flex的浏览器如IE8-9 才建议使用 margin: 0 auto;
+
+### margin垂直方向的外边距折叠
+#### 现象
+```
+  .wrap{
+            background: red;
+            height: 150px;
+        }
+        .chilid{
+            margin-top: 80px;
+            height: 50px; 
+            background: blue;
+        }
+
+<body>
+    <div class="wrap">
+        <div class="chilid"></div>
+    </div>
+</body>
+```
+效果如下：
+![](/image/css/margin1.jpg)
+
+这里的效果并没有达到我们的预期，我们对chilid做了margin-top，那么child理应是相对父wrap进行margin，而实际中，child却相对浏览器边缘进行了margin-top；
+这就是外边距折叠的现象之一。
+
+解决方案，就是在wrap中写一个border或者写一个padding，就可以达到预期效果了；
+
+#### 其他外边距折叠现象：
+![](/image/css/margin2.jpg)
+
+#### 出现外边距折叠的条件
+外边距折贴**只发生在正常文档流中的块级元素的 margin 垂直方向上；**
+margin水平方向无此现象；
+行内盒子，浮动盒子，绝对定位无此现象；
+而且块级元素发生此现象的另外重要条件是，父元素**既没有border又没有padding才会发生此现象**。参考上面的例子。
+所以我们在实际开发中，往往要对header进行margin-top处理时，不要使用margin-top，使用padding-top代替，因为可能会发生折叠现象；
+外边距折叠现象其实是有很多好处的，可以避免很多多余的margin，可参考 《精通css》P45页，[外网w3c也提到了margin 垂直方向上的折叠现象](https://www.w3schools.com/css/css_margin.asp);
+
+
+### position定位相关
+position:relactive:
+相对定位：相对于自身原位置偏移；
+仍处于标准文档流中；
+随即拥有偏移属性和z-index属性；
+
+position:absolute:
+绝对定位：
+完全脱离了标准文档流；
+随即拥有偏移属性和z-index属性；
+元素具有了包裹性，与float类似；
+
