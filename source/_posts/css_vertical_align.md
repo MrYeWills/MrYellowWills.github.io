@@ -1,7 +1,7 @@
 ---
 title: vertical-align 与 baseline
 date: {{ date }}
-tags: css
+tags: [css, vertical-align, baseline, 行内盒子, x-height]
 categories: 
 - css
 series: css
@@ -56,6 +56,18 @@ a2所在的父元素，它的基线由父元素内的inline-block元素确定，
 ![](/image/css/vertical-align/vertical1.png)
 ，因为a1、a2默认的垂直对齐方式都是 vertical-align:baseline，而父基线由a1决定，就是a1的下边框；所以a2需要下降，让它的的基线与父基线位置一致。
 
+## 如何对齐
+将同时设置两个inline-block 为 
+vertical-align: middle;
+或者
+    vertical-align: top;都可以
+当然，还可以设置inline-block为浮动元素，脱离文档流，也可以对齐；
+解释下同时设置两个inline-block 为 vertical-align: middle时为何能对齐；
+上面的例子，a1是空的inline-block，a2是非空inline-block，父基线以 空的a1为准，当a1设置vertical-align: middle，
+a1将父基线的位置由a1的下边距，提升至a1的中部+x-height/2,可以近似看成就是a1的中部。
+a2也将自己的中部与父基线对齐，所以就对齐了。
+如果不清楚，可以看下面章节《如何确定父元素的baseline》或《另外一个例子》
+
 ## 对上面例子延伸
 ```
 <!-- 其他都一样 -->
@@ -81,10 +93,11 @@ a2所在的父元素，它的基线由父元素内的inline-block元素确定，
 
 vertical-align: middle 意思是：使元素的中部与父元素的基线加上父元素x-height的一半对齐。
 
-本例中，父元素的基线就是a2的基线，a2的基线如图所示，所以变成这样的效果。
+本例中，x-height的值差不多5px，x-height 的值计算，参考下面章节《x-height》,
+父元素的基线就是a2的基线，a2的基线如图所示，所以变成这样的效果。
 
 
-## 验证--获取父基线最简单的方法
+## 获取父基线最简单的方法
 可能你疑惑，上面例子中，父基线真的是上面所说的吗，怎么验证呢，一个简单的方法，就是在父元素内，增加一段匿名行内元素，简单点说就是在父元素内，增加一段字符，那么这个字符的位置就说明了父元素的基线位置，因为，父元素的基线 总是与其内的匿名行内元素的基线一致：
 比如
 
@@ -172,7 +185,7 @@ div{
 
 ## x-height
 ![](/image/css/vertical-align/x-height.png)
-
+上面的例子中，font-size,默认是浏览器的16px，那么x-height值差不多是font-size的三分之一，就是5px左右。
 
 ## 如何确定父元素的baseline
 通过以上例子，我们可以看到
@@ -187,7 +200,20 @@ div{
 
 ### 有inline-block
 如果父元素内有inline-block，且inline-block内没有文字时，父baseline就是inline-block的下边距线；
+如：
+```
+ <div class="father">
+    <div class="inline-block"></div>
+ </div>
+```
 如果父元素内有多个inline-block，且有些inline-block内有文字时,此时父元素内的baseline以没有文字的inline-block为准；
+如：
+```
+ <div class="father">
+    <div class="inline-block">来电文字</div>
+    <div class="inline-block"></div>
+ </div>
+```
 详细，参见上面例子。
 
 ### 有img图片
