@@ -158,7 +158,7 @@ show_last_updated: true
 # 版权信息copyright
 ## 位于文章底部
 ## hexo中所有变量及辅助函数等均可调用，具体请查阅 hexo.io
-postMessage: 转载注明出处，原文地址：<a href="<%- url_for(page.path).replace(/index\.html$/, "") %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, "") %></a>
+postMessage: 博客内容均为原创，转载注明出处，原文地址：<a href="<%- url_for(page.path).replace(/index\.html$/, "") %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, "") %></a>
 
 # 打赏
 ## 可以在文章markdown中设置reward: false来取消本篇文章的打赏功能
