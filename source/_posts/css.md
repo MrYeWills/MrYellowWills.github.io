@@ -194,7 +194,9 @@ img{
 浮动定位于绝对定位都会脱离文档流，但二者表现不一样；
 绝对定位是完全脱离文档流，相当于文档中不存在此元素了，而浮动定位脱离文档流要区别行内元素，原因如上。
 
-### font-size的em叠加
+### 关于em
+
+#### font-size的em叠加
 ```
 .it1{
   font-size:1.314em;
@@ -209,12 +211,43 @@ img{
   <div class="it2">元素2</div>
 </div>
 ```
-### em的使用场景
+#### font-size:1.314em 与 height: 1.314em 区别
+由下面代码可知，font-size 与 height\margin\padding这些属性不一样；
+font-size的em的基准是父font-size;
+height\margin\padding等的em基准是自身的font-size；
+```
+.it1{
+  font-size:1.314em;
+}
+.it2{
+  font-size:1.314em;
+  height: 1.314em;
+}
+<div class="it1">
+  <!-- 元素1  font-size 将为16px*1.314 =21px -->
+  元素1
+  <!-- 元素2  font-size 将为16px*1.314*1.314 =28px -->
+  <!-- 元素2  height  将为自己的font-size*1.314 =36px -->
+  <div class="it2">元素2</div>
+</div>
+```
+#### em的使用场景
 font-size
 padding
 border-radius (不包含border-with)
 margin
 
+#### 为什么要使用em
+当你想要当前元素的 padding，margin，line-height 等值，与当前字体大小成比例的时候，使用 em 单位。
+
+### em rem场景
+rem 主要用于移动端适配；
+em运用场景见《关于em》
+
+
+
+### float清空格
+根本原因是由于float会导致节点脱离文档流结构。它都不属于文档流结构了，那么它身边的什么换行、空格就都和它没关系的，它就尽量的往一边去靠拢，能靠多近就靠多近，这就是清空格的本质。
 
 ### display:none与visibility:hidden
 display:none 不为被隐藏的对象保留其物理空间 
@@ -318,6 +351,8 @@ bottom: 0;
 <div class="item">1</div>
 ```
 
+
+
 ### 大汇集
 
 font-weight 默认为normal，normal对应数值为400，可以使用关键字 normal、bold等等，也可以使用数数值，都是100的整数：100、200、300、400等等
@@ -332,6 +367,7 @@ text-overflow: ellipsis
 
 columns 可用来文本分多栏显示；
 pointer-events 可用来打开的禁止元素的事件响应，设置为none的时候，不会触发该元素的hover和click事件；
+background-clip 设置元素的背景（背景图片或颜色）是否延伸到边框下面
 
 ### @font-face写法
 format 给浏览器提示，src内的文件类型是什么，方便浏览器阅读；
@@ -452,3 +488,96 @@ position:absolute:
 随即拥有偏移属性和z-index属性；
 元素具有了包裹性，与float类似；
 
+### 流转块的三种方式
+- 设置：display:block；
+- 对inline元素设置float；
+- 对inline元素设置position:absolute/fixed；
+大家对第一种熟悉，但没想到后面两种也可以流转块；
+
+
+### 颜色值函数-rgb/rgba/hsla
+rgba是rgb的进化版，带有透明度；
+#ffffff 六位数是没有透明度的；
+#00000000 八位数的是有透明度的；
+
+### background相关属性
+### background
+background是个简写属性，会重置以前定义的很多background属性，因此定义的时候，把它放在最上面，然后使用background-color等等属性叠加定义：
+```
+//不推荐，background会重置background-repeat属性，达不到no-repeat效果
+background-repeat: no-repeat;
+background: url(../image/css/vertical-align/column.png);
+```
+```
+//推荐这种写法
+  background: url(../image/css/vertical-align/column.png);
+  background-repeat: no-repeat;
+```
+### background多重背景
+```
+background: url(./column.png), url(./column1.png), url(./column2.png), url(./column3.png);
+background-position: left top, right top, left bottom, right bottom;
+background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+background-color: pink;
+```
+### background-size
+如果要让背景图片充满整个元素，则基本上要用到这个属性
+background-size: 100% 100%  背景图片的宽度为元素宽度100%，高度为元素高度100% （此种写法会让图片充满元素，但会失真）
+background-size: 100% auto  背景图片的宽度为元素宽度100%，高度由浏览器自动计算一个值，保持不失真(推荐)
+其他可取值：
+```
+background-size:auto;
+background-size:cover;
+background-size:contain;
+background-size:auto;
+background-size:50px;
+background-size:50%;
+```
+
+### 兼容写法
+background-image写两遍，是为了兼容后退机制写法。
+```
+.item{
+    background-image:url(./column.png); 
+    background-image:url(./column.png), url(./column1.png), url(./column2.png); 
+}
+```
+
+### 渐变
+关于渐变的东西太多，这里只写点东西，留个印象。
+
+#### 线性渐变
+线性渐变由linear-gradient定义，linear-gradient是一个css函数,
+##### 同位置定义两个颜色
+同位置定义两个颜色会形成一个分割线：
+
+```
+background-image: linear-gradient(blue, green 30%, red 50%);
+```
+从上到下，蓝色开始，到30%的位置时是绿色开始，到50%是红色开始，以后都是红色，效果：
+![](/image/css/linear1.jpg)
+
+```
+background-image: linear-gradient(blue, green 50%, red 50%);
+```
+同位置定义了绿色和红色 50%；发现绿色和红色重合了，这个也是一个小技巧，效果：
+![](/image/css/linear2.jpg)
+
+。
+
+##### 其他值
+```
+/* 渐变轴为45度，从蓝色渐变到红色 */
+linear-gradient(45deg, blue, red);
+/* 从右下到左上、从蓝色渐变到红色 */
+linear-gradient(to left top, blue, red);
+```
+
+#### 线性渐变
+```
+ background-image: radial-gradient(circle, red, yellow, green);
+ ```
+
+#### 渐变的应用场景
+渐变的应用场景非常广泛，很多css技巧，很多图形，如四边形，菱形，梯形，多边形，格子背景，背景图案 等等，都可以有渐变完成；
+在《css 揭秘》这边书中，有很多技巧都基于渐变完成
