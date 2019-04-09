@@ -259,6 +259,61 @@ vertical-align:middle
 在文首的提问中，为什么这里有缝隙呢，[原来这个默认vertical-align:baseline，而baseline的下方会给字母的一部分留出空间，因此会产生一个空隙，要产生理想的效果](https://www.cnblogs.com/starof/p/4512284.html?utm_source=tuicool&utm_medium=referral),链接上文章上说它与vertical-align有关（顺便说下，此链接上的文章有些例子有问题，注意了），至于为什么或者到底是否与vertical-align有关就不要穷究了，可能是vertical-align造成就行。
 ![](/image/css/question1.png)
 
+#### 利用伪类垂直居中
+```
+  .wrap {
+        background: #00bcd4ba;
+        height: 150px;
+    }
+
+    .item {
+        vertical-align: middle;
+    }
+
+    .item1 {
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+        background: blue;
+    }
+
+    .item2 {
+        height: 80px;
+        width: 80px;
+        display: inline-block;
+        background: blue;
+    }
+
+<div class="wrap">
+    80版经典上海滩
+    <div class="item1 item"></div>
+    <div class="item2 item"></div>
+</div>
+
+```
+效果：
+![](/image/css/vertical-align/after1.jpg)
+
+你看到就算你把item1和item2都做了vertical-align: middle;
+都无法让元素相对于整个wrap元素垂直居中，
+增加下面代码就可以了,给父层增加一个伪类，设置这个伪类为inline-block,从而能设置宽高；
+这个伪类的高度撑满整个wrap，然后设置vertical-align: middle;
+因为这个伪类的高度相对其他元素最高，所以，它设置vertical-align: middle会将父元素的baseline拉到伪类的中部去，
+而伪类又与父元素同高，这样就可以达到相对父元素垂直居中。
+```
+.wrap::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    <!-- 注意的是上面代码不起作用时，可以定义width: 1px; 一般是不必定义width: 1px-->
+    <!-- width: 1px; -->
+    vertical-align: middle;
+}
+```
+其实这样的after伪类有些人也称为幽灵元素。
+效果：
+![](/image/css/vertical-align/after2.jpg)
+
 ### 关于vertical-align你要知道的
 vertical-align 就是用来让行内元素对齐的；vertical-align这个属性就是为了行内元素而生，如果没有行内元素，vertical-align就没有任何存在的意义；
 同样的，如何要做行内元素的对齐，你可以不使用vertical-align，但如果不懂vertical-align，那么你能把行内元素做得对齐，也是碰运气，瞎搞搞。

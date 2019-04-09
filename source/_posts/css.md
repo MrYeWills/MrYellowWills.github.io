@@ -437,7 +437,9 @@ The element will then take up the specified width, and the remaining space will 
 #### 敲黑板
  在现代浏览器中，如果要把一些东西水平居中，使用 display:flex; 对于不兼容flex的浏览器如IE8-9 才建议使用 margin: 0 auto;
 
-### margin垂直方向的外边距折叠
+### 外边距折叠
+外边距折叠只发生在margin垂直方向，水平方向没有此现象，所以外边距折叠，指的就是margin-top与margin-bottom两个方向。
+
 #### 现象
 ```
   .wrap{
@@ -475,6 +477,68 @@ margin水平方向无此现象；
 所以我们在实际开发中，往往要对header进行margin-top处理时，不要使用margin-top，使用padding-top代替，因为可能会发生折叠现象；
 外边距折叠现象其实是有很多好处的，可以避免很多多余的margin，可参考 《精通css》P45页，[外网w3c也提到了margin 垂直方向上的折叠现象](https://www.w3schools.com/css/css_margin.asp);
 
+
+### BFC
+块格式化上下文，全称Block Formatting Context，你也可以叫它肯德基；相关概念去mdn或w3c查。
+#### BFC特征
+BFC有以下特征：
+- 内部的Box会在垂直方向，一个接一个地放置。
+- Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+- 每个元素的左外边缘（margin-left)， 与包含块的左边（contain box left）相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。除非这个元素自己形成了一个新的BFC。
+- BFC的区域不会与float box重叠（可阻止因浮动元素引发的文字环绕现象）。
+- BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。 (利用此特性，解决外边距折叠问题)
+- 计算BFC的高度时，浮动元素也参与计算 （利用这一特性，使用overflow消除浮动）
+[参考1](https://segmentfault.com/a/1190000009545742)
+[参考2](https://www.jianshu.com/p/11e764268c0d)
+
+#### 创建一个BFC
+根元素或其它包含它的元素
+浮动 (元素的 float 不是 none)
+绝对定位的元素 (元素具有 position 为 absolute 或 fixed)
+块级元素具有overflow ，且值不是 visible
+非块级元素具有 display: inline-block，table-cell, table-caption, flex, inline-flex
+[更多创建方式](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+
+#### 为什么要创建BFC
+在MDN中单独讲了BFC的两个作用：消除浮动与避免外边距折叠；
+所以，在正常编程中，我们不用刻意去关心什么是BFC，不过当遇到消除浮动，消除浮动环绕，消除外边距折叠问题时，为了解决这个问题，
+我们可以创建一个BFC来解决，为什么BFC能解决？
+因为BFC有自己的特征，一旦元素变成了一个BFC，它就具备了BFC赋给它的特征，而这些特征可以解决上面说的问题。
+
+#### 消除浮动
+子元素定义float后，父元素的高度变成很小或者0了，这个时候，我们可以将父元素变成一个BFC，而利用BFC上面的特征6，计算BFC的高度时，浮动元素也参与计算 ，这个时候父元素的高度将包含浮动的子元素高度，解决浮动了。
+由上面可知，将元素定义一个overflow，可以将该元素编程BFC。
+```
+.wrap{
+    background: red;
+    width: 100%;
+    overflow: hidden;
+}
+.chilid{
+    float: left;
+    width: 100%;
+    height: 50px; 
+    background: blue;
+}
+
+<div class="wrap">
+        <div class="chilid"></div>
+    </div>
+```
+
+#### 自适应两栏布局
+[不多写了，直接参考这里吧](https://segmentfault.com/a/1190000009545742)
+
+#### 消除外边距折叠
+这里有两个例子
+[一个例子，见文中的--防止垂直margin合并](https://segmentfault.com/a/1190000009545742)
+第二个例子，我们改写下 《外边距折叠》章节的《现象》例子，给wrap添加一个float属性，将.wrap变成一个BFC，利用BFC特征5：BFC就是页面上的一个隔离的独立容器，margin是wrap的一部分，所以margin不受外部影响。
+```
+.wrap{
+    width: 100%;
+    float: right;
+}
+```
 
 ### position定位相关
 position:relactive:
@@ -581,3 +645,55 @@ linear-gradient(to left top, blue, red);
 #### 渐变的应用场景
 渐变的应用场景非常广泛，很多css技巧，很多图形，如四边形，菱形，梯形，多边形，格子背景，背景图案 等等，都可以有渐变完成；
 在《css 揭秘》这边书中，有很多技巧都基于渐变完成
+
+
+### z-index只用于定位元素
+Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
+很多人将它用于普通元素，没毛病，属于经典地犯错。
+
+### flex
+#### 介绍
+注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
+两个概念：主轴、辅轴(交叉轴)；
+
+#### 属性
+以下6个属性设置在容器上
+- flex-direction
+- flex-wrap  ---是否换行
+       flex-flow 上面二者缩写
+- justify-content
+- align-items
+- align-content 多行（多轴）如何对齐，与align-items意义一样，前者是单行，后者多行；
+
+
+- order 定义项目的排列顺序，实际中用得少；
+- flex-grow 放大
+- flex-shrink 收缩
+- flex-basis 属性定义了在**分配多余空间之前**，项目占据的主轴空间，容器根据这个属性，计算主轴是否有多余空间，然后决定如何执行- flex-grow或flex-shrink，这个属性是flex中比较难理解的，同时设置width和flex-basic时，flex-basic覆盖width，在flex子项中，建议使用flex-basic，少用width，有些人说，flex-basic是用来代替width的。
+     flex 上面三者的简写  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+- align-self  单独垂直对齐，可覆盖align-items属性
+
+#### 运用技巧
+
+##### 行内自适应宽度
+一行当中，某几个行元素固定高度，给剩下一个元素随意定义一个flex值，比如1、2、3...都可以，让这个元素自适应。
+```
+   .box{
+            display: flex;
+        }
+        .box-item1{
+            width: 80px;
+            background: rebeccapurple;
+        }
+        .box-item2{
+            flex: 1;
+            background: red;
+        }
+
+        <div class="box box-2">
+                <div class="box-item1">2</div>
+                <div class="box-item2">3</div>
+            </div>
+```
+效果：
+![](/image/css/flex1.jpg)
