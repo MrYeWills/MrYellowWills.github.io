@@ -660,7 +660,7 @@ Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 以下6个属性设置在容器上
 - flex-direction
 - flex-wrap  ---是否换行
-       flex-flow 上面二者缩写
+- **flex-flow 上面二者缩写**
 - justify-content
 - align-items
 - align-content 多行（多轴）如何对齐，与align-items意义一样，前者是单行，后者多行；
@@ -670,7 +670,7 @@ Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 - flex-grow 放大
 - flex-shrink 收缩
 - flex-basis 属性定义了在**分配多余空间之前**，项目占据的主轴空间，容器根据这个属性，计算主轴是否有多余空间，然后决定如何执行- flex-grow或flex-shrink，这个属性是flex中比较难理解的，同时设置width和flex-basic时，flex-basic覆盖width，在flex子项中，建议使用flex-basic，少用width，有些人说，flex-basic是用来代替width的。
-     flex 上面三者的简写  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+- **flex 上面三者的简写**  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
 - align-self  单独垂直对齐，可覆盖align-items属性
 
 #### 运用技巧
