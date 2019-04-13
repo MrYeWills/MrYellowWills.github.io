@@ -6,7 +6,7 @@ categories:
 - css
 series: css
 ---
-## 概述
+
 本文讲解vertical-align, baseline, 行盒子, x-height, line-height, 半铅空,以及这些概念如何运用于行内元素居中、和使用line-height让元素居中，其中花了大量示例和说明介绍了如何确定父元素和行内元素的baseline。
 ## vertical-align
 ### 为什么会这样
