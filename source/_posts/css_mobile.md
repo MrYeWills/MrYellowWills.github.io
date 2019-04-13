@@ -178,6 +178,7 @@ Device pixels应该就是物理像素的英文名称，[根据外文W3c -- CSS U
 
 
 ## 视口
+视口部分，参考《精通css》这边书，若有问题，查询这边书的第八章。
 
 ### 理想视口
 理想视口就是每个手机的屏幕css像素尺寸，例如GALAXY S5屏幕360pxX640px，它的理想视口就是360pxX640px 的css像素尺寸。 见《dpr 与 css像素》。
@@ -271,9 +272,14 @@ Device pixels应该就是物理像素的英文名称，[根据外文W3c -- CSS U
 <meta name="viewport" content="width=device-width">
 ```
 
-
-
-
+参考：
+[精通css 高级web标准解决方案](http://www.ituring.com.cn/book/1910)
+[MDN --devicePixelRatio](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio)
+[外文W3c --CSS Units](https://www.w3schools.com/cssref/css_units.asp)
+[高清屏及适配不同设备的方案总结](https://www.cnblogs.com/sese/p/5977486.html)
+[（全解析）屏幕尺寸，分辨率，像素，PPI之间到底什么关系？](https://www.jianshu.com/p/c3387bcc4f6e)
+[一篇文章搞懂CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport](https://www.jianshu.com/p/3d28f4959c5a?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
+[CSS像素、设备独立像素、设备像素之间关系](https://www.cnblogs.com/jiangzilong/p/6700023.html)
 
 
 
