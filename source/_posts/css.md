@@ -255,7 +255,8 @@ visibility：hidden 为被隐藏的对象保留其物理空间
 
 
 ### % 参照的是父级的什么属性
-position是left top针对的是父级的什么
+
+#### position
 ```
 {
     position: absolute;
@@ -265,6 +266,15 @@ position是left top针对的是父级的什么
 ```
 left 参照父级的 width；
 top 参照父级的 height；
+
+#### margin 参照父width
+margin 百分比只参照父级的宽度。
+```
+{
+    margin-left: 10%;//父级的宽度
+    margin-top: 10%;//父级的宽度
+}
+```
 
 ### 让元素充满父级和屏幕的方法：
 ### 充满父级：
@@ -467,7 +477,7 @@ The element will then take up the specified width, and the remaining space will 
 解决方案，就是在wrap中写一个border或者写一个padding，就可以达到预期效果了；
 
 #### 其他外边距折叠现象：
-![](/image/css/margin2.jpg)
+![](/image/css/margin2.png)
 
 #### 出现外边距折叠的条件
 外边距折贴**只发生在正常文档流中的块级元素的 margin 垂直方向上；**
@@ -747,3 +757,10 @@ Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 ```
 效果：
 ![](/image/css/flex1.jpg)
+
+### 媒体查询能查的特性
+可以尺度查询，如max-width；
+可以宽高比查询：
+可以横竖屏方向查询；
+可以设备像素比查询 min-resolution
+见P220
