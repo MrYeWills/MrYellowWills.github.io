@@ -540,6 +540,19 @@ BFC有以下特征：
 }
 ```
 
+### 推荐使用伪类来消除浮动
+参考《精通css》P181，
+对于小的元素，使用overflow是比较方便，可以使用overflow；
+对于大的元素，可能元素需要显示滚动条，或者有些定位元素需要放在这个大的元素之外，这时候使用overflow可能产生不利影响，所以大的元素，推荐使用伪元素来实现：
+```
+.row{
+    content:'',
+    display:block,
+    clear:both,
+    height:0
+}
+```
+
 ### position定位相关
 position:relactive:
 相对定位：相对于自身原位置偏移；
@@ -650,6 +663,43 @@ linear-gradient(to left top, blue, red);
 ### z-index只用于定位元素
 Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 很多人将它用于普通元素，没毛病，属于经典地犯错。
+
+### 伪元素做边框
+```
+    .item {
+            height: 100px;
+            width: 100px;
+            position: relative;
+        }
+        .text::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border: 1px solid;
+        }
+```
+```
+<div class="item">
+            <div class="text">
+            </div>
+        </div>
+```
+这其实利用了经常使用的遮罩方法：
+```
+//以此达到百分之百撑满body，这比width：100%要少很多想不到的问题
+.mask{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: grey;
+}
+
+```
 
 ### flex
 #### 介绍

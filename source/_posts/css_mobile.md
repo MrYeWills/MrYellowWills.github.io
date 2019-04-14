@@ -122,12 +122,14 @@ i6在展示时因为会将此图片拉伸两倍，导致图片失真。解决的
 .css{/* 普通显示屏(设备像素比例小于等于1.3)使用1倍的图 */ 
     background-image: url(img_1x.png);
 }
-@media only screen and (-webkit-min-device-pixel-ratio:1.5){
-.css{/* 高清显示屏(设备像素比例大于等于1.5)使用2倍图  */
-    background-image: url(img_2x.png);
-  }
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),
+       (min-resolution: 1.5dppx){
+            .css{/* 高清显示屏(设备像素比例大于等于1.5)使用2倍图  */
+                background-image: url(img_2x.png);
+            }
 }
 ```
+媒体查询设备像素比主要查询 min-resolution,而webkit-min-device-pixel-ratio是一个意思，为了兼容safari。见《精通css》P233
 当然，解决失真的方式还有js或svg矢量图的方式。
 
 ### ppi
@@ -272,7 +274,7 @@ Device pixels应该就是物理像素的英文名称，[根据外文W3c -- CSS U
 <meta name="viewport" content="width=device-width">
 ```
 
-参考：
+## 参考：
 [精通css 高级web标准解决方案](http://www.ituring.com.cn/book/1910)
 [MDN --devicePixelRatio](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio)
 [外文W3c --CSS Units](https://www.w3schools.com/cssref/css_units.asp)
