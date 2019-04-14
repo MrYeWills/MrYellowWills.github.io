@@ -537,7 +537,8 @@ BFC有以下特征：
 ```
 
 #### 自适应两栏布局
-[不多写了，直接参考这里吧](https://segmentfault.com/a/1190000009545742)
+[不多写了，直接参考这里的---<2. 布局：自适应两栏布局>](https://segmentfault.com/a/1190000009545742)，效果如下：
+![](/image/css/margin3.jpg)
 
 #### 消除外边距折叠
 这里有两个例子
@@ -764,3 +765,45 @@ Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 可以横竖屏方向查询；
 可以设备像素比查询 min-resolution
 见P220
+
+### cursor 光标图标
+设置光标图形，几乎你页面上看到的所有光标图样，都可以设置，参考MDN，如：
+```
+cursor: wait;
+```
+![](/image/css/cursor.jpg)
+
+### 很妙的响应式布局简单范例
+GitHub 08-05-responsive-news.html
+
+### 媒体查询的技巧
+
+```
+/* 这种媒体查询的写法，很妙，由上到下进行层叠，下面的覆盖上面的，达到不用写 这种形式：30em<width<56em ,使用一个min-width就达到效果*/
+
+    @media only screen and (min-width: 35em) {
+      .row-quartet > * {
+        width: 50%;
+      }
+      .subcategory-featured {
+        width: 100%;
+      }
+    }
+    @media only screen and (min-width: 50em) {
+      .row-quartet > * {
+        width: 25%;
+      }
+      .subcategory-featured {
+        width: 50%;
+      }
+      
+    }
+    @media only screen and (min-width: 70em) {
+      .subcategory-header {
+        width: 20%;
+      }
+      .subcategory-content {
+        width: 80%;
+      }
+    }
+```
