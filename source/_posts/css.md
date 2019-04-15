@@ -807,3 +807,52 @@ GitHub 08-05-responsive-news.html
       }
     }
 ```
+
+------ 以下待写：
+### 自定义复选框
+E:\css-mastery-16-master\chapter-09\09-checkbox.html
+
+### 感受下最简单的响应式设计demo
+E:\css-mastery-16-master\chapter-08\08-05-responsive-news.html
+
+### calc
+width: calc(50% + 20px*4 - 1em);
+
+### 跟随神器
+js 函数，自适应方向上下左右浮动
+
+### 视口
+
+### css_demo && 平移和动画，见demo
+介绍
+
+### 文字效果
+E:\css-mastery-16-master\chapter-04\04-33-experimenting-with-shadows.html
+
+
+### 响应式设计 的一些应用
+
+对字体的设计：
+  body {
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.5;
+    }
+    @media only screen and (max-width: 37.5em) {
+      h1,h2,h3,h4,h5,h6 {
+        font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
+      }
+    }
+高清图或多倍图或大小图查询：
+ .profile-box {
+      position: relative;
+      height: 300px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-image: url(img/small-cat.jpg);
+    }
+    @media only screen and (min-width: 600px) {
+      .profile-box {
+        height: 600px;
+        background-image: url(img/big-cat.jpg);
+      }
+    }
