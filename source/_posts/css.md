@@ -81,7 +81,7 @@ outline: 15px solid grey;
 #### outline-offse
 outline-offse 是 outline相关的另外一个样式，但不包含在outline的简写当中。
 
-#### outline 与 box-shadow
+#### outline与box-shadow区别
 outline 与 box-shadow有时候可以达到相同效果，不同的是，当元素有border-redius，outline会有缝隙，box-shadow不会。
 
 
@@ -588,8 +588,8 @@ rgba是rgb的进化版，带有透明度；
 #ffffff 六位数是没有透明度的；
 #00000000 八位数的是有透明度的；
 
-### background相关属性
 ### background
+#### 关于background本身
 background是个简写属性，会重置以前定义的很多background属性，因此定义的时候，把它放在最上面，然后使用background-color等等属性叠加定义：
 ```
 //不推荐，background会重置background-repeat属性，达不到no-repeat效果
@@ -601,14 +601,24 @@ background: url(../image/css/vertical-align/column.png);
   background: url(../image/css/vertical-align/column.png);
   background-repeat: no-repeat;
 ```
-### background多重背景
+#### background多重背景
 ```
 background: url(./column.png), url(./column1.png), url(./column2.png), url(./column3.png);
 background-position: left top, right top, left bottom, right bottom;
 background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
 background-color: pink;
 ```
-### background-size
+
+#### 带颜色\图片\定位的背景
+蓝色背景、背景图片、背景图片距离父级右边19px底部向上10px.[demo](http://dabblet.com/gist/0f226e63595d1bef88cb)
+```
+ .wrap {
+            background: url(../image/css/outLine.jpg)  no-repeat  blue;
+  	        background-position: right 19px bottom 10px;
+        }
+```
+
+#### background-size
 如果要让背景图片充满整个元素，则基本上要用到这个属性
 background-size: 100% 100%  背景图片的宽度为元素宽度100%，高度为元素高度100% （此种写法会让图片充满元素，但会失真）
 background-size: 100% auto  背景图片的宽度为元素宽度100%，高度由浏览器自动计算一个值，保持不失真(推荐)
@@ -622,6 +632,16 @@ background-size:50px;
 background-size:50%;
 ```
 
+#### background相关属性
+[background-origin：background-origin 属性规定 background-position 属性相对于什么位置来定位。](https://www.jianshu.com/p/e377c0bebfd0)
+```
+background-origin: padding-box|border-box|content-box;
+```
+[background-clip 规定背景的绘制区域;](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip)
+
+```
+background-clip: padding-box|border-box|content-box;
+```
 ### 兼容写法
 background-image写两遍，是为了兼容后退机制写法。
 ```
@@ -816,12 +836,60 @@ E:\css-mastery-16-master\chapter-09\09-checkbox.html
 E:\css-mastery-16-master\chapter-08\08-05-responsive-news.html
 
 ### calc
+#### 介绍
+calc能识别 px、百分比、em，且可以混写，如下有效：
+```
 width: calc(50% + 20px*4 - 1em);
+```
+注意，calc值内，运算符两边需要空格，否则无效。
+#### calc居中__50%-xx
+以下是常规利用margin auto让img图片居中的方法，弊端是需要给图片设置display: block;,原因参考《margin:0 auto在inline-block失效》
+```
+.wrap {
+        background: rebeccapurple;
+    }
+img{
+    margin: 0 auto;
+    display: block;
+}
+ <div class="wrap">
+        <img class="dd" src="http://csssecrets.io/images/adamcatlace.jpg" />
+    </div>
+```
+可以使用calc来实现，可以让代码更简洁，利用的是数学原理，假设图片长度已知为400px；
+那么 100%- (50%-200px)*2 = 400px ;这个400px就是图片长度，100%是父级宽度50%-200px是内边距或外边距。
+记住 50%-xx 是calc居中的套路。
+```
+//方法一
+ .wrap {
+        background: rebeccapurple;
+        padding: 0 calc(50% - 200px);
+    }
+```
+```
+//方法一
+img{
+    margin: 0 calc(50% - 200px);
+}
+```
+
+### em 定义整理
+padding border-radius box-shadow text-shadow;
 
 ### 跟随神器
 js 函数，自适应方向上下左右浮动
 
 ### 视口
+#### 简介
+参考 css布局
+视口的独有尺寸，vh，vw，
+#### vh/vw 运用
+vh其实很简单，就是相对视口的1%的长度意思。
+参考《四种居中方式 --- 视口vh方法》
+
+### css编写的建议
+将媒体查询当做最后选择，如果你页面布局足够灵活，可能只需要少量的媒体查询即可，所以解决问题时，优先灵活解决，然后再考虑媒体查询。
+
 
 ### css_demo && 平移和动画，见demo
 介绍
@@ -856,3 +924,88 @@ E:\css-mastery-16-master\chapter-04\04-33-experimenting-with-shadows.html
         background-image: url(img/big-cat.jpg);
       }
     }
+  
+### css3较好特性
+#### max-width: min-content
+ min-content是css3关键字，
+ 众所周知，如果不给元素一个具体的height,它就会自动适应内容的高度。假如我们希望width也具有同样的类似行为，如何达到，此时可以使用min-content。
+ min-content 这个关键字将解析为这个容器内部最大的不可短行元素高度（即最宽的单词、图片或具有固定宽度的盒元素）
+[直接参考这里](https://www.jianshu.com/p/b7c929fce368)
+ ```
+ .wrap {
+	max-width: min-content;
+}
+
+  <div class="wrap">
+      <img src="http://csssecrets.io/images/adamcatlace.jpg" />
+      <div>
+          The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer ever.
+      </div>
+  </div>
+ ```
+
+ ### 四种居中方式
+ #### flex居中
+ flex为水平和垂直居中而生，是当代居中最佳方案，这里是展示相对屏幕居中，如果是元素居中更加简单。
+```
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+   }
+.wrap {
+	width: 18em;
+	height: 18em;
+	box-sizing: border-box;
+	background: #00BCD4;
+}
+
+<body>
+  <div class="wrap"> </div>
+</body>
+```
+ #### translate居中
+ flex没有出来之前，该方法最好，因为不需要知道元素宽度；
+ ```
+ //除flex外，最好的居中最好方法
+  .wrap {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%)
+        }
+ ```
+ #### margin负数
+ 该方法有点，兼容性最强，弊端，需要知道元素宽度；
+ ```
+ //居中最好方法
+  .wrap {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           margin-top: -3em;
+           margin-left: -9em;
+           width:18em;
+           height:6eml
+        }
+ ```
+  #### 视口vh方法
+ 该方法局限性很大，只能相对于视口，也就是相对于屏幕居中，无法相对元素居中；[demo](http://dabblet.com/gist/bf12b39d8f5da2b6e5b6)
+ ```
+.wrap {
+	width: 18em;
+	height: 18em;
+	margin: 50vh auto 0;
+	transform: translateY(-50%);
+	box-sizing: border-box;
+	background: #00BCD4;
+}
+<div class="wrap"> </div>
+ ```
+
+ 
