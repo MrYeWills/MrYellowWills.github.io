@@ -333,13 +333,18 @@ x-height；
 ![](/image/css/vertical-align/column.png)
 ![](/image/css/vertical-align/x-height.png)
 ![](/image/css/vertical-align/inline-box.jpg)
+### 行盒子 与 行内盒子
+span、strong等等这些是行内元素，他们内容以**行内盒子**形式展示，直白的说span 元素就是一个行内盒子；
+由一行文本形成的水平盒子叫行盒子，行盒子的高度由它所包含的行内盒子决定；
+以上均语出《css精通》 P43 P44。
+由上可知，行盒子可以包含很多个行内盒子。当行盒子只有一个行内盒子时，行内盒子就是行盒子。
 
 ### x-height
 x-height,也就是上面图片中的x高度，说白点，就是小写字母X的高度；
 另外一个注意的是，**相同的font-size，相同的字符，在不同的字体font-family中x-height是不同的**，这也就解释了有些字体下，明明文本看起来是居中的，换其他字体可能就看起来不太居中了。
 上面的例子中，font-size,默认是浏览器的16px，那么x-height值差不多是font-size的三分之一，就是5px左右。
 
-### 行盒子与line-height垂直居中
+### line-height居中原理
 我们经常会利用将height于line-height设置成一致进行居中，如下，然而，这个原理是什么呢？ 其实它的居中利用的是行盒子上下两个半铅空永远相等得到的,下面会慢慢讲解:
 ```
 height: 100%;
