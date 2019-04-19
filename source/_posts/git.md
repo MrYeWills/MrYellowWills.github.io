@@ -1,0 +1,205 @@
+---
+title: git笔记
+date: {{ date }}
+tags: [git]
+categories: 
+- git
+series: git
+---
+
+一直在用git，也想总结一点git笔记，因此就有了本篇。
+
+### git图形化工具误你一生
+使用git图形化工具是使用git的错误开始，使用图形化越深，错的越深。
+珍爱git，及早丢弃图形化。
+
+### git init 与 git remote
+本地一个文件夹，里面有很多文件，你想从现在开始，对此文件进行版本管理，执行git init即可；
+git init后，就可以尽情地对此项目各种版本管理操作；
+有一天你想对这个git init项目上传到github上，
+在命令窗口执行 git remote，cmd窗口会提示你如何上传到GitHub服务器上。
+
+### 看cmd窗口提示很关键
+上面说到了执行git remote cmd窗口会有提示，按照提示，就可以完成想做的事情。
+git 提供了强大的提示功能，要重视cmd窗口提示信息，很关键。
+git bash 粘贴复制很好用
+
+### 使用git bash，放弃cmd
+git bash才是最适合用来管理git的命令窗口，比如 git bash 能时刻显示当前你所处的分支名，能完整保留git的操作，因为cmd超过一定操作会删除以前的操作日志。
+
+### git fetch\git pull\切远程分支
+git fetch 将远程分支下载到本地，但不与本地分支合并，下载到本地的分支的名字前面都有origin/,例如origin/master.
+git pull 是git fetch与git merge origin/branch 的两步。
+#### 拉取新项目时，如何切换到项目的其他分支
+执行 git fetch后，git checkout即可
+
+### git checkout
+git checkout . 清除所有
+git checkout string  ，此string可以是分支名，也可是commitHash
+
+### git rebase
+
+#### PR冲突时，处理冲突
+多人开发，在提PR给develop分支时，当github页面提示有冲突时,处理如下：
+切到自己的分支(PR到develop的分支)
+```
+git rebase develop
+//这时会显示冲突内容，解决冲突，执行
+git add .
+git rebase --continue
+git push origin -f
+```
+然后重新PR,这时就不报错了
+有人将上一操作过程称为变基。
+git rebase 功能类似 git merge，区别貌似在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。
+git rebase则不同，git rebase后，你的修改commit将显示在第一条。
+git rebase 当git merge来用，用的不多，上面展示了git rebase用的最多的事情，那就是用来处理PR后的冲突
+
+#### 合并commit
+这是日常开发必备用法，不会此法，不能说会使用git
+
+```
+//正常使用
+git rebase -i HEAD~6
+按字母i键，进入insert模式(编辑模式)
+留一个最上面的pick，
+后面的pick全部换成s；
+修改好后，按esc键(退出编辑模式)
+:wq //保存编辑修改，Linux命令
+:q! //不保存编辑修改，Linux命令
+```
+如果遇到冲突，除了以上命令，按提示操作，还会执行以下命令
+```
+git add .
+git rebase --continue
+```
+放弃rebase
+```
+git rebase --abort
+```
+
+### git reset
+#### 将分支回滚到指定历史版本
+```
+// --hard 是强制的意思
+git reset --hard commitHash
+```
+
+#### 放弃所有修改，回到干净的当前仓库版本
+```
+git reset --hard HEAD
+```
+
+#### 回到指定提交后，并重新修改这一次提交内容
+```
+git reset --hard commitHash
+//~ 指的是上一次的意思
+git reset HEAD~
+```
+#### 注意
+git reset后，要push时，都需加上-f，强制push
+
+### git reflog
+如果你使用git reset,那么git log无法查到当前提交之后的提交日志，此时使用 git reflog
+
+### git cherry-pick
+不懂git cherry-pick，说明你还不懂git这位美女的基本套路，必备git操作。
+```
+git cherry-pick commitHash
+```
+git cherry-pick 与 git reset 配合使用可以尽情任意穿插回滚修改版本提交，只有此时，你才懂git的美，从此爱不释手，相逢恨晚。
+
+### git branch
+```
+git branch -D branch //删除本地分支
+git branch -a // 查看远程有多少分支
+```
+### git push 删除远程分支
+```
+git push origin -d branch
+```
+
+### git tag
+命令简单，Google下命令即可，git tag很重要也很好用，
+tag的好处有，它既像一个branch，保存了当次tag的所有提交，又提供了一个zip包，
+很多开源框架的 历史版本API 都是通过tag完成，非常之好用
+
+### gitk
+非常好用的查看工具，git自带，此工具太好用，太重要，用得太频繁，你必需会，
+启动方法：
+git bash中执行
+```
+gitk
+```
+比较好的gitk命令
+```
+//查询abc.js文件的历史修改记录，比任何插件显示的全
+gitk -- **/ abc.js
+```
+
+### 推荐使用vscode
+vscode内置了对git的支持，对git支持太友好，vscode自带的显示git版本变化的功能很好用，
+配合vscode的一些git插件，能够很好的显示每行代码的历史记录，是甩锅，找坑的必备良器。
+
+
+### 其他常用命令
+```
+git stash
+git stash apply
+git checkout -b branch
+git log -n
+git commit -amend
+git help
+```
+
+
+### git 技巧
+#### 空格使用
+清除多个或merge多个 可使用空格，一次搞定，如
+```
+git checkout file1.js file2.js
+git merge branch1 branch2
+```
+#### --abort
+--abort一般是放弃的意思，如
+放弃merge
+```
+git merge --abort
+```
+#### --contnue
+--abort一般是放弃的意思，如
+放弃merge
+```
+git rebase --contnue
+```
+#### 字母q
+在git log命令出来一堆历史时，按回车或其他键，只会显示更多历史，按字母q可退出。
+
+#### -i
+-i表示交互的意思。
+```
+git rebase -i HEAD~6
+```
+
+
+#### 多程序同时操作一个文件引起的报错
+执行复杂操作时，报 permission错误，可能是由于其他程序和git同时操作一个文件引起的，
+此时，可以停止npm start或关闭编辑器，只让git一个程序操作项目，解决此问题。
+
+#### merge commitHash
+git merge branch，也可以git merge commitHash；
+同理估计也可以git rebase commitHash
+
+#### Linux命令
+需要懂那么点Linux 操作知识，如:wq :q! 参考 《git rebase》
+
+#### 手动处理冲突
+手动处理冲突其实很简单，而且又做到不依赖插件。
+
+#### ssh可能并没有你想象重要
+由于公司原因一直也没设置ssh，各种push什么的，也很少需要输入用户密码，不影响工作，也许ssh没有你现象的高大上。
+
+### 不会用GitHub就是耍流氓
+用git，不会使用GitHub的基本操作，就是耍流氓，既然你跟git感情这么好，干嘛不更好一点，娶了她呢，这不是耍流氓吗。
+主要要熟练 github的git workflow (也就是PR代码审核) 和 fork功能，以及看tag。
+
