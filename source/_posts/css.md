@@ -36,7 +36,7 @@ border-color可以接受透明色：transparent
 ```
 ![](/image/css/triangle.jpg)
 
-### 阴影
+### 阴影box-shadow
 #### 参数介绍
 box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;
             是否需要阴影|竖直偏移 水平偏移 模糊度 扩展度 颜色|方向|基本不用|基本不用
@@ -65,6 +65,14 @@ box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
 ![](/image/css/shadow8.jpg)
 #### box-shadow脱离文档流
 box-shadow 是脱离文档流的，给元素设置box-shadow，无论数值多少，都不会让元素移动，这点很好
+
+#### box-shadow 与 filter
+filter也可以用来写一个阴影效果。filter还有其他很多功能。
+以下两个写法，都可以达到元素阴影的效果，
+```
+ filter: drop-shadow(0px 0px 10px gray);
+ box-shadow:0px 0px 10px gray;
+```
 
 ### outline 轮廊线
 #### outline能做到的效果：
@@ -295,18 +303,47 @@ body{
 }
 <div class="wrap"> </div>
  ```
-### 自定义复选框
+### 自定义CheckBox
 主要是定义好这几个状态的样式： focus hover  同时focus和hover；
-E:\css-mastery-16-master\chapter-09\09-checkbox.html
+```
+  input[type="checkbox"] {
+        position: absolute;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        clip: rect(0 0 0 0);
+      }
+  input[type="checkbox"] + label {
+    line-height: 1.5;
+    color: #333;
+    padding-left: 1.5em;
+    background-position: .125em 36%;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+  }
+  input[type="checkbox"] + label {
+    background-image: url(images/checkbox-unchecked.png);
+  }
+  input[type="checkbox"]:checked + label {
+    background-image: url(images/checkbox-checked.png);
+  }
+  input[type="checkbox"]:focus + label {
+    background-image: url(images/checkbox-unchecked-focus.png);
+  }
+  input[type="checkbox"]:focus:checked + label {
+    background-image: url(images/checkbox-checked-focus.png);
+  }
+
+
+  <div>
+    <input type="checkbox" name="lang-as" id="lang-as">
+    <label for="lang-as">ActionScript</label>
+   </div>
+```
+[demo](https://github.com/YeWills/css_demo/blob/master/chapter-09/09-checkbox.html)
 
 
 ## css知识
-
-### 伪类与伪元素
-```
-::before  //伪元素
-:focus  //伪类
-```
 
 ### 行内盒子 匿名盒子 
 具体参考 另外一篇博客《vertical-align、行盒子、baseline》
@@ -449,7 +486,44 @@ rem 主要用于移动端适配，pc端用得少.
 display:none 不为被隐藏的对象保留其物理空间 
 visibility：hidden 为被隐藏的对象保留其物理空间
 
-### 伪类相当于父级内的内联span元素
+### 伪类与伪元素
+#### 定义
+```
+::before  //伪元素
+:focus  //伪类
+```
+#### content - attr\url\counter
+##### 配合attr使用
+attr是css3的一个属性。
+attr是用来content与元素进行通信的一个接口：
+```
+.text{
+    position: relative;
+}
+.text:hover::before{
+    content: attr(show-tip);
+    position: absolute;
+    top: -150%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+<span class="text" show-tip="6666"> prity girl</span>
+```
+##### 配合url使用
+```
+h1:after {content:url(/i/w3school_logo_white.gif)}
+```
+##### 配合counter使用
+用得较少，用来计数，更多请->Google
+```
+  .conter p:before{
+                     content: counter(count,decimal) "." /*调用计数器 并在数字后添加.*/
+                     counter-increment: count;
+                }
+```
+#### 伪元素相当于父级内的内联span元素
 伪类其实相当于定义在父级元素内的内联span元素或匿名行内元素，可以通过display改变其属性。
 把伪类当成父级元素内的元素看即可，没有什么不同
 ```
@@ -474,6 +548,42 @@ visibility：hidden 为被隐藏的对象保留其物理空间
 由上得出：
 - before 相当于 紧跟父元素之前的行内块；
 - after 相当于 紧跟父元素之后的行内块
+
+#### :hover::before
+伪类结合伪元素一起使用
+参考《content几种用法》
+参考《自定义CheckBox》
+
+#### hover active focus onblur 经典应用
+一个按钮的hover active focus onblur这三个状态触发时候先后顺序的
+hover  鼠标悬浮按钮上；
+active  左键按住按钮；
+focus  左键松开后，激活按钮状态为focus；
+onblur 左键点击任意位置，变为非focus状态
+
+理解上面四个状态非常关键，很多基本的样式都是基于上面开发的，一个前端不早弄懂上面四个状态，哭都没地方去。
+```
+.btn:hover{
+    background: blueviolet;
+}
+.btn:active:focus{
+    color: red;
+}
+.btn:focus{
+    color: blue;
+    outline: 2px solid yellow
+}
+
+ <button class="btn">9999999</button>
+```
+
+#### focus 与 tabindex
+tabindex 是html5属性 ，非常好用， 指示其元素是否可以聚焦
+在html4中，不是每个标签都拥有focus属性，在html5中，通过tabindex，每个标签都可以定义focus属性。
+参考《博客---html笔记---tabindex》
+
+#### 伪元素做边框
+参考《伪元素做边框》
 
 ### 大汇集
 font-weight 默认为normal，normal对应数值为400，可以使用关键字 normal、bold等等，也可以使用数数值，都是100的整数：100、200、300、400等等
