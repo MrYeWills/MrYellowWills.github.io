@@ -214,7 +214,11 @@
 <h4 id="拉取新项目时，如何切换到项目的其他分支"><a href="#拉取新项目时，如何切换到项目的其他分支" class="headerlink" title="拉取新项目时，如何切换到项目的其他分支"></a>拉取新项目时，如何切换到项目的其他分支</h4><p>执行 git fetch后，git checkout即可</p>
 <h3 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h3><p>git checkout . 清除所有<br>git checkout string  ，此string可以是分支名，也可是commitHash</p>
 <h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><h4 id="PR冲突时，处理冲突"><a href="#PR冲突时，处理冲突" class="headerlink" title="PR冲突时，处理冲突"></a>PR冲突时，处理冲突</h4><p>多人开发，在提PR给develop分支时，当github页面提示有冲突时,处理如下：<br>切到自己的分支(PR到develop的分支)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git rebase develop</span><br><span class="line">//这时会显示冲突内容，解决冲突，执行</span><br><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br><span class="line">git push origin -f</span><br></pre></td></tr></table></figure></p>
-<p>然后重新PR,这时就不报错了<br>有人将上一操作过程称为变基。<br>git rebase 功能类似 git merge，区别貌似在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。<br>git rebase则不同，git rebase后，你的修改commit将显示在第一条。<br>git rebase 当git merge来用，用的不多，上面展示了git rebase用的最多的事情，那就是用来处理PR后的冲突</p>
+<p>然后重新PR,这时就不报错了<br>有人将上一操作过程称为变基。<br>git rebase 功能类似 git merge，区别在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。<br>git rebase则不同，git rebase后，你与develop不同的提交(也就是你修改的)commit将显示在第一条，(注意的是，git rebase冲突修改将不会生成commit，从上面只有git add,没有git commit得到佐证，因为只有git commit 才会生成一条commit):<br><figure class="image-box">
+                <a rel="git笔记" href="/image/git/git3.png" title="undefined" data-fancybox="images"><img src="/image/git/git3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>以上过程是把git rebase 当git merge来用，git rebase的这种当merge的用法，用的不多，用得最多的就是上面展示的，用来处理PR后的冲突。</p>
 <h4 id="合并commit"><a href="#合并commit" class="headerlink" title="合并commit"></a>合并commit</h4><p>这是日常开发必备用法，不会此法，不能说会使用git</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//正常使用</span><br><span class="line">git rebase -i HEAD~6</span><br><span class="line">按字母i键，进入insert模式(编辑模式)</span><br><span class="line">留一个最上面的pick，</span><br><span class="line">后面的pick全部换成s；</span><br><span class="line">修改好后，按esc键(退出编辑模式)</span><br><span class="line">:wq //保存编辑修改，vim命令</span><br><span class="line">:q! //不保存编辑修改，vim命令</span><br></pre></td></tr></table></figure>
 <p>如果遇到冲突，除了以上命令，按提示操作，还会执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure></p>
@@ -261,7 +265,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-04-21T04:10:12.667Z" itemprop="dateUpdated">2019-04-21 12:10:12</time>
+    Last updated: <time datetime="2019-04-23T12:41:59.784Z" itemprop="dateUpdated">2019-04-23 20:41:59</time>
 </span><br>
 
 
