@@ -51,9 +51,11 @@ git push origin -f
 ```
 然后重新PR,这时就不报错了
 有人将上一操作过程称为变基。
-git rebase 功能类似 git merge，区别貌似在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。
-git rebase则不同，git rebase后，你的修改commit将显示在第一条。
-git rebase 当git merge来用，用的不多，上面展示了git rebase用的最多的事情，那就是用来处理PR后的冲突
+git rebase 功能类似 git merge，区别在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。
+git rebase则不同，git rebase后，你与develop不同的提交(也就是你修改的)commit将显示在第一条，(注意的是，git rebase冲突修改将不会生成commit，从上面只有git add,没有git commit得到佐证，因为只有git commit 才会生成一条commit):
+![](/image/git/git3.png)
+
+以上过程是把git rebase 当git merge来用，git rebase的这种当merge的用法，用的不多，用得最多的就是上面展示的，用来处理PR后的冲突。
 
 #### 合并commit
 这是日常开发必备用法，不会此法，不能说会使用git
