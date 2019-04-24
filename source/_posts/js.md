@@ -217,7 +217,45 @@ new P()
 ~function() {}; //紧挨着，不报错
 ```
 
+#### 重要运用之一
+```
+   var map = document.querySelector('#id')
+   map.style.height='600px';
+```
+相比之下，下面的写法，map变成块级变量，不再污染全局作用域。
+```
+;(function(){
+    var map = document.querySelector('#id')
+    map.style.height='600px';
+     }())
+```
 #### 自运行 参考资料
 [JavaScript 小括号()分组运算符](http://www.softwhy.com/article-2022-1.html)
 [JS中函数定义和函数表达式的区别](https://www.cnblogs.com/lenther2002/p/5894964.html)
 [JavaScript 匿名函数有哪几种执行方式?](https://www.zhihu.com/question/20249179)
+
+### js规范写法
+
+#### 给常量起个名
+必要的时候，给常量起个名，可读性更强
+```
+ car.handle('seller','sell',5,true);
+```
+修改后：
+```
+var carType = 'seller';
+var carName = 'sell';
+var sellNum = 5;
+var isNeedLoan = true;
+car.handle(carType,carName,sellNum,isNeedLoan);
+```
+
+## 页面优化
+### 把css写成内联
+css只有10或20k时，写成内联，谷歌和百度和淘宝pc版都是这样干的。
+放在内联上，最大的好处是节省了一次cdn请求,从而加快页面响应。
+注意只适合css不是非常大的情况。
+
+### 压缩与缓存
+gzip压缩\cache-control\last-modified\if-Modified-Since\etag\if-None-Match
+参考《高效前端》P72
