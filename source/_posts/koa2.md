@@ -379,6 +379,12 @@ app.use(serve(handlePath('../pages/static')))
 用koa-view也能达到目的，局限性大，会让你定义的其他路由失效,如果有疑问，可以用下面的demo测试研究一番。
 [以上四种情况，详细的demo](https://github.com/YeWills/koa-demo/tree/show-file-in-Browser)
 
+### 文件上传-file和drap拖拽两种方式
+服务端主要运用 koa-multer。
+[详细参考demo](https://github.com/YeWills/file-upload)
+也可参考：
+《html笔记--文件上传-file和drap拖拽两种方式》
+
 ### 截取前端请求方案
 koa启动服务，使用koa-view render 整个编译好的前端工程index.html, 此时index.html自然处于koa的同域名下，index.html发的每个请求都被koa 的app.use截取，在app.use内，再使用《服务端发起请求的方法》，组装数据，修改url，向指定服务器发起请求，而服务器之间请求没有跨域限制，成功的解决跨域。
 这种方式最理想，因为不用修改后台，因为很多公司升级改造时，后台可以给你提供测试用户账号，因为老的项目客户正在使用，不能修改放开跨域限制的代码,遇到这种场景，就必须使用以上解决跨域的方式。
@@ -735,6 +741,11 @@ request-promise-native 可能依赖 request，安装好request-promise-native会
 暂时不用过多了解，用时深究，这里有一个用到request-promise-native request的demo，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
 
 ### koa-multer
+express或koa，收到前台的上传请求后，因为上传文件的请求时一个多类型文件数据(multipart/form-data)请求，
+必须通过require('multer')才能正常处理这样的请求。
+multer就是为了 处理多文件接口而生。
+multer同koa-multer，去koa-multer的GitHub上，已经说明其文档直接参考express的multer。
+更多参考《文件上传-file和drap拖拽两种方式》
 koa-multer 用来做文件上传功能，需要配合 fs模块一起，比较简单，[这是文件上传koa-multer 和fs demo](https://github.com/YeWills/koa-demo/tree/upload-file)。
 
 
