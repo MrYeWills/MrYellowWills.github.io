@@ -42,6 +42,17 @@ tabindex 是html5属性 ，非常好用， 指示其元素是否可以聚焦,
 ### FormData 与 FileReader
 FormData 将数据表单序列化以便得到可以作为请求的参数;
 FileReader 读取文件，比如实现图片预览；
+详细参考《文件上传-file和drap拖拽两种方式》
+
+### blob
+blob想象起来复制，其实也简单，目前对于blob无非就是文件下载或者是图片展示两种运用。
+[参考demo](https://github.com/YeWills/koa-demo/tree/response-file)
+
+#### blob 与 FileReader
+FileReader是能够操作blob的两种方式之一
+#### blob 与 window.URL.createObjectURL
+window.URL是能够操作blob的两种方式之一
+
 
 ## 应用demo
 ### 文件上传-file和drap拖拽两种方式

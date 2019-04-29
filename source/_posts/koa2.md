@@ -379,11 +379,18 @@ app.use(serve(handlePath('../pages/static')))
 用koa-view也能达到目的，局限性大，会让你定义的其他路由失效,如果有疑问，可以用下面的demo测试研究一番。
 [以上四种情况，详细的demo](https://github.com/YeWills/koa-demo/tree/show-file-in-Browser)
 
+### 前后端一体的小demo
+通过对上面两节的总结，写了一个有图片、xls、正常json的三种接口，
+以及前端对于这三种不同类型数据如何处理。
+本demo也可用于理解blob。
+[《写一个返回文件的接口 --为同一个demo》](https://github.com/YeWills/koa-demo/tree/response-file)
+
 ### 文件上传-file和drap拖拽两种方式
 服务端主要运用 koa-multer。
 [详细参考demo](https://github.com/YeWills/file-upload)
 也可参考：
 《html笔记--文件上传-file和drap拖拽两种方式》
+
 
 ### 截取前端请求方案
 koa启动服务，使用koa-view render 整个编译好的前端工程index.html, 此时index.html自然处于koa的同域名下，index.html发的每个请求都被koa 的app.use截取，在app.use内，再使用《服务端发起请求的方法》，组装数据，修改url，向指定服务器发起请求，而服务器之间请求没有跨域限制，成功的解决跨域。
