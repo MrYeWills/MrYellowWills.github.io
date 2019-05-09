@@ -80,6 +80,12 @@ git rebase --continue
 git rebase --abort
 ```
 
+注意的是以下两种方法都支持，两种方法各有优点：
+```
+git rebase -i HEAD~6
+git rebase -i c9r26r869b8  //c9r26r869b8 此hash值不被合并，此hash以前的所有commit将被合并
+```
+
 ### git reset
 #### 将分支回滚到指定历史版本
 ```
