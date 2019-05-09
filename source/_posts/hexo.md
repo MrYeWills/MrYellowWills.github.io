@@ -126,3 +126,16 @@ menu:
 ```
 如上，menu.th-list配置的是categories目录
 
+## hexo 黑知识
+
+### loading三级标题的编译异常
+给三级标题名只有单独的 一个 loading 字时，hexo编译出来的目录可能会异常：
+```
+//这个会异常
+### loading
+```
+解决之道是在标题不定义为单独的loading，加点字就行如：
+```
+//这个正常
+### 有关loading
+```
