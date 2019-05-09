@@ -223,6 +223,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//正常使用</span><br><span class="line">git rebase -i HEAD~6</span><br><span class="line">按字母i键，进入insert模式(编辑模式)</span><br><span class="line">留一个最上面的pick，</span><br><span class="line">后面的pick全部换成s；</span><br><span class="line">修改好后，按esc键(退出编辑模式)</span><br><span class="line">:wq //保存编辑修改，vim命令</span><br><span class="line">:q! //不保存编辑修改，vim命令</span><br></pre></td></tr></table></figure>
 <p>如果遇到冲突，除了以上命令，按提示操作，还会执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure></p>
 <p>放弃rebase<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure></p>
+<p>注意的是以下两种方法都支持，两种方法各有优点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~6</span><br><span class="line">git rebase -i c9r26r869b8  //c9r26r869b8 此hash值不被合并，此hash以前的所有commit将被合并</span><br></pre></td></tr></table></figure></p>
 <h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><h4 id="将分支回滚到指定历史版本"><a href="#将分支回滚到指定历史版本" class="headerlink" title="将分支回滚到指定历史版本"></a>将分支回滚到指定历史版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// --hard 是强制的意思</span><br><span class="line">git reset --hard commitHash</span><br></pre></td></tr></table></figure>
 <h4 id="放弃所有修改，回到干净的当前仓库版本"><a href="#放弃所有修改，回到干净的当前仓库版本" class="headerlink" title="放弃所有修改，回到干净的当前仓库版本"></a>放弃所有修改，回到干净的当前仓库版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
 <h4 id="回到指定提交后，并重新修改这一次提交内容"><a href="#回到指定提交后，并重新修改这一次提交内容" class="headerlink" title="回到指定提交后，并重新修改这一次提交内容"></a>回到指定提交后，并重新修改这一次提交内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commitHash</span><br><span class="line">//~ 指的是上一次的意思</span><br><span class="line">git reset HEAD~</span><br></pre></td></tr></table></figure>
@@ -265,7 +266,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2019-04-23T12:41:59.784Z" itemprop="dateUpdated">2019-04-23 20:41:59</time>
+    最后更新时间：<time datetime="2019-05-09T16:56:13.499Z" itemprop="dateUpdated">2019-05-10 00:56:13</time>
 </span><br>
 
 
