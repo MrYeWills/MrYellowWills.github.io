@@ -16,7 +16,7 @@ series: react
  此目录为验证目录，npm start生成，没有作用，也不推荐在此修改代码，为方便验证而生。
 
  ### 项目目录
- ![](/image/dva_umi/user-dashboard.jpg)
+ ![](/image/dva_umi/user-dashboard.png)
 
  ### 入口页面
  ```
@@ -171,4 +171,14 @@ ReactDOM.render(React.createElement(
 
 另外在整个过程中，umijs顺手还做了 webpack配置，比如module.hot 热更新。
 
+### user-dashboard 与 with-dva
+分析这两个项目，有利于理解dva与umi两个人干的事情，这两个项目将他们二人的配置有机串起来，
+在刷一遍dva与umi文档的基础上，看这两个项目，看完项目后，再去看dva与umi的文档，发现更能看懂在文档中所表达的意思。
+以上过程入手和研究其他框架的常用手段：
+```
+网上大量刷一些有关框架的作用比较和题外话，加深框架的整体影响；
+刷一遍文档(快速)；
+启动下官方推荐的例子；
+再次刷文档；
+````
 
