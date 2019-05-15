@@ -180,5 +180,32 @@ ReactDOM.render(React.createElement(
 刷一遍文档(快速)；
 启动下官方推荐的例子；
 再次刷文档；
-````
+```
+
+## umi
+
+### 路由
+
+#### 权限路由 与 Routes
+umi 的权限路由是通过配置路由的 Routes 属性来实现。
+[参考demo](https://github.com/YeWills/umi-example/tree/routes-via-config)
+以下是权限路由的写法：
+```
+{ path: '/list', component: './pages/list.js', Routes: ['./routes/PrivateRoute.js'] },
+```
+```
+//PrivateRoute.js
+export default (props) => {
+  return (
+    <div>
+      <div>PrivateRoute (routes/PrivateRoute.js)</div>
+      { props.children }
+    </div>
+  );
+}
+```
+对于Routes定义的权限组件PrivateRoute而言，PrivateRoute可以通过props.children能访问上面component定义的组件，然后跳转到/list路由url时，实际显示的是Routes的组件。Routes组件拥有最高权限，通过props.child决定是否显示component定义的组件。
+
+权限路由有些类似全局路由。
+更多说明，[参考 umi--指南-路由-权限路由](https://umijs.org/zh/guide/router.html#%E6%9D%83%E9%99%90%E8%B7%AF%E7%94%B1)
 
