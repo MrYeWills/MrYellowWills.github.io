@@ -57,6 +57,21 @@ git rebase则不同，git rebase后，你与develop不同的提交(也就是你�
 
 以上过程是把git rebase 当git merge来用，git rebase的这种当merge的用法，用的不多，用得最多的就是上面展示的，用来处理PR后的冲突。
 
+#### 将最新修改合并过来，且保证提交的连续性
+比如，你在做用户管理功能，同事在做登录功能；
+你的用户管理的页面效果写好了，要做接口联调，需要用到同事做的登录功能的用户参数；
+注意，
+你可以直接merge 同事的代码过来，但弊端是，你自己做的用户管理提交可能无法显示在git log的最前面；
+在此推荐用rebase 同事的代码，好处是，既将同事的修改merge过来，又可以将自己的修改显示最上方，保证当前业务功能的commit的连续性和直观性。
+
+#### rebase 与 merge
+如上所说，rebase有这么多好处，merge能做到的，rebase都能做到，为什么不都用rebase呢？
+因为merge是无害的，不改变commithash值；
+而rebase有改变commithash值的风险，这就意味着你做分支的合并时就会出现冲突，如果你有一群小伙伴一起开发，那么这个冲突起来，会让你hold不住，然而这并不妨碍你对rebase的热爱。
+
+因此鉴于merge的无害性，一般情况下分支合并就使用merge；
+在特定场景下才使用rebase；
+
 #### 合并commit
 这是日常开发必备用法，不会此法，不能说会使用git
 
@@ -72,6 +87,7 @@ git rebase -i HEAD~6
 ```
 如果遇到冲突，除了以上命令，按提示操作，还会执行以下命令
 ```
+//注意的是，执行完git add . 后，不必执行git commit
 git add .
 git rebase --continue
 ```
@@ -98,12 +114,28 @@ git reset --hard commitHash
 git reset --hard HEAD
 ```
 
+#### git reset HEAD~
+这个方法非常好用，本意是重新修改上一次提交。
+执行这个命令后，将上一次提交的所有文件将至于 not staged 状态, 
+然后，你可很直观看到这次提交修改的所有文件，
+并且vscode对于not staged状态的文件，会将他们集中显示到源代码管理窗口，
+这对于git rebase 很多commit后，然后再次整理或格式化所有的修改内容 是很棒的功能。
+
 #### 回到指定提交后，并重新修改这一次提交内容
 ```
 git reset --hard commitHash
 //~ 指的是上一次的意思
 git reset HEAD~
 ```
+#### 再次对前几次commit修改的内容修改
+我们做一个面包屑菜单功能，可能做了很多次提交，现在想对这么多次的提交所修改的所有内容，重新审阅一遍，以便修改内容或者格式化，解决方案如下：
+```
+git rebase -i HEAD~6
+git reset HEAD~
+git add .
+git commit -m "面包屑功能"
+```
+参考《git reset HEAD~》
 #### 注意
 git reset后，要push时，都需加上-f，强制push
 
