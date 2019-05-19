@@ -270,6 +270,66 @@ export default (props) => {
 权限路由有些类似全局路由。
 更多说明，[参考 umi--指南-路由-权限路由](https://umijs.org/zh/guide/router.html#%E6%9D%83%E9%99%90%E8%B7%AF%E7%94%B1)
 
+### umi:command not found
+#### mac
+```
+yarn global install umi
+```
+```
+//查看yarn目录
+yarn global bin
+/Users/js/.yarn/bin
+```
+设置环境变量：
+```
+$ sudo vi ~/.bash_profile
+//然后输入用户密码
+//添加这一句话到.bash_profile文件
+export PATH="$PATH:`yarn global bin`"
+```
+
+重启命令窗口
+再次输入umi就可以了。
+
+#### 关于mac环境变量配置有关
+#### $PATH的字符串写法
+接着上面mac对umi的环境变量配置，上面设置环境变量的步骤设置成如下也是的一样的效果：
+```
+export PATH=$PATH:/Users/js/.yarn/bin
+```
+
+#### $PATH的变量写法
+我们观察到，export PATH="$PATH:`yarn global bin`" 是一种变量的写法，将yarn global bin 这个整体当成一个变量。
+类似于 yarn global bin 等价于 /Users/js/.yarn/bin；
+因为bash中执行
+```
+//查看yarn目录
+yarn global bin
+/Users/js/.yarn/bin
+```
+
+#### 多个环境变量以：打印echo输出
+```
+$ sudo vi ~/.bash_profile
+//进入vim模式后，文件内容如下：
+export PATH=$PATH:/usr/local/mongodb/bin
+export PATH=$PATH:/Users/js/.yarn/bin
+$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mongodb/bin:/Users/js/.yarn/bin
+我们看到了 mongodb的环境变量并没有被后面的yarn路径覆盖，他们全部被平行保存，通过冒号:隔开表示。
+```
+#### .bash_profile中的环境变量不会覆盖
+如上分析
+```
+export PATH=$PATH:/usr/local/mongodb/bin
+export PATH=$PATH:/Users/js/.yarn/bin
+```
+虽然使用PATH=先后定义了mongodb和yarn，但是yarn并没有覆盖mongodb，通过echo打印可以查证。具体参考上面分析。
+
+
+#### windows
+windows解决方式一样，唯一不同的是，是将 yarn global bin 打印的地址添加到环境变量中。
+
 ## demo
 
 ### with-dva
