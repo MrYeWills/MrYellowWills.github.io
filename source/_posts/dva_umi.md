@@ -330,6 +330,13 @@ export PATH=$PATH:/Users/js/.yarn/bin
 #### windows
 windows解决方式一样，唯一不同的是，是将 yarn global bin 打印的地址添加到环境变量中。
 
+### umi的使用
+官网中通过 `快速上手` 和 `通过脚手架创建项目` 两部分详细介绍了如何使用umi，通过这种方式来创建项目工程，很有借鉴学习之用，亲试可行，在此单独从官网从拎出来说明，以示重视。
+#### 快速上手
+[参考umi–指南-快速上手](https://umijs.org/zh/guide/getting-started.html)
+#### 通过脚手架创建项目
+[参考umi–指南-通过脚手架创建项目](https://umijs.org/zh/guide/create-umi-app.html)
+
 ## demo
 
 ### with-dva
@@ -362,6 +369,26 @@ windows解决方式一样，唯一不同的是，是将 yarn global bin 打印�
 [demo地址](https://github.com/YeWills/umi-example/tree/with-nav-and-sidebar)
 要做侧边栏(sidebar)和导航栏时，可参考本示例，非常简洁的，只有侧边栏和导航栏的示例
 <img src="https://gw.alipayobjects.com/zos/rmsportal/DReQIejdcJPeaXWEDKDe.png" />
+
+### ant-design-pro
+深入了解umi与dva的综合示例
+
+## 学习资料与小结
+### github仓库
+github中以下仓库为学习期间的全部demo：
+[umi-example](https://github.com/YeWills/umi-example)
+[dva-example](https://github.com/YeWills/dva-example)
+[ant-design-pro](https://github.com/YeWills/ant-design-pro)
+以上demo都基于官网开源demo，感谢。
+### 小结
+#### dva与umi学习
+学习dva与umi，建议先从dva了解开始，然后是umi，然后再是ant-design-pro；
+dva与umi的学习，快速过官网文档，然后运行文档中给出的demo，对照demo，再针对性看文档，多看文档。
+以上熟悉后，再看ant-design-pro。
+#### dva与umi认识
+dva与umi创建项目的方式新颖，通过包管理方式创建脚手架，是很多公司大厂的常规做法，umi更像一个大厂内部的标准工程脚手架。
+如果你处于一个公司的架构师位置，想要出一个全公司统一的前端开发脚手架，你所在公司安全级别高，对项目依赖包有安全要求，对项目有管控需求以便达到安全级别，umi无疑是你的标杆。
+如果你们公司不是一个五六百人的公司，而且没有对公司内所有前端项目所用依赖包的版本有管制需求，并且没有统一前端脚手架的需求，建议还是自行配置一套脚手架，有利于 版本升级，问题追踪，风险可控性好。
 
 ## 参考文档：
 ### dva
