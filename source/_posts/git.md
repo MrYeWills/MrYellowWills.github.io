@@ -275,6 +275,21 @@ fatal: unable to access 'https://github.com/YeWills/YeWills.github.io.git/': Cou
 ```
 不过令人费解的是，**试github其他仓库，不用科学上网，可以push成功的。**
 
+终极解决方法：
+```
+# step1. ping github.com 
+获取到github.com的ip为192.30.252.128 
+# step2. 在/etc/hosts中添加一行如下: 
+sudo  vim /etc/hosts
+192.30.252.128 github.com
+```
+[参考](https://blog.csdn.net/piaotiejun/article/details/48734175)
+一般情况，上面即可解决，如果解决不了，考虑下面方法：
+
+造成以上原因，有可能为以下几点：
+网络被墙了？
+使用了强制push --force （普通push是可以的）
+
 亲测以下几种方式偶尔可以解决：
 - 科学上网，然后push，此方法有时有效，有时也无效；
 - 重设账号密码：
