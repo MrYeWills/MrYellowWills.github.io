@@ -266,4 +266,20 @@ vscode内置了对git的支持，对git支持太友好，vscode自带的显示gi
 #### git rebase -i HEAD后记得合并到test branch
 分支PR到develop后，如果在PR前做了合并历史(git rebase -i HEAD)，如果test branch基于develop创建，记得将自己被PR的分支 merge一次到test branch，由于test branch 滞后于develop branch，防止 从develop新建的branch merge到test branch时冲突，
 
+### FAQ
+#### unable to access ..Could not resolve host: github.com
+之前git push还是好好的，用着用着就 git push 异常，并报错：
 
+```
+fatal: unable to access 'https://github.com/YeWills/YeWills.github.io.git/': Could not resolve host: github.com
+```
+不过令人费解的是，**试github其他仓库，不用科学上网，可以push成功的。**
+
+亲测以下几种方式偶尔可以解决：
+- 科学上网，然后push，此方法有时有效，有时也无效；
+- 重设账号密码：
+（1）先重新设置本机git配置：git config --global credential.helper store （这一步可以不用）
+（2）输入github账号和密码 （这一步可以不用）
+（3）最后push代码：git push -u origin master （这一步必须，如果是强制push，加上 -f）
+
+[这里还有另外几种解决方式](https://blog.csdn.net/mhs624014469/article/details/77124540?utm_source=blogxgwz3)
