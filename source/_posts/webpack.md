@@ -675,6 +675,22 @@ module.exports = {
 webpack 在启动后会从Entry里配置的Moule开始，递归解析Entry依赖的所有module，每找到一个module，就会根据配置的loader去找出对应的转换规则，对module进行转换后，再解析出当前module依赖的module。这些模块会以entry为单位进行分组，一个entry及其所有依赖的module被分到一个组也就是一个chunk，最后webpack会将所有chunk转换成文件输出。
 **在webpack中chunk概念很重要，也很不好理解，也容易被忽视，其实webpack目的是一个打包工具，然而将整个包打成几个代码块，都是由chunk控制，所以理解chunk对理解webpack，至关重要。**
 
+### .babelrc相关
+#### babelrc插件安装
+如下，要安装 syntax-dynamic-import ，实际上安装的是 babel-plugin-syntax-dynamic-import，要在名字前加 babel-plugin-。
+```
+{
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    ["module-resolver", {
+      "root": ["./src"]
+    }]
+  ]
+}
+```
+
 ## webpack 黑知识
 
 ### 合并两个webpack的js配置
