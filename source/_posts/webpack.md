@@ -410,12 +410,36 @@ base64压缩图片为一串DataURL的好处在于减少html页面的http请求�
   }
 ```
 
-### 代理proxy的几张图片
-备用，以后再分析
+### proxy
+#### 介绍
 ![](/image/webpack/proxy1.jpg)
 ![](/image/webpack/proxy2.jpg)
 ![](/image/webpack/proxy3.jpg)
-
+#### changeOrigin与其他注意
+代理有三种情况：
+localhost
+http的其他主机名
+https的其他主机名
+涉及到其他主机名时，要配置changeOrigin: true，
+涉及到https时，要配置secure: false,不过经测试，不设置secure: false，也可以运行正常
+详细参考 [webpack官网 devServer.proxy](https://www.webpackjs.com/configuration/dev-server/#devserver-proxy)
+[http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)
+```
+ proxy: {
+      "/j": { 
+        target: "https://read.douban.com",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/ajax": { 
+        target: "http://m.maoyan.com",
+        changeOrigin: true
+      },
+      "/test": { 
+        target: "http://127.0.0.1:8080",
+      }
+    }
+```
 
 ### 外部扩展(externals)
  把一个模块做成外部依赖也就是用cdn的方式依赖，不会打包到 js文件中。
@@ -1638,6 +1662,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 ## 参考和学习资料
+### webpack 文档介绍
+有两个webpack官网
+[webpackjs 官网](https://www.webpackjs.com/plugins/)
+[docschina 官网](https://webpack.docschina.org/plugins/)
+
+其中webpackjs 官网的信息相比之下更全全，在webpackjs 官网中能搜索到插件NamedModulesPlugin，docschina 官网 中不能。
+但是，webpack github上官方给出链接的官网是docschina 官网，为什么它信息还不全呢，可能的原因是不显示的API可能已经被废弃。
+
+### 参考文档
 [老马全栈VIP2_02_webpack4配置入门到进阶](https://ke.qq.com/course/321174)
 [webpack深入与实战](https://www.imooc.com/learn/802)
 [Vue+Webpack打造todo应用](https://www.imooc.com/learn/935)

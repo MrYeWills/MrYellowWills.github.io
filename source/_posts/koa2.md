@@ -745,7 +745,8 @@ request-promise-native 可能依赖 request，安装好request-promise-native会
 他们都只做一件事，在服务器发起接口请求，与同为服务器发请求的http效果一样；
 与浏览器端发请求的fetch axios功能一样，作用的环境不一样而已。
 
-暂时不用过多了解，用时深究，这里有一个用到request-promise-native request的demo，[参见demo](https://github.com/YeWills/koa2_films/tree/koa_web)。
+暂时不用过多了解，用时深究，这里有一个用到request-promise-native request的demo，
+[完整http request的demo](https://github.com/YeWills/koa-demo/tree/http-request)。
 
 ### koa-multer
 express或koa，收到前台的上传请求后，因为上传文件的请求时一个多类型文件数据(multipart/form-data)请求，
