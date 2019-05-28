@@ -169,7 +169,7 @@ series: 前端
 
 [postcss-loader](https://www.webpackjs.com/loaders/postcss-loader/#options)有很多用处，其中之一就是给各个浏览器添加css3兼容样式。
 
-安装 postcss-loader 和 autoprefixer。 使用方法：
+postcss-loader 要与 autoprefixer一起使用， autoprefixer 用来配置 postcss-loader。使用方法：
 ```
 {
         test: /\.(sc|c|sa)ss$/,
@@ -190,6 +190,7 @@ series: 前端
         ]
       }
 ```
+如上，给postcss-loader配置来options，**如果不配置options，则一定要配置postcss.config.js，**否则会报错。
 如果配置了  postcss-loader，如果你还使用了happypack,就必须要 在根目录 (通常是webpack.comfig.js同级目录)配置 postcss.config.js。详细请看下面章节 《构建与性能优化--happypack》
 
 ### 抽离css样式文件
@@ -322,6 +323,20 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 plugins: [
     new CleanWebpackPlugin(['dist'])
 ]
+```
+
+### 配置如何解析react 与 jsx
+解决方式如下，可以看到都是通过.babelrc完成，所以要重视.babelrc的作用。
+```
+//.babelrc
+{
+  "presets": [
+    "react"
+  ]
+}
+
+//package.json
+ "babel-preset-react": "^6.24.1",
 ```
 
 ### 压缩图片
