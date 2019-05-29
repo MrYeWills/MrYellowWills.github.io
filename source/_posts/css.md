@@ -1076,6 +1076,46 @@ background-image写两遍，是为了兼容后退机制写法。
 Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 很多人将它用于普通元素，没毛病，属于经典地犯错。
 
+### 为什么line-height被默认成元素的height了
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wills-react-pro</title>
+  <style>
+    .wrap{
+      height: 30px;
+      background: blue;
+    }
+    .test{
+      line-height: 60px;
+      display: inline-block;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap"> 
+      <span style="line-height:20px;">
+        test<span class="test">最高1</span>的值
+      </span>
+    </div>
+</body>
+</html>
+```
+![](/image/css/line-height1.jpg)
+![](/image/css/line-height2.jpg)
+可以看到.test 的span的高度完全被其line-height所确定了，变成60px；
+其他实验结果有，当给.test 的span设置display: inline;span为行内元素，span没有高度，其高度变成父层高度30px,但是span依然会撑开60px的空间：
+![](/image/css/line-height3.jpg)
+
+小结：对inline还是inline-block，在没有定义它对height时，line-height会被默认为元素高度；
+此时可以通过给元素定义height达到指定高度的目的，但是line-height比height高的情况下，依然会让元素占满line-height的高度。
+
+所以在开发时，遇到很多奇葩的元素高度从何而来时，不要指想着height，认为在谷歌浏览器上找不到height就很奇怪这个高度是怎么来的，你还需查看是否是其line-height生成的height。
+
 ### 视口
 #### 简介
 参考 博客《css布局》
