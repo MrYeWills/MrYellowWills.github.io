@@ -1115,6 +1115,7 @@ Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 此时可以通过给元素定义height达到指定高度的目的，但是line-height比height高的情况下，依然会让元素占满line-height的高度。
 
 所以在开发时，遇到很多奇葩的元素高度从何而来时，不要指想着height，认为在谷歌浏览器上找不到height就很奇怪这个高度是怎么来的，你还需查看是否是其line-height生成的height。
+另外，不要随意定义line-height，可能会导致意想不到问题。
 
 ### 视口
 #### 简介
