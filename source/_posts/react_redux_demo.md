@@ -33,3 +33,42 @@ const mapDispatchToProps = {
   loginUser: appAction.loginUser,
 };
 ```
+
+## 技术栈
+### connected-react-router 与 history
+这是一种固定写法，不用过多关注：
+```
+//参考 项目的tag login_pro_v1.0
+//src/app/init/createStore.js
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+
+connectRouter(history)(combineReducers(reducers)),
+```
+
+### 路由设计
+#### ConnectedRouter配置
+ConnectedRouter类似BrowserRouter。MultiIntlProvider可以不用管就是一个高阶组件。
+
+```
+<ConnectedRouter history={history}>
+    <MultiIntlProvider defaultLocale={locale} messageMap={messages} >
+        <Switch>
+            <Route key={path} path="/dashboard/analysis/realtime" component={Page} />
+        </Switch>
+    </MultiIntlProvider>
+ </ConnectedRouter>
+```
+#### 使用BrowserRouter
+项目的具体布局主要看 src/src-acl-router/AclRouter.jsx;
+本项目应该用的是BrowserRouter，而非HashRouter，因为页面的路由都没有#。
+整理出来如下：
+```
+<BrowserRouter history={history}>
+    <Switch>
+        <Route key={path} path="/realtime" render={Page} />
+        <Route key={path} path="/realtime" render={Page} />
+        <Route render={props => (<NotFound {...props} />)}/>
+    </Switch>
+ </BrowserRouter>
+```
+注意上面的NotFound页面的路由设计挺好，此路由没有配置path，当上面的路由都未匹配时，就顺延到NotFound页面。
