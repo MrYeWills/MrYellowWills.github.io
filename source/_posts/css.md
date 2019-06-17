@@ -732,6 +732,11 @@ background-clip: padding-box|border-box|content-box;
 效果：
 ![](/image/css/flex1.jpg)
 
+#### flex-shrink IE与谷歌差异
+flexbox的规范是 当空间小是，元素宽度随之减少，当减少到元素的width时，将不再减少。
+目前谷歌和火狐以及Op浏览器忽略上面这个规范，也就是说在这些浏览器中，元素可以减少到0px宽度；
+IE遵守以上规范，当元素减少到width时，将不再减少。
+
 ### 媒体查询 与 响应式布局
 #### 媒体查询能查的特性
 可以尺度查询，如max-width；
