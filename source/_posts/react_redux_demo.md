@@ -65,10 +65,138 @@ ConnectedRouter类似BrowserRouter。MultiIntlProvider可以不用管就是一�
 ```
 <BrowserRouter history={history}>
     <Switch>
-        <Route key={path} path="/realtime" render={Page} />
-        <Route key={path} path="/realtime" render={Page} />
-        <Route render={props => (<NotFound {...props} />)}/>
+      <Route
+        path="/"
+        render={() => <Redirect to="/outlets" />}
+      />
+      <Route
+        path="/login"
+        render={props => (
+          <NormalLayout {...props}>
+            <RouteComponent {...props} />
+          </NormalLayout>
+        )}
+      />
+      <Route
+        path="/outlets"
+        render={props => (
+          <BasicLayout {...props}>
+            <RouteComponent {...props} />
+          </BasicLayout>
+        )}
+      />
+      <Route
+        path="/exception/403"
+        render={props => (
+          <BasicLayout {...props}>
+            <Unauthorized {...props} />
+          </BasicLayout>
+        )}
+      />
+      <Route
+        render={props => (
+          <NotFound {...props} />
+        )}
+      />
     </Switch>
  </BrowserRouter>
 ```
-注意上面的NotFound页面的路由设计挺好，此路由没有配置path，当上面的路由都未匹配时，就顺延到NotFound页面。
+
+#### 页面权限管理
+通过 permissions 配置，通过比对 登陆后 个人的权限user.authorities 与 页面的 permissions，来重组拼合 上面的 《使用BrowserRouter》：
+**本项目在登陆后会重新重组渲染上面的 《使用BrowserRouter》**
+
+```
+{
+  path: '/dashboard/analysis/offline',
+  exact: true,
+  permissions: ['admin', 'user'],
+  redirect: '/login',
+  component: W11orkInProgress,
+  pageTitle: '',
+}
+```
+#### 重定向
+场景一：当用户对某个页面没有权限时，AclRouter会将此页面 重定向到403页面
+```
+<Route
+        path="/outlets"
+        render={() => <Redirect to="/exception/403" />}
+      />
+```
+#### NotFound
+在《使用BrowserRouter》中的NotFound页面的路由设计挺好，此路由没有配置path，当上面的路由都未匹配时，就顺延到NotFound页面。
+
+#### 路由配置项介绍
+```
+{
+  path: '/outlets',
+  exact: true,
+  //权限
+  permissions: ['admin', 'user'],
+  //当有权限时，一切正常时显示Outlets
+  component: Outlets,
+  //当没有权限时，换成显示Unauthorized
+  unauthorized: Unauthorized,
+  pageTitle: 'pageTitle_outlets',
+  //面包屑
+  breadcrumb: ['/outlets'],
+}
+```
+#### AclRouter
+所有路由重组，全部在 AclRouter.js.
+这个js亮点在于，在登陆前与登陆后，改变 mapStateToProps 中的 user props值。
+```
+const Router = ({ history, user }) => (
+  <ConnectedRouter history={history}>
+    <MultiIntlProvider
+      defaultLocale={locale}
+      messageMap={messages}
+    >
+      <AclRouter
+        authorities={user.authorities}
+        authorizedRoutes={authorizedRoutes}
+        authorizedLayout={BasicLayout}
+        normalRoutes={normalRoutes}
+        normalLayout={NormalLayout}
+        notFound={NotFound}
+      />
+    </MultiIntlProvider>
+  </ConnectedRouter>
+);
+
+const mapStateToProps = state => ({
+  user: state.app.user,
+});
+
+Router.propTypes = propTypes;
+export default connect(mapStateToProps)(Router);
+```
+根据登陆前后的user props值在 AclRouter.js中重组
+```
+<BrowserRouter history={history}>
+    <Switch>
+      <Route
+        path="/"
+        render={() => <Redirect to="/outlets" />}
+      />
+      <Route
+        path="/login"
+        render={props => (
+          <NormalLayout {...props}>
+            <RouteComponent {...props} />
+          </NormalLayout>
+        )}
+      />
+      ......
+    </Switch>
+ </BrowserRouter>
+```
+真正做到了根据用户权限，动态改变重组整个BrowserRouter组件。
+
+#### BrowserRouter是组件
+如上，BrowserRouter 可通过connect 的 mapStateToProps 中的 user props值 重新渲染 BrowserRouter。
+这也验证了 react-router中说的所有router都是组件的说法。
+#### 因为BrowserRouter是组件，所以能理所当然地使用connect
+见《BrowserRouter是组件》
+参考demo /src/app/init/Router.js
