@@ -200,3 +200,42 @@ export default connect(mapStateToProps)(Router);
 #### 因为BrowserRouter是组件，所以能理所当然地使用connect
 见《BrowserRouter是组件》
 参考demo /src/app/init/Router.js
+
+
+### redux 设计
+#### 概述
+在初始化公共目录下的js中统一注入reducer，并写了一个公共的action和reducer，此公共的action和reducer可能很多页面都要用，因此写在公共目录下，供很多页面使用
+：参考：src/app.
+每个页面的reducer与action写在每个页面目录下,例如：
+```
+- outlets
+  - action.js
+  - index.js
+  - index.scss
+  - reducer.js
+```
+#### reducer
+在初始化js中，统一注入reducer
+```
+import outlets from 'views/outlets/reducer';
+import outletDetail from 'views/outletDetail/reducer';
+import app from '../reducer';
+
+export default {
+  app,
+  outlets,
+  outletDetail,
+};
+```
+每个页面的reducer写在每个页面的目录下。
+
+#### action
+参考上面。
+
+#### connect
+每个页面都要处理 connect(mapStateToProps, mapDispatchToProps)(injectIntl(OutletDetail));
+
+#### 等待改进部分
+connect 和 公共的action 单独整理 成connect高阶件，然后对比 考虑如何将post等继承其中
+
+
