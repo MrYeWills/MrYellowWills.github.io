@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>react_redux_demo项目笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="react,redux-thunk">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>react_redux_demo项目笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">react_redux_demo项目笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-10T23:19:07.000Z" itemprop="datePublished" class="page-time">
+  2019-06-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-react_redux_demo" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">react_redux_demo项目笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-11 07:19:07" datetime="2019-06-10T23:19:07.000Z" itemprop="datePublished">2019-06-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>本篇博客针对 github 的<a href="https://github.com/YeWills/react-redux-demo" target="_blank" rel="noopener">react_redux_demo项目</a>一些知识点讲解。</p>
+<h2 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h2><p>项目使用了redux-thunk来处理异步请求，redux-thunk最重要的思想，就是可以接受一个返回函数的action creator。如果这个action creator 返回的是一个函数，就执行它，如果不是，就按照原来的next(action)执行。<br>正因为这个action creator可以返回一个函数，那么就可以在这个函数中执行一些异步的操作。<br><a href="https://www.jianshu.com/p/a27ab19d3657" target="_blank" rel="noopener">参考</a><br>详细示例可参考 项目的tag login_pro_v1.0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//src/views/login/index.js</span><br><span class="line">const mapDispatchToProps = &#123;</span><br><span class="line">  loginUser: appAction.loginUser,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ajax设计"><a href="#ajax设计" class="headerlink" title="ajax设计"></a>ajax设计</h2><p>项目通过两方面来封装 ajax：</p>
+<ul>
+<li>通过api.js 封装三个常用的ajax方法 post、get、delete，在此js上，主要封装axios相关。</li>
+<li>通过createAsyncAction.js 抽象出 公共的请求的成功和异常处理。<br>这样的设计好处在于<br>可以将axios与 回调处理的代码分离管理，减少耦合性。<br>详细示例可参考 项目的tag login_pro_v1.0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//src/views/login/index.js</span><br><span class="line">const mapDispatchToProps = &#123;</span><br><span class="line">  loginUser: appAction.loginUser,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><h3 id="connected-react-router-与-history"><a href="#connected-react-router-与-history" class="headerlink" title="connected-react-router 与 history"></a>connected-react-router 与 history</h3><p>这是一种固定写法，不用过多关注：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//参考 项目的tag login_pro_v1.0</span><br><span class="line">//src/app/init/createStore.js</span><br><span class="line">import &#123; connectRouter, routerMiddleware &#125; from &apos;connected-react-router&apos;;</span><br><span class="line"></span><br><span class="line">connectRouter(history)(combineReducers(reducers)),</span><br></pre></td></tr></table></figure></p>
+<h3 id="路由设计"><a href="#路由设计" class="headerlink" title="路由设计"></a>路由设计</h3><h4 id="ConnectedRouter配置"><a href="#ConnectedRouter配置" class="headerlink" title="ConnectedRouter配置"></a>ConnectedRouter配置</h4><p>ConnectedRouter类似BrowserRouter。MultiIntlProvider可以不用管就是一个高阶组件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ConnectedRouter history=&#123;history&#125;&gt;</span><br><span class="line">    &lt;MultiIntlProvider defaultLocale=&#123;locale&#125; messageMap=&#123;messages&#125; &gt;</span><br><span class="line">        &lt;Switch&gt;</span><br><span class="line">            &lt;Route key=&#123;path&#125; path=&quot;/dashboard/analysis/realtime&quot; component=&#123;Page&#125; /&gt;</span><br><span class="line">        &lt;/Switch&gt;</span><br><span class="line">    &lt;/MultiIntlProvider&gt;</span><br><span class="line"> &lt;/ConnectedRouter&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="使用BrowserRouter"><a href="#使用BrowserRouter" class="headerlink" title="使用BrowserRouter"></a>使用BrowserRouter</h4><p>项目的具体布局主要看 src/src-acl-router/AclRouter.jsx;<br>本项目应该用的是BrowserRouter，而非HashRouter，因为页面的路由都没有#。<br>整理出来如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;BrowserRouter history=&#123;history&#125;&gt;</span><br><span class="line">    &lt;Switch&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        path=&quot;/&quot;</span><br><span class="line">        render=&#123;() =&gt; &lt;Redirect to=&quot;/outlets&quot; /&gt;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        path=&quot;/login&quot;</span><br><span class="line">        render=&#123;props =&gt; (</span><br><span class="line">          &lt;NormalLayout &#123;...props&#125;&gt;</span><br><span class="line">            &lt;RouteComponent &#123;...props&#125; /&gt;</span><br><span class="line">          &lt;/NormalLayout&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        path=&quot;/outlets&quot;</span><br><span class="line">        render=&#123;props =&gt; (</span><br><span class="line">          &lt;BasicLayout &#123;...props&#125;&gt;</span><br><span class="line">            &lt;RouteComponent &#123;...props&#125; /&gt;</span><br><span class="line">          &lt;/BasicLayout&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        path=&quot;/exception/403&quot;</span><br><span class="line">        render=&#123;props =&gt; (</span><br><span class="line">          &lt;BasicLayout &#123;...props&#125;&gt;</span><br><span class="line">            &lt;Unauthorized &#123;...props&#125; /&gt;</span><br><span class="line">          &lt;/BasicLayout&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        render=&#123;props =&gt; (</span><br><span class="line">          &lt;NotFound &#123;...props&#125; /&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;/Switch&gt;</span><br><span class="line"> &lt;/BrowserRouter&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="页面权限管理"><a href="#页面权限管理" class="headerlink" title="页面权限管理"></a>页面权限管理</h4><p>通过 permissions 配置，通过比对 登陆后 个人的权限user.authorities 与 页面的 permissions，来重组拼合 上面的 《使用BrowserRouter》：<br><strong>本项目在登陆后会重新重组渲染上面的 《使用BrowserRouter》</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/dashboard/analysis/offline&apos;,</span><br><span class="line">  exact: true,</span><br><span class="line">  permissions: [&apos;admin&apos;, &apos;user&apos;],</span><br><span class="line">  redirect: &apos;/login&apos;,</span><br><span class="line">  component: W11orkInProgress,</span><br><span class="line">  pageTitle: &apos;&apos;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4><p>场景一：当用户对某个页面没有权限时，AclRouter会将此页面 重定向到403页面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route</span><br><span class="line">        path=&quot;/outlets&quot;</span><br><span class="line">        render=&#123;() =&gt; &lt;Redirect to=&quot;/exception/403&quot; /&gt;&#125;</span><br><span class="line">      /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="NotFound"><a href="#NotFound" class="headerlink" title="NotFound"></a>NotFound</h4><p>在《使用BrowserRouter》中的NotFound页面的路由设计挺好，此路由没有配置path，当上面的路由都未匹配时，就顺延到NotFound页面。</p>
+<h4 id="路由配置项介绍"><a href="#路由配置项介绍" class="headerlink" title="路由配置项介绍"></a>路由配置项介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/outlets&apos;,</span><br><span class="line">  exact: true,</span><br><span class="line">  //权限</span><br><span class="line">  permissions: [&apos;admin&apos;, &apos;user&apos;],</span><br><span class="line">  //当有权限时，一切正常时显示Outlets</span><br><span class="line">  component: Outlets,</span><br><span class="line">  //当没有权限时，换成显示Unauthorized</span><br><span class="line">  unauthorized: Unauthorized,</span><br><span class="line">  pageTitle: &apos;pageTitle_outlets&apos;,</span><br><span class="line">  //面包屑</span><br><span class="line">  breadcrumb: [&apos;/outlets&apos;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="AclRouter"><a href="#AclRouter" class="headerlink" title="AclRouter"></a>AclRouter</h4><p>所有路由重组，全部在 AclRouter.js.<br>这个js亮点在于，在登陆前与登陆后，改变 mapStateToProps 中的 user props值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const Router = (&#123; history, user &#125;) =&gt; (</span><br><span class="line">  &lt;ConnectedRouter history=&#123;history&#125;&gt;</span><br><span class="line">    &lt;MultiIntlProvider</span><br><span class="line">      defaultLocale=&#123;locale&#125;</span><br><span class="line">      messageMap=&#123;messages&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;AclRouter</span><br><span class="line">        authorities=&#123;user.authorities&#125;</span><br><span class="line">        authorizedRoutes=&#123;authorizedRoutes&#125;</span><br><span class="line">        authorizedLayout=&#123;BasicLayout&#125;</span><br><span class="line">        normalRoutes=&#123;normalRoutes&#125;</span><br><span class="line">        normalLayout=&#123;NormalLayout&#125;</span><br><span class="line">        notFound=&#123;NotFound&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;/MultiIntlProvider&gt;</span><br><span class="line">  &lt;/ConnectedRouter&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">const mapStateToProps = state =&gt; (&#123;</span><br><span class="line">  user: state.app.user,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Router.propTypes = propTypes;</span><br><span class="line">export default connect(mapStateToProps)(Router);</span><br></pre></td></tr></table></figure></p>
+<p>根据登陆前后的user props值在 AclRouter.js中重组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;BrowserRouter history=&#123;history&#125;&gt;</span><br><span class="line">    &lt;Switch&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        path=&quot;/&quot;</span><br><span class="line">        render=&#123;() =&gt; &lt;Redirect to=&quot;/outlets&quot; /&gt;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      &lt;Route</span><br><span class="line">        path=&quot;/login&quot;</span><br><span class="line">        render=&#123;props =&gt; (</span><br><span class="line">          &lt;NormalLayout &#123;...props&#125;&gt;</span><br><span class="line">            &lt;RouteComponent &#123;...props&#125; /&gt;</span><br><span class="line">          &lt;/NormalLayout&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">      ......</span><br><span class="line">    &lt;/Switch&gt;</span><br><span class="line"> &lt;/BrowserRouter&gt;</span><br></pre></td></tr></table></figure></p>
+<p>真正做到了根据用户权限，动态改变重组整个BrowserRouter组件。</p>
+<h4 id="BrowserRouter是组件"><a href="#BrowserRouter是组件" class="headerlink" title="BrowserRouter是组件"></a>BrowserRouter是组件</h4><p>如上，BrowserRouter 可通过connect 的 mapStateToProps 中的 user props值 重新渲染 BrowserRouter。<br>这也验证了 react-router中说的所有router都是组件的说法。</p>
+<h4 id="因为BrowserRouter是组件，所以能理所当然地使用connect"><a href="#因为BrowserRouter是组件，所以能理所当然地使用connect" class="headerlink" title="因为BrowserRouter是组件，所以能理所当然地使用connect"></a>因为BrowserRouter是组件，所以能理所当然地使用connect</h4><p>见《BrowserRouter是组件》<br>参考demo /src/app/init/Router.js</p>
+<h3 id="redux-设计"><a href="#redux-设计" class="headerlink" title="redux 设计"></a>redux 设计</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>在初始化公共目录下的js中统一注入reducer，并写了一个公共的action和reducer，此公共的action和reducer可能很多页面都要用，因此写在公共目录下，供很多页面使用<br>：参考：src/app.<br>每个页面的reducer与action写在每个页面目录下,例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- outlets</span><br><span class="line">  - action.js</span><br><span class="line">  - index.js</span><br><span class="line">  - index.scss</span><br><span class="line">  - reducer.js</span><br></pre></td></tr></table></figure></p>
+<h4 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h4><p>在初始化js中，统一注入reducer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import outlets from &apos;views/outlets/reducer&apos;;</span><br><span class="line">import outletDetail from &apos;views/outletDetail/reducer&apos;;</span><br><span class="line">import app from &apos;../reducer&apos;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  app,</span><br><span class="line">  outlets,</span><br><span class="line">  outletDetail,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>每个页面的reducer写在每个页面的目录下。</p>
+<h4 id="action"><a href="#action" class="headerlink" title="action"></a>action</h4><p>参考上面。</p>
+<h4 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h4><p>每个页面都要处理 connect(mapStateToProps, mapDispatchToProps)(injectIntl(OutletDetail));</p>
+<h4 id="等待改进部分"><a href="#等待改进部分" class="headerlink" title="等待改进部分"></a>等待改进部分</h4><p>connect 和 公共的action 单独整理 成connect高阶件，然后对比 考虑如何将post等继承其中</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-06-19T00:39:36.000Z" itemprop="dateUpdated">2019-06-19 08:39:36</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2019/06/11/react_redux_demo/" target="_blank" rel="external">https://yewills.github.io/2019/06/11/react_redux_demo/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux-thunk/">redux-thunk</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/06/11/react_redux_demo/&title=《react_redux_demo项目笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/06/11/react_redux_demo/&title=《react_redux_demo项目笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/06/17/font_end/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">前端缓存笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/05/23/git/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#redux-thunk"><span class="post-toc-number">1.</span> <span class="post-toc-text">redux-thunk</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ajax设计"><span class="post-toc-number">2.</span> <span class="post-toc-text">ajax设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#技术栈"><span class="post-toc-number">3.</span> <span class="post-toc-text">技术栈</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#connected-react-router-与-history"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">connected-react-router 与 history</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路由设计"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">路由设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ConnectedRouter配置"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">ConnectedRouter配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用BrowserRouter"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">使用BrowserRouter</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#页面权限管理"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">页面权限管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重定向"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">重定向</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#NotFound"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">NotFound</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#路由配置项介绍"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">路由配置项介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#AclRouter"><span class="post-toc-number">3.2.7.</span> <span class="post-toc-text">AclRouter</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#BrowserRouter是组件"><span class="post-toc-number">3.2.8.</span> <span class="post-toc-text">BrowserRouter是组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#因为BrowserRouter是组件，所以能理所当然地使用connect"><span class="post-toc-number">3.2.9.</span> <span class="post-toc-text">因为BrowserRouter是组件，所以能理所当然地使用connect</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redux-设计"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">redux 设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#reducer"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">reducer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#action"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">action</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#connect"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">connect</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#等待改进部分"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">等待改进部分</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/06/11/react_redux_demo/&title=《react_redux_demo项目笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/06/11/react_redux_demo/&title=《react_redux_demo项目笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aUVLDMAwFQO5/6XCAkvRJKgy2N1+dtkm1ZkZYsr6+4ut6uV7fv/t+8uTqXc0LAwNjWcb1ePUYz7+SYPLYMDAwzmHkj34OLgmimtCfY8PAwMC4+07yTh5ub/kwMDAw8jTaK0qTjSYGBgZGtYh9TrVJQfsvanEMDIwFGXnX/e9f/8r5BgYGxlKMq3hVfz7Z6iXp+01UGBgYWzN6bbJ5022ecDEwMM5hzDdtvQPLDy8WBgbGMYy86Z8PrVaPE/JDgtuEi4GBsTUjuiF+p3rkkMA+8H8DAwNjQUZyQ68R1guxOmbxw98EAwNjO8ZkPKLXYqsWsdGgGAYGxmGMyfjXZENZTfpvEi4GBsbWjCToHiBJzUkkt+02DAyMTRn5wES1ZO09oUfCwMDYm5E8tNcCG231qkUyBgbGAYx5c61a1ubpONqAYmBgbM2olp3Vore6TNVyFwMD4wTGZMCrdzCZj2UUIsHAwNiaUU2aefLtpde8hTeqzjEwMBZk9I4qe0VvvkDlI08MDIwjGZPxiGpZm28WywkXAwNjU0bzKDEuZauJNWrJYWBgbMq4ilde6OaLUk3B5X4eBgbG4oxJuuw13aqF8aTZh4GBsRMjT7KTLWC1qVdebwwMjAMYeaKcbw17BwzRPhcDAwMjTqnzVl1zTgQDAwPj8dPeiGoST1Q8Y2BgHMCoBtErYnvl9IfbbRgYGAsyeqVjPhBW/TThNQ81MTAw1mN8AxWTVYP6teaPAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
