@@ -114,4 +114,45 @@ router 封装
 前期不考虑使用koa进行中转；
 前期先做不考虑跨域问题的配置工程；
 
+## eslint
+### 禁用规则
+基本上所有的规则都可以通过设置 值为 0的数组来禁用。
+```
+"no-unused-expressions": [0]
+```
+
+## jest
+### mock的用法
+示例见 [wills-react-pro 的 Login.test.js](https://github.com/YeWills/wills-react-pro)
+```
+ const mockPost = jest.fn(testPost({ success: false }));
+```
+
+## enzyme
+### shallow的两种情况
+shallow一个组件时，和shallow组件内一个返回div的函数用法稍微有区别，
+前者需要通过’<>‘括号起来，后者不需要。
+示例见 [wills-react-pro 的 Login.test.js](https://github.com/YeWills/wills-react-pro)
+#### shallow一个组件
+这种情况最通用，不多说：
+```
+shallow(<Login />);
+```
+
+#### shallow组件内的函数返回的div
+
+```
+renderErrorMsg = () => {
+    return (
+        <div className={`${prefixCls}-errorMsg`}>
+          {errorMsg}
+        </div>
+      );
+  };
+
+  //测试代码如下：
+  const ErrorComponent = warpInstance.renderErrorMsg();
+  const errorWrap = shallow(ErrorComponent);
+  expect(errorWrap.exists('.view-login-errorMsg')).toBeTruthy();
+```
 
