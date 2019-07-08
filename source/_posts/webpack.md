@@ -7,7 +7,7 @@ categories:
 series: 前端
 ---
 
-## webpack常用知识
+## webpack常用知识 上
 
 ### sourcemap的处理
 
@@ -704,6 +704,16 @@ webpack 在启动后会从Entry里配置的Moule开始，递归解析Entry依赖
     }]
   ]
 }
+```
+## webpack常用知识 下
+### 如何让某个插件 在其他代码之前执行
+如下，从上到小，先后执行 babel-polyfill -->  react-hot-loader/patch --> src/index，这是将react-hot-loader/patch先于index执行的方法。
+```
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    path.resolve(__dirname, 'src/index')
+  ],
 ```
 
 ## webpack 黑知识
@@ -1598,6 +1608,74 @@ plugins:[
 react-loadable 是2017年5月左右才出现，到如今，GitHub上已经有一万多颗star，是可以比拟react-redux的插件，非常棒，项目中如果有用到懒加载，用这个框架非常好react-loadable
 
 ### 减少不必要的plugin
+
+##  热重载与热替换
+### 热重载 与 --inline
+在使用webpack的 devServer时，只需在`npm script`中加入`--inline`,即可自动编译，自动重新加载整个页面。[参考 配置-开发中 Server(devServer)](https://www.webpackjs.com/configuration/dev-server/#devserver-inline)
+```
+webpack-dev-server --inline
+```
+### 热替换介绍
+热替换有两种方法，一种是使用webpack-dev-server，一种是使用webpack-hot-loader；
+### 热替换方式一： webpack-dev-server
+webpack-dev-server有两种方法，
+一种是直接在webpack.config.js中的devSever上配置hot实现。
+一种是自定义配置。
+#### devSever
+只需在`npm script`中加入`--hot`,[参考 配置-开发中 Server(devServer)-devServer.hot](https://www.webpackjs.com/configuration/dev-server/#devserver-hot)
+```
+webpack-dev-server --hot
+```
+在`npm script`中加入`--hot`这一句代码相当于 在webpack.config.js的设置devServer.hot为`true`,并且在plugins中加了 :
+```
+new webpack.HotModuleReplacementPlugin()
+```
+所以，一旦在`npm script`中加入`--hot`，就要去掉plugins的`new webpack.HotModuleReplacementPlugin()`，不然就相当于执行了两次HotModuleReplacementPlugin，并因此可能报错。
+
+**值得注意的是， 在webpack.config.js的设置devServer.hot为`true`效果并不佳，推荐在`npm script`中加入`--hot`**
+
+因此一般`npm script`配置如下，意思是当代码变化，重新编译的时候，如果热替换起作用，就执行热替换，如果热替换不起作用，就执行热重装整个页面。
+```
+webpack-dev-server --inline --hot 
+```
+
+#### express或koa 的自定义方式
+有些项目不用webpack.config.js的设置devServer，而选择express或koa，直接引用webpack-dev-server插件自定义配置热替换效果，此时就需要配合 webpack-hot-middleware 与 webpack-dev-middleware 一起使用，才能达到效果。
+详细见 [demo](https://github.com/YeWills/react-hot-loader-demo)。
+
+### 热替换方式二： react-hot-loader
+这是热替换最佳模式。具体配置方法，参见 [增加react-hot-loader热更新功能](https://github.com/YeWills/wills-react-pro/commit/971612a647e0a93c037c04830526cc684d90de76)
+
+### 热替换最佳方案
+配置了几个项目的热加载后发现一般 webpack自带的webpack-dev-server方式的热替换一般效果不好或干脆失效，所以最佳方案是使用react-hot-loader。
+
+### module.hot
+module.hot是一下代码是 webpack Hot Module Replacement API，在react-hot-loader v3的版本中要配置webpack Hot Module Replacement 的 module.hot。不过在v4的版本后，就不需要配置module.hot了。
+```
+if (module.hot) {
+    module.hot.accept('./print.js', function(){
+        console.log("Accepting the updated printMe module!");
+        printMe();
+    })
+}
+```
+
+### react-hot-loader失效问题
+#### 去掉不必要或重复配置
+失效可能有很多问题，其中之一是 将不必要的配置删除，可以解决hot实效问题，例如在`npm script`中加入`--hot`，又在webpack.config.js的设置devServer.hot为`true`,并且在plugins中加HotModuleReplacementPlugin，就可能导致失效，删除重复配置即可。
+
+#### 不要使用 createApp() 而使用<app/>
+项目hot改造的坑在于application函数方式的缺点可能是，每次render页面都会执行函数，生成崭新的页面，这会有潜在的坑。—》解决之道函数方式改成 组件方式`<app/> `
+根据react-hot-loader的配置方法，需要改写为`<app/>`方式，并hot app；
+详细见 [增加react-hot-loader热更新功能](https://github.com/YeWills/wills-react-pro/commit/971612a647e0a93c037c04830526cc684d90de76)
+
+### 更多知识
+#### –watch 与 热更新
+参考《webpack 黑知识》
+#### 自动编译与热更新三大条件
+参考《webpack 黑知识》
+#### webpack-dev-server黑知识
+参考《webpack 黑知识》
 
 ##  常用插件
 ### ContextReplacementPlugin
