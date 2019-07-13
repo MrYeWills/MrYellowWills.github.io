@@ -18,7 +18,28 @@ HTML的语义化强调不要都使用div，建议使用header\footer\nav\section
 ##### 响应不同移动端弹框键盘
 移动设备会根据不同的input 如何number、email、text、password；弹出不同的键盘，这是很多移动开发使用input语义化编写的重要原因。
 
-## 标签
+## html element
+由于标签非html5新标签，但其属性可能是html5新属性，因此标签不分开成html与html5讲。
+
+### a
+#### download属性
+属于html5特性，除ie不兼容外，其他浏览器都可兼容。
+配置download时，告诉浏览器，表明a不是一个导航url，而是一个下载按钮
+
+#### href="#top" 与 href="#"
+属于html5属性，返回页面顶部。
+
+#### mailto :创建一个email链接
+这是常见的创建按钮或链接，将用户的电子邮件程序打开，让他们发送新邮件。这是通过使用一个**mailto**链接完成的
+```
+<a href="mailto:nowhere@mozilla.org">Send email to nowhere</a>
+```
+#### tel :创建电话链接
+这是通过使用一个**tel**链接完成的
+提供电话链接有助于用户查看连接到手机的网络文档和笔记本电脑。
+```
+<a href="tel:+491570156">+49 157 0156</a>
+```
 ### input与form
 #### name 与 form 结合
 name配合submit，再结合form的action使用。
@@ -30,6 +51,237 @@ name配合submit，再结合form的action使用。
         <input type="submit" value="Submit">
     </form>
 ```
+### base
+`<base> `元素 指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个` <base> `元素。
+
+### meta
+`<meta> `元素表示那些不能由其它HTML**元**相关元素 (`<base>, <link>, <script>, <style> 或 <title>`) 之一表示的任何元数据信息.
+
+### caption
+根table一起使用，caption用来显示表格的标题
+
+### del 与 ins
+del标签表示一些被从文档中删除的文字内容
+ins元素定义已经被插入文档中的文本(文字下划线效果)。
+![](/image/html/del_ins.jpg)
+```
+del,
+ins {
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+del {
+    background-color: #fbb;
+}
+ins {
+    background-color: #d4fcbc;
+}
+del::before,
+ins::before {
+    position: absolute;
+    left: .5rem;
+    font-family: monospace;
+}
+del::before {
+    content: '−';
+}
+ins::before {
+    content: '+';
+}
+p {
+    margin: 0 1.8rem 0;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+}
+
+
+<p>“You're late!”</p>
+<del>
+    <p>“I apologize for the delay.”</p>
+</del>
+<ins cite="../howtobeawizard.html" datetime="2018-05">
+    <p>“A wizard is never late …”</p>
+</ins>
+```
+
+
+
+### fieldset 与 legend
+元素通常用来对表单中的控制元素进行分组，二者需配合使用，可以放在form下面，也可以二者配合单独使用。
+```
+<form action="#">
+  <fieldset>
+    <legend>Simple fieldset</legend>
+    <input type="radio" id="radio">
+    <label for="radio">Spirit of radio</label>
+  </fieldset>
+</form>
+```
+![](/image/html/fieldset.jpg)
+
+### hr
+可以来做分割线，也可以做双层分割线。
+![](/image/html/hr.jpg)
+```
+<p>
+  This is the first paragraph of text.
+</p>
+<hr>
+<p>
+  This is the second paragraph of text.
+</p>
+```
+
+### i
+`<i>`用于表现因某些原因需要区分普通文本的一系列文本。例如技术术语、外文短语或是小说中人物的思想活动等，它的内容通常以斜体显示。
+
+### optgroup
+与 select配合使用，可创建带分组的option选项，十分好用，optgroup有两个属性：label和disabled。
+```
+<select>
+  <optgroup label="Group 1">
+    <option>Option 1.1</option>
+  </optgroup> 
+  <optgroup label="Group 2">
+    <option>Option 2.1</option>
+    <option>Option 2.2</option>
+  </optgroup>
+  <optgroup label="Group 3" disabled>
+    <option>Option 3.1</option>
+    <option>Option 3.2</option>
+    <option>Option 3.3</option>
+  </optgroup>
+</select>
+```
+### option
+`<option> ` 用于定义在`<select>,  <optgroup> 或<datalist> `元素中包含的项.
+属性有：
+- disabled
+- label
+- selected
+- value
+
+### pre
+可以将字符间的空格都能完整保留，非常不错
+```
+ <pre>rrrrr iiii     </pre>
+```
+### small
+將使文本的字体变小一号
+
+## html5 elemnt
+### datalist :做可选值的输入框
+**此element 除移动端的安卓不支持（ios是支持的），pc完美支持**
+input配合datalist 以及 option使用，可做出原生的可选值输入框，非常棒。
+```
+<label for="ice-cream-choice">Choose a flavor:</label>
+<input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+<datalist id="ice-cream-flavors">
+    <option value="Chocolate">
+    <option value="Coconut">
+    <option value="Vanilla">
+</datalist>
+```
+### details 与 summary :创建挂件
+**除ie外，其他都支持**
+二者需配合使用才可达到创建挂件toggle的效果
+```
+<details>
+    <summary>Details</summary>
+    Something small enough to escape casual notice.
+</details>
+```
+
+### progress
+**全部兼容。**
+可用来显示进度条。与 下面的meter相比，前者是圆角形状，后者是无圆角的长方条，相比之下，progress更适合进度条。
+```
+<progress value="70" max="100">70 %</progress>
+```
+![](/image/html/progress.jpg)
+
+### meter
+**除ie外，其他都支持(包含edge)**
+可用来显示进度条。
+![](/image/html/meter.jpg)
+```
+<meter id="fuel" name="fuel"
+       min="0" max="100"
+       low="33" high="66" optimum="80"
+       value="81">
+    at 50/100
+</meter>
+```
+### output
+**除ie外，其他都支持(包含edge)**
+output主要作用在于不用js，自动计算多个input的值，并显示。
+output 必须配合form使用，以下代码要点：
+定义output的name为result
+在form中定义事件oninput，并定义result.value
+```
+<form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+  <input type="range" name="b" value="50" /> +
+  <input type="number" name="a" value="10" /> =
+  <output name="result">60</output>
+</form>
+```
+![](/image/html/meter.jpg)
+
+### input range
+**所有浏览器兼容，ie支持到10**
+定义划块。
+```
+<input type="range" id="cowbell" name="cowbell" 
+         min="0" max="100" value="90" step="10">
+```
+
+### s
+**全部兼容。**
+与`<del>`一样，都是表示删除的划线效果，只是表示单纯的删除时可用`<s>`，但是表示编辑（有删除和添加时）推荐用del和ins
+```
+<s>There will be a few tickets available at the box office tonight.</s>
+```
+
+### sub sup
+**兼容所有浏览器**
+分别代表上标和下标。
+```
+<p>Almost every developer's favorite molecule is
+  C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>UU<sup>2</sup>, also known as "caffeine."</p>
+```
+![](/image/html/sub.jpg)
+
+## HTML属性
+以下讲的都是全局属性：
+### contenteditable
+表示元素是否可被用户编辑。 如果可以，浏览器会修改元素的部件以允许编辑。
+该属性是一个枚举属性，而非布尔属性。
+这意味着必须显式设置其值为 true、false 或空字符串中的一个，并且不允许简写为 `<label contenteditable>Example Label</label>`正确的用法是 `<label contenteditable="true">Example Label</label>`。
+
+### title
+可用于tooltip。
+
+### data-* 
+是一类被称为自定义数据属性的属性，它赋予我们在所有 HTML 元素上嵌入自定义数据属性的能力，并可以通过脚本(一般指JavaScript：例如通过 HTMLElement.dataset获取属性值) 与 HTML 之间进行专有数据的交换。
+#### HTMLElement.dataset
+```
+<img class="spaceship cruiserX3" src="shipX3.png"
+  data-ship-id="324" data-weapons="laserI laserII" data-shields="72%"
+  data-x="414354" data-y="85160" data-z="31940"
+  onclick="spaceships[this.dataset.shipId].blasted()">
+</img>
+```
+#### css 伪元素 content：data（）
+```
+attr(data-abc);
+```
+### dir
+是一个指示元素中文本方向的枚举属性
+
+### lang
+这个语言是不可编辑元素写入的语言，或者可编辑元素应该写入的语言。
+设置lang语言时，在文字开始位置会有一个对应语言的国旗logo
 
 ## HTML5属性
 ### tabindex
@@ -39,6 +291,10 @@ tabindex 是html5属性 ，非常好用， 指示其元素是否可以聚焦,
 ```
 <div tabindex="0">Tabbable due to tabindex.</div>
 ```
+### draggable
+是一个枚举类型的属性，用于标识元素是否允许使用 拖放操作API 拖动。
+
+## HTML5 API
 ### FormData 与 FileReader
 FormData 将数据表单序列化以便得到可以作为请求的参数;
 FileReader 读取文件，比如实现图片预览；
