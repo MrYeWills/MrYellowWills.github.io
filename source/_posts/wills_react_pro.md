@@ -110,6 +110,23 @@ renderErrorMsg = () => {
   expect(errorWrap.exists('.view-login-errorMsg')).toBeTruthy();
 ```
 
+### shallow测试hoc
+shallow一个经过hoc的组件时，只能shallow到hoc层面，为了能直接测试该组件时，需要特殊处理；
+在hoc层面上，要写一句这样的代码：
+```
+FinalComponent.WrappedComponent = WrappedComponent;
+```
+然后通过type属性，可以捕捉这个组件：
+```
+const getComponentFromHoc = warp => (warp.type && warp.type.WrappedComponent
+  ? <warp.type.WrappedComponent {...warp.props} /> : warp);
+```
+详细demo见:
+```
+https://github.com/YeWills/wills-react-pro/blob/master/src/utils/testUtil.js
+https://github.com/YeWills/wills-react-pro/blob/master/src/utils/connectWills.js
+https://github.com/YeWills/wills-react-pro/blob/master/test/Login.test.js
+```
 
 ## connected-react-router 与 history
 这是一种固定写法，不用过多关注：
