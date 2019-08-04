@@ -182,6 +182,29 @@ div{
 为什么呢，原因是，item改为vertical-align: middle时，直接将父baseline改到自身的中部位置了，
 这个例子说明，**父级内的空的inline-block元素，可以通过vertical-align: middle将父baseline改到自身的中部位置。**
 
+### 为什么会有间隙
+上面的例子中，看到因为 img 的存在，导致了父层底部与图片底部有间隙。 这是因为，img 的排版默认是按照行盒子排列的，也就是按照baseline对齐，而baseline与行盒子的底线是有一定距离的，这个距离就是间隙。
+当img 的父层 字体越大时，间隙越大。
+**这种现象一般出现于图片，在项目中遇到图片排列时，要注意会产生这种间隙。**
+再举例：
+```
+ .wrap{
+        background: blue;
+        font-size: 50px;
+    }
+    img{
+        height: 150px;
+        width: 200px;
+    }
+
+   <div class="wrap">
+        <img src="./git3.png" />
+    </div>
+```
+![](/image/css/vertical-align/verialign-1.jpg)
+
+消除间隙的方法是，给img 一个vertical-align：middle或者其他值都可以。
+
 
 ### 如何确定父元素的baseline
 父元素的baseline依据其内部行内元素类型不同，baseline不同。

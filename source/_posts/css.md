@@ -305,7 +305,17 @@ body{
  ```
 ### 自定义CheckBox
 主要是定义好这几个状态的样式： focus hover  同时focus和hover；
+主要通过以下步骤：
+#### 定义 label[for]和id
+#### 隐藏元素input
+#### 利用选择器 input[type="checkbox"] + label 
 ```
+  <div>
+    <input type="checkbox" name="lang-as" id="lang-as">
+    <label for="lang-as">ActionScript</label>
+   </div>
+  
+
   input[type="checkbox"] {
         position: absolute;
         overflow: hidden;
@@ -334,14 +344,18 @@ body{
     background-image: url(images/checkbox-checked-focus.png);
   }
 
-
-  <div>
-    <input type="checkbox" name="lang-as" id="lang-as">
-    <label for="lang-as">ActionScript</label>
-   </div>
 ```
 [demo](https://github.com/YeWills/css_demo/blob/master/chapter-09/09-checkbox.html)
 
+### 如何适配移动端页面
+#### viewport
+设置viewport让页面宽度与屏幕宽度适配，否则在移动端上显示时字体将变小
+#### rem／viewport／media query
+通过rem、viewport、媒体查询等进行响应式设计
+#### 设计上：隐藏 折行 自适应
+功能设计上，pc端有的功能，移动端可以去掉隐藏；
+pc端一行显示的，移动端多行显示；
+给一些元素留下自适应的空间，让一些元素可大可小。
 
 ## css知识
 
@@ -356,84 +370,7 @@ body{
 ```
 
 ###  float浮动定位
-浮动定位有以下特点：
-#### 收缩为最小宽度
-除非已经定义了浮动元素的宽度，否则浮动元素收缩为适应元素内容的最小宽度。
-#### 遇到块级元素将停止
-对于自身而言，浮动元素脱离文档流后，遇到块级元素将停止，
-#### 脱离文档流
-当一个元素变为浮动元素时，对不同类型的相邻元素影响如下：
-##### 与行内元素相邻
-会让行内元素紧贴浮动元素，典型的场景--图片文字环绕
-```
-img{
-  float: left;
-}
-<img src="./aa.jpg" alt="aa">
-<span>行内元素文字行内元素文字</span>
-```
-##### 与块级元素相邻
-浮动元素脱离文档流，此时效果类似position：absolute，相当于浮动元素不存在，与之相邻的块级元素将占领浮动元素位置；
-**但是块级元素内的行内元素，将环绕浮动元素**
-浮动之前：
-```
-    .float {
-        height: 60px;
-        background: rebeccapurple;
-    }
-    .test {
-        border: 45px solid #00BCD4;
-        background: blue;
-    }
-
-<div class="float">浮动之前</div>
-<div class="test">相邻块级元素</div>
-```
-![](/image/css/float-before.jpg)
-
-浮动之后：
-```
-    .float {
-      /* 其他代码省略 */
-        float: left;
-    }
-<div class="float">浮动之后</div>
-<div class="test">相邻块级元素相邻块级元素相邻块级元素...</div>
-```
-![](/image/css/float-after.jpg)
-
-##### 与浮动元素相邻
-浮动元素与浮动元素 将并列并排；
-注意的是，如果浮动元素的高度不同，当浮动元素被挤到第二行时，将会卡住：
-![](/image/css/float-pading.jpg)
-```
- .triangle{
-      float: left;
-      width: 150px;
-      height: 60px;
-  }
-  .it1{
-      height: 80px;
-      background:rebeccapurple;
-  }
-  .it2{
-      background:blue;
-  }
-  .it3{
-      background:#00BCD4;
-  }
-  <div class="triangle it1">浮动元素</div>
-  <div class="triangle it2">浮动元素</div>
-  <div class="triangle it3">浮动元素</div>
-```
-#### 消除与相邻元素的间隙
-当被定义为浮动元素时，它跟原来相邻元素可能由于系统中自带的缝隙，一旦变成浮动元素，此缝隙将没有了，参加《疑难点》；
-消除间隙这个特性，在开发中经常被运用.
-#### 与绝对定位区别
-浮动定位于绝对定位都会脱离文档流，但二者表现不一样；
-绝对定位是完全脱离文档流，相当于文档中不存在此元素了，而浮动定位脱离文档流要区别行内元素，原因如上。
-#### float清空格的原因
-根本原因是由于float会导致节点脱离文档流结构。它都不属于文档流结构了，那么它身边的什么换行、空格就都和它没关系的，它就尽量的往一边去靠拢，能靠多近就靠多近，这就是清空格的本质。
+参考 《css知识点汇 -- float浮动定位》
 
 ### 有关em
 #### font-size的em叠加
@@ -492,6 +429,8 @@ visibility：hidden 为被隐藏的对象保留其物理空间
 ::before  //伪元素
 :focus  //伪类
 ```
+#### 二者区别
+伪元素是真的有元素，伪类只是元素的状态。
 #### content - attr\url\counter
 ##### 配合attr使用
 attr是css3的一个属性。
@@ -866,7 +805,15 @@ img{
       </div>
   </div>
  ```
-
+### base64图片
+base64来代替png图片，利于减少http请求，提高性能，但是图片经过编译变成base64文本时，其体积大小增加了三分之一，增加了css或html体积。
+因此base64一般用于小图片，由于base64文本不利于后期修改和维护，所一般不直接使用base64，而是通过webpack等编译的方式，将png形式的图片编译成base64.
+因此有以下特点：
+#### base64是文本
+#### base64要比原来图片体积增加1/3
+#### base64用于小图片
+#### 通过打包生成base64
+#### base64的使用减少了http请求
 
 ## css黑知识
 
@@ -1055,7 +1002,8 @@ BFC有以下特征：
 }
 ```
 
-### 推荐使用伪类来消除浮动
+### 推荐使用伪元素来消除浮动
+#### 概述
 参考《精通css》P181，
 对于小的元素，使用overflow是比较方便，可以使用overflow；
 对于大的元素，可能元素需要显示滚动条，或者有些定位元素需要放在这个大的元素之外，这时候使用overflow可能产生不利影响，所以大的元素，推荐使用伪元素来实现：
@@ -1067,6 +1015,17 @@ BFC有以下特征：
     height:0
 }
 ```
+#### clear为什么能消除浮动
+参考clear 在mdn官网的解释： 指定一个元素是否必须移动(清除浮动后)到在它之前的浮动元素下面。
+因此在父元素内，放置一个块级元素，并且放置在浮动元素后面，设置clear：left／right／both；
+此时此clear元素将移动到浮动元素下方，由于此clear元素处于父元素文档流内，将让父元素高度撑开到与浮动元素一样高。
+达到消除浮动效果。
+详细参考[清除浮动的四种方式及其原理理解](https://juejin.im/post/59e7190bf265da4307025d91)
+
+**clear消除浮动方式的步骤**
+#### 在父元素最底部放置一个元素
+#### 设置此元素clear属性
+#### 设置此元素为块级元素
 
 ### 兼容写法(后退机制)
 background-image写两遍，是为了兼容后退机制写法。
@@ -1151,3 +1110,16 @@ vh其实很简单，就是相对视口的1%的长度意思。
 
 ### css之布局
 参考博客《css之布局》
+
+### inline-block元素之间的间隙
+#### 原因
+两个元素之间书写的时候没有紧挨一起，或者有换行，从而导致间隙。
+```
+<div class="inline-block">abc</div>
+<div class="inline-block">abc</div>
+```
+#### 设置父元素font-size：0
+在父亲元素设置font-size为0，然后在自己元素内设置回来。
+#### 将元素书写时紧挨一起
+#### 设置元素为float
+利用float元素会脱离文档流的特性。

@@ -17,6 +17,30 @@ HTML的语义化强调不要都使用div，建议使用header\footer\nav\section
 ##### 利于seo
 ##### 响应不同移动端弹框键盘
 移动设备会根据不同的input 如何number、email、text、password；弹出不同的键盘，这是很多移动开发使用input语义化编写的重要原因。
+### input元素为什么用自闭合的写法
+因为input不能再嵌套其他元素，所以用自闭合的写法，同样的元素有 img br hr meta link。
+### HTML4 XML HTML5的关系
+XML其实就是xhtml。
+html4的写法是一种比较宽松的写法，容错性高，你怎么写，基本上浏览器都不报错，约束性不强；
+社区为了对html约束性更强，因此产生了xhtml，xhtml的约束性很强，但是对开发者不友好；
+由于xml约束性太强对开发者写法要求高，不友好，因此逐渐被社区抛弃，重新回到html4，并因此产生了新对标准 html5.
+
+因此html4和html5一样，只是5的标签和js api更丰富。
+xml则与html差别较大，约束强，现在逐渐没有被使用了。
+### 值得使用元素
+section article header footer
+### 语义化意义
+- 开发者容易理解
+- 机器容易理解结构，如搜索和毒屏软件；
+- 利于seo
+### html和Dom的关系
+Dom是由浏览器解析html解析而来的。
+### form的作用
+- 可直接进行GET POST 方式 提交表单
+- 可使用submit ／ reset按钮 提交表单
+- 第三方库可整体提取form值，如jq。
+- 第三方库只能通过form进行表单验证，例如angular 只能验证form标签的表单。
+
 
 ## html element
 由于标签非html5新标签，但其属性可能是html5新属性，因此标签不分开成html与html5讲。
@@ -135,6 +159,7 @@ p {
 
 ### i
 `<i>`用于表现因某些原因需要区分普通文本的一系列文本。例如技术术语、外文短语或是小说中人物的思想活动等，它的内容通常以斜体显示。
+在html5 标准中，i 元素更多被用于表示icon。
 
 ### optgroup
 与 select配合使用，可创建带分组的option选项，十分好用，optgroup有两个属性：label和disabled。
