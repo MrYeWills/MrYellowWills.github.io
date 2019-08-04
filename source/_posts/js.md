@@ -259,3 +259,69 @@ css只有10或20k时，写成内联，谷歌和百度和淘宝pc版都是这样�
 ### 压缩与缓存
 gzip压缩\cache-control\last-modified\if-Modified-Since\etag\if-None-Match
 参考《高效前端》P72
+
+## Dom API
+### 为什么这两种都可绑定事件：dom.onclick=function(){}\dom.addEventListener('click')
+这是dom事件级别，这两种方式是新老时代的绑定事件方式，参考《dom事件级别》
+### dom事件级别
+dom0 时代 ：dom.onclick=function(){}
+dom2 时代 ：dom.addEventListener('click', function(){})
+dom3 时代，绑定事件方式与dom2相同，不同的是，dom3时代增加了很多事件类型，例如 鼠标事件、键盘事件‘keyup’；
+### 事件模型
+事件模型有 冒泡和捕获 两种。
+### 事件流
+[参考](https://www.jianshu.com/p/e7c403e6e2da)
+dom事件流分为三阶段：
+#### 捕获阶段
+一个事件比如 click，顶级对象window发出一个事件流，事件从window>document>html>body>button到达目标元素。
+注意此阶段不出发事件绑定的函数。
+#### 目标处理阶段
+事件到达目标元素后，目标元素分析传给自己的是什么事件，是click还是change等等事件？确认好事件类型后，开始触发事件对应的绑定函数。
+进入冒泡阶段。
+#### 冒泡阶段
+沿着目标函数一步步到window对象，触发对应事件绑定函数。
+### 事件捕获的具体流程
+事件捕获具体流程是window>document>html>body>button。
+这也就解释了，很多人将**全局**事件绑定在body或document或window上，放在这些地方，在项目中任何地方都能被捕获触发对应事件函数。
+### Event对象常见运用
+#### event.preventDefault()
+阻止元素的默认行为，例如a标签定义click事件，在事件函数上加上这个，可以阻止a标签跳转。
+#### event.stopPropagation()
+阻止冒泡
+#### event.stopImmediatePropagation()
+同一个元素绑定同一事件如click多次时，当元素click触发时，所有的click事件全部被触发。
+如果不想全部触发绑定的click事件，可以在某个click事件函数中加这个，阻止再触发其他click事件函数。
+#### event.currentTarget
+获取真正写onclick函数的元素，如下，当点击child1时，通过event.currentTarget获取到的是wrap的dom，通过event.target获取到的是真正被点击的目标元素child1。
+```
+ <div class="wrap" onclick="function(e){e.target}">
+            <div class="child1"></div>
+            <div class="child2"></div>
+        </div>
+```
+#### event.target
+见《event.currentTarget》
+#### 其他
+event还有很多其他的作用，比如获取键盘值等等。
+### 自定义事件
+```
+var eve = new Event('abcTest');
+dom.addEventListener('abcTest', ()=>{}, false)
+dom.dispatchEvent(eve)
+
+```
+IE下有一定兼容问题，解决方法很简单，参看mdn关于`new Event`章节。
+
+ 
+
+## Dom API 黑知识
+### 获取dom width 与 内联样式 的关系
+#### dom.style.width 只能获取内联样式
+dom.style.width 只能获取内联样式，无法获取 通过css给dom设置的width。
+这就造成明明dom是有宽高的，但使用dom.style.width获取的高度为0；
+解决的方法是，使用 window.getComputedStyle(dom).width 获取，此方法始终能获取宽高度。
+#### window.getComputedStyle(dom).width 获取宽高
+推荐使用此方法获取dom宽高度。
+参考《dom.style.width 只能获取内联样式》
+#### dom.getBoundingClientRect().width
+此方法是一个dom API神器，能做很多事情，获取宽高度不在话下。
