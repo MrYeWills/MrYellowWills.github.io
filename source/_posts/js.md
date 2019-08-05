@@ -261,7 +261,7 @@ gzip压缩\cache-control\last-modified\if-Modified-Since\etag\if-None-Match
 参考《高效前端》P72
 
 ## Dom API
-### 为什么这两种都可绑定事件：dom.onclick=function(){}\dom.addEventListener('click')
+### 为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener('click')
 这是dom事件级别，这两种方式是新老时代的绑定事件方式，参考《dom事件级别》
 ### dom事件级别
 dom0 时代 ：dom.onclick=function(){}
