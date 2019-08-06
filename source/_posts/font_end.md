@@ -1,12 +1,22 @@
 ---
-title: 前端缓存笔记
+title: 前端笔记
 date: {{ date }}
-tags: 前端缓存笔记
+tags: [前端, js, html]
 categories: 
-- 前端缓存笔记
-series: 前端缓存笔记
+- 前端
 ---
 
+## 前端知识
+### 浏览器缓存
+浏览器缓存分为强、协商缓存；
+上面是根据页面如何利用缓存的态度来分的。
+强缓存是指，只要浏览器有这个缓存，页面就直接拿来用，也不去问这个缓存是否最新或改变；
+协商缓存是指，页面在用浏览器缓存时，会根据这个缓存的状态，决定是否使用这个缓存。
+![](/image/font_end/cache.jpg)
+#### 强缓存
+解释如上
+#### 协商缓存
+解释如上
 
 ## http知识
 ### cookie 与 http
@@ -106,6 +116,46 @@ window.onhashchange = function(){
 cors通信必须配合fetch使用。
 cors是变种的ajax，浏览器识别到是cors时，自定增加origin参数到请求头中，达到可跨域请求
  ![](/image/font_end/f-cors.jpg)
+
+
+## 页面优化
+### 资源合并、压缩
+gzip压缩
+### 减少http请求
+### 利用浏览器缓存
+参考《高效前端》P72
+cache-control\last-modified\if-Modified-Since\etag\if-None-Match
+### 非核心代码异步加载
+#### 异步加载的方式
+动态脚本加载(用js创建script标签)，defer，async。
+#### defer
+defer是在html解析完后才执行，如果是多个，按顺序依次执行；
+![](/image/font_end/async.jpg)
+![](/image/font_end/async-result.jpg)
+#### async
+async使用方法与defer相同。
+async是在html解析完后才执行，如果是多个，则同时执行多个文件；
+### 使用cdn
+### 预解析dns
+```
+//强制打开a标签的dns解析，一般a标签默认开启dns解析，但对于有些浏览器可能没有打开，此时加上这句话可开启。
+<meta http-equiv="x-dns-prefetch-control" content="on">
+//开启页面预解析dns
+<link rel="dns-prefetch"  href="//host_name_to_prefetch.com">
+```
+### 把css写成内联
+css只有10或20k时，写成内联，谷歌和百度和淘宝pc版都是这样干的。
+放在内联上，最大的好处是节省了一次cdn请求,从而加快页面响应。
+注意只适合css不是非常大的情况。
+
+## hybrid
+### 为什么hybrid版本更新方便，更快捷
+因为hybrid使用的是js语言开发，相比原生开发使用的java语言，js语言无法操作设备的相机、横屏竖屏、语音、通讯录等等，而java是能操作这些的。所以每当版本更新时，java原生开发要进行代码审核安全验证，js的hybrid则不需要，所以版本更新更加便捷；
+### 页面无法直接向服务器发请求，需要原生层面中转
+hybrid的js页面的ajax需要调去原生提供的请求API，才能向后端发起请求，所以的ajax请求会经过原生转发
+### webview
+- 是app中的一个组件（app可以有webview，也可以没有）
+- 用于加载h5页面，即一个小型的浏览器内核
 ## 算法
 ### 需要了解的算法：
 还有兴趣的话，也学习下 冒泡排序：

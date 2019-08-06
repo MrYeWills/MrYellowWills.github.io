@@ -249,16 +249,45 @@ var sellNum = 5;
 var isNeedLoan = true;
 car.handle(carType,carName,sellNum,isNeedLoan);
 ```
+### js运行机制
+#### 如何理解js的单线程
+js的单线程指的是，一个时间内只能执行一个任务。
 
-## 页面优化
-### 把css写成内联
-css只有10或20k时，写成内联，谷歌和百度和淘宝pc版都是这样干的。
-放在内联上，最大的好处是节省了一次cdn请求,从而加快页面响应。
-注意只适合css不是非常大的情况。
+#### 任务队列
+js任务分为`同步任务`和`异步任务`；
 
-### 压缩与缓存
-gzip压缩\cache-control\last-modified\if-Modified-Since\etag\if-None-Match
-参考《高效前端》P72
+#### event loop (事件循环)
+js有一个`运行栈`，`运行栈`中执行的是`同步任务`；
+如果浏览器发现js中有setTimeout等`异步任务`，浏览器的Timer会将此`异步任务`从`运行栈`中拿出来；
+等到`异步任务`的time变成0的时候，再将此`异步任务`放到`任务队列`中；
+js在`运行栈`中执行完`同步任务`后，会以轮询的方式访问`任务队列`，看是否有任务被执行；
+此时会轮询到`任务队列`中的`异步任务`，并将此任务放入`运行栈`执行，`异步任务`变成`同步任务`；
+
+注意的是，`运行栈`只执行`同步任务`，`异步任务`时间变成0后，就变成`同步任务`，另外js在运行同步任务的时候，是不会运行异步任务的;
+
+#### 理解setTimeout 0
+小于4毫秒时，浏览器认为都是0。
+```
+setTimeout(()=>{}, 2)
+```
+#### 触发异步任务的API
+setTimeout或setInInterval
+Dom事件
+Promise
+
+#### 给常量起个名
+必要的时候，给常量起个名，可读性更强
+```
+ car.handle('seller','sell',5,true);
+```
+修改后：
+```
+var carType = 'seller';
+var carName = 'sell';
+var sellNum = 5;
+var isNeedLoan = true;
+car.handle(carType,carName,sellNum,isNeedLoan);
+```
 
 ## Dom API
 ### 为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener('click')
@@ -325,3 +354,8 @@ dom.style.width 只能获取内联样式，无法获取 通过css给dom设置的
 参考《dom.style.width 只能获取内联样式》
 #### dom.getBoundingClientRect().width
 此方法是一个dom API神器，能做很多事情，获取宽高度不在话下。
+
+## Jquery
+### 为什么jq插件要写在$.fn对象中
+本可以将jq插件直接扩展到$.prototype原型上，为什么要在$.fn上呢，原因是为了广大jq用户，有一个统一的接口（fn对象）来进行插件扩展。
+这样，大家插件的写法也更加统一。
