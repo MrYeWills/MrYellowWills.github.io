@@ -69,6 +69,10 @@ dispatch({
 
 
 ## eslint
+
+### eslint 配合 vscode 使用
+注意的是，vscode使用eslint时，必须安装 linter-eslint 插件才能生效，装了插件后才能识别根目录下的eslint配置文件。
+
 ### 禁用规则
 基本上所有的规则都可以通过设置 值为 0的数组来禁用。
 ```
