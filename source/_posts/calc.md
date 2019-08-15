@@ -302,6 +302,27 @@ function calc(arr) {
 ### 小技巧
 因为定点比较的原因，如果要定点比较的元素为 arr[i],那么内层遍历就从i+1开始遍历，这点也是值得注意和借鉴的地方。
 
+### 代码优化写法(推荐)
+下面是针对上面写法的优化，因为`arr[i]`，只需要在内层函数变量完一遍后，才需要赋值，在内层函数遍历完之前，`arr[i]`值都是不稳定的，没必要频繁赋值.
+因此引入了临时变量temp，这样的好处是，不用频繁地进行`arr[i] = arr[j]`赋值，减少操作arr数组，对性能也是有好处的，虽然可能只有微乎其微的性能，同时代码逻辑性更强且易读。
+```
+function calc(arr) {
+      // 选择排序
+      for (let i = 0, len = arr.length, min; i < len; i++) {
+        引入临时变量
+          let temp = arr[i];
+        for (let j = i + 1; j < len; j++) {
+          if (arr[j] < temp) {
+            let c = temp
+            temp = arr[j]
+            arr[j] = c
+          }
+        }
+        arr[i]=temp;
+      }
+      return arr
+    }
+```
 ## 最大间距
 ### 概述
 [力扣原题 -- 最大间距](https://leetcode-cn.com/problems/maximum-gap/)
@@ -385,8 +406,31 @@ export default (arr, k) => {
 ## 对以上排序(题\算法)的小结
 以上的排序题中，如`数组中的第K个最大元素`，示例中都使用了冒泡排序的算法来做的，其他也可以使用选择排序，二者都是想通互换的。
 
+## 快速排序
 
+### 要点分析
+快速排序，以数组中间一个元素为基准，小于的放在左边，大于的放在右边，然后递归，排序完成。
+![](/image/calc/quick0.jpg)
+```
+ function calc(ary){
+        console.log(ary)
+        if(ary.length<=1){
+            return ary;
+        }
+        var pointIndex = Math.floor(ary.length/2);
+        //从ary中删除pointIndex，并且通过[0]取出pointValue值
+        var pointValue = ary.splice(pointIndex, 1)[0];
+        var left = [];
+        var right = [];
+        for (var i=0; i<ary.length; i++){
+            var cur = ary[i];
+            cur < pointValue ? left.push(cur) : right.push(cur);
+        }
+        return quickSort(left).concat([pointValue],quickSort(right));
+    }
+```
+### 中间值，左右两边分组
 
-
+### 递归
 
 

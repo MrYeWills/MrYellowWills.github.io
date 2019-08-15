@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+
+        function calc(ary){
+            console.log(ary)
+            if(ary.length<=1){
+                return ary;
+            }
+            var pointIndex = Math.floor(ary.length/2);
+            var pointValue = ary.splice(pointIndex, 1)[0];
+            var left = [];
+            var right = [];
+            for (var i=0; i<ary.length; i++){
+                var cur = ary[i];
+                cur < pointValue ? left.push(cur) : right.push(cur);
+            }
+            return quickSort(left).concat([pointValue],quickSort(right));
+        }
+
+      
+function quickSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let leftArr = [];
+    let rightArr = [];
+    let q = arr[0];
+    for (let i = 1, l = arr.length; i < l; i++) {
+        if (arr[i] > q) {
+            rightArr.push(arr[i]);
+        } else {
+            leftArr.push(arr[i]);
+        }
+    } return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
+}
+
+    </script>
+
+</body>
+
+</html>
