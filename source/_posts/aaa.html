@@ -17,39 +17,77 @@
 <body>
 
     <script>
-
-        function calc(ary){
-            console.log(ary)
-            if(ary.length<=1){
-                return ary;
+ 
+function insertSort(ary){
+    var newAry=[];
+    newAry.push(ary[0]);
+    for(var i=1; i<ary.length; i++){
+        var cur =ary[i];
+        for(var j = newAry.length - 1; j>=0;j--){
+            if(cur>newAry[j]){
+                newAry.splice(j+1,0,cur);
+                break;
+            }else{
+                if(j===0){
+                  newAry.unshift(cur);
+                }
             }
-            var pointIndex = Math.floor(ary.length/2);
-            var pointValue = ary.splice(pointIndex, 1)[0];
-            var left = [];
-            var right = [];
-            for (var i=0; i<ary.length; i++){
-                var cur = ary[i];
-                cur < pointValue ? left.push(cur) : right.push(cur);
-            }
-            return quickSort(left).concat([pointValue],quickSort(right));
         }
-
-      
-function quickSort(arr) {
-    if (arr.length <= 1) {
-        return arr;
     }
-    let leftArr = [];
-    let rightArr = [];
-    let q = arr[0];
-    for (let i = 1, l = arr.length; i < l; i++) {
-        if (arr[i] > q) {
-            rightArr.push(arr[i]);
-        } else {
-            leftArr.push(arr[i]);
-        }
-    } return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
+    return newAry;
 }
+
+function insertSort1(ary){
+    var key,j;
+    for(var i=1;i<ary.length;i++){
+            key=ary[i];
+            j=i-1;
+            while(j>-1&&ary[j]>key){
+                ary[j+1]=ary[j];
+                j--;
+            }
+            ary[j+1]=key;
+        }
+        return ary;
+}
+
+function insertSort2(ary){
+    var key,j;
+    for(var i=1;i<ary.length;i++){
+            key=ary[i];
+            for(var j=i-1;j>-1;j--){
+                if(ary[j]>key){
+                    ary[j+1]=ary[j];
+                    if(j===0){
+                        ary[0]=key;
+                    }
+                }else{
+                    ary[j+1]=key;
+                    break;
+                }
+            }
+        }
+        return ary;
+}
+
+// function insertSort2(ary){
+//     var key,j;
+//     for(var i=1;i<ary.length;i++){
+//             key=ary[i];
+//             let isJarrayAllBiggerThenKey = true;
+//             for(var j=i-1;j>-1;j--){
+//                 if(ary[j]>key){
+//                     ary[j+1]=ary[j];
+//                 }else{
+//                     ary[j+1]=key;
+//                     isJarrayAllBiggerThenKey = false;
+//                     break;
+//                 }
+//             }
+//             if(isJarrayAllBiggerThenKey) ary[0]=key;
+//         }
+//         return ary;
+// }
 
     </script>
 

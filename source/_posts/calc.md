@@ -412,8 +412,7 @@ export default (arr, k) => {
 快速排序，以数组中间一个元素为基准，小于的放在左边，大于的放在右边，然后递归，排序完成。
 ![](/image/calc/quick0.jpg)
 ```
- function calc(ary){
-        console.log(ary)
+ function quickSort(ary){
         if(ary.length<=1){
             return ary;
         }
@@ -429,8 +428,129 @@ export default (arr, k) => {
         return quickSort(left).concat([pointValue],quickSort(right));
     }
 ```
-### 中间值，左右两边分组
+### 中间元素，左右两边分组
+快速排序是选一个数组中间元素值为准，左右分两组，这种操作类似易经大衍筮法占卜的手法。
+不过快速排序不是一定要数组中间值，任意一个元素为准都可以，只是推荐使用中间元素。
+
+### 推荐使用中间元素,但也可使用其他元素
+这里有一个以其他元素为准的快速排序写法：
+```
+function quickSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let leftArr = [];
+    let rightArr = [];
+    let q = arr[0];
+    for (let i = 1, l = arr.length; i < l; i++) {
+        if (arr[i] > q) {
+            rightArr.push(arr[i]);
+        } else {
+            leftArr.push(arr[i]);
+        }
+    } return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
+}
+```
 
 ### 递归
+递归是快速排序的核心，如果无法理解，暂且就记住这种场景解法，用多了，自然就有了这种逻辑思维了。
 
+## 插入排序
+### 方案一
+#### 概述
+单独创建一个新数组用来存放排序好的元素(下称新数组)。
+新数组以原数组第一个元素作出初始元素；以后，原数组从第二个元素起始进行遍历，每次给新数组插入一个元素；
+新数组对于接收到的元素，如果元素大于新数组内某元素，就将此元素置于其右边，反之放左边。
+
+![](/image/calc/insort1.jpg)
+```
+ function insertSort(ary){
+    var newAry=[];
+    newAry.push(ary[0]);
+    for(var i=1; i<ary.length; i++){
+        var cur =ary[i];
+        for(var j = newAry.length - 1; j>=0;j--){
+            if(cur>newAry[j]){
+                newAry.splice(j+1,0,cur);
+                break;
+            }else{
+              //j===0，数组表示遍历完了，说明此时数组的全部元素都大于cur
+                if(j===0){
+                  newAry.unshift(cur);
+                }
+            }
+        }
+    }
+    return newAry;
+}
+```
+#### 外数组以升序遍历，内数组以倒序遍历
+#### 只考虑大于的时候放置于右侧，即可做到排序 (不用考虑小于时候)
+排序的第一印象总以为要考虑大于的情况和小于的情况，其实，只要一开始就按一种规则（例如本例的大于）排序好，数组自然就排序好了，
+当然要考虑小于的时候的极限情况。例如本例的 `j===0`.
+```
+if(cur>newAry[j]){
+          newAry.splice(j+1,0,cur);
+          break;
+      }else{
+        //j===0，数组表示遍历完了，说明此时数组的全部元素都大于cur
+          if(j===0){
+            newAry.unshift(cur);
+          }
+      }
+```
+### 方案二
+#### 概述
+这种方法与方案一不同的是，方案二没有单独创建新数组来存放排序元素，而是直接基于原数组进行改造，相对来说理解起来要难一点。
+以下面图片中的第二行类例子说明，此时已经排序好 11 19，需要对6进行插入排序；
+此时11 19 构成来一个排序好的数组，此数组相对于 6 进行遍历，如果数组内元素大于6，我们就将此元素往右挪一步，如果此元素小于6，因为数组是按照倒序遍历的，且数组是排序好的数组，所以数组原来右边的元素肯定大于6，根据上面的规则，所以其右边的元素已经被往右边挪一步，我们就将6放置于原来右边元素的位置
+
+![](/image/calc/insort2.jpg)
+```
+ function insertSort(ary){
+    var key,j;
+    for(var i=1;i<ary.length;i++){
+            key=ary[i];
+            for(var j=i-1;j>-1;j--){
+                if(ary[j]>key){
+                  如果ary[j]大于key，那么将ary[j]往右挪一步
+                    ary[j+1]=ary[j];
+                    if(j===0){
+                        //能走到j===0说明ary[j]都大于key，原来的j 数组已经整体往右挪一步，此时ary[0]值就是key；
+                        ary[0]=key;
+                    }
+                }else{
+                    如果ary[j]小于key，那么将key置于其右侧
+                    ary[j+1]=key;
+                    break;
+                }
+            }
+        }
+        return ary;
+}
+```
+#### 不新建数组，直接基于原数组排序的技巧
+如上，我们要对 5 19 6 这个长度为3的数组进行排序；现在我们已经排序好 5 19，只需要对6进行排序，5 19 形成一个遍历数组，这个数组长度为2，我们将给这个数组增加一个位置，让其长度为3，这样这个数组就有一个空的位置来插入6了；
+此时，我们遍历 数组 5 19；凡是大于6的，位置往右挪一步，如果元素小于6，就在元素放右侧插入6；
+上面主要的技巧是，无论如何，都让11 19 都整体挪一步，遇到小于的时候不挪了，让6填充到之前腾空出来的位置。
+
+### 用while来改写方案二
+此写法其思想跟方案二是一样的。
+while的好处是代码十分简洁，但是此代码极具误导性，单凭此，就可以认定这种写法是不推荐的。
+这里有一个理解误区，a[0] 可以进入 while体内，等出来的时候j就变成了 -1 ，ary[-1+1]就是a[0]。
+```
+function insertSort1(ary){
+    var key,j;
+    for(var i=1;i<ary.length;i++){
+            key=ary[i];
+            j=i-1;
+            while(j>-1&&ary[j]>key){
+                ary[j+1]=ary[j];
+                j--;
+            }
+            ary[j+1]=key;
+        }
+        return ary;
+}
+```
 
