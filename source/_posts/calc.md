@@ -552,3 +552,69 @@ function insertSort1(ary){
 }
 ```
 
+## 复原ip地址
+### 概述
+给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
+示例:
+输入: "25525511135"
+输出: ["255.255.11.135", "255.255.111.35"]
+[力扣原题 --  复原IP地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
+
+用白话解释原题：给出一串字符，写出它能组成的所有的ip.
+### 解决方法
+代码如下，个人觉得代码不容易理解，请先看下面当代码分析
+```
+function calc(str) {
+      // 保存所有符合条件的IP地址
+      let r = []
+      // 分四步递归处理ip分段
+      let search = (cur, sub) => {
+        // 非法输入过滤 ip地址最多不超过12个字符长
+        if (sub.length > 12) {
+          return
+        }
+        // 边界条件
+        if (cur.length === 4 && cur.join('') === str) {
+          r.push(cur.join('.'))
+        } else {
+          // 正常的处理过程 
+          // Math.min(3, sub.length) i必须小于等于3
+          for (let i = 0, tmp; i < Math.min(3, sub.length); i++) {
+            tmp = sub.substr(0, i + 1)
+            if (tmp - 256 < 0) {
+              const newCur = cur.concat([tmp]);
+              const newSub = sub.substr(i + 1);
+              //当 newCur的数组元素超过4时，就不是ip地址了；
+              //当newCur有三个元素，准备补充第四个元素时，如果第四个元素当字符长度大于3位，就没有必要再继续下去
+              if(newCur.length > 4 || (newCur.length === 3 && newSub.length>3)){
+                continue
+              }
+              search(newCur, newSub)
+            }
+          }
+        }
+      }
+      search([], str)
+      return r
+    }
+```
+### 代码分析
+如下图，25525511135 这样一个字符串，要组成一个ip时；
+ip由四个不大于256的数字排列组成；
+第一个数字可以是 2 25 255；
+当第一个数字为2时 剩下的代码为 5525511135；
+此时它的第二个数字可以是 5 55 552(大于256，不符合规则)；
+当第二个数字为5时，剩下的代码为 525511135；
+此时它第三个数字可以是 5 52 525；
+当第三个数字为5时， 剩下代码为25511136 不符合规则；
+依次类推--递归。
+如果你还是对分析或则上面代码不太理解，请拿出你对纸和笔，将上面代码在纸上遍历几次，就明白了。
+![](/image/calc/cur.jpg)
+
+### 递归设计中 必不可少的 边界条件
+要写一个递归，必须要写终止递归条件，也就是边界条件。上面代码的边界条件就是：
+```
+ if (cur.length === 4 && cur.join('') === str) {
+          r.push(cur.join('.'))
+        }
+ ```
