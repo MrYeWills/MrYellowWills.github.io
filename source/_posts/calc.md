@@ -618,3 +618,130 @@ ip由四个不大于256的数字排列组成；
           r.push(cur.join('.'))
         }
  ```
+
+ ## 二叉树
+ ### 创建二叉树
+ #### 二叉树模型图
+ ![](/image/calc/tree.jpg)
+ #### 代码
+ 以下是创建二叉树代码，后面会针对代码疑问进行解答
+ 
+ ```
+ // 二叉树的节点
+class Node {
+  constructor(val) {
+    this.val = val
+    this.left = this.right = undefined
+  }
+}
+
+class Tree {
+  constructor(data) {
+    // 临时存储所有节点，方便寻找父子节点
+    let nodeList = []
+    // 顶节点
+    let root
+    for (let i = 0, len = data.length; i < len; i++) {
+      let node = new Node(data[i])
+      nodeList.push(node)
+      if (i > 0) {
+        // 计算当前节点属于那一层
+        let n = Math.floor(Math.sqrt(i + 1))
+        // 记录当前层的起始nodelist的index
+        let q = Math.pow(2, n) - 1
+        // 记录上一层的起始nodelist的index
+        let p = Math.pow(2, n - 1) - 1
+        // 找到当前节点的父节nodelist的index
+        let parent = nodeList[p + Math.floor((i - q) / 2)]
+        // 将当前节点和上一层的父节点做关联
+        if (parent.left) {
+          parent.right = node
+        } else {
+          parent.left = node
+        }
+      }
+    }
+    //只有第一个元素是起始节点，
+    root = nodeList.shift()
+    //其他元素完成使命，可以去掉
+    nodeList.length = 0
+    return root
+  }
+  //验证二叉树是否是对称
+  static isSymmetry(root) {
+    if (!root) {
+      return true
+    }
+    let walk = (left, right) => {
+      if (!left && !right) {
+        return true
+      }
+      if ((left && !right) || (!left && right) || (left.val !== right.val)) {
+        return false
+      }
+      return walk(left.left, right.right) && walk(left.right, right.left)
+    }
+    return walk(root.left, root.right)
+  }
+}
+
+new Tree([1, 2, 2, 3, 4, 4, 3])
+//返回：
+const tree = {
+  "val": 1,
+  "right": {
+    "val": 2,
+    "right": {
+      "val": 3
+    },
+    "left": {
+      "val": 4
+    }
+  },
+  "left": {
+    "val": 2,
+    "right": {
+      "val": 4
+    },
+    "left": {
+      "val": 3
+    }
+  }
+}
+ ```
+ #### 当前节点属于那一层
+ 如果理解不了，请记住，这是业内得出的公式，无需太较真理解，记住这个定理公式就行。
+ ```
+ // 计算当前节点属于那一层
+  let n = Math.floor(Math.sqrt(i + 1))
+ ```
+ #### 记录当前层的起始nodelist的index
+ 由上面的二叉树模型图看出，每一层的元素的起始点起始就是前面所有层元素个数之和，
+ 而这个和的值正好是2的n次幂，所以每一层对应到nodelist数组的index就是如下公式：
+ ```
+  // 记录当前层的起始 nodelist的index
+    let q = Math.pow(2, n) - 1
+    // 记录上一层的起始 nodelist的index
+    let p = Math.pow(2, n - 1) - 1
+ ```
+ #### 每一层有多少个元素
+ 参考上面《记录当前层的起始nodelist的index》
+ #### 找到当前节点的父节nodelist的index
+```
+// 找到当前节点的父节点
+        let parent = nodeList[p + Math.floor((i - q) / 2)]
+```
+有几个知识点要了解：
+当前层的起始点 Math.pow(2, n) - 1 ，例如第二层，起始点是3；
+那么这个3就是上面代码中的nodelist的index，
+第一层，起始点是0；那么这个0就是nodelist的index；
+所以上面代码中 进行for遍历时，i就是nodelist的下标，q或p也是nodelist的下标。
+由于每两个子节点对应一个父节点，所以需要除以2
+
+### 验证二叉树是否是对称
+#### 题目
+[力扣原题--对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
+https://leetcode-cn.com/problems/symmetric-tree/
+代码见上面《创建二叉树》
+#### 递归
+主要运用了递归原理验证二叉树是否对称。
