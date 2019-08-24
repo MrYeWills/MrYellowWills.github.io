@@ -7,6 +7,7 @@ categories:
 series: 前端
 ---
 
+
 **基础算法篇**
 ## 电话号码
 ### 概述
@@ -619,8 +620,9 @@ ip由四个不大于256的数字排列组成；
         }
  ```
 
- ## 二叉树
- ### 创建二叉树
+ ## 对称二叉树
+ [力扣原题--对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
+ ### 创建对称二叉树
  #### 二叉树模型图
  ![](/image/calc/tree.jpg)
  #### 代码
@@ -738,10 +740,208 @@ const tree = {
 所以上面代码中 进行for遍历时，i就是nodelist的下标，q或p也是nodelist的下标。
 由于每两个子节点对应一个父节点，所以需要除以2
 
+#### 数组每个元素都生成一个node节点
+```
+ for (let i = 0, len = data.length; i < len; i++) {
+      let node = new Node(data[i])
+...
+```
+#### 利用node节点Object浅拷贝特性
+利用这一浅拷贝特点，让第一个数组元素成为所有数组其他元素形成的节点的共同父节点。
+```
+ let parent = nodeList[p + Math.floor((i - q) / 2)]
+        // 将当前节点和上一层的父节点做关联
+        if (parent.left) {
+          parent.right = node
+        } else {
+          parent.left = node
+        }
+```
+
 ### 验证二叉树是否是对称
-#### 题目
-[力扣原题--对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
-https://leetcode-cn.com/problems/symmetric-tree/
+#### 实现
 代码见上面《创建二叉树》
 #### 递归
 主要运用了递归原理验证二叉树是否对称。
+
+## 验证二叉搜索树
+[力扣原题--验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/)
+### 代码
+ ![](/image/calc/tree1.jpg)
+```
+class Node {
+  constructor (val) {
+    this.val = val
+    this.left = this.right = undefined
+  }
+}
+
+class Tree {
+  constructor (data) {
+    let root = new Node(data.shift())
+    // 遍历所有的数据，逐渐插入到当前这棵搜索树中去
+    data.forEach(item => {
+      this.insert(root, item)
+    })
+    return root
+  }
+  insert (node, data) {
+    if (node.val > data) {
+      if (node.left === undefined) {
+        node.left = new Node(data)
+      } else {
+        this.insert(node.left, data)
+      }
+    } else {
+      if (node.right === undefined) {
+        node.right = new Node(data)
+      } else {
+        this.insert(node.right, data)
+      }
+    }
+  }
+  static walk (root) {
+    if (!root.left && !root.right) {
+      return true
+    } else if ((root.left && root.val < root.left.val) || (root.right && root.val > root.right.val)) {
+      return false
+    } else {
+      return Tree.walk(root.left) && Tree.walk(root.right)
+    }
+  }
+}
+
+ new Tree([2, 1, 3,6,8,9])
+```
+
+### 小左大右
+本搜索二叉树按照左大右小排列。
+
+### 递归
+上面代码中，无论生成二叉树与验证二叉树都使用了二叉树，注意递归中 边界值处理技巧。
+
+## 递归
+### 递归与边界值
+每个递归函数必须有一个边界值。
+
+### 递归阶乘
+ ![](/image/calc/recursion.jpg)
+```
+function foctorial(n){
+  if(n === 1 || n === 0){
+    return 1;
+  }
+  return n * foctorial(n-1)
+}
+foctorial(5)//120
+```
+#### 边界值(又称基线条件)
+边界值与基线条件是一个道理，即一个停止点。
+如下，递归中，很多最终都是通过边界值来计算，且终止递归。
+```
+//我们只需写出边界（1）的实现就行。
+foctorial(5) = 5*4*3*2*(1)；
+```
+边界值：
+```
+ if(n === 1 || n === 0){
+    return 1;
+  }
+```
+### 斐波那契数
+#### 概念
+斐波那契数列 是一个由 0, 1, 1, 2, 3, 5, 8, 13, 21 等组成等序列。数2由1加1得到，数3由2加1得到...。
+斐波那契数列有个定义：
+- 位置0的数是0；
+- 1和2的数是1；
+- n(n>2)的数是n-1、 n-2 之和。
+#### 实现一（常规实现）
+```
+function fn(n){
+     if(n<1) return 0;
+     if(n<=2) return 1;
+     let prepreStartval = 0;
+     let preStartval = 1;
+     //前一个的前一个位置的值
+     let prepre=prepreStartval;
+     //前一个位置的值
+     let pre=preStartval;
+     //本位置的值
+     let item= '';
+     for(let i=2;i<=n;i++){
+         //本位置的值 = 前一个位置值 + 前一个的前一个位置值
+         item=pre+prepre;
+         //新的前一个的前一个的值 变成上个位置的前一个位置的值
+         prepre=pre;
+         //新的前一个的值 变成上一个位置的值
+         pre=item;
+     }
+     return item;
+ }
+```
+#### 实现二 （递归实现）
+```
+ function fn(n){
+     if(n<1) return 0;
+     if(n<=2) return 1;
+     return fn(n-1) + fn(n-2);
+ }
+```
+配合
+```
+ function calculate(n, fn){
+    var arr=[];
+    for(var j=0; j<n; j++){ 
+        arr[j]=fn(j) 
+    } 
+    return arr; 
+}
+calculate(8, fn)  // [0, 1, 1, 2, 3, 5, 8, 13]
+```
+#### 实现三 （记忆化优化）
+```
+function calcFactory(){
+    const memo = [0, 1];
+    const fn=(n)=>{
+        //memo[n]===0  0是非，但本例中是一个值；
+        if(memo[n] || memo[n]===0) return memo[n];
+        return memo[n] = fn(n-1) + fn(n-2);
+    }
+    return fn;
+}
+var calc = calcFactory()；
+calc(8) //13;
+```
+### 边界值 与 最小化分析
+很多递归问题或其他算法问题，他们几乎都是由最小值或边界值重复或计算而来，在解决问题时，可以将问题使用边界值最小化分析
+
+## 阅读说明
+为了让每个算法模块能够有更多的的目录层级，本文直接将各模块单列出一个章节讲，这样的弊端是，知识点看起来比较乱，
+一眼看不出他们对应的是什么算法内容。
+所以本章节用于将各章节对应的算法知识点，进行目录分类。具体模块内容请跳转到相关章节看。
+
+算法模块：
+### 数组
+#### 电话号码
+#### 卡牌分组
+#### 种花问题
+### 排序
+#### 冒泡排序
+#### 选择排序
+#### 快速排序
+#### 插入排序
+#### 最大间距 (冒泡排序实现)
+#### 数组中的第K个最大元素 (冒泡排序实现)
+### 递归
+#### 复原ip地址
+#### 递归阶乘
+#### 斐波那契数
+### 数据结构
+#### 二叉树
+#### 对称二叉树
+#### 验证二叉搜索树
+
+## 参考
+[JavaScript版 数据结构与算法](https://coding.imooc.com/class/chapter/315.html#Anchor)
+[珠峰教育 --js排序](https://v.youku.com/v_show/id_XMjQ4MjMxMDIwNA==.html?spm=a2h0j.11185381.listitem_page1.5!18~A)
+[学习JavaScript数据结构与算法（第3版）](http://www.ituring.com.cn/book/2653)
