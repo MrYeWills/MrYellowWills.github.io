@@ -6,7 +6,7 @@ node_modules/
 public/
 .deploy*/
 dist
-test.html
+aa.html
 .idea
 adontCommit.md
 blog-hexo-test.html
