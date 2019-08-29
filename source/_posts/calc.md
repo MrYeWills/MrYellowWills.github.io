@@ -182,8 +182,8 @@ function calc1(str){
 [力扣原题 -- 卡牌分组](https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards)
 
 用白话解释原题：给定一副牌，这副牌可以是1张或1万张，将这副牌分成一组或多组，每组牌的数字都相同，每组牌的个数不少于2.
-### 解决方法
-#### 代码
+
+### 解法一： 数组前后两两比较
 ```
 function calc(arr) {
       // 将卡牌按值排序保证相同的卡牌是挨着的
@@ -213,20 +213,18 @@ function calc(arr) {
     }
 ```
 
-### 方法要点
-结合上面的《解决方法》代码来说
-#### 用递归写最大公约数
+### 最大公约数
+#### 代码实现
+下面是最大公约数的求法，可以不必理解，知道这样用就行
 ```
 let gcd = (a, b) => {    
     if(b === 0)  return a;   
     return gcd(b, a % b)
 }
 ```
-#### 最大公约数
-参考上面
 #### 最大公约数除了1值外，其他值都合法
 
-#### shift()方式的 数组内两两比较
+### 数组前后两两比较
 ```
 while (group.length > 1) {
         let a = group.shift().length
@@ -234,9 +232,56 @@ while (group.length > 1) {
       ...
       }
 ```
+### 找出元素出现次数的方法(推荐)--match正则
+```
+ // 分组(单张或者多张)  \1 在正则中表示连续一样的匹配
+  let group = str.match(/(\d)\1+|\d/g)
+```
+### 找出元素出现次数的方法--object key方式
+参考下面的《最小相同数与所有相同数比较的 实现方式》
+```
+  const hash = deck.reduce((pre, num) => {    //统计出每种数字的数目
+    if(!pre[num]) {
+      pre[num] = 1
+    }else{
+      pre[num]++
+    }
+    return pre
+  }, {})
+```
 
-### 不推荐方法
-#### 代码
+### while 实现 递归效果
+见上面的代码。
+
+### 解法一优化：用递归代替while写法
+```
+ function calc(arr) {
+      let str = arr.sort((a, b) => a - b).join('')
+      let group = str.match(/(\d)\1+|\d/g)
+      let gcd = (a, b) => {    
+        if(b === 0)  return a;   
+        return gcd(b, a % b)
+       }
+       const cur = (arr)=>{
+         if(arr.length<2){
+           return arr[0].length > 1;
+         }
+         const one = arr.shift().length;
+         const two = arr.shift().length;
+         let v = gcd(one, two);
+         if (v === 1) {
+          return false
+        } else {
+          arr.unshift('0'.repeat(v));
+         return cur(arr);
+        }
+       }
+      return cur(group);
+    }
+```
+
+### 解法二：最小相同数与所有相同数比较
+
 ```
 var hasGroupsSizeX = function(deck) {
   let getResult = (a, b) => {    //定义一个寻找公约数的方法
@@ -259,9 +304,64 @@ var hasGroupsSizeX = function(deck) {
   })
 }
 ```
-#### 两种方法的利弊
-尽管两种方法都能实现，但是前面说的方法要比不推荐方法节省了一次遍历，当数据量大时，这种性能上的差别就会比较大，所以推荐前一种方法。
+### 两种方案的利弊
+尽管两种方法都能实现，但是解法一比解法二节省了一次遍历，当数据量大时，这种性能上的差别就会比较大，所以推荐第一种方案。
 
+## 常用算法场景
+### 数组前后两两比较
+#### 概述
+参考：《电话号码》中的源码
+```
+ const cur = (strarr)=>{
+     //第一次strarr[0]是一个字符串， 以后strarr[0]经过splice后，都是数组
+    const one = typeof strarr[0] === 'string' ? strarr[0].split('') : strarr[0];
+    const two = strarr[1].split('');
+    const newItem0 = combile(one, two);
+    strarr.splice(0,2,newItem0);
+       if(strarr.length<2){
+           return strarr[0];
+       }
+     return cur(strarr)
+   }
+```
+更多参考 《卡牌分组》
+#### 每次只比较数组的第一和第二项
+```
+const one = typeof strarr[0] === 'string' ? strarr[0].split('') : strarr[0];
+const two = strarr[1].split('');
+const newItem0 = combile(one, two);
+```
+#### 删除第一和第二项，将比较结果重新置为第一项
+如上代码，每次比较完第一和第二项后，删除他们，并将比较结果置为第一项
+```
+ strarr.splice(0,2,newItem0);
+```
+#### 递归是核心
+见代码
+
+#### 边界值：strarr.length<2
+两两比较到最后，数组只剩下一个元素，此时递归停止，所以边界值：strarr.length<2。
+
+### 找出元素出现次数
+
+#### 找出元素出现次数的方法(推荐)--match正则
+详细参考 《卡牌分组》
+```
+ // 分组(单张或者多张)  \1 在正则中表示连续一样的匹配
+  let group = str.match(/(\d)\1+|\d/g)
+```
+#### 找出元素出现次数的方法--object key方式
+详细参考 《卡牌分组》
+```
+  const hash = deck.reduce((pre, num) => {    //统计出每种数字的数目
+    if(!pre[num]) {
+      pre[num] = 1
+    }else{
+      pre[num]++
+    }
+    return pre
+  }, {})
+```
 
 ## 种花问题
 ### 概述
@@ -270,16 +370,20 @@ var hasGroupsSizeX = function(deck) {
 [力扣原题 -- 种花问题](https://leetcode-cn.com/problems/can-place-flowers)
 
 ```
- function calc(arr, n){
+  function calc(arr){
       // 计数器
       let max = 0
       for (let i = 0; i < arr.length - 1; i++) {
+        //只有arr[i] === 0时，说明可以种花，因此只需考虑arr[i] === 0的逻辑，其他情况不用考虑
         if (arr[i] === 0) {
+          //当 arr[i] === 0 时都符合条件，唯有边界值 i===0 与 i === arr.length-2 时需要特殊考虑
           if (i === 0 && arr[1] === 0) {
             max++
             //跳转，这里i++，加上for循环自动也++，所以i实际加了2
             i++
-          } else if (arr[i - 1] === 0 && arr[i + 1] === 0) {
+          } else if (i === arr.length-2 && arr[arr.length-1] === 0) {
+            max++
+          }else if (arr[i - 1] === 0 && arr[i + 1] === 0) {
             max++
              //跳转，这里i++，加上for循环自动也++，所以i实际加了2
             i++
@@ -288,6 +392,10 @@ var hasGroupsSizeX = function(deck) {
       }
       return max
     }
+
+    calc([1, 0, 0, 0, 1, 0, 0])// 2
+    calc([1, 0, 0, 0, 1])//1
+    calc([0,0,1, 0, 0, 0, 1])//2
 ```
 ### 要点分析
 ```
@@ -296,9 +404,15 @@ var hasGroupsSizeX = function(deck) {
 其实就是在数组中找000的模型，有000就可以变成010，达到要求。
 另外一个要考虑的是边界问题，比如，[0,0,1]，这不符合 000，但依然可以在最左侧加1；
 这种问题其实就是在数组中找 000 这种模型，就涉及到用数学建模的思想来解决。
-### 数学建模
+### 核心一： 000的数学建模
 以后遇到类似的找这种000的形式的东西，就考虑用数学建模。
-### 如何跳级忽略某些元素遍历
+### 核心二： 遍历
+种花问题，主要运用遍历来解决，使用了很多遍历技巧，比如跳级忽略遍历，以及i+1等的处理，
+i+1的遍历技巧本质上就是多个遍历元素的技巧；
+因为一般遍历元素只有一个arr[i]（姑且称这种遍历为单元遍历）,多个遍历元素是指遍历体中同时存在 arr[i] arr[i+n] （多元遍历）。
+### 单元遍历 与 多元遍历
+参考《核心二： 遍历》
+### 遍历体用 i++ 跳级忽略遍历
 例如下面的，index位置 1 2 3 符合 000；
 2 3 4 也符合 000；
 ```
@@ -314,7 +428,9 @@ for (let i = 0, len = arr.length - 1; i < len; i++) {
 ```
 ### 边界问题
 参考《要点分析》
-### arr[i-1] 与 arr[i+1] 与 i<arr.length-1 的妙用
+
+### arr[i+1]与arr[i-1]的遍历技巧
+#### arr[i-1] 与 arr[i+1] 与 i<arr.length-1 的妙用
 因为for循环体内用了arr[i+1]，那么在for的title上能遍历的最大值是 arr.length - 2，也就是i < arr.length - 1；
 这个是一个很实用的用法，我们在写for循环时，如果for循环体内有这样的情况，就应该考虑好for的title上最大的i < arr.length值也应响应配合增加或减少。并且这个最大的arr.length值到底多少**与函数体内最大的arr[i+1]有关，而与arr[i-1]无关。**，当然，如果用到arr[i-1]时，**就要考虑边界值的问题**，也就是当i为0时的情况。
 ```
@@ -325,8 +441,11 @@ for (let i = 0, len = arr.length - 1; i < len; i++) {
         
       }
 ```
-### arr[i-1]时考虑边界值，arr[i-1]时考虑i值最大值
+#### arr[i-1]时考虑边界值，arr[i-1]时考虑i值最大值
 参考《arr[i-1] 与 arr[i+1] 与 i<arr.length-1 的妙用》
+
+### 遍历的经典练习题
+种花问题基于遍历实现，用到了比较多的遍历技巧，可称为经典遍历的运用练习题。
 
 ## 冒泡排序
 ### 概述
