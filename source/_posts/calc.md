@@ -1145,6 +1145,9 @@ calc(8) //13;
 ### 递归与while
 有时候递归能实现的，通过while也能实现，while具有一些递归的质能。
 
+## 遍历
+这里是遍历的经典运用，参考《种花问题》
+
 
 ## 参考
 [JavaScript版 数据结构与算法](https://coding.imooc.com/class/chapter/315.html#Anchor)
