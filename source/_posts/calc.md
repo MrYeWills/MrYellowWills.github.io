@@ -307,61 +307,6 @@ var hasGroupsSizeX = function(deck) {
 ### 两种方案的利弊
 尽管两种方法都能实现，但是解法一比解法二节省了一次遍历，当数据量大时，这种性能上的差别就会比较大，所以推荐第一种方案。
 
-## 常用算法场景
-### 数组前后两两比较
-#### 概述
-参考：《电话号码》中的源码
-```
- const cur = (strarr)=>{
-     //第一次strarr[0]是一个字符串， 以后strarr[0]经过splice后，都是数组
-    const one = typeof strarr[0] === 'string' ? strarr[0].split('') : strarr[0];
-    const two = strarr[1].split('');
-    const newItem0 = combile(one, two);
-    strarr.splice(0,2,newItem0);
-       if(strarr.length<2){
-           return strarr[0];
-       }
-     return cur(strarr)
-   }
-```
-更多参考 《卡牌分组》
-#### 每次只比较数组的第一和第二项
-```
-const one = typeof strarr[0] === 'string' ? strarr[0].split('') : strarr[0];
-const two = strarr[1].split('');
-const newItem0 = combile(one, two);
-```
-#### 删除第一和第二项，将比较结果重新置为第一项
-如上代码，每次比较完第一和第二项后，删除他们，并将比较结果置为第一项
-```
- strarr.splice(0,2,newItem0);
-```
-#### 递归是核心
-见代码
-
-#### 边界值：strarr.length<2
-两两比较到最后，数组只剩下一个元素，此时递归停止，所以边界值：strarr.length<2。
-
-### 找出元素出现次数
-
-#### 找出元素出现次数的方法(推荐)--match正则
-详细参考 《卡牌分组》
-```
- // 分组(单张或者多张)  \1 在正则中表示连续一样的匹配
-  let group = str.match(/(\d)\1+|\d/g)
-```
-#### 找出元素出现次数的方法--object key方式
-详细参考 《卡牌分组》
-```
-  const hash = deck.reduce((pre, num) => {    //统计出每种数字的数目
-    if(!pre[num]) {
-      pre[num] = 1
-    }else{
-      pre[num]++
-    }
-    return pre
-  }, {})
-```
 
 ## 种花问题
 ### 概述
@@ -448,9 +393,11 @@ for (let i = 0, len = arr.length - 1; i < len; i++) {
 种花问题基于遍历实现，用到了比较多的遍历技巧，可称为经典遍历的运用练习题。
 
 ## 冒泡排序
+
 ### 概述
 冒泡排序大白话解释就是，将数组内的最大值，从左到右或右带左地排序，这个过程好像数组内的最大值好像冒泡一样，从水底上浮的过程。
 冒泡排序是每次比较左右两个值，每次进行比较交换位置。
+![](/image/calc/water.jpg)
 如下图，要实现如下的一个渐进的排序过程：
 ![](/image/calc/bubble.jpg)
 ![](/image/calc/bubble1.jpg)
@@ -478,24 +425,30 @@ calc([1, 9, 5, 3, 4,0,2,999,6]) //[0, 1, 2, 3, 4, 5, 6, 9, 999]
 这种排序是典型的需要n*n次的排序，需要在循环体内嵌套再次循环。
 排序的关键是，需要一个遍历，逐步将数组的遍历范围逐步减少，为第二个遍历提供最大length；
 第二个遍历针对第一个遍历提供的length进行全遍历，将最大值找出并一步步推到数组最右侧；
-### 双层遍历
-冒泡排序关键点是用了双层排序。
+### 较大值向右移的过程
+参考代码，冒泡排序的核心特点就是，将较大值每次移到右边的过程，到最后，最右边的元素自然就是最大值；
+反之亦然。
+#### n*n的双层遍历
+冒泡排序关键点是用了双层遍历。
 #### 外层遍历限定内层遍历范围；
 这里的范围是指，内层遍历，最大遍历次数i值；
 #### 外层遍历逐步递减；
 #### 内层遍历全遍历；
 #### 内层遍历负责位置替换，将最大值冒泡至最右侧；
 ### 边界值处理
-外层遍历 `let i = arr.length - 1; i > 0; i--`;其中i>0,i的最小值不是1而是0；
+外层遍历 `let i = arr.length - 1; i > 0; i--`;
+其中i>0,i的最小值不是0而是1；
 但是arr[0]又必须遍历，其实已经在内层遍历中被遍历了。
 
+### 遍历的经典应用
+冒泡是遍历的经典应用
+
 ## 选择排序
-### 概述
-选择排序
-是一次次遍历，将最小值遍历到最左侧的过程，选择排序与冒泡排序实现的效果是一样的，思路不一样。
-选择排序每次遍历以起始值arr[i]为参照，然后遍历 arr[i+1]到arr[arr.length-1]的范围，发现有值不一样，a[i]与最小值进行值的交换。
-所以，选择排序是，一次遍历交换一次位置，冒泡排序是一次比较就交换一次位置，而一次遍历包含很多次比较。
-所以选择排序类似定点比较交换，冒泡排序是左右比较交换，这就是二者区别。
+### 概述 以及 选择、冒泡区别
+选择排序与冒泡排序实现的效果是一样的，思路不一样。
+选择排序每次遍历以起始值arr[i]为参照，然后遍历剩余的范围： arr[i+1]到arr[arr.length-1]的范围，每次将较小值与a[i]交换，遍历结束，a[i]将交换到最小值。
+冒泡排序是每次将较大值向右移，最终最右边的值就是最大值；
+![](/image/calc/select-dubble.jpeg)
 
 如下图，要实现如下的一个渐进的排序过程：
 ![](/image/calc/select.jpg)
@@ -504,7 +457,7 @@ calc([1, 9, 5, 3, 4,0,2,999,6]) //[0, 1, 2, 3, 4, 5, 6, 9, 999]
 ```
 function calc(arr) {
       // 选择排序
-      for (let i = 0, len = arr.length, min; i < len; i++) {
+      for (let i = 0, len = arr.length; i < len; i++) {
         for (let j = i + 1; j < len; j++) {
           if (arr[j] < arr[i]) {
             let c = arr[i]
@@ -516,15 +469,27 @@ function calc(arr) {
       return arr
     }
 ```
-### 要点解析
-选择排序与冒泡排序是两种相反的比较方法，冒泡排序是 i--，选择排序是 i++；
-内层遍历范围也是相反的方向，选择排序内层遍历范围是从左到右不断收缩的过程，冒泡排序是右到左不断收缩。
-其基本原理与冒泡排序相同；
-详细参考《冒泡排序》
-### 选择排序与冒泡排序区别
-前者是定点比较交换，后者是左右比较交换：
-![](/image/calc/select-dubble.jpeg)
-### 小技巧
+### i--的选择排序 实现方式
+```
+function calc(arr){
+   // 选择排序
+      for(var i =arr.length-1; i>0; i--){
+        for(var j = 0; j<i; j++){
+          if(arr[j]>arr[i]){
+            let tem = arr[i];
+            arr[i]=arr[j];
+            arr[j]=tem;
+          }
+        }
+      }
+      return arr;
+    }
+```
+
+### 外层遍历负责排序，内层遍历负责查找最值
+上面的代码，外层遍历 arr[i],经过内层一次遍历后，a[i]就变成最大值；
+
+### 外层 arr[i],内层就从 i+1开始遍历
 因为定点比较的原因，如果要定点比较的元素为 arr[i],那么内层遍历就从i+1开始遍历，这点也是值得注意和借鉴的地方。
 
 ### 代码优化写法(推荐)
@@ -533,7 +498,7 @@ function calc(arr) {
 ```
 function calc(arr) {
       // 选择排序
-      for (let i = 0, len = arr.length, min; i < len; i++) {
+      for (let i = 0, len = arr.length; i < len; i++) {
         引入临时变量
           let temp = arr[i];
         for (let j = i + 1; j < len; j++) {
@@ -548,6 +513,8 @@ function calc(arr) {
       return arr
     }
 ```
+### 经典遍历应用
+选择排序也是对遍历的经典应用。
 ## 最大间距
 ### 概述
 [力扣原题 -- 最大间距](https://leetcode-cn.com/problems/maximum-gap/)
@@ -586,9 +553,14 @@ function calc(arr) {
 ```
 #### 边界处理
 当i === (arr.length - 2)与i=1时需要处理不同逻辑。
+### 借助冒泡或选择排序实现
+如上代码，因为冒泡或选择排序是，最左或最右端值已经排序好，排序好的就可以计算差值。所以可利用这一特性，找出最大间距。
 ### 不推荐方法
 不推荐理由，利用sort进行了一次遍历，然后又用遍历求最大间距，用了两次遍历，相比上面的推荐方法的一次遍历，这种方法性能不好。
 ![](/image/calc/max.jpg)
+
+### 遍历是核心
+最大间距的解决主要借助遍历实现。
 
 ## 数组中的第K个最大元素
 [力扣原题 -- 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
@@ -628,9 +600,8 @@ export default (arr, k) => {
   return arr[len - (k - 1)]
 }
 ```
-## 对以上排序(题\算法)的小结
-以上的排序题中，如`数组中的第K个最大元素`，示例中都使用了冒泡排序的算法来做的，其他也可以使用选择排序，二者都是想通互换的。
-
+### 借助冒泡或选择排序实现
+如上代码，因为冒泡或选择排序是，最左或最右端值已经排序好，排序到第k个时，马上停止遍历，有助于性能。
 ## 快速排序
 
 ### 要点分析
@@ -1146,8 +1117,80 @@ calc(8) //13;
 有时候递归能实现的，通过while也能实现，while具有一些递归的质能。
 
 ## 遍历
+### 遍历类型
+#### 多元遍历
+上面的 种花问题，冒泡排序， 选择排序，都是多元遍历的运用；
+#### 多层遍历
+冒泡排序，选择排序 是多层遍历的运用；
+#### 跳级(忽略)遍历
+参考 《种花问题 --- 遍历体用 i++ 跳级忽略遍历》
+### 经典应用示例
+#### 种花问题
 这里是遍历的经典运用，参考《种花问题》
+#### 冒泡排序
+参考《冒泡排序》
+#### 选择排序
+参考《选择排序》
+#### 最大间距
+参考 《最大间距》
+#### 数组中的第K个最大元素
+参考 《数组中的第K个最大元素》
 
+## 常用算法场景
+### 数组前后两两比较
+#### 概述
+参考：《电话号码》中的源码
+```
+ const cur = (strarr)=>{
+     //第一次strarr[0]是一个字符串， 以后strarr[0]经过splice后，都是数组
+    const one = typeof strarr[0] === 'string' ? strarr[0].split('') : strarr[0];
+    const two = strarr[1].split('');
+    const newItem0 = combile(one, two);
+    strarr.splice(0,2,newItem0);
+       if(strarr.length<2){
+           return strarr[0];
+       }
+     return cur(strarr)
+   }
+```
+更多参考 《卡牌分组》
+#### 每次只比较数组的第一和第二项
+```
+const one = typeof strarr[0] === 'string' ? strarr[0].split('') : strarr[0];
+const two = strarr[1].split('');
+const newItem0 = combile(one, two);
+```
+#### 删除第一和第二项，将比较结果重新置为第一项
+如上代码，每次比较完第一和第二项后，删除他们，并将比较结果置为第一项
+```
+ strarr.splice(0,2,newItem0);
+```
+#### 递归是核心
+见代码
+
+#### 边界值：strarr.length<2
+两两比较到最后，数组只剩下一个元素，此时递归停止，所以边界值：strarr.length<2。
+
+### 找出元素出现次数
+
+#### 找出元素出现次数的方法(推荐)--match正则
+详细参考 《卡牌分组》
+```
+ // 分组(单张或者多张)  \1 在正则中表示连续一样的匹配
+  let group = str.match(/(\d)\1+|\d/g)
+```
+#### 找出元素出现次数的方法--object key方式
+详细参考 《卡牌分组》
+```
+  const hash = deck.reduce((pre, num) => {    //统计出每种数字的数目
+    if(!pre[num]) {
+      pre[num] = 1
+    }else{
+      pre[num]++
+    }
+    return pre
+  }, {})
+```
 
 ## 参考
 [JavaScript版 数据结构与算法](https://coding.imooc.com/class/chapter/315.html#Anchor)
