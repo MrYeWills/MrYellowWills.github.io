@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>node模块 | Mr.Yellow.Wills</title>
+    <title>No title | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="node,nodemon">
+    <meta name="keywords" content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>node模块</span>
+            <span>No title</span>
             
         </div>
         
@@ -152,15 +152,13 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">node模块</h1>
+        <h1 class="title">No title</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-05-21T15:38:32.000Z" itemprop="datePublished" class="page-time">
-  2019-05-21
+                <time datetime="2019-08-28T14:54:43.000Z" itemprop="datePublished" class="page-time">
+  2019-08-28
 </time>
 
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
 
             
         </h5>
@@ -185,15 +183,14 @@
 
 
 <div class="container body-wrap">
-    <article id="post-node_module" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-aa"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">node模块</h1>
+        <h1 class="post-card-title">No title</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-05-21 23:38:32" datetime="2019-05-21T15:38:32.000Z" itemprop="datePublished">2019-05-21</time>
+            <time class="post-time" title="2019-08-28 22:54:43" datetime="2019-08-28T14:54:43.000Z" itemprop="datePublished">2019-08-28</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
-
 
 
             
@@ -205,27 +202,50 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="node好用模块"><a href="#node好用模块" class="headerlink" title="node好用模块"></a>node好用模块</h2><h3 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h3><p>一款用于 使用node启动的项目，监听当项目文件变动时，自动启动类似npm start命令的模块。<br><a href="https://github.com/YeWills/koa-demo/tree/master" target="_blank" rel="noopener">demo示例</a></p>
-<h4 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h4><p>使用非常简单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//package.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;koa-book-pro&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;server/index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon ./start.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;YeWills&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;MIT&quot;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;koa&quot;: &quot;^2.4.1&quot;,</span><br><span class="line">    &quot;koa-bodyparser&quot;: &quot;^4.2.1&quot;,</span><br><span class="line">    &quot;koa-router&quot;: &quot;^7.4.0&quot;,</span><br><span class="line">    &quot;koa-static&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;koa2-cors&quot;: &quot;^2.0.6&quot;,</span><br><span class="line">    &quot;nodemon&quot;: &quot;^1.18.10&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>package.json 同级目录下 配置 nodemon.json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//nodemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;restartable&quot;: &quot;rs&quot;,</span><br><span class="line">  &quot;ignore&quot;: [</span><br><span class="line">    &quot;.git&quot;,</span><br><span class="line">    &quot;node_modules/**/node_modules&quot;,</span><br><span class="line">    &quot;README.md&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;verbose&quot;: true,</span><br><span class="line">  &quot;execMap&quot;: &#123;</span><br><span class="line">    &quot;js&quot;: &quot;node --harmony&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;watch&quot;: [</span><br><span class="line">    &quot;server/&quot;,</span><br><span class="line">    &quot;src/&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;ext&quot;: &quot;js json&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后用npm start 启动项目，files改变时，会自动npm start，非常好用。<br><a href="http://www.cnblogs.com/JuFoFu/p/5140302.html" target="_blank" rel="noopener">关于上面代码的解释</a><br>或自行查询GitHub官网</p>
-<h4 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h4><p>以上代码注意的是:<br>nodemon.json 中 js属性配置了 node –harmony 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;execMap&quot;: &#123;</span><br><span class="line">   &quot;js&quot;: &quot;node --harmony&quot;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
-<p>那么请在 package.json中 start中，把node关键字去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//正确配置</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon ./start.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//错误配置 ，配置了多余的node</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon node ./start.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
+            <!DOCTYPE html>
+<html class="no-js">
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <script>
+          function dd(arr){
+            const temp = arr[Math.floor(length/2)];
+            if(arr.length<2){
+              return arr;
+            }
+            const left=[];
+            const right=[];
+            arr.splice(Math.floor(length/2), 1)
+            arr.forEach(element => {
+              if(element>temp){
+                right.push(element);
+              }else{
+                left.push(element);
+              }
+            });
+            return dd(left).concat(temp).concat(dd(right));
+          }
+        </script>
+    </body>
+</html>
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-05-21T15:38:32.000Z" itemprop="dateUpdated">2019-05-21 23:38:32</time>
+    Last updated: <time datetime="2019-08-31T13:57:28.000Z" itemprop="dateUpdated">2019-08-31 21:57:28</time>
 </span><br>
 
 
         
-        博客内容均为原创，转载注明出处，原文地址：<a href="/2019/05/21/node_module/" target="_blank" rel="external">https://yewills.github.io/2019/05/21/node_module/</a>
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2019/08/28/aa/" target="_blank" rel="external">https://yewills.github.io/2019/08/28/aa/</a>
         
     </div>
     <footer>
@@ -245,8 +265,6 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodemon/">nodemon</a></li></ul>
-
             <div class="page-share-wrap">
     
 
@@ -254,7 +272,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/05/21/node_module/&title=《node模块》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/08/28/aa/&title=《No title》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -266,7 +284,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/05/21/node_module/&title=《node模块》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/08/28/aa/&title=《No title》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -289,21 +307,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/05/21/mac_linux/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">mac和linux笔记</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/05/21/css/" id="post-next" class="post-nav-link">
+      <a href="/2019/08/25/house/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">css笔记</h4>
+        <h4 class="title">决定房价的因素</h4>
       </a>
     </div>
   
@@ -311,14 +322,6 @@
 
 
     
-    
-        <aside class="post-widget">
-            <nav class="post-toc-wrap" id="post-toc">
-                <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node好用模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">node好用模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nodemon"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">nodemon</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Usage"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Usage</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用注意"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">使用注意</span></a></li></ol></li></ol></li></ol>
-            </nav>
-            <div class="toc-bar"><div>
-        </div></div></aside>
     
 </article>
 
@@ -411,7 +414,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/05/21/node_module/&title=《node模块》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/08/28/aa/&title=《No title》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -423,7 +426,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/05/21/node_module/&title=《node模块》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/08/28/aa/&title=《No title》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -435,7 +438,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3awXKDMAxF0fz/T9NtZ1rgPgnasXy9yhBidFgosuXPB4/j2/h5hXx7PfPZUx4eMmTIWJZxXA4SFvn252dyD4lNhgwZ+zD41Cmgcw+JTYYMGTJqJF5Qdl6fDBkyZFxPly5TSTL9h/8NGTJkLMXgJRpfZPIg+OL5gbW4DBkyFmTwXfe///xKf0OGDBlLMY5w1Mq+WgsziEqGDBmjGTzBpRtkfE5+/SYeGTJkDGWkhyfSB6RFHjmu8csVGTJkbMDgKZU8gJd96fyn0cqQIWM0g2/Z85SaNik7ZaIMGTJ2YKQFHAnxjWR9E4MMGTJGM9Lg+OFUnnD7c8qQIWMfRq0NmbYqScOymPRlyJAxmpFiOu3M17fbZMiQMY6RHv+qLVav02u60XZ6WkSGDBmbMXgB10/NaQH6qb0hGTJkLM7obISRsrJWGpIyEZ0ZkSFDxuIMfniCB50WgmmaliFDhoxaen32FfBFrAwZMvZhpImPP5KT+mwZMmTMZvBSrHbA641y8+bMiAwZMoYy3liy8tZmHLQMGTK2ZJDyrpY0OwVlay0uQ4aMEYwjHLVDYCQs8r5v1t8yZMgYyngqvb4H44WjDBkyZjNIkk231ToYfuQi+PeQIUPGCAZPfP3tNlJ6ptHKkCFDRi1Fpo3P2p0yZMiQkd7TD4s3FU47sTJkyBjKqJV3tS3+zgafDBky9mQ8tZeV/or/9rGmpgwZMtZjfAHTtEupkCh6lwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABtklEQVR42u3ay46DMAwF0P7/TzPS7EYq9DoOLiOdrCrahgMLK368XvE6ftd9nzcvXFzcNve4XGdbn11Z2yEx4OLiznPz4JX8N2eV98fFxX0Yt3rjZAdcXNz/zu0HrISOi4v7HG6SuuQJT/UV3JKr4eLiNrjqu7i4uHkYykNbHp5a98XFxR3hXh9f1mLLWsm1EOBwcXFv5iZb5KlI/sD5Q/65gouLO8gtR774xp2my5swh4uLO8JNjjj5uNXa6FXe1sXFxZ3kdoqn1dGK5PE2tFJwcXG3cqvt1bUrm98cLi7uVu41qxpo8qJJPuTxJu3BxcUd4eZNjrXEZtfwFi4u7gy3mnJ0hjDywYsPhyFcXNxB7lrykyQ8/fELXFzceW61EbJtnKJYhMXFxf0Wt9PmjA4o7QIuLi7uPDcvfSaU/ABUbevi4uLexz2Ka41SLnycfYuLizvC7Uw+5IWPtT1xcXG/y80bG9UUZe2o9OG94uLiDnI7wSsptnbys9PODy4u7sO4SfPj2LQ2BDJcXNzbuDkxb8+Ui6q4uLiD3LUByvw3nbQKFxd3nrvYlS2WOUYHOHBxcde5P5ERyC+67KmIAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
