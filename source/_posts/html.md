@@ -334,6 +334,50 @@ FileReader是能够操作blob的两种方式之一
 #### blob 与 window.URL.createObjectURL
 window.URL是能够操作blob的两种方式之一
 
+## HTML 事件
+这里的浏览器主要指：ie edge 谷歌 火狐，注意 ie 和edge是分开讨论。下面说到所有浏览器时，指的就是这里的四个浏览器。
+### 右击 oncontextmenu
+ie不支持外，不过edge支持，且其他浏览器都支持
+```
+//在下面div右击时，就会执行console.log
+ <div onclick="dd()" oncontextmenu="console.log(123)" class="aa left">111</div>
+```
+### 双击 ondblclick
+ie不支持外，其他都支持。
+
+### 错误 onerror
+ie edge 支持存疑，其他支持
+可以收集节点元素的错误信息（几乎所有类型错误都能收集），通常用于window.onerror()，来收集错误报告，比较有用：
+```
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+    var string = msg.toLowerCase();
+    var substring = "script error";
+    if (string.indexOf(substring) > -1){
+   ...
+};
+```
+
+```
+window.onerror = function(message, source, lineno, colno, error) { ... }
+函数参数：
+message：错误信息（字符串）。可用于HTML onerror=""处理程序中的event。
+source：发生错误的脚本URL（字符串）
+lineno：发生错误的行号（数字）
+colno：发生错误的列号（数字）
+
+```
+
+### 按键 onkeydown
+除ie存疑外，其他都支持。
+可以捕获按键
+```
+const input = document.querySelector('input');
+input.onkeydown = logKey;
+function logKey(e) {
+  console.log(e);
+}
+```
+
 
 ## 应用demo
 ### 文件上传-file和drap拖拽两种方式
