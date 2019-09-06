@@ -367,7 +367,7 @@ colno：发生错误的列号（数字）
 
 ```
 
-### 按键 onkeydown
+### 按键down onkeydown
 除ie存疑外，其他都支持。
 可以捕获按键
 ```
@@ -377,6 +377,36 @@ function logKey(e) {
   console.log(e);
 }
 ```
+### 按键up onkeyup
+除ie存疑外，其他都支持。
+可以捕获按键 用法同上面的 onkeydown
+
+### onload
+所有浏览器全部支持
+用于处理Window, XMLHttpRequest, <img> 等元素的加载事件，当资源已加载时被触发。
+注意，不仅可用于dom的onload，还可以用于ajax，img的加载。
+```
+window.onload = function() {
+  init();
+  doSomethingElse();
+};
+
+<element onload="myScript">
+
+object.onload = function(){myScript};
+
+object.addEventListener("load", myScript);
+
+<img src="w3javascript.gif" onload="loadImage()" width="100" height="132">
+
+var img = new Image();
+img.onload = function () {
+   alert("image is loaded");
+}
+img.src = "img.jpg";
+```
+在文档装载完成后会触发  load 事件。此时，在文档中的所有对象都在DOM中，所有图片，脚本，链接以及子框都完成了装载。 
+同时也会有 Gecko-指定 DOM事件，如 DOMContentLoaded 和 DOMFrameContentLoaded (它们可以使用 EventTarget.addEventListener() 来处理 ) ， 这些事件在页面DOM构建起来后就会触发，而不会等到其他的资源都装载完成。 
 
 
 ## 应用demo
