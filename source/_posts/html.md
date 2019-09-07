@@ -334,7 +334,7 @@ FileReader是能够操作blob的两种方式之一
 #### blob 与 window.URL.createObjectURL
 window.URL是能够操作blob的两种方式之一
 
-## HTML 事件
+## GlobalEventHandlers
 这里的浏览器主要指：ie edge 谷歌 火狐，注意 ie 和edge是分开讨论。下面说到所有浏览器时，指的就是这里的四个浏览器。
 ### 右击 oncontextmenu
 ie不支持外，不过edge支持，且其他浏览器都支持
@@ -408,6 +408,103 @@ img.src = "img.jpg";
 在文档装载完成后会触发  load 事件。此时，在文档中的所有对象都在DOM中，所有图片，脚本，链接以及子框都完成了装载。 
 同时也会有 Gecko-指定 DOM事件，如 DOMContentLoaded 和 DOMFrameContentLoaded (它们可以使用 EventTarget.addEventListener() 来处理 ) ， 这些事件在页面DOM构建起来后就会触发，而不会等到其他的资源都装载完成。 
 
+### onloadstart
+浏览器全部兼容，不过谷歌中的img标签不支持unloadstart事件。
+```
+<img src="myImage.jpg">
+image.addEventListener('load', function(e) {
+  console.log('Image loaded');
+});
+image.addEventListener('loadstart', function(e) {
+  console.log('Image load started');
+});
+image.addEventListener('loadend', function(e) {
+  console.log('Image load finished');
+});
+```
+### 鼠标事件 onmousedown onmouseenter onmouseleave onmousemove onmouseout onmouseover onmouseup
+#### 介绍
+浏览器全兼容。
+鼠标 按下、松开、划过、划出、划动、离开等等，各种鼠标动作，应有尽有。
+能做出的效果：
+如模拟 hover，但做出比hover更高级效果；
+[图片按住显示（onmousedown onmousemove onmouseup 示例）](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousedown)
+图片鼠标选中后，放大显示；
+[跟随鼠标，实时显示](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove)
+
+#### onmouseover onmousemove onmouseout 区别
+鼠标划过元素时，依次触发 onmouseover（移入元素区域）onmousemove （元素内移动）onmouseout（移出元素区域）；
+注意的是，整个过程 onmouseover和out只触发一次，onnousemove会触发多次；
+示例 [跟随鼠标，实时显示](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove)
+示例中的方案应该可以实现淘宝页面中的 图片鼠标划动，放大显示；
+
+#### onmousemove 应用多
+利用onmousemove在元素移动时会持续触发的特性，可以完成很多页面，上面的示例都用到了onmousemove。
+
+### onscroll
+ie存疑外，其他都支持
+```
+const textarea = document.querySelector('textarea');
+const log = document.getElementById('log');
+textarea.onscroll = logScroll;
+function logScroll(e) {
+  log.textContent = `Scroll position: ${e.target.scrollTop}`;
+}
+```
+### onselect
+ie存疑外，其他都支持
+只有在文本框和文本域内选择文本才会触发select事件.
+非常好用的事件，[demo](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onselect)；
+在输入框内选中一段文字，会将这段文字捕获作为参数。
+
+### 表单事件 onreset onsubmit
+表单重置、表单提交。
+
+### onwheel
+所有浏览器全部支持；
+onwheel 特性指向当前元素的滑轮滑动事件函数 EventHandler。
+当双指划动时，会触发onwheel：
+[双指缩放显示 demo](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onwheel)
+
+### 拖拽事件 ondrag ondragend ondrop ondragstart ondragover ondragleave ondragexit
+所有浏览器都支持
+#### 介绍
+参考[拖放 API](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API)
+```
+drag	ondrag	当拖动元素或选中的文本时触发。
+dragend	ondragend	当拖拽操作结束时触发 (比如松开鼠标按键或敲“Esc”键). (见结束拖拽)
+dragenter	ondragenter	当拖动元素或选中的文本到一个可释放目标时触发（见 指定释放目标）。
+dragexit	ondragexit	当元素变得不再是拖动操作的选中目标时触发。
+dragleave	ondragleave	当拖动元素或选中的文本离开一个可释放目标时触发。
+dragover	ondragover	当元素或选中的文本被拖到一个可释放目标上时触发（每100毫秒触发一次）。
+dragstart	ondragstart	当用户开始拖动一个元素或选中的文本时触发（见开始拖动操作）。
+drop	ondrop	当元素或选中的文本在可释放目标上被释放时触发（见执行释放）。
+```
+
+[直接看mdn demo,对应api都有demo](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/ondrag)
+#### drap与mouse
+drap相关事件与上面的mouse事件相似；
+只不过，mouse事件是将鼠标光标移动到element区域触发；drap是将拖拽的element移动到element区域触发；
+将拖拽的element看成是光标，那么drap与mouse理解起来就差不多一样了。
+#### drap 与 event.dataTransfer.setData
+非常好的数据传输方法，drap事件的event对象都有dataTransfer API。
+```
+function dragstart_handler(ev) {
+ console.log("dragStart");
+ ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop_handler(ev) {
+ console.log("Drop");
+ ev.currentTarget.style.background = "lightyellow";
+
+ ev.preventDefault();
+ var data = ev.dataTransfer.getData("text");
+ ev.target.appendChild(document.getElementById(data));
+}
+
+```
+[直接看mdn demo,对应api都有demo](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/ondrag)
 
 ## 应用demo
 ### 文件上传-file和drap拖拽两种方式
