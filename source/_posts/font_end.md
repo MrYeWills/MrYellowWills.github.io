@@ -62,7 +62,8 @@ cookie是后台传给前台，前台再利用浏览器的cookie可以随http发�
 #### Cookie、LocalStaorage和indexDB无法读取；
 非同源下，无法读取非同源的以上缓存；
 #### DOM无法获取
-#### ajax请求不能发送（跨域）
+#### 浏览器屏蔽非同源请求的消息（跨域）
+
 ### 前后端如何通信
 #### ajax
 #### Websocket
