@@ -14,10 +14,31 @@ series: git
 珍爱git，及早丢弃图形化。
 
 ### git init 与 git remote
+#### 概述
 本地一个文件夹，里面有很多文件，你想从现在开始，对此文件进行版本管理，执行git init即可；
 git init后，就可以尽情地对此项目各种版本管理操作；
 有一天你想对这个git init项目上传到github上，
 在命令窗口执行 git remote，cmd窗口会提示你如何上传到GitHub服务器上。
+#### git remote 相关问题
+本地仓库git init后，在关联远程地址时，要求做如下操作：
+```
+Either specify the URL from the command-line or configure a remote repository using
+//这里的name 通常为 remote name，默认的远程名字为origin，
+//所以此处name请记住一定要写origin，不然会导致下面讲到的无法使用git push 就可以轻松push。
+//当然如果有需求，也可以定义其他远程名。
+    git remote add <name> <url>
+
+and then push using the remote name
+//这里的name是远程上的branch名，仓库第一个分支名通常命名为 master
+    git push <name>
+```
+#### git push时，要求 git remote add <name> <url>的问题
+此问题与上面说的 《git remote 相关问题》一脉相承，
+这里我们要了解一个知识点， **使用git push 推送到服务器时，默认是推送到名字为 origin的远程上**，所以本地分支与远程分支建立联系时，使用的是origin，那么该分支每次push时，使用git push就可以了：
+```
+git remote add orgin https://.....
+```
+从该分支checkout出来的branch，push到远程时，也能正常使用 git push即可推送。
 
 ### 看cmd窗口提示很关键
 上面说到了执行git remote cmd窗口会有提示，按照提示，就可以完成想做的事情。
