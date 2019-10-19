@@ -5,6 +5,8 @@ tags: [d3.js]
 categories: 
 - 前端
 ---
+## d3图形图解
+![](/image/d3/all/images.jpg)
 
 ## 树图
 ### 树图布局API
