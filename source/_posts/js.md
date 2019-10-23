@@ -300,6 +300,12 @@ dom3 时代，绑定事件方式与dom2相同，不同的是，dom3时代增加�
 事件模型有 冒泡和捕获 两种。
 ### 事件流
 [参考](https://www.jianshu.com/p/e7c403e6e2da)
+当事件触发时，无论你做了什么，事件都会完整经历捕获、目标处理、冒泡阶段。这里很多人歧义，认为事件只会单独执行捕获或冒泡阶段，这是不对的，事件会完整经历以上三阶段。
+只是绑定事件时，可以选择事件在冒泡或捕获阶段触发：
+```
+//true 捕获， false 冒泡 (默认)， 无论设置为true或false，事件都会执行
+document.addEventListener("click", myFunction, true);
+```
 dom事件流分为三阶段：
 #### 捕获阶段
 一个事件比如 click，顶级对象window发出一个事件流，事件从window>document>html>body>button到达目标元素。
@@ -309,6 +315,10 @@ dom事件流分为三阶段：
 进入冒泡阶段。
 #### 冒泡阶段
 沿着目标函数一步步到window对象，触发对应事件绑定函数。
+#### document.addEventListener
+document.addEventListener("click", myFunction, true)的第三个参数 true或false，这第三个参数类似一个转换阀，当为true时，捕获阶段就执行。
+当false时，冒泡阶段才执行。
+
 ### 事件捕获的具体流程
 事件捕获具体流程是window>document>html>body>button。
 这也就解释了，很多人将**全局**事件绑定在body或document或window上，放在这些地方，在项目中任何地方都能被捕获触发对应事件函数。
@@ -316,7 +326,7 @@ dom事件流分为三阶段：
 #### event.preventDefault()
 阻止元素的默认行为，例如a标签定义click事件，在事件函数上加上这个，可以阻止a标签跳转。
 #### event.stopPropagation()
-阻止冒泡
+阻止冒泡或捕获，当元素使用这个的时候，监听事件比如click，所触发的函数就到此为止，再也不会向上冒泡或像下捕获。
 #### event.stopImmediatePropagation()
 同一个元素绑定同一事件如click多次时，当元素click触发时，所有的click事件全部被触发。
 如果不想全部触发绑定的click事件，可以在某个click事件函数中加这个，阻止再触发其他click事件函数。

@@ -188,6 +188,9 @@ svg.selectAll('circle')
 效果：
 ![](/image/d3/circle3.jpg)
 
+### 比较好的exitdemo
+- [demo 1](https://github.com/YeWills/nodemon-server-template/blob/d3-demo/pages/wangjingzhi/fifth.html)，此demo是一个简单散点图，其中的去掉图中散点功能非常棒。
+
 
 ## exit
 
