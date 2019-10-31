@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>d3概述 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="d3.js">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>d3概述</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">d3概述</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-11T00:41:42.000Z" itemprop="datePublished" class="page-time">
+  2019-10-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-d3_info" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">d3概述</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-11 08:41:42" datetime="2019-10-11T00:41:42.000Z" itemprop="datePublished">2019-10-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="d3的学习"><a href="#d3的学习" class="headerlink" title="d3的学习"></a>d3的学习</h3><p>不用记住api，但一定要会查询。</p>
+<h3 id="d3的知识体系"><a href="#d3的知识体系" class="headerlink" title="d3的知识体系"></a>d3的知识体系</h3><h4 id="选择集、数据绑定、dom操作"><a href="#选择集、数据绑定、dom操作" class="headerlink" title="选择集、数据绑定、dom操作"></a>选择集、数据绑定、dom操作</h4><h4 id="比例尺和坐标轴"><a href="#比例尺和坐标轴" class="headerlink" title="比例尺和坐标轴"></a>比例尺和坐标轴</h4><p>比例尺用于缩放。</p>
+<h4 id="绘制（几种生成器）"><a href="#绘制（几种生成器）" class="headerlink" title="绘制（几种生成器）"></a>绘制（几种生成器）</h4><ul>
+<li>线段生成器</li>
+<li>区域生成器</li>
+<li>弧生成器</li>
+<li>符号生成器</li>
+<li>弦生成器</li>
+<li>对角线生成器（*）<br>两个点生成一条平滑的线<h3 id="svg"><a href="#svg" class="headerlink" title="svg"></a>svg</h3>svg中预定了几种元素<h4 id="矩形（rect）"><a href="#矩形（rect）" class="headerlink" title="矩形（rect）"></a>矩形（rect）</h4><h4 id="圆形（circle）"><a href="#圆形（circle）" class="headerlink" title="圆形（circle）"></a>圆形（circle）</h4><h4 id="椭圆形（ellipse）"><a href="#椭圆形（ellipse）" class="headerlink" title="椭圆形（ellipse）"></a>椭圆形（ellipse）</h4><h4 id="线段（line）"><a href="#线段（line）" class="headerlink" title="线段（line）"></a>线段（line）</h4><h4 id="折线（ployline）"><a href="#折线（ployline）" class="headerlink" title="折线（ployline）"></a>折线（ployline）</h4><h4 id="多边形（ploygon）"><a href="#多边形（ploygon）" class="headerlink" title="多边形（ploygon）"></a>多边形（ploygon）</h4><h4 id="路径（path）"><a href="#路径（path）" class="headerlink" title="路径（path）"></a>路径（path）</h4><h4 id="文字（text）"><a href="#文字（text）" class="headerlink" title="文字（text）"></a>文字（text）</h4></li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-10-11T00:54:09.000Z" itemprop="dateUpdated">2019-10-11 08:54:09</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2019/10/11/d3_info/" target="_blank" rel="external">https://yewills.github.io/2019/10/11/d3_info/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3-js/">d3.js</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/10/11/d3_info/&title=《d3概述》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/10/11/d3_info/&title=《d3概述》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/10/19/d3/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">d3缓存笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/10/09/d3_layout/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">d3的各种图形介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">1.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#d3的学习"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">d3的学习</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#d3的知识体系"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">d3的知识体系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#选择集、数据绑定、dom操作"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">选择集、数据绑定、dom操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#比例尺和坐标轴"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">比例尺和坐标轴</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#绘制（几种生成器）"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">绘制（几种生成器）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#svg"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">svg</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#矩形（rect）"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">矩形（rect）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#圆形（circle）"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">圆形（circle）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#椭圆形（ellipse）"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">椭圆形（ellipse）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线段（line）"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">线段（line）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#折线（ployline）"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">折线（ployline）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多边形（ploygon）"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">多边形（ploygon）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#路径（path）"><span class="post-toc-number">1.3.7.</span> <span class="post-toc-text">路径（path）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文字（text）"><span class="post-toc-number">1.3.8.</span> <span class="post-toc-text">文字（text）</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2019/10/11/d3_info/&title=《d3概述》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2019/10/11/d3_info/&title=《d3概述》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACPElEQVR42u3azW6DQAxFYd7/panUVaSUcK4NVfAcVqgNMN8sLP/MtuFr/71e74+uo98cvfPoqe2OS4YMGY9l8GW933+mfv5KCjt5gwwZMhZg8CDLF03e398yGTJkyCABtP+X2hbIkCFDBi8v01+S5E+GDBkyakUsaajxRJCnhhfX4jJkyHggozYY+J/72+cbMmTI+HrGHl7k82n6mA4D/nhKhgwZoxmk4UUiGx8ekOZa2p6TIUPGbAYpCNPGPS81ybABbbQMGTJGM0jLvjO2DKI+WSLZehkyZIxjdNIyvvR+mD5ZgwwZMkYzeFAjH+YHLNJufy31lCFDxiQG/zwPdukBDt7gO6nIZciQMZTBU7f0QAYPsp1DZjJkyFiBkZay/aEmOZBBeDJkyFiHUTtyQZpuaShPG20yZMhYjXFVGE2DJt+mOOmUIUPGOEa/iO2cfEiPkd1Yi8uQIePLGCSN6+xQJ/jGhasMGTJGM/h4kgwmrwq7fMApQ4aM2YzitLNUGfeD7MlGy5AhYyiDt8B4QVs7Rpa27eIdkiFDxsMZtQSODx07CShKSWXIkDGa0RklpiPGzrABPSVDhoyhjD28OskcHz+kjTwZMmTMZtTCHG+H1UriFCxDhowVGCTI8j1IAzQP02inZciQMZpBgixfYjrOrK2z2G6TIUPGaEbtvyTJ44nmxV1DGTJkDGWQ4SIfTMaB9WgjZMiQsQCDFLFp8Vlr6xcTUBkyZIxm9AvI2nGxNHzXBg8yZMh4OOMH5o5qmE5ROaMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
