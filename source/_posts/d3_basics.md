@@ -313,5 +313,9 @@ update.data(data)
 ### DOM操作 - attr append insert
 ### 远程加载数据 d3.josn()
 
+## 应用demo
+### [柱状图demo](https://github.com/YeWills/nodemon-server-template/blob/d3-demo/pages/d3-jt-book/chapter4/4.8/4-8-2-update-data.html)
+此demo非常简短，对enter update exit理解非常有帮助。
+
 ## 参考
 [彻底弄懂 D3js enter update exit 是咋回事](https://v.youku.com/v_show/id_XNDE3MTEwNDE4OA==.html?refer=seo_operation.liuxiao.liux_00003303_3000_Qzu6ve_19042900)
