@@ -1,5 +1,5 @@
 ---
-title: d3的各种图形介绍
+title: d3图形、demo讲解
 date: {{ date }}
 tags: [d3.js]
 categories: 
@@ -99,3 +99,7 @@ categories:
 #### 参考与demo地址
 [demo地址, 找到其中的 circle d3 demo](https://github.com/YeWills/nodemon-server-template/tree/d3-demo)
 [更多讲解看视频](https://ke.qq.com/course/306436?taid=2254411154107652)
+
+
+## 待了解
+d3.mouse
