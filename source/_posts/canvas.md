@@ -33,3 +33,128 @@ svg、canvas 所有的浏览器都兼容，不同的是，svg因为很早就出�
 #### WebGL与canvas的关系
 WebGL是基于canvas元素绘制3D图的js API。
 
+
+### cxt.clearRect
+重新渲染时，需要清除画布中上一次渲染：
+```
+ cxt.clearRect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
+```
+
+### beginPath、 closePath
+#### 介绍
+画一个形状时，需要cxt.beginPath()，但closePath不是必须，可以不使用，下次再使用cxt.beginPath()时，会默认自动closePath上一个路径。
+```
+cxt.beginPath();
+cxt.arc( x+j*2*(RADIUS+1)+(RADIUS+1) , y+i*2*(RADIUS+1)+(RADIUS+1) , RADIUS , 0 , 2*Math.PI )
+cxt.closePath()
+cxt.fill()
+```
+#### closePath不是必须
+参考上面分析
+
+### 生成(2d)画布上下文的要素
+```
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext("2d");
+canvas.width = WINDOW_WIDTH;
+canvas.height = WINDOW_HEIGHT;
+```
+
+## 炫丽的倒计时效果demo
+### 数据建模--多维数组矩阵创建数字模型
+用一个只有0和1的数组，1表示有路径，0表示填充为空。
+![](/image/canvas/digit.png)
+![](/image/canvas/cell.png)
+
+### 计算数字矩阵模型内的元素坐标
+如上图所示，只要我们能知道矩阵左上角的坐标值xy，就可以计算出矩阵内所有的元素坐标值；
+值得注意的是，上面的i和j分别是二维数组的i和j，它们对应的初始值都是0，具体公式，参考上图。
+
+### 模拟抛物线路径
+#### 实现代码
+```js
+ var aBall = {
+        x:x+j*2*(RADIUS+1)+(RADIUS+1),
+        y:y+i*2*(RADIUS+1)+(RADIUS+1),
+        //g是重力加速度，只影响在垂直方向的速度，Math.random() 创造每个不同小球不同的重力加速度，产生不同的速度，让每个小球运动更加自然
+        g:1.5+Math.random(),
+        //vx小球在x 水平方向的速度，Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4 其实就是随机生成-4和4
+        vx:Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4,
+        //vx小球在y 垂直方向的速度，让小球有一个向上抛的动作。
+        vy:-5,
+    }
+```
+```js
+ for( var i = 0 ; i < balls.length ; i ++ ){
+
+        //模拟抛物线路径
+        balls[i].x += balls[i].vx;
+        balls[i].y += balls[i].vy;
+        balls[i].vy += balls[i].g;
+    //0.75是空气阻力，当球面落到地面时，小球应该反弹原来高度的0.75
+        if( balls[i].y >= WINDOW_HEIGHT-RADIUS ){
+            balls[i].y = WINDOW_HEIGHT-RADIUS;
+            balls[i].vy = - balls[i].vy*0.75;
+        }
+    }
+```
+#### x、y坐标值
+参考上面代码
+#### g 重力加速度
+参考上面代码
+#### vx 水平方向速度
+参考上面代码
+#### vy 垂直方向速度
+参考上面代码
+#### 空气阻力
+参考上面代码
+
+### 碰撞检测
+```
+//只取屏幕内的元素
+    var cnt = 0
+    for( var i = 0 ; i < balls.length ; i ++ ){
+        //碰撞检测--满足下面情况说明在屏幕上
+        if( balls[i].x + RADIUS > 0 && balls[i].x -RADIUS < WINDOW_WIDTH ){
+            balls[cnt++] = balls[i]
+        }
+    }
+//balls数组前面的元素，都是最先生成的，因此，也应该最先被删除
+    while( balls.length > cnt ){
+        balls.pop();
+    }
+```
+### 溢出删除的优化处理
+参考《碰撞检测》
+### 用50毫秒轮询模拟1秒的动作
+```js
+ setInterval(
+        function(){
+            //渲染时间的显示
+            renderTimes( context );
+            //渲染小球的显示
+            renderBall( context );
+            //更新时间 和 小球数据，以备下次时间和小球渲染使用
+            updateBallDatas();
+        } , 50
+    );
+```
+当时在想，既然做一个定时器，那么就写一个1秒的轮询，这样才有道理，其实不然，如果写一个1秒的轮询就会有延迟的现象；
+如果你用一个50毫秒的轮询，如果秒钟没有到达下一秒，画面其实也不会跳转，因为50毫秒内拿到什么画面，就显示什么画面，在一秒内，有20个50毫秒，
+这20个50毫秒内拿到的时间肯定都是一个值，那么渲染出来的值肯定也是一个值，就不会有跳转，也不会出现延时，就算出现延时也只是50毫秒内，可以接受。
+所以，要想做一个响应快速的，应该将轮询值改得更小，而不是放大。
+#### 误区一：以为1秒的定时器就应该使用1秒的轮询
+参考上面讲解
+#### 误区一：以为50秒的轮询会让定时器加速跳转
+参考上面讲解
+#### 一秒的定时器，必须使用小于一秒的轮询
+参考上面讲解
+#### 轮询时间越小，延时更小，响应更快
+参考上面讲解
+#### 轮询时间需要平衡js代码执行时间和性能
+代码轮询时，执行了很多js，这些js如果非常大量，也是需要时间才能执行完，所以轮询时间要考虑是否大量执行js会延迟轮询时间，也要考虑性能。
+
+### demo地址
+[点击查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/index.html)
+
+
