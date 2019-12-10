@@ -40,6 +40,69 @@ WebGL是基于canvas元素绘制3D图的js API。
  cxt.clearRect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
 ```
 
+### canvas基于状态绘图的特性
+#### 介绍
+先设置好路径作为绘图状态，再使用绘制的api绘图，例如：
+```
+//设置状态
+context.moveTo(100,100)
+context.lineTo(700,700)
+context.lineWidth = 10
+context.strokeStyle = “#058”
+
+//绘图
+context.stroke()
+```
+#### 使用beginPath来分别设置状态
+如上面代码，canvas不针对某一个形状进行状态设置，因此设置的状态都是针对全局的，假如我们要对画布内几个图形分别设置状态如颜色，
+此时需配合beginPath使用：
+```
+context.beginPath()
+context.moveTo(100,100)
+context.lineTo(700,700)
+context.lineWidth = 10
+context.strokeStyle = “#058”
+
+context.beginPath()
+context.moveTo(1100,1100)
+context.lineTo(1700,1700)
+context.lineWidth = 15
+context.strokeStyle = “red”
+
+//绘图
+context.stroke()
+```
+
+### moveTo 与 lineTo
+#### beginPath与lineTo一起，lineTo相当于 moveTo
+```
+context.beginPath()
+context.moveTo(100,100)
+context.lineTo(700,700)
+```
+等同于，因为beginPath相当于从新开始：
+```
+context.beginPath()
+context.lineTo(100,100)
+context.lineTo(700,700)
+```
+### 注意stroke 与 fill 顺序
+如果你要对一个矩形填充，并且绘制样式多样的边线，那么请线fill，后stroke，反之 填充的效果就覆盖了线条的效果。
+
+### 接口汇集
+#### 矩形
+```
+rect( x , y , width , height )
+fillRect( x , y , width , height )
+strokeRect( x , y , width , height )
+```
+
+#### 填充与绘制
+```
+stroke()
+fill()
+```
+
 ### beginPath、 closePath
 #### 介绍
 画一个形状时，需要cxt.beginPath()，但closePath不是必须，可以不使用，下次再使用cxt.beginPath()时，会默认自动closePath上一个路径。
@@ -52,7 +115,25 @@ cxt.fill()
 #### closePath不是必须
 参考上面分析
 
+#### 第一个beginPath可以省略
+```
+context.beginPath()//可省略
+context.moveTo(100,100)
+context.lineTo(700,700)
+
+context.beginPath()
+context.moveTo(1100,1100)
+context.lineTo(1700,1700)
+```
+#### 封闭图形推荐使用closePath
+封闭图形使用closePath的好处在于，自动封闭严密，一些封闭不齐，有凹角等等问题，都会被自动解决。
+
+#### 使用beginPath来分别设置状态
+参考《canvas基于状态绘图的特性 -- 使用beginPath来分别设置状态》
+
+
 ### 生成(2d)画布上下文的要素
+注意的是canvas.width，不要使用css的方式嵌入，具体原因待写，最好直接以style属性或js直接写入。
 ```
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext("2d");
@@ -156,5 +237,6 @@ canvas.height = WINDOW_HEIGHT;
 
 ### demo地址
 [点击查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/index.html)
+
 
 
