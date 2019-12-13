@@ -86,8 +86,8 @@ context.beginPath()
 context.lineTo(100,100)
 context.lineTo(700,700)
 ```
-### 注意stroke 与 fill 顺序
-如果你要对一个矩形填充，并且绘制样式多样的边线，那么请线fill，后stroke，反之 填充的效果就覆盖了线条的效果。
+### 先填充后描边：先fill后stroke
+如果你要对一个矩形填充，并且绘制样式多样的边线，那么请先fill，后stroke，反之 填充的效果就覆盖了线条的效果。
 
 ### 接口汇集
 #### 矩形
@@ -140,6 +140,119 @@ var context = canvas.getContext("2d");
 canvas.width = WINDOW_WIDTH;
 canvas.height = WINDOW_HEIGHT;
 ```
+
+### 线条属性
+#### lineCap 线条的帽子
+线条两端的倒角设置。
+#### lineJoin 折线的帽子
+设置折线两条线相交处的倒角。
+#### miterLimit 折线中心线交点与折线外边线交点距离
+此属于通常与lineJoin一起使用，用来设置折线的尖角的尖锐度
+
+### 画五角星
+![](/image/canvas/five_star.jpg)
+```js
+  var canvas = document.getElementById('canvas');
+            canvas.width = 800;
+            canvas.height = 800;
+            var context = canvas.getContext('2d');
+
+            context.lineWidth = 10;
+            drawStar(context, 150, 300, 400, 400)
+            //rotate旋转角度
+            //r,R,x,y 小圆，大圆，x方向偏移量，y方向偏移量
+        function drawStar(cxt,r,R,x,y,rotate=0){
+            cxt.beginPath();
+            for(var i = 0;i<5;i++){
+                cxt.lineTo(Math.cos((18 + i*72 - rotate)/180 * Math.PI) * R + x,
+                -Math.sin((18 + i*72 - rotate)/180 * Math.PI) * R + y);
+                cxt.lineTo(Math.cos((54 + i*72 - rotate)/180 * Math.PI) * r + x,
+                -Math.sin((54 + i*72 - rotate)/180 * Math.PI) * r + y);
+            }
+            context.closePath();
+            context.stroke();
+        }
+```
+
+
+
+## 图形变换
+### 图形变换的API
+- 位移 translate( x , y )
+- 旋转 rotate( deg )
+- 缩放 scale( sx , sy )
+
+### 变换矩阵
+![](/image/canvas/transform_matrix.jpg)
+
+### transform 与 变换重置
+当对context多次transform后，想丢弃、重置之前所有的transform的影响，可使用setTransform。
+transform( a , b , c , d , e , f )
+setTransform( a , b , c , d , e , f ) 
+
+### 状态的保存和恢复(save\restore)
+画两个矩形，第一个矩形向左偏移100，第二个矩形向左偏移200，
+由于偏移都是对整个上下文执行的，为了免除第一次偏移的影响，在第一次偏移之前，执行save，保存当时的状态；
+在给第二个矩形偏移之前，执行restore，将状态恢复到save时的状态。
+
+### scale的副作用
+scale会对坐标点的 xy值、图形宽度、线条宽度都产生放大缩小效果。这是scale的特点，但也是副作用，用的时候需注意。
+
+### 一些几何思路
+#### 带倒角的矩形
+![](/image/canvas/rect.jpg)
+#### 圆的pi概念
+![](/image/canvas/arc.jpg)
+#### 月亮
+![](/image/canvas/moon.jpg)
+
+## 曲线绘制
+### arc
+```
+context.arc(
+	centerx, centery, radius,
+	startingAngle, endingAngle,
+	anticlockwise = false
+)
+```
+### arcTo(需与 moveTo 的一起使用)
+```
+context.moveTo( x0 , y0 )   开始点；
+context.arcTo( 
+	x1 , y1 ,               控制点；
+	x2 , y2 ,               控制点；
+	radius );               结束点；
+```
+![](/image/canvas/arcTo.jpg)
+
+
+### 贝塞尔曲线 Bezier
+#### 介绍
+贝塞尔曲线类似于ps画图软件中的钢笔工具画出的线，无论下面介绍的二次还是三次曲线，它们都需要结合moveTo绘制开始点。
+#### 需要moveTo配合绘制开始点
+参考上面
+#### 二次贝塞尔曲线
+二次贝塞尔曲线API是quadraticCurveTo，二次贝塞尔曲线与三次贝塞尔曲线的区别在于，二次不能画波浪线，三次可以：
+![](/image/canvas/bezeirinfo.jpg)
+如下图所示，演示了开始点、控制点、结束点。
+![](/image/canvas/bezeir.jpg)
+
+#### 三次贝塞尔曲线
+三次贝塞尔曲线API是 bezierCurveTo 更多信息参考《二次贝塞尔曲线 Bezier》：
+![](/image/canvas/bezeircurve.jpg)
+
+### 画线条只能用stroke
+如题，线条使用fill将无法绘制。
+```
+context.beginPath();
+context.moveTo(2,2)
+context.lineTo(300,400)
+context.lineWidth=5;
+context.fillStyle='yellow';
+context.stroke();
+```
+
+
 
 ## 炫丽的倒计时效果demo
 ### 数据建模--多维数组矩阵创建数字模型
