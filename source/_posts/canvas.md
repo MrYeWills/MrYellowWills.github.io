@@ -173,8 +173,108 @@ canvas.height = WINDOW_HEIGHT;
             context.stroke();
         }
 ```
+### 阴影的理解
+阴影是围绕图形的一层阴影图形，这个阴影图形是固定的，当你对这个阴影图形进行向右偏移时，**阴影图形大小不变，图形将整体平移**，这样阴影图形的左侧就会被原图形给**遮挡**，导致看起来只看到图形只有右侧才有阴影。
+#### shadowOffsetX
+下面两张图片分别展示了 阴影图形平移原理，具体是 阴影图形不变，整体偏移被遮挡。
+![](/image/canvas/shadow1.jpg)
+![](/image/canvas/shadow2.jpg)
+#### shadowBlur 模糊程度
+一般的人说这个是模糊程度，我觉得这个说法不太准确，shadowBlur是扩散并模糊才对，因为shadowBlur会导致阴影扩散的长度，比如定义为10的时候，阴影将扩散长度10px，然后针对这10px进行模糊，会导致阴影的。
+此时，如果定义 shadowBlur 为30，然后偏移量 shadowOffsetX为10，会出现图形四周都有阴影，但左侧阴影长度为20，右侧为40，上下为30.
+![](/image/canvas/shadowblur.jpg)
 
+### globalAlpha 透明度
+设置canvas的透明度
 
+### 图形叠加的遮盖设置
+可以通过globleCompositeOperation设置图形叠加时，如何遮盖的问题：
+![](/image/canvas/shadowblur.jpg)
+
+### 剪辑区域 clip
+与路径规划函数(如arc)等等共同使用，clip先使用，使canvas绘制区域只显示在clip的路径内，其他区域只显示整个context.fillStyle。
+![](/image/canvas/clip.jpg)
+```
+ context.beginPath();
+context.fillStyle='yellow'
+context.fillRect(0,0,w,h);
+context.beginPath(); 
+//指定clip路径    
+context.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+context.fillStyle='blue';
+context.fill();
+context.clip();
+context.beginPath();
+context.font='bold 120px Arial';
+context.textAlign='center';
+context.fillStyle='#ff55cc';
+context.fillText('天若有情',w/2,h/1.6);
+```
+#### 探照灯动画 demo
+代码如下，新颖的思想是：
+- 每一次轮询，创建一个方法 update 来更新路径，然后创建一个方法使用新的路径进行绘制。
+- 先绘制，紧接着更新路径，然后轮询这个动作。
+- 这个例子再一次印证了canvas的 规划路径 和 绘制是分开的。
+[demo地址](/Users/js/Desktop/work/git/canvas-demo/pages/canvas-master/绘图/探照灯.html)
+```js
+ var c = $('#canvas')[0];
+    var context=c.getContext('2d');//用context进行绘制
+    var w =canvas.width;
+    var h =canvas.height
+    var ball={
+      x:w/2,
+      y:h/2,
+      r:100,
+      vx:20,
+      vy:15
+    }
+    setInterval(function(){
+      draw();
+      update();
+    },50);
+    
+    function draw(){
+      context.clearRect(0,0,w,h);
+      context.save(); //////////
+      context.beginPath();
+      context.fillStyle='black'
+      context.fillRect(0,0,w,h);
+      context.beginPath();     
+      context.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+       context.fillStyle='white';
+       context.fill();
+       context.clip();
+       context.beginPath();
+       context.font='bold 120px Arial';
+       context.textAlign='center';
+       context.fillStyle='#ff55cc';
+       context.fillText('天若有情',w/2,h/3);
+       context.fillText('沧海桑田',w/2,h/4*3);
+       context.restore();
+    }
+    
+    function update(){
+      ball.x+=ball.vx;
+      ball.y+=ball.vy;
+      if(ball.x<=ball.r){
+        ball.x=ball.r;
+        ball.vx=-ball.vx;
+      }
+      if(ball.x>=w-ball.r){
+        ball.x=w-ball.r;
+         ball.vx=-ball.vx;
+      }
+      if(ball.y<=ball.r){
+        ball.y=ball.r;
+         ball.vy=-ball.vy;
+      }
+      if(ball.y>=h-ball.r){
+        ball.y=h-ball.r;
+         ball.vy=-ball.vy;
+      }
+    }
+
+```
 
 ## 图形变换
 ### 图形变换的API
