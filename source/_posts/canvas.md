@@ -139,8 +139,10 @@ canvas.height = WINDOW_HEIGHT;
 线条两端的倒角设置。
 #### lineJoin 折线的帽子
 设置折线两条线相交处的倒角。
-#### miterLimit 折线中心线交点与折线外边线交点距离
-此属于通常与lineJoin一起使用，用来设置折线的尖角的尖锐度
+#### miterLimit 折线交点距离
+miterLimit 是折线中心线交点与折线外边线交点距离
+此属于通常与lineJoin一起使用，用来设置折线的尖角的尖锐度,下面是原理图：
+![](/image/canvas/miter.jpg)
 
 ### 画五角星
 ![](/image/canvas/five_star.jpg)
@@ -404,7 +406,53 @@ setTransform( a , b , c , d , e , f )
 
 ### scale的副作用
 scale会对坐标点的 xy值、图形宽度、线条宽度都产生放大缩小效果。这是scale的特点，但也是副作用，用的时候需注意。
+### fillStyle
+#### color
+```
+context.fillStyle='red';
+```
+#### 线性渐变color
+线性渐变颜色创建context.createLinearGradient。
+```
+ //起始点坐标100 100， 终点 100 300；
+    var linear = context.createLinearGradient(100,100,100,300);
+    //addColorStop 第一参数是浮点数，取值范围为0-1，0表示起点，1表示终点
+    linear.addColorStop(0.0,'green');
+    linear.addColorStop(0.5,'yellow');
+    linear.addColorStop(1.0,'blue');
+    context.fillStyle=linear;
+    context.fillRect(100,100,300,200);
+```
+#### 径向渐变color
+用法与线性渐变一致，可网上查阅，这里不列出。
+#### 图片填充
+使用API createPattern 创建填充图片
+```js
+    var bi=new Image();
+    bi.src='autumn.jpg';
+    var pattern = context.createPattern(bi,'repeat');
+    context.beginPath();
+    context.fillStyle=pattern;
+    context.fillRect(100,100,400,300);
+```
 
+### createLinearGradient 线性渐变填充色
+此api用于创建线性渐变颜色，详细参考《线性渐变color》
+### createPattern 图片填充
+此API创建填充图片
+```js
+//接受图片
+  context.createPattern(img,'repeat')
+//接受canvas画布
+  context.createPattern(canvas,'repeat')
+```
+### 文字渲染API
+```
+context.font = "bold 40px Arial"
+context.fillText( string , x , y , [maxlen] );
+context.strokeText( string , x , y  , [maxlen] );
+
+```
 ### 一些几何思路
 #### 带倒角的矩形
 ![](/image/canvas/rect.jpg)
@@ -412,9 +460,11 @@ scale会对坐标点的 xy值、图形宽度、线条宽度都产生放大缩小
 ![](/image/canvas/arc.jpg)
 #### 月亮
 ![](/image/canvas/moon.jpg)
+你也可以使用两段闭合的圆弧线来构建一个圆，[参考demo]()
 
 ## 曲线绘制
-### arc
+### arc 绘制圆弧
+注意，arc绘制的是一条弧线，并非闭合的不规则圆。
 ```
 context.arc(
 	centerx, centery, radius,
