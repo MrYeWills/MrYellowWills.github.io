@@ -33,13 +33,6 @@ svg、canvas 所有的浏览器都兼容，不同的是，svg因为很早就出�
 #### WebGL与canvas的关系
 WebGL是基于canvas元素绘制3D图的js API。
 
-
-### cxt.clearRect
-重新渲染时，需要清除画布中上一次渲染：
-```
- cxt.clearRect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
-```
-
 ### canvas基于状态绘图的特性
 #### 介绍
 先设置好路径作为绘图状态，再使用绘制的api绘图，例如：
@@ -188,7 +181,7 @@ canvas.height = WINDOW_HEIGHT;
 设置canvas的透明度
 
 ### 图形叠加的遮盖设置
-可以通过globleCompositeOperation设置图形叠加时，如何遮盖的问题：
+可以通过globleCompositeOperation 设置图形叠加时，如何遮盖的问题：
 ![](/image/canvas/shadowblur.jpg)
 
 ### 剪辑区域 clip
@@ -275,6 +268,120 @@ context.fillText('天若有情',w/2,h/1.6);
     }
 
 ```
+
+### clearRect
+常用于动画，当重新绘制图形时，使用此API清空画布。
+```
+context.clearRect(x,y width, height);
+```
+### isPointInPath
+是否处于图形之内，[查看demo](/Users/js/Desktop/work/git/canvas-demo/pages/canvas-master/绘图/交互.html)
+```
+context.isPointInPath( x , y )
+```
+### 获取canvas坐标
+```js
+const canvas = document.getElementById('canvas');
+  canvas.mousemove(function(e){
+      //canvas画布内的x坐标 = 相对于整个视口x轴的值-画布离视口左侧的距离
+      var x1= e.clientX-canvas.getBoundingClientRect().left;
+      var y1= e.clientY-canvas.getBoundingClientRect().top;     
+    })
+```
+### 阴影 shadowColor相关
+参考《对阴影的影响》
+
+## 黑知识
+### 非零环绕原则
+非零环绕原则 用来确认某一区域处于图形外面或里面；
+如下图，A C处于图形里面，B处于图形外面，判断原则为：
+区域内向外画一条线，这条线穿过N条线，指定一种方向为-1，相反方向为1，N条线加起来的值，
+若为0，说明该区域处于图形外部；
+若为非0，说明处于内部。
+![](/image/canvas/zero.jpg)
+
+### 圆圈内外圆顺\逆时针影响到的
+#### 内外两个圆不指定方向
+如下，不指定方向的时候，画出来的图是一个大的实心圆，并非希望的镂空圆圈。
+```
+   var c = $('#canvas')[0];
+    var context=c.getContext('2d');
+    context.arc(400,250,100,0,2*Math.PI);//不指定方向
+    context.arc(400,250,50,0,2*Math.PI);//不指定方向
+    context.fillStyle='blue';
+    context.fill();
+```
+#### 内外圆指定不同方向
+```
+ var c = $('#canvas')[0];
+    var context=c.getContext('2d');
+    context.arc(400,250,100,0,2*Math.PI, false);//顺时针
+    context.arc(400,250,50,0,2*Math.PI, true);//逆时针
+    context.fillStyle='blue';
+    context.fill();
+```
+效果如下：
+![](/image/canvas/ring.jpg)
+#### 非零环绕原则
+当指定不同方向时，利用非零环绕原则，内圆的区域相对于整个图形而言处于图形之外，此时fill方法不会填充此区域，产生镂空效果。
+#### 对阴影的影响
+代码和效果如下，正常的情况，阴影默认都应该位于图形外侧，如B的位置，
+因此如果给内圆定义阴影的画，阴影应该位于A的位置，但实际情况却位于图中所示但C位置。
+初一看觉得不合理，但是我们用非零环绕原则时，发现内圆的确处于图形外侧，因此阴影处于C的位置是对的。
+
+```js
+  var c = $('#canvas')[0];
+    var context=c.getContext('2d');
+    context.arc(400,250,100,0,2*Math.PI, true);
+    context.arc(400,250,50,0,2*Math.PI, false);
+    
+    context.fillStyle='rebeccapurple';
+    context.shadowColor = 'blue';
+    context.shadowOffsetX = 10;
+    context.shadowOffsetY = 10;
+    context.shadowBlur = 10;
+    context.fill();
+```
+![](/image/canvas/ring2.jpg)
+
+### CanvasRenderingContext2D
+#### 介绍
+对canvas扩展使用 CanvasRenderingContext2D 进行扩展。可以扩展新API，可扩展现在API(谨慎),可扩展一个对象，存放数据。
+```js
+ var c = $('#canvas')[0];
+    var context=c.getContext('2d');//用context进行绘制
+    //扩展对象
+    CanvasRenderingContext2D.prototype.lastMoveToLoc = {};
+    //扩展现有方法
+    var originMoveto = CanvasRenderingContext2D.prototype.moveTo;
+    CanvasRenderingContext2D.prototype.moveTo = function(x,y){
+      originMoveto.apply(context, [x, y]);
+      this.lastMoveToLoc.x = x;
+      this.lastMoveToLoc.y = y;
+    }
+   //扩展新方法
+    CanvasRenderingContext2D.prototype.drawStar = function(r,R,rot){
+      this.beginPath();
+      var x = this.lastMoveToLoc.x;
+      var y = this.lastMoveToLoc.y;
+      var rot1 = rot || 0;
+      for(var i =0;i<=5;i++){
+        this.lineTo(Math.cos((18+i*72-rot1)/180*Math.PI)*R+x,
+        -Math.sin((18+i*72-rot1)/180*Math.PI)*R+y)
+        this.lineTo(Math.cos((54+i*72-rot1)/180*Math.PI)*r+x,
+        -Math.sin((54+i*72-rot1)/180*Math.PI)*r+y)
+      }
+      this.closePath();
+      this.fill();
+    }
+    context.fillStyle = 'blue';
+    context.moveTo(400, 400);
+    context.drawStar(150,300,30);
+```
+#### 扩展方法
+参考上面
+#### 扩展对象
+参考上面
 
 ## 图形变换
 ### 图形变换的API
