@@ -55,10 +55,12 @@ function beginStroke(point){
     lastTimestamp = new Date().getTime();
 }
 ```
-#### isMouseDown保存是否鼠标按下
-画图基本上基于此标识；
+#### 只在isMouseDown true时才画图
+onmousedown时设置isMouseDown为true，在鼠标松开(onmouseup)、鼠标离开dom时(onmouseout)设置isMouseDown为false，
+onmousemove时不设置 值，此事件只负责画图。
 
-#### onmousemove画图
+#### 在onmousemove事件中画图
+所以的绘制方法都在此事件中写：
 ```js
 canvas.onmousemove = function(e){
     e.preventDefault()
@@ -66,9 +68,7 @@ canvas.onmousemove = function(e){
         moveStroke({x: e.clientX , y: e.clientY})
     }
 };
-```
-#### 画图方法
-```js
+
 function moveStroke(point){
 //获取当前坐标
     var curLoc = windowToCanvas( point.x , point.y );
@@ -96,9 +96,9 @@ function moveStroke(point){
     lastLineWidth = lineWidth
 }
 ```
-#### onmousedown、onmousemove之间是可以计算距离的
+#### onmousedown、onmousemove之间计算距离
 如上面《画图方法》代码，笔画的移动就是通过计算二者之间的位置算出来的距离。
-#### onmousemove、onmousemove 之间是可以计算距离的
+#### onmousemove、onmousemove 之间计算距离
 如上面《画图方法》代码中的下面内容说明了这一点：
 ```js
 //重置上一次的状态
@@ -106,12 +106,15 @@ function moveStroke(point){
     lastTimestamp = curTimestamp
     lastLineWidth = lineWidth
 ```
-#### lineCap lineJoin 让线条更加平滑
+### lineCap lineJoin 让线条更加平滑
+在没有加下面时，效果图如下：
 ```js
-// todo 截图 ，看视频
+ context.lineCap = "round"
+ context.lineJoin = "round"
 ```
-#### onmouseup、onmouseout 设置 isMouseDown false
-onmouseup、onmouseout 设置 isMouseDown false，此时不画图。
+![](/image/canvas/canvas_demo/font.jpg)
+为什么会这样？我们画的线其实是有很多段矩形拼接而成，如此啊，在拼接处就会有缝隙，此时可以使用线段的帽子lineCap，再加一个lineJoin，双保险，平滑过渡：
+![](/image/canvas/canvas_demo/line.jpg)
 
 
 
