@@ -462,6 +462,28 @@ context.strokeText( string , x , y  , [maxlen] );
 ![](/image/canvas/moon.jpg)
 你也可以使用两段闭合的圆弧线来构建一个圆，[参考demo]()
 
+
+## drawImage 图像处理
+### image.onload时加载
+```
+image.src = "img.jpg"
+image.onload = function(){
+    context.drawImage( image , 0, 0)
+}
+context.drawImage( image , 300 , 100, 800, 300, 300, 300 ,200,200 )
+```
+
+另外 drawImage有三种赋值模式：
+### drawImage(image,0,0) --此模式不会缩放图片
+在画布的坐标 0，0的位置上开始画图片，图片以原像素和比例展示。
+### drawImage(image,0,0,100,100)
+在画布的坐标0，0上开始画图片，并且将整个图片放置于宽高都为100的区域内，图片会根据区域大小缩放。
+### drawImage(image,0,0,100,100,0,0,200,200)
+参数含义依次为：图片，原图片信息(0,0,100,100)，目的图片信息(0,0,200,200);
+基本含义为：截取原图片坐标点为0，0起点宽高各100的区域，绘制到画布的坐标点0，0为起点，宽高各200的区域上。
+截图的图片会按照目的区域大小缩放
+![](/image/canvas/drawImage.jpg)
+
 ## 曲线绘制
 ### arc 绘制圆弧
 注意，arc绘制的是一条弧线，并非闭合的不规则圆。

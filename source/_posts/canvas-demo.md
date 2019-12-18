@@ -7,6 +7,8 @@ categories:
 ---
 
 ## 写一个字
+### demo 地址
+[demo地址]()
 ### 根据速度设置线条粗细
 #### 代码
 
@@ -116,5 +118,42 @@ function moveStroke(point){
 为什么会这样？我们画的线其实是有很多段矩形拼接而成，如此啊，在拼接处就会有缝隙，此时可以使用线段的帽子lineCap，再加一个lineJoin，双保险，平滑过渡：
 ![](/image/canvas/canvas_demo/line.jpg)
 
+## 图像处理-放大镜
+### 放大或缩小的显示
+放大的时候，我们希望图像显示的中心点与原来图片中心点是重合的，为了保证中心点不动，就必须找准截取图片的坐标点，计算方法如下：
+![](/image/canvas/canvas_demo/scale.jpg)
+#### 思路一
+这种情况只适合放大，不适合缩小。缩小的时候无法达到预期效果，要经过很多判断才行。
+```
+var imageWidth = 1152 * scale
+var imageHeight = 768 * scale
+var sx = imageWidth / 2 - canvas.width / 2
+var sy = imageHeight / 2 - canvas.height / 2
+context.drawImage( image , sx , sy , canvas.width , canvas.height 
+    , 0 , 0 , canvas.width , canvas.height )
+```
+### 思路二(推荐)
+放大的时候，x为负数，达到放大效果，缩小时，x为正值，达到缩小效果，完美兼容放大和缩小两种情况。
+```
+var imageWidth = 1152 * scale
+var imageHeight = 768 * scale
 
+x = canvas.width /2 - imageWidth / 2 
+y = canvas.height / 2 - imageHeight / 2
 
+context.clearRect( 0 , 0 , canvas.width , canvas.height )
+context.drawImage( image , x , y , imageWidth , imageHeight )
+```
+### onmousemove 代替 onchange
+为了达到鼠标移动时就触发绘图，需要使用onmousemove，因为onchange只有在停止滑动时才触发事件。
+```
+//  slider.onchange = function(){
+//      scale = slider.value
+//      drawImage( image , scale )
+//  }
+
+slider.onmousemove = function(){
+    scale = slider.value
+    drawImageByScale( scale )
+}
+```
