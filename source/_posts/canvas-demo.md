@@ -122,8 +122,9 @@ function moveStroke(point){
 ### 放大或缩小的显示
 放大的时候，我们希望图像显示的中心点与原来图片中心点是重合的，为了保证中心点不动，就必须找准截取图片的坐标点，计算方法如下：
 ![](/image/canvas/canvas_demo/scale.jpg)
-#### 思路一
-这种情况只适合放大，不适合缩小。缩小的时候无法达到预期效果，要经过很多判断才行。
+#### 思路一(常规思路：误区)
+常规的思想是从原来图片选择一个点，然后截取一个区域，放到画布上，进行显示，如下，下面的计算方式无法达到自动缩放要求。
+这种思路也可以达到缩放，但是需要大量的计算，非常麻烦。
 ```
 var imageWidth = 1152 * scale
 var imageHeight = 768 * scale
@@ -132,7 +133,12 @@ var sy = imageHeight / 2 - canvas.height / 2
 context.drawImage( image , sx , sy , canvas.width , canvas.height 
     , 0 , 0 , canvas.width , canvas.height )
 ```
-### 思路二(推荐)
+#### 思路二(推荐)
+参考《经典的缩放处理方案》
+
+### 经典的缩放处理算法
+#### 概述
+缩放时必须保证 中心点不动。
 放大的时候，x为负数，达到放大效果，缩小时，x为正值，达到缩小效果，完美兼容放大和缩小两种情况。
 ```
 var imageWidth = 1152 * scale
@@ -144,6 +150,13 @@ y = canvas.height / 2 - imageHeight / 2
 context.clearRect( 0 , 0 , canvas.width , canvas.height )
 context.drawImage( image , x , y , imageWidth , imageHeight )
 ```
+#### 保证中心点不动
+参考上面
+#### 选取坐标点技巧
+参考上面
+#### 放大或缩放处理图片
+参考上面，为了缩放显示图片，在drawImage的最后两个参数时，都进行放大或缩放处理。
+
 ### onmousemove 代替 onchange
 为了达到鼠标移动时就触发绘图，需要使用onmousemove，因为onchange只有在停止滑动时才触发事件。
 ```
@@ -157,3 +170,5 @@ slider.onmousemove = function(){
     drawImageByScale( scale )
 }
 ```
+## 离屏canvas技术-水印demo
+ 
