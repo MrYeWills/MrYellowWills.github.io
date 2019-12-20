@@ -118,7 +118,7 @@ function moveStroke(point){
 为什么会这样？我们画的线其实是有很多段矩形拼接而成，如此啊，在拼接处就会有缝隙，此时可以使用线段的帽子lineCap，再加一个lineJoin，双保险，平滑过渡：
 ![](/image/canvas/canvas_demo/line.jpg)
 
-## 图像处理-放大镜
+## 图像处理-缩放图片
 ### 放大或缩小的显示
 放大的时候，我们希望图像显示的中心点与原来图片中心点是重合的，为了保证中心点不动，就必须找准截取图片的坐标点，计算方法如下：
 ![](/image/canvas/canvas_demo/scale.jpg)
@@ -170,5 +170,133 @@ slider.onmousemove = function(){
     drawImageByScale( scale )
 }
 ```
-## 离屏canvas技术-水印demo
+## 离屏canvas技术
+### 水印demo
+#### 介绍
+定义一个水印的canvas，display 设置为不可见，让后将此canvas作为 drawImage 的第一个参数，绘制到画布当中。
+因为水印的canvas本身不被显示，而只将其投影显示到画布当中，因此称之为离屏canvas。
+![](/image/canvas/canvas_demo/go_canvas.jpg)
+
+```html
+<!-- 原来的canvas将会被cody到上一个图片画布中作为水印展示，不需要展示原来的canvas，因此隐藏原有的canvas -->
+    <canvas id="watermark-canvas" style="display:none;margin:0 auto;border:1px solid #aaa;">
+        您的浏览器尚不支持canvas
+    </canvas>
+```
+```js
+ //setup watermark canvas
+    watermarkCanvas.width = 600
+    watermarkCanvas.height = 100
+
+    watermarkContext.font = "bold 50px Arial"
+    watermarkContext.lineWidth = "1"
+    watermarkContext.fillStyle = "rgba( 255 , 255 , 255 , 0.5 )"
+    watermarkContext.textBaseline = "middle";
+    watermarkContext.fillText( "== liuyubobobo.com ==" , 20 , 50 )
+    
+  function drawImage( image , scale ){
+
+            imageWidth = 1152 * scale
+            imageHeight = 768 * scale
+            x = canvas.width /2 - imageWidth / 2
+            y = canvas.height / 2 - imageHeight / 2
+
+            context.clearRect( 0 , 0 , canvas.width , canvas.height )
+            context.drawImage( image , x , y , imageWidth , imageHeight )
+            context.drawImage( watermarkCanvas , canvas.width - watermarkCanvas.width ,
+                                                  canvas.height - watermarkCanvas.height )
+        }
+```
+#### 将canvas作为drawImage参数
+利用了drawImage 可以将图片和canvas作为参数进行处理。
+
+### 放大镜
+#### 介绍
+```html
+  <canvas id="canvas" style="display:block;margin:0 auto;border:1px solid #aaa;">
+        您的浏览器尚不支持canvas
+    </canvas>
+
+    <canvas id="offCanvas" style="display: none">
+```
+```js
+  var canvas = document.getElementById("canvas")
+        var context = canvas.getContext("2d")
+
+        var offCanvas = document.getElementById("offCanvas")
+        var offContext = offCanvas.getContext("2d")
+
+        var image = new Image()
+        var isMouseDown = false
+        var scale
+
+        window.onload = function(){
+
+            canvas.width = 1152
+            canvas.height = 768
+
+            image.src = "img-lg.jpg"
+            image.onload = function(){
+
+                offCanvas.width = image.width
+                offCanvas.height = image.height
+                scale = offCanvas.width / canvas.width
+
+                context.drawImage( image , 0 , 0 , canvas.width , canvas.height )
+                offContext.drawImage( image , 0 , 0 )
+            }
+        }
+
+     function drawMagnifier( point ){
+
+           //设置放大镜圆半径
+            var mr = 200
+
+            var imageLG_cx = point.x * scale
+            var imageLG_cy = point.y * scale
+
+            var sx = imageLG_cx - mr
+            var sy = imageLG_cy - mr
+
+            var dx = point.x - mr
+            var dy = point.y - mr
+
+            context.save()
+
+            context.lineWidth = 10.0
+            context.strokeStyle = "#069"
+            //使用剪切 clip 来做放大镜
+            context.beginPath()
+            context.arc( point.x , point.y , mr , 0 , Math.PI*2 , true )
+            context.stroke()
+            context.clip()
+            context.drawImage( offCanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr )
+            context.restore()
+        }
+```
+#### 计算离屏信息
+这里需要计算离屏canvas的这些信息（sx , sy , 2*mr , 2*mr），原理见下图：
+```
+context.drawImage( offCanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr )
+```
+![](/image/canvas/canvas_demo/go_canvas1.jpg)
+#### 计算原屏信息
+这里需要计算离屏canvas的这些信息（dx , dy , 2*mr , 2*mr），原理见下图：
+```
+context.drawImage( offCanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr )
+```
+![](/image/canvas/canvas_demo/go_canvas2.jpg)
+#### 使用剪切 clip 来做放大镜
+见上面代码。
+#### 为什么clip不隐藏原屏图片
+刚开始以为clip可能会隐藏原屏图片，结果没有，究其原因，估计是原屏图片是在clip之前就绘制好了，所以不受影响，后期绘制的离屏投射就受影响了
+#### 放大镜原理
+只使用一张高清图片。
+离屏canvas绘制原尺寸图片，并且display none。
+原屏canvas绘制缩放后图片，
+计算离屏与缩放后图片的 倍率，一次作为缩放参数。
+原屏绘制好后就不动它了，
+每次放大镜时，都使用clip剪切区显示离屏投射。
+
+
  
