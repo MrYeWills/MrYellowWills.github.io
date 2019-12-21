@@ -462,9 +462,9 @@ context.strokeText( string , x , y  , [maxlen] );
 ![](/image/canvas/moon.jpg)
 你也可以使用两段闭合的圆弧线来构建一个圆，[参考demo]()
 
-
-## drawImage 图像处理
-### image.onload时加载
+## 图像处理API
+### drawImage 图像处理
+#### image.onload时加载
 ```
 image.src = "img.jpg"
 image.onload = function(){
@@ -474,15 +474,76 @@ context.drawImage( image , 300 , 100, 800, 300, 300, 300 ,200,200 )
 ```
 
 另外 drawImage有三种赋值模式：
-### drawImage(image,0,0) --此模式不会缩放图片
+#### drawImage(image,0,0) --此模式不会缩放图片
 在画布的坐标 0，0的位置上开始画图片，图片以原像素和比例展示。
-### drawImage(image,0,0,100,100)
+#### drawImage(image,0,0,100,100)
 在画布的坐标0，0上开始画图片，并且将整个图片放置于宽高都为100的区域内，图片会根据区域大小缩放。
-### drawImage(image,0,0,100,100,0,0,200,200)
+#### drawImage(image,0,0,100,100,0,0,200,200)
 参数含义依次为：图片，原图片信息(0,0,100,100)，目的图片信息(0,0,200,200);
 基本含义为：截取原图片坐标点为0，0起点宽高各100的区域，绘制到画布的坐标点0，0为起点，宽高各200的区域上。
 截图的图片会按照目的区域大小缩放
 ![](/image/canvas/drawImage.jpg)
+
+### getImageData 获取图片信息
+#### 介绍
+getImageData 接受四个参数，这四个参数构造了一个矩形区域，分别是坐标点，宽高。表示获取该区域内所以图片的信息。
+```
+const imageData = getImageData( x , y , width , height )
+imageData对象：
+width
+height
+data(图片像素等信息,以多维数组的方式展示)
+```
+下面是imageData.data的信息，更多信息参考《putImageData 插入图像》：
+![](/image/canvas/put_data.jpg)
+#### 跨域问题
+图片存储在本地时，是默认没有域名的，如果不启动服务直接打开html，用getImageData方法时，浏览器会判定为跨域而报错！解决方法是启动本地服务打开html。
+```
+"Uncaught DOMException: Failed to execute 'getImageData' on 'CanvasRenderingContext2D': The canvas has been tainted by cross-origin data.
+at HTMLImageElement.document.getElementById.onload"
+```
+
+### putImageData 插入图像
+其7个参数意思依次为：getImageData获取的图片imageData对象，坐标点x(也是相对于canvas的相对位移，故写成dx)，坐标点y，脏位移x(脏是因为通过putImageData获取的图片信息，不是纯正的原图片信息，是“被污染了的”数据)，脏位移y，脏图片宽度，脏图片高度。
+![](/image/canvas/put.jpg)
+
+要与 getImageData 一起使用，[demo 地址]()：
+```js
+ var canvasa = document.getElementById("canvasa")
+        var contexta = canvasa.getContext("2d")
+
+        var canvasb = document.getElementById("canvasb")
+        var contextb = canvasb.getContext("2d")
+
+        var image = new Image()
+
+        window.onload = function(){
+
+            image.src = "autumn.jpg"
+            image.onload = function(){
+
+                contexta.drawImage( image , 0 , 0 , canvasa.width , canvasa.height )
+            }
+        }
+
+        function copyImage(){
+
+            var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height )
+            var pixelData = imageData.data
+            //改变图片像素，让新copy出来的图片置灰
+            // for( var i = 0 ; i < canvasb.width * canvasb.height ; i ++ ){
+            //     var r = pixelData[i*4+0]
+            //     var g = pixelData[i*4+1]
+            //     var b = pixelData[i*4+2]
+            //     var grey = r*0.3+g*0.59+b*0.11
+            //     pixelData[i*4+0] = grey
+            //     pixelData[i*4+1] = grey
+            //     pixelData[i*4+2] = grey
+            // }
+            contextb.putImageData( imageData , 0 , 0 , 0 , 0 , canvasb.width , canvasb.height )
+            context.putImageData()
+        }
+```
 
 ## 曲线绘制
 ### arc 绘制圆弧

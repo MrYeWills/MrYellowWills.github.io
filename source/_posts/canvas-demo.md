@@ -211,7 +211,18 @@ slider.onmousemove = function(){
 利用了drawImage 可以将图片和canvas作为参数进行处理。
 
 ### 放大镜
-#### 介绍
+#### 原理
+只使用一张高清图片。
+离屏canvas绘制原尺寸图片，并且display none。
+原屏canvas绘制缩放后图片，
+计算离屏与缩放后图片的 倍率，以此作为缩放参数。
+原屏绘制好后就不动它了，
+每次放大镜时，都使用clip剪切区显示离屏投射。
+可以参考上面代码。
+![](/image/canvas/canvas_demo/big.jpg)
+
+#### 代码 和 demo地址
+[demo地址](http://127.0.0.1:3000/canvas-image/04-image-magnifier/index.html)
 ```html
   <canvas id="canvas" style="display:block;margin:0 auto;border:1px solid #aaa;">
         您的浏览器尚不支持canvas
@@ -290,13 +301,6 @@ context.drawImage( offCanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr )
 见上面代码。
 #### 为什么clip不隐藏原屏图片
 刚开始以为clip可能会隐藏原屏图片，结果没有，究其原因，估计是原屏图片是在clip之前就绘制好了，所以不受影响，后期绘制的离屏投射就受影响了
-#### 放大镜原理
-只使用一张高清图片。
-离屏canvas绘制原尺寸图片，并且display none。
-原屏canvas绘制缩放后图片，
-计算离屏与缩放后图片的 倍率，一次作为缩放参数。
-原屏绘制好后就不动它了，
-每次放大镜时，都使用clip剪切区显示离屏投射。
 
 
  
