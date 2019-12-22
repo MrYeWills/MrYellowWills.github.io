@@ -507,7 +507,7 @@ at HTMLImageElement.document.getElementById.onload"
 其7个参数意思依次为：getImageData获取的图片imageData对象，坐标点x(也是相对于canvas的相对位移，故写成dx)，坐标点y，脏位移x(脏是因为通过putImageData获取的图片信息，不是纯正的原图片信息，是“被污染了的”数据)，脏位移y，脏图片宽度，脏图片高度。
 ![](/image/canvas/put.jpg)
 
-要与 getImageData 一起使用，[demo 地址]()：
+要与 getImageData 一起使用，[demo 地址](http://127.0.0.1:3000/canvas-image/05-image-copy/index.html)：
 ```js
  var canvasa = document.getElementById("canvasa")
         var contexta = canvasa.getContext("2d")
