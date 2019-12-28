@@ -40,7 +40,30 @@ xmlns是固定写法，固定值如下，version也是固定写法，最近的�
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" version="1.1">
 </svg>
 ```
-### path 指令
+
+
+### path
+#### path命令基本规律：
+1.区分大小写：大写表示坐标参数为绝对位置，小写为相对位置
+2.最后的参数表示最终要到达的位置
+3.上一个命令结束的位置就是下一个命令开始的位置
+4.命令可以重复参数表示重复执行同一条命令
+#### 小写 相对坐标 与 大写 绝对坐标
+上面介绍的都是用绝对坐标，其实一般画图都使用相对坐标小写的，比如：
+```
+//效果跟上面的 《path指令 M 、V、 H、Z、L --- demo2》是一样的，但增加了灵活性，
+//当随意改变起始点坐标是，图形不被破坏，这是绝对坐标做不到的。
+<path stroke='orange' stroke-width='.8' fill='orange' d='M 20 70 h 30 v -10 l 10 20 l -10 20 v -10 h -30 z' />
+```
+
+#### 逗号有没有不影响
+比如下面两个代码，一个有逗号，一个没有，对于电脑而言都能正常识别，加逗号只是为了人能够识别理解
+```
+ <polygon points="25 10,10 40, 50 27" style="fill:green;stroke:orange;stroke-width:4"/>
+ <polygon points="25  10 10 40  50 27" style="fill:green;stroke:orange;stroke-width:4"/>
+```
+
+#### path 指令
 这里只列举部分，[更多参考](https://www.bbsmax.com/A/A7zgmMwW54/)：
 ```
 指令 	参数 	说明
@@ -54,26 +77,17 @@ C	x1 y1, x2 y2, x y	画笔从当前的点绘制一段三次贝塞尔曲线到点
 ```
  <path d="M 200 200 A 200 200 0 0 1 400 400" style="fill:none;stroke:orange;stroke-width:10;" />
 ```
-### path的贝塞尔曲线
+#### path的贝塞尔曲线
 ps工具中的钢笔工具就是一个贝塞尔曲线，贝塞尔曲线由几个点组成，[具体参考这个视频的末尾段的介绍](https://www.bilibili.com/video/av13105102/?spm_id_from=333.788.videocard.3)
+#### path指令 M 、V、 H、Z、L
+##### 指令介绍
 
-### viewBox
-如下，viewBox代表从原点 0 0 开始，像x、y轴各延伸100；
-```
-<svg viewBox='0 0 100 100' style='border:green solid'>
-</svg>
-```
-### path指令 M 、V、 H、Z、L
-
-#### 指令介绍
 - M 坐标点
 - V 垂直
 - H 水平
 - Z 闭合
 - L 连线到坐标点
-
-
-#### demo 1
+##### demo 1
 如下，viewBox代表从原点 0 0 开始，像x、y轴各延伸100；
 ```
 <svg viewBox='0 0 100 100' style='border:green solid'>
@@ -83,7 +97,7 @@ ps工具中的钢笔工具就是一个贝塞尔曲线，贝塞尔曲线由几个
 <path stroke='green' stroke-width='.2' d='M 20 0 H 100'/>
 </svg>
 ```
-#### demo2
+##### demo2
 ```
 //在坐标点20 10 开始，水平移到 x50，再垂直移到y0，然后连线到坐标点60 20，再连线到坐标点 50 40，然后垂直移动到y30
 //然后水平移到x20，然后连接到起始点闭合。
@@ -92,13 +106,6 @@ ps工具中的钢笔工具就是一个贝塞尔曲线，贝塞尔曲线由几个
 效果：
 ![](/image/d3/all/svg1.jpg)
 
-### 小写 相对坐标 与 大写 绝对坐标
-上面介绍的都是用绝对坐标，其实一般画图都使用相对坐标小写的，比如：
-```
-//效果跟上面的 《path指令 M 、V、 H、Z、L --- demo2》是一样的，但增加了灵活性，
-//当随意改变起始点坐标是，图形不被破坏，这是绝对坐标做不到的。
-<path stroke='orange' stroke-width='.8' fill='orange' d='M 20 70 h 30 v -10 l 10 20 l -10 20 v -10 h -30 z' />
-```
 
 ### polygon 与 polyline
 #### 代码
@@ -116,12 +123,6 @@ ps工具中的钢笔工具就是一个贝塞尔曲线，贝塞尔曲线由几个
 #### 二者区别
 polygon 会自动闭合，画多边形比较方便，polyline不会自动闭合，可以画多边形，当不方便，更多用于画折线。
 
-### 逗号有没有不影响
-比如下面两个代码，一个有逗号，一个没有，对于电脑而言都能正常识别，加逗号只是为了人能够识别理解
-```
- <polygon points="25 10,10 40, 50 27" style="fill:green;stroke:orange;stroke-width:4"/>
- <polygon points="25  10 10 40  50 27" style="fill:green;stroke:orange;stroke-width:4"/>
-```
 ### 指令Q - quadratic 二次曲线
 #### Q指令
 如下 Q 后面跟两个坐标点，第一个点为曲线最高或最低点，第二个点为曲线终点。
@@ -203,6 +204,24 @@ node.append("g")
 ### 参考demo
 [参考demo -里面的几个svg html](https://github.com/YeWills/d3-note-demo/tree/d3-demo/pages/mars)
 
+## svg进阶知识
+### viewport viewbox preserveAspectRatio
+#### 三者关系
+其实三者关系很好理解，也很简单，不过网上有很多博客或教程将此复杂化了，如下图：
+在坐标系上画了一个矩形，现在只想显示阴影部分，取 viewbox 100 100 20 20；
+现在设置svg的viewport 为200 200；
+在显示时，
+svg的机制，会让viewbox自动缩小或放大以填充整个viewport；
+放大后，viewport显示了刚才viewbox的内容。
+[demo参考](http://127.0.0.1:3000/multy/SVG/Lesson2/viewbox.html)
+![](/image/svg/viewbox.jpg)
+#### viewbox会缩小或者扩大填满viewport
+参考上面。
+#### preserveAspectRatio
+可网上查询，机制跟css 的background 的图片填充一样。
+
+### defs
+[参考这里](https://blog.csdn.net/chy555chy/article/details/53364561)
 
 
 ## 参考

@@ -12,6 +12,17 @@ series: 前端框架
 ### 需求：edit 与 search 功能
 场景为：edit 功能只能定义在业务组建内，且 edit 功能每次都要setState ListBuilder的data。
 **search功能必须放在ListBuilder内**，search功能每次也要改变ListBuilder的data。
+
+### 为什么无法调和
+二者无法调和是在于，edit与search要求同时都完全控制state，但edit必须位于组件外层，search必须位于组件内层，
+由于edit位于外层，你必须将listBuilder组件做成完全受控组件，要求组件内部使用props渲染；
+由于search位于内层，且要求完全操控数据，因为组件必须做成state方式，不能响应外层props数据变动；
+解决方法（也是下面的 **终极方案**）：
+- 将组件做成完全受控，完成edit功能；
+- 将组件的数据做成对象方式，search时，实时改动对象，利用对象引用特征，改动完后 使用forceUpdate，渲染组件，在render上每次 function重新组件props数据；
+
+这样组件就可以同时响应edit和search的变动。
+
 ### 方案一(否定)
 search和edit都放在业务组建内写，此时就不会有问题，但是明显违背了上面说的 **search功能必须放在ListBuilder内**。此方案不行。
 ### 方案二(否定)
