@@ -351,6 +351,34 @@ dom.dispatchEvent(eve)
 ```
 IE下有一定兼容问题，解决方法很简单，参看mdn关于`new Event`章节。
 
+### 键盘事件
+#### keyDown
+当用户按下键盘上的任意键时触发，而且如果按住不放的话，会**重复**触发此事件
+#### keyPress
+当用户按下键盘上的**字符键**时触发，而且如果按住不放的话，会**重复**触发此事件
+#### keyUp
+当用户释放键盘上的键时触发,天然地**不会重复**触发
+#### 选择keyUp以避免重复触发
+因为keyUp的不会重复触发性，在做键盘事件时，可以选择keyUp，而避免keyDown。
+#### 避免this的使用-(同时支持鼠标与键盘事件时)
+```js
+ var play=document.getElementById('play');
+    // 开始抽奖
+    play.onclick=playFun;
+   // 键盘事件
+   document.onkeyup=function(event){
+      event = event || window.event;
+      if(event.keyCode==13){
+        playFun();
+      }
+   }
+function playFun(){
+    //最好不要用this，鼠标事件时，this时被点击节点；键盘事件时this指向document
+    //this.style.background='#999';
+    play.style.background='#999';
+}
+```
+
  
 
 ## Dom API 黑知识
@@ -369,3 +397,63 @@ dom.style.width 只能获取内联样式，无法获取 通过css给dom设置的
 ### 为什么jq插件要写在$.fn对象中
 本可以将jq插件直接扩展到$.prototype原型上，为什么要在$.fn上呢，原因是为了广大jq用户，有一个统一的接口（fn对象）来进行插件扩展。
 这样，大家插件的写法也更加统一。
+
+## 场景运用
+### 拖拽的原生实现
+#### onmousemove的坐标实时计算
+见下面代码
+#### clientX 与 offsetLeft
+见下面代码
+#### 代码
+```js
+window.onload=drag;
+
+function drag(){
+   var oTitle=getByClass('login_logo_webqq','loginPanel')[0];
+   // 拖曳
+   oTitle.onmousedown=fnDown;
+}
+
+function fnDown(event){
+  event = event || window.event;
+  var oDrag=document.getElementById('loginPanel'),
+      // 光标按下时光标和面板之间的距离
+      disX=event.clientX-oDrag.offsetLeft,
+      disY=event.clientY-oDrag.offsetTop;
+  // 移动
+  document.onmousemove=function(event){
+  	event = event || window.event;
+  	fnMove(event,disX,disY);
+  }
+  // 释放鼠标
+  document.onmouseup=function(){
+  	document.onmousemove=null;
+  	document.onmouseup=null;
+  }
+}
+
+function fnMove(e,posX,posY){
+  var oDrag=document.getElementById('loginPanel'),
+      l=e.clientX-posX,
+      t=e.clientY-posY,
+      winW=document.documentElement.clientWidth || document.body.clientWidth,
+      winH=document.documentElement.clientHeight || document.body.clientHeight,
+      maxW=winW-oDrag.offsetWidth-10,
+      maxH=winH-oDrag.offsetHeight;
+  //边界控制
+  if(l<0){
+    l=0;
+  }else if(l>maxW){
+    l=maxW;
+  }
+  if(t<0){
+    t=10;
+  }else if(t>maxH){
+    t=maxH;
+  }
+  oDrag.style.left=l+'px';
+  oDrag.style.top=t+'px';
+}
+```
+
+
