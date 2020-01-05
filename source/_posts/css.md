@@ -356,6 +356,110 @@ body{
 功能设计上，pc端有的功能，移动端可以去掉隐藏；
 pc端一行显示的，移动端多行显示；
 给一些元素留下自适应的空间，让一些元素可大可小。
+### 扑克牌式展开图片(transform-origin)
+#### 代码实现
+```css
+.cardfan > img{
+		  transform-origin: center 400px;
+		}
+		.cardfan img:first-child{
+		  transform:rotate(5deg);
+		}
+		.cardfan img:last-child{
+		  transform:rotate(-5deg);
+		}
+```
+#### transform-origin
+transform-origin 默认值为 center，如果直接旋转会达不到此效果，需要设置圆心，此时可达到扑克牌式样展开效果，此时设置位置如下，更多用法参考mdn，
+![](/image/css/transform-origin.jpg)
+
+另外也可以设置transform-origin: center -400px;显示相反效果。
+
+### 折角与翻页动画
+#### 效果
+![](/image/css/page.jpg)
+#### 折角方案-两边border值为0
+如下，border两面为0两面有值，形状如下，在上图图片的div上设置一个before伪元素，
+伪元素content为0，只有两个border有width，半边白色，半边是带透明度的颜色(达到不完全遮住图片效果)：
+![](/image/css/page0.jpg)
+```
+ <div class="image-layer" id="image-layer">
+	  </div>
+.image-layer:before {
+		  content: '';
+		  position: absolute;
+		  top: 0;
+		  right: 0;
+		  border-style: solid;
+		  border-width: 0;
+		  border-color: rgba(0,0,0,0.2) #fff;
+		  border-radius: 0 0 0 4px;
+		  transition:all 0.4s ease-out;
+		}
+
+		.image-layer:hover:before{
+		  border-right-width:80px;
+		  border-bottom-width:80px;
+		}
+```
+
+#### 翻页动画方案-设置border-width为较大值
+翻页是一个页面呈三角形状直至三角为0的过程，也可以使用上面的方案，只有两个border有width，半边白色，半边是带透明度的颜色，
+当border-width足够大时，白色区域足够大，形成翻页效果。
+#### demo
+[demo1](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/3-3/border-width.html)
+[demo2](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/3-3/border-width-more.html)
+
+### 绕(椭)圆行驶动画 (transform-origin)
+#### 绕圆行驶动画
+这个最简单，绕自身旋转就是,原地打转：
+```
+transform:rotate(1turn)
+```
+设置如下就可以绕圆行驶了
+```
+transform-origin:center 150%;
+```
+#### 绕椭圆行驶(translate)
+椭圆的路径就要结合偏移了transform:translateY(200px);如下图，
+每次行驶到上下两个顶点时候，让父节点跟着偏移：
+![](/image/css/circle-ani.jpg)
+```
+<figure>
+	  <div class="butterfly">
+	    <img src="http://p7.qhimg.com/t01a4c54ef5309e561c.png" alt="" />
+	  </div>
+	</figure>
+
+  .butterfly{
+		  width:150px;
+		  height:142px;
+		  margin: 0 auto;
+		  transform-origin:center 150%;
+		  animation:circle 2s infinite linear;
+		}
+		.butterfly img{
+		  width:100%;
+		  height:auto;
+		}
+		figure{
+		  margin-left: 200px;
+		  animation:updown 1s infinite ease-in-out alternate;
+		}
+		@keyframes updown{
+		    to{
+		      transform:translateY(200px);
+		    }
+		}
+		@keyframes circle{
+		  to{
+		    transform:rotate(-1turn);
+		  }
+		}
+```
+
+#### demo
+[demo](https://github.com/YeWills/canvas-demo/tree/master/pages/multy/css-animation/3-4)
 
 ## css知识
 
