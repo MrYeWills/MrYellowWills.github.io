@@ -106,7 +106,7 @@ float元素脱离文档流，让父元素高度为0；
 #### 参考外网 mdn与w3c
 基础知识请移步参考上面两个地址。记住是外文的，其他版本可能是阉割后的内容。
 ### 两个相同写法引发的思考
-#### 写法demo
+#### 两种写法
 下面两种运行效果为什么一样：
 ```
 //写法一
@@ -120,17 +120,20 @@ transform: translate(-100%, 50%) rotate(45deg) translate(100%, -50%);
 ```
 #### 元素位移，自带坐标系跟着改变
 当元素发生位移或者旋转后，自带坐标系也随着改变，上面写法中的transform-origin后面跟的坐标就是元素自带的坐标系，一个元素发生平移前后，如果transform-origin都指向(0 0),其相对于世界坐标是不同位置：
-```
-transform-origin: 0 0;
-```
-```
-transform-origin: -100% 50%;
-```
+
+#### 位移只按自身坐标系运动
+当自身坐标系改变时，比如发生旋转后，对元素进行水平或垂直偏移，都是沿着旋转后的自身坐标系而言的。
+
 #### 二者transform-origin世界坐标位置相同
-先分析写法二，**假如世界坐标的原点与元素自带坐标系位移前的右上角坐标重合**，元素位移前坐标 0 0，位移-100% 50%后，原来的0 0点将被移到世界坐标的 -100% 50%;
-所以位移后-100% 50%的自带坐标系的0 0，与 世界坐标 -100% 50%重合，为同一位置。
-#### transform-origin位置相同对旋转很重要
-如果页面上的单个或多个元素，发生旋转时，如果它们的transform-origin实际的世界位置相同，那么
+**假如世界坐标的原点与元素自带坐标系位移前的右上角坐标重合**：
+先分析上面写法二：
+元素位移前坐标 0 0，
+位移-100% 50%后，
+原来的0 0点将被移到世界坐标的 -100% 50%;
+此时自带坐标系的0 0，与世界坐标 -100% 50%重合，为同一位置。
+
+对于写法一，其transform-origin的世界坐标当然为 -100% 50%；
+因此上面写法一和二，其ransform-origin位置是相同的。
 
 #### 元素发生的旋转角度与transform-origin无关
 下面写法中，旋转的原点位置尽管不一样，元素旋转前与旋转后，发生的角度偏移大小是一样的。
@@ -146,4 +149,57 @@ transform: rotate(45deg);
 transform-origin: -200px 50%;
 transform: rotate(45deg);
 ```
+
+#### 相同transform-origin发生偏移
+下面两种写法，其transform-origin在世界坐标上属于同一个坐标点，此时写法二相对于写法一发生的偏移为 -100% 50%，因此无论之后两种写法下，都发生同样都偏移，要让最后位置一样，只需在写法二中 抹平这个偏移差 -100% 50%即可。
+```
+//对于同一元素使用下面两种写法
+
+//写法一
+transform-origin: -100% 50%;
+transform: rotate(45deg);
+
+//写法二
+transform-origin: 0 0;
+transform: translate(-100%, 50%) ;
+
+//写法二 延伸（抹平偏移差）
+transform-origin: 0 0;
+transform: translate(-100%, 50%) rotate(45deg) translate(100%, -50%);
+```
+
+如下也是相同效果（下面二者， transform-origin 相同）
+```
+//下面两种写法是一个意思
+//写法A
+transform-origin: 20px -50px;
+transform: translate(-120px, 100px) rotate(110deg) translate(120px, -100px);
+
+//写法B
+transform-origin: -100px 50px;
+transform: rotate(110deg);
+```
+
+#### 相同transform-origin的结论
+同一个元素，当使用同一个世界位置的transform-origin时，形如如下时，要想写法A达到写法B的效果，写法A只需将transform定义的translate(-120px, 100px)等值反向以下，即可抹平偏移差，二者得到相同效果；
+```
+//写法A
+transform-origin: 20px -50px;
+transform: translate(-120px, 100px) rotate(110deg);
+//transform: translate(-120px, 100px) rotate(110deg) translate(120px, -100px);
+
+//写法B
+transform-origin: -100px 50px;
+transform: rotate(110deg);
+```
+#### 不懂就看demo
+[长方形动画效果demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/transform-origin-rect.html)
+[点动画效果demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/transform-origin-point.html)
+
+### 元素位移，自带坐标系跟着改变
+参考《两个相同写法引发的思考  -- 元素位移，自带坐标系跟着改变》
+
+### 位移只按自身坐标系运动
+参考《两个相同写法引发的思考  -- 位移只按自身坐标系运动》
+
 
