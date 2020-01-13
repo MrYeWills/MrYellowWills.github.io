@@ -197,7 +197,7 @@ var images = [{
 #### 页面要用时再取值
 参考《原理》
 #### demo地址
-[demo]()
+[demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/ImgPreloading/index2-3_ok.html)
 
 
 

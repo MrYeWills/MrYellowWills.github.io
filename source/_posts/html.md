@@ -432,15 +432,19 @@ image.addEventListener('loadend', function(e) {
 图片鼠标选中后，放大显示；
 [跟随鼠标，实时显示](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove)
 
-#### onmouseover onmousemove onmouseout 区别
-鼠标划过元素时，依次触发 onmouseover（移入元素区域）onmousemove （元素内移动）onmouseout（移出元素区域）；
-注意的是，整个过程 onmouseover和out只触发一次，onnousemove会触发多次；
-示例 [跟随鼠标，实时显示](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove)
+#### onmouseleave 与  onmouseout 区别
+onmouseleave 事件类似于 onmouseout 事件。 唯一的区别是 onmouseleave 事件不支持冒泡 ，更多说明参考[菜鸟教程](https://www.runoob.com/jsref/event-onmouseleave.html)
+
+#### onmouseenter  与 onmouseove 区别
+二者区别同 《onmouseleave 与  onmouseout 区别》，请参考[菜鸟教程](https://www.runoob.com/jsref/event-onmouseleave.html)。
+
+更多示例 [跟随鼠标，实时显示](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove)
 示例中的方案应该可以实现淘宝页面中的 图片鼠标划动，放大显示；
 
-#### onmousemove 应用多
-利用onmousemove在元素移动时会持续触发的特性，可以完成很多页面，上面的示例都用到了onmousemove。
-
+#### 区别使用onmouseleave与onmouseout很重要
+二者表达意思虽一样，但leave只触发一次，out会触发多次，因此一定要区别使用，避免代码多余执行。
+onmouseenter  与 onmouseove同理。
+详见 [菜鸟教程](https://www.runoob.com/jsref/event-onmouseleave.html)中的例子。
 ### onscroll
 ie存疑外，其他都支持
 ```
