@@ -149,6 +149,56 @@ isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)
 #### display的none／block
 每次只显示对应的二级菜单，其他二级菜单 display ：none。
 
+## 其他demo
+### 图片预加载
+#### 方案设计
+通常的做法是，在页面打开后，先添加一个进度条，监听加载进度，设置new Image()用来加载，加载好后，图片哪里需要就在src赋值上即可。
+#### 原理
+图片通过new Image()加载后，下一次在具体位置再使用src时，就不用等待了，直接就可以用。因此使用new Image() 达到预加载目的。
+```
+var images = [{
+        url: 'https://github.com/CruxF/IMOOC/blob/master/ProImages/ImgPreloading01.jpg?raw=true',
+        name: '无敌美少女一号'
+      }]
+  var $progress = $('.progress');
+      // 遍历数组,i代表的是数组下标，src代表的是对应数组下标的对象或者属性值
+      $.each(images, function(i, src) {
+		  //此imgObj不会使用，只用来预加载
+        var imgObj = new Image();
+		//当图片有缓存时，不触发load事件，只能使用error来监听兼容此情况
+        $(imgObj).on('load error', function() {
+			//通过已加载的图片个数百分比来做进度条
+          $progress.html(Math.round((count + 1) / len * 100) + '%');
+          if(count >= len - 1) {
+            $('.loading').hide();
+          }
+          count++;
+        });
+        imgObj.src = src.url;
+      });
+
+	  //以后使用时，直接赋给src，此时因为之前已经加载过，此时不会再次后台请求，直接秒显示
+	   $('#img').attr({
+          'src': images[index].url,
+          'title': images[index].name,
+          'alt': images[index].name
+        });
+```
+#### 所有图片提前到页面初始时一起加载
+参考《原理》
+#### 图片加载百分比进度方案
+通过已加载的图片个数百分比来做进度条，此方法是普遍做法，见上面代码《原理》；
+#### 设置new Image()
+参考《原理》
+#### 监听load事件
+参考《原理》
+#### 监听error事件兼容缓存
+当图片有缓存时，不触发load事件，只能使用error来监听兼容此情况，参考《原理》
+#### 页面要用时再取值
+参考《原理》
+#### demo地址
+[demo]()
+
 
 
 
