@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>前端demo讲解 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="前端demo讲解">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>前端demo讲解</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">前端demo讲解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-01-09T15:31:10.000Z" itemprop="datePublished" class="page-time">
+  2020-01-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-js_demo" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">前端demo讲解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-01-09 23:31:10" datetime="2020-01-09T15:31:10.000Z" itemprop="datePublished">2020-01-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="画一个时钟"><a href="#画一个时钟" class="headerlink" title="画一个时钟"></a>画一个时钟</h2><h3 id="demo与效果"><a href="#demo与效果" class="headerlink" title="demo与效果"></a>demo与效果</h3><p><a href="https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/clock.html" target="_blank" rel="noopener">查看demo</a><br><figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/clock.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/clock.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="将元素按圆弧排放的两种方法"><a href="#将元素按圆弧排放的两种方法" class="headerlink" title="将元素按圆弧排放的两种方法"></a>将元素按圆弧排放的两种方法</h3><h4 id="css方法-–表盘刻度"><a href="#css方法-–表盘刻度" class="headerlink" title="css方法 –表盘刻度"></a>css方法 –表盘刻度</h4><p>将元素旋转后，自身坐标系改变，再对所有元素等距离等方向位移即可。<br><figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/clock_css.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/clock_css.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="计算坐标点方法-–表盘数字"><a href="#计算坐标点方法-–表盘数字" class="headerlink" title="计算坐标点方法  –表盘数字"></a>计算坐标点方法  –表盘数字</h4><p>见上面《css方法》图</p>
+<h3 id="度与弧度制转换"><a href="#度与弧度制转换" class="headerlink" title="度与弧度制转换"></a>度与弧度制转换</h3><p>π 相当于 180度， 1度转换为弧度制的值就是 π ／180：</p>
+<p>1度=π ／180=Math.PI/180</p>
+<h3 id="cos、sin与圆几何度经典应用"><a href="#cos、sin与圆几何度经典应用" class="headerlink" title="cos、sin与圆几何度经典应用"></a>cos、sin与圆几何度经典应用</h3><h3 id="transform-origin的细微处理"><a href="#transform-origin的细微处理" class="headerlink" title="transform-origin的细微处理"></a>transform-origin的细微处理</h3><p>时针与刻度都用了transform-origin：left center；</p>
+<h3 id="更多讲解参考"><a href="#更多讲解参考" class="headerlink" title="更多讲解参考"></a>更多讲解参考</h3><p><a href="http://jiaolonghuang.github.io/2014/12/13/clock/" target="_blank" rel="noopener">如何制作一个时钟</a></p>
+<h2 id="全屏切换效果-轮播"><a href="#全屏切换效果-轮播" class="headerlink" title="全屏切换效果(轮播)"></a>全屏切换效果(轮播)</h2><h3 id="demo与效果-1"><a href="#demo与效果-1" class="headerlink" title="demo与效果"></a>demo与效果</h3><p><a href="https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/switch-plugin/demo.html" target="_blank" rel="noopener">查看demo</a><br><a href="https://www.imooc.com/learn/374" target="_blank" rel="noopener">demo讲解视频</a><br><figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/switch.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/switch.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="轮播切换设计方案"><a href="#轮播切换设计方案" class="headerlink" title="轮播切换设计方案"></a>轮播切换设计方案</h3><h4 id="三层div设计"><a href="#三层div设计" class="headerlink" title="三层div设计"></a>三层div设计</h4><p>如下图,代码如下，说明的是，设置overflow: hidden;起到裁剪的作用，设置外层（container）是为了在文档流中预定位置。<br><figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/switch_idea.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/switch_idea.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">data-PageSwitch</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sections"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section active"</span> <span class="attr">id</span>=<span class="string">"section0"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span> <span class="attr">id</span>=<span class="string">"section1"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span> <span class="attr">id</span>=<span class="string">"section2"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"section"</span> <span class="attr">id</span>=<span class="string">"section3"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#container</span>&#123;</span><br><span class="line">        <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/* sections设置成100%也好，当内部高度依赖外层高度时，将三层高度都设置成100% */</span></span><br><span class="line">    <span class="selector-id">#container</span>,<span class="selector-class">.sections</span>,<span class="selector-class">.section</span>&#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">        <span class="attribute">position</span>: relative;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="translateY实现切换显示"><a href="#translateY实现切换显示" class="headerlink" title="translateY实现切换显示"></a>translateY实现切换显示</h4><p>根据上面的三层div设置后，外层因为使用overflow hidden 遮挡了 sections壳的全部内容，形成裁剪效果，不过sections实际是全部显示的，<br>因此对sections使用translateY实现切换显示。</p>
+<h4 id="内外三层都使用-height-100-技巧"><a href="#内外三层都使用-height-100-技巧" class="headerlink" title="内外三层都使用 height: 100%技巧"></a>内外三层都使用 height: 100%技巧</h4><p>如上面代码， #container,.sections,.section都使用了height: 100%;让三者的高度保持一致。因为切换显示也是将内层的section全屏展示在container上，因此这种方法非常棒。</p>
+<h4 id="offsetTop获取translateY偏移值"><a href="#offsetTop获取translateY偏移值" class="headerlink" title="offsetTop获取translateY偏移值"></a>offsetTop获取translateY偏移值</h4><p>offsetTop是非常棒的方法，使用方法自行网上查询。虽然上面的section0 section1 section2 section3可能没有被显示，但是它们相对于container或sections的offsetTop是确定好的。<br>每次轮播的时候，记住index值，根据index获取轮播单元 section，获取它的offsetTop获取translateY偏移值。</p>
+<h3 id="记住轮播单元的index很关键"><a href="#记住轮播单元的index很关键" class="headerlink" title="记住轮播单元的index很关键"></a>记住轮播单元的index很关键</h3><p>显示哪一页都是index进行标识，设计这个轮播插件，关键是处理index，处理好index了，其他都是围绕这个处理。</p>
+<h3 id="有趣的动画监听事件transitionend"><a href="#有趣的动画监听事件transitionend" class="headerlink" title="有趣的动画监听事件transitionend"></a>有趣的动画监听事件transitionend</h3><p>本demo为了效果立体，设置了transitionend，有兴趣可参看demo</p>
+<h2 id="JS实现京东无延迟菜单效果"><a href="#JS实现京东无延迟菜单效果" class="headerlink" title="JS实现京东无延迟菜单效果"></a>JS实现京东无延迟菜单效果</h2><h3 id="demo与效果-2"><a href="#demo与效果-2" class="headerlink" title="demo与效果"></a>demo与效果</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p><a href="https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/nonDelay/index.html" target="_blank" rel="noopener">查看demo</a><br><a href="https://www.imooc.com/video/14717" target="_blank" rel="noopener">demo讲解视频</a><br><figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/delay.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/delay.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="一级菜单与二级菜单"><a href="#一级菜单与二级菜单" class="headerlink" title="一级菜单与二级菜单"></a>一级菜单与二级菜单</h4><p>如上图，左侧菜单称之为一级，右侧内容显示称之为二级菜单。</p>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h4 id="垂直运动不延时"><a href="#垂直运动不延时" class="headerlink" title="垂直运动不延时"></a>垂直运动不延时</h4><p>在一级菜单如下图做垂直运动时不延时，当测斜运动并处于三角区内时，做延时显示右侧面板，以达到选择好一级后，光标移到右侧二级时，二级不消失。<br><figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/delay_idea.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/delay_idea.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="三角区内移到二级时做延时"><a href="#三角区内移到二级时做延时" class="headerlink" title="三角区内移到二级时做延时"></a>三角区内移到二级时做延时</h4><p>分析如上《垂直运动不延时》</p>
+<h3 id="判断三角区内的方案"><a href="#判断三角区内的方案" class="headerlink" title="判断三角区内的方案"></a>判断三角区内的方案</h3><h4 id="方案设计"><a href="#方案设计" class="headerlink" title="方案设计"></a>方案设计</h4><p>通过mousemove记录光标的移动路径，在全局内存储光标移动路径（坐标点），以二级菜单区域的右上角和右下角作为三角区内亮点，<br>给一级菜单都绑定mouseenter。<br>当mouseenter触发时，取全局移动路径的最后两个点，倒数第二个点为三角区第三个点，最后一个点为p点，判断p点是否处于上面三个点构成的三角区内。</p>
+<h4 id="document-绑定mouseenter"><a href="#document-绑定mouseenter" class="headerlink" title="document 绑定mouseenter"></a>document 绑定mouseenter</h4><p>以此记录光标移动路径，这是常规做法。记住不用的时候需要解绑。</p>
+<h4 id="一级菜单mouseenter触发时计算三角区"><a href="#一级菜单mouseenter触发时计算三角区" class="headerlink" title="一级菜单mouseenter触发时计算三角区"></a>一级菜单mouseenter触发时计算三角区</h4><p>如上面《方案分析》</p>
+<h4 id="二维向量叉乘判断是否在三角内"><a href="#二维向量叉乘判断是否在三角内" class="headerlink" title="二维向量叉乘判断是否在三角内"></a>二维向量叉乘判断是否在三角内</h4><ul>
+<li>向量：Vab=Pb-Pa</li>
+<li>二维向量叉乘公式：<br>a(x1,y1)<em>b(x2,y2)=x1</em>y2-x2*y1</li>
+<li>用叉乘法判断点在三角形内<figure class="image-box">
+                <a rel="前端demo讲解" href="/image/js_demo/delay_ang.jpg" title="undefined" data-fancybox="images"><img src="/image/js_demo/delay_ang.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+代码如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断 a b 是否全部为负数 或 正数；</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sameSign</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span>(a * b) &gt; <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">vector</span>(<span class="params">p, b</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		x: b.x - p.x,</span><br><span class="line">		y: b.y - p.y</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">vectorProduct</span>(<span class="params">v1, v2</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> v1.x * v2.y - v2.x * v1.y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPointInTrangle</span>(<span class="params">p, a, b, c</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> pa = vector(p, a)</span><br><span class="line">	<span class="keyword">var</span> pb = vector(p, b)</span><br><span class="line">	<span class="keyword">var</span> pc = vector(p, c)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> t1 = vectorProduct(pa, pb)</span><br><span class="line">	<span class="keyword">var</span> t2 = vectorProduct(pb, pc)</span><br><span class="line">	<span class="keyword">var</span> t3 = vectorProduct(pc, pa)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> sameSign(t1, t2) &amp;&amp; sameSign(t2, t3)</span><br><span class="line">&#125;</span><br><span class="line">isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="二级菜单定义mouseenter"><a href="#二级菜单定义mouseenter" class="headerlink" title="二级菜单定义mouseenter"></a>二级菜单定义mouseenter</h4><p>二级菜单定义mouseenter，当鼠标移到二级菜单时，说明二级菜单处于打开状态，此时，在延时处理时不做任何处理。</p>
+<h3 id="光标路径移动趋势分析"><a href="#光标路径移动趋势分析" class="headerlink" title="光标路径移动趋势分析"></a>光标路径移动趋势分析</h3><p>通过光标移动的最后两个点，来判断光标的移动方向(趋势)，这点非常妙。</p>
+<h3 id="向量二叉乘"><a href="#向量二叉乘" class="headerlink" title="向量二叉乘"></a>向量二叉乘</h3><p>只需要知道坐标，就可以通过向量二叉乘知道某一点是否处于区域内。太妙。</p>
+<h3 id="tab二级菜单显示方案"><a href="#tab二级菜单显示方案" class="headerlink" title="tab二级菜单显示方案"></a>tab二级菜单显示方案</h3><h4 id="二级菜单样式都一样"><a href="#二级菜单样式都一样" class="headerlink" title="二级菜单样式都一样"></a>二级菜单样式都一样</h4><p>二级菜单的布局样式都一样（大小宽高等），需要显示哪一个时，display block／none进行切换。</p>
+<h4 id="display的none／block"><a href="#display的none／block" class="headerlink" title="display的none／block"></a>display的none／block</h4><p>每次只显示对应的二级菜单，其他二级菜单 display ：none。</p>
+<h2 id="其他demo"><a href="#其他demo" class="headerlink" title="其他demo"></a>其他demo</h2><h3 id="图片预加载"><a href="#图片预加载" class="headerlink" title="图片预加载"></a>图片预加载</h3><h4 id="方案设计-1"><a href="#方案设计-1" class="headerlink" title="方案设计"></a>方案设计</h4><p>通常的做法是，在页面打开后，先添加一个进度条，监听加载进度，设置new Image()用来加载，加载好后，图片哪里需要就在src赋值上即可。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>图片通过new Image()加载后，下一次在具体位置再使用src时，就不用等待了，直接就可以用。因此使用new Image() 达到预加载目的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var images = [&#123;</span><br><span class="line">        url: &apos;https://github.com/CruxF/IMOOC/blob/master/ProImages/ImgPreloading01.jpg?raw=true&apos;,</span><br><span class="line">        name: &apos;无敌美少女一号&apos;</span><br><span class="line">      &#125;]</span><br><span class="line">  var $progress = $(&apos;.progress&apos;);</span><br><span class="line">      // 遍历数组,i代表的是数组下标，src代表的是对应数组下标的对象或者属性值</span><br><span class="line">      $.each(images, function(i, src) &#123;</span><br><span class="line">		  //此imgObj不会使用，只用来预加载</span><br><span class="line">        var imgObj = new Image();</span><br><span class="line">		//当图片有缓存时，不触发load事件，只能使用error来监听兼容此情况</span><br><span class="line">        $(imgObj).on(&apos;load error&apos;, function() &#123;</span><br><span class="line">			//通过已加载的图片个数百分比来做进度条</span><br><span class="line">          $progress.html(Math.round((count + 1) / len * 100) + &apos;%&apos;);</span><br><span class="line">          if(count &gt;= len - 1) &#123;</span><br><span class="line">            $(&apos;.loading&apos;).hide();</span><br><span class="line">          &#125;</span><br><span class="line">          count++;</span><br><span class="line">        &#125;);</span><br><span class="line">        imgObj.src = src.url;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">	  //以后使用时，直接赋给src，此时因为之前已经加载过，此时不会再次后台请求，直接秒显示</span><br><span class="line">	   $(&apos;#img&apos;).attr(&#123;</span><br><span class="line">          &apos;src&apos;: images[index].url,</span><br><span class="line">          &apos;title&apos;: images[index].name,</span><br><span class="line">          &apos;alt&apos;: images[index].name</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="所有图片提前到页面初始时一起加载"><a href="#所有图片提前到页面初始时一起加载" class="headerlink" title="所有图片提前到页面初始时一起加载"></a>所有图片提前到页面初始时一起加载</h4><p>参考《原理》</p>
+<h4 id="图片加载百分比进度方案"><a href="#图片加载百分比进度方案" class="headerlink" title="图片加载百分比进度方案"></a>图片加载百分比进度方案</h4><p>通过已加载的图片个数百分比来做进度条，此方法是普遍做法，见上面代码《原理》；</p>
+<h4 id="设置new-Image"><a href="#设置new-Image" class="headerlink" title="设置new Image()"></a>设置new Image()</h4><p>参考《原理》</p>
+<h4 id="监听load事件"><a href="#监听load事件" class="headerlink" title="监听load事件"></a>监听load事件</h4><p>参考《原理》</p>
+<h4 id="监听error事件兼容缓存"><a href="#监听error事件兼容缓存" class="headerlink" title="监听error事件兼容缓存"></a>监听error事件兼容缓存</h4><p>当图片有缓存时，不触发load事件，只能使用error来监听兼容此情况，参考《原理》</p>
+<h4 id="页面要用时再取值"><a href="#页面要用时再取值" class="headerlink" title="页面要用时再取值"></a>页面要用时再取值</h4><p>参考《原理》</p>
+<h4 id="load与src顺序有讲究"><a href="#load与src顺序有讲究" class="headerlink" title="load与src顺序有讲究"></a>load与src顺序有讲究</h4><p>上面的代码中src必须写在on(‘load’)下面，先load，后src赋值，这样可以避免一些隐蔽的问题，比如图片缓存等等。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">var</span> imgObj = <span class="keyword">new</span> Image();</span><br><span class="line">$(imgObj).on(<span class="string">'load error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</span><br><span class="line">imgObj.src = src.url;</span><br></pre></td></tr></table></figure></p>
+<h4 id="demo地址"><a href="#demo地址" class="headerlink" title="demo地址"></a>demo地址</h4><p><a href="https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/ImgPreloading/index2-3_ok.html" target="_blank" rel="noopener">demo</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-01-14T10:57:38.000Z" itemprop="dateUpdated">2020-01-14 18:57:38</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/01/09/js_demo/" target="_blank" rel="external">https://yewills.github.io/2020/01/09/js_demo/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端demo讲解/">前端demo讲解</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/01/09/js_demo/&title=《前端demo讲解》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/01/09/js_demo/&title=《前端demo讲解》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/01/06/dva_umi/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">dva与umi笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#画一个时钟"><span class="post-toc-number">1.</span> <span class="post-toc-text">画一个时钟</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo与效果"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">demo与效果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#将元素按圆弧排放的两种方法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">将元素按圆弧排放的两种方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#css方法-–表盘刻度"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">css方法 –表盘刻度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#计算坐标点方法-–表盘数字"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">计算坐标点方法  –表盘数字</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#度与弧度制转换"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">度与弧度制转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cos、sin与圆几何度经典应用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">cos、sin与圆几何度经典应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#transform-origin的细微处理"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">transform-origin的细微处理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更多讲解参考"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">更多讲解参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#全屏切换效果-轮播"><span class="post-toc-number">2.</span> <span class="post-toc-text">全屏切换效果(轮播)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo与效果-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">demo与效果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#轮播切换设计方案"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">轮播切换设计方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三层div设计"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">三层div设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#translateY实现切换显示"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">translateY实现切换显示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内外三层都使用-height-100-技巧"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">内外三层都使用 height: 100%技巧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#offsetTop获取translateY偏移值"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">offsetTop获取translateY偏移值</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#记住轮播单元的index很关键"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">记住轮播单元的index很关键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有趣的动画监听事件transitionend"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">有趣的动画监听事件transitionend</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JS实现京东无延迟菜单效果"><span class="post-toc-number">3.</span> <span class="post-toc-text">JS实现京东无延迟菜单效果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo与效果-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">demo与效果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一级菜单与二级菜单"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">一级菜单与二级菜单</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需求分析"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">需求分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#垂直运动不延时"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">垂直运动不延时</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三角区内移到二级时做延时"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">三角区内移到二级时做延时</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断三角区内的方案"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">判断三角区内的方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案设计"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">方案设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#document-绑定mouseenter"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">document 绑定mouseenter</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一级菜单mouseenter触发时计算三角区"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">一级菜单mouseenter触发时计算三角区</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二维向量叉乘判断是否在三角内"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">二维向量叉乘判断是否在三角内</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二级菜单定义mouseenter"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">二级菜单定义mouseenter</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#光标路径移动趋势分析"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">光标路径移动趋势分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#向量二叉乘"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">向量二叉乘</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tab二级菜单显示方案"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">tab二级菜单显示方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二级菜单样式都一样"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">二级菜单样式都一样</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#display的none／block"><span class="post-toc-number">3.6.2.</span> <span class="post-toc-text">display的none／block</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他demo"><span class="post-toc-number">4.</span> <span class="post-toc-text">其他demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图片预加载"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">图片预加载</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案设计-1"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">方案设计</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原理"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#所有图片提前到页面初始时一起加载"><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">所有图片提前到页面初始时一起加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片加载百分比进度方案"><span class="post-toc-number">4.1.4.</span> <span class="post-toc-text">图片加载百分比进度方案</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置new-Image"><span class="post-toc-number">4.1.5.</span> <span class="post-toc-text">设置new Image()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#监听load事件"><span class="post-toc-number">4.1.6.</span> <span class="post-toc-text">监听load事件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#监听error事件兼容缓存"><span class="post-toc-number">4.1.7.</span> <span class="post-toc-text">监听error事件兼容缓存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#页面要用时再取值"><span class="post-toc-number">4.1.8.</span> <span class="post-toc-text">页面要用时再取值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#load与src顺序有讲究"><span class="post-toc-number">4.1.9.</span> <span class="post-toc-text">load与src顺序有讲究</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo地址"><span class="post-toc-number">4.1.10.</span> <span class="post-toc-text">demo地址</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/01/09/js_demo/&title=《前端demo讲解》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/01/09/js_demo/&title=《前端demo讲解》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQU4DMQwF0N7/0kViBYKUb3tATPJmVRVNyAuScWw/HvHzfH8+fv76zeqnX9dZrfD63QseDAyM2zKeL5/VRqtrrg7l9frJ3jAwMM5hJEE2D46TEJwcGQYGBkZ163mArm4RAwMDY7JcLwRflYZiYGCcyUiW7l0vXwfoq34LBgbG3oxeY+BvPv96fwMDA+PfM56t56r2ZzW8Lt/FwMDYmpEU7pMol2xx0jCIAjEGBsamjKSgVm1YzhPNavEOAwPjBEZ1bKvavMwHKZrDFhgYGIcx5qX5HDZJQz+tjIGBsTWjt3TCzgcyJiF7dBfHwMC4CaOaFOZhNDma/K0fjgMDA+MYxrz0lh9BHo4xMDAwqgnZJIxeNXixvL5iYGAcwKgmf0mgzK+vyRV6CcPAwNia0WtSJpubl+2S5PKRz31gYGDcnNG7ypb7D8VW5ejvgIGBsR1jMphVLdJVg3jzUDAwMDZiVEvzeQiez0LkBTsMDIy9GdUUrVoIy8fCJo1MDAyMExiT4n51K0nYbWa4GBgYxzCqIxHVYFpNEJOLNAYGxgmMZLu9a23+9P4xYGBgnMCY/LLJN5N2wjfrYGBgbM2otjZ7DdFeyO4llxgYGLsy8rL+VQW1efkPAwPjTEYvXE6aB73wvVwHAwMDIy/NB+lddZgsur5iYGBgBMNevbcm5TwMDIzTGMkltncFvWqYDAMD42RGr8Q/WbS36cmgBgYGxm0Zb/26slCfVNDnAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
