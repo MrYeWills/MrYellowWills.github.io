@@ -206,6 +206,54 @@ var images = [{
 #### demo地址
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/ImgPreloading/index2-3_ok.html)
 
-
+### 可调大小面板实现
+#### demo与介绍
+本demo基于[慕课网视频](https://www.imooc.com/learn/193)优化而来，[demo 地址](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/resizeable.html)
+#### 方案分析
+如下图，要实现左侧，下边，右下侧，三个位置可以拖动，
+具体做法是在这三个地方添加一个看不见的拖动用的dom，给这三个dom绑定mouse事件，
+在mouseMove中对矩形框持续设置宽高样式，
+同时通过css设置三个位置Dom跟随。
+![](/image/js_demo/resizable.jpg)
+具体步骤如下：
+#### 设置左、下、左下侧 拖动dom
+```
+panelDom = document.getElementById(panelId);
+		['right', 'bottom', 'lean'].forEach(dragDomType=>{
+			const dragDom = document.createElement("div");
+			dragDom.class = dragDom.className   = `ui-Resizable-${dragDomType} ui-Resizable-ctrl`;
+			panelDom.appendChild(dragDom);
+			dragDom.addEventListener('mousedown', onMousemove);
+		})
+```
+#### css设置拖动dom样式跟随矩形框
+```
+	.ui-Resizable-right{
+		position:absolute;
+		right:0px;
+		top:0px;
+		width:10px;
+		height:100%;
+		cursor: e-resize;
+		}
+```
+#### mouseMove中改变矩形框宽高
+```
+	let newPanelWidth = panelDom.offsetWidth - 2 + moveDistance.x;
+		let newPanelHeight = panelDom.offsetHeight - 2 + moveDistance.y;
+		newPanelWidth = Math.max(newPanelWidth, 150);
+		newPanelHeight = Math.max(newPanelHeight, 50);
+		switch(mouseType){
+			case 'movehorizontal':
+				panelDom.style.width = newPanelWidth + 'px';
+				break;
+			case 'moveVertical':
+				panelDom.style.height = newPanelHeight + 'px';
+				break;
+			case 'moveLean':
+				panelDom.style.width = newPanelWidth + 'px';
+				panelDom.style.height = newPanelHeight + 'px';
+		}
+```
 
 
