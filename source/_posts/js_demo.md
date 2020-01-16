@@ -196,6 +196,13 @@ var images = [{
 当图片有缓存时，不触发load事件，只能使用error来监听兼容此情况，参考《原理》
 #### 页面要用时再取值
 参考《原理》
+#### load与src顺序有讲究
+上面的代码中src必须写在on('load')下面，先load，后src赋值，这样可以避免一些隐蔽的问题，比如图片缓存等等。
+```js
+    var imgObj = new Image();
+	$(imgObj).on('load error', function() {});
+	imgObj.src = src.url;
+```
 #### demo地址
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/ImgPreloading/index2-3_ok.html)
 
