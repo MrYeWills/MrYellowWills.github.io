@@ -255,5 +255,61 @@ panelDom = document.getElementById(panelId);
 				panelDom.style.height = newPanelHeight + 'px';
 		}
 ```
+### 固定侧边栏滚动
+#### demo与介绍
+[demo 地址](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/fixedSide/index.htm)
+#### 需求分析
+要求右侧的侧边栏，正常滚动的时候，正常滚动；
+当侧边栏滚到底，但左侧内容还有，需要继续往下滚动时，右侧侧边栏固定显示最后面一段内容。
+#### window.addEventListener('scroll')监听滚动
+设置window的滚动事件scroll，当发生滚动时实时监听并设置侧边栏样式。
+#### 滚动距离+视口高度 与 侧边栏实际高度 比较
+当 滚动距离+视口高度 大于 侧边栏实际高度，启动bottom为0的 position：fixed；
+反之，一切正常 position设置为static。
+```js
+var sideHeight = domSider.offsetHeight;
+var screenHeight =document.documentElement.clientHeight||document.body.clientHeight;
+var scrollHeight = document.documentElement.scrollTop||document.body.scrollTop;
+//这种思想值得借鉴
+if(scrollHeight+screenHeight>sideHeight){
+	domSider.style.cssText = 'position:fixed;right:0px;bottom: 0px';
+}else{
+	domSider.style.position='static';
+}
+```
+#### scrollTop的应用
+参考上面《滚动距离+视口高度 与 侧边栏实际高度 比较》
 
+### 网页定位导航特效
 
+#### demo与介绍
+[demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/location/location.html)
+
+![](/image/js_demo/location.jpg)
+
+#### html的锚点做业内跳转
+如下，更多参考网上。
+```
+<a name="add"></a> 或者 <a id="add"></a> （ps：用id兼容性好些）
+<a href="#add">跳转到add</a>
+```
+#### window.addEventListener('scroll')监听滚动
+监听滚动距离，实时点亮上图右侧的菜单。
+
+### CSS Sprite雪碧图应用
+#### demo与介绍
+[demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/priatice/priatice.html)
+雪碧图用多个图标合成一个，可以用来减少http请求，优化性能，主要原理是对background-position的应用。
+#### 减少http请求，优化性能
+参考上面的讲解。
+#### 核心是对background-position的应用
+下面是background-position的坐标系：
+```css
+.regnow input{
+				background: url(sp.png) no-repeat;
+				background-position: 0 -38px;
+				border: 0;
+				padding: 0 0 3px 0;
+			}
+```
+![](/image/js_demo/sprite.jpg)
