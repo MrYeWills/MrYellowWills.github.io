@@ -149,6 +149,57 @@ isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)
 #### display的none／block
 每次只显示对应的二级菜单，其他二级菜单 display ：none。
 
+## 会动的兔八公 与 step
+### demo与效果
+![](/image/js_demo/rabbit.jpg)
+### step是针对keyframes内定义的每个百分比的
+下面有方式一和方式二，效果是一样的，
+step是针对keyframes内定义的每个百分比的，在方式一中keyframes内只定义了一个100%，
+因此步进范围与速度为 100%／12
+```css
+//方式一
+.tuzi0 {
+  width: 200px;
+  height: 200px;
+  animation: run2 0.2s steps(12) infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+@keyframes run2 {
+  100% {
+    background-position-x: -2400px;
+  }
+}
+```
+在方式二中keyframes内只定义了一个50% 100%，
+在0到50%时，步进范围与速度为 50%／6；
+在50%到100%时，步进范围与速度为(100%-50%)／6；
+因此方式一方式二效果一致。
+```css
+//方式二
+.tuzi {
+  width: 200px;
+  height: 200px;
+  animation: run 0.2s steps(6) infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+@keyframes run {
+  50% {
+    background-position-x: -1200px;
+  }
+  100% {
+    background-position-x: -2400px;
+  }
+}
+```
+
+### step的一些认识
+动画片一定要用step，比如loading；
+loading为什么定义成线性时间函数时，会出现晕眼的情况，是因为两个原因：
+上一个loading刻度到下一个step时，没有完全照上一步step的脚印上，会乱，同时也会造成晕眼；
+反之推算出，要实现这种拍浪或loading的效果，或跑火车的效果，就只能完全踩在上一步的脚印上的方案。
+
+
+
 ## 其他demo
 ### 图片预加载
 #### 方案设计
