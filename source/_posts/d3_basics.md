@@ -3,7 +3,7 @@ title: d3的三种模式 及 append、data、selectAll
 date: {{ date }}
 tags: [d3.js]
 categories: 
-- 前端
+- 图形化
 ---
 
 这里讲解d3的 enter update exit三种模式，以及 append、data、selectAll。

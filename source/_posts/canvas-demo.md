@@ -3,7 +3,7 @@ title: canvas demo
 date: {{ date }}
 tags: [canvas]
 categories: 
-- 前端
+- 图形化
 ---
 
 ## 写一个字

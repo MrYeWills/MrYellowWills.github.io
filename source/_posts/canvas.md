@@ -3,7 +3,7 @@ title: canvas笔记
 date: {{ date }}
 tags: [canvas]
 categories: 
-- 前端
+- 图形化
 ---
 
 ## 基础知识

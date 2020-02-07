@@ -3,7 +3,7 @@ title: svg笔记
 date: {{ date }}
 tags: [svg]
 categories: 
-- 前端
+- 图形化
 ---
 
 ## svg知识
