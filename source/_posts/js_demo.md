@@ -149,10 +149,11 @@ isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)
 #### display的none／block
 每次只显示对应的二级菜单，其他二级菜单 display ：none。
 
-## 会动的兔八公 与 step
-### demo与效果
+## 动画demo 及 css动画知识点
+### 会动的兔八公 与 step
+#### demo与效果
 ![](/image/js_demo/rabbit.jpg)
-### step是针对keyframes内定义的每个百分比的
+#### step是针对keyframes内定义的每个百分比的
 下面有方式一和方式二，效果是一样的，
 step是针对keyframes内定义的每个百分比的，在方式一中keyframes内只定义了一个100%，
 因此步进范围与速度为 100%／12
@@ -192,11 +193,47 @@ step是针对keyframes内定义的每个百分比的，在方式一中keyframes�
 }
 ```
 
-### step的一些认识
-动画片一定要用step，比如loading；
+#### step的一些认识
+动画片一定要用step，比如loading demo；
 loading为什么定义成线性时间函数时，会出现晕眼的情况，是因为两个原因：
-上一个loading刻度到下一个step时，没有完全照上一步step的脚印上，会乱，同时也会造成晕眼；
+上一个loading刻度到下一个step时，没有完全踩在上一步step的脚印上，会乱，同时也会造成晕眼；
 反之推算出，要实现这种拍浪或loading的效果，或跑火车的效果，就只能完全踩在上一步的脚印上的方案。
+
+#### step更适合动画片相关场景
+参考上面《会动的兔八公 与 step》讲解。
+
+### animation的时间函数
+#### 介绍
+下面的ease-in-out就是时间函数，animation的时间函数分为线性时间函数与非线性；
+线性时间函数全部是三次贝塞尔函数(浏览器控制台调试css时间函数时，通常显示的是一个三次贝塞尔函数正好印证了这一点)，
+非线性时间函数主要指step。
+```css
+.tuzi {
+  width: 200px;
+  height: 200px;
+  animation: run 0.2s ease-in-out infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+```
+#### 线性函数 - 三次贝塞尔函数bezier
+animation的线性时间函数都是三次贝塞尔函数(cubic-bezier)：
+```css
+.demo-3 {
+    margin: 40px auto;
+    border-radius: 50%;
+    animation: jump 1s cubic-bezier(0.41, -0.04, 0.93, 0.29) infinite alternate;
+}
+```
+有一些常规的cubic-bezier(x, x, x, x)值，我们直接用linear ease ease-in ease-out ease-in-out这些关键字来表示，这些关键字也称之为预设值。
+就好比 我们用 black 关键字表示 #000000 这种颜色一样。
+
+
+#### 非线性函数 - step
+时间函数的非线性函数一般用step，参考上面的讲解。
+
+
+#### 预设值linear ease ..
+参考上面《线性函数-三次贝塞尔函数bezier》
 
 
 
