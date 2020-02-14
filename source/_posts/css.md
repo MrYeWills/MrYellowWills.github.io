@@ -239,6 +239,7 @@ E:\css-mastery-16-master\chapter-04\04-33-experimenting-with-shadows.html
 
 ### 平移和动画
 可查看[GitHub上的demo](https://github.com/YeWills/css_demo)
+或查看[GitHub上的demo](https://github.com/YeWills/css_demo/tree/master/chapter-10)
 
  ### 四种居中方式
  #### flex居中
@@ -918,6 +919,9 @@ base64来代替png图片，利于减少http请求，提高性能，但是图片�
 #### base64用于小图片
 #### 通过打包生成base64
 #### base64的使用减少了http请求
+
+### css动画相关知识
+参考《css知识点汇 – css动画》
 
 ## css黑知识
 

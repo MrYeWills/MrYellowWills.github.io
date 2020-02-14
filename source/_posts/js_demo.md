@@ -152,7 +152,10 @@ isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)
 ## 动画demo 及 css动画知识点
 ### 会动的兔八公 与 step
 #### demo与效果
+[查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/rabbit.html)
+[demo地址](https://github.com/YeWills/canvas-demo/tree/master/pages/multy/css-animation/animation-master/html/rabbit.html)
 ![](/image/js_demo/rabbit.jpg)
+
 #### step是针对keyframes内定义的每个百分比的
 下面有方式一和方式二，效果是一样的，
 step是针对keyframes内定义的每个百分比的，在方式一中keyframes内只定义了一个100%，
@@ -226,17 +229,22 @@ animation的线性时间函数都是三次贝塞尔函数(cubic-bezier)：
 ```
 有一些常规的cubic-bezier(x, x, x, x)值，我们直接用linear ease ease-in ease-out ease-in-out这些关键字来表示，这些关键字也称之为预设值。
 就好比 我们用 black 关键字表示 #000000 这种颜色一样。
-
-
 #### 非线性函数 - step
 时间函数的非线性函数一般用step，参考上面的讲解。
-
-
 #### 预设值linear ease ..
 参考上面《线性函数-三次贝塞尔函数bezier》
-
-
-
+#### 时间函数的控制台调试
+谷歌浏览器提供了强大的css时间函数调试功能，参考[一位朋友的博客 - CSS3 动画](https://beat-the-buzzer.github.io/2019/11/27/c3-animation/)
+#### 动画监听事件animationstart等等
+[demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/rabbit.html)
+用这个的时候，注意以下兼容问题。
+```js
+$loading.addEventListener('animationstart',runstart);
+$loading.addEventListener('webkitAnimationStart',runstart);
+$loading.addEventListener('animationend',runend)
+$loading.addEventListener('animationiteration',intertation)
+```
+ 
 ## 其他demo
 ### 图片预加载
 #### 方案设计
