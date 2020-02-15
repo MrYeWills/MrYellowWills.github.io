@@ -75,6 +75,54 @@ offsetTop是非常棒的方法，使用方法自行网上查询。虽然上面�
 ### 有趣的动画监听事件transitionend
 本demo为了效果立体，设置了transitionend，有兴趣可参看demo
 
+## 图片跑马灯(轮播)
+### demo与效果
+[查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/marquee-modify.html)
+[查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/marquee-modify.html)
+
+这里还有一个[jquery版本的demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/marquee.html)，方便理解，可以看看。
+基本原理同上面的《全屏切换效果(轮播)》
+### 最后位置重复添加第一张图片
+如果不在最后的位置添加第一张图片，会有一个留白的效果。
+原理在于，当transform: translateX(-1800px);时，此时页面将显示那张重复放置的第一张图片，
+因为animation的动画在translateX(-1800px)时完成，设置的infinite特性，将瞬间0秒回到初始位置，也就是页面只有第一张图片的时候，此时就不会出现空白页，且图片循环播放流畅。
+```html
+    <div class="marquee">
+        <div class="content">
+            <div class="list"><img src="./../css/i/timg.jpg" alt=""></div>
+            <div class="list"><img src="./../css/i/timg1.jpg" alt=""></div>
+            <div class="list"><img src="./../css/i/timg2.jpg" alt=""></div>
+            <!-- 重复放置第一张图片 -->
+            <div class="list"><img src="./../css/i/timg.jpg" alt=""></div>
+        </div>
+    </div>
+```
+```css
+.marquee, .content, .list{
+  height: 400px;
+}
+.marquee, .list{
+  width: 600px;
+}
+.content{
+  /* width 600px * 3 */
+  width: 1800px;
+  animation: run 9s linear infinite;
+}
+@keyframes run{
+  100%{
+    transform: translateX(-1800px);
+  }
+}
+```
+### 页面留白问题分析与解决
+参考上面《最后位置重复添加第一张图片》
+### 使用animation的infinite特性保持循环流畅
+参考上面《最后位置重复添加第一张图片》
+
+### 怎么做左到右的循环播放
+上面的例子是右到左的轮播，因此在最后的位置添加了第一张图片，如果需要左到右轮播，则在最开始的位置添加最后一张图片。
+
 ## JS实现京东无延迟菜单效果
 ### demo与效果
 #### 介绍
@@ -204,6 +252,89 @@ loading为什么定义成线性时间函数时，会出现晕眼的情况，是�
 
 #### step更适合动画片相关场景
 参考上面《会动的兔八公 与 step》讲解。
+
+
+### loading效果 - step
+#### demo与效果
+[查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/loading.html)
+[demo地址](https://github.com/YeWills/canvas-demo/tree/master/pages/multy/css-animation/animation-master/html/loading.html)
+#### step时间函数的经典应用
+看demo的效果就知道，loading图片是一个12个刻度的圆，为了不晕图或者混乱，有一种递进的效果，就必须每走一个step，每个刻度踩在上一个刻度的上面，这样就不晕眼，因此，设置了step(12)，每个step旋转30度；
+而原图的每个刻度之间刚好也是30度；
+因此每走一个step，刚好完全踩在上一个刻度上。
+```css
+ .loading {
+        width: 108px;
+        height: 108px;
+        background: url(../css/i/loading.png) no-repeat;
+        border-radius: 50%;
+        animation: round 1s steps(12) 3;
+    }
+    @keyframes round {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+```
+
+### 红包雨
+#### demo与效果
+[查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/rain.html)
+[demo地址](https://github.com/YeWills/canvas-demo/tree/master/pages/multy/css-animation/animation-master/html/rain.html)
+#### 核心代码
+```css
+.content .yudi {
+  position: absolute;
+  opacity: 0;
+  -webkit-animation: drops 1.2s cubic-bezier(0.54, 0, 0.18, 0.34) infinite;
+          animation: drops 1.2s cubic-bezier(0.54, 0, 0.18, 0.34) infinite;
+  width: 60px;
+  height: 60px;
+  background: url(./i/hongbao.png) no-repeat;
+    /* 因为背景图片尺寸太大，背景图片宽度自适应，高度设置为60px */
+  background-size: auto 60px;
+}
+
+@-webkit-keyframes drops {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    /* 可以设置translateY为0，设置为-10px有立体效果 */
+    -webkit-transform: translate3d(10px, 100vh, -10px);
+            transform: translate3d(10px, 100vh, -10px);
+  }
+}
+```
+```js
+ let $content = $('.content');
+    let initNumber = 0;
+    for(let i=0;i<30;i++){
+        let lefts =Math.floor(Math.random()*5+2);
+        let delay = Math.floor(Math.random()*50+2)
+        initNumber+= lefts;
+        let $div = $('<div/>').addClass('yudi').css({
+            "left":`${initNumber}%`,
+            "top":`${lefts}%`,
+            "animation-delay":`${delay/10}s`
+        });
+        $content.append($div);
+    }
+```
+#### animation-delay的应用
+见上面代码
+#### position: relative 与 absolute的方案;
+见源码
+#### 彩蛋 - background-size
+见上面代码
+
 
 ### animation的时间函数
 #### 介绍
@@ -409,3 +540,4 @@ if(scrollHeight+screenHeight>sideHeight){
 			}
 ```
 ![](/image/js_demo/sprite.jpg)
+
