@@ -237,6 +237,34 @@
             </figure>
 <h3 id="高阶组件显示名"><a href="#高阶组件显示名" class="headerlink" title="高阶组件显示名"></a>高阶组件显示名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const defaultValueHoc = (Comp) =&gt; &#123;</span><br><span class="line">  return class Wrap extends Component &#123;</span><br><span class="line">      static displayName = `NewComponent($&#123;Comp.displayName || Comp.name || &apos;Component&apos;&#125;)`;</span><br><span class="line"></span><br><span class="line">      render() &#123;</span><br><span class="line">        return &lt;Comp &#123;...this.props&#125; /&gt;;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="hoc-与-装饰器-配合时报错问题"><a href="#hoc-与-装饰器-配合时报错问题" class="headerlink" title="hoc 与 装饰器 配合时报错问题"></a>hoc 与 装饰器 配合时报错问题</h3><p>hoc与装饰器一起使用的时候，请一定要加上<code>export default</code>，不然会报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@defaultValueHoc</span><br><span class="line">export default class Login extends Component &#123;</span><br><span class="line"> ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="hooks"><a href="#hooks" class="headerlink" title="hooks"></a>hooks</h2><figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h1.png" title="undefined" data-fancybox="images"><img src="/image/react/h1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h2.png" title="undefined" data-fancybox="images"><img src="/image/react/h2.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h3.png" title="undefined" data-fancybox="images"><img src="/image/react/h3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h4.png" title="undefined" data-fancybox="images"><img src="/image/react/h4.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h5.png" title="undefined" data-fancybox="images"><img src="/image/react/h5.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h6.png" title="undefined" data-fancybox="images"><img src="/image/react/h6.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="React" 笔记="" href="/image/react/h7.png" title="undefined" data-fancybox="images"><img src="/image/react/h7.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
 
         </div>
         
@@ -244,7 +272,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-07-17T17:26:03.000Z" itemprop="dateUpdated">2019-07-18 01:26:03</time>
+    Last updated: <time datetime="2020-02-21T08:58:48.000Z" itemprop="dateUpdated">2020-02-21 16:58:48</time>
 </span><br>
 
 
@@ -339,7 +367,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#高阶组件"><span class="post-toc-number">1.</span> <span class="post-toc-text">高阶组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用代理hoc就够了"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用代理hoc就够了</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hoc定义"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">hoc定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高阶函数定义"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">高阶函数定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hoc定义-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">hoc定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理hoc作用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">代理hoc作用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#操纵prop"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">操纵prop</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问ref"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">访问ref</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#抽取状态"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">抽取状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#包裹组件"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">包裹组件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#继承hoc作用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">继承hoc作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理hoc与继承hoc比较"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">代理hoc与继承hoc比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#高阶组件显示名"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">高阶组件显示名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hoc-与-装饰器-配合时报错问题"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">hoc 与 装饰器 配合时报错问题</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#高阶组件"><span class="post-toc-number">1.</span> <span class="post-toc-text">高阶组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用代理hoc就够了"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用代理hoc就够了</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hoc定义"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">hoc定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高阶函数定义"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">高阶函数定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hoc定义-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">hoc定义</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理hoc作用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">代理hoc作用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#操纵prop"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">操纵prop</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问ref"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">访问ref</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#抽取状态"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">抽取状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#包裹组件"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">包裹组件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#继承hoc作用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">继承hoc作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理hoc与继承hoc比较"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">代理hoc与继承hoc比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#高阶组件显示名"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">高阶组件显示名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hoc-与-装饰器-配合时报错问题"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">hoc 与 装饰器 配合时报错问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hooks"><span class="post-toc-number">2.</span> <span class="post-toc-text">hooks</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </div></div></aside>
