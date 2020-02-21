@@ -422,7 +422,7 @@ newCount()//NaN
 //错误写法
 function foo(){
     var arr = [];
-    for(var i = 0; i < 2; i++){
+    for(let i = 0; i < 2; i++){
         arr[i] = function(){
             return i;
         }
@@ -432,6 +432,19 @@ function foo(){
 var bar = foo();
 console.log(bar[0]());//2    
 ```
+为什么是2？
+如下当for循环中定义的变量i，不光是for循环体内的变量，还是foo函数体内的块级变量，当for循环执行完后，会将函数体内的变量i赋值为2，此时调用函数，肯定打印为2.
+for循环体内：
+```js
+ var arr = [];
+for(let i = 0; i < 2; i++){}
+function test(){
+    console.log(i)
+}
+console.log(i)//2
+test();//2
+```
+
 正确写法：
 ```
 //正确写法
