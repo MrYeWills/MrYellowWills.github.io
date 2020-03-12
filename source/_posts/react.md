@@ -180,6 +180,7 @@ export default class Login extends Component {
 ```
 
 ## hooks
+### 介绍
 ![](/image/react/h1.png)
 ![](/image/react/h2.png)
 ![](/image/react/h3.png)
@@ -187,3 +188,10 @@ export default class Login extends Component {
 ![](/image/react/h5.png)
 ![](/image/react/h6.png)
 ![](/image/react/h7.png)
+### 其他
+#### usestate
+usestate类似 useeffect，只在特定的时候运行callback参数；
+类似的usestate也只会在组件装载时初始一下state，以后每次update时不再初始state；
+因此以后每次update，无论给usestate传了什么初始值，都不会改变再次改变当初设置的state；
+而你在return里面如果使用了props的值，每次render时，都会执行整个function，
+每次return的dom都会响应最新的props。
