@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>React hooks 笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="react hooks">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>React hooks 笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">React hooks 笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-11T02:08:51.000Z" itemprop="datePublished" class="page-time">
+  2020-04-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-react_hooks" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">React hooks 笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-11 10:08:51" datetime="2020-04-11T02:08:51.000Z" itemprop="datePublished">2020-04-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>以下内容很多是阅读react官网，做的读书笔记。</p>
+<h2 id="遗憾的是hooks并没增加新的能力"><a href="#遗憾的是hooks并没增加新的能力" class="headerlink" title="遗憾的是hooks并没增加新的能力"></a>遗憾的是hooks并没增加新的能力</h2><p>hooks相比之前的react，并没有增加新的功能，只是针对以前的功能的重新封装和优化，它没有增加新的功能，比如没有增加redux功能，更不可能替代redux，因此在项目中建议class与hooks一起写，而不是一味用hooks，至少当前阶段是这样。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="先在不复杂的新组件使用"><a href="#先在不复杂的新组件使用" class="headerlink" title="先在不复杂的新组件使用"></a>先在不复杂的新组件使用</h3><p>不建议重写原有的组件，开始“用 Hook 的方式思考”前，需要做一些思维上的转变。按照我们的经验，最好先在新的不复杂的组件中尝试使用 Hook，并确保团队中的每一位成员都能适应。</p>
+<h3 id="不用class就可用state-存在的意义"><a href="#不用class就可用state-存在的意义" class="headerlink" title="不用class就可用state -存在的意义"></a>不用class就可用state -存在的意义</h3><p>以前，如果组件有state就一定要使用class，hooks解决了这点，因此使用纯函数也可以拥有state变成了现实。这是hooks最大的变动。</p>
+<h3 id="靠Hook调用顺序对应state"><a href="#靠Hook调用顺序对应state" class="headerlink" title="靠Hook调用顺序对应state"></a>靠Hook调用顺序对应state</h3><p>那么 React 怎么知道哪个 state 对应哪个 useState？答案是 React 靠的是 Hook 调用的顺序。<br>react不是神，它是通过hook的顺序将不同的变量名对应到当时定义它的state中。<br>详细<a href="https://zh-hans.reactjs.org/docs/hooks-rules.html#explanation" target="_blank" rel="noopener">参考官网</a></p>
+<h3 id="hook的位置顺序至关重要"><a href="#hook的位置顺序至关重要" class="headerlink" title="hook的位置顺序至关重要"></a>hook的位置顺序至关重要</h3><p>参考上面的 《靠Hook调用顺序对应state》</p>
+<h3 id="任何时候保持顶层使用hook"><a href="#任何时候保持顶层使用hook" class="headerlink" title="任何时候保持顶层使用hook"></a>任何时候保持顶层使用hook</h3><p>无论是在函数组件内还是<strong>自定义的hook函数</strong>内，请都保证在顶层使用hook，原因见《靠Hook调用顺序对应state》</p>
+<h3 id="值相同，第二次后就不会再次render"><a href="#值相同，第二次后就不会再次render" class="headerlink" title="值相同，第二次后就不会再次render"></a>值相同，第二次后就不会再次render</h3><p>这是自己试验出来的，无论是usestate还是useReducer都有这个现象，当state值相同时，渲染两次之后，不再渲染，貌似react自己做了优化？</p>
+<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><h3 id="是三合一的API"><a href="#是三合一的API" class="headerlink" title="是三合一的API"></a>是三合一的API</h3><p>useEffect 给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API。</p>
+<h3 id="运行时机"><a href="#运行时机" class="headerlink" title="运行时机"></a>运行时机</h3><p>当你调用 useEffect 时，就是在告诉 React 在完成对 DOM 的更改后运行你的“副作用”函数。由于副作用函数是在组件内声明的，所以它们可以访问到组件的 props 和 state。默认情况下，React 会在每次渲染后调用副作用函数 —— 包括第一次渲染的时候。</p>
+<h3 id="反模式的设计"><a href="#反模式的设计" class="headerlink" title="反模式的设计"></a>反模式的设计</h3><p>我们给useEffect每次传递的是一个崭新的函数，这样做的目的可能是这个崭新的函数每次可以获得组件内最新的上下文；官网对此做的解释如下，【每次我们重新渲染，都会生成新的 effect，替换掉之前的。某种意义上讲，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。】<a href="https://zh-hans.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener">详见官网</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">   document.title = `You clicked $&#123;count&#125; times`;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><h3 id="只会在组件的初始渲染中调用–使用函数设置初始值"><a href="#只会在组件的初始渲染中调用–使用函数设置初始值" class="headerlink" title="只会在组件的初始渲染中调用–使用函数设置初始值"></a>只会在组件的初始渲染中调用–使用函数设置初始值</h3><p>initialState 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> initialState = someExpensiveComputation(props);</span><br><span class="line">  <span class="keyword">return</span> initialState;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h2><h3 id="监听到变化后会渲染当前组建"><a href="#监听到变化后会渲染当前组建" class="headerlink" title="监听到变化后会渲染当前组建"></a>监听到变化后会渲染当前组建</h3><h3 id="需要配合hemeContext-Provider使用"><a href="#需要配合hemeContext-Provider使用" class="headerlink" title="需要配合hemeContext.Provider使用"></a>需要配合hemeContext.Provider使用</h3><h2 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h2><h3 id="惰性初始化"><a href="#惰性初始化" class="headerlink" title="惰性初始化"></a>惰性初始化</h3><p>运用场景：第一次计算state的逻辑复杂，以后不复杂，可以将第一次的计算逻辑剥离出来；<br>好处除了上面说的，还有就是逻辑剥离出来后，代码更加清晰，维护容易；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">initialCount</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: initialCount&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'increment'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'decrement'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'reset'</span>:</span><br><span class="line">      <span class="keyword">return</span> init(action.payload);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialCount, init);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;state.count&#125;</span><br><span class="line">      &lt;button</span><br><span class="line">        onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'reset'</span>, <span class="attr">payload</span>: initialCount&#125;)&#125;&gt;</span><br><span class="line">        Reset</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;type: 'decrement'&#125;)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'increment'</span>&#125;)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="场景-深层子层改变顶层state-reducer-context"><a href="#场景-深层子层改变顶层state-reducer-context" class="headerlink" title="场景 - 深层子层改变顶层state (reducer/context)"></a>场景 - 深层子层改变顶层state (reducer/context)</h3><p>以前我们是将顶层setState的函数传给子层，现在我们建议使用<strong>context与reducer</strong>的方式，<br>参看<a href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down" target="_blank" rel="noopener">《如何避免向下传递回调》</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TodosDispatch = React.createContext(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TodosApp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 提示：`dispatch` 不会在重新渲染之间变化</span></span><br><span class="line">  <span class="keyword">const</span> [todos, dispatch] = useReducer(todosReducer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;TodosDispatch.Provider value=&#123;dispatch&#125;&gt;</span><br><span class="line">      &lt;DeepTree todos=&#123;todos&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/TodosDispatch.Provider&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function DeepChild(props) &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 如果我们想要执行一个 action，我们可以从 context 中获取 dispatch。</span></span><br><span class="line"><span class="regexp">  const dispatch = useContext(TodosDispatch);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  function handleClick() &#123;</span></span><br><span class="line"><span class="regexp">    dispatch(&#123; type: 'add', text: 'hello' &#125;);</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;handleClick&#125;&gt;Add todo&lt;/</span>button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>useCallback的本质作用是将每次创建的函数都指向同一个引用对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> resultCallback = useCallback(fn, deps); <span class="comment">//resultCallback 可以认为就是fn</span></span><br><span class="line"><span class="keyword">const</span> resultMemo = useMemo(fn, deps);<span class="comment">//resultMemo 就是 fn的执行后的结果</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.teaspect.com/detail/5756" target="_blank" rel="noopener">更多介绍</a></p>
+<h3 id="可与React-memo或shouldComponentUpdate结合使用"><a href="#可与React-memo或shouldComponentUpdate结合使用" class="headerlink" title="可与React.memo或shouldComponentUpdate结合使用"></a>可与React.memo或shouldComponentUpdate结合使用</h3><p>useCallback并非一定要与以上一起使用，但与上面使用可体现它的威力，如果有其他场景，也可试试。</p>
+<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>传统用法和详细介绍，<a href="https://blog.csdn.net/hjc256/article/details/102587037" target="_blank" rel="noopener">参考</a>；<br>除了传统用法，useRef另外一个好处在于用来保存值，修改它，不会造成重新渲染。</p>
+<h3 id="修改它不会造成组件重新渲染"><a href="#修改它不会造成组件重新渲染" class="headerlink" title="修改它不会造成组件重新渲染"></a>修改它不会造成组件重新渲染</h3><p><a href="https://blog.csdn.net/hjc256/article/details/102587037" target="_blank" rel="noopener">参考</a>；<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect, useMemo, useRef &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> doubleCount = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * count;</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timerID = useRef();</span><br><span class="line">  </span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    timerID.current = setInterval(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        setCount(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>); </span><br><span class="line">  &#125;, []);</span><br><span class="line">  </span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(count &gt; <span class="number">10</span>)&#123;</span><br><span class="line">          clearInterval(timerID.current);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;button ref=&#123;couterRef&#125; onClick=&#123;() =&gt; &#123;setCount(count + <span class="number">1</span>)&#125;&#125;&gt;Count: &#123;count&#125;, <span class="attr">double</span>: &#123;doubleCount&#125;&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a>useImperativeHandle</h2><p>与useRef、 forwardRef 一起使用，自定义暴露给父组件使用时的ref，也是比较有用的API，我觉得它的作用之一是将子组件的内部方法，很容易的传给父组件。，详细<a href="https://zh-hans.reactjs.org/docs/hooks-reference.html" target="_blank" rel="noopener">参考官网</a>。</p>
+<h2 id="useLayoutEffect"><a href="#useLayoutEffect" class="headerlink" title="useLayoutEffect"></a>useLayoutEffect</h2><p>用法同useEffect，只有在useEffect不满足情况下才使用，它的特点在于dom布局时同步触发，而不是渲染完成后触发，服务端不要使用此API。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-12T03:54:26.000Z" itemprop="dateUpdated">2020-04-12 11:54:26</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/04/11/react_hooks/" target="_blank" rel="external">https://yewills.github.io/2020/04/11/react_hooks/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-hooks/">react hooks</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/04/11/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/04/11/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/07/d3_basics/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">d3的三种模式 及 append、data、selectAll</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#遗憾的是hooks并没增加新的能力"><span class="post-toc-number">1.</span> <span class="post-toc-text">遗憾的是hooks并没增加新的能力</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先在不复杂的新组件使用"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">先在不复杂的新组件使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不用class就可用state-存在的意义"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">不用class就可用state -存在的意义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#靠Hook调用顺序对应state"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">靠Hook调用顺序对应state</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hook的位置顺序至关重要"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">hook的位置顺序至关重要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任何时候保持顶层使用hook"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">任何时候保持顶层使用hook</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#值相同，第二次后就不会再次render"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">值相同，第二次后就不会再次render</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useEffect"><span class="post-toc-number">3.</span> <span class="post-toc-text">useEffect</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#是三合一的API"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">是三合一的API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行时机"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">运行时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反模式的设计"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">反模式的设计</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useState"><span class="post-toc-number">4.</span> <span class="post-toc-text">useState</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#只会在组件的初始渲染中调用–使用函数设置初始值"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">只会在组件的初始渲染中调用–使用函数设置初始值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useContext"><span class="post-toc-number">5.</span> <span class="post-toc-text">useContext</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#监听到变化后会渲染当前组建"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">监听到变化后会渲染当前组建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需要配合hemeContext-Provider使用"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">需要配合hemeContext.Provider使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useReducer"><span class="post-toc-number">6.</span> <span class="post-toc-text">useReducer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#惰性初始化"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">惰性初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景-深层子层改变顶层state-reducer-context"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">场景 - 深层子层改变顶层state (reducer/context)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useCallback"><span class="post-toc-number">7.</span> <span class="post-toc-text">useCallback</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可与React-memo或shouldComponentUpdate结合使用"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">可与React.memo或shouldComponentUpdate结合使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useRef"><span class="post-toc-number">8.</span> <span class="post-toc-text">useRef</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍-1"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改它不会造成组件重新渲染"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">修改它不会造成组件重新渲染</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useImperativeHandle"><span class="post-toc-number">9.</span> <span class="post-toc-text">useImperativeHandle</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useLayoutEffect"><span class="post-toc-number">10.</span> <span class="post-toc-text">useLayoutEffect</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/04/11/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/04/11/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aQW7DMAwEwPz/0ynQU4vC8pJSi1oan4Igjjw+EOJSr1d8vT+vq++/XuPvr+69+mbxhYGB8VjGe3iNGfkDzcNu/gEDA+MAxrjIzpTCXrHOnw0DAwOj+iiryi4GBgbGfMH9edeqxhUDAwNjpolNSme1NOfrLuvFMTAwHsioNqJ/+fkX5xsYGBgPYfSKYDVWG2808/J6+VQYGBhbM8bt6Exly0cL+Qb05mVhYGBsyhhHZr2DX3mZTlaPXjQGBsYxjGocPzPUnG+nMTAwMJLSmTSf1d/nW8xvnzEwMI5h9A5M9A5YVOO5m6KPgYFxAKP30DMRf35v9CIwMDAOYOTbu2rcn7esvXECBgbGOYy1W8B8zFDdDl7+DwYGxtaMvF1MYvpqWNYL9TAwMDB6IX51qNnbJt6UbAwMjAMYSUxfHQBUY7jeEBQDA+MERn4Aq7dY8jqq0V4e5GFgYDydMXNgIm9Wk1/mv48msRgYGBsx8uCs2ujmL6J6aOMmCsTAwNiOUT1UsaoE91rlZtCGgYGxBaPaOibBXG/72AvpMDAw9mZUd5F5AR3f2yvH5dANAwNjC0ZvoFiN+6sDhvLgAQMDY2tGfs03tPNrFbJDDAyM7RjVIpsPCZLxQO8IWnmygYGBsQWjF5w1lwxWLzfGGBgYGNOkpCj3ml4MDAyMXtCfbAqTdfO2GQMD4wRGHtZXm+Eqqfo6MDAwTmD0wvp8I5gf6ageI1sw38DAwPjvjA8pun+t9nMZ7wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
