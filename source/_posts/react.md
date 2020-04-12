@@ -195,3 +195,66 @@ usestate类似 useeffect，只在特定的时候运行callback参数；
 因此以后每次update，无论给usestate传了什么初始值，都不会改变再次改变当初设置的state；
 而你在return里面如果使用了props的值，每次render时，都会执行整个function，
 每次return的dom都会响应最新的props。
+
+## 其他技术
+### Render Props 代替 HOC
+关于 render prop 一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数高阶组件 (HOC)。
+为了避免反模式，可以定义为：
+```js
+class MouseTracker extends React.Component {
+  // 定义为实例方法，`this.renderTheCat`始终
+  // 当我们在渲染中使用它时，它指的是相同的函数
+  renderTheCat(mouse) {
+    return <Cat mouse={mouse} />;
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <Mouse render={this.renderTheCat} />
+      </div>
+    );
+  }
+}
+```
+### 类似 Render Props 使用场景之一
+#### 定义
+类似 Render Props 是我自己起的名，因为其思想跟 Render Props 极其相似。
+Render Props是定义一个函数， 这里的类似 Render Props 不是定义一个函数，如下，是定义一个组件好的组件。
+
+#### demo
+详细参考[使用 Context 之前的考虑](https://zh-hans.reactjs.org/docs/context.html),
+如下，Page是最外层父层 ，层级关系如下： Page-》PageLayout-》NavigationBar-》Link ，Link是最内层，最子层；如果Page要给Link传递参数，就必须给中间的每个组件设置相同的props，非常麻烦。还有一个麻烦是，如果后期Link还需要Page的更多参数，那么又要给每个组件加props，麻烦得狠。
+```jsx
+<Page user={user} avatarSize={avatarSize} />
+// ... 渲染出 ...
+<PageLayout user={user} avatarSize={avatarSize} />
+// ... 渲染出 ...
+<NavigationBar user={user} avatarSize={avatarSize} />
+// ... 渲染出 ...
+<Link href={user.permalink}>
+  <Avatar user={user} size={avatarSize} />
+</Link>
+```
+为了解决上面的问题，因为Link的数据只与Page相关，那么在Page上将Link写成一个函数，在Page组件内将Link组装好，最后将Link自身传给最内层渲染即可，减少了传props的个数，也容易维护。使用类似 Render props的形式：
+```jsx
+function Page(props) {
+  const user = props.user;
+  const userLink = (
+    <Link href={user.permalink}>
+      <Avatar user={user} size={props.avatarSize} />
+    </Link>
+  );
+  return <PageLayout userLink={userLink} />;
+}
+
+// 现在，我们有这样的组件：
+<Page user={user} avatarSize={avatarSize} />
+// ... 渲染出 ...
+<PageLayout userLink={...} />
+// ... 渲染出 ...
+<NavigationBar userLink={...} />
+// ... 渲染出 ...
+{props.userLink}
+```
