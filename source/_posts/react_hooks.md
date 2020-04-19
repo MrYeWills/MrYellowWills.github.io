@@ -25,6 +25,19 @@ react不是神，它是通过hook的顺序将不同的变量名对应到当时�
 无论是在函数组件内还是**自定义的hook函数**内，请都保证在顶层使用hook，原因见《靠Hook调用顺序对应state》
 ### 值相同，第二次后就不会再次render
 这是自己试验出来的，无论是usestate还是useReducer都有这个现象，当state值相同时，渲染两次之后，不再渲染，貌似react自己做了优化？
+### 由useRef/createRef的区别 想到的
+#### 一个用在function，一个用在class
+详细参考[useRef 与 createRef 的区别](https://juejin.im/post/5e5c5f6a6fb9a07cad3ba383)
+useRef用在function组件内，后者用在class组件内，这是他们表现出来的主要区别。
+useRef是hook它有这个能力，在function组件内，只在初始的时候运行一次；
+而creatRef不是hook没有这个能力，是一个普通函数，在function组件内时，会每次都执行，因此不能用于function组件，
+只用于class组件，并在class组件的constructor或didmount生命周期内定义。
+#### 一个定义在function内部，一个定义在装卸载时
+参考上面
+#### 普通函数在hook组件内会被每次执行
+参考上面
+### hook函数基本是只执行一次
+参考上面《由useRef/createRef的区别 想到的》，hook函数的最大特征之一，有别于普通函数，hook函数在函数组件内，不会被多次执行。
 
 ## useEffect
 ### 是三合一的API
@@ -53,6 +66,31 @@ const [state, setState] = useState(() => {
 
 
 ## useReducer
+### useReducer 与 redux 的关系
+#### 经典demo
+如下demo， 
+这里的dispatch就是redux的dispatch API；
+这里的todos就相当于redux的全局的store 的state；
+这里的Provider与context结构 就是 redux 结合react的 react-connect的一套；
+所以useReducer在思想上深度模仿了redux，很像一个迷你的redux。
+```js
+const TodosDispatch = React.createContext(null);
+
+function TodosApp() {
+  // 提示：`dispatch` 不会在重新渲染之间变化
+  const [todos, dispatch] = useReducer(todosReducer);
+
+  return (
+    <TodosDispatch.Provider value={dispatch}>
+      <DeepTree todos={todos} />
+    </TodosDispatch.Provider>
+  );
+}
+```
+#### 原理上借鉴了redux
+参考上面《经典demo》
+#### 就是一个迷你的redux
+参考上面《经典demo》
 ### 惰性初始化
 运用场景：第一次计算state的逻辑复杂，以后不复杂，可以将第一次的计算逻辑剥离出来；
 好处除了上面说的，还有就是逻辑剥离出来后，代码更加清晰，维护容易；
@@ -122,6 +160,8 @@ function DeepChild(props) {
   );
 }
 ```
+### 场景 - 如何避免向下传递回调
+参考上面《场景 - 深层子层改变顶层state (reducer/context)》
 
 ## useCallback
 ### 介绍
@@ -138,6 +178,13 @@ useCallback并非一定要与以上一起使用，但与上面使用可体现它
 ### 介绍
 传统用法和详细介绍，[参考](https://blog.csdn.net/hjc256/article/details/102587037)；
 除了传统用法，useRef另外一个好处在于用来保存值，修改它，不会造成重新渲染。
+### 给useRef设置一个值
+刚开始不太理解设置一个值是什么意思，原来就是给current设置一个初始值。
+[参考 如何惰性创建昂贵的对象？](https://react.docschina.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily)；
+```js
+  const ref = useRef(9999);
+  console.log(ref)//{current: 9999}
+```
 ### 修改它不会造成组件重新渲染
 [参考](https://blog.csdn.net/hjc256/article/details/102587037)；
 ```jsx
@@ -177,3 +224,154 @@ export default function App(props){
 
 ## useLayoutEffect
 用法同useEffect，只有在useEffect不满足情况下才使用，它的特点在于dom布局时同步触发，而不是渲染完成后触发，服务端不要使用此API。
+
+## FAQ
+### 我应该使用单个还是多个 state 变量？
+我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。
+说的是，一个useState应该只改变 这个动作 改动的state；
+比如一个是改变postion的，一个是改变宽高的，这两个应该写在不同state上，
+当然，没有唯一的标准，靠自己平衡，分开与不分开，考虑的是后期维护性扩展和可读性，如果业务越来越复杂，应该碎片化state；
+如果业务简单，是否分开可能作用不大，看个人的编程习惯。
+详细[查看官网 我应该使用单个还是多个 state 变量？](https://react.docschina.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down)
+
+### 我可以只在更新时运行 effect 吗？(componentDidupdate)
+官网上的这个问题，讨论的就是如何使用useEffect 来模拟componentDidupdate，官网推荐方法是，使用Ref。
+
+### 如何获取上一轮的 props 或 state？
+目前，你可以 通过 ref 来手动实现.详细参看官网。
+也许你说，可以通过useReducer
+
+### ref 并非一定要跟子组件一起用，一定要嵌入子组件---ref大有可为，是新时代的实例对象和this不变指针。
+比如 FAq [为什么我会在我的函数中看到陈旧的 props 和 state ？ ](https://react.docschina.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down)也说到了ref的用处。
+
+### 我该如何实现 getDerivedStateFromProps?
+[参考官网](https://react.docschina.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops)，模拟getDerivedStateFromProps的关键在于获取上一次的props和state。官网的例子设置一个不用于渲染的state存储prestate。这里的**特别之处在于：**一般认为state用于渲染组件的，不渲染组件时不要用state。
+这里官网都推荐了，所以，凡事无固定，平衡就好。
+
+另外一种方式也可以通过 ref 来获取上一轮的props和state，也可以来模拟 getDerivedStateFromProps，参考上面的《如何获取上一轮的 props 或 state？》
+
+### 为什么我会在我的函数中看到陈旧的 props 和 state ？--内部函数作用域问题
+```js
+function Example() {
+  const [count, setCount] = useState(0);
+
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert('You clicked on: ' + count);
+    }, 3000);
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+      <button onClick={handleAlertClick}>
+        Show alert
+      </button>
+    </div>
+  );
+}
+```
+
+### 有类似 forceUpdate 的东西吗？
+使用计时器结合 useState等来做，值得注意的是，**必须要用计时器，因为useState相同的值，两次后，都不会更新，这是hooks于setState的根本区别**。
+```
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+  function handleClick() {
+    forceUpdate();
+  }
+```
+### 我该如何测量 DOM 节点？-- callback ref 的使用
+在这个案例中，我们没有选择使用 useRef，因为当 ref 是一个对象时它并不会把当前 ref 的值的 变化 通知到我们。使用 callback ref 可以确保 即便子组件延迟显示被测量的节点 。
+值得注意的是，这里的callback ref其实就是老的class组件内使用的callback ref，没有区别。并不是hooks独创。
+如果你可以定义一个实例唯一的函数，在下面代码中也可以不使用useCallback。
+```
+  function MeasureExample() {
+  const [height, setHeight] = useState(0);
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
+
+  return (
+    <>
+      <h1 ref={measuredRef}>Hello, world</h1>
+      <h2>The above header is {Math.round(height)}px tall</h2>
+    </>
+  );
+}
+```
+
+### 形成闭包时，如何拿到最新的state
+[详细参考官网 - 如果我的 effect 的依赖频繁变化，我该怎么办？](https://react.docschina.org/docs/hooks-faq.html)
+可通过函数式的useState：
+```js
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(c => c + 1); // ✅ 在这不依赖于外部的 `count` 变量
+    }, 1000);
+    return () => clearInterval(id);
+  }, []); // ✅ 我们的 effect 不适用组件作用域中的任何变量
+
+  return <h1>{count}</h1>;
+```
+
+
+
+## 自己的FAQ
+### 获取pre state和props的两种方式
+#### useState
+#### ref
+### hooks 与 setState的渲染的最大区别之一
+相同的值，两次后，将不再渲染，[查看官网--有类似 forceUpdate 的东西吗？](https://react.docschina.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops)
+### 如何给父组件暴露子组件的方法或自定义方法
+通过  useImperativeHandle Hook 。
+### callback ref 与 useRef 的区别
+#### 区别
+参考《我该如何测量 DOM 节点？》，要说的是：
+- callback ref其实就是class组件以前使用的 函数 ref，并没有区别；
+- useRef 其实就是以前class组件内的，给ref传一个字符串；
+二者的区别在于 前者可实时获取ref组件最新内容，后者不行。
+也可以这样描述，callback形式的ref要比字符串形式的ref更能感知dom的信息，保证每次 didmount或didupdate前获得最新的dom。[参考官网 - 回调 Refs](https://react.docschina.org/docs/refs-and-the-dom.html#callback-refs)
+#### 可以配合usecallback使用
+ref其实跟class版本的react使用一样，可以设定一个函数，在class组件中，这个函数通常是组件内部函数，通过this指向，属于实例范畴，因此升级到hooks，就是用usecallback来创建一个恒定不变的方法类似实例方法。
+如果你有其他创建恒定函数的方式，也可以不用usecallback。
+### ref 代替原来的 this
+在官方文档中，多次提到了，如果要使用原来class组件的this，就使用ref代替；
+
+### 函数式的的useState的妙用
+#### 不依赖外层，通过参数就可拿到最新的state
+参考《形成闭包时，如何拿到最新的state》
+#### 减少计算
+[如何惰性创建昂贵的对象？](https://react.docschina.org/docs/hooks-faq.html)
+```js
+//不推荐
+function Table(props) {
+  // ⚠️ createRows() 每次渲染都会被调用
+  const [rows, setRows] = useState(createRows(props.count));
+  // ...
+}
+```
+```js
+//推荐
+function Table(props) {
+  // ✅ createRows() 只会被调用一次
+  const [rows, setRows] = useState(() => createRows(props.count));
+  // ...
+}
+```
+
+## render prop 是一种关键技术
+render prop 的介绍看[官网](https://react.docschina.org/docs/render-props.html)，或者看另外一篇博客《React 笔记 - 其他技术 -- Render Props 代替 HOC 》。
+据官网介绍，hooks的出现与 render prop的运用有很大关系[参考---Hook 使用了哪些现有技术？](https://react.docschina.org/docs/hooks-faq.html#what-is-the-prior-art-for-hooks).
+因此在react开发中，无论是hooks还是class组件，要注重这种思想的运用。
+
+

@@ -7,6 +7,132 @@ categories:
 series: 前端框架
 ---
 
+## 基础知识
+### <Chat /> 之类的 React 元素本质就是对象（object）
+[参考官网](https://react.docschina.org/docs/composition-vs-inheritance.html)
+`<Contacts /> 和 <Chat /> `之类的 React 元素本质就是对象（object）
+```jsx
+function SplitPane(props) {
+  return (
+    <div className="SplitPane">
+      <div className="SplitPane-left">
+        {props.left}
+      </div>
+      <div className="SplitPane-right">
+        {props.right}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <SplitPane
+      left={
+        <Contacts />
+      }
+      right={
+        <Chat />
+      } />
+  );
+}
+```
+### 什么是 React 元素
+#### 介绍
+如上《`<Chat /> `之类的 React 元素本质就是对象（object）》` <Chat\> `这些就是React元素。
+注意 Chat 是字符串，不是React元素， 带上小书括号的` <Chat\> `才是React元素。
+#### React元素就是object
+如上《`<Chat /> `之类的 React 元素本质就是对象（object）》
+
+### Context.Provider的更新与consumer组件渲染问题
+[参考官网Context.Provider](https://react.docschina.org/docs/context.html#contextprovider)。
+当 Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 shouldComponentUpdate 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
+### Context.Consumer
+Context.Consumer是一种**child function 模式**，它类似一个context闭包，它会给它的child function 注入所有的context state；
+并且会在底层 执行 child function。
+```jsx
+<MyContext.Consumer>
+  {value => /* 基于 context 值进行渲染*/}
+</MyContext.Consumer>
+```
+```jsx
+<ThemeContext.Consumer>
+      {({theme, toggleTheme}) => (
+        <button          onClick={toggleTheme}
+          style={{backgroundColor: theme.background}}>
+
+          Toggle Theme
+        </button>
+      )}
+    </ThemeContext.Consumer>
+
+    //相当于：
+<button          onClick={toggleTheme}
+          style={{backgroundColor: theme.background}}>
+
+          Toggle Theme
+        </button>
+```
+### ref
+#### ref是实例还是dom元素？
+当 ref 属性用于 HTML 元素时，构造函数中使用 React.createRef() 创建的 ref 接收底层 DOM 元素作为其 current 属性。
+当 ref 属性用于自定义 class 组件时，ref 对象接收组件的挂载实例作为其 current 属性。
+**你不能在函数组件上使用 ref 属性，因为他们没有实例。**
+#### 不能在函数组件上使用 ref 
+参考《ref是什么》
+#### ref转发技术与React.forwardRef
+ref转发可用于获取子组件内部的ref，或者处理hoc ref无法获取的问题。
+React.forwardRef理解与Context.Consumer类似，
+通过React.forwardRef,可以让它的第一个参数是一个函数，并且这个函数有能力获得props和ref；当获得ref时，你就可以对ref的进一步的转发应用了。
+
+详细参考官网[在高阶组件中转发 refs](https://react.docschina.org/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)，这里有ref转发非常棒的应用。
+```js
+React.forwardRef((props, ref) => {
+    return <LogProps {...props} forwardedRef={ref} />;
+  });
+```
+#### React.forwardRef
+一般用于以下两个作用：
+- 转发 refs 到 DOM 组件
+- 在高阶组件中转发 refs
+
+#### 两种获取子组件内部元素的ref
+有两种方式：
+- 方式一，参考《ref转发技术与React.forwardRef》
+- 方式二，函数回调方式：
+```jsx
+class Parent extends React.Component {
+  render() {
+    return (
+      <CustomTextInput
+        inputRef={el => this.inputElement = el}
+      />
+    );
+  }
+}
+function CustomTextInput(props) {
+  return (
+    <div>
+      <input ref={props.inputRef} />
+    </div>
+  );
+}
+```
+#### 处理hoc ref无法获取的问题
+参考《ref转发技术与React.forwardRef》
+
+### Portal 不一样的事件冒泡
+尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 React 树， 且与 DOM 树 中的位置无关，那么无论其子节点是否是 portal，像 context 这样的功能特性都是不变的。
+[参考](https://react.docschina.org/docs/portals.html#event-bubbling-through-portals)
+
+### React.memo
+#### 只用于function组件
+React.memo只适用于函数组件，而不适用 class 组件
+#### 仅检查 props 变更
+React.memo 仅检查 props 变更
+
+### 服务端渲染SSR的两个好处(相比客户端CSR)
+利于seo与首屏渲染。
 
 ## 高阶组件
 ### 使用代理hoc就够了
@@ -222,6 +348,17 @@ class MouseTracker extends React.Component {
 #### 定义
 类似 Render Props 是我自己起的名，因为其思想跟 Render Props 极其相似。
 Render Props是定义一个函数， 这里的类似 Render Props 不是定义一个函数，如下，是定义一个组件好的组件。
+```jsx
+function Page(props) {
+  const user = props.user;
+  const userLink = (
+    <Link href={user.permalink}>
+      <Avatar user={user} size={props.avatarSize} />
+    </Link>
+  );
+  return <PageLayout userLink={userLink} />;
+}
+```
 
 #### demo
 详细参考[使用 Context 之前的考虑](https://zh-hans.reactjs.org/docs/context.html),
@@ -258,3 +395,118 @@ function Page(props) {
 // ... 渲染出 ...
 {props.userLink}
 ```
+
+## 组合模式 与 Render Props模式
+### 概述
+这两种是React两种重要而常用的设计模式，Render Props模式是对 组合模式的扩展。
+### 理论基础
+两种设计模式的理论基础在于React的props可以接收任何对象。所以就可以愉快地给props传递react元素和function了。
+这在官网多次提到。
+### 组合模式
+#### 示例说明
+什么是React的组合模式，通俗的说，就是将多个组件组合在一起:
+下面FancyBorder就是一种组合模式，组件内通过props.children 渲染其他组件内容。
+```js
+function FancyBorder(props) {
+  return (
+    <div className={'FancyBorder FancyBorder-' + props.color}>
+      {props.children}
+    </div>
+  );
+}
+
+function WelcomeDialog() {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        Welcome
+      </h1>
+      <p className="Dialog-message">
+        Thank you for visiting our spacecraft!
+      </p>
+    </FancyBorder>
+  );
+}
+```
+下面也是一种组合模式
+在PageLayout接收一个topBar，而这个topBar是一个渲染好的React元素。
+```js
+function Page(props) {
+  const user = props.user;
+  const content = <Feed user={user} />;
+  const topBar = (
+    <NavigationBar>
+      <Link href={user.permalink}>
+        <Avatar user={user} size={props.avatarSize} />
+      </Link>
+    </NavigationBar>
+  );
+  return (
+    <PageLayout
+      topBar={topBar}
+      content={content}
+    />
+  );
+}
+```
+#### 定义
+由上面你应该可以看到，直白的说React组合模式就是 写好或组合好一个React元素，将此元素作为其他(子)组件的props，其他组件直接凭借props渲染的设计模式。
+#### 特点：能拿到父组件所有数据
+参考如下分析《需求延伸：如何拿到子组件数据(父子组件交互)》
+#### 需求延伸：如何拿到子组件数据(父子组件交互)
+在上面的《示例说明》中，`topBar`是组合好的react元素，它只能拿到父组件`Page`的所有state和props，但不能拿到`PageLayout`子组件的状态信息，如何可以获得呢，此时，我们可以把`topBar`设计成一个函数，比如下面的`mouseRender`，不仅可以拿到父组件的，还可以拿到子组件的state。
+`mouseRender`所代表的react设计模式就是 render props 模式。
+下面的例子又可以看到，可以通过setStateName进行父子组件交互，这也是render props 模式另外一个好处。
+
+```js
+
+class Mouse extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { x: 0, y: 0 };
+    props.setStateName('beautiful')
+  }
+
+  render() {
+    return (
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+        {this.props.render(this.state)}
+      </div>
+    );
+  }
+}
+
+class MouseTracker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { x: 0, y: 0 , name:'you'};
+  }
+
+  setStateName(name) {
+   this.setState({name})
+  }
+  mouseRender(mouse, ) {
+   return <Cat mouse={mouse} setStateName={this.setStateName} type={this.state} />
+  }
+  render() {
+    return (
+      <div>
+        <h1>移动鼠标!</h1>
+        <Mouse render={mouseRender}/>
+      </div>
+    );
+  }
+}
+```
+### Render Props模式
+#### 定义
+Render Props模式是在组合模式延伸而来；
+function内返回一个React对象，然后将此function作为props传递给子组件，这种设计模式就是Render Props模式，详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+#### 可以拿到父子两个组件的state
+详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+#### 可以将父子组件进行交互
+详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+### 二者区别和联系
+二者区别在于，组合模式只能拿到父组件信息，render props 能拿到两个组件的信息，并且可以做交互。
+联系在于，render props 基于 组合模式发展而来。
+
