@@ -323,42 +323,11 @@ usestate类似 useeffect，只在特定的时候运行callback参数；
 每次return的dom都会响应最新的props。
 
 ## 其他技术
-### Render Props 代替 HOC
-关于 render prop 一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数高阶组件 (HOC)。
-为了避免反模式，可以定义为：
-```js
-class MouseTracker extends React.Component {
-  // 定义为实例方法，`this.renderTheCat`始终
-  // 当我们在渲染中使用它时，它指的是相同的函数
-  renderTheCat(mouse) {
-    return <Cat mouse={mouse} />;
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Move the mouse around!</h1>
-        <Mouse render={this.renderTheCat} />
-      </div>
-    );
-  }
-}
-```
-### 类似 Render Props 使用场景之一
-#### 定义
-类似 Render Props 是我自己起的名，因为其思想跟 Render Props 极其相似。
-Render Props是定义一个函数， 这里的类似 Render Props 不是定义一个函数，如下，是定义一个组件好的组件。
-```jsx
-function Page(props) {
-  const user = props.user;
-  const userLink = (
-    <Link href={user.permalink}>
-      <Avatar user={user} size={props.avatarSize} />
-    </Link>
-  );
-  return <PageLayout userLink={userLink} />;
-}
-```
+### React.cloneElement是一把好刀
+其最好的两个用法在于：
+1.让你任意地方定义组件，然后让你按照意图，重新把组件渲染在指定位置；
+2.重新组装props；
+React.cloneElement是一个非常好用的API，给力你极大的自由，可以让你做很多意想不到的事情。
 
 #### demo
 详细参考[使用 Context 之前的考虑](https://zh-hans.reactjs.org/docs/context.html),

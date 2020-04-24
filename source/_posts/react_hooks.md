@@ -225,7 +225,7 @@ export default function App(props){
 ## useLayoutEffect
 用法同useEffect，只有在useEffect不满足情况下才使用，它的特点在于dom布局时同步触发，而不是渲染完成后触发，服务端不要使用此API。
 
-## FAQ
+## FAQ之一
 ### 我应该使用单个还是多个 state 变量？
 我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。
 说的是，一个useState应该只改变 这个动作 改动的state；
@@ -326,7 +326,7 @@ function Counter() {
 
 
 
-## 自己的FAQ
+## FAQ之二
 ### 获取pre state和props的两种方式
 #### useState
 #### ref
@@ -339,11 +339,14 @@ function Counter() {
 参考《我该如何测量 DOM 节点？》，要说的是：
 - callback ref其实就是class组件以前使用的 函数 ref，并没有区别；
 - useRef 其实就是以前class组件内的，给ref传一个字符串；
+
 二者的区别在于 前者可实时获取ref组件最新内容，后者不行。
 也可以这样描述，callback形式的ref要比字符串形式的ref更能感知dom的信息，保证每次 didmount或didupdate前获得最新的dom。[参考官网 - 回调 Refs](https://react.docschina.org/docs/refs-and-the-dom.html#callback-refs)
+
 #### 可以配合usecallback使用
 ref其实跟class版本的react使用一样，可以设定一个函数，在class组件中，这个函数通常是组件内部函数，通过this指向，属于实例范畴，因此升级到hooks，就是用usecallback来创建一个恒定不变的方法类似实例方法。
 如果你有其他创建恒定函数的方式，也可以不用usecallback。
+
 ### ref 代替原来的 this
 在官方文档中，多次提到了，如果要使用原来class组件的this，就使用ref代替；
 

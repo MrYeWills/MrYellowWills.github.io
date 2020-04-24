@@ -39,13 +39,13 @@ series: 前端
       }
 ```
 
-#### js模块 sourcemap的处理
+### js模块 sourcemap的处理
 很简单，加一个这个配置即可：
 ```
   devtool: 'inline-source-map', // 开发阶段开启 sourcemap
 ```
 
-#### 要不要配置index.html
+### 要不要配置index.html
 有时候容易误解，webpack会自动生成index.html，这是不对的。
 入口文件index.html必须要自己手动配置例如：
 ```
@@ -91,7 +91,7 @@ series: 前端
 所以在项目中，你必须写一个index.html，或者一个index.html模板。
 看这个章节加深 项目中index.html 的理解：《webpack常用知识 ---解决css文件或者js文件名字哈希值变化的问题》
 
-#### output.publicPath output.path exports.context devServer.publicPath
+### output.publicPath output.path exports.context devServer.publicPath
 - exports.context 与 output.path 
  exports.context 是提供一个全局的根目录，为配置提供方便,你也可不配置；如果配置此目录下面的output.path 基于此目录。
 ```
