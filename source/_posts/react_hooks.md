@@ -24,7 +24,12 @@ react不是神，它是通过hook的顺序将不同的变量名对应到当时�
 ### 任何时候保持顶层使用hook
 无论是在函数组件内还是**自定义的hook函数**内，请都保证在顶层使用hook，原因见《靠Hook调用顺序对应state》
 ### 值相同，第二次后就不会再次render
-这是自己试验出来的，无论是usestate还是useReducer都有这个现象，当state值相同时，渲染两次之后，不再渲染，貌似react自己做了优化？
+这是hooks自己做的优化，可在官网找到相关论述，无论是usestate还是useReducer都有这个现象，当state值相同时，渲染两次之后，不再渲染。
+class组件无此现象。
+### 父组件render会导致子render，但setState不一定
+父亲render的时候，肯定导致函数式组件render；
+但这个函数式样组件内使用useState更新时，如果state值相同，两次后就不会render；
+
 ### 由useRef/createRef的区别 想到的
 #### 一个用在function，一个用在class
 详细参考[useRef 与 createRef 的区别](https://juejin.im/post/5e5c5f6a6fb9a07cad3ba383)
@@ -36,7 +41,7 @@ useRef是hook它有这个能力，在function组件内，只在初始的时候�
 参考上面
 #### 普通函数在hook组件内会被每次执行
 参考上面
-### hook函数基本是只执行一次
+#### hook函数基本是只执行一次
 参考上面《由useRef/createRef的区别 想到的》，hook函数的最大特征之一，有别于普通函数，hook函数在函数组件内，不会被多次执行。
 
 ## useEffect

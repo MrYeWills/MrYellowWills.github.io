@@ -164,12 +164,18 @@ git reset后，要push时，都需加上-f，强制push
 如果你使用git reset,那么git log无法查到当前提交之后的提交日志，此时使用 git reflog
 
 ### git cherry-pick
+#### 概述
 不懂git cherry-pick，说明你还不懂git这位美女的基本套路，必备git操作。
 ```
 git cherry-pick commitHash
 ```
 git cherry-pick 与 git reset 配合使用可以尽情任意穿插回滚修改版本提交，只有此时，你才懂git的美，从此爱不释手，相逢恨晚。
-
+#### commitHash值会变
+当一个commit从一个branch cherry-pick到另外一个branch的时候，在新的branch上，对应的commit的hash值与原始的hash值不一样，有了变化。不过其他信息，包含时间信息，都么有变。
+#### commit会置顶
+cherry-pick的commit在新的branch上会置顶。
+#### 行为类似rebase
+结合以上，说明cherry-pick的行为类似rebase的过程（置顶与hash码变化）
 ### git branch
 ```
 git branch -D branch //删除本地分支
