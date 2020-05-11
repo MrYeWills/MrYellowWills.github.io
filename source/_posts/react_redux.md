@@ -202,13 +202,27 @@ useDispatch 时，
 
 ### useSelector 触发时机：
 当组件render时；
-当本组件dipatch时，无论是否改变store，都会执行；
-当其他组件dispatch时，且改变了store时，会执行；
+当有组件dipatch时，无论是否改变store，都会执行；
 与mapStateToProp不一样的地方：
-mapStateToProp不会在render的时候执行，只会在store变化时才执行  参考《mapStatetoprops的触发时机》，
+第一：mapStateToProp不会在render的时候执行； 第二：mapStateToProp 只会在store变化时才执行  参考《mapStatetoprops的触发时机》。
+因此如果同一个项目中，有的组件你用的是Connect，有些用的是useSelector，当你dispatch，不过未改变store的时候，你会发现useSelector执行了，mapStateToProp未执行。
 
 ### useSelector 产生的作用
 ccc与mapStateToProp这点一样，执行的结果如果改变，将会触发组件render，否则就不会。
+
+### useSelector 常用错误用法
+#### 返回一个新构造的对象
+以下两种错误用法，会导致组件在dispatch的时候，总是刷新，因为下面两种方式useSelector执行的结果都是一个新建的对象。这样造成前后两次比较的时候认为变化了： `{} !== {}`:
+```js
+  const courses = useSelector(state => {
+    return {};
+  });
+```
+```js
+  const {test, data} = useSelector(state => {
+    return {test:state.test, data:state.data};
+  });
+```
 
 #### hooks与Connect的区别
 hooks组件其行为还是类似一个纯函数组件，没有像Connect一样对组件以高阶组件的形式包裹，没有做shouldComponentUpdate优化。
