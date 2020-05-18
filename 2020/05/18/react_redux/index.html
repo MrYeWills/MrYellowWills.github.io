@@ -155,8 +155,8 @@
         <h1 class="title">react-redux笔记</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-04-24T02:25:38.000Z" itemprop="datePublished" class="page-time">
-  2020-04-24
+                <time datetime="2020-05-18T05:54:54.000Z" itemprop="datePublished" class="page-time">
+  2020-05-18
 </time>
 
 
@@ -189,7 +189,7 @@
     <div class="post-card">
         <h1 class="post-card-title">react-redux笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-04-24 10:25:38" datetime="2020-04-24T02:25:38.000Z" itemprop="datePublished">2020-04-24</time>
+            <time class="post-time" title="2020-05-18 13:54:54" datetime="2020-05-18T05:54:54.000Z" itemprop="datePublished">2020-05-18</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/react-redux/">react-redux</a></li></ul></li></ul>
@@ -243,7 +243,6 @@
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>有上面分析可知，mapStateToProp只在store改变时才会执行，而store的改变只与dispatch有关，因此只有dispatch时，且改变了store时，才会触发mapStateToProp的执行。</p>
 <h2 id="hooks"><a href="#hooks" class="headerlink" title="hooks"></a>hooks</h2><h3 id="hooks、Connect-原理基本一致"><a href="#hooks、Connect-原理基本一致" class="headerlink" title="hooks、Connect 原理基本一致"></a>hooks、Connect 原理基本一致</h3><p>react-redux的用法有 传统的Connect用法，以及 新的hooks用法。<br>他们二者的原理基本一致，</p>
 <h3 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a>useDispatch</h3><p>useDispatch 时，<br>如果改变了store，则会触发所有的 useSelector 与 mapStateToProp 的执行；<br>组件是否render，根据各自的 useSelector、mapStateToProp执行结果决定；</p>
-<p>如果没有改变store，则只会触发本组件的 useSelector，但不会引起render，不会触发其他组件的 useSelector与mapStateToProp执行；</p>
 <h3 id="useSelector-触发时机："><a href="#useSelector-触发时机：" class="headerlink" title="useSelector 触发时机："></a>useSelector 触发时机：</h3><p>当组件render时；<br>当有组件dipatch时，无论是否改变store，都会执行；<br>与mapStateToProp不一样的地方：<br>第一：mapStateToProp不会在render的时候执行； 第二：mapStateToProp 只会在store变化时才执行  参考《mapStatetoprops的触发时机》。<br>因此如果同一个项目中，有的组件你用的是Connect，有些用的是useSelector，当你dispatch，不过未改变store的时候，你会发现useSelector执行了，mapStateToProp未执行。</p>
 <h3 id="useSelector-产生的作用"><a href="#useSelector-产生的作用" class="headerlink" title="useSelector 产生的作用"></a>useSelector 产生的作用</h3><p>ccc与mapStateToProp这点一样，执行的结果如果改变，将会触发组件render，否则就不会。</p>
 <h3 id="useSelector-常用错误用法"><a href="#useSelector-常用错误用法" class="headerlink" title="useSelector 常用错误用法"></a>useSelector 常用错误用法</h3><h4 id="返回一个新构造的对象"><a href="#返回一个新构造的对象" class="headerlink" title="返回一个新构造的对象"></a>返回一个新构造的对象</h4><p>以下两种错误用法，会导致组件在dispatch的时候，总是刷新，因为下面两种方式useSelector执行的结果都是一个新建的对象。这样造成前后两次比较的时候认为变化了： <code>{} !== {}</code>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> courses = useSelector(<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
@@ -257,12 +256,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-05-11T16:37:23.000Z" itemprop="dateUpdated">2020-05-12 00:37:23</time>
+    Last updated: <time datetime="2020-05-18T15:52:00.000Z" itemprop="dateUpdated">2020-05-18 23:52:00</time>
 </span><br>
 
 
         
-        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/04/24/react_redux/" target="_blank" rel="external">https://yewills.github.io/2020/04/24/react_redux/</a>
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/05/18/react_redux/" target="_blank" rel="external">https://yewills.github.io/2020/05/18/react_redux/</a>
         
     </div>
     <footer>
@@ -291,7 +290,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/04/24/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/05/18/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -303,7 +302,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/04/24/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/05/18/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -329,18 +328,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/04/24/react/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/18/ts/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">React 笔记</h4>
+        <h4 class="title">typescript 笔记</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/02/07/d3/" id="post-next" class="post-nav-link">
+      <a href="/2020/04/24/react_form/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">d3笔记</h4>
+        <h4 class="title">react中的表单处理</h4>
       </a>
     </div>
   
@@ -448,7 +447,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/04/24/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/05/18/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -460,7 +459,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/04/24/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/05/18/react_redux/&title=《react-redux笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -472,7 +471,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3ay27CQAwFUP7/p6nUVRcEru1QKc6ZVYUgMycL1495POL1/F1Hn/9d7z9//+Tk+6OFgYFxWcbz7Uo2q35ydNz8Vy+oGBgYN2DkobAaEHvBOj8bBgYGRvUo1bA72RcDAwMjKS8LqVsxicTAwMDoFbHNDYJd8rbdCbU4BgbGBRnVQvQ///7ifAMDA+MijF4QrLbVkubdZGFgYOxmHG0/T+/mZXA1JcXAwNjNSEh5i38+7Exe64cnY2BgrGP0fjwZak5q7qhriIGBsY6RH6va78oHoj18eR6LgYFxQUYeaquJ47cDOgYGxj0ZvYtfSXOtF0bzVh0GBsYdGL0m/qjULF7m+HASDAyMGzDyFn91DJCHzmohjYGBcR9GuVwsXr9InlNt0mFgYNyNMWn699LEZkPtfdKJgYGxmpHfF8uPPmmcTYagGBgYWxnVkNe7QnFu8D0ht8XAwLgUI78MUR095rzq9w//SWBgYKxm5KEwTwrz5n7+CqKTYGBgrGP0mvh5Iyx/BdVS+THZGAMD44KMXlicl7W9ZPEFFQMDYzVj3lyrxsDe06KgjIGBsZTxLK58bFktjPMBwIvnYGBgrGbkq9dK67XnJokpBgbGVkYSZCdXwfIi+bTeIQYGxlJGfrhqYJ2E8kJhjIGBgVFs01cHBpOiFwMDA6N3n6GXFFb3GgVcDAyMCzKSAJqEyKQEnV+TPQy4GBgYSxnVAjI57llpXzlBxMDA2Mb4AaP30T+FVH9/AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3aQW7DMAwF0dz/0inQVRe1PJ9Ug5oarQLDkfW0IEiJrxce7+9x9fvnWD8nM6/fbw0ZMmQ8lvFeDvKx9MnVcvm/fqHKkCHjAEYaCnlYXM9PtgzNKUOGDBlhcOQBNP2uDBkyZHQCLl8in1mGDBky0iK2+AHwFX5st6EWlyFDxgMZ/YuBv/v90fsNGTJk/EtGLQiShI8nmv0hQ4aM2Yx1OdqJbLyRYldKKkOGjNmMtN1hV0MYD9x8o2XIkDGVQcJc7ei/duhfo8qQIWM2gxx+rUMeKXrTJgyynpv7WBkyZIxjpI0O6aVmmvDxFhAZMmTMZvDj/vUHak0SPMTfbIQMGTIOY/AylTzhZWrnOkGGDBknMNLrQ15S8tCZJpcyZMg4h9GvejspIN8IFIhlyJAxlEESuH7DVu14Lkg6ZciQcQyjc8VYazLjLRpBwJUhQ8Y4Rv/wiwTrvcE3OMiTIUPGIEZaiBISx/eTThkyZJzAIIvg5WWaJvI6FAV6GTJkjGP0D/RrITg92rspXGXIkHEAoxYWO+/XUsnLTZchQ8ZoRn/q9KAtbeYIgrIMGTKGMt7h6FwkdMLrzbdkyJAxmsFH56oynXNX0JchQ8YkRnqFyS840+uBYm+IDBkyjmHwlqxtUbxUvt70jMiQIeN4Rq1MJZvCWy4u1yxDhgwZpWWlSWHaO9EKuDJkyHgggxSxfKHr9zsNZHGPmwwZMkYw0gKSLDdN+1JeESNDhoznMb4A1Kuodir15JkAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
