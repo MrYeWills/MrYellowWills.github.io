@@ -198,8 +198,6 @@ useDispatch 时，
 如果改变了store，则会触发所有的 useSelector 与 mapStateToProp 的执行；
 组件是否render，根据各自的 useSelector、mapStateToProp执行结果决定；
 
-如果没有改变store，则只会触发本组件的 useSelector，但不会引起render，不会触发其他组件的 useSelector与mapStateToProp执行；
-
 ### useSelector 触发时机：
 当组件render时；
 当有组件dipatch时，无论是否改变store，都会执行；
