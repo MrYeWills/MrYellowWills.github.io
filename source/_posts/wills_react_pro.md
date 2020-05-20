@@ -79,6 +79,24 @@ dispatch({
 "no-unused-expressions": [0]
 ```
 
+### eslint 不生效
+想要vscode的fix all autoFixable problem；配置airbnb后 eslint不生效；
+首先eslint除了上面说的 vscode 可能需要安装linter-eslint外，因为用了 airbnb，所有一定要在安装airbnb相关的两个node_module:
+```
+"eslint-config-airbnb": "^17.0.0",
+"eslint-import-resolver-babel-module": "^4.0.0",
+```
+当然还要安装其他相关的：
+```
+"babel-eslint": "^8.2.6",
+
+"eslint-plugin-import": "^2.13.0",
+"eslint-plugin-jsx-a11y": "^6.1.1",
+"eslint-plugin-react": "^7.10.0",
+"eslint-plugin-react-hooks": "^3.0.0",
+```
+之所以在webpack未运行时，eslint能够起作用，估计是eslint默认直接通过 '/node_module/eslint-config-airbnb/index.js'等的方式引用了相关文件，如果这些引用存在，eslint将开启实时监听。
+
 ## jest
 ### mock的用法
 示例见 [wills-react-pro 的 Login.test.js](https://github.com/YeWills/wills-react-pro)
