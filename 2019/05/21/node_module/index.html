@@ -213,6 +213,12 @@
 <h4 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h4><p>以上代码注意的是:<br>nodemon.json 中 js属性配置了 node –harmony 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;execMap&quot;: &#123;</span><br><span class="line">   &quot;js&quot;: &quot;node --harmony&quot;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
 <p>那么请在 package.json中 start中，把node关键字去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//正确配置</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon ./start.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//错误配置 ，配置了多余的node</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon node ./start.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="parcel"><a href="#parcel" class="headerlink" title="parcel"></a>parcel</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>parcel 一款非常好用的工具，你只是想写一个小页面，页面只有一个单纯的html，但你又想使用less写css；<br>有一天，你又想写一个小页面，需要用到一些交互，想使用react框架，当又不想配置webpack，又想用到less；<br>此时，parcel就是你的不二选择。<br>parcel最大的亮点之一就是 简单和自带热重载特性 ，就凭这两个，你值得拥有。</p>
+<h4 id="想使用less又不想配置webpack"><a href="#想使用less又不想配置webpack" class="headerlink" title="想使用less又不想配置webpack"></a>想使用less又不想配置webpack</h4><p>参考上面</p>
+<h4 id="无需webpack让你使用react、vue"><a href="#无需webpack让你使用react、vue" class="headerlink" title="无需webpack让你使用react、vue"></a>无需webpack让你使用react、vue</h4><p>参考上面</p>
+<h4 id="简单简单简单"><a href="#简单简单简单" class="headerlink" title="简单简单简单"></a>简单简单简单</h4><p>重要的事情说三遍，parcel非常简单，非常适合小型项目，或者小型demo，或者自己的小demo<br>参考上面</p>
+<h4 id="热重载"><a href="#热重载" class="headerlink" title="热重载"></a>热重载</h4><h4 id="build功能"><a href="#build功能" class="headerlink" title="build功能"></a>build功能</h4><p>parcel又build功能，build后生成的文件，可用于生产。</p>
+<h4 id="demo／参考"><a href="#demo／参考" class="headerlink" title="demo／参考"></a>demo／参考</h4><p><a href="https://createapp.dev/parcel" target="_blank" rel="noopener">官方demo</a><br><a href="https://github.com/YeWills/parcel-demo" target="_blank" rel="noopener">demo</a><br><a href="https://github.com/parcel-bundler/parcel" target="_blank" rel="noopener">github</a></p>
 
         </div>
         
@@ -220,7 +226,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-05-21T15:38:32.000Z" itemprop="dateUpdated">2019-05-21 23:38:32</time>
+    Last updated: <time datetime="2020-05-22T17:00:25.000Z" itemprop="dateUpdated">2020-05-23 01:00:25</time>
 </span><br>
 
 
@@ -292,18 +298,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2019/05/21/html/" id="post-prev" class="post-nav-link">
+      <a href="/2019/05/21/js_design_start/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">html笔记</h4>
+        <h4 class="title">js设计模式上(面向对象、闭包、命名空间)</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2019/05/21/mac_linux/" id="post-next" class="post-nav-link">
+      <a href="/2019/05/21/mongoose_mongodb/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">mac和linux笔记</h4>
+        <h4 class="title">mongoose 与 mongodb笔记</h4>
       </a>
     </div>
   
@@ -315,7 +321,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node好用模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">node好用模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nodemon"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">nodemon</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Usage"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Usage</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用注意"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">使用注意</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node好用模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">node好用模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nodemon"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">nodemon</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Usage"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Usage</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用注意"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">使用注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#parcel"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">parcel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#想使用less又不想配置webpack"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">想使用less又不想配置webpack</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无需webpack让你使用react、vue"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">无需webpack让你使用react、vue</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单简单简单"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">简单简单简单</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#热重载"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">热重载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build功能"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">build功能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo／参考"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">demo／参考</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </div></div></aside>
