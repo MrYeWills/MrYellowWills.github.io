@@ -22,6 +22,7 @@ categories:
 这种方案有些人或许会感觉比较怪，其实不然，react-redux 其实是这种方案的最佳实践着，有兴趣可以看看react-redux 源码中connect实现。
 在connect中其实也是将状态存储于this中，而非state中，然后通过setState一个空值，触发render。
 
+
 另外 对于 form封装时，设计一个form store 是一种普遍的设计方式。
 
 ### 方案二：
@@ -59,6 +60,9 @@ const getNewChildren = (children, props) => {
 
 另外上面两种方案的代表框架 fusion field 与 alibaba-fusion/next/form 之所以没能够实现配置化生成表单，主要是他们无法从业务层面对form内的各种type field 比如input select 进行二次封装。
 而我这次封装form的同时，也封装了EnInput， EnSelect，所以支持了配置化生成表单。
+
+### 状态提升存于this 配合forceUpdate
+这种方式是 方案一和方案二使用的，也是react-redux，这些有名开源框架使用的，所以以后在开发的时候，设计复杂组件时，这种方式不失为一种选择。应该熟练运用好这种方式。
 
 
 下面是form介绍一些form功能的细节分析与实现：
