@@ -10,7 +10,7 @@ categories:
 这些年做react，深受form使用麻烦的苦，最后发现动态配置化表单是form使用的正确姿势，高效，易读，易维护。
 结合自己的工作经验，花了一个多星期手写了一版 form的二次封装。
 二次封装最难的是方案设计和实现，样式是最简单的了，每个公司样式需求各不同，本次封装就不涉及样式了，只专注功能实现。
-核心源码行数不多，如果有兴趣，直接去github上，下载源码看看。
+核心源码行数不多，如果有兴趣，直接去github上，下载源码看看，下面有连接。
 
 ## 默认用法
 这种用法使用enform提供的默认样式。
@@ -104,8 +104,8 @@ export default formConfig;
 
 ## 延伸
 
-[源码 github ](https://github.com/YeWills/react-redux-hooks-demo/tree/form-demo)
-[源码 github ](https://github.com/YeWills/react-redux-hooks-demo/tree/context-form)
+[设计方案博客 - EnForm动态表单封装 ](https://yewills.github.io/2020/05/25/react_form_design/)
+[源码/demo github ](https://github.com/YeWills/react-redux-hooks-demo/tree/context-form)
 
 
 

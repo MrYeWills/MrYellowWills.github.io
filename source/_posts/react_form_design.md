@@ -6,6 +6,8 @@ categories:
 - react
 ---
 
+## 前言
+这次封装，利用的是工作之余，时间难免宝贵，主要注重功能实现，细节或代码风格没有太注重，请忽略之。
 
 ## 状态提升的运用
 市面上的form封装，基本套路都是，field设置为完全受控组件，将field状态提升至form。
@@ -14,6 +16,7 @@ categories:
 很多人认为，这个状态提升，就应该是提升到form的state中，其实不然，这里又很多套路，自然也就有几种方案：
 
 ### 方案一：
+#### 概述
 状态提升，状态全部存储于form的this内。而非form内的state。
 每次field onchange时候，使用form的this，进行 this.forceupdate 或者 this.setState({});
 方案代表 是阿里的的 [fusion field](https://github.com/alibaba-fusion/field)，源码不多，有兴趣可以去看看。
@@ -24,6 +27,10 @@ categories:
 
 
 另外 对于 form封装时，设计一个form store 是一种普遍的设计方式。
+
+#### 经典逻辑抽象分离的实践
+[fusion field](https://github.com/alibaba-fusion/field)是经典的逻辑抽象分离实践，以后遇到逻辑抽离的时候，可以参考此源码的实现。
+源码主要是订阅模式的一种经典实践。
 
 ### 方案二：
 状态提升，将状态存储于this中，另外为了让form内的field能够取到状态，在form内设置了context，并将this内的state放置于context中，让所有的子元素包括field都能通过context获取状态。
