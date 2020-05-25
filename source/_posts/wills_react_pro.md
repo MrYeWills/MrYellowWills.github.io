@@ -71,7 +71,14 @@ dispatch({
 ## eslint
 
 ### eslint 配合 vscode 使用
-注意的是，vscode使用eslint时，必须安装 linter-eslint 插件才能生效，装了插件后才能识别根目录下的eslint配置文件。
+#### 概述
+eslint在vscode生效：
+安装eslint插件在vscode中；
+如果用到airbnb的，就安装相关的airbnb 的 node_module包即可。
+不用设置什么setting。json。
+任意打开一个js文件，不能是ts文件哦，看是否生效。
+#### 误区
+很多人以为eslint要设置一大堆的vscode插件，其实不然，只需要安装一个eslint插件即可。
 
 ### 禁用规则
 基本上所有的规则都可以通过设置 值为 0的数组来禁用。
@@ -80,6 +87,7 @@ dispatch({
 ```
 
 ### eslint 不生效
+#### 概述
 想要vscode的fix all autoFixable problem；配置airbnb后 eslint不生效；
 首先eslint除了上面说的 vscode 可能需要安装linter-eslint外，因为用了 airbnb，所有一定要在安装airbnb相关的两个node_module:
 ```
@@ -96,7 +104,11 @@ dispatch({
 "eslint-plugin-react-hooks": "^3.0.0",
 ```
 之所以在webpack未运行时，eslint能够起作用，估计是eslint默认直接通过 '/node_module/eslint-config-airbnb/index.js'等的方式引用了相关文件，如果这些引用存在，eslint将开启实时监听。
-
+#### 其他情况
+注意的是，vscode使用eslint时，必须安装 linter-eslint 插件才能生效，装了插件后才能识别根目录下的eslint配置文件。
+#### ts tsx不生效，js生效
+如果你的项目中使用了ts，可能对于ts tsx的文件，ts自带的验证规则将优先于eslint，此时eslint可能在js文件中生效，ts文件中不生效。
+不过ts文件中有ts自带的验证规则生效。
 ## jest
 ### mock的用法
 示例见 [wills-react-pro 的 Login.test.js](https://github.com/YeWills/wills-react-pro)

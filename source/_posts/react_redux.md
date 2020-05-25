@@ -222,7 +222,7 @@ ccc与mapStateToProp这点一样，执行的结果如果改变，将会触发组
   });
 ```
 
-#### hooks与Connect的区别
+### hooks与Connect的区别
 hooks组件其行为还是类似一个纯函数组件，没有像Connect一样对组件以高阶组件的形式包裹，没有做shouldComponentUpdate优化。
 
 ### 新旧版本的Connect异同

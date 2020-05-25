@@ -8,6 +8,9 @@ series: 前端框架
 ---
 
 ## 基础知识
+### warning:uncontrolled .. to be controlled
+主要还是给input的value在 有值与没有值-undefined 之间切换了，解决之道在于始终保持 value为值： value || ‘’ ；用‘’ 代替 undefined。
+[解决方案参考](https://stackoverflow.com/questions/47012169/a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-erro)
 ### <Chat /> 之类的 React 元素本质就是对象（object）
 [参考官网](https://react.docschina.org/docs/composition-vs-inheritance.html)
 `<Contacts /> 和 <Chat /> `之类的 React 元素本质就是对象（object）
