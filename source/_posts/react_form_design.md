@@ -68,8 +68,18 @@ const getNewChildren = (children, props) => {
 另外上面两种方案的代表框架 fusion field 与 alibaba-fusion/next/form 之所以没能够实现配置化生成表单，主要是他们无法从业务层面对form内的各种type field 比如input select 进行二次封装。
 而我这次封装form的同时，也封装了EnInput， EnSelect，所以支持了配置化生成表单。
 
+### 方案四：
+状态提升，将状态存储与父层的context内，这种方式与 状态存储于this中的设计套路一样，也是通过this.forceupdate的方式进行渲染。
+context值类似原来的props一样用来渲染组件。
+
 ### 状态提升存于this 配合forceUpdate
 这种方式是 方案一和方案二使用的，也是react-redux，这些有名开源框架使用的，所以以后在开发的时候，设计复杂组件时，这种方式不失为一种选择。应该熟练运用好这种方式。
+
+### 小结
+由上可知，状态提升，一般提升去的地方有三个， 父层的 state， 父层的 this， 父层 的context；
+提升到 父层的this 或 context上时，基本上通过 this。forceupdate 或者setstate一个空值进行整个父层的更新，子层的所有状态皆从 this或context上获取。
+其实，redux 是这种设计模式的最佳时间， redux就是将state至于context中，更新采用react-redux 的 setState一个空值。
+所以将数据存储与this或context上，渲染组件的方式，本质上与组件通过props来渲染，没有大不同。
 
 
 下面是form介绍一些form功能的细节分析与实现：
