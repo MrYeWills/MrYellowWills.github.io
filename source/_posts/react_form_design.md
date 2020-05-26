@@ -213,6 +213,9 @@ export const getLayout = (fields, rowsLength)=>{
 
 [github demo](https://github.com/YeWills/react-redux-hooks-demo/tree/context-form)
 
+## react中的表单处理
+这里是之前整理的一篇 关于 表单处理的博客，同样对封装表单具有参考价值。
+[react中的表单处理](https://yewills.github.io/2020/04/24/react_form/)
 
 ## 放弃的方案
 为了实现又能配置化，又能自由排列，想了很多方案，刚开始用的 React.cloneElement 方案，也可以达到这一目的，不过局限性比较多，这个方案的亮点在于，
