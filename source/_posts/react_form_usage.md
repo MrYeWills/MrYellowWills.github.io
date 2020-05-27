@@ -101,10 +101,74 @@ export default formConfig;
 
 [点击查看详细demo](https://github.com/YeWills/react-redux-hooks-demo/tree/context-form)
 
+## 联动
+如果组件间需要联系，设置起来也是非常方便的, 在config.js中，将联动组件定义为自定义组件，每个自定义组件都将获得修改form三要素 form value， form validate error msgs， form field display 的能力：
+```js
+const formConfig = {
+  fields: [
+    {
+      name: 'editname',
+      defaultValue: 'test',
+      title: 'edit user name',
+      //支持自定义field
+      Render: CustomInput,
+      //支持自定义验证规则
+      validate: [
+        [(value, formValue) => {
+          if (String(value).length > String(formValue.region).length) {
+            return 'hellow region';
+          }
+          return '';
+          //支持自定义验证规则映射功能
+        }, ['region']]
+      ],
+      //支持自定义验证规则error信息
+      required: 'this is required'
+    },
+  ],
+};
+```
+```js
+// CustomInput
+export default (props) => {
+  //onChange 设置新的form值
+  //setDisplay 设置form内任何内容 显示／隐藏／readonly 等显示的相关信息
+  //setErrMsgs 设置新的form error值
+  const { value, onChange: propsOnChange, setDisplay, setErrMsgs } = props;
+  const getNewFormValue = (value, field, {formValue})=>{
+    return { ...formValue, [field.name]: value, passWord:`${value} - custom set` }
+  }  
+  const onChange = (e) => { 
+     // 联动修改其他field值
+    propsOnChange(e.target.value, getNewFormValue);
+  }; 
 
-## 延伸
+  const [text, setText] = useState('hide')
+
+  const onClick = ()=>{
+      setText(text === 'hide'? 'show': 'hide');
+      setDisplay((formDisplay)=> {
+          const deleteStatus = _.get(formDisplay, 'passWord.delete');
+          return {...formDisplay, passWord:{...formDisplay.passWord, delete: !deleteStatus}};
+      })
+  }
+  return (
+    <>
+    <input
+      value={value}
+      onChange={onChange}
+    />
+    <span onClick={onClick}>{text} password</span>
+    </>
+  );
+}
+```
+
+## 设计方案
 
 [设计方案博客 - EnForm动态表单封装 ](https://yewills.github.io/2020/05/25/react_form_design/)
+
+## 源码
 [源码/demo github ](https://github.com/YeWills/react-redux-hooks-demo/tree/context-form)
 
 
