@@ -12,17 +12,25 @@ series: typescript
 任意目录下，使用tsc命令来，很纯粹，剔除其他因素导致的理解偏差，不需要配合webpack等等，更多参考：《tsc命令的使用》
 
 ## 接口
-### 任意属性的类型必须包含其他属性类型
+### 可以描述的类型
+#### 定义对象
+##### 有很多个属性时，定义一个任意属性
 ```js
 interface Person {
     name: string;
     age?: number;
     [propName: string]: any;
 }
-```
-### 多个任意属性如何定义？
 
-### implements描述class类
+const test:Person={
+    name:'qianqian',
+    age:18,
+    intrest:'dance',
+    beatiful:'yes',
+}
+```
+
+#### 定义class类（implements）
 用于给类定义属性的类型。
 
 ```js
@@ -35,8 +43,12 @@ class Car implements Alarm {
     }
 }
 ```
-
-### 接口可以继承类
+#### 定义函数（范型接口、普通接口）
+参考《范型》
+### 接口定义方式
+#### 常规接口定义
+这里就不写了，比较简单。
+#### 用类修饰接口（接口可以继承类）
 常见的面向对象语言中，接口是不能继承类的，但是在 TypeScript 中却是可以的：
 ```jsx
 class Point {
@@ -54,6 +66,7 @@ interface Point3d extends Point {
 
 let point3d: Point3d = {x: 1, y: 2, z: 3};
 ```
+
 
 
 ## 函数
@@ -76,6 +89,7 @@ let mySum: (x: number, y: number) => number = function (x: number, y: number): n
 ```
 
 ## class类作为类型
+[参考 - 将一个父类断言为更加具体的子类](https://ts.xcatliu.com/basics/type-assertion.html)
 ### 直接用类作为类型
 ```js
 class ApiError extends Error {
@@ -91,82 +105,6 @@ function isApiError(error: Error) {
     }
     return false;
 }
-```
-### 用类作为接口
-```js
-interface ApiError extends Error {
-    code: number;
-}
-interface HttpError extends Error {
-    statusCode: number;
-}
-
-function isApiError(error: Error) {
-    if (typeof (error as ApiError).code === 'number') {
-        return true;
-    }
-    return false;
-}
-```
-
-## as的使用 - 类型断言
-```js
-function getCacheData(key: string): any {
-    return (window as any).cache[key];
-}
-interface Cat {
-    name: string;
-    run(): void;
-}
-const tom = getCacheData('tom') as Cat;
-tom.run();
-```
-
-
-## 类型别名
-```js
-type Name = string;
-type NameResolver = () => string;
-type NameOrResolver = Name | NameResolver;
-function getName(n: NameOrResolver): Name {
-    if (typeof n === 'string') {
-        return n;
-    } else {
-        return n();
-    }
-}
-```
-```js
-type EventNames = 'click' | 'scroll' | 'mousemove';
-function handleEvent(ele: Element, event: EventNames) {
-    // do something
-}
-
-handleEvent(document.getElementById('hello'), 'scroll');  // 没问题
-handleEvent(document.getElementById('world'), 'dbclick'); // 报错，event 不能为 'dbclick'
-```
-
-## 函数的两种类型定义方式
-### 接口定义
-```js
-interface SearchFunc {
-    (source: string, subString: string): boolean;
-}
-
-let mySearch: SearchFunc;
-mySearch = function(source: string, subString: string) {
-    return source.search(subString) !== -1;
-}
-```
-### 普通定义
-```js
-// 
-const cc : ()=>string = ()=> ''
-interface Cat {
-    name: string;
-    run(): void;
-}
-
 ```
 
 ## 范型
@@ -382,6 +320,42 @@ tsc test.ts
 ### d.ts文件
 详见《ts中使用commonjs规范与es6规范的不同》
 
+### as的使用 - 类型断言
+```js
+function getCacheData(key: string): any {
+    return (window as any).cache[key];
+}
+interface Cat {
+    name: string;
+    run(): void;
+}
+const tom = getCacheData('tom') as Cat;
+tom.run();
+```
+
+### type 别名
+```js
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+function getName(n: NameOrResolver): Name {
+    if (typeof n === 'string') {
+        return n;
+    } else {
+        return n();
+    }
+}
+```
+```js
+type EventNames = 'click' | 'scroll' | 'mousemove';
+function handleEvent(ele: Element, event: EventNames) {
+    // do something
+}
+
+handleEvent(document.getElementById('hello'), 'scroll');  // 没问题
+handleEvent(document.getElementById('world'), 'dbclick'); // 报错，event 不能为 'dbclick'
+```
+
 ## FAQ
 
 ### ts中使用commonjs规范与es6规范的不同
@@ -414,6 +388,10 @@ height = undefined;//不报错
 height = null;//不报错
 ```
 
+## 参考
+[慕课网-TS封装播放器组件](https://www.imooc.com/learn/1243)
+[慕课网-当React遇上TypeScript开发Antd组件](https://www.imooc.com/learn/1234)
+[TypeScript 入门教程](https://ts.xcatliu.com/)
 
 
 
