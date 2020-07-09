@@ -171,12 +171,14 @@ interface Cat {
 
 ## 范型
 参考 [慕课视频](https://www.imooc.com/video/21306)
-### 两种范型类型定义方式
+### 范型类型
+```ts
+// <T>(arg1:T,arg2:T)=>T 这个表达式称之为 数据类型／范型类型／范型函数
+```
 #### 范型类型是干嘛的
 我们知道声明变量时，我们需要定义类型，普通的类型如 number string等；
 还有高级点的类型，如范型类型；
 因此范型类型与 number一样，都是用于定义变量的类型。
-
 
 以下两种方式都可以定义一个范型类型
 ```ts
@@ -191,6 +193,7 @@ interface Cat {
 #### 范型类型与number等一样
 范型类型与number等一样，同属于变量类型，参考上面讲解，这里单独提出来是让对范型类型有一个更加直观认识；
 ### 范型接口
+
 #### 为什么要有范型接口
 ```ts
 let addFunc : {<T>(arg1:T,arg2:T):T}; 
@@ -202,42 +205,61 @@ const ftype = {<T>(arg1:T,arg2:T):T} //语法报错
 let addFunc : ftype; 
 ```
 噢，终于知道无法将范型类型赋值给一个变量，因为范型类型只能通过接口来定义，
-这种定义范型类型的接口，我们称之为 范型接口。
+这种定义范型类型的接口，我们称之为 范型接口或含范型的普通接口。
 
 我们将上面的范型类型赋值给接口GenAdder：
 ```ts
  interface GenAdder {<T>(arg1:T,arg2:T):T};
  let addFunc : GenAdder;
 ```
-#### 两种使用范型接口的方式
-这部分单独出来讲参考下面的 《两种使用范型接口的方式》
-### 两种使用范型接口的方式
-#### 函数调用时声明T类型
+
+#### 含范型的普通接口
+这是普通接口，虽然接口内有范型T，但，接口名后未紧随`<T>`;
 ```ts
-// interface GenAdder {<T>(arg1:T,arg2:T):T};
-// let addFunc : GenAdder;
-// addFunc = add;
-// // 函数调用时定义好T类型
-// addFunc<number>(1,2)
+interface GenAdder {<T>(arg1:T,arg2:T):T};
+```
+#### 转化为范型接口
+我们也可以将上面普通接口的T从花括号后，提取出来，放在GenAdder后，GenAdder即转化为范型接口；
+```ts
+interface GenAdder<T> {(arg1:T,arg2:T):T};
+```
+#### 含范型的普通接口的使用
+二者在ts中应用的区别：
+```ts
+// 普通接口
+interface GenAdder {<T>(arg1:T,arg2:T):T};
+let addFunc : GenAdder;
+addFunc = function (arg1, arg2){
+    return arg1+arg2;//ts报错，当参数为number或string时，成立，当参数为undefined、null时候不成立；
+};
+addFunc('','')
 ```
 
-#### 在ts类型声明时设置好T类型
-我们也可以将上面的T从花括号后，提取出来，放在GenAdder后；
-**这种定义方式，就要求在使用接口时，必须在接口后定义好`<类型>`**，
-可以理解为，不同的范型接口定义方式，决定了使用范型时的方式与规范。
-也可以理解为，定义接口时，若接口后紧挨着一个`<T>`，则使用此接口时，必须是 `接口名<T>`；
+#### 范型接口的使用
+为了解决上面的ts报错，必须将普通接口转化为范型接口，因为范型接口在声明类型时，会预设上类型：
+```ts
+interface GenAdder<T> {(arg1:T,arg2:T):T};
+//预设上类型为number
+let addFunc : GenAdder<number>;
+addFunc = function (arg1, arg2){
+    return arg1+arg2;
+};
+addFunc(1,1)
+```
+#### 范型接口的使用说明
+**范型接口使用时，必须在接口后定义好`<类型>`**，
+我们也可从接口定义的外观来理解：
+定义接口时，若接口后紧挨着一个`<T>`，则使用此接口时，必须是 `接口名<T>`；
 若接口后是干干净净的，没有任何其他东西，则使用此接口时，应该为单纯的 `接口名`
 ```ts
-// 将T提出来，紧挨接口名之后
-// interface GenAdder<T> {(arg1:T,arg2:T):T};
-//使用接口时，需定义好T类型
-// let addFunc : GenAdder<number>;
-// addFunc = add;
-// 因为前面定义好了类型，这里就不用定义类型number了
-// addFunc(1,2)
+ interface GenAdder<T> {(arg1:T,arg2:T):T};
+//使用范型接口时，需定义好T类型
+ let addFunc : GenAdder<number>;
+
+interface nomalGenAdder{ name:string;};
+//使用普通接口时，不需定义好T类型，因为没有T
+ let addObj : nomalGenAdder;
 ```
-#### 范型接口定义方式不同，使用方式将不同
-参考上面《在ts类型声明时设置好T类型》
 ### 范型类
 #### 包含范型类型的普通类
 如下Adder是个普通类，因为它的属性add使用了范型类，它还是一个普通类，只是内部包含了范型类型定义。
