@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>js设计模式上(面向对象、闭包、命名空间) | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="js设计模式,面向对象,闭包,命名空间">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>js设计模式上(面向对象、闭包、命名空间)</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">js设计模式上(面向对象、闭包、命名空间)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-10T12:50:23.043Z" itemprop="datePublished" class="page-time">
+  2020-07-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-js_design_start" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">js设计模式上(面向对象、闭包、命名空间)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-10 20:50:23" datetime="2020-07-10T12:50:23.043Z" itemprop="datePublished">2020-07-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>js设计模式分两篇来写，此为上篇。下篇为《js设计模式下》。<br>js设计模式之前需要了解js的面向对象编程、闭包、命名空间编程模式的概念。</p>
+<h1 id="js的面向对象编程"><a href="#js的面向对象编程" class="headerlink" title="js的面向对象编程"></a>js的面向对象编程</h1><p>注意，这里说的是js的面向对象编程，非java面向对象编程。js的面向对象编程与java是有区别的。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>js面向对象编程的核心概念是 类 和 实例(对象)。<br>类 在es6上就是 class类，在es5中就是构造函数中定义一系列的propoty原型<br>实例 就是 new class类，或者 new 构造函数。实例就是对象。<br>而定义类，最后实例化这个类，都是为了得到这个实例对象。重点最终是对象。这就是面向对象的编程。</p>
+<p>简单说，js面向对象编程，就是熟悉使用 class类 来进行js编程。<br>由于react框架的流行，组件都是通过class类编程，因此熟练使用 js的面向对象编程变得更加重要。</p>
+<p>注意的是，js的面向对象编程与java是有区别的。</p>
+<h2 id="new-的理解"><a href="#new-的理解" class="headerlink" title="new 的理解"></a>new 的理解</h2><h3 id="关于new"><a href="#关于new" class="headerlink" title="关于new"></a>关于new</h3><p><a href="https://blog.csdn.net/zhouziyu2011/article/details/60143385" target="_blank" rel="noopener">关于new 的理解</a>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var baseObj = new Base();</span><br><span class="line">//new操作符具体干了什么呢?其实很简单，就干了三件事情：</span><br><span class="line">var obj  = &#123;&#125;;</span><br><span class="line">var result = Base.call(obj);</span><br><span class="line">obj.__proto__ = Base.prototype;</span><br><span class="line"></span><br><span class="line">if (typeof(result) === &quot;object&quot;)&#123;</span><br><span class="line">  baseObj = result;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">  baseObj = obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是两个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Test = function()&#123;</span><br><span class="line">            this.html = 1111;</span><br><span class="line">            // return &#123;a:123&#125;;</span><br><span class="line">          &#125;</span><br><span class="line">          var obj = new Test()</span><br><span class="line">          console.log(obj) //&#123;html: 1111&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Test = function()&#123;</span><br><span class="line">            this.html = 1111;</span><br><span class="line">            return &#123;a:123&#125;;</span><br><span class="line">          &#125;</span><br><span class="line">          var obj = new Test()</span><br><span class="line">          console.log(obj) //&#123;a: 123&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="new-Fn-与-new-Fn的区别"><a href="#new-Fn-与-new-Fn的区别" class="headerlink" title="new Fn() 与 new Fn的区别"></a>new Fn() 与 new Fn的区别</h3><p>function Fn(){<br>    this.name=’weide’;<br>}<br>console.log(new Fn) //Fn {name: “weide”}<br>console.log(new Fn()) //Fn {name: “weide”}<br>看起来二者没有区别，在构造函数Fn不用传参的时候，他们确实没有区别，只有当构造函数需要传参的时候，<br>才必须使用小括号：new Fn()</p>
+<p>下面将讲 面向对象编程三大特征 多态，继承，封装</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>js的多态与java的面向对象多态不同。</p>
+<p>js的多态定义：对同一操作作用于不同的对象上面，可以产生不同的解释和不同的执行结果。<br>以上通俗点的定义就是：对同一个函数作用于不同对象时（也就是同一个函数，接受不同的对象作为参数时），函数执行的结果不同。</p>
+<p>列举多态的几个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//最简单的：</span><br><span class="line">var  a  =  5;</span><br><span class="line">console.log(a);</span><br><span class="line">a=&quot;str&quot;;</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//最经典的：</span><br><span class="line">var makeSound = function(animal) &#123; // 把不变的部分隔离出来</span><br><span class="line">    animal.sound();</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">var Duck = function() &#123;&#125;;</span><br><span class="line">Duck.prototype.sound = function() &#123;</span><br><span class="line">    console.log(&quot;嘎嘎嘎&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">var Chicken = function() &#123;&#125;;</span><br><span class="line">Chicken.prototype.sound = function() &#123;</span><br><span class="line">    console.log(&quot;咯咯咯&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">makeSound( new Duck() ); // 嘎嘎嘎</span><br><span class="line">makeSound( new Chicken() ); // 咯咯咯</span><br></pre></td></tr></table></figure>
+<p>多态的思想实际上是把“做什么”和“谁去做”分离开来，达到 开放-封闭的设计原则。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="原型浅拷贝的痛点"><a href="#原型浅拷贝的痛点" class="headerlink" title="原型浅拷贝的痛点"></a>原型浅拷贝的痛点</h3><p>所有new实例将指向构造函数原型上的引用类型，造成浅拷贝问题，一个实例修改了此引用类型，其他所有实例受此影响。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> function Super()&#123;</span><br><span class="line">    this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;green&apos;];</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.apples = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">function newF(o, constructor)&#123;</span><br><span class="line">    o.__proto__ = constructor.prototype;</span><br><span class="line">    constructor.call(o); </span><br><span class="line">&#125;</span><br><span class="line">var aa = &#123;&#125;;</span><br><span class="line">var bb = &#123;&#125;;</span><br><span class="line">newF(aa, Super);</span><br><span class="line">newF(bb, Super);</span><br><span class="line">console.log(aa.apples === bb.apples)//true</span><br><span class="line">console.log(aa.colors === bb.colors)//false</span><br></pre></td></tr></table></figure></p>
+<p>以上过程代码等效于：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> function Super()&#123;</span><br><span class="line">    this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;green&apos;];</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.apples = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">var aa = new Super();</span><br><span class="line">var bb = new Super();</span><br><span class="line">console.log(aa.apples === bb.apples)//true</span><br><span class="line">console.log(aa.colors === bb.colors)//false</span><br></pre></td></tr></table></figure></p>
+<p>以上说明了，构造函数 new出来的所有实例，他们会针对同一个构造函数prototype对象被赋值，如果prototype对象里面有引用类型，那么将相互影响，结合上面代码，这情况等同于：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> Super.prototype = &#123;apples:&#123;&#125;&#125;;</span><br><span class="line">aa.__proto__ = Super.prototype </span><br><span class="line">//等同于</span><br><span class="line">aa.apples = Super.prototype.apples</span><br></pre></td></tr></table></figure></p>
+<h3 id="es5继承"><a href="#es5继承" class="headerlink" title="es5继承"></a>es5继承</h3><h4 id="套路"><a href="#套路" class="headerlink" title="套路"></a>套路</h4><p>es5继承方法有类继承和原型继承，我们不用去管他们叫什么名字和概念是什么，他们的套路无非三种：<br>1、代理函数(proxy)的构造函数内让父构造函数call一次，就会重写覆盖父构造函数内属性，以此来避免浅拷贝问题。<br>2、将父函数的new 实例对象 赋值给代理函数的prototype。<br>3、将父函数的prototype 赋值给代理函数的prototype。</p>
+<h4 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h4><p>通过以上套路，大致有以下两种方式实现继承：<br>方式一<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//方式一，将父函数的new 实例对象 赋值给代理函数的prototype，弊端 会执行两次父函数</span><br><span class="line"> function Super()&#123;</span><br><span class="line">    this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;green&apos;];</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.apples = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">function proxy()&#123;</span><br><span class="line">    //执行一次父函数Super</span><br><span class="line">     Super.call(this);</span><br><span class="line">&#125;</span><br><span class="line">//方式一 proxy.prototype直接赋值 new 构造函数</span><br><span class="line">proxy.prototype = new Super();//执行第二次父函数Super</span><br><span class="line">var aa = new proxy();//次步代码 会 重写覆盖父构造函数内属性</span><br><span class="line">var bb = new proxy();</span><br><span class="line">console.log(aa.colors === bb.colors)//true</span><br></pre></td></tr></table></figure></p>
+<p>方式二、此方式与方式一一样，其他代码与方式一都一样，只有一句不同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//方式二，相比方式二的好处在于 父函数 只执行一遍</span><br><span class="line"> ...</span><br><span class="line">proxy.prototype = Super.prototype</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+<h4 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h4><p>以上方式都无法解决 prototype 对象的 浅拷贝问题。原因见 《所有new实例将浅拷贝原型上的引用类型 》</p>
+<h4 id="es5最佳继承方式一：与深拷贝函数结合"><a href="#es5最佳继承方式一：与深拷贝函数结合" class="headerlink" title="es5最佳继承方式一：与深拷贝函数结合"></a>es5最佳继承方式一：与深拷贝函数结合</h4><p>传统的继承方式都无法解决prototype的浅拷贝问题，只能引入深拷贝函数，如下代码的deepcopy深拷贝方法，网上有很多，可以去找。<br>所以es5方法写继承最佳方式：父函数.call + proxy.prototype = deepcopy(Super.prototype).<br>简言之 call + 原型赋原型 + 深拷贝<br>作用：<br>call 拷贝 构造函数内属性<br>原型赋原型 拷贝原型方法，避免执行一次父函数<br>深拷贝 避免原型浅拷贝问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Super(name)&#123;</span><br><span class="line">    this.colors = [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.apples = &#123;&#125;;</span><br><span class="line">function Sub(name)&#123;</span><br><span class="line">    Super.call(this);</span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype = deepcopy(Super.prototype);</span><br></pre></td></tr></table></figure>
+<h4 id="es5最佳继承方式二：引用对象不写入父原型上"><a href="#es5最佳继承方式二：引用对象不写入父原型上" class="headerlink" title="es5最佳继承方式二：引用对象不写入父原型上"></a>es5最佳继承方式二：引用对象不写入父原型上</h4><p>es5继承的痛点是无法原型浅拷贝问题，如果能引用对象不写入父原型上，则可放心继承。</p>
+<h3 id="最终极方式：es6-class"><a href="#最终极方式：es6-class" class="headerlink" title="最终极方式：es6 class"></a>最终极方式：es6 class</h3><p>class是es6 的api，是一个语法糖，使用class进行继承，能够轻松进行继承，且无浅拷贝问题。<br>因此推荐使用es6的class类继承方式，代码优雅而简洁，不推荐使用es5。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Super &#123;</span><br><span class="line">  constructor()&#123;</span><br><span class="line">    this.colors = [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Sub extends Super&#123;</span><br><span class="line">  constructor()&#123;</span><br><span class="line">    super();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var instance1 = new Sub();</span><br><span class="line">var instance2 = new Sub();</span><br><span class="line">console.log(instance1.colors === instance2.colors);//false</span><br></pre></td></tr></table></figure>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装这个最好理解，直白的说就是：<br>封装说的就类。类由一系列的方法和属性组成，将一系列的方法和属性封装起来，封装成一个类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class People &#123;</span><br><span class="line">    constructor(name, age) &#123;</span><br><span class="line">        this.name = name</span><br><span class="line">        this.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    eat() &#123;</span><br><span class="line">        alert(`$&#123;this.name&#125; eat something`)</span><br><span class="line">    &#125;</span><br><span class="line">    speak() &#123;</span><br><span class="line">        alert(`My name is $&#123;this.name&#125;, age $&#123;this.age&#125;`)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p><a href="https://blog.csdn.net/ybdt1201/article/details/53366613" target="_blank" rel="noopener">关于闭包详细知识，可参考我在几年前写的一篇博客，这里只摘取一些必要知识</a>，以下内容基本摘至这篇博客，如有疑问，点击进入了解。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>官方对闭包的定义：所谓“闭包”，指的是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。</p>
+<p>还有一种对闭包更直接明了的说法：<a href="https://www.cnblogs.com/tinkbell/p/3173293.html" target="_blank" rel="noopener">闭包就是有权访问另一个函数作用域中变量的函数。</a><br>分析这句话:<br>　　1.闭包是定义在函数中的函数.<br>　　2.闭包能访问函数内的私有变量.<br>　　3.即使包含函数执行完了, 被闭包引用的变量也得不到释放.</p>
+<p>满足以上定义的，都可称之为闭包。</p>
+<h2 id="三种定义方式"><a href="#三种定义方式" class="headerlink" title="三种定义方式"></a>三种定义方式</h2><p>闭包有三种定义方式，一种就是经典的return方式，一种就是new的方式，一种就是对象方式。<br>我目前看到的闭包就这三种，基本这三种满足了工作中绝大部分需求了。<br>网上有很多人列举了很多闭包方式，其实本质上都是对这三种方式的发展延伸而已。</p>
+<h3 id="return方式"><a href="#return方式" class="headerlink" title="return方式"></a>return方式</h3><p>这种方式最经典，也最为常用，推荐这种写法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function a() &#123;</span><br><span class="line">    var num = 1;</span><br><span class="line">    return function ()&#123;</span><br><span class="line">        num++;</span><br><span class="line">        console.log(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="new-方式"><a href="#new-方式" class="headerlink" title="new 方式"></a>new 方式</h3><p>这种方式之所以被认定为闭包，是因为以下两点理由，下面代码中：<br>1、a是母函数<br>2、inc是a执行后返回，相当于return的函数，此函数绑定了a的私有变量n， 这是决定inc是否为闭包的重要依据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">  var n = 0;</span><br><span class="line">  this.inc = function () &#123;</span><br><span class="line">    n++;</span><br><span class="line">    console.log(n);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">var cc = new a();</span><br><span class="line">cc.inc()//1</span><br><span class="line">cc.inc()//2</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象方式"><a href="#对象方式" class="headerlink" title="对象方式"></a>对象方式</h3><p>下面两个闭包例子，套路都一样，外层定义个对象，然后在母函数内部给这个对象定义一个函数，此函数绑定了私有变量，即为闭包函数。<br>我们姑且称这种定义闭包的方式为对象方式吧。<br>以下方式之所以被认定为闭包，是因为以下两点理由，下面代码中：<br>1、有母函数（下面两个例子母函数是匿名函数，当然也可以定义为非匿名函数）<br>2、母函数执行后，给函数绑定了母函数的私有变量n， 这是决定内部函数是否为闭包的重要依据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">(function() &#123;</span><br><span class="line">    var n = 1;</span><br><span class="line">    obj.count = function () &#123;</span><br><span class="line">                    n++;</span><br><span class="line">                    console.log(n);</span><br><span class="line">                 &#125;;</span><br><span class="line">    </span><br><span class="line">&#125;)()</span><br><span class="line">obj.count();//2</span><br><span class="line">obj.count();//3</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var divDom = $(&apos;#name&apos;);</span><br><span class="line">(function() &#123;</span><br><span class="line">    var n = 1;</span><br><span class="line">    divDom.onclick = function () &#123;</span><br><span class="line">                    n++;</span><br><span class="line">                    console.log(n);</span><br><span class="line">                 &#125;;</span><br><span class="line">    </span><br><span class="line">&#125;)()</span><br><span class="line">divDom.onclick();//2</span><br><span class="line">divDom.onclick();//3</span><br></pre></td></tr></table></figure>
+<h2 id="不是闭包的设计"><a href="#不是闭包的设计" class="headerlink" title="不是闭包的设计"></a>不是闭包的设计</h2><p>列举一下非闭包的设计方式，以此加深对闭包的理解<br>很多人认为自运行匿名函数、命名空间设计模式和原型定义方式都是闭包，我觉得是不对的。</p>
+<h3 id="自运行匿名函数："><a href="#自运行匿名函数：" class="headerlink" title="自运行匿名函数："></a>自运行匿名函数：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//这不是闭包</span><br><span class="line">(function fn()&#123;</span><br><span class="line">          var n = 8;</span><br><span class="line">           console.log(n) ;</span><br><span class="line">      &#125;)();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//这一种是闭包的设计，但并不是因为它是自运行匿名函数的原因，而是因为匿名函数内部return了一个函数的原因，</span><br><span class="line">//这其实就是上面讲的两种闭包设计模式的第一种 return方式</span><br><span class="line">(function fn()&#123;</span><br><span class="line">      var n = 8;</span><br><span class="line">      return function()&#123;</span><br><span class="line">          console.log(n) ;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="js的命名空间写法"><a href="#js的命名空间写法" class="headerlink" title="js的命名空间写法"></a>js的命名空间写法</h3><p>js的命名空间写法不能称之为闭包，它最多是使用了js关于引用对象一处改变，都受改变的特性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//这是命名空间的写法，但不是闭包</span><br><span class="line">var obj = &#123;</span><br><span class="line">  n:8,</span><br><span class="line">  count:function()&#123;</span><br><span class="line">    this.n++;</span><br><span class="line">    console.log(this.n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.count()//9</span><br><span class="line">obj.count()//10</span><br></pre></td></tr></table></figure></p>
+<h3 id="原型定义方式"><a href="#原型定义方式" class="headerlink" title="原型定义方式"></a>原型定义方式</h3><p>还有一些把函数定义在原型上，这本质上也是运用了引用对象的特性，不是闭包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//这不是闭包，是运用了引用对象的特性，才有对象元素值叠加的效果</span><br><span class="line">function a()&#123;</span><br><span class="line">  this.n = 8;</span><br><span class="line">&#125;</span><br><span class="line">a.prototype.count=function()&#123;</span><br><span class="line">  this.n++;</span><br><span class="line">  console.log(this.n);</span><br><span class="line">&#125;</span><br><span class="line">var obj = new a();</span><br><span class="line">obj.count()//9</span><br><span class="line">obj.count()//10</span><br></pre></td></tr></table></figure></p>
+<p> 如果稍微换一下，就行不通了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//这不是闭包</span><br><span class="line">function a()&#123;</span><br><span class="line">  this.n = 8;</span><br><span class="line">&#125;</span><br><span class="line">a.prototype.count=function()&#123;</span><br><span class="line">  this.n++;</span><br><span class="line">  console.log(this.n);</span><br><span class="line">&#125;</span><br><span class="line">var newCount = (new a()).count;</span><br><span class="line">newCount()//NaN</span><br><span class="line">newCount()//NaN</span><br></pre></td></tr></table></figure></p>
+<h2 id="闭包的用处"><a href="#闭包的用处" class="headerlink" title="闭包的用处"></a>闭包的用处</h2><h3 id="定义私有变量"><a href="#定义私有变量" class="headerlink" title="定义私有变量"></a>定义私有变量</h3><p>若不想某些变量被其他函数访问，就可以写一个闭包设计，将变量定义为私有变量，只有闭包函数可以访问，达到其他函数无法访问的目的。</p>
+<h3 id="保存变量值"><a href="#保存变量值" class="headerlink" title="保存变量值"></a>保存变量值</h3><p>这是闭包最经典和关键意义所在，也是闭包函数存在的意义。闭包函数绑定了母函数的变量，每次执行完，此变量不销毁，达到保存变量值的目的。</p>
+<h2 id="运用场景"><a href="#运用场景" class="headerlink" title="运用场景"></a>运用场景</h2><h3 id="保存变量值。"><a href="#保存变量值。" class="headerlink" title="保存变量值。"></a>保存变量值。</h3><h3 id="进行前后两次执行时的比较。"><a href="#进行前后两次执行时的比较。" class="headerlink" title="进行前后两次执行时的比较。"></a>进行前后两次执行时的比较。</h3><h4 id="react-redux的props状态比较"><a href="#react-redux的props状态比较" class="headerlink" title="react-redux的props状态比较"></a>react-redux的props状态比较</h4><p>比如react-redux就是通过闭包的这个特性，保存prop上一次状态，然后跟当前props比较。</p>
+<h4 id="节流和防抖"><a href="#节流和防抖" class="headerlink" title="节流和防抖"></a>节流和防抖</h4><p>这是性能优化经常使用的手段，可以网上查阅，都是用闭包来进行。</p>
+<h4 id="for循环的使用"><a href="#for循环的使用" class="headerlink" title="for循环的使用"></a>for循环的使用</h4><p>错误写法，这种for达不到预期<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//错误写法</span><br><span class="line">function foo()&#123;</span><br><span class="line">    var arr = [];</span><br><span class="line">    for(let i = 0; i &lt; 2; i++)&#123;</span><br><span class="line">        arr[i] = function()&#123;</span><br><span class="line">            return i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">var bar = foo();</span><br><span class="line">console.log(bar[0]());//2</span><br></pre></td></tr></table></figure></p>
+<p>为什么是2？<br>如下当for循环中定义的变量i，不光是for循环体内的变量，还是foo函数体内的块级变量，当for循环执行完后，会将函数体内的变量i赋值为2，此时调用函数，肯定打印为2.<br>for循环体内：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//2</span></span><br><span class="line">test();<span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>正确写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//正确写法</span><br><span class="line">//为什么能记住当时值，是因为是自运行的函数，每次都会执行一次</span><br><span class="line">function foo()&#123;</span><br><span class="line">    var arr = [];</span><br><span class="line">    for(var i = 0; i &lt; 2; i++)&#123;</span><br><span class="line">        arr[i] = (function fn(j)&#123;</span><br><span class="line">            return function test()&#123;</span><br><span class="line">                return j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">var bar = foo();</span><br><span class="line">console.log(bar[0]());//0</span><br></pre></td></tr></table></figure></p>
+<p>换一种写法，可能更容易理解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//正确写法</span><br><span class="line">function foo()&#123;</span><br><span class="line">    var arr = [];</span><br><span class="line">    for(var i = 0; i &lt; 2; i++)&#123;</span><br><span class="line">        arr[i] = (function fn(j)&#123;</span><br><span class="line">            var _j = j;//定义一个变量，更容易理解</span><br><span class="line">            return function test()&#123;</span><br><span class="line">                return _j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">var bar = foo();</span><br><span class="line">console.log(bar[0]());//0</span><br></pre></td></tr></table></figure></p>
+<h2 id="对闭包的误解"><a href="#对闭包的误解" class="headerlink" title="对闭包的误解"></a>对闭包的误解</h2><p>很多人认为闭包会增加内存，导致内存泄漏，这是错误的，是对闭包的误解。<br>如果你不把变量定义为闭包访问的私有变量，你也一定会把这些变量定义在全局作用域上，全局作用上下文也是不销毁的，一样也是增加了内存。<br>所以闭包并没有增加内存，更没有内存泄漏。<br>如果增加了内存和内存泄漏，其实都是编码水平有待提高导致。</p>
+<h1 id="命名空间模式"><a href="#命名空间模式" class="headerlink" title="命名空间模式"></a>命名空间模式</h1><p>js使用命名空间模式设计，主要是为了避免命名冲突。<br>命名空间设计模式有很多，工作中最常用的是 对象字面量表示法 的设计模式。其他命名空间模式，我觉得应该用的不多，知道一下即可，这里不展开，可以网上查，<a href="https://www.cnblogs.com/syfwhu/p/4885628.html" target="_blank" rel="noopener">也可参考此篇文章</a>。</p>
+<h2 id="对象字面量表示法"><a href="#对象字面量表示法" class="headerlink" title="对象字面量表示法"></a>对象字面量表示法</h2><p>对象字面量表示法是命名空间设计模式的一种，用得最广，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//对象字面量表示法 的命名空间设计模式</span><br><span class="line">var myApplication = &#123;</span><br><span class="line">    // 可以很容易的为对象字面量定义功能</span><br><span class="line">    getInfo:function() &#123;</span><br><span class="line">        // ***</span><br><span class="line">    &#125;,</span><br><span class="line">    // 可以进一步支撑对象命名空间</span><br><span class="line">    models:&#123;&#125;,</span><br><span class="line">    views:&#123;</span><br><span class="line">        pages:&#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    collections:&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="命名空间与设计模式区别"><a href="#命名空间与设计模式区别" class="headerlink" title="命名空间与设计模式区别"></a>命名空间与设计模式区别</h2><p>很多人命名空间的设计模式，是js 单例的设计模式，其实二者完全是两样东西。<br>命名空间偏向于是一种编程规范的设计；<br>js的一些设计模式，例如单例、观察者模式，更多的偏向功能实现方案的js设计模式。如设计绑定和监听时，选择观察者设计模式。<br>所以说，命名空间是一种编程规范，设计模式(如单例，以下设计模式都为这种含义)是一种功能实现的设计方案。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-07-10T12:50:23.043Z" itemprop="dateUpdated">2020-07-10 20:50:23</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/07/10/js_design_start/" target="_blank" rel="external">https://yewills.github.io/2020/07/10/js_design_start/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js设计模式/">js设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命名空间/">命名空间</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/07/10/js_design_start/&title=《js设计模式上(面向对象、闭包、命名空间)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/07/10/js_design_start/&title=《js设计模式上(面向对象、闭包、命名空间)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/07/10/react_router/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React Router</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/07/10/mongoose_mongodb/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mongoose 与 mongodb笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js的面向对象编程"><span class="post-toc-number">1.</span> <span class="post-toc-text">js的面向对象编程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#new-的理解"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">new 的理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于new"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">关于new</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#new-Fn-与-new-Fn的区别"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">new Fn() 与 new Fn的区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多态"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">多态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#继承"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型浅拷贝的痛点"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">原型浅拷贝的痛点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#es5继承"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">es5继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#套路"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">套路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方式"><span class="post-toc-number">1.4.2.2.</span> <span class="post-toc-text">方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#弊端"><span class="post-toc-number">1.4.2.3.</span> <span class="post-toc-text">弊端</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#es5最佳继承方式一：与深拷贝函数结合"><span class="post-toc-number">1.4.2.4.</span> <span class="post-toc-text">es5最佳继承方式一：与深拷贝函数结合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#es5最佳继承方式二：引用对象不写入父原型上"><span class="post-toc-number">1.4.2.5.</span> <span class="post-toc-text">es5最佳继承方式二：引用对象不写入父原型上</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最终极方式：es6-class"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">最终极方式：es6 class</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#封装"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">封装</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#闭包"><span class="post-toc-number">2.</span> <span class="post-toc-text">闭包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三种定义方式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">三种定义方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#return方式"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">return方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#new-方式"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">new 方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对象方式"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">对象方式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不是闭包的设计"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">不是闭包的设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自运行匿名函数："><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">自运行匿名函数：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#js的命名空间写法"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">js的命名空间写法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型定义方式"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">原型定义方式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包的用处"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">闭包的用处</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义私有变量"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">定义私有变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#保存变量值"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">保存变量值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运用场景"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">运用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#保存变量值。"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">保存变量值。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进行前后两次执行时的比较。"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">进行前后两次执行时的比较。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#react-redux的props状态比较"><span class="post-toc-number">2.5.2.1.</span> <span class="post-toc-text">react-redux的props状态比较</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#节流和防抖"><span class="post-toc-number">2.5.2.2.</span> <span class="post-toc-text">节流和防抖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#for循环的使用"><span class="post-toc-number">2.5.2.3.</span> <span class="post-toc-text">for循环的使用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对闭包的误解"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">对闭包的误解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#命名空间模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">命名空间模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象字面量表示法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">对象字面量表示法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命名空间与设计模式区别"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">命名空间与设计模式区别</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/07/10/js_design_start/&title=《js设计模式上(面向对象、闭包、命名空间)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/07/10/js_design_start/&title=《js设计模式上(面向对象、闭包、命名空间)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQW4DIQwF0Nz/0qnUbRvyv5lWCvNYRUkGeLOwMPbjEY/n91h///Pzq6fWMyRPDQcGBsbHMp7LsV5s/f/19+ud5GthYGDch9GGwjwsJptev7JoTgwMDIx4Kwk+CbsYGBgYOwE3H23YxcDAwFgz2qR0Z+FrE2YMDIw7MNpE9D8//2F9AwMD40MYs6NeEih3Koz1rjAwMI5mvFq+SB0vTUfzC7uo/oCBgXE0Y2fSPNVcP1u/aAwMjEMZs9C2njS/SmubM15SMTAwjmbkl2vrUNiWMNsmjPWzGBgYZzNmAXEWoNvr/pyEgYFxNiNPRJPEtZ1hVlSIUlkMDIzbMPZLAjtpcALAwMC4D2OWWO5gZv1r0WvCwMA4lNEGyqSpIm+5mP2KgYFxH8ZsW+0hcha4i4YMDAyMoxn5Rf9V5cb8Au7iEy4GBsYRjLx5oj3AtYfLC5JqDAyMgxh/lxnPEuOk/PnLfjAwMI5mzCZtF5ulu22AxsDAOJWRh7NZeXJ2Pr2gwQIDA+M4RvtwnuK2c7Yr/nLCxcDAOI7RHtF2wmLbhFEXODEwMA5lPMuRb3cnAW5LpBgYGGcz8rFzjHuUY1Z+wMDAOJsxa7BoL8va9q/6RWBgYNyA0RYG2qaK/fGmCIqBgYFRtkq0BYYLGjswMDAw4pav5FCYN3kUrR4YGBg3YOSX9bOFr72Me9PjhoGBcRzjggRyo/Q4KwMMMRgYGJ/H+AJQFtsZXkLufAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
