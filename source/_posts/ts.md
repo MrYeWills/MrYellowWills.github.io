@@ -393,7 +393,7 @@ height = null;//不报错
 ```
 
 ## 参考
-[TS封装播放器组件](https://www.imooc.com/learn/1243)
+[慕课网 - TS封装播放器组件](https://www.imooc.com/learn/1243)
 [当React遇上TypeScript开发Antd组件](https://www.imooc.com/learn/1234)
 [TypeScript 入门教程](https://ts.xcatliu.com/)
 

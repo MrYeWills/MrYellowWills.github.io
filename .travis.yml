@@ -32,7 +32,8 @@ before_script:
   - chmod +x _travis.sh
 
 script:
-  - hexo clean && hexo g
+  # - hexo clean && hexo g
+  - hexo g
 
 after_success:
  # - LAST_BUILD_NUMBER=68
