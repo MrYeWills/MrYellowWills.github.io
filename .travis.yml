@@ -13,7 +13,7 @@ notifications:
   # 邮件发送部署结果通知
   email:
     recipients:
-      - zebrateam@163.com
+      - 601661706@qq.com
     on_success: change
     on_failure: always
 
@@ -45,7 +45,7 @@ after_script:
 
 branches:
   only:
-    - dev
+    - blog_code
 env:
  global:
-   - GH_REF: github.com/zebra-team/zebra-team.github.io.git
+   - GH_REF: github.com/YeWills/YeWills.github.io.git
