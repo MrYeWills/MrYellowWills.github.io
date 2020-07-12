@@ -140,3 +140,7 @@ devDependencies通常用于开发时，如eslint，或者启动命令的包 如 
 
 ### 以create-umi为示例
 create-umi是npm包开发的一个典范，可以参照其源码进行开发。
+
+### Yeoman写bin
+umi的bin，市面上很多bin的编写都使用了`Yeoman`。
+参考《package.json  -  bin》
