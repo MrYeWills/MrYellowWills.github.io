@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>js笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="自运行函数写法形式">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>js笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">js笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-12T04:50:50.667Z" itemprop="datePublished" class="page-time">
+  2020-07-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-js" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">js笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-12 12:50:50" datetime="2020-07-12T04:50:50.667Z" itemprop="datePublished">2020-07-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="js-常用知识"><a href="#js-常用知识" class="headerlink" title="js 常用知识"></a>js 常用知识</h2><h3 id="自运行函数"><a href="#自运行函数" class="headerlink" title="自运行函数"></a>自运行函数</h3><h4 id="自运行函数的17种写法"><a href="#自运行函数的17种写法" class="headerlink" title="自运行函数的17种写法"></a>自运行函数的17种写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125;() );</span><br><span class="line">( function() &#123;&#125; )();</span><br><span class="line">[ function() &#123;&#125;() ];</span><br><span class="line"></span><br><span class="line">~ function() &#123;&#125;();</span><br><span class="line">! function() &#123;&#125;();</span><br><span class="line">+ function() &#123;&#125;();</span><br><span class="line">- function() &#123;&#125;();</span><br><span class="line"></span><br><span class="line">delete function() &#123;&#125;();</span><br><span class="line">typeof function() &#123;&#125;();</span><br><span class="line">void function() &#123;&#125;();</span><br><span class="line">new function() &#123;&#125;();</span><br><span class="line">new function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">var f = function() &#123;&#125;();</span><br><span class="line"></span><br><span class="line">1, function() &#123;&#125;();</span><br><span class="line">1 ^ function() &#123;&#125;();</span><br><span class="line">1 &gt; function() &#123;&#125;();</span><br><span class="line"></span><br><span class="line">;( function() &#123;&#125;() );</span><br></pre></td></tr></table></figure>
+<h4 id="函数表达式-和-函数声明"><a href="#函数表达式-和-函数声明" class="headerlink" title="函数表达式 和 函数声明"></a>函数表达式 和 函数声明</h4><p>要弄懂自运行函数的原理，需弄懂函数表达式 和 函数声明概念；<br>函数声明，也叫函数定义；<br><a href="https://www.cnblogs.com/lenther2002/p/5894964.html" target="_blank" rel="noopener">参考</a><br>Javascript中有2个语法都与function关键字有关，分别是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数声明：function FunctionName(FormalParameterList) &#123; FunctionBody &#125;</span><br><span class="line">函数表达式：function [FunctionName](FormalParameterList) &#123; FunctionBody &#125;</span><br></pre></td></tr></table></figure></p>
+<p>从语法的定义上看，这两者几乎是一模一样的（唯一的区别是函数表达式可以省略函数名称），那么就解释器而言，当遇到这个结构的语句时，判定为函数表达式还是函数定义呢？<br>就javascript的语法而言，如果一条语句是以function关键字开始，那么这段会被判定为函数定义(声明)；<br>如果不是以function关键字开始，那么就是函数表达式；</p>
+<p><strong>为什么要分清 函数表达式和函数声明呢?</strong><br>因为<a href="https://www.zhihu.com/question/20249179" target="_blank" rel="noopener">函数表达式是不能拿来直接用的</a>，必须在<strong>左侧</strong>有字符或表达式与这个函数表达式共同构成一句可执行的函数语句；<br>（之所以在左侧，不是右侧，是因为在不要行函数语句以关键字function开始，避免被识别为函数声明，导致报错）<br>函数声明是可以拿过来直接用；<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fn()&#123;&#125;</span><br><span class="line">fn()//不报错；</span><br><span class="line">function ()&#123;&#125;() //报错</span><br><span class="line">-function ()&#123;console.log(5)&#125;() //不报错 因为在funtion左侧有表达式-</span><br></pre></td></tr></table></figure></p>
+<h4 id="16种含函数表达式的不报错的函数语句"><a href="#16种含函数表达式的不报错的函数语句" class="headerlink" title="16种含函数表达式的不报错的函数语句"></a>16种含函数表达式的不报错的函数语句</h4><p>结合上节的知识，将《自运行函数的17种写法》整理下，以下17种包含了函数表达式的函数语句不报错,注意的是，<br>以下函数表达式内的函数体都将不会执行，至于如何执行，下面会讲。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125; );</span><br><span class="line">( function() &#123;&#125; );</span><br><span class="line">[ function() &#123;&#125; ];</span><br><span class="line"></span><br><span class="line">~ function() &#123;&#125;;</span><br><span class="line">! function() &#123;&#125;;</span><br><span class="line">+ function() &#123;&#125;;</span><br><span class="line">- function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">delete function() &#123;&#125;;</span><br><span class="line">typeof function() &#123;&#125;;</span><br><span class="line">void function() &#123;&#125;;</span><br><span class="line">new function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">var f = function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">1, function() &#123;&#125;;</span><br><span class="line">1 ^ function() &#123;&#125;;</span><br><span class="line">1 &gt; function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">;( function() &#123;&#125; );</span><br></pre></td></tr></table></figure>
+<h4 id="是否以function开始对js解释器很重要"><a href="#是否以function开始对js解释器很重要" class="headerlink" title="是否以function开始对js解释器很重要"></a>是否以function开始对js解释器很重要</h4><p><a href="https://www.zhihu.com/question/20249179" target="_blank" rel="noopener">参考</a><br>以下两种报错形式的原因分析：</p>
+<ul>
+<li>function (){ }()<br>期望是立即调用一个匿名函数表达式，结果是进行了函数声明，函数声明必须要有标识符做为函数名称。</li>
+<li>function g(){ }()<br>期望是立即调用一个具名函数表达式，结果是声明了函数 g。末尾的括号作为分组运算符，<strong>必须要提供表达式做为参数</strong>，这个表达式可以是一个值或一个语句，例如改成下面的就不会报错：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function g()&#123; &#125;(1) //不报错，因为末尾的小括号有值作为表达式</span><br><span class="line">function g()&#123; &#125;(1,2) //不报错</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上说明了，是否以function开始对js解释器很重要;<br>如果以function开始，js解释器会认为它是一个函数声明，此时就要符合函数声明的标准，否则报错；<br>如果function左侧还有表达式，js解释器会认为它是一个函数表达式，此时该函数表达式配合左右两侧的表达式就构成了一个函数语句,要符合函数语句标准；<br>（例如 var a = function(){} 这就是一条函数语句）</p>
+<h4 id="1种立即执行的函数声明形式"><a href="#1种立即执行的函数声明形式" class="headerlink" title="1种立即执行的函数声明形式"></a>1种立即执行的函数声明形式</h4><p>目前知道的，可以让函数声明内的函数体立即执行的只有这种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function g(a)&#123;console.log(a) &#125;(1) //不报错</span><br></pre></td></tr></table></figure></p>
+<p>注意，末尾小括号一定要有 表达式，原因查看《是否以function开始对js解释器很重要》<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function g(a)&#123;console.log(a) &#125;() //报错</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何让函数表达式、声明内的函数体立即执行"><a href="#如何让函数表达式、声明内的函数体立即执行" class="headerlink" title="如何让函数表达式、声明内的函数体立即执行"></a>如何让函数表达式、声明内的函数体立即执行</h4><p>如何让 函数表达式和函数声明 内的函数体立即执行呢；<br><strong>只能</strong>通过小括号();<br>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = function()&#123;console.log(&apos;work&apos;)&#125; //不打印</span><br><span class="line">var a = function()&#123;console.log(&apos;work&apos;)&#125;() //打印work</span><br></pre></td></tr></table></figure></p>
+<p>因此可以认为()是一个让立即执行的运算符，可以让函数表达式或函数声明内的函数体立即执行；</p>
+<h4 id="函数表达式、声明-与-立即执行-关系"><a href="#函数表达式、声明-与-立即执行-关系" class="headerlink" title="函数表达式、声明 与 立即执行 关系"></a>函数表达式、声明 与 立即执行 关系</h4><p>参看上面的《如何让函数表达式、声明内的函数体立即执行》</p>
+<h4 id="与-立即执行"><a href="#与-立即执行" class="headerlink" title="() 与 立即执行"></a>() 与 立即执行</h4><p>参看上面的《如何让函数表达式、声明内的函数体立即执行》</p>
+<h4 id="放在哪些位置可以让函数体立即执行"><a href="#放在哪些位置可以让函数体立即执行" class="headerlink" title="()放在哪些位置可以让函数体立即执行"></a>()放在哪些位置可以让函数体立即执行</h4><p>一般而言，() 紧跟在 function(){} 的花括号后面的位置，通过这样的方式让函数表达式或函数声明 内的函数体立刻执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = function()&#123;console.log(&apos;work&apos;)&#125;()</span><br><span class="line">~ function() &#123;&#125;()</span><br><span class="line">( function() &#123;&#125;() )</span><br><span class="line">function fn(t)&#123;console.log(t)&#125;(&apos;work&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>不过有个例外，请看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125;() ); //可以立即执行函数体</span><br><span class="line">( function() &#123;&#125; )(); //()放在了左侧(  )的右侧，不过也可以立即执行函数体</span><br></pre></td></tr></table></figure></p>
+<p>()紧跟在中括号后就不行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ function() &#123;&#125;()]; //不报错，这个函数语句其实就是一个数组</span><br><span class="line">[ function() &#123;&#125;](); //报错，因为[]是一个数组，数组不是方法，类似这种写法，都错：[]()</span><br></pre></td></tr></table></figure></p>
+<p><strong>小结，从目前看，小括号一般紧跟如上的花括号，也可跟在如上的 (  )后面。</strong>现在再回过头，看这《自运行函数的17种写法》应该就明白了吧</p>
+<h4 id="与-函数传参"><a href="#与-函数传参" class="headerlink" title="() 与 函数传参"></a>() 与 函数传参</h4><p>这个简单，不多介绍，一般自运行传参的方式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">( function(a) &#123;console.log(a)&#125; )(888) //888</span><br></pre></td></tr></table></figure></p>
+<p>注意的是，将()写在里面也是可以传参的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">( function(a) &#123;console.log(a)&#125;(888) ) //888</span><br></pre></td></tr></table></figure></p>
+<h4 id="分号-与-立即执行"><a href="#分号-与-立即执行" class="headerlink" title="分号 ; 与 立即执行"></a>分号 ; 与 立即执行</h4><p>有些人喜欢用分号;来配合函数表达式写一个自运行，;分号本来是用来给函数语句断句的；<br>所以用这个的好处就是自带断句功能，避免不必要的错误；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//会报错</span><br><span class="line">var f = function() &#123;&#125;;</span><br><span class="line">f()</span><br><span class="line">( function() &#123;&#125; )();</span><br></pre></td></tr></table></figure></p>
+<p>加分号;后不报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//会报错</span><br><span class="line">var f = function() &#123;&#125;;</span><br><span class="line">f()</span><br><span class="line">;( function() &#123;&#125; )();</span><br></pre></td></tr></table></figure></p>
+<h4 id="，-，！比（-）立即执行方式少一个字符"><a href="#，-，！比（-）立即执行方式少一个字符" class="headerlink" title="+，-，！比（ ）立即执行方式少一个字符"></a>+，-，！比（ ）立即执行方式少一个字符</h4><p>通过+，-，！这三个符号运行的匿名函数比（）运行的匿名函数可以减少一个字符的使用<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">( function() &#123;&#125; );</span><br><span class="line">~ function() &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>不过这不影响使用(  )还是+，-，！ 配合使用函数表达式，这里只是提取这个现象出来。</p>
+<h4 id="难点立即执行的demo分析"><a href="#难点立即执行的demo分析" class="headerlink" title="难点立即执行的demo分析"></a>难点立即执行的demo分析</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new(function P()&#123;console.log(1)&#125;)()</span><br></pre></td></tr></table></figure>
+<p>以上相当于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new (function P()&#123;console.log(1)&#125;)()</span><br></pre></td></tr></table></figure></p>
+<p>左侧是new表达式，右侧是一个立即执行的函数；<br>右侧立即执行的函数其实就是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function P()&#123;console.log(1)&#125;</span><br><span class="line">P()</span><br></pre></td></tr></table></figure></p>
+<p>所以以上相当于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function P()&#123;console.log(1)&#125;</span><br><span class="line">new P()</span><br></pre></td></tr></table></figure></p>
+<p>问题：为什么new(function() {})()，new可以与()紧挨着，不用空格；<br>因为(function() {})()是一个函数表达式语句，可以挨着，也可以不挨着，都不会报错<br>你把new当成+ - ！ ~来看，就好理解了；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ function() &#123;&#125;; //不紧挨着，不报错</span><br><span class="line">~function() &#123;&#125;; //紧挨着，不报错</span><br></pre></td></tr></table></figure></p>
+<h4 id="重要运用之一"><a href="#重要运用之一" class="headerlink" title="重要运用之一"></a>重要运用之一</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var map = document.querySelector(&apos;#id&apos;)</span><br><span class="line">map.style.height=&apos;600px&apos;;</span><br></pre></td></tr></table></figure>
+<p>相比之下，下面的写法，map变成块级变量，不再污染全局作用域。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;(function()&#123;</span><br><span class="line">    var map = document.querySelector(&apos;#id&apos;)</span><br><span class="line">    map.style.height=&apos;600px&apos;;</span><br><span class="line">     &#125;())</span><br></pre></td></tr></table></figure></p>
+<h4 id="自运行-参考资料"><a href="#自运行-参考资料" class="headerlink" title="自运行 参考资料"></a>自运行 参考资料</h4><p><a href="http://www.softwhy.com/article-2022-1.html" target="_blank" rel="noopener">JavaScript 小括号()分组运算符</a><br><a href="https://www.cnblogs.com/lenther2002/p/5894964.html" target="_blank" rel="noopener">JS中函数定义和函数表达式的区别</a><br><a href="https://www.zhihu.com/question/20249179" target="_blank" rel="noopener">JavaScript 匿名函数有哪几种执行方式?</a></p>
+<h3 id="js规范写法"><a href="#js规范写法" class="headerlink" title="js规范写法"></a>js规范写法</h3><h4 id="给常量起个名"><a href="#给常量起个名" class="headerlink" title="给常量起个名"></a>给常量起个名</h4><p>必要的时候，给常量起个名，可读性更强<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car.handle(&apos;seller&apos;,&apos;sell&apos;,5,true);</span><br></pre></td></tr></table></figure></p>
+<p>修改后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var carType = &apos;seller&apos;;</span><br><span class="line">var carName = &apos;sell&apos;;</span><br><span class="line">var sellNum = 5;</span><br><span class="line">var isNeedLoan = true;</span><br><span class="line">car.handle(carType,carName,sellNum,isNeedLoan);</span><br></pre></td></tr></table></figure></p>
+<h3 id="js运行机制"><a href="#js运行机制" class="headerlink" title="js运行机制"></a>js运行机制</h3><h4 id="如何理解js的单线程"><a href="#如何理解js的单线程" class="headerlink" title="如何理解js的单线程"></a>如何理解js的单线程</h4><p>js的单线程指的是，一个时间内只能执行一个任务。</p>
+<h4 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h4><p>js任务分为<code>同步任务</code>和<code>异步任务</code>；</p>
+<h4 id="event-loop-事件循环"><a href="#event-loop-事件循环" class="headerlink" title="event loop (事件循环)"></a>event loop (事件循环)</h4><p>js有一个<code>运行栈</code>，<code>运行栈</code>中执行的是<code>同步任务</code>；<br>如果浏览器发现js中有setTimeout等<code>异步任务</code>，浏览器的Timer会将此<code>异步任务</code>从<code>运行栈</code>中拿出来；<br>等到<code>异步任务</code>的time变成0的时候，再将此<code>异步任务</code>放到<code>任务队列</code>中；<br>js在<code>运行栈</code>中执行完<code>同步任务</code>后，会以轮询的方式访问<code>任务队列</code>，看是否有任务被执行；<br>此时会轮询到<code>任务队列</code>中的<code>异步任务</code>，并将此任务放入<code>运行栈</code>执行，<code>异步任务</code>变成<code>同步任务</code>；</p>
+<p>注意的是，<code>运行栈</code>只执行<code>同步任务</code>，<code>异步任务</code>时间变成0后，就变成<code>同步任务</code>，另外js在运行同步任务的时候，是不会运行异步任务的;</p>
+<h4 id="理解setTimeout-0"><a href="#理解setTimeout-0" class="headerlink" title="理解setTimeout 0"></a>理解setTimeout 0</h4><p>小于4毫秒时，浏览器认为都是0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;&#125;, 2)</span><br></pre></td></tr></table></figure></p>
+<h4 id="触发异步任务的API"><a href="#触发异步任务的API" class="headerlink" title="触发异步任务的API"></a>触发异步任务的API</h4><p>setTimeout或setInInterval<br>Dom事件<br>Promise</p>
+<h4 id="给常量起个名-1"><a href="#给常量起个名-1" class="headerlink" title="给常量起个名"></a>给常量起个名</h4><p>必要的时候，给常量起个名，可读性更强<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car.handle(&apos;seller&apos;,&apos;sell&apos;,5,true);</span><br></pre></td></tr></table></figure></p>
+<p>修改后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var carType = &apos;seller&apos;;</span><br><span class="line">var carName = &apos;sell&apos;;</span><br><span class="line">var sellNum = 5;</span><br><span class="line">var isNeedLoan = true;</span><br><span class="line">car.handle(carType,carName,sellNum,isNeedLoan);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Dom-API"><a href="#Dom-API" class="headerlink" title="Dom API"></a>Dom API</h2><h3 id="为什么都可绑定事件：dom-onclick-function-dom-addEventListener-‘click’"><a href="#为什么都可绑定事件：dom-onclick-function-dom-addEventListener-‘click’" class="headerlink" title="为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener(‘click’)"></a>为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener(‘click’)</h3><p>这是dom事件级别，这两种方式是新老时代的绑定事件方式，参考《dom事件级别》</p>
+<h3 id="dom事件级别"><a href="#dom事件级别" class="headerlink" title="dom事件级别"></a>dom事件级别</h3><p>dom0 时代 ：dom.onclick=function(){}<br>dom2 时代 ：dom.addEventListener(‘click’, function(){})<br>dom3 时代，绑定事件方式与dom2相同，不同的是，dom3时代增加了很多事件类型，例如 鼠标事件、键盘事件‘keyup’；</p>
+<h3 id="事件模型"><a href="#事件模型" class="headerlink" title="事件模型"></a>事件模型</h3><p>事件模型有 冒泡和捕获 两种。</p>
+<h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p><a href="https://www.jianshu.com/p/e7c403e6e2da" target="_blank" rel="noopener">参考</a><br>当事件触发时，无论你做了什么，事件都会完整经历捕获、目标处理、冒泡阶段。这里很多人歧义，认为事件只会单独执行捕获或冒泡阶段，这是不对的，事件会完整经历以上三阶段。<br>只是绑定事件时，可以选择事件在冒泡或捕获阶段触发：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//true 捕获， false 冒泡 (默认)， 无论设置为true或false，事件都会执行</span><br><span class="line">document.addEventListener(&quot;click&quot;, myFunction, true);</span><br></pre></td></tr></table></figure></p>
+<p>dom事件流分为三阶段：</p>
+<h4 id="捕获阶段"><a href="#捕获阶段" class="headerlink" title="捕获阶段"></a>捕获阶段</h4><p>一个事件比如 click，顶级对象window发出一个事件流，事件从window&gt;document&gt;html&gt;body&gt;button到达目标元素。<br>注意此阶段不出发事件绑定的函数。</p>
+<h4 id="目标处理阶段"><a href="#目标处理阶段" class="headerlink" title="目标处理阶段"></a>目标处理阶段</h4><p>事件到达目标元素后，目标元素分析传给自己的是什么事件，是click还是change等等事件？确认好事件类型后，开始触发事件对应的绑定函数。<br>进入冒泡阶段。</p>
+<h4 id="冒泡阶段"><a href="#冒泡阶段" class="headerlink" title="冒泡阶段"></a>冒泡阶段</h4><p>沿着目标函数一步步到window对象，触发对应事件绑定函数。</p>
+<h4 id="document-addEventListener"><a href="#document-addEventListener" class="headerlink" title="document.addEventListener"></a>document.addEventListener</h4><p>document.addEventListener(“click”, myFunction, true)的第三个参数 true或false，这第三个参数类似一个转换阀，当为true时，捕获阶段就执行。<br>当false时，冒泡阶段才执行。</p>
+<h3 id="事件捕获的具体流程"><a href="#事件捕获的具体流程" class="headerlink" title="事件捕获的具体流程"></a>事件捕获的具体流程</h3><p>事件捕获具体流程是window&gt;document&gt;html&gt;body&gt;button。<br>这也就解释了，很多人将<strong>全局</strong>事件绑定在body或document或window上，放在这些地方，在项目中任何地方都能被捕获触发对应事件函数。</p>
+<h3 id="Event对象常见运用"><a href="#Event对象常见运用" class="headerlink" title="Event对象常见运用"></a>Event对象常见运用</h3><h4 id="event-preventDefault"><a href="#event-preventDefault" class="headerlink" title="event.preventDefault()"></a>event.preventDefault()</h4><p>阻止元素的默认行为，例如a标签定义click事件，在事件函数上加上这个，可以阻止a标签跳转。</p>
+<h4 id="event-stopPropagation"><a href="#event-stopPropagation" class="headerlink" title="event.stopPropagation()"></a>event.stopPropagation()</h4><p>阻止冒泡或捕获，当元素使用这个的时候，监听事件比如click，所触发的函数就到此为止，再也不会向上冒泡或像下捕获。</p>
+<h4 id="event-stopImmediatePropagation"><a href="#event-stopImmediatePropagation" class="headerlink" title="event.stopImmediatePropagation()"></a>event.stopImmediatePropagation()</h4><p>同一个元素绑定同一事件如click多次时，当元素click触发时，所有的click事件全部被触发。<br>如果不想全部触发绑定的click事件，可以在某个click事件函数中加这个，阻止再触发其他click事件函数。</p>
+<h4 id="event-currentTarget"><a href="#event-currentTarget" class="headerlink" title="event.currentTarget"></a>event.currentTarget</h4><p>获取真正写onclick函数的元素，如下，当点击child1时，通过event.currentTarget获取到的是wrap的dom，通过event.target获取到的是真正被点击的目标元素child1。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;wrap&quot; onclick=&quot;function(e)&#123;e.target&#125;&quot;&gt;</span><br><span class="line">           &lt;div class=&quot;child1&quot;&gt;&lt;/div&gt;</span><br><span class="line">           &lt;div class=&quot;child2&quot;&gt;&lt;/div&gt;</span><br><span class="line">       &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="event-target"><a href="#event-target" class="headerlink" title="event.target"></a>event.target</h4><p>见《event.currentTarget》</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>event还有很多其他的作用，比如获取键盘值等等。</p>
+<h3 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var eve = new Event(&apos;abcTest&apos;);</span><br><span class="line">dom.addEventListener(&apos;abcTest&apos;, ()=&gt;&#123;&#125;, false)</span><br><span class="line">dom.dispatchEvent(eve)</span><br></pre></td></tr></table></figure>
+<p>IE下有一定兼容问题，解决方法很简单，参看mdn关于<code>new Event</code>章节。</p>
+<h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><h4 id="keyDown"><a href="#keyDown" class="headerlink" title="keyDown"></a>keyDown</h4><p>当用户按下键盘上的任意键时触发，而且如果按住不放的话，会<strong>重复</strong>触发此事件，注意，如果事件可选用keyDown与keyUp时，请使用keyUp，因为它不会重复触发。</p>
+<h4 id="keyPress"><a href="#keyPress" class="headerlink" title="keyPress"></a>keyPress</h4><p>当用户按下键盘上的<strong>字符键</strong>时触发，而且如果按住不放的话，会<strong>重复</strong>触发此事件</p>
+<h4 id="keyUp"><a href="#keyUp" class="headerlink" title="keyUp"></a>keyUp</h4><p>当用户释放键盘上的键时触发,天然地<strong>不会重复</strong>触发</p>
+<h4 id="用keyUp代替keyDown"><a href="#用keyUp代替keyDown" class="headerlink" title="用keyUp代替keyDown"></a>用keyUp代替keyDown</h4><p>因为keyUp的不会重复触发性，在做键盘事件时，可以选择keyUp，而避免keyDown。</p>
+<h4 id="避免this的使用-同时支持鼠标与键盘事件时"><a href="#避免this的使用-同时支持鼠标与键盘事件时" class="headerlink" title="避免this的使用-(同时支持鼠标与键盘事件时)"></a>避免this的使用-(同时支持鼠标与键盘事件时)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> play=<span class="built_in">document</span>.getElementById(<span class="string">'play'</span>);</span><br><span class="line">    <span class="comment">// 开始抽奖</span></span><br><span class="line">    play.onclick=playFun;</span><br><span class="line">   <span class="comment">// 键盘事件</span></span><br><span class="line">   <span class="built_in">document</span>.onkeyup=<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">      event = event || <span class="built_in">window</span>.event;</span><br><span class="line">      <span class="keyword">if</span>(event.keyCode==<span class="number">13</span>)&#123;</span><br><span class="line">        playFun();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">playFun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//最好不要用this，鼠标事件时，this时被点击节点；键盘事件时this指向document</span></span><br><span class="line">    <span class="comment">//this.style.background='#999';</span></span><br><span class="line">    play.style.background=<span class="string">'#999'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dom-API-黑知识"><a href="#Dom-API-黑知识" class="headerlink" title="Dom API 黑知识"></a>Dom API 黑知识</h2><h3 id="获取dom-width-与-内联样式-的关系"><a href="#获取dom-width-与-内联样式-的关系" class="headerlink" title="获取dom width 与 内联样式 的关系"></a>获取dom width 与 内联样式 的关系</h3><h4 id="dom-style-width-只能获取内联样式"><a href="#dom-style-width-只能获取内联样式" class="headerlink" title="dom.style.width 只能获取内联样式"></a>dom.style.width 只能获取内联样式</h4><p>dom.style.width 只能获取内联样式，无法获取 通过css给dom设置的width。<br>这就造成明明dom是有宽高的，但使用dom.style.width获取的高度为0；<br>解决的方法是，使用 window.getComputedStyle(dom).width 获取，此方法始终能获取宽高度。</p>
+<h4 id="window-getComputedStyle-dom-width-获取宽高"><a href="#window-getComputedStyle-dom-width-获取宽高" class="headerlink" title="window.getComputedStyle(dom).width 获取宽高"></a>window.getComputedStyle(dom).width 获取宽高</h4><p>推荐使用此方法获取dom宽高度。<br>参考《dom.style.width 只能获取内联样式》</p>
+<h4 id="dom-getBoundingClientRect-width"><a href="#dom-getBoundingClientRect-width" class="headerlink" title="dom.getBoundingClientRect().width"></a>dom.getBoundingClientRect().width</h4><p>此方法是一个dom API神器，能做很多事情，获取宽高度不在话下。</p>
+<h2 id="Jquery"><a href="#Jquery" class="headerlink" title="Jquery"></a>Jquery</h2><h3 id="为什么jq插件要写在-fn对象中"><a href="#为什么jq插件要写在-fn对象中" class="headerlink" title="为什么jq插件要写在$.fn对象中"></a>为什么jq插件要写在$.fn对象中</h3><p>本可以将jq插件直接扩展到$.prototype原型上，为什么要在$.fn上呢，原因是为了广大jq用户，有一个统一的接口（fn对象）来进行插件扩展。<br>这样，大家插件的写法也更加统一。</p>
+<h2 id="场景运用"><a href="#场景运用" class="headerlink" title="场景运用"></a>场景运用</h2><h3 id="拖拽的原生实现"><a href="#拖拽的原生实现" class="headerlink" title="拖拽的原生实现"></a>拖拽的原生实现</h3><h4 id="onmousemove的坐标实时计算"><a href="#onmousemove的坐标实时计算" class="headerlink" title="onmousemove的坐标实时计算"></a>onmousemove的坐标实时计算</h4><p>见下面代码</p>
+<h4 id="clientX-与-offsetLeft"><a href="#clientX-与-offsetLeft" class="headerlink" title="clientX 与 offsetLeft"></a>clientX 与 offsetLeft</h4><p>见下面代码</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=drag;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> oTitle=getByClass(<span class="string">'login_logo_webqq'</span>,<span class="string">'loginPanel'</span>)[<span class="number">0</span>];</span><br><span class="line">   <span class="comment">// 拖曳</span></span><br><span class="line">   oTitle.onmousedown=fnDown;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnDown</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  event = event || <span class="built_in">window</span>.event;</span><br><span class="line">  <span class="keyword">var</span> oDrag=<span class="built_in">document</span>.getElementById(<span class="string">'loginPanel'</span>),</span><br><span class="line">      <span class="comment">// 光标按下时光标和面板之间的距离</span></span><br><span class="line">      disX=event.clientX-oDrag.offsetLeft,</span><br><span class="line">      disY=event.clientY-oDrag.offsetTop;</span><br><span class="line">  <span class="comment">// 移动</span></span><br><span class="line">  <span class="built_in">document</span>.onmousemove=<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  	event = event || <span class="built_in">window</span>.event;</span><br><span class="line">  	fnMove(event,disX,disY);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 释放鼠标</span></span><br><span class="line">  <span class="built_in">document</span>.onmouseup=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  	<span class="built_in">document</span>.onmousemove=<span class="literal">null</span>;</span><br><span class="line">  	<span class="built_in">document</span>.onmouseup=<span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnMove</span>(<span class="params">e,posX,posY</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> oDrag=<span class="built_in">document</span>.getElementById(<span class="string">'loginPanel'</span>),</span><br><span class="line">      l=e.clientX-posX,</span><br><span class="line">      t=e.clientY-posY,</span><br><span class="line">      winW=<span class="built_in">document</span>.documentElement.clientWidth || <span class="built_in">document</span>.body.clientWidth,</span><br><span class="line">      winH=<span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight,</span><br><span class="line">      maxW=winW-oDrag.offsetWidth<span class="number">-10</span>,</span><br><span class="line">      maxH=winH-oDrag.offsetHeight;</span><br><span class="line">  <span class="comment">//边界控制</span></span><br><span class="line">  <span class="keyword">if</span>(l&lt;<span class="number">0</span>)&#123;</span><br><span class="line">    l=<span class="number">0</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(l&gt;maxW)&#123;</span><br><span class="line">    l=maxW;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(t&lt;<span class="number">0</span>)&#123;</span><br><span class="line">    t=<span class="number">10</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(t&gt;maxH)&#123;</span><br><span class="line">    t=maxH;</span><br><span class="line">  &#125;</span><br><span class="line">  oDrag.style.left=l+<span class="string">'px'</span>;</span><br><span class="line">  oDrag.style.top=t+<span class="string">'px'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-07-12T04:50:50.667Z" itemprop="dateUpdated">2020-07-12 12:50:50</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/07/12/js/" target="_blank" rel="external">https://yewills.github.io/2020/07/12/js/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自运行函数写法形式/">自运行函数写法形式</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/07/12/js/&title=《js笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/07/12/js/&title=《js笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/07/12/html/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">html笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/07/12/js_demo/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">前端demo讲解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#js-常用知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">js 常用知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自运行函数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自运行函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自运行函数的17种写法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">自运行函数的17种写法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数表达式-和-函数声明"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">函数表达式 和 函数声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16种含函数表达式的不报错的函数语句"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">16种含函数表达式的不报错的函数语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是否以function开始对js解释器很重要"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">是否以function开始对js解释器很重要</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1种立即执行的函数声明形式"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">1种立即执行的函数声明形式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何让函数表达式、声明内的函数体立即执行"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">如何让函数表达式、声明内的函数体立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数表达式、声明-与-立即执行-关系"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">函数表达式、声明 与 立即执行 关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与-立即执行"><span class="post-toc-number">1.1.8.</span> <span class="post-toc-text">() 与 立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#放在哪些位置可以让函数体立即执行"><span class="post-toc-number">1.1.9.</span> <span class="post-toc-text">()放在哪些位置可以让函数体立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与-函数传参"><span class="post-toc-number">1.1.10.</span> <span class="post-toc-text">() 与 函数传参</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分号-与-立即执行"><span class="post-toc-number">1.1.11.</span> <span class="post-toc-text">分号 ; 与 立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#，-，！比（-）立即执行方式少一个字符"><span class="post-toc-number">1.1.12.</span> <span class="post-toc-text">+，-，！比（ ）立即执行方式少一个字符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#难点立即执行的demo分析"><span class="post-toc-number">1.1.13.</span> <span class="post-toc-text">难点立即执行的demo分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重要运用之一"><span class="post-toc-number">1.1.14.</span> <span class="post-toc-text">重要运用之一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自运行-参考资料"><span class="post-toc-number">1.1.15.</span> <span class="post-toc-text">自运行 参考资料</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#js规范写法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">js规范写法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#给常量起个名"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">给常量起个名</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#js运行机制"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">js运行机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何理解js的单线程"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">如何理解js的单线程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#任务队列"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">任务队列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-loop-事件循环"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">event loop (事件循环)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#理解setTimeout-0"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">理解setTimeout 0</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#触发异步任务的API"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">触发异步任务的API</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#给常量起个名-1"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">给常量起个名</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dom-API"><span class="post-toc-number">2.</span> <span class="post-toc-text">Dom API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么都可绑定事件：dom-onclick-function-dom-addEventListener-‘click’"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener(‘click’)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dom事件级别"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">dom事件级别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件模型"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">事件模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件流"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">事件流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#捕获阶段"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">捕获阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目标处理阶段"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">目标处理阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#冒泡阶段"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">冒泡阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#document-addEventListener"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">document.addEventListener</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件捕获的具体流程"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">事件捕获的具体流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Event对象常见运用"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">Event对象常见运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-preventDefault"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">event.preventDefault()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-stopPropagation"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">event.stopPropagation()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-stopImmediatePropagation"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">event.stopImmediatePropagation()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-currentTarget"><span class="post-toc-number">2.6.4.</span> <span class="post-toc-text">event.currentTarget</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-target"><span class="post-toc-number">2.6.5.</span> <span class="post-toc-text">event.target</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他"><span class="post-toc-number">2.6.6.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义事件"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">自定义事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键盘事件"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">键盘事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyDown"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">keyDown</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyPress"><span class="post-toc-number">2.8.2.</span> <span class="post-toc-text">keyPress</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyUp"><span class="post-toc-number">2.8.3.</span> <span class="post-toc-text">keyUp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用keyUp代替keyDown"><span class="post-toc-number">2.8.4.</span> <span class="post-toc-text">用keyUp代替keyDown</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#避免this的使用-同时支持鼠标与键盘事件时"><span class="post-toc-number">2.8.5.</span> <span class="post-toc-text">避免this的使用-(同时支持鼠标与键盘事件时)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dom-API-黑知识"><span class="post-toc-number">3.</span> <span class="post-toc-text">Dom API 黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取dom-width-与-内联样式-的关系"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">获取dom width 与 内联样式 的关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dom-style-width-只能获取内联样式"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">dom.style.width 只能获取内联样式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#window-getComputedStyle-dom-width-获取宽高"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">window.getComputedStyle(dom).width 获取宽高</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dom-getBoundingClientRect-width"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">dom.getBoundingClientRect().width</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Jquery"><span class="post-toc-number">4.</span> <span class="post-toc-text">Jquery</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么jq插件要写在-fn对象中"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">为什么jq插件要写在$.fn对象中</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#场景运用"><span class="post-toc-number">5.</span> <span class="post-toc-text">场景运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拖拽的原生实现"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">拖拽的原生实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onmousemove的坐标实时计算"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">onmousemove的坐标实时计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#clientX-与-offsetLeft"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">clientX 与 offsetLeft</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">代码</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/07/12/js/&title=《js笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/07/12/js/&title=《js笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQXKDMAwFUO5/abrNooEvCTtp53nFEMc8WGgk2ccRj/NlvN65npnMOVYMXFzcMfe8HPmcdytfr1BeHxcXdyM3eVj1+t0jq2ERFxf3r3CThyXhEhcX939wr0PVJAHCxcX9Nm410FRnVlOiB2o1XFzcATfvUq67XtLfxcXFbXHP4uhtt/SapL/8CxcXdwt3dVOj1yS92Y7FxcVdzM3/MNk0nZ+vKH9XXFzcR7n5UapqSZOnTTcZGS4u7hbupMX5bMi7eRYuLu4WbrJ0kvT0VkhC202ig4uLu4D7bPFTPX7x4VoNFxc3WCFvZc43WpLU6qa9gouLu4ybFDBJWdKbk39RXFzcndxewTMJaknhFNVquLi4i7l5+VG9Uw1h1WQLFxd3Hbe6dLVMmtyJ4i4uLu4ybnVzdJLE5Bst0SYrLi7uYu6SbY/Wmt2fcXFxp9yzOHoFz2Pbsbi4uFu4k4CVvMa8W9N8GVxc3DE3p0zmz9uyuLi4+7mTQDM5evVYrYaLi/tRbp7WVNujhYoNFxf3y7hRIhKvXG6h4uLibuT2mpu9Y1sJ+oFaDRcXd8CthpLesYzrQJakSri4uFu4P/uFCwkRz2K+AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
