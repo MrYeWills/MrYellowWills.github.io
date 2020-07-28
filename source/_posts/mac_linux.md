@@ -36,5 +36,12 @@ xhkj
 sudo是linux下的一个使用最高权限执行命令的关键字，
 此命令需要输入用户密码
 
+### mac常用
+#### 打开usr目录
+打开finder，快捷键 command+shift+G，输入 `/usr`回车即可。
+#### ps aux | grep mysql 
+查看
 
+#### mysql安装
+参考 [文档](https://jingyan.baidu.com/article/fa4125ac0e3c2928ac709204.html)
 
