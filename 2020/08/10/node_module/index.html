@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>node模块 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="node,nodemon">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>node模块</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">node模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-10T15:13:35.597Z" itemprop="datePublished" class="page-time">
+  2020-08-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-node_module" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">node模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-10 23:13:35" datetime="2020-08-10T15:13:35.597Z" itemprop="datePublished">2020-08-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="node好用模块"><a href="#node好用模块" class="headerlink" title="node好用模块"></a>node好用模块</h2><h3 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h3><p>一款用于 使用node启动的项目，监听当项目文件变动时，自动启动类似npm start命令的模块。<br><a href="https://github.com/YeWills/koa-demo/tree/master" target="_blank" rel="noopener">demo示例</a></p>
+<h4 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h4><p>使用非常简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//package.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;koa-book-pro&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;server/index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon ./start.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;YeWills&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;MIT&quot;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;koa&quot;: &quot;^2.4.1&quot;,</span><br><span class="line">    &quot;koa-bodyparser&quot;: &quot;^4.2.1&quot;,</span><br><span class="line">    &quot;koa-router&quot;: &quot;^7.4.0&quot;,</span><br><span class="line">    &quot;koa-static&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;koa2-cors&quot;: &quot;^2.0.6&quot;,</span><br><span class="line">    &quot;nodemon&quot;: &quot;^1.18.10&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>package.json 同级目录下 配置 nodemon.json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//nodemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;restartable&quot;: &quot;rs&quot;,</span><br><span class="line">  &quot;ignore&quot;: [</span><br><span class="line">    &quot;.git&quot;,</span><br><span class="line">    &quot;node_modules/**/node_modules&quot;,</span><br><span class="line">    &quot;README.md&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;verbose&quot;: true,</span><br><span class="line">  &quot;execMap&quot;: &#123;</span><br><span class="line">    &quot;js&quot;: &quot;node --harmony&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;watch&quot;: [</span><br><span class="line">    &quot;server/&quot;,</span><br><span class="line">    &quot;src/&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;ext&quot;: &quot;js json&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后用npm start 启动项目，files改变时，会自动npm start，非常好用。<br><a href="http://www.cnblogs.com/JuFoFu/p/5140302.html" target="_blank" rel="noopener">关于上面代码的解释</a><br>或自行查询GitHub官网</p>
+<h4 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h4><p>以上代码注意的是:<br>nodemon.json 中 js属性配置了 node –harmony 命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;execMap&quot;: &#123;</span><br><span class="line">   &quot;js&quot;: &quot;node --harmony&quot;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>那么请在 package.json中 start中，把node关键字去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//正确配置</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon ./start.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//错误配置 ，配置了多余的node</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;nodemon node ./start.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="parcel"><a href="#parcel" class="headerlink" title="parcel"></a>parcel</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>parcel 一款非常好用的工具，你只是想写一个小页面，页面只有一个单纯的html，但你又想使用less写css；<br>有一天，你又想写一个小页面，需要用到一些交互，想使用react框架，当又不想配置webpack，又想用到less；<br>此时，parcel就是你的不二选择。<br>parcel最大的亮点之一就是 简单和自带热重载特性 ，就凭这两个，你值得拥有。</p>
+<h4 id="想使用less又不想配置webpack"><a href="#想使用less又不想配置webpack" class="headerlink" title="想使用less又不想配置webpack"></a>想使用less又不想配置webpack</h4><p>参考上面</p>
+<h4 id="无需webpack让你使用react、vue"><a href="#无需webpack让你使用react、vue" class="headerlink" title="无需webpack让你使用react、vue"></a>无需webpack让你使用react、vue</h4><p>参考上面</p>
+<h4 id="简单简单简单"><a href="#简单简单简单" class="headerlink" title="简单简单简单"></a>简单简单简单</h4><p>重要的事情说三遍，parcel非常简单，非常适合小型项目，或者小型demo，或者自己的小demo<br>参考上面</p>
+<h4 id="热重载"><a href="#热重载" class="headerlink" title="热重载"></a>热重载</h4><h4 id="build功能"><a href="#build功能" class="headerlink" title="build功能"></a>build功能</h4><p>parcel又build功能，build后生成的文件，可用于生产。</p>
+<h4 id="demo／参考"><a href="#demo／参考" class="headerlink" title="demo／参考"></a>demo／参考</h4><p><a href="https://createapp.dev/parcel" target="_blank" rel="noopener">官方demo</a><br><a href="https://github.com/YeWills/parcel-demo" target="_blank" rel="noopener">demo</a><br><a href="https://github.com/parcel-bundler/parcel" target="_blank" rel="noopener">github</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-08-10T15:13:35.597Z" itemprop="dateUpdated">2020-08-10 23:13:35</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/08/10/node_module/" target="_blank" rel="external">https://yewills.github.io/2020/08/10/node_module/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodemon/">nodemon</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/08/10/node_module/&title=《node模块》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/08/10/node_module/&title=《node模块》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/08/10/mac_linux/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mac和linux笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/08/10/npm/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">npm包开发</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node好用模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">node好用模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nodemon"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">nodemon</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Usage"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Usage</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用注意"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">使用注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#parcel"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">parcel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#想使用less又不想配置webpack"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">想使用less又不想配置webpack</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无需webpack让你使用react、vue"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">无需webpack让你使用react、vue</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单简单简单"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">简单简单简单</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#热重载"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">热重载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build功能"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">build功能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo／参考"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">demo／参考</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/08/10/node_module/&title=《node模块》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/08/10/node_module/&title=《node模块》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQW7CQAwFUO5/6VTqqpUgfNuhamberFCATF4Wlj324xGv43u9+vxznV9P7nz++9HCwMC4LeM4XeeMV9snsOp93rwaDAyMDRjVUJiHxfz+ySt7eR0DAwOjmA7mATTfFwMDA6NXXvYeMbkPBgYGRq+InSdzvYL54locAwPjhox5Y+Bzn/+0v4GBgfEvGUdxJfeptiqrzYAn/8LAwFiacd6STCJbcr1XBpcbEhgYGEszJuMOk4Gw3mFchMHAwFiU0QuOeUVZLVarrQUMDIy1GecPXS1ie83O6n+fUDEwMDZg5MXtpHmZZ6nNgIuBgbEcIx/kqo6CTcrd5MqvJ8HAwNiAkR/Q50fz1eO2XjsBAwNjH8YngmYvdFbLVwwMjB0YkyLzqmbA5KANAwNjB0bv0L+a/FXHL3J2IQ/FwMC4OWMeFvNStppERuMgGBgY2zCqCVlvdCwvjPMmBAYGxg6MaoJYHdhKHrQ6KFbuxGJgYNyWMWleJslcNU2sDmQ8oswRAwPj3oz5gX6+2aT0fXPAh4GBsQGj2gC49ttqaH7ynBgYGEsz5oVoVF7GV3qDHRgYGGszjuLK08Q8iOeF68u9MDAwlmZUw1w1mH6i2YCBgbEnozcAkX874RXeNwYGxgaMJMheVYj27vBmdwwMDIxWmdp7KdWiFwMDA2PyWEljMg+sb3bEwMDYgJEf1ieYaimbl6zlGTcMDIwlGL3GQN5ozJPIyZEfBgbGoowvTyjwLkt1HGUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
