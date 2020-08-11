@@ -3,8 +3,8 @@ title: koa2笔记
 date: {{ date }}
 tags: [koa2, 鉴权, content-type, RESTfull, 解决跨域, 截取前端请求 , 服务端转发请求]
 categories: 
-- [koa2]
-series: 服务端
+- 后端
+series: koa2
 ---
 
 ## koa2常用知识

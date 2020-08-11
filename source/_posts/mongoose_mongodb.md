@@ -3,8 +3,8 @@ title: mongoose 与 mongodb笔记
 date: {{ date }}
 tags: [mongoose, mongodb]
 categories: 
-- [mongoose, mongodb]
-series: 服务端
+- 后端
+series: [mongoose, mongodb]
 ---
 
 关于 mongoose 与 mongodb笔记 暂时以问答方式叙述。

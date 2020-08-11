@@ -3,8 +3,8 @@ title: 0到1快速构建自己的后台管理系统
 date: {{ date }}
 tags: [node]
 categories: 
-- 后端demo
-series: node
+- 后端
+series: 后端demo
 ---
 
 ## 基本信息

@@ -86,6 +86,9 @@ nodemon.json 中 js属性配置了 node --harmony 命令
   },
 ```
 
+#### 视频参考
+[nodemon介绍](https://www.imooc.com/video/20683)
+
 ### parcel
 
 #### 概述
