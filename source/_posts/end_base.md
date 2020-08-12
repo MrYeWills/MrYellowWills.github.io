@@ -357,4 +357,87 @@ const notfound = (req,res)=>{
 app.use(notfound)
 app.use(errorHandle)
 ```
+## sequlize集成使用
+
+### sequelize-cli初始化工程
+```
+npx sequelize-cli init
+```
+修改 文件如下：
+```json
+//config.json
+ "development": {
+    "username": "root",
+    "password": "root1111",
+    "database": "sqe_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+```
+### 新建数据库
+![](/image/end_base/right.jpg)
+![](/image/end_base/db.jpg)
+### sequelize-cli创建模型
+```
+npx sequelize-cli model:generate --name User --attributes name:string
+```
+命令会做以下事情：
+- 在 models 文件夹中创建了一个 user 模型文件;
+- 在 migrations 文件夹中创建了一个名字像 XXXXXXXXXXXXXX-create-user.js 的迁移文件.
+### 将刚才的模型添加到数据库中(生成表)
+```
+npx sequelize-cli db:migrate
+```
+一般命令后要设置env，如果不设置则默认使用development。与下面命令等效：
+```
+npx sequelize-cli db:migrate --env=development
+```
+这里的development就是`sequelize-demo/config/config.json`的：
+```json
+{
+  "development": {
+    "username": "root",
+    "password": "root1111",
+    "database": "sqe_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    ...
+  },
+  "production": {
+    ...
+  }
+}
+```
+将模型添加到数据库后，你就会在数据库中看到模型中添加的表(模型生产的)
+![](/image/end_base/db.jpg)
+至此，桥接数据库，通过sequelize在数据库中建表的工作完成，下一步就是使用express操作数据库。
+
+### 使用express操作数据库
+```js
+const  express = require('express') ;
+const models = require('../models')
+
+const app = express();
+app.get('/create', async (req,res, next)=>{
+    const {name} = req.query;
+    const user = await models.User.create({
+        name
+    })
+    res.json({
+        msg:'create success!',
+    })
+})
+```
+### 完整demo与参考
+[demo](https://github.com/YeWills/learns/tree/sequelize-demo/sequelize-demo)
+[本节视频参考](https://www.imooc.com/video/20693)
+[sequelize migrations](https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/other-topics/migrations.md)
+
+### mysql2
+如下，node应用通过orm来操作 mysql数据库，必须借助node环境下的mysql驱动，而这个驱动就是mysql2.
+```
+node-application -- ORM(sequelize) --> 驱动(node-mysql 其实就是mysql2) --> mysql db
+```
 
