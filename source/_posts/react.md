@@ -147,6 +147,21 @@ React.memo 仅检查 props 变更
 主要特点，将整个虚拟数的比对拆分成很多个小任务，每个小任务的完成时间控制在一帧12毫秒内，每个小任务完成后都会完成一次渲染（小任务对应的局部渲染）。
 因为每次渲染都控制在一帧以内，不用等所有任务或整个树比对完后才渲染，所有看起来流畅，不卡顿。
 
+### react 与 react native 关系
+#### 概述
+react框架设计时就考虑一个框架同时用于pc端和移动端。
+其中将二者公共部分抽成 react 包内；
+pc端 抽到 react-dom内，封装了浏览器的dom；
+移动端 抽到 react-native内，封装了跟移动端有关的如打开相机 打开gps 原生能力；
+
+因此 react+react-dom 结合用于pc开发；
+react+react-native 结合用于移动端开发；
+[更多参考](https://www.imooc.com/video/21307)
+
+![](/image/react/native.jpg)
+#### react native 相当于pc的 react-dom
+参考上面《概述》
+
 ## 高阶组件
 ### 使用代理hoc就够了
 高阶组件有多种，但用得最多的是代理和继承hoc，由于代理hoc强大的便利性和作用，能用代理实现的不用继承hoc，因此实际项目中基本上用的是代理hoc，使用代理hoc，基本上就够你的开发需求了。
@@ -317,24 +332,6 @@ export default class Login extends Component {
  ......
 }
 ```
-
-## hooks
-### 介绍
-![](/image/react/h1.png)
-![](/image/react/h2.png)
-![](/image/react/h3.png)
-![](/image/react/h4.png)
-![](/image/react/h5.png)
-![](/image/react/h6.png)
-![](/image/react/h7.png)
-### 其他
-#### usestate
-usestate类似 useeffect，只在特定的时候运行callback参数；
-类似的usestate也只会在组件装载时初始一下state，以后每次update时不再初始state；
-因此以后每次update，无论给usestate传了什么初始值，都不会改变再次改变当初设置的state；
-而你在return里面如果使用了props的值，每次render时，都会执行整个function，
-每次return的dom都会响应最新的props。
-
 ## 其他技术
 ### React.cloneElement是一把好刀
 其最好的两个用法在于：
