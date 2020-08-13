@@ -357,6 +357,10 @@ const notfound = (req,res)=>{
 app.use(notfound)
 app.use(errorHandle)
 ```
+### demo
+[异常处理、模型表数据修改 demo](https://github.com/YeWills/learns/tree/master/sequelize-demo)
+也可参考 《sequelize集成使用》 章节的demo和参考
+
 ## sequlize集成使用
 
 ### sequelize-cli初始化工程
@@ -382,8 +386,8 @@ npx sequelize-cli init
 npx sequelize-cli model:generate --name User --attributes name:string
 ```
 命令会做以下事情：
-- 在 models 文件夹中创建了一个 user 模型文件;
-- 在 migrations 文件夹中创建了一个名字像 XXXXXXXXXXXXXX-create-user.js 的迁移文件.
+- 生成 migrate文件 ： 在 models 文件夹中创建了一个 user 模型文件;
+- 生成 model文件 ：在 migrations 文件夹中创建了一个名字像 XXXXXXXXXXXXXX-create-user.js 的迁移文件.
 ### 将刚才的模型添加到数据库中(生成表)
 ```
 npx sequelize-cli db:migrate
@@ -430,10 +434,6 @@ app.get('/create', async (req,res, next)=>{
     })
 })
 ```
-### 完整demo与参考
-[demo](https://github.com/YeWills/learns/tree/sequelize-demo/sequelize-demo)
-[本节视频参考](https://www.imooc.com/video/20693)
-[sequelize migrations](https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/other-topics/migrations.md)
 
 ### mysql2
 如下，node应用通过orm来操作 mysql数据库，必须借助node环境下的mysql驱动，而这个驱动就是mysql2.
@@ -441,3 +441,8 @@ app.get('/create', async (req,res, next)=>{
 node-application -- ORM(sequelize) --> 驱动(node-mysql 其实就是mysql2) --> mysql db
 ```
 
+### demo与参考
+[demo](https://github.com/YeWills/learns/tree/sequelize-demo/sequelize-demo)
+也可参考本文其他章节的相关demo。
+[本节视频参考](https://www.imooc.com/video/20693)
+[sequelize migrations](https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/other-topics/migrations.md)
