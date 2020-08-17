@@ -1,7 +1,7 @@
 ---
 title: 后端笔记
 date: {{ date }}
-tags: [node, koa, express]
+tags: [node, koa, express, egg]
 categories: 
 - 后端
 series: node
@@ -446,3 +446,4 @@ node-application -- ORM(sequelize) --> 驱动(node-mysql 其实就是mysql2) -->
 也可参考本文其他章节的相关demo。
 [本节视频参考](https://www.imooc.com/video/20693)
 [sequelize migrations](https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/other-topics/migrations.md)
+

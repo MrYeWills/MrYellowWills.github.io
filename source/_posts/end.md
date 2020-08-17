@@ -86,12 +86,7 @@ mysql -u root -p  //user root 使用-p密码登陆
     "validator": "^13.1.1"
   }
 ```
-### github与参考资料
-[sequelize中文文档](https://github.com/demopark/sequelize-docs-Zh-CN/tree/v5)
-[慕课网教程](https://www.imooc.com/learn/1247)
-[lin-cms官方文档](https://doc.cms.talelin.com/)
-[前端github](https://github.com/YeWills/lin-cms-vue-demo)
-[后端github](https://github.com/YeWills/lin-cms-koa)
+
 
 
 ## post请求的演变
@@ -330,7 +325,12 @@ module.exports = {
 //lin-cms-vue-demo/.env.development
 VUE_APP_BASE_URL = 'http://localhost:5000/'
 ```
-
+## github与参考资料
+[sequelize中文文档](https://github.com/demopark/sequelize-docs-Zh-CN/tree/v5)
+[慕课网教程](https://www.imooc.com/learn/1247)
+[lin-cms官方文档](https://doc.cms.talelin.com/)
+[前端github](https://github.com/YeWills/lin-cms-vue-demo)
+[后端github](https://github.com/YeWills/lin-cms-koa)
 
 ## 待解决
 ### 后端调试
