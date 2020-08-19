@@ -1,6 +1,6 @@
 ---
 title: koa2笔记
-date: {{ date }}
+date: 2019/5/21
 tags: [koa2, 鉴权, content-type, RESTfull, 解决跨域, 截取前端请求 , 服务端转发请求]
 categories: 
 - 后端
@@ -500,6 +500,59 @@ router.get('/home/:id/:name'  ---对应 http://localhost:3000/home/01/admin
 ### 后台报错app有错误日志，也会报跨域错误
 如果配置了koa2-cors解决跨域，但请求时有跨域报错，可能是app.use内部程序执行报错，会导致后台响应异常，然后前台可能显示为跨域限制错误
 
+### 奇怪的阻塞
+#### 不带async
+如下，执行顺序将为： 1 3 2 4。
+首先打印1；
+然后进入下个中间件，打印3；
+因为加了await，所以下面的程序被阻塞了；
+一旦阻塞，程序将先执行未被阻塞的 2，所以打印了2；
+当get请求完毕，阻塞解除，执行4；
+
+```js
+const koa = require('koa');
+const axios = require('axios');
+
+const app = new koa();
+app.use((ctx, next)=>{
+     console.log(1)
+     ctx.body = 'Hello World';
+     next()
+    console.log(2)
+})
+app.use(async(ctx, next)=>{
+    console.log(3)
+    await axios.get('https://www.baidu.com/')
+    next()
+    console.log(4)
+})
+app.listen(3000)
+```
+上面这种执行顺序没有按照洋葱模型顺序执行，不是我们想要的，如何解决呢？
+#### 带async
+其他不变，就下面的变化,打印顺序就是洋葱模型执行的正常顺序：
+1 3 4 2
+```js
+app.use(async(ctx, next)=>{
+     console.log(1)
+     ctx.body = 'Hello World';
+     await next()
+    console.log(2)
+})
+```
+
+### 保证洋葱模型-中间件必须带async、await
+具体参考《奇怪的阻塞》，为了保证中间件像洋葱模型的顺序一层一层执行程序，必须带上async、await。
+### 为什么要保证洋葱模型
+如果保证了洋葱模型，我们就可以确定，await next()之后，执行的代码肯定是后面中间件以及执行完成了的；
+也就是说，console.log(2)肯定是下面的中间件程序执行完后才执行的。
+```js
+app.use(async(ctx, next)=>{
+     console.log(1)
+     await next()
+     console.log(2)//保证这个打印是在下面所以中间件执行完成之后，才执行。
+})
+```
 
 ## koa2模块上
 ### koa-router

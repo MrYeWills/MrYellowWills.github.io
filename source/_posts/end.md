@@ -1,6 +1,6 @@
 ---
 title: 0到1快速构建自己的后台管理系统
-date: {{ date }}
+date: 2020/7/28
 tags: [node]
 categories: 
 - 后端
@@ -331,23 +331,4 @@ VUE_APP_BASE_URL = 'http://localhost:5000/'
 [lin-cms官方文档](https://doc.cms.talelin.com/)
 [前端github](https://github.com/YeWills/lin-cms-vue-demo)
 [后端github](https://github.com/YeWills/lin-cms-koa)
-
-## 待解决
-### 后端调试
-后端如何调试。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

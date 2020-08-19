@@ -441,7 +441,7 @@ app.get('/create', async (req,res, next)=>{
 node-application -- ORM(sequelize) --> 驱动(node-mysql 其实就是mysql2) --> mysql db
 ```
 
-### demo与参考
+## demo与参考
 [demo](https://github.com/YeWills/learns/tree/sequelize-demo/sequelize-demo)
 也可参考本文其他章节的相关demo。
 [本节视频参考](https://www.imooc.com/video/20693)

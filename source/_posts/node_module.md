@@ -1,9 +1,10 @@
 ---
 title: node模块
+date: 2019/8/13
 tags: [node , nodemon]
 categories: 
-- [node]
-series: 服务端
+- [后端]
+series: node
 ---
 
 ## node好用模块

@@ -1,9 +1,10 @@
 ---
 title: node笔记
+date: 2020/8/13
 tags: [node]
 categories: 
-- [node]
-series: 后端
+- [后端]
+series: node
 ---
 
 ## 基础知识
@@ -208,4 +209,40 @@ fs.readFile(pa,(err,data)=>{
 - 没有路径就去 node_modules里面找  -- require('./react')
 - 如果node_modules没有，就去node的全局安装目录找
 
+### webpack编译时可使用fs，页面js中不行，why？
+原来，node script 进行webpack编译的时候，其实是基于node环境的：
+```js
+ "start": "npx webpack-dev-server --config webpack.dev.js"
+```
+node script 本身就是基于node环境的，所以能够在webpack.dev.js中使用node的各种模块。
+由webpack编译出来的html，放在webpack的devServe服务器上，我们才可以通过浏览器访问。
+webpack编译完后会启动一个本地服务，因此从我们通过浏览器访问页面开始，我们所使用的环境已经不是node了，从编译完后，node的工作基本上就结束了。
+运行在浏览器上的html，其运行环境是浏览器，非node环境，因此html不能获取node模块的各种包，当然了，也不排除webpack将node的一些包内置给html，
+不过从目前看，fs是没有内置到html上的。
 
+小结下：编译环境是运行在node上，html文件是运行在浏览器上，前者具备node各个模块，后者不具备。
+
+### 为什么前端工程化都使用node
+#### node让js脱离浏览器运行成为可能
+前端工程化需要对前端文件进行压缩打包，需要提供前端开发环境或实时编译的开发模式。
+要实现上面的文件压缩打包，就必然用到对文件的读写能力；
+要提供开发环境或模式，就必然需要启动服务；
+对文件的读写，你可以使用很多其他语言，比如java等等。
+但一个前端人员肯定希望js能够做到底层操作，而node满足了这点。
+原本js是运行在浏览器上的一门语言，脱离浏览器就能运行了。
+而上面的编译或者提供服务器功能，都是在非浏览器环境下的。
+因此在node出现前，上面的这些功能若使用js完全是不可能。
+#### node为js提供了很多底层操作能力
+node提供了fs文件操作能力，提供了http服务器能力，还有很多其他功能，如操作系统内存等等。
+在node环境下，js具备了操作底层的能力，而这些在浏览器下js所不具备的。
+#### 强大的npm生态
+node提供了强大的npm生态，各种高手可以开发一个npm包，然后在node或js中运行。
+#### 小结
+基于以上，所以一般前端工程化（编译阶段），包括js的后端工程化基本上都是基于node(基于npm)
+#### node后端工程的业务js都有node功能
+与前端工程化不一样的是，前端一般只有编译阶段的代码具有node的环境。
+node后端工程，包括后端工程的编译以及后端工程的接口业务逻辑代码，都是运行在node环境下的，都能使用node模块。
+**后端工程中的代码，无论编译和运行都是在node环境内，都具有node模块能力**，如果不是这样，为什么后端能够到处使用express或koa来写接口逻辑呢。因为express是一个抽象了原生nodejs的框架。
+
+## node调试
+参考另外一篇博客《vscode笔记 - vscode调试》
