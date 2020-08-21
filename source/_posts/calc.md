@@ -1,6 +1,6 @@
 ---
 title: 常用算法
-date: {{ date }}
+date: 2019/4/9
 tags: [算法, 排序, 递归, 二叉树, 数组]
 categories: 
 - js
@@ -403,8 +403,20 @@ for (let i = 0, len = arr.length - 1; i < len; i++) {
 ![](/image/calc/bubble1.jpg)
 ![](/image/calc/bubble2.jpg)
 
-解题代码如下：
+### 将最值移到边缘的技巧
+```js
+for (let j = 0; j < arr.length-1; j++) {
+            if (arr[j] > arr[j + 1]) {
+            let c = arr[j];
+            arr[j] = arr[j + 1]
+            arr[j + 1] = c;
+            }
+        }
 ```
+### 排序是最值移动的多次重复
+既然有一种算法可以将最值移动至边缘，那么这种算法就构成了排序的可能，我们可以将最值移动称之为排序的最小组成。
+就好比，复杂的现象 无非都是 将简单的现象重复多遍的结果。
+```js
 function calc(arr) {
     // 冒泡排序
     for (let i = arr.length - 1; i > 0; i--) {
@@ -421,39 +433,44 @@ function calc(arr) {
 
 calc([1, 9, 5, 3, 4,0,2,999,6]) //[0, 1, 2, 3, 4, 5, 6, 9, 999]
 ```
-### 要点分析
-这种排序是典型的需要n*n次的排序，需要在循环体内嵌套再次循环。
-排序的关键是，需要一个遍历，逐步将数组的遍历范围逐步减少，为第二个遍历提供最大length；
-第二个遍历针对第一个遍历提供的length进行全遍历，将最大值找出并一步步推到数组最右侧；
-### 较大值向右移的过程
-参考代码，冒泡排序的核心特点就是，将较大值每次移到右边的过程，到最后，最右边的元素自然就是最大值；
-反之亦然。
-#### n*n的双层遍历
-冒泡排序关键点是用了双层遍历。
-#### 外层遍历限定内层遍历范围；
-这里的范围是指，内层遍历，最大遍历次数i值；
-#### 外层遍历逐步递减；
-#### 内层遍历全遍历；
-#### 内层遍历负责位置替换，将最大值冒泡至最右侧；
-### 边界值处理
-外层遍历 `let i = arr.length - 1; i > 0; i--`;
-其中i>0,i的最小值不是0而是1；
-但是arr[0]又必须遍历，其实已经在内层遍历中被遍历了。
-
-### 遍历的经典应用
-冒泡是遍历的经典应用
+### 原理
+通过最值移动，将最值移至边缘，那么下次遍历的时候，只需排除这个最值，将剩余的元素重复最值的移动。
+现在最值移动的算法我们已经知道了，要做的是，每次最值移动时不包含边缘的最值。
+### 处理i+1 遍历的技巧
+参考 《将最值移到边缘的技巧》
 
 ## 选择排序
 ### 概述 以及 选择、冒泡区别
-选择排序与冒泡排序实现的效果是一样的，思路不一样。
-选择排序每次遍历以起始值arr[i]为参照，然后遍历剩余的范围： arr[i+1]到arr[arr.length-1]的范围，每次将较小值与a[i]交换，遍历结束，a[i]将交换到最小值。
-冒泡排序是每次将较大值向右移，最终最右边的值就是最大值；
-![](/image/calc/select-dubble.jpeg)
 
+![](/image/calc/select-dubble.jpeg)
 如下图，要实现如下的一个渐进的排序过程：
 ![](/image/calc/select.jpg)
 ![](/image/calc/select1.jpg)
-解题代码如下：
+
+### 选定第1个位置放置最小值
+```
+var i = 0 //第1个位置
+ for (let j = i + 1; j < len; j++) {
+          if (arr[j] < arr[i]) {
+            let c = arr[i]
+            arr[i] = arr[j]
+            arr[j] = c
+          }
+        }
+```
+### 选定第2个位置放置剩余数组的最小值
+```
+var i = 1 //第2个位置
+ for (let j = i + 1; j < len; j++) {
+          if (arr[j] < arr[i]) {
+            let c = arr[i]
+            arr[i] = arr[j]
+            arr[j] = c
+          }
+        }
+```
+### 实现
+将上面选定位置最值算法重复多遍，就达到排序的效果。
 ```
 function calc(arr) {
       // 选择排序
@@ -469,52 +486,8 @@ function calc(arr) {
       return arr
     }
 ```
-### i--的选择排序 实现方式
-```
-function calc(arr){
-   // 选择排序
-      for(var i =arr.length-1; i>0; i--){
-        for(var j = 0; j<i; j++){
-          if(arr[j]>arr[i]){
-            let tem = arr[i];
-            arr[i]=arr[j];
-            arr[j]=tem;
-          }
-        }
-      }
-      return arr;
-    }
-```
 
-### 外层遍历负责排序，内层遍历负责查找最值
-上面的代码，外层遍历 arr[i],经过内层一次遍历后，a[i]就变成最大值；
 
-### 外层 arr[i],内层就从 i+1开始遍历
-因为定点比较的原因，如果要定点比较的元素为 arr[i],那么内层遍历就从i+1开始遍历，这点也是值得注意和借鉴的地方。
-
-### 代码优化写法(推荐)
-下面是针对上面写法的优化，因为`arr[i]`，只需要在内层函数变量完一遍后，才需要赋值，在内层函数遍历完之前，`arr[i]`值都是不稳定的，没必要频繁赋值.
-因此引入了临时变量temp，这样的好处是，不用频繁地进行`arr[i] = arr[j]`赋值，减少操作arr数组，对性能也是有好处的，虽然可能只有微乎其微的性能，同时代码逻辑性更强且易读。
-```
-function calc(arr) {
-      // 选择排序
-      for (let i = 0, len = arr.length; i < len; i++) {
-        引入临时变量
-          let temp = arr[i];
-        for (let j = i + 1; j < len; j++) {
-          if (arr[j] < temp) {
-            let c = temp
-            temp = arr[j]
-            arr[j] = c
-          }
-        }
-        arr[i]=temp;
-      }
-      return arr
-    }
-```
-### 经典遍历应用
-选择排序也是对遍历的经典应用。
 ## 最大间距
 ### 概述
 [力扣原题 -- 最大间距](https://leetcode-cn.com/problems/maximum-gap/)
@@ -644,33 +617,71 @@ function quickSort(arr) {
         } else {
             leftArr.push(arr[i]);
         }
-    } return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
+    } 
+    return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
 }
 ```
 
-### 经典运用
+### 递归的经典运用
 递归是快速排序的核心，如果无法理解，暂且就记住这种场景解法，用多了，自然就有了这种逻辑思维了。
 
+### 递归最后呈现的由最后的边界值决定
+比如上面的代码:
+```js
+ function quickSort(ary){
+        if(ary.length<=1){
+            return ary;//这是边界值
+        }
+        var pointIndex = Math.floor(ary.length/2);
+        //从ary中删除pointIndex，并且通过[0]取出pointValue值
+        var pointValue = ary.splice(pointIndex, 1)[0];
+        var left = [];
+        var right = [];
+        for (var i=0; i<ary.length; i++){
+            var cur = ary[i];
+            cur < pointValue ? left.push(cur) : right.push(cur);
+        }
+        return quickSort(left).concat([pointValue],quickSort(right));//return 表达式
+    }
+```
+无论quickSort(left)递归了多少次，quickSort(left)的值，肯定是 ary ，
+同理，quickSort(right))的值，肯定是 ary。
+### 递归结果是边界值与return表达式作用的结果
+因此，无论怎么样，quickSort(ary)执行的结果，必将形式如下：
+```js
+quickSort(left).concat([pointValue],quickSort(right))
+```
+经过上面的分析，quickSort(left)等效 ary，
+上面等效
+```js
+[1].concat([1],[1])
+```
+
+这说明了，递归最后呈现的由最后的边界值决定，且返回的结果 就是边界值与return表达式作用的结果。
+
 ## 插入排序
-### 方案一
+### 通常方案
 #### 概述
-单独建一个数组，每次接收一个原来数组的元素，进行遍历，大于的时候插入右边，小于的时候插入左边。
+将原来数组打散重新将所有元素一个个放置，新建一个数组，用于接收放置的元素。
+元素在新数组中，按照大小顺序插入放置。
 
 ![](/image/calc/insort1.jpg)
-```
+```js
  function insertSort(ary){
     var newAry=[];
     newAry.push(ary[0]);
     for(var i=1; i<ary.length; i++){
         var cur =ary[i];
         for(var j = newAry.length - 1; j>=0;j--){
+            //其实这里就考虑两种情况，将最大值放入右侧，或者找不到最大值，就说明这个是最小值，放入左侧，
             if(cur>newAry[j]){
-                newAry.splice(j+1,0,cur);
+                newAry.splice(j+1,0,cur);//最大值放到右侧
                 break;
             }else{
               //j===0，数组表示遍历完了，说明此时数组的全部元素都大于cur
                 if(j===0){
-                  newAry.unshift(cur);
+                  newAry.unshift(cur);//最小值放入左侧
+                  break;//这个break可以不用，写出来，只是方便理解，告诉你，如果改变了newAry，那么将结束遍历
                 }
             }
         }
@@ -678,23 +689,11 @@ function quickSort(arr) {
     return newAry;
 }
 ```
-#### 外数组以升序遍历，内数组以倒序遍历
-#### 只考虑大于的时候放置于右侧
-排序的第一印象总以为要考虑大于的情况和小于的情况，其实，只要一开始就按一种规则（例如本例的大于）排序好，数组自然就排序好了，
-当然要考虑小于的时候的极限情况。例如本例的 `j===0`.
-```
-if(cur>newAry[j]){
-          newAry.splice(j+1,0,cur);
-          break;
-      }else{
-        //j===0，数组表示遍历完了，说明此时数组的全部元素都大于cur
-          if(j===0){
-            newAry.unshift(cur);
-          }
-      }
-```
-### 方案二 (推荐)
-#### 概述
+
+### 提高
+#### 可不用了解
+下面的提高做法，是网上比较流行的插入排序算法，有精力可以了解下
+#### 不新建数组直接排序的实现
 这种方法与方案一不同的是，方案二没有单独创建新数组来存放排序元素，而是直接基于原数组进行改造，相对来说理解起来要难一点。
 其实找到窍门后，理解起来就好了，理解插入排序，只需要理解**内层遍历如何排序**，就理解了整个插入排序的思想，后面有讲到。
 
@@ -748,31 +747,7 @@ key=ary[i];
 #### 遍历的经典应用
 此方案是经典的
 
-### 方案二遍历写法技巧
-#### 外层遍历输入元素，内层遍历排序
-外层遍历，每次给内容遍历输入一个元素，内层遍历从默认的 index 0 元素一个长度数组开始遍历排序。
-
-#### 从长度为1的遍历开始，逐渐增长长度 的妙用
-如代码，
-内层遍历从开始长度为1，开始遍历，接收元素，遍历插入，插入后，数组长度为2，且已排序；
-接着长度为2，接收元素，遍历插入，长度变成3，且已排序；
-接着长度为3，接收元素，遍历插入，长度变成4，且已排序；
-...
-接着长度为length-1,接收元素，遍历插入，长度变成length，所以元素完成排序；
-此时的遍历体对应的数组，就是排序完的数组。
-#### 外层遍历从index 1 开始，内层遍历从index 0 为止
-如上面代码，外层遍历从index 1，内层遍历从index
-#### 外层遍历从 i 开始，内层遍历从 i-1 开始倒序
-如上面代码，外层遍历从index i 开始，内层遍历从index i-1 倒序遍历；
-内层的0--> i-1 到 外层的 i-->length-1，刚好组成 0 --> length-1的完整数组。
-#### 内层元素的j+1
-内层元素通过 j+1来增加元素
-```
-  如果ary[j]小于key，那么将key置于其右侧
-  ary[j+1]=key;
-  break;
-```
-### 用while来改写方案二
+#### 用while来改写方案二
 此写法其思想跟方案二是一样的。
 while的好处是代码十分简洁，但是此代码极具误导性，单凭此，就可以认定这种写法是不推荐的。
 这里有一个理解误区，a[0] 可以进入 while体内，等出来的时候j就变成了 -1 ，ary[-1+1]就是a[0]。
@@ -1254,6 +1229,30 @@ const newItem0 = combile(one, two);
     return pre
   }, {})
 ```
+
+## 时间／空间复杂度
+### 概述
+简言之，
+时间复杂度是对运行次数的描述，因为运行次数的多少决定了花多少时间。
+空间复杂度是对运行内存的描述，在排序时定义了多少变量，就会消耗多少内存。
+一般关注好时间复杂度即可。
+![](/image/calc/time.jpg)
+### 时间复杂度
+```
+//时间复杂度为 O(9)
+for (let j = 0; j < 9; j++) {
+     console.log(j)
+  }
+```
+```
+//时间复杂度为 O(9*9)
+  for (let i = 9; i > 0; i--) {
+        for (let j = 0; j < 9; j++) {
+             console.log(j)
+            }
+        }
+```
+
 
 ## 参考
 [JavaScript版 数据结构与算法](https://coding.imooc.com/class/chapter/315.html#Anchor)
