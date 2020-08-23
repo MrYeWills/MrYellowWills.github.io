@@ -288,6 +288,139 @@ var sellNum = 5;
 var isNeedLoan = true;
 car.handle(carType,carName,sellNum,isNeedLoan);
 ```
+### generator yeild
+#### 概述
+yeild用于单步执行代码；
+每执行一次it.next,就会按定义的yeild顺序单步执行到给定的代码中。
+```js
+function* test(){
+    const a = yield 'hel'
+    console.log('step one',a);//1
+    const b = yield 'wol'
+    console.log('step two',b);//66
+}
+let it = test();
+console.log(it.next())//第一次next传参是没有任何意义的//{ value: 'hel', done: false }
+console.log(it.next(1))//传递上一次的yield返回值{ value: 'wol', done: false }
+console.log(it.next(66))//{ value: undefined, done: false }
+```
+#### it.next()返回{value,done}
+参考《概述》
+#### it.next的传参是上一个yeild的值
+参考《概述》
+### async是 generator+co+promise的语法糖
+#### co
+[co](https://github.com/tj/co) 是koa作者tj的一个开源库，如下，在read函数内，实现了将异步代码使用同步的方式编写：
+```js
+const axios = require('axios');
+
+function* read(){
+    try {
+        let content1 = yield axios.get('http://127.0.0.1:3000').then(e=>{console.log('先执行');return e})
+        console.log('step one',content1.data)
+        let content2 = yield axios.get('http://127.0.0.1:3000');
+        console.log('step two',content2.data)
+    } catch (e) {
+        console.log('err', e)
+    }
+}
+//co简化版
+function co(it){
+    return new Promise((resolve, reject)=>{
+        function next(data){
+            let { value, done} = it.next(data);
+            if(!done){
+                Promise.resolve(value).then(data=>{
+                    next(data);
+                })
+            }else{
+                resolve(data);
+            }
+        }
+        next();
+    })
+}
+
+co(read()).then(data=>{
+    console.log('result',data.data)
+})
+```
+#### 使用async实现
+要想实现上面同样的功能：在read函数内，实现了将异步代码使用同步的方式编写，使用async很简单，async底层基于generator+co+promise实现
+```js
+async function asyncRead(){
+    try {
+        let content1 = await axios.get('http://127.0.0.1:3000').then(e=>{console.log('先执行');
+        console.log('async step one',content1.data)
+        let content2 = await axios.get('http://127.0.0.1:3000');
+        console.log('async step two',content2.data)
+    } catch (e) {
+        console.log('err', e)
+    }
+}
+
+asyncRead()
+```
+###  手写promise
+
+#### 手写源码要点
+- 定义一个构造函数
+ - 构造函数内三个状态：pending resolved rejected
+ - 定义内部resolve与reject方法
+ - reject时候存储value，以便给下个then使用，以此类推reject
+- 定义一个原型方法then
+- then方法内递归构造函数实现链式调用
+- 定义静态方法all、race、resolve等等
+- 基于发布订阅模式
+
+除此之外，以下几点要注意：
+#### setTimeout内需要重新try catch
+尽管,这里已经做了try catch。
+```js
+  try{
+        // 立即同步执行executor
+        executor(resolve,reject)
+    }catch (e) { // 如果执行器抛出异常，promise对象变为rejected状态
+        reject(e)
+    }
+```
+但是setTimeout内还必须加try，因为try catch无法捕捉一个定时器内部函数的错误，因此有定时器时，必须这样：
+```js
+  try{
+        setTimeout(()=>{
+                try{
+                
+                }catch (e) {
+                    
+                }
+                })
+    }catch (e) { 
+        reject(e)
+    }
+```
+#### 建议使用class而非function原型来做继承
+class可以避免原型的浅拷贝问题。
+#### reslove\reject是异步因为用了setTimeout
+```js
+ setTimeout(()=>{
+        handle(onResolved)
+    })
+
+
+     function handle(callback) {
+                 resolve(result)
+            }
+```
+
+
+#### 参考
+[珠峰公开课（手写promise - 上）](https://www.bilibili.com/video/BV1AA411h75Q/?spm_id_from=333.788.videocard.0)
+[珠峰公开课（手写promise - 下）](https://www.bilibili.com/video/BV1sZ4y1j71K/?spm_id_from=333.788.videocard.1)
+[promise 同学笔记）](https://juejin.im/post/6856213486633304078)
+[同学源码 ](https://github.com/Sunny-lucking/howToBuildMyPromise)
+[demo](https://github.com/YeWills/learns/tree/master/promise)
+
+
 
 ## Dom API
 ### 为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener('click')
