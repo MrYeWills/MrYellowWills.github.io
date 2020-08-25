@@ -1,6 +1,6 @@
 ---
 title: webpack笔记
-date: {{ date }}
+date: 2019/1/1
 tags: webpack
 categories: 
 - 前端工具
@@ -1288,6 +1288,20 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
 ### 两个横杠命令
 webpack --devtool source-map;
 发现凡是带两个--的命令，都是配置 webpack 的配置项。
+
+### babel的presets与plugins
+plugins是一个功能；
+presets里面定义的是一系列功能；
+```json
+{
+  "presets":[
+    "@babel/preset-env"
+  ],
+  "plugins":[
+    "@babel/proposal-class-properties"
+  ]
+}
+```
 
 ## 构建与性能优化
 
