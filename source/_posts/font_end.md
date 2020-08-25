@@ -52,6 +52,37 @@ categories:
 403 ： 禁止访问；
 404 ： 请求资源不存在；
 500／503 ： 服务器发生错误；
+
+### token
+
+#### token与Authorization关系
+Authorization是http的请求头，Authorization的值就是token。
+可以说token是定义在http中的Authorization属性上的：
+```js
+$.ajax({
+    url:"http://localhost:3000/api/userInfo",
+    beforeSend: function(xhr) { 
+                xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTk4Mzg5OTIyLCJleHAiOjE1OTgzOTM1MjJ9.-SgGux78wAT2N9cxNCFOReg9v3EO8XVoH8M_2FzynXU");  
+            },});
+```
+#### 概述
+token也成为令牌。
+#### jsonwebtoken生成token
+参考下面的demo
+#### jwt进行token验证
+参考下面的demo
+#### jsonwebtoken 与 koa-jwt
+参考另外一篇博客《koa2笔记 - jsonwebtoken 与 koa-jwt》
+#### postman进行token请求
+参考博客《0到1快速构建自己的后台管理系统   -- 登陆前端页面获取令牌》
+《0到1快速构建自己的后台管理系统   -- postman使用令牌请求》
+#### cmd进行token请求
+参考下面的demo
+#### html进行token请求
+参考下面的demo
+#### demo
+[demo](https://github.com/YeWills/koa-demo/tree/router-Token)
+
 ### 三次握手与四次挥手
 [参考](https://www.jianshu.com/p/d3725391af59)
 ### 访问一个url经历了哪些
