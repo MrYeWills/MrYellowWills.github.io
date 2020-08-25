@@ -1,6 +1,6 @@
 ---
 title: http协议
-date: {{ date }}
+date: 2019/5/21
 tags: [前端, http协议]
 categories: 
 - 前端
@@ -242,6 +242,7 @@ app.use(async (ctx, next) => {
 勾选浏览器控制台Disable cache时，浏览器将不会把etag等缓存验证相关的参数传给后台，因为不需要缓存了。
 
 ### cookie
+
 #### 特点
 - 通过set-cookie设置
 - 下次请求会自动带上
@@ -249,7 +250,24 @@ app.use(async (ctx, next) => {
 - 默认关闭浏览器失效
 
 ![](/image/http/setcookie1.jpg)
+#### cookie概述
+cookie是后台传给前台，前台再利用浏览器的cookie可以随http发回给后台的特性，对发回对cookie进行验证。
+- 第一次向后台发起请求后，后台返回的响应头（response headers）包含了给浏览器设置cookie对功能（set-cookie）
+![](/image/font_end/cookie.jpg)
+- 浏览器拿到cookie后，cookie有个特性，同域名下的cookie在发起请求时，都会发回给后台
+- 后台通过比对session的cookie，进行超时、登陆等校验
 
+补充一点cookie知识：
+如下图 Expires／max-age 的值为 N／A是session永久有效的意思，另外一个每个cookie对应一个域名。
+![](/image/font_end/cookie1.jpg)
+
+#### 关于cookie设置
+前后端都可以设置cookie，一次设置好，下次发请求，同域名下，cookie自动带上。
+#### cookie与localStorage区别
+cookie 主要给后端服务器用的，用于用户的验证，因为一旦后端服务器设置了cookie，比如在登陆成功后，设置好cookie，那么同域名下，再次发起请求时，cookie会自动带上，后台可以凭借这个cookie进行认证。
+localStorage主要给前端使用。
+#### cookie实现验证的原理
+参考上面《cookie与localStorage区别》
 #### koa端设置cookie
 ```
 if(ctx.url === '/getData'){
@@ -277,6 +295,10 @@ if(ctx.url === '/getData'){
 #### 控制台的Application
 cookie可在控制台的 Application上查看，如果设置了cookie的maxAge，有效期过后，Application上将查不到此cookie。
 ![](/image/http/setcookie2.jpg)
+
+#### demo
+这里是一个前后端一体的cookie demo，既实现了前端 又实现了后端 设置cookie。
+[demo](https://github.com/YeWills/learns/tree/master/node/cookie)
 
 ### connect与HTTP长连接
 #### 长连接的意义

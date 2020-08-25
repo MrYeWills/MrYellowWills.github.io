@@ -1,6 +1,6 @@
 ---
 title: 前端笔记
-date: {{ date }}
+date: 2019/5/21
 tags: [前端, js, html]
 categories: 
 - 前端
@@ -27,15 +27,7 @@ categories:
 ![](/image/font_end/cache.jpg)
 ## http知识
 ### cookie 与 http
-cookie是后台传给前台，前台再利用浏览器的cookie可以随http发回给后台的特性，对发回对cookie进行验证。
-- 第一次向后台发起请求后，后台返回的响应头（response headers）包含了给浏览器设置cookie对功能（set-cookie）
-![](/image/font_end/cookie.jpg)
-- 浏览器拿到cookie后，cookie有个特性，同域名下的cookie在发起请求时，都会发回给后台
-- 后台通过比对session的cookie，进行超时、登陆等校验
-
-补充一点cookie知识：
-如下图 Expires／max-age 的值为 N／A是session永久有效的意思，另外一个每个cookie对应一个域名。
-![](/image/font_end/cookie1.jpg)
+参考另外博客《http协议  - cookie》
 
 ### post与get区别
 1.get在浏览器回退时是无害的，而post会再次提交请求；
