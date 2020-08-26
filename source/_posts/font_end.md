@@ -25,6 +25,35 @@ categories:
 - 协商缓存返回状态码是304，会给服务器发请求；
 - 二者的区别也在这个图片上，协商缓存会有 last-modified，if-modified-since 等，强缓存则没有，可依此来判断是否强或协商。
 ![](/image/font_end/cache.jpg)
+
+### 安全类
+#### CSRF 跨站请求伪造
+- 原理
+CSRF中文称之为 跨站请求伪造。
+如下，用户登陆网站A后，获得cookie，
+之后，用户再登陆网站B，B站引诱用户访问A网站，
+由于这个访问接口与之前的cookie同域名，因此再次访问A网站时浏览器自动带上cookie，
+从而访问成功，导致非法转账或者用户数据盗取等等。
+![](/image/font_end/csrf.jpg)
+
+- 防御
+ - Token 验证：浏览器不会自动给接口带上token，因此后台如果做token验证，是可以避免csrf的。
+ - Referer 验证：服务端会比对接口请求的referer(接口的页面来源)，如果不是我这个站点的referer，若不是就阻止。
+
+- 更多
+[查看](https://www.bilibili.com/video/BV1Dt411V7ao?p=1)
+
+#### XSS 跨站脚本攻击
+- 原理
+想网站注入一些js脚本，输入的这些脚本在浏览器端运行，实现攻击，可获取cookie或者串改页面信息以及转账等等。
+其特点主要是 利用浏览器端运行 注入的js脚本，因此其防御也与此有关。
+- 防御
+ - 对用户输入内容进行转义，对脚本语言进行识别过滤。
+ - 对cookie等敏感信息进行设置，比如设置cookie 通过js不可读。
+- demo
+[小demo](https://github.com/YeWills/learns/tree/master/node/xss)
+
+
 ## http知识
 ### cookie 与 http
 参考另外博客《http协议  - cookie》

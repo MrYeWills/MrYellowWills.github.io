@@ -357,6 +357,19 @@ const notfound = (req,res)=>{
 app.use(notfound)
 app.use(errorHandle)
 ```
+
+### 接口返回一个静态文件
+#### 不指定路由
+```js
+app.use(express.static(path.resolve(__dirname, 'public')))
+
+//访问 http://127.0.0.1:3000/test.js
+```
+#### 指定路由
+```js
+app.use('/pub',express.static(path.resolve(__dirname, 'public')))
+//访问 http://127.0.0.1:3000/pub/test.js
+```
 ### demo
 [异常处理、模型表数据修改 demo](https://github.com/YeWills/learns/tree/master/sequelize-demo)
 也可参考 《sequelize集成使用》 章节的demo和参考
