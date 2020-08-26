@@ -248,6 +248,7 @@ app.use(async (ctx, next) => {
 - 下次请求会自动带上
 - 键值对，可以设置多个
 - 默认关闭浏览器失效
+- 可通过设置cookie的有效期，让浏览器关闭后，cookie仍然有效
 
 ![](/image/http/setcookie1.jpg)
 #### cookie概述

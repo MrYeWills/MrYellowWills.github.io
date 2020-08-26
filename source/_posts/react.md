@@ -162,6 +162,35 @@ react+react-native 结合用于移动端开发；
 #### react native 相当于pc的 react-dom
 参考上面《概述》
 
+### diff
+#### 概述
+[参考](https://segmentfault.com/a/1190000016539430) 
+[参考](https://www.cnblogs.com/forcheng/p/13246874.html) 
+[参考](https://www.bilibili.com/video/BV1B7411H7fL?from=search&seid=16040033068650647202) 
+主要进行以下三方面比较：
+- tree diff 树比较   如果根节点 类型不一样，直接卸载，如果类型一样，则进行props比较；
+- component diff 组件比较  根据props不同，进行更新操作；
+- element diff 组件内节点比较 比如组件内列表节点比较，
+ - 若无，就新建，
+ - 若删除，就卸载
+ - 若有，就比较顺序，这里就有个性能问题了，一般将原来最后的组件放在最前面，比较消耗性能。下面单独讲这块。
+
+#### 不一样的 element diff 比较规则
+详细[参考](https://www.bilibili.com/video/BV1B7411H7fL?from=search&seid=16040033068650647202) 。
+![](/image/react/diff.jpg)
+下面说明下为什么将最后面的组件放到最前面，最消耗性能：
+```
+//原来顺序 A B C D
+
+//最新顺序 D A B C
+// 比较 D： lastindex 初始值为0， D原来的下标montindex是3，由于 lastindex < mountindex, 因此D不移动，不过 lastindex将更新为mountindex， lastindex = 3.
+// 比较 A： 由上一步可知 D的lastindex为3，那么A的lastindex按照位置递增为4；而A原来的mountindex为0，lastindex > mountindex ,A将向右移动，根据规则，lastindex不更新。
+// 比较 B： 根A一样，B 的lastindex 递增为 5，B将向右移动。
+// 比较 C： 跟上面一样， C的lastindex 递增为6，C将向右移动。
+// 比较完毕
+```
+上面除了D没有移动位置，其他所有ABC元素都将移动位置，这将比较消耗性能。
+
 ## 高阶组件
 ### 使用代理hoc就够了
 高阶组件有多种，但用得最多的是代理和继承hoc，由于代理hoc强大的便利性和作用，能用代理实现的不用继承hoc，因此实际项目中基本上用的是代理hoc，使用代理hoc，基本上就够你的开发需求了。
