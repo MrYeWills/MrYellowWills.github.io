@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>0到1快速构建自己的后台管理系统 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="node">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>0到1快速构建自己的后台管理系统</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">0到1快速构建自己的后台管理系统</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-27T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2020-07-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-end" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">0到1快速构建自己的后台管理系统</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-28 00:00:00" datetime="2020-07-27T16:00:00.000Z" itemprop="datePublished">2020-07-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><h3 id="mysql安装和使用"><a href="#mysql安装和使用" class="headerlink" title="mysql安装和使用"></a>mysql安装和使用</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>安装的过程可以参照网上，不过安装的过程中，mysql会给你一个初始密码，需要记住。<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/pd.png" title="undefined" data-fancybox="images"><img src="/image/end/pd.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@localhost: xxxxxxxxx   //root 超级用户， localhost 本地环境， 本地环境下的超级用户密码</span><br></pre></td></tr></table></figure></p>
+<h4 id="not-found-报错"><a href="#not-found-报错" class="headerlink" title="not found 报错"></a>not found 报错</h4><p>有一个not found 报错，可能是mysql正在运行，切掉mysql进程即可，（mac下，打开偏好设置配置，在底部就会出现mysql图标，点击进去，手动停止）</p>
+<h4 id="show-databases-报错重置密码"><a href="#show-databases-报错重置密码" class="headerlink" title="show databases 报错重置密码"></a>show databases 报错重置密码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.</span><br><span class="line">修改</span><br></pre></td></tr></table></figure>
+<p>解决如下：<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/1820.jpg" title="undefined" data-fancybox="images"><img src="/image/end/1820.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><a href="https://www.youtube.com/watch?v=q1UNz5eisN8" target="_blank" rel="noopener">参考</a></p>
+<h4 id="设置-新-密码相关"><a href="#设置-新-密码相关" class="headerlink" title="设置(新)密码相关"></a>设置(新)密码相关</h4><p>像上面的密码设置好后，需要设置密码的使用期限，并且刷新mysql密码信息，才能使得新密码生效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SET PASSWORD = PASSWORD(&apos;新密码&apos;);  //上面的设置新密码</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; PASSWORD EXPIRE NEVER; //设置本地环境下的超级用户root 密码的使用期限是永远不过期(never)。</span><br><span class="line">FLUSH PRIVILEGES;//刷新特权，让刚才设置的密码相关生效</span><br></pre></td></tr></table></figure></p>
+<h4 id="mysql命令以分号结尾"><a href="#mysql命令以分号结尾" class="headerlink" title="mysql命令以分号结尾"></a>mysql命令以分号结尾</h4><p>如果不以分号结尾，mysql则会认为命令还未执行完成，将不予执行。</p>
+<h4 id="登陆mysql账户-root"><a href="#登陆mysql账户-root" class="headerlink" title="登陆mysql账户(root)"></a>登陆mysql账户(root)</h4><p>mysql里面可能有很多账号，因此需要登陆mysql账号。<br>命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p  //user root 使用-p密码登陆</span><br><span class="line">//输入上面设置的 root的账户密码</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改koa项目下的secure-js用户名和密码"><a href="#修改koa项目下的secure-js用户名和密码" class="headerlink" title="修改koa项目下的secure.js用户名和密码"></a>修改koa项目下的secure.js用户名和密码</h3><p>如果不修改，npm启动lin-cms-koa-master就会报错。无法与数据库链接。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lin-cms-koa-master/app/config/secure.js</span></span><br><span class="line">    database: <span class="string">'lin_cms'</span>,<span class="comment">//需要将中斜杠改成下斜杠</span></span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    dialect: <span class="string">'mysql'</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    username: <span class="string">'root'</span>,</span><br><span class="line">    password: <span class="string">'xxx'</span>, <span class="comment">//数据库中密码</span></span><br><span class="line">    logging: <span class="literal">false</span>,</span><br><span class="line">    timezone: <span class="string">'+08:00'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="项目导入数据库"><a href="#项目导入数据库" class="headerlink" title="项目导入数据库"></a>项目导入数据库</h3><h4 id="mysql的source命令"><a href="#mysql的source命令" class="headerlink" title="mysql的source命令"></a>mysql的source命令</h4><p><a href="https://doc.cms.talelin.com/start/koa/" target="_blank" rel="noopener">详细参考</a><br>主要使用mysql的source命令来做，后期可以了解下<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/db.png" title="undefined" data-fancybox="images"><img src="/image/end/db.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="navicat-mysql图形化工具"><a href="#navicat-mysql图形化工具" class="headerlink" title="navicat - mysql图形化工具"></a>navicat - mysql图形化工具</h3><h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p><a href="https://www.macwk.com/soft/navicat-premium" target="_blank" rel="noopener">破解版安装</a><br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/db.png" title="undefined" data-fancybox="images"><img src="/image/end/db.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="操作mysql"><a href="#操作mysql" class="headerlink" title="操作mysql"></a>操作mysql</h4><p>可通过这个图形化工具，对mysql进行增删改查，实时生效。</p>
+<h3 id="sequelize-桥接koa与mysql的工具"><a href="#sequelize-桥接koa与mysql的工具" class="headerlink" title="sequelize - 桥接koa与mysql的工具"></a>sequelize - 桥接koa与mysql的工具</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">   "@koa/cors": "^2.2.3",</span><br><span class="line">   "koa": "^2.7.0",</span><br><span class="line">   "koa-bodyparser": "^4.2.1",</span><br><span class="line">   "koa-mount": "^4.0.0",</span><br><span class="line">   "koa-static": "^5.0.0",</span><br><span class="line">   "lin-mizar": "^0.3.5",</span><br><span class="line">   "mysql2": "^2.1.0",</span><br><span class="line">   "sequelize": "^5.21.13",//</span><br><span class="line">   "validator": "^13.1.1"</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="post请求的演变"><a href="#post请求的演变" class="headerlink" title="post请求的演变"></a>post请求的演变</h2><h3 id="传统非权限方式"><a href="#传统非权限方式" class="headerlink" title="传统非权限方式"></a>传统非权限方式</h3><p>代码主要放置于 <code>default-post</code>分支中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AddContentValidator</span> <span class="keyword">extends</span> <span class="title">LinValidator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.image = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isNotEmpty'</span>, <span class="string">'内容封面不能为空'</span>)</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.type = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isNotEmpty'</span>, <span class="string">'内容类型不能为空'</span>),</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isInt'</span>, <span class="string">'内容类型id必须是数字'</span>)</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.title = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isNotEmpty'</span>, <span class="string">'内容标题不能为空'</span>)</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.content = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isNotEmpty'</span>, <span class="string">'内容介绍不能为空'</span>)</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.url = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isOptional'</span>),</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isURL'</span>, <span class="string">'内容外链必须是合法url地址'</span>)</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.pubdate = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isNotEmpty'</span>, <span class="string">'发布不能为空'</span>),</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isISO8601'</span>, <span class="string">'发布日期格式不正确'</span>)</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">this</span>.status = [</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isNotEmpty'</span>, <span class="string">'内容有效状态未指定'</span>),</span><br><span class="line">      <span class="keyword">new</span> Rule(<span class="string">'isInt'</span>, <span class="string">'内容有效状态标识不正确'</span>)</span><br><span class="line">    ];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; AddContentValidator&#125; <span class="keyword">from</span> <span class="string">'../../validator/content'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> contentApi = <span class="keyword">new</span> LinRouter(&#123;</span><br><span class="line">  prefix: <span class="string">'/v1/content'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">contentApi.post(<span class="string">'/'</span>, <span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> v = <span class="keyword">await</span> <span class="keyword">new</span> AddContentValidator().validate(ctx);</span><br><span class="line">  <span class="keyword">return</span> ctx.json(v.get(<span class="string">'body'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>post请求<br>url:<code>http://localhost:5000/v1/content</code><br>body：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        <span class="attr">"image"</span>: <span class="string">"https://www.imooc.com/video/21672"</span>,</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"100"</span>,</span><br><span class="line">        <span class="attr">"title"</span>: <span class="string">"七月"</span>,</span><br><span class="line">        <span class="attr">"content"</span>: <span class="string">"七月的三伏天"</span>,</span><br><span class="line">        <span class="attr">"pubdate"</span>: <span class="string">"2020-05-20"</span>,</span><br><span class="line">        <span class="attr">"status"</span>: <span class="string">"1"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/post.jpg" title="undefined" data-fancybox="images"><img src="/image/end/post.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h3 id="权限验证方式"><a href="#权限验证方式" class="headerlink" title="权限验证方式"></a>权限验证方式</h3><h4 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h4><p>lin-cms框架封装好了权限验证，只需要将上面请求的post改为linPost即可。<br>以下说明，可参考官方文档。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> contentApi = <span class="keyword">new</span> LinRouter(&#123;</span><br><span class="line">  prefix: <span class="string">'/v1/content'</span></span><br><span class="line">&#125;);</span><br><span class="line">contentApi.linPost(</span><br><span class="line">  <span class="string">'addContent'</span>,   <span class="comment">//请求这个事件的唯一id，可随意定义，保持唯一即可</span></span><br><span class="line">  <span class="string">'/'</span>,   <span class="comment">//请求的路由</span></span><br><span class="line">  &#123;</span><br><span class="line">    permission: <span class="string">'添加期刊内容'</span>,     <span class="comment">// 需要什么权限</span></span><br><span class="line">    <span class="built_in">module</span>: <span class="string">'内容管理'</span>,   <span class="comment">//是哪个模块的权限</span></span><br><span class="line">    mount: <span class="literal">true</span>   <span class="comment">//权限是否挂载到全局</span></span><br><span class="line">  &#125;,</span><br><span class="line">  groupRequired,   <span class="comment">//守卫函数  需登陆且被授予相应的权限后才可访问</span></span><br><span class="line">  logger(<span class="string">'&#123;user.username&#125;新增了期刊内容'</span>),   <span class="comment">//用户操作日志</span></span><br><span class="line">  <span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> v = <span class="keyword">await</span> <span class="keyword">new</span> AddContentValidator().validate(ctx);</span><br><span class="line">    <span class="keyword">await</span> ContentService.addContent(v.get(<span class="string">'body'</span>));</span><br><span class="line">    ctx.success(&#123;</span><br><span class="line">      msg: <span class="string">'期刊内容新增成功'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="登陆前端页面获取令牌"><a href="#登陆前端页面获取令牌" class="headerlink" title="登陆前端页面获取令牌"></a>登陆前端页面获取令牌</h4><p>打开前端页面，登陆进去后，打开控制台，获取 请求头中的Authorization，这里的内容就是token 令牌。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTYzNTkxMzcsImlkZW50aXR5IjoxLCJzY29wZSI6ImxpbiIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE1OTYzNTU1Mzd9.HYrFWNES78tMGYd6O-Wdb_PBnp7XFGRy1boNIAb1Rkk</span><br></pre></td></tr></table></figure></p>
+<p>注意的是，上面令牌码中 Bearer 是定义令牌的类型，因此不是令牌码本身，因此真正的令牌是去掉Bearer后的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTYzNTkxMzcsImlkZW50aXR5IjoxLCJzY29wZSI6ImxpbiIsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE1OTYzNTU1Mzd9.HYrFWNES78tMGYd6O-Wdb_PBnp7XFGRy1boNIAb1Rkk</span><br></pre></td></tr></table></figure></p>
+<h4 id="postman使用令牌请求"><a href="#postman使用令牌请求" class="headerlink" title="postman使用令牌请求"></a>postman使用令牌请求</h4><p>如下图，postman中，带令牌的和不带令牌的区别不大，其他照旧，就增加了一个如下的token，由上面可知，lin-cms用的是bearer类型token，因此就用bearer Token<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/token.jpg" title="undefined" data-fancybox="images"><img src="/image/end/token.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="普通用户与超级用户"><a href="#普通用户与超级用户" class="headerlink" title="普通用户与超级用户"></a>普通用户与超级用户</h4><p>可以使用超级用户root，创建一些普通用户测试相关权限的问题，普通用户登陆后，将令牌给postman，会发现令牌权限不足，这个时候可以通过前端来管理用户权限。<br>具体的权限管理，在前端项目中的分组管理中。</p>
+<h2 id="日志管理"><a href="#日志管理" class="headerlink" title="日志管理"></a>日志管理</h2><p>为了查看用户做了哪些曾删改查的操作，在每个请求中，使用logger，这样的话，在前端页面中就可以查看到日志信息：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> contentApi = <span class="keyword">new</span> LinRouter(&#123;</span><br><span class="line">  prefix: <span class="string">'/v1/content'</span></span><br><span class="line">&#125;);</span><br><span class="line">contentApi.linPost(</span><br><span class="line">  <span class="string">'addContent'</span>,   <span class="comment">//请求这个事件的唯一id，可随意定义，保持唯一即可</span></span><br><span class="line">  <span class="string">'/'</span>,   <span class="comment">//请求的路由</span></span><br><span class="line">  &#123;</span><br><span class="line">    permission: <span class="string">'添加期刊内容'</span>,     <span class="comment">// 需要什么权限</span></span><br><span class="line">    <span class="built_in">module</span>: <span class="string">'内容管理'</span>,   <span class="comment">//是哪个模块的权限</span></span><br><span class="line">    mount: <span class="literal">true</span>   <span class="comment">//权限是否挂载到全局</span></span><br><span class="line">  &#125;,</span><br><span class="line">  groupRequired,   <span class="comment">//守卫函数  需登陆且被授予相应的权限后才可访问</span></span><br><span class="line">  logger(<span class="string">'&#123;user.username&#125;新增了期刊内容'</span>),   <span class="comment">//用户操作日志</span></span><br><span class="line">  <span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> v = <span class="keyword">await</span> <span class="keyword">new</span> AddContentValidator().validate(ctx);</span><br><span class="line">    <span class="keyword">await</span> ContentService.addContent(v.get(<span class="string">'body'</span>));</span><br><span class="line">    ctx.success(&#123;</span><br><span class="line">      msg: <span class="string">'期刊内容新增成功'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/log.jpg" title="undefined" data-fancybox="images"><img src="/image/end/log.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>lin-cms框架使用了组件<code>NotFound</code>做错误处理，只要使用了这个错误码，框架层面就会给你处理好报错信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">async</span> editMovie (id, params) &#123;</span><br><span class="line">  <span class="keyword">const</span> movie = <span class="keyword">await</span> MovieModel.findByPk(id);</span><br><span class="line">  <span class="keyword">if</span> (!movie) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NotFound();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> movie.update(&#123; ...params &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: 10040,</span><br><span class="line">    &quot;message&quot;: &quot;令牌失效&quot;,</span><br><span class="line">    &quot;request&quot;: &quot;PUT /v1/content/3&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="请求流程与目录"><a href="#请求流程与目录" class="headerlink" title="请求流程与目录"></a>请求流程与目录</h2><h3 id="发起请求与最后结果"><a href="#发起请求与最后结果" class="headerlink" title="发起请求与最后结果"></a>发起请求与最后结果</h3><p>下面两种图是发起请求的参数和最后数据库结果。<br>下面一小节会讲如何处理这个请求流程。<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/post1.jpg" title="undefined" data-fancybox="images"><img src="/image/end/post1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/post2.jpg" title="undefined" data-fancybox="images"><img src="/image/end/post2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="处理请求的流程"><a href="#处理请求的流程" class="headerlink" title="处理请求的流程"></a>处理请求的流程</h3><p>如下图，从左至右，<br>业务模块目录下的的js中接收到请求后，转发给服务层目录下的js，<br>服务层本该转发给模型层目录，但为了后期易维护性，将模型层的业务分割层dao目录和专门写模型的模型层。<br>因此服务层将请求转发给 dao目录，dao目录再转发给模型层。<br>模型层连接数据库，对数据库进行增删改查的写入。<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/db_flow.jpg" title="undefined" data-fancybox="images"><img src="/image/end/db_flow.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="service-服务层"><a href="#service-服务层" class="headerlink" title="service 服务层"></a>service 服务层</h3><p>如上图</p>
+<h3 id="model-模型"><a href="#model-模型" class="headerlink" title="model 模型"></a>model 模型</h3><p>模型都放在 model目录，一个模型对应一张表。<br>模型相关的逻辑，为了维护方便，部分写在dao目录下。</p>
+<h3 id="dao-模型逻辑的分割"><a href="#dao-模型逻辑的分割" class="headerlink" title="dao 模型逻辑的分割"></a>dao 模型逻辑的分割</h3><p>模型相关的逻辑，为了维护方便，部分写在dao目录下。</p>
+<h3 id="全局数据库实例目录"><a href="#全局数据库实例目录" class="headerlink" title="全局数据库实例目录"></a>全局数据库实例目录</h3><p>如上图，最右侧的 db.js，配置数据库相关信息。</p>
+<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p>主要看<a href="https://doc.cms.talelin.com/client/authority.html" target="_blank" rel="noopener">官方文档</a><br>前端主要对菜单路由、按钮做了权限控制，表现形式就是显隐与disabled等；<br>后端同时也对相应权限处理，主要对请求的接口做权限控制。<br>注意的是前后端的权限名字需要约定成一致。<br>详细可参考 上面的官方文档 以及 <a href="https://www.imooc.com/video/21690" target="_blank" rel="noopener">慕课网 - 核心机制权限控制联调</a></p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="返回的数据中包含日期格式时报错处理"><a href="#返回的数据中包含日期格式时报错处理" class="headerlink" title="返回的数据中包含日期格式时报错处理"></a>返回的数据中包含日期格式时报错处理</h3><p>比如在项目中，如下的get请求会报错。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">async</span> getContentList () &#123;</span><br><span class="line">  <span class="keyword">const</span> movieList = <span class="keyword">await</span> MovieDao.getMovieList();</span><br><span class="line">  <span class="keyword">const</span> musicList = <span class="keyword">await</span> MusicDao.getMusicList();</span><br><span class="line">  <span class="keyword">const</span> sentenceList = <span class="keyword">await</span> SentenceDao.getSentenceList();</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  res.push.apply(res, movieList);</span><br><span class="line">  res.push.apply(res, musicList);</span><br><span class="line">  res.push.apply(res, sentenceList);</span><br><span class="line">  res.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b.created_at.localeCompare(a.created_at));<span class="comment">//报错</span></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>解决方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//lin-cms-koa-master/app/config/secure.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  db: &#123;</span><br><span class="line">    database: <span class="string">'lin_cms'</span>, <span class="comment">// 需要与原来视频修改</span></span><br><span class="line">   ...</span><br><span class="line">   <span class="comment">//处理日期格式</span></span><br><span class="line">    dialectOptions: &#123;</span><br><span class="line">      dateStrings: <span class="literal">true</span>,</span><br><span class="line">      typeCast: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  secret:</span><br><span class="line">    <span class="string">'\x88W\xf09\x91\x07\x98\x89\x87\x96\xa0A\xc68\xf9\xecJJU\x17\xc5V\xbe\x8b\xef\xd7\xd8\xd3\xe6\x95*4'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="postman使用"><a href="#postman使用" class="headerlink" title="postman使用"></a>postman使用</h2><h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/post.jpg" title="undefined" data-fancybox="images"><img src="/image/end/post.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h2 id="navicat使用"><a href="#navicat使用" class="headerlink" title="navicat使用"></a>navicat使用</h2><h3 id="逆向表到模型"><a href="#逆向表到模型" class="headerlink" title="逆向表到模型"></a>逆向表到模型</h3><p>可以看表的结构<br><figure class="image-box">
+                <a rel="0到1快速构建自己的后台管理系统" href="/image/end/navicat_dir.jpg" title="undefined" data-fancybox="images"><img src="/image/end/navicat_dir.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h2 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h2><h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>通过设置如下文件，然后在axios中直接使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//lin-cms-vue-demo/.env.development</span><br><span class="line">VUE_APP_BASE_URL = &apos;http://localhost:5000/&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="github与参考资料"><a href="#github与参考资料" class="headerlink" title="github与参考资料"></a>github与参考资料</h2><p><a href="https://github.com/demopark/sequelize-docs-Zh-CN/tree/v5" target="_blank" rel="noopener">sequelize中文文档</a><br><a href="https://www.imooc.com/learn/1247" target="_blank" rel="noopener">慕课网教程</a><br><a href="https://doc.cms.talelin.com/" target="_blank" rel="noopener">lin-cms官方文档</a><br><a href="https://github.com/YeWills/lin-cms-vue-demo" target="_blank" rel="noopener">前端github</a><br><a href="https://github.com/YeWills/lin-cms-koa" target="_blank" rel="noopener">后端github</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-08-27T04:22:36.218Z" itemprop="dateUpdated">2020-08-27 12:22:36</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/07/28/end/" target="_blank" rel="external">https://yewills.github.io/2020/07/28/end/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/07/28/end/&title=《0到1快速构建自己的后台管理系统》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/07/28/end/&title=《0到1快速构建自己的后台管理系统》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/08/13/node/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/13/node_module/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">node模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本信息"><span class="post-toc-number">1.</span> <span class="post-toc-text">基本信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mysql安装和使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">mysql安装和使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#not-found-报错"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">not found 报错</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#show-databases-报错重置密码"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">show databases 报错重置密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置-新-密码相关"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">设置(新)密码相关</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mysql命令以分号结尾"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">mysql命令以分号结尾</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登陆mysql账户-root"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">登陆mysql账户(root)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改koa项目下的secure-js用户名和密码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改koa项目下的secure.js用户名和密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目导入数据库"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">项目导入数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mysql的source命令"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">mysql的source命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#navicat-mysql图形化工具"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">navicat - mysql图形化工具</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装-1"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#操作mysql"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">操作mysql</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sequelize-桥接koa与mysql的工具"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">sequelize - 桥接koa与mysql的工具</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#post请求的演变"><span class="post-toc-number">2.</span> <span class="post-toc-text">post请求的演变</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传统非权限方式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">传统非权限方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#权限验证方式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">权限验证方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置说明"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">配置说明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登陆前端页面获取令牌"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">登陆前端页面获取令牌</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#postman使用令牌请求"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">postman使用令牌请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#普通用户与超级用户"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">普通用户与超级用户</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#日志管理"><span class="post-toc-number">3.</span> <span class="post-toc-text">日志管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常处理"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求流程与目录"><span class="post-toc-number">5.</span> <span class="post-toc-text">请求流程与目录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发起请求与最后结果"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">发起请求与最后结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#处理请求的流程"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">处理请求的流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#service-服务层"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">service 服务层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#model-模型"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">model 模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dao-模型逻辑的分割"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">dao 模型逻辑的分割</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全局数据库实例目录"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">全局数据库实例目录</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#权限管理"><span class="post-toc-number">6.</span> <span class="post-toc-text">权限管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">7.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#返回的数据中包含日期格式时报错处理"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">返回的数据中包含日期格式时报错处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#postman使用"><span class="post-toc-number">8.</span> <span class="post-toc-text">postman使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#post请求"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">post请求</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#navicat使用"><span class="post-toc-number">9.</span> <span class="post-toc-text">navicat使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逆向表到模型"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">逆向表到模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前端部分"><span class="post-toc-number">10.</span> <span class="post-toc-text">前端部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跨域"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">跨域</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#github与参考资料"><span class="post-toc-number">11.</span> <span class="post-toc-text">github与参考资料</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/07/28/end/&title=《0到1快速构建自己的后台管理系统》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/07/28/end/&title=《0到1快速构建自己的后台管理系统》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByklEQVR42u3aSW4CMRAFUO5/aXIAYudXeUgjPa9aYKzXLEqu4fWK13uwPvf0njcvXFzcZe57ukZHJ99+7pmfn/wpuLi4N7mjiDF6nn9S/Twx4OLiPpm79yVxcXG/nTsPSdEFJf47cHFxn8DNk5N5pWJ0Zh7mtuVquLi4C9y8Snnu+Uh9FxcXt8V9F1cvQeoVSX/5FS4u7hVur5WSl0iS4mn+LS4u7h1u3kzN05veXWX+8ri4uDe5+RG9ndXRrsJOXFzcY9zqcFUP0UtycHFx/5dbbZxU26vVJKpQEMHFxT3GTRql+XBV3iwpl0hwcXGvcNehVVyvIDKMvri4uAe41SSkOl65uXGLi4t7hdsrlZbbHsVLVSHu4uLiXuHmqUhyTVlpumye48DFxS1ye02R9ZSmnKXh4uJe5K5cSqohbEPjFhcX9yI3OTRpouRXmW03Mlxc3K3c3shUNVEpjF7Nf4WLi3uFWw0u1ZfJWy/NUQxcXNxj3JVWa94O6QW4zZ1hXFzcIne9IVrdmadAuLi438Wd46rpTRQEcXFxH8ntNVfKAxaj/bi4uBe5efKTB6+Vq9IfgQwXF/cwd6Xx2Wt45GNYS/VdXFzcDvcHP6VxsEfD5QQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
