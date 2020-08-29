@@ -120,6 +120,9 @@ token也成为令牌。
 tcp连接属于 传输层，只用于连接，不用于数据收发，
 http连接属于 应用层，用于数据收发。
 
+### websocket
+[websocket的小demo](https://github.com/YeWills/learns/tree/master/node/websocket)
+
 ## js通信
 ### 同源策略及限制
 #### 概述
@@ -229,3 +232,6 @@ hybrid的js页面的ajax需要调去原生提供的请求API，才能向后端�
 ![](/image/font_end/f-calc1.jpg)
 ![](/image/font_end/f-calc2.jpg)
 ![](/image/font_end/f-calc3.jpg)
+## FAQ
+### 获取并使用字体图标
+[可以通过阿里的开源字体库](https://www.iconfont.cn/)使用
