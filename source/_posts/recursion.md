@@ -1,5 +1,5 @@
 ---
-title: 专项练习-递归及其他
+title: 递归及其他
 date: 2020/9/3
 tags: [recursion]
 categories: 
