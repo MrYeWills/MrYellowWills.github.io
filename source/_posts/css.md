@@ -179,7 +179,7 @@ linear-gradient(45deg, blue, red);
 /* 从右下到左上、从蓝色渐变到红色 */
 linear-gradient(to left top, blue, red);
 ```
-#### 线性渐变
+#### 径向渐变
 ```
  background-image: radial-gradient(circle, red, yellow, green);
  ```
@@ -544,7 +544,7 @@ attr是用来content与元素进行通信的一个接口：
 .text{
     position: relative;
 }
-.text:hover::before{
+.text[show-tip]:hover::before{
     content: attr(show-tip);
     position: absolute;
     top: -150%;

@@ -1,15 +1,17 @@
 ---
 title: 前端demo讲解
-date: {{ date }}
+date: 2020/1/18
 tags: [前端demo讲解]
 categories: 
-- js
+- 前端
 series: js
 ---
 
 ## 画一个时钟
 ### demo与效果
 [查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/clock.html)
+[查看demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/clock.html)
+
 ![](/image/js_demo/clock.jpg)
 ### 将元素按圆弧排放的两种方法
 #### css方法 --表盘刻度
@@ -32,6 +34,7 @@ series: js
 ## 全屏切换效果(轮播)
 ### demo与效果
 [查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/switch-plugin/demo.html)
+[查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/switch-plugin/demo.html)
 [demo讲解视频](https://www.imooc.com/learn/374)
 ![](/image/js_demo/switch.jpg)
 ### 轮播切换设计方案
@@ -80,7 +83,7 @@ offsetTop是非常棒的方法，使用方法自行网上查询。虽然上面�
 [查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/marquee-modify.html)
 [查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/marquee-modify.html)
 
-这里还有一个[jquery版本的demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/marquee.html)，方便理解，可以看看。
+这里还有一个[jquery版本的demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/marquee.html) [jquery版本的demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/marquee.html)，方便理解，可以看看。
 基本原理同上面的《全屏切换效果(轮播)》
 ### 最后位置重复添加第一张图片
 如果不在最后的位置添加第一张图片，会有一个留白的效果。
@@ -127,6 +130,8 @@ offsetTop是非常棒的方法，使用方法自行网上查询。虽然上面�
 ### demo与效果
 #### 介绍
 [查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/nonDelay/index.html)
+[查看demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/nonDelay/index.html)
+
 [demo讲解视频](https://www.imooc.com/video/14717)
 ![](/image/js_demo/delay.jpg)
 
@@ -368,6 +373,7 @@ animation的线性时间函数都是三次贝塞尔函数(cubic-bezier)：
 谷歌浏览器提供了强大的css时间函数调试功能，参考[一位朋友的博客 - CSS3 动画](https://beat-the-buzzer.github.io/2019/11/27/c3-animation/)
 #### 动画监听事件animationstart等等
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/animation-master/html/rabbit.html)
+[demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/rabbit.html)
 用这个的时候，注意以下兼容问题。
 ```js
 $loading.addEventListener('animationstart',runstart);
@@ -432,10 +438,11 @@ var images = [{
 ```
 #### demo地址
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/ImgPreloading/index2-3_ok.html)
+[demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/ImgPreloading/index2-3_ok.html)
 
 ### 可调大小面板实现
 #### demo与介绍
-本demo基于[慕课网视频](https://www.imooc.com/learn/193)优化而来，[demo 地址](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/resizeable.html)
+本demo基于[慕课网视频](https://www.imooc.com/learn/193)优化而来，[demo 地址](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/resizeable.html) [demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/resizeable.html)
 #### 方案分析
 如下图，要实现左侧，下边，右下侧，三个位置可以拖动，
 具体做法是在这三个地方添加一个看不见的拖动用的dom，给这三个dom绑定mouse事件，
@@ -485,6 +492,7 @@ panelDom = document.getElementById(panelId);
 ### 固定侧边栏滚动
 #### demo与介绍
 [demo 地址](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/fixedSide/index.htm)
+[demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/fixedSide/index.htm)
 #### 需求分析
 要求右侧的侧边栏，正常滚动的时候，正常滚动；
 当侧边栏滚到底，但左侧内容还有，需要继续往下滚动时，右侧侧边栏固定显示最后面一段内容。
@@ -511,6 +519,7 @@ if(scrollHeight+screenHeight>sideHeight){
 
 #### demo与介绍
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/location/location.html)
+[demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/location/location.html)
 
 ![](/image/js_demo/location.jpg)
 
@@ -526,6 +535,7 @@ if(scrollHeight+screenHeight>sideHeight){
 ### CSS Sprite雪碧图应用
 #### demo与介绍
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/priatice/priatice.html)
+[demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/priatice/priatice.html)
 雪碧图用多个图标合成一个，可以用来减少http请求，优化性能，主要原理是对background-position的应用。
 #### 减少http请求，优化性能
 参考上面的讲解。
