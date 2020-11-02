@@ -53,15 +53,54 @@ input元素可改变数据，数据改变也同样改变input的显示。
 ![](/image/vue/for.jpg)
 如上图， v-if 显示隐藏是删除dom，v-show，通过css display none， v-for用于遍历, :key用于遍历唯一值，与react一致。
 
+#### v-if v-else-if v-else
+![](/image/vue/if.jpg)
+
+### v-for列表渲染
+#### 结合v-if
+![](/image/vue/forif.jpg)
+#### 结合v-show
+![](/image/vue/for-show.jpg)
+#### v-if v-show 列表渲染区别
+v-if，更加灵活；
+v-show，如果是过滤效果可以使用。
+
+### class绑定 与 style绑定
+#### class绑定
+```html
+<div id="app">
+        <div v-for="item in list">
+            姓名：{{item.name}}，年龄：{{item.age}}
+        </div>
+        <div v-for="item in list">
+        <div v-show="item.age > 24" :class="['banana','more',{'another':item.age < 26}]">
+                年龄大于24的人有：{{item.name}}
+            </div>
+        </div>
+    </div>
+```
+#### style绑定
+![](/image/vue/style.jpg)
 
 ### 计算属性(合成属性)computed
+#### 概述
 当某一个数据来源于多个数据计算而来时，用这个，并且类似react的hooks功能，此计算具有缓存计算性能优化能力，
 只有所依赖的数据变化时才重新计算，否则取缓存。
 computed可以说是data的升级版。
 ![](/image/vue/compd.jpg)
+#### 使用场景：数据联动
+数据联动时，使用computed。
 
 ### 数据监听器 watch
+#### 可监听的数据
 可以监听 vue实例中的data和computed内的数据变化，当变化时，定义自定义事件。
+#### 使用场景：异步请求
+类似 react hooks 中的effect 依赖一些如参，根据如参是否变化，决定是否重新post请求。
+#### 如参分别为newVal，oldValue
+如题
+
+#### computed与watch区别
+前者可监听多个变量，后者只能监听一个变量变化。
 
 ### this指向与优先级
 this指向vue实例，
@@ -126,6 +165,12 @@ data : function() {
 ## 其他
 ### npm script方式
 ![](/image/vue/npm.jpg)
+
+### vue调试
+
+#### 定义var，控制台测试
+如图，将vue实例定义成一个变量，然后在控制台拿这个变量进行一系列设置值的操作：
+![](/image/vue/debug.jpg)
 
 
 
