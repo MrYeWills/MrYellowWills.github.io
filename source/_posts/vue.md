@@ -1,0 +1,143 @@
+---
+title: vue笔记
+date: 2020/10/28
+tags: vue
+categories: 
+- vue
+- vue基础
+---
+
+## 基础知识
+### 挂载点，模版与实例
+```js
+<div id="root"></div> //挂载点
+
+<script>
+new Vue({//实例
+  el:"#root",
+  template:"<h1>hello {{msg}}</h1>", //模版 //也叫插值表达式
+  data:{
+  msg : "world"
+  }
+});
+</script>
+```
+### 插值表达式
+#### 写法一
+参考上面《挂载点，模版与实例》
+#### 写法二
+v-text 是vue框架 插值写法一种，
+另外还有 v-html。
+![](/image/vue/values.jpg)
+### 赋值
+参考《插值表达式》的图片。
+
+### 单向绑定与双向绑定
+参考《vue特有写法  -  v-model》
+
+### vue特有写法
+#### v-text v-html
+是一种插值写法，见《插值表达式》，与双花括号写法差不多。
+#### v-on:click 与 @click
+![](/image/vue/values.jpg)
+#### v-bind: 与 ：
+后者是前者的缩写，用于html元素属性绑定。
+当被绑定后，属性等号后面的字符串是一个js表达式，js内表达式变量指向实例中的data下面的属性值：
+![](/image/vue/bind.jpg)
+#### v-model
+一般用于可交互的html元素，比如input，而不是单纯的div，定义v-model后，就是数据双向绑定，
+input元素可改变数据，数据改变也同样改变input的显示。
+与之相对的是单向绑定的v-bind，一般用于纯展示的html元素，如div，只用于数据获取，而不能改变数据。
+
+#### v-if v-show v-for :key
+![](/image/vue/for.jpg)
+如上图， v-if 显示隐藏是删除dom，v-show，通过css display none， v-for用于遍历, :key用于遍历唯一值，与react一致。
+
+
+### 计算属性(合成属性)computed
+当某一个数据来源于多个数据计算而来时，用这个，并且类似react的hooks功能，此计算具有缓存计算性能优化能力，
+只有所依赖的数据变化时才重新计算，否则取缓存。
+computed可以说是data的升级版。
+![](/image/vue/compd.jpg)
+
+### 数据监听器 watch
+可以监听 vue实例中的data和computed内的数据变化，当变化时，定义自定义事件。
+
+### this指向与优先级
+this指向vue实例，
+```
+this.namekey 其实是 this.$data.namekey
+```
+vue底层做了封装，优先去data找然后是 computed， 然后是 methods。
+
+
+
+### vue-cli的vue文件写法
+#### 示例
+![](/image/vue/use.jpg)
+![](/image/vue/template.jpg)
+#### data要写成函数
+在vue-cli开发中data需要定义成一个函数。
+原来非vue-cli写法是data是对象。
+```
+data : function() {
+    return {
+        inputValue: ''
+    }
+}
+```
+
+
+## 定义组件
+### 全局组件
+![](/image/vue/global.jpg)
+### 定义props
+#### 在创建组件的地方声明有哪些props
+后在创建组件的地方，通过定义props数组，声明使用了哪些prop
+#### 组件template内通过插值方式使用props
+这个template就是一个组件所有内容方式，每个组件又是一个vue实例，拥有vue所有能力
+#### 在调用组件地方:props方式使用和传值
+在调用组件地方，通过 :props 传值
+#### 每个组件又是一个vue实例，拥有vue所有能力
+参考上面
+
+### 定义各种属性的方式
+#### 定义普通props用:props
+#### 定义自定义事件用@props
+
+### 子组件如何改变父组件值
+#### 概述
+通过给子组件定义自定义事件，将父组件的方法传给自定义事件，方式与react相同。
+![](/image/vue/event.jpg)
+#### $emit
+使用$emit触发事件。
+
+
+### 局部组件
+![](/image/vue/part.jpg)
+
+### template、dom节点关系、vue实例、组件
+每个vue实例都有一个template，
+如果此实例没有template，实例会去挂载点找，挂载点内部所有的dom节点就是template。
+一般说根vue实例定义了挂载点，所以不用定义template。
+组件一般不定义挂载点，而是直接定义template
+
+
+## 其他
+### npm script方式
+![](/image/vue/npm.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

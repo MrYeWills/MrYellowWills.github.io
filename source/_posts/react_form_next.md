@@ -15,7 +15,7 @@ formStore是给form封装的，主要用于form内的自定义组件。
 form Store 用于较为复杂的form，根据需求是否选用，与form做了分离封装：
 ```js
 //使用
- contextHoc(FormContext, initFormStoreState)(AddCoupon)
+ contextHoc(FormContext, initFormStoreState)(AddText)
 
 //contextHoc
 import React from "react";
@@ -139,7 +139,7 @@ this.field = new Field(this, { values: defaultValue });
 ```js
 //form 的父组件内
   const formAction = type => {
-    if (type === "openAddShopDialog") {
+    if (type === "openAddDialog") {
       setShop(true);
     }
   };
@@ -149,7 +149,7 @@ this.field = new Field(this, { values: defaultValue });
   />
 
   // form 内的子组件内：
-  formAction("openAddShopDialog");
+  formAction("openAddDialog");
 
 ```
 
@@ -217,19 +217,18 @@ generateField = fieldInfo => {
 
 //config
     {
-      label: "使用门槛",
-      name: "conditionType",
+      label: "test门槛",
+      name: "condType",
       required: true,
-      render: Threshold
+      render: Test
     },
 
-//Threshold
-const Threshold = ({ name, extraProps }, formField) => {
+//Test
+const Test = ({ name, extraProps }, formField) => {
   return (
     <Radio.Group itemDirection="ver" name={name} {...extraProps}>
-      <Radio value={none}>无门槛</Radio>
+      <Radio value={none}>test门槛</Radio>
       <Radio value={limit}>
-        满&nbsp;&nbsp;
         <FormItem label="">
           <EnNumPicker
             name={conditionValueKey}
@@ -240,7 +239,7 @@ const Threshold = ({ name, extraProps }, formField) => {
             disabled={isDisabled}
           />
         </FormItem>
-        <span>&nbsp;&nbsp;可用</span>
+        <span>&nbsp;&nbsp;数量</span>
       </Radio>
     </Radio.Group>
   );
@@ -265,7 +264,7 @@ validator默认的触发时机是onchange与submit。
 ### render props/组件 模式
 #### render props使用场景
 ```jsx
-const ValidTerm = ({ name, extraProps }, formField) => {
+const VaTerm = ({ name, extraProps }, formField) => {
   const radioValue = String(formField.getValue(name));
   return (
     <Radio.Group
@@ -277,7 +276,7 @@ const ValidTerm = ({ name, extraProps }, formField) => {
       <Radio value={absoluteTime}>
         <FormItem label="">
           <DatePicker.RangePicker
-            disabled={extraProps?.disabled || isEqual(radioValue, relativeTime)}
+            disabled={extraProps?.disabled || isEqual(radioValue, relaTime)}
             name={dateName}
             onClick={e => {
               //datapicker与radio点击事件冲突，导致时间面板闪现。
@@ -288,8 +287,7 @@ const ValidTerm = ({ name, extraProps }, formField) => {
           />
         </FormItem>
       </Radio>
-      <Radio value={relativeTime}>
-        领取后&nbsp;&nbsp;
+      <Radio value={relaTime}>
         <FormItem label="">
           <EnNumPicker
             name={relativeDays}
@@ -300,9 +298,8 @@ const ValidTerm = ({ name, extraProps }, formField) => {
           />
         </FormItem>
         <span className={styles.text}>
-          &nbsp;&nbsp;天过期
           <div className={styles.tip}>
-            (从领取当天算起，超过使用天数后自动失效)
+            test test
           </div>
         </span>
       </Radio>
@@ -332,7 +329,7 @@ const ValidTerm = ({ name, extraProps }, formField) => {
 ```js
 const getProject = ({ name }, formField, { store, action }) => {
   //name={name} 注入name，就完成了将自定义组件ValidaTerm集成到form
-  return <ValidTerm store={store} action={action} name={name} />;
+  return <ValTerm store={store} action={action} name={name} />;
 };
 
 ```
@@ -419,15 +416,15 @@ class EnSelect extends React.Component {
 ### extraProps
 ```js
 {
-      label: "每人限领",
-      name: "takeQuota",
+      label: "每人数量",
+      name: "takenum",
       type: "numberPicker",
-      placeholder: "请输入限领数量",
+      placeholder: "请输入每人数量",
       required: true,
       extraProps: {
         innerAfter: "张",
         min: 1,
-        max: 9999,
+        max: 99,
         hasTrigger: false
       }
     },
@@ -439,8 +436,8 @@ class EnSelect extends React.Component {
  -  checkbox 的 getOpts
  ```js
  {
-      label: "发布渠道",
-      name: "showScene",
+      label: "看赛方式",
+      name: "shows",
       required: true,
       type: "checkbox",
       getOpts: () => {
@@ -451,9 +448,9 @@ class EnSelect extends React.Component {
  ```
  {
       label: "渠道",
-      name: "channelCodeList",
+      name: "chaList",
       type: "select",
-      post: getIssueChannel,
+      post: getcannel,
       extraProps: {
         mode: "multiple"
       }
