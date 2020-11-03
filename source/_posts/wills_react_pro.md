@@ -144,8 +144,50 @@ eslint在vscode生效：
     "prettier" //对应上面 eslint-config-prettier
   ],
 ```
+### eslint对webpack别名报错
+安装插件：
+```
+ "eslint-import-resolver-webpack": "^0.13.0",
+```
+在.eslintrc中配置：
+```json
+ "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.base.js"//这里导入webpack中关于别名的配置
+      }
+    }
+  },
+```
+
+
 ### 存疑airbnb
 在我用的项目中，貌似不必直接安装 airbnb包，一般都是安装"eslint-config-airbnb"包就可以了。就可以生效eslint了。
+
+## 配置文件或相关
+### jsconfig.json
+#### 解决webpack别名点击不跳转问题
+[参考](https://www.jianshu.com/p/4ea2c5571123)
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  }
+}
+```
+### vscode对webpack别名提示补全
+配置与 《解决webpack别名点击不跳转问题》类似，可自行网上查询。
+### tsconfig.json
+#### 解决webpack别名点击不跳转问题
+道理同《jsconfig.json》
+#### 其他功能
+待研究
+
 
 ## jest
 ### mock的用法
@@ -437,4 +479,3 @@ es6、es7的api(如Promise等等)运行profill
 #### axios
 #### 小结
 webpack无非就是对html css js 图片文件的打包，因为又多了babel对js的打包，可以说工程项目中对js的打包是最丰富的。
-
