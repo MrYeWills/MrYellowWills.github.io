@@ -111,6 +111,7 @@ vue底层做了封装，优先去data找然后是 computed， 然后是 methods�
 
 
 
+## vue-cli
 ### vue-cli的vue文件写法
 #### 示例
 ![](/image/vue/use.jpg)
@@ -125,6 +126,89 @@ data : function() {
     }
 }
 ```
+### 两种创建工程的方法
+#### vue create命令
+```
+vue create hello-world
+```
+#### vue ui 界面
+这是将上面 vue create 命令行操作进行可视化配置的改进。
+```
+vue ui
+```
+
+## router
+### 简单示例
+index.html:
+![](/image/vue/router-index.jpg)
+main.js:
+![](/image/vue/router-main.jpg)
+app.vue:
+![](/image/vue/router.jpg)
+router.js:
+![](/image/vue/router1.jpg)
+Info.vue:
+![](/image/vue/router2.jpg)
+页面展示：
+![](/image/vue/router3.jpg)
+
+## vuex
+### 简单示例
+```js
+//一、Vuex全局状态管理定义
+
+import Vue from 'vue'
+//1.导入vuex
+import Vuex from 'vuex'
+
+//2.use
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+//3.vuex 状态
+  state: {
+    count: 0
+  },
+  //4.只有使用mutations 改变state值
+  mutations: {
+    increase: function () {
+      this.state.count++
+    }
+  },
+  actions: {
+  },
+  modules: {
+  }
+})
+
+
+//二、使用
+
+//1.导入store/index.js
+import store from '../store/index.js'
+export default {
+  name: 'Info',
+  //2.引入store
+  store,
+  data: function () {
+    return {
+        msg: store.state.count
+    }
+  },
+  methods: {
+    add () {
+    //3.通过store.commit('mutations内方法名')
+      store.commit('increase')
+    }
+  }
+}
+```
+
+
+
+
+
+
 
 
 ## 定义组件
@@ -171,6 +255,9 @@ data : function() {
 #### 定义var，控制台测试
 如图，将vue实例定义成一个变量，然后在控制台拿这个变量进行一系列设置值的操作：
 ![](/image/vue/debug.jpg)
+
+#### mounted 内定义 window.vue=this;
+如题，在控制台不用断点，就可以通过window.vue拿到vue实例。
 
 
 
