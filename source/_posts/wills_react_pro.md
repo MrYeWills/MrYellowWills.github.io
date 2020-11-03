@@ -109,6 +109,44 @@ eslint在vscode生效：
 #### ts tsx不生效，js生效
 如果你的项目中使用了ts，可能对于ts tsx的文件，ts自带的验证规则将优先于eslint，此时eslint可能在js文件中生效，ts文件中不生效。
 不过ts文件中有ts自带的验证规则生效。
+
+#### 没有安装prettier
+没有安装一下两个依赖是不生效的，用vscode的时候，你如果注意观察vscode给予的错误提示，会发现，错误提示基本上都是prettier报错的，因此相关的包不安装肯定不生效：
+
+```
+"eslint-config-prettier": "^4.3.0",
+ "eslint-plugin-prettier": "^3.1.4",
+```
+### .eslintc 配置与package.json联系
+```json
+//package.json
+"eslint": "^5.16.0",
+"babel-eslint": "^8.2.3",
+"eslint-config-airbnb": "^17.1.0",
+"eslint-config-prettier": "^4.3.0",
+"eslint-plugin-compat": "^2.2.0",
+"eslint-plugin-import": "^2.20.2",
+"eslint-plugin-jsx-a11y": "^6.0.3",
+"eslint-plugin-prettier": "^3.1.4",
+"eslint-plugin-react": "^7.20.0",
+```
+```json
+//.eslintc
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react", //对应上面 eslint-plugin-react
+    "jsx-a11y", //对应上面 eslint-plugin-jsx-a11y
+    "import" //对应上面 eslint-plugin-import
+  ],
+  "extends": [
+    "airbnb", //对应上面 eslint-config-airbnb
+    "prettier" //对应上面 eslint-config-prettier
+  ],
+```
+### 存疑airbnb
+在我用的项目中，貌似不必直接安装 airbnb包，一般都是安装"eslint-config-airbnb"包就可以了。就可以生效eslint了。
+
 ## jest
 ### mock的用法
 示例见 [wills-react-pro 的 Login.test.js](https://github.com/YeWills/wills-react-pro)
