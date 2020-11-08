@@ -152,6 +152,11 @@ Info.vue:
 页面展示：
 ![](/image/vue/router3.jpg)
 
+### 在vue实例中使用router能力
+```js
+this.$router.push('./home')
+```
+
 ## vuex
 ### 简单示例
 ```js
@@ -201,6 +206,25 @@ export default {
       store.commit('increase')
     }
   }
+}
+```
+
+### vuex的store一般跟computed或watch一起使用？
+因为computed或watch会监听变化。
+为什么有时候也用在data上呢，todo 待研究。
+```js
+//1.导入store/index.js
+import store from '../store/index.js'
+export default {
+  name: 'Info',
+  //2.引入store
+  store,
+  computed: {
+    msg(){
+      return store.state.count
+    }
+  },
+ 
 }
 ```
 
