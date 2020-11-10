@@ -22,13 +22,19 @@ new Vue({//实例
 });
 </script>
 ```
-### 插值表达式
-#### 写法一
+### 插值表达式 与 v-text v-html
+#### 插值表达式
 参考上面《挂载点，模版与实例》
-#### 写法二
+#### 插值表达式相当于v-text 
 v-text 是vue框架 插值写法一种，
 另外还有 v-html。
 ![](/image/vue/values.jpg)
+
+#### v-text v-html可认为是插值表达式的延伸
+如题。
+
+#### 几种写法
+![](/image/vue/value2.png)
 ### 赋值
 参考《插值表达式》的图片。
 
@@ -56,6 +62,9 @@ input元素可改变数据，数据改变也同样改变input的显示。
 #### v-if v-else-if v-else
 ![](/image/vue/if.jpg)
 
+#### v-if v-else 必须连着写
+![](/image/vue/if-err.jpg)
+
 ### v-for列表渲染
 #### 结合v-if
 ![](/image/vue/forif.jpg)
@@ -65,6 +74,13 @@ input元素可改变数据，数据改变也同样改变input的显示。
 v-if，更加灵活；
 v-show，如果是过滤效果可以使用。
 
+#### 组件驼峰定义，小斜杠使用
+```html
+<!-- 组件定义： -->
+components:testOk
+<!-- 使用： -->
+<test-ok></test-ok>
+```
 ### class绑定 与 style绑定
 #### class绑定
 ```html
@@ -102,6 +118,18 @@ computed可以说是data的升级版。
 #### computed与watch区别
 前者可监听多个变量，后者只能监听一个变量变化。
 
+#### 复合计算的三种方法(computed\watch\methods)
+推荐用computed，其次watch，最次methods。
+如下图，
+computed 性能最好，最简洁；
+watch 因为只能一次监听一个参数，需要写多个监听；
+methods 只要vue render时，无论依赖的参数是否变化，都会重新执行一次，性能最差。
+
+![](/image/vue/watch.jpg)
+
+#### computed的get和set
+![](/image/vue/setter.jpg)
+
 ### this指向与优先级
 this指向vue实例，
 ```
@@ -109,7 +137,31 @@ this.namekey 其实是 this.$data.namekey
 ```
 vue底层做了封装，优先去data找然后是 computed， 然后是 methods。
 
+## 基础知识二
+### 凡事带v的属性，后面都是js表达式，非字符串
+```html
+<!-- v-model以 v开头，说明是vue专有属性，被vue封装 names是一个表达式，非字符串，是一个变量 -->
+<test-ok v-model="names"></test-ok>
+```
+### 样式绑定
+可通过下面两种方式定义样式。
+#### :class
+#### :style
+#### 二者有对象和数组两种定义方式
 
+## 黑知识
+### 列表渲染
+#### 操作数组进行列表渲染时，必须用vue指定方法或改变引用
+指定的方法有七种，可看vue官网，也可以改变数组的引用。
+如果通过下标改变数组，是不会触发重新渲染，估计vue底层也是通过比较两次props是否相同。
+#### 占位符
+如果列表渲染时，要同时渲染多种情况，又不想在外层加div，可用占位符template
+![](/image/vue/template-list.jpg)
+#### 可通过对象渲染
+可直接通过改变属性内容，更新渲染，可能是数据劫持的运用；
+**如果要新增属性，必须改变对象引用**
+
+![](/image/vue/list-obj.jpg)
 
 ## vue-cli
 ### vue-cli的vue文件写法
