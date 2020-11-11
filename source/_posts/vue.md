@@ -149,6 +149,14 @@ vue底层做了封装，优先去data找然后是 computed， 然后是 methods�
 #### :style
 #### 二者有对象和数组两种定义方式
 
+### ref
+#### 在dom元素中ref指向dom
+通过`this.$refs.refName`获取
+![](/image/vue/ref1.jpg)
+#### 在vue组件中ref指向组件实例
+这个实例就是子组件内的this，拥有一切能力：
+![](/image/vue/ref2.jpg)
+
 ## 黑知识
 ### 列表渲染
 #### 操作数组进行列表渲染时，必须用vue指定方法或改变引用
@@ -162,6 +170,59 @@ vue底层做了封装，优先去data找然后是 computed， 然后是 methods�
 **如果要新增属性，必须改变对象引用**
 
 ![](/image/vue/list-obj.jpg)
+
+#### Vue.set 与 vm.$set 设置对象或数组
+除上面说的方法外，可通过Vue.set 与 vm.$set来改变数组或对象重新渲染。
+
+### Vue.set 与 vm.$set
+二者是一样的，一般，如果Vue提供了某方法，那么vue的实例中，也会有此方法，不过方法名前需要加$。
+
+### Vue中有的在实例中基本也有，名字前加$
+Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm.$set
+
+### 用is重命名解决渲染异常
+#### 异常描述
+下面渲染异常，渲染位置跑跑偏了：
+```html
+<div id="root">
+        <table>
+            <tbody>
+                <!-- 异常渲染，因为h5规范 要求tbody下面必须是tr标签 -->
+                <row></row>
+                <row></row>
+                <row></row>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        Vue.component('row', {
+            template:'<tr><td>this is wor</td></tr>'
+        })
+        var vm = new Vue({
+            el:"#root"
+        })
+    </script>
+```
+![](/image/vue/black.jpg)
+
+#### 用is重命名解决
+其他代码不变，改变如下部分，is很类似es6 的 import as 或es6的重命名：
+```html
+<tbody>
+      <tr is="row"></tr>
+      <tr is="row"></tr>
+      <tr is="row"></tr>
+  </tbody>
+```
+#### ol ul select问题以此类推
+异常渲染，因为h5规范 要求tbody下面必须是tr标签，ol ul 后可能也必须使用li，select后必须使用option等等，遇到问题可这样分析。
+
+### 子组件data必须是函数
+如下，在根组件上data写成对象是没有问题的，但子组件必须是函数，这是因为子组件可能会被父组件使用很多次，
+为了避免对象引用带来的问题，要求data每次都是最新的，因此通过执行函数，每次获得的是新对象，避免了同一个对象引用的问题。
+![](/image/vue/black-child.jpg)
+
+
 
 ## vue-cli
 ### vue-cli的vue文件写法
