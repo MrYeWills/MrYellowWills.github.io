@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>css之布局 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="布局的技术手段,响应式布局(设计),固定布局(设计),弹性布局(设计),流动布局(设计),媒体查询,flex">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>css之布局</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">css之布局</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-11-12T14:29:00.509Z" itemprop="datePublished" class="page-time">
+  2020-11-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-css_layout" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">css之布局</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-11-12 22:29:00" datetime="2020-11-12T14:29:00.509Z" itemprop="datePublished">2020-11-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>我们都知道，定位、浮动、flexbox，这些可以用来布局；<br>我们也知道什么固定布局，流式布局等等，这些也是布局；<br>那么定位、浮动这些是什么布局呢，是固定布局吗?<br>都不是，所以固定布局、弹性布局、流式布局，这些更代表了一种布局的设计思想，一种布局方案，<br>而定位、浮动、flexbox这些是一种布局的技术手段。<br>我们大可这样理解：<br>布局的设计方式有 固定设计方式、弹性设计方式、流式设计方式、响应式设计方式;<br>布局的技术方法(手段)有 定位、浮动、flexbox、百分比；</p>
+<h2 id="布局的技术手段"><a href="#布局的技术手段" class="headerlink" title="布局的技术手段"></a>布局的技术手段</h2><h3 id="优先使用flexbox，减少使用定位和浮动布局"><a href="#优先使用flexbox，减少使用定位和浮动布局" class="headerlink" title="优先使用flexbox，减少使用定位和浮动布局"></a>优先使用flexbox，减少使用定位和浮动布局</h3><p>布局的技术手段有：定位(绝对定位、固定定位)、浮动、flexbox。<br>在这些技术手段中，绝对定位、浮动这些已经是比较老的技术手段了，而且flexbox能够轻松实现浮动或绝对定位。<br>因为遇到布局时推荐优先使用新的布局方法 flexbox。</p>
+<h3 id="display：gird"><a href="#display：gird" class="headerlink" title="display：gird"></a>display：gird</h3><p>gird是最新的一种布局方式，可能在未来对目前的布局带来非常大的影响。</p>
+<h2 id="布局设计方式"><a href="#布局设计方式" class="headerlink" title="布局设计方式"></a>布局设计方式</h2><h3 id="布局方式介绍"><a href="#布局方式介绍" class="headerlink" title="布局方式介绍"></a>布局方式介绍</h3><p>参考《精通css》P177<br><strong>固定布局</strong> 使用px布局；<br><strong>弹性布局</strong> 使用em作为布局元素的尺寸。(不是用em来作为font-size或margin、padding哦)<br><strong>流式布局</strong> 使用百分比布局，浏览器默认布局方式，也是主流布局方式。为什么说是主体布局方式了，因为响应式布局基本上基于流式布局。<br><strong>响应式布局</strong> 基于流式布局，利用媒体查询等手段进行响应自适应，本质上响应式布局也是流式布局。《精通css》P207中，直接将响应式布局描述为：可以适配不同视口大小的流式布局。</p>
+<p>有人说只要使用了em或者rem的就是一种弹性布局，这可能不太准确，笔记使用em来定义font-size或margin、padding等等是常识，使用rem来定义font-size等等，这些都是常识，可以说就是应该这样做的。所以如果使用rem或em做以上事情，就不应该是弹性布局。<br>只有使用em作为元素的宽高尺寸了，那才说明用了弹性布局。</p>
+<h3 id="响应式布局是当前最推荐方式"><a href="#响应式布局是当前最推荐方式" class="headerlink" title="响应式布局是当前最推荐方式"></a>响应式布局是当前最推荐方式</h3><p>上面几种布局中，当有最推荐和最重要的是响应式布局，(又称为 响应式web布局设计)。</p>
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>响应式布局主体用的还是流式布局，在此基础上，主要使用媒体查询进行响应设计，另外也使用了flexbox进行响应设计。</p>
+<h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><p>自行网上查看。</p>
+<h4 id="flexbox"><a href="#flexbox" class="headerlink" title="flexbox"></a>flexbox</h4><p>flexbox也是css中具有某种响应式特质的规范，无须使用媒体查询，flexbox本身就可以创建出能够有效利用空间的适配布局。<br>为什么说flexbox具备某种响应式特质呢，比如父级定义为flex，自己都会随着父级的变大而变大，缩小而缩小，这跟子级定义百分比，随父级增大而增大，缩小而缩小一样。说明了flexbox有浓烈的流式特性，流式特性是响应式布局的重要体现。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>媒体查询虽然是基于视口的创建响应式布局的主打方式，但它也有弊端，响应式布局同时要结合flexbox一起使用，才能做出更好的响应式布局。参考《精通css》P227。</p>
+<p>另外，要做出一个好的响应式设计布局，其实是结合了固定、弹性、流式布局，以流式布局为主体，辅以弹性布局常用的em和rem来设计margin\font-size\padding等等，再辅以固定布局常用到的px来定义必要的元素。(这一段是个人见解，可能不太准确，笔记只有利用em来定义元素的宽高而非margin\font-size\padding才算弹性布局，只有利用px来定义布局元素的宽高才算固定范畴，因此这里所说的可能并非结合了固定和弹性布局，而是使用了固定、弹性布局常用的手段–px和em，即固定常用px，弹性常用em)</p>
+<h2 id="flexbox-1"><a href="#flexbox-1" class="headerlink" title="flexbox"></a>flexbox</h2><p>参看《flex布局不是布局设计模式》《响应式布局是当前最推荐方式 —flexbox》《布局的技术手段》</p>
+<h3 id="flex布局不是布局设计模式"><a href="#flex布局不是布局设计模式" class="headerlink" title="flex布局不是布局设计模式"></a>flex布局不是布局设计模式</h3><p>参考文首开头的分析，flex布局或flexbox并不是一种布局的设计模式，它不隶属任何一种布局设计方式，它只是一种布局技术手段而已。<br>它可以被运用于 固定、弹性、响应式布局当中。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-11-12T14:29:00.509Z" itemprop="dateUpdated">2020-11-12 22:29:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/11/12/css_layout/" target="_blank" rel="external">https://yewills.github.io/2020/11/12/css_layout/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式布局-设计/">响应式布局(设计)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/固定布局-设计/">固定布局(设计)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/媒体查询/">媒体查询</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局的技术手段/">布局的技术手段</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/弹性布局-设计/">弹性布局(设计)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流动布局-设计/">流动布局(设计)</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/11/12/css_layout/&title=《css之布局》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/11/12/css_layout/&title=《css之布局》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/11/12/css_big/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css知识点汇</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/11/12/d3_layout/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">d3图形、demo讲解、使用经验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局的技术手段"><span class="post-toc-number">1.</span> <span class="post-toc-text">布局的技术手段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优先使用flexbox，减少使用定位和浮动布局"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">优先使用flexbox，减少使用定位和浮动布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#display：gird"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">display：gird</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局设计方式"><span class="post-toc-number">2.</span> <span class="post-toc-text">布局设计方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布局方式介绍"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">布局方式介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#响应式布局是当前最推荐方式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">响应式布局是当前最推荐方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#响应式布局"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">响应式布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#媒体查询"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">媒体查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#flexbox"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">flexbox</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">小结</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flexbox-1"><span class="post-toc-number">3.</span> <span class="post-toc-text">flexbox</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flex布局不是布局设计模式"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">flex布局不是布局设计模式</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/11/12/css_layout/&title=《css之布局》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/11/12/css_layout/&title=《css之布局》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3a22rDQAxF0fz/T6fQp0LqyT6SE2zN9lMwvmi5oI5Gejzw8fw9/v5+PfN6/ev59TXkrtYhQ4aM2zKey2Md6BqZBrq+/uiZMmTI2IfBkywPYv0W8sn402TIkCGjmARxuOS9MmTIkHFWwq0VqJf7vyFDhoxLMnjxyTfa+ld+pBaXIUPGDRm1xsB3fn+8vyFDhozLM57hUSt0a2eCqGTIkDGaQdqT/HzaBO3gH7zzIEOGjBEMnuz4Zlyt4CTvQn8TGTJkjGPUWol8myxNnWv2CWNhMmTIuCGDJLs0jaYtgU5ylyFDxj6Ms5oBZMAiDZc0PmXIkDGV0dmITzG1UQzEliFDxmjGWUs6VF6GqZZst8mQIWNPRvrQ9Dd5I8HLkCFjHwbfxkqXemmItU8mQ4aMfRidcpQv1zqDYm/eIkOGjO0ZZLmWbsOl5fEJCVeGDBm3ZfDRh9o4V63lUKy/ZciQMZTBW4O11/PJjhR52ImVIUPGOEZnjqw2DJEOcARJX4YMGUMZtYRIMOlHSZ+AgpMhQ8YgBilNO8tBXqCS8vWfu2TIkDGaUduf65epfFwsSMoyZMgYyuhv3PMz/fR6+BwZMmSMZqRpjo9wFTf3S2AZMmTswOgMWPBQ+FIyXXTKkCFjHwZJpjy9kmVcGuibxagMGTJkgJI1DZG3OVHKliFDhoywWE2blCnvsL8hQ4aM0QwSRKfQ7afjN/fKkCFjNCMtINOmY1ro1hqfMmTIGMr4ATI0x2XslRehAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

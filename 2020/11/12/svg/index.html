@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>svg笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="svg">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>svg笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">svg笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-11-12T14:29:00.513Z" itemprop="datePublished" class="page-time">
+  2020-11-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-svg" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">svg笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-11-12 22:29:00" datetime="2020-11-12T14:29:00.513Z" itemprop="datePublished">2020-11-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="svg知识"><a href="#svg知识" class="headerlink" title="svg知识"></a>svg知识</h2><h3 id="常见的svg标签"><a href="#常见的svg标签" class="headerlink" title="常见的svg标签"></a>常见的svg标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;600&quot; height=&quot;600&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;marker id=&quot;marker&quot; markerWidth=&quot;10&quot; markerHeight=&quot;10&quot; refX=&quot;4&quot; refY=&quot;4&quot; orient=&quot;auto&quot;&gt;</span><br><span class="line">            &lt;path d=&quot;M 0 0 4 4 0 8&quot; style=&quot;fill:none;stroke:black;&quot;/&gt;</span><br><span class="line">        &lt;/marker&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line">    //矩形  --可用于生成直方图</span><br><span class="line">    &lt;rect width=&quot;200&quot; height=&quot;100&quot; x=&quot;20&quot; y=&quot;20&quot; style=&quot;fill:red;stroke:blue;stroke-width:4&quot;/&gt;</span><br><span class="line">    &lt;rect width=&quot;200&quot; height=&quot;100&quot; x=&quot;250&quot; y=&quot;20&quot; rx=&quot;20&quot; ry=&quot;20&quot; style=&quot;fill:red;stroke:blue;stroke-width:4&quot;/&gt;</span><br><span class="line">    &lt;circle cx=&quot;100&quot; cy=&quot;280&quot; r=&quot;80&quot; style=&quot;fill:yellow&quot;/&gt;</span><br><span class="line">    //椭圆</span><br><span class="line">    &lt;ellipse cx=&quot;330&quot; cy=&quot;280&quot; rx=&quot;100&quot; ry=&quot;80&quot; style=&quot;fill:yellow&quot;/&gt;</span><br><span class="line">    //直线</span><br><span class="line">    &lt;line x1=&quot;0&quot; x2=&quot;360&quot; y1=&quot;0&quot; y2=&quot;360&quot; style=&quot;stroke:#000;stroke-width:4;marker-end:url(#marker);&quot;/&gt;</span><br><span class="line">    //多边形比如三角形、矩形、梯形、多边形，会自动闭合</span><br><span class="line">    &lt;polygon points=&quot;25 10,10 40, 50 27&quot; style=&quot;fill:green;stroke:orange;stroke-width:4&quot;/&gt;</span><br><span class="line">    //折线 也可以画多边形， 不会自动闭合</span><br><span class="line">    &lt;polyline points=&quot;25 10,10 40, 50 27&quot; style=&quot;fill:green;stroke:orange;stroke-width:4&quot; transform=&quot;translate(100,0)&quot;/&gt;</span><br><span class="line">    &lt;text x=&quot;200&quot; y=&quot;150&quot; style=&quot;fill:purple;font-size:60;&quot; textLength=&quot;300&quot;&gt;</span><br><span class="line">        I love &lt;tspan fill=&quot;green&quot;&gt;D3.js&lt;/tspan&gt;</span><br><span class="line">    &lt;/text&gt;</span><br><span class="line">    //万能path，能画任何线条</span><br><span class="line">    &lt;path d=&quot;M 200 200 A 200 200 0 0 1 400 400&quot; style=&quot;fill:none;stroke:orange;stroke-width:10;&quot; /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="xmlns-与-version"><a href="#xmlns-与-version" class="headerlink" title="xmlns 与 version"></a>xmlns 与 version</h3><p>xmlns是固定写法，固定值如下，version也是固定写法，最近的版本就是1.1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;600&quot; height=&quot;600&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><h4 id="path命令基本规律："><a href="#path命令基本规律：" class="headerlink" title="path命令基本规律："></a>path命令基本规律：</h4><p>1.区分大小写：大写表示坐标参数为绝对位置，小写为相对位置<br>2.最后的参数表示最终要到达的位置<br>3.上一个命令结束的位置就是下一个命令开始的位置<br>4.命令可以重复参数表示重复执行同一条命令</p>
+<h4 id="小写-相对坐标-与-大写-绝对坐标"><a href="#小写-相对坐标-与-大写-绝对坐标" class="headerlink" title="小写 相对坐标 与 大写 绝对坐标"></a>小写 相对坐标 与 大写 绝对坐标</h4><p>上面介绍的都是用绝对坐标，其实一般画图都使用相对坐标小写的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//效果跟上面的 《path指令 M 、V、 H、Z、L --- demo2》是一样的，但增加了灵活性，</span><br><span class="line">//当随意改变起始点坐标是，图形不被破坏，这是绝对坐标做不到的。</span><br><span class="line">&lt;path stroke=&apos;orange&apos; stroke-width=&apos;.8&apos; fill=&apos;orange&apos; d=&apos;M 20 70 h 30 v -10 l 10 20 l -10 20 v -10 h -30 z&apos; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="逗号有没有不影响"><a href="#逗号有没有不影响" class="headerlink" title="逗号有没有不影响"></a>逗号有没有不影响</h4><p>比如下面两个代码，一个有逗号，一个没有，对于电脑而言都能正常识别，加逗号只是为了人能够识别理解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;polygon points=&quot;25 10,10 40, 50 27&quot; style=&quot;fill:green;stroke:orange;stroke-width:4&quot;/&gt;</span><br><span class="line">&lt;polygon points=&quot;25  10 10 40  50 27&quot; style=&quot;fill:green;stroke:orange;stroke-width:4&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="path-指令"><a href="#path-指令" class="headerlink" title="path 指令"></a>path 指令</h4><p>这里只列举部分，<a href="https://www.bbsmax.com/A/A7zgmMwW54/" target="_blank" rel="noopener">更多参考</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">指令 	参数 	说明</span><br><span class="line">M	x y	将画笔移动到点(x,y)</span><br><span class="line">L	x y	画笔从当前的点绘制线段到点(x,y)</span><br><span class="line">H	x	画笔从当前的点绘制水平线段到点(x,y0)</span><br><span class="line">V	y 	画笔从当前的点绘制竖直线段到点(x0,y)</span><br><span class="line">A	rx ry x-axis-rotation large-arc-flag sweep-flag x y	画笔从当前的点绘制一段圆弧到点(x,y)</span><br><span class="line">C	x1 y1, x2 y2, x y	画笔从当前的点绘制一段三次贝塞尔曲线到点(x,y)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path d=&quot;M 200 200 A 200 200 0 0 1 400 400&quot; style=&quot;fill:none;stroke:orange;stroke-width:10;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="path的贝塞尔曲线"><a href="#path的贝塞尔曲线" class="headerlink" title="path的贝塞尔曲线"></a>path的贝塞尔曲线</h4><p>ps工具中的钢笔工具就是一个贝塞尔曲线，贝塞尔曲线由几个点组成，<a href="https://www.bilibili.com/video/av13105102/?spm_id_from=333.788.videocard.3" target="_blank" rel="noopener">具体参考这个视频的末尾段的介绍</a></p>
+<h4 id="path指令-M-、V、-H、Z、L"><a href="#path指令-M-、V、-H、Z、L" class="headerlink" title="path指令 M 、V、 H、Z、L"></a>path指令 M 、V、 H、Z、L</h4><h5 id="指令介绍"><a href="#指令介绍" class="headerlink" title="指令介绍"></a>指令介绍</h5><ul>
+<li>M 坐标点</li>
+<li>V 垂直</li>
+<li>H 水平</li>
+<li>Z 闭合</li>
+<li>L 连线到坐标点<h5 id="demo-1"><a href="#demo-1" class="headerlink" title="demo 1"></a>demo 1</h5>如下，viewBox代表从原点 0 0 开始，像x、y轴各延伸100；<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg viewBox=&apos;0 0 100 100&apos; style=&apos;border:green solid&apos;&gt;</span><br><span class="line">//d=&apos;M 10 0 V 100&apos; 从坐标x 10 、 y 0开始，垂直方向延伸y 100；</span><br><span class="line">&lt;path stroke=&apos;green&apos; stroke-width=&apos;.2&apos; d=&apos;M 10 0 V 100&apos;/&gt;</span><br><span class="line">//d=&apos;M 0 10 H 100&apos; 从坐标x 0 、 y 10开始，水平方向延伸x 100；</span><br><span class="line">&lt;path stroke=&apos;green&apos; stroke-width=&apos;.2&apos; d=&apos;M 20 0 H 100&apos;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="demo2"><a href="#demo2" class="headerlink" title="demo2"></a>demo2</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//在坐标点20 10 开始，水平移到 x50，再垂直移到y0，然后连线到坐标点60 20，再连线到坐标点 50 40，然后垂直移动到y30</span><br><span class="line">//然后水平移到x20，然后连接到起始点闭合。</span><br><span class="line">&lt;path stroke=&apos;blue&apos; stroke-width=&apos;.8&apos; fill=&apos;blue&apos; d=&apos;M 20 10 H 50 V 0 L 60 20 L 50 40 V 30 H 20 Z&apos; /&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：<br><figure class="image-box">
+                <a rel="svg笔记" href="/image/d3/all/svg1.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/all/svg1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="polygon-与-polyline"><a href="#polygon-与-polyline" class="headerlink" title="polygon 与 polyline"></a>polygon 与 polyline</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//多边形比如三角形、矩形、梯形、多边形，会自动闭合</span><br><span class="line">//坐标 25 10， 坐标点10，40， 坐标点 50，27 形成三角形</span><br><span class="line"> &lt;polygon points=&quot;25 10,10 40, 50 27&quot; style=&quot;fill:green;stroke:orange;stroke-width:4&quot;/&gt;</span><br><span class="line"> //折线 也可以画多边形， 不会自动闭合</span><br><span class="line"> &lt;polyline points=&quot;25 10,10 40, 50 27&quot; style=&quot;fill:green;stroke:orange;stroke-width:4&quot; transform=&quot;translate(100,0)&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="polygon-画多边形"><a href="#polygon-画多边形" class="headerlink" title="polygon 画多边形"></a>polygon 画多边形</h4><p>参考上面代码</p>
+<h4 id="polyline-画折线"><a href="#polyline-画折线" class="headerlink" title="polyline 画折线"></a>polyline 画折线</h4><p>参考上面代码</p>
+<h4 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h4><p>polygon 会自动闭合，画多边形比较方便，polyline不会自动闭合，可以画多边形，当不方便，更多用于画折线。</p>
+<h3 id="指令Q-quadratic-二次曲线"><a href="#指令Q-quadratic-二次曲线" class="headerlink" title="指令Q - quadratic 二次曲线"></a>指令Q - quadratic 二次曲线</h3><h4 id="Q指令"><a href="#Q指令" class="headerlink" title="Q指令"></a>Q指令</h4><p>如下 Q 后面跟两个坐标点，第一个点为曲线最高或最低点，第二个点为曲线终点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;red&apos; stroke-width=&apos;.8&apos; fill=&apos;none&apos; d=&apos;M 20 30 Q 25 0, 50 30 &apos; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Q第一个点y轴实际位置为-自身y-起始点y-2"><a href="#Q第一个点y轴实际位置为-自身y-起始点y-2" class="headerlink" title="Q第一个点y轴实际位置为 (自身y+起始点y)/2"></a>Q第一个点y轴实际位置为 (自身y+起始点y)/2</h4><p>比如上面代码<code>d=&#39;M 20 30 Q 25 0, 50 30 &#39;</code> q的第一个点为 25 0，自身的y值为0，起始点M的y值为30，那么实际位置为15.<br>不需知道为什么，知道是这个规律就行。</p>
+<h4 id="Q-的镜像指令-T指令"><a href="#Q-的镜像指令-T指令" class="headerlink" title="Q 的镜像指令 T指令"></a>Q 的镜像指令 T指令</h4><p>T跟着的坐标点为终点。终点恰当与否，决定镜像是否更像。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;red&apos; stroke-width=&apos;.8&apos; fill=&apos;none&apos; d=&apos;M 20 50 Q 25 10, 50 50 T80 50&apos; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="">参考demo</a></p>
+<h3 id="指令C-curve-曲线"><a href="#指令C-curve-曲线" class="headerlink" title="指令C - curve 曲线"></a>指令C - curve 曲线</h3><h4 id="C指令"><a href="#C指令" class="headerlink" title="C指令"></a>C指令</h4><p>如下 C 后面跟三个坐标点，第一和第二个点用来控制曲线的弧度，第三个点为终点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;blue&apos; stroke-width=&apos;.8&apos; fill=&apos;none&apos; d=&apos;M 20 50 C 40 40, 60 40, 80 50&apos; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="C指令-与-Q指令关系"><a href="#C指令-与-Q指令关系" class="headerlink" title="C指令 与 Q指令关系"></a>C指令 与 Q指令关系</h4><p>二者都用来画曲线，能达到一样效果，不过，c后面跟着三个点，所以相比Q（两个点），更能精确控制曲线弧度。</p>
+<h4 id="C-的镜像指令-S指令"><a href="#C-的镜像指令-S指令" class="headerlink" title="C 的镜像指令 S指令"></a>C 的镜像指令 S指令</h4><p>相比Q的镜像T指令，C时只能用S进行镜像，S的最后一个点为终点，之前的点用来调节镜像弧度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;yellow&apos; stroke-width=&apos;.8&apos; fill=&apos;none&apos; d=&apos;M 20 50 C 30 40, 40 40, 50 50 S 70 60 80 50&apos; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="">参考demo</a></p>
+<h3 id="指令A-Arc-圆弧"><a href="#指令A-Arc-圆弧" class="headerlink" title="指令A - Arc 圆弧"></a>指令A - Arc 圆弧</h3><h4 id="A指令"><a href="#A指令" class="headerlink" title="A指令"></a>A指令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;blue&apos; stroke-width=&apos;.8&apos; fill=&apos;gray&apos; d=&apos;M 30 50 A 1 1, 0 , 0 0, 70 50&apos; /&gt;</span><br></pre></td></tr></table></figure>
+<p>如上 C 后面跟7个参数。</p>
+<ul>
+<li>最后两个参数：70 50为终点</li>
+<li>第一、二个参数：<br>情况一：比如本例： 1 1 ，为圆弧的x、y轴比例，M30 50 与终点70 50，已经确定了圆半径，此时圆弧xy比例不一样，就形成对应比例的圆或椭圆。<br>情况二：当值大于圆弧半径时，此参数就不是比例了，就是圆弧的圆心，此种情况就有些复杂了。</li>
+<li><p>第五个参数： 0 ，后面的0代表画下半圆，如果是1就是画上半圆,如下上下两句各画半个圆，一起拼起来就是一个圆：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;blue&apos; stroke-width=&apos;.8&apos; fill=&apos;gray&apos; d=&apos;M 30 50 A 1 1, 0 , 0 0, 70 50&apos; /&gt;</span><br><span class="line">  &lt;path stroke=&apos;blue&apos; stroke-width=&apos;.8&apos; fill=&apos;purple&apos; d=&apos;M 30 50 A 1 1, 0 , 0 1, 70 50&apos; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三个参数： 0 是圆弧的旋转角度，类似transform的scal，当大于45时，圆弧的x、y轴值将颠倒。</p>
+</li>
+<li>第四个参数： 当为0时，显示圆弧，当为1时，显示圆弧剩余部分。：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;blue&apos; stroke-width=&apos;.8&apos; fill=&apos;purple&apos; d=&apos;M 30 50 A 50 50, 0 , 1 1, 70 50&apos; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="C指令-与-Q指令关系-1"><a href="#C指令-与-Q指令关系-1" class="headerlink" title="C指令 与 Q指令关系"></a>C指令 与 Q指令关系</h4><p>二者都用来画曲线，能达到一样效果，不过，c后面跟着三个点，所以相比Q（两个点），更能精确控制曲线弧度。</p>
+<h4 id="C-的镜像指令-S指令-1"><a href="#C-的镜像指令-S指令-1" class="headerlink" title="C 的镜像指令 S指令"></a>C 的镜像指令 S指令</h4><p>相比Q的镜像T指令，C时只能用S进行镜像，S的最后一个点为终点，之前的点用来调节镜像弧度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;path stroke=&apos;yellow&apos; stroke-width=&apos;.8&apos; fill=&apos;none&apos; d=&apos;M 20 50 C 30 40, 40 40, 50 50 S 70 60 80 50&apos; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="text"><a href="#text" class="headerlink" title="text"></a>text</h3><h4 id="dx-与-dy"><a href="#dx-与-dy" class="headerlink" title="dx 与 dy"></a>dx 与 dy</h4><p>dx与dy 表示的是相对于前一个字符的长度，<a href="https://www.w3cplus.com/svg/how-to-manipulate-svg-text.html" target="_blank" rel="noopener">参考</a></p>
+<h3 id="g-与-坐标系"><a href="#g-与-坐标系" class="headerlink" title="g 与 坐标系"></a>g 与 坐标系</h3><h4 id="元素的x是相对于父层的g，而非原始坐标"><a href="#元素的x是相对于父层的g，而非原始坐标" class="headerlink" title="元素的x是相对于父层的g，而非原始坐标"></a>元素的x是相对于父层的g，而非原始坐标</h4><p>如下rect的坐标 0 0 ，相对的是g形成的坐标系，而非原始坐标，<br><a href="https://github.com/YeWills/d3-note-demo/blob/d3-demo/pages/d3-jt-book/chapter6/6.8/6-8-1-lineChart.html" target="_blank" rel="noopener">详细demo</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node.append(&quot;g&quot;)</span><br><span class="line">    .append(&quot;rect&quot;)</span><br><span class="line">    .attr(&quot;x&quot;,0)</span><br><span class="line">    .attr(&quot;y&quot;,0)</span><br></pre></td></tr></table></figure></p>
+<h3 id="参考demo"><a href="#参考demo" class="headerlink" title="参考demo"></a>参考demo</h3><p><a href="https://github.com/YeWills/d3-note-demo/tree/d3-demo/pages/mars" target="_blank" rel="noopener">参考demo -里面的几个svg html</a></p>
+<h2 id="svg进阶知识"><a href="#svg进阶知识" class="headerlink" title="svg进阶知识"></a>svg进阶知识</h2><h3 id="viewport-viewbox-preserveAspectRatio"><a href="#viewport-viewbox-preserveAspectRatio" class="headerlink" title="viewport viewbox preserveAspectRatio"></a>viewport viewbox preserveAspectRatio</h3><h4 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h4><p>其实三者关系很好理解，也很简单，不过网上有很多博客或教程将此复杂化了，如下图：<br>在坐标系上画了一个矩形，现在只想显示阴影部分，取 viewbox 100 100 20 20；<br>现在设置svg的viewport 为200 200；<br>在显示时，<br>svg的机制，会让viewbox自动缩小或放大以填充整个viewport；<br>放大后，viewport显示了刚才viewbox的内容。<br><a href="http://127.0.0.1:3000/multy/SVG/Lesson2/viewbox.html" target="_blank" rel="noopener">demo参考</a><br><figure class="image-box">
+                <a rel="svg笔记" href="/image/svg/viewbox.jpg" title="undefined" data-fancybox="images"><img src="/image/svg/viewbox.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="viewbox会缩小或者扩大填满viewport"><a href="#viewbox会缩小或者扩大填满viewport" class="headerlink" title="viewbox会缩小或者扩大填满viewport"></a>viewbox会缩小或者扩大填满viewport</h4><p>参考上面。</p>
+<h4 id="preserveAspectRatio"><a href="#preserveAspectRatio" class="headerlink" title="preserveAspectRatio"></a>preserveAspectRatio</h4><p>可网上查询，机制跟css 的background 的图片填充一样。</p>
+<h3 id="defs"><a href="#defs" class="headerlink" title="defs"></a>defs</h3><p><a href="https://blog.csdn.net/chy555chy/article/details/53364561" target="_blank" rel="noopener">参考这里</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/av13492121/?spm_id_from=333.788.videocard.0" target="_blank" rel="noopener">视频教程有7个，在这个网站上是能找到这七个视频的</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-11-12T14:29:00.513Z" itemprop="dateUpdated">2020-11-12 22:29:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2020/11/12/svg/" target="_blank" rel="external">https://yewills.github.io/2020/11/12/svg/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svg/">svg</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/11/12/svg/&title=《svg笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/11/12/svg/&title=《svg笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/11/12/regex/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">正则表达式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/11/12/ts/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">typescript 笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#svg知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">svg知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常见的svg标签"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">常见的svg标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xmlns-与-version"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">xmlns 与 version</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#path"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">path</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#path命令基本规律："><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">path命令基本规律：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小写-相对坐标-与-大写-绝对坐标"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">小写 相对坐标 与 大写 绝对坐标</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#逗号有没有不影响"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">逗号有没有不影响</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#path-指令"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">path 指令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#path的贝塞尔曲线"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">path的贝塞尔曲线</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#path指令-M-、V、-H、Z、L"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">path指令 M 、V、 H、Z、L</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#polygon-与-polyline"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">polygon 与 polyline</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#polygon-画多边形"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">polygon 画多边形</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#polyline-画折线"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">polyline 画折线</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二者区别"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">二者区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指令Q-quadratic-二次曲线"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">指令Q - quadratic 二次曲线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Q指令"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">Q指令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Q第一个点y轴实际位置为-自身y-起始点y-2"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">Q第一个点y轴实际位置为 (自身y+起始点y)/2</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Q-的镜像指令-T指令"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">Q 的镜像指令 T指令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指令C-curve-曲线"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">指令C - curve 曲线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C指令"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">C指令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C指令-与-Q指令关系"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">C指令 与 Q指令关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C-的镜像指令-S指令"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">C 的镜像指令 S指令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指令A-Arc-圆弧"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">指令A - Arc 圆弧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#A指令"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">A指令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C指令-与-Q指令关系-1"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">C指令 与 Q指令关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#C-的镜像指令-S指令-1"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">C 的镜像指令 S指令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#text"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">text</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dx-与-dy"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">dx 与 dy</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#g-与-坐标系"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">g 与 坐标系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#元素的x是相对于父层的g，而非原始坐标"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">元素的x是相对于父层的g，而非原始坐标</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考demo"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">参考demo</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#svg进阶知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">svg进阶知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#viewport-viewbox-preserveAspectRatio"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">viewport viewbox preserveAspectRatio</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三者关系"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">三者关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#viewbox会缩小或者扩大填满viewport"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">viewbox会缩小或者扩大填满viewport</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#preserveAspectRatio"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">preserveAspectRatio</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#defs"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">defs</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2020
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/11/12/svg/&title=《svg笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/11/12/svg/&title=《svg笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aQXLDIBAEQP3/08o1B4vMgIXsVHNylWzR+EAtsxxHPM6L8fvp1TfHbzvuGLi4uMvccziuJkgmGy8jefpiFlxc3I3cZLLxr/LtLF88Li7ut3CTImalSMLFxf1GbrukvADCxcX9NO5K8JEXQ+07cXFxn+LmBcp9n2/Jd3Fxcae4ZznG5cs4/mhD0he/wsXF3cJtmyJtqDEXkv7RjsXFxd3CTXBtCLJydKkPP7i4uDdwk2IlPxrNbYXFN3FxcTdyk6NL0vbIDzlzmyYuLu7d3PZSxVwg0iafl+/BxcXdwk3aG8kVive2SIvDDy4u7pZYpL1olYPybasITHFxcbdw8xIkX8w6ERcXdz83WU07WV6T1PPi4uI+xG3Di5XIIy+zcHFx93PzoPNYGO1WGAWmuLi4W7jjEmT9GNM2bHBxcZ/lzjVRinBzarOLHuPi4r6Je5Yjb8rm7ykWiYuLu4U7dyWiPQ5Nxh8rmyMuLu4yd6WlmhQ6+cXNqDWLi4u7kbuy0bQXMm4/q+Hi4j7Kzbe5djvDxcX9H9y2uJmMUHFxcTdy23AziVDbsDX6s3Bxcbdw5xqf7eaVv+1t+S4uLu4M9wcMz80cDT90RAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
