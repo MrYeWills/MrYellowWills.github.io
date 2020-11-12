@@ -185,6 +185,48 @@ template是vue自带标签，可替换 v-if写法，如下，v-once 用于性能
 ![](/image/vue/tep.jpg)
 ![](/image/vue/slot-pre1.jpg)
 
+### css动画原理
+#### vue自带的transition
+当元素显示时，将元素放在 transition标签内，vue会给显示当元素，分三个阶段，添加或删除不同的class，以便外部做css动画，这就是动画原理。
+如下，是元素显示时，vue给元素添加或删除class的过程：
+- 开始时 给元素添加 class fade-enter fade-enter-active，
+- 接着 删除 fade-enter， 添加 fade-enter-to class
+- 显示到最后，删除class fade-enter-to fade-enter-active
+
+在以上过程中，给不同的class定义不同的css，就可以做动画。
+![](/image/vue/css1.jpg)
+#### 显示时的过程
+参考上面《vue自带的transition》
+#### 隐藏时的过程
+![](/image/vue/css3.jpg)
+#### 自定义class name
+classname可以根据 transition的name来定义，如果未定义name，默认为v，也就是v-enter。
+![](/image/vue/css2.jpg)
+默认class name 以及动画样式处理：
+![](/image/vue/css4.jpg)
+如下，定义enter-active-class props 可完全重写对应class，如下是结合animate.css库做的动画
+![](/image/vue/css5.jpg)
+
+#### transition标签自带的事件
+vue给transition标签绑定了一些时间，用于更好的做动画，更多可网上查阅。
+参考下面《slot来动画封装》
+
+#### 结合animate.css库做的动画
+参考上面的《自定义class name》
+
+#### v-if与v-show效果一样
+transition的显示隐藏效果，主要是结合 v-if 或 v-show 来使用（待进一步验证）。
+此二者都可以显示隐藏，用在动画上效果一致。
+
+#### 列表增加、删除过渡动画(transition-group)
+transition-group 是vue用来做列表添加或删除某条数据时，过渡动画，其原理如下图：
+![](/image/vue/css6.jpg)
+
+#### slot来动画封装(render props模式)
+使用插槽render props模式，或类似高阶组件，同时用transition自带的绑定事件来写css：
+貌似这个动画只在v-if有效，在v-show下无效，原因待研究。
+![](/image/vue/css-fn1.jpg)
+![](/image/vue/css-fn2.jpg)
 ## 黑知识
 ### 列表渲染
 #### 操作数组进行列表渲染时，必须用vue指定方法或改变引用
