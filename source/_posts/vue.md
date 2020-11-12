@@ -157,6 +157,33 @@ vue底层做了封装，优先去data找然后是 computed， 然后是 methods�
 这个实例就是子组件内的this，拥有一切能力：
 ![](/image/vue/ref2.jpg)
 
+#### props是否带:的区别
+给组件test-ok定义props， test值是js表达式，是变量，strtest值是字符串
+```
+<test-ok :test="names" strtest="names"></test-ok>
+```
+
+### 插槽slot
+#### slot和默认值
+![](/image/vue/slot0.jpg)
+#### slot默认值可以是html元素
+![](/image/vue/slot-default.jpg)
+#### 具名slot
+如下，父层定义插槽时，可通过定义name，此时就是具名插槽，可有多个，如果不定义name，那么此插槽则代表父层整个所有插槽，此只有一个。
+![](/image/vue/slot.jpg)
+#### 不具名插槽只有一个，具名插槽可有多个
+参考《具名slot》
+#### 作用域插槽(render props模式)
+没有用作用域插槽前：
+![](/image/vue/slot-pre.jpg)
+用之后：
+template 与 slot-scope 属于固定写法。这种模式向极了react的render props模式。
+![](/image/vue/slot-fn.jpg)
+
+### template组件与v-once
+template是vue自带标签，可替换 v-if写法，如下，v-once 用于性能优化，让vue显示隐藏组件时不用卸载，可不用。
+![](/image/vue/slot-fn.jpg)
+
 ## 黑知识
 ### 列表渲染
 #### 操作数组进行列表渲染时，必须用vue指定方法或改变引用
@@ -221,6 +248,32 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
 如下，在根组件上data写成对象是没有问题的，但子组件必须是函数，这是因为子组件可能会被父组件使用很多次，
 为了避免对象引用带来的问题，要求data每次都是最新的，因此通过执行函数，每次获得的是新对象，避免了同一个对象引用的问题。
 ![](/image/vue/black-child.jpg)
+
+### 组件参数校验
+#### 单个用字符串
+#### 多个类型用数组
+![](/image/vue/props1.jpg)
+#### 定义required与defaultValue
+![](/image/vue/props2.jpg)
+#### 自定义验证validator规则
+如上面的图片
+
+### props特性与非props特性
+在vue中，props不会显示在子组件的dom上。非props会显示在子组件最外层的dom属性上。
+非props属性是，定义子组件时定义的属性，但在子组件内没有声明为props的属性，是为非props。
+下面content就是非props。
+![](/image/vue/noprops.jpg)
+
+### 给组件绑定原生事件
+如下，不是原生事件，如何绑定呢，使用`@click.native="handleClick"`
+![](/image/vue/event-native.jpg)
+
+### 非父子组件传值
+非父子组件传值，可通过vuex，也可以通过面向对象的继承模式，结合事件绑定(观察者模式)来做。
+这种做法也叫 bus／总线 传值。
+
+这种方式与window的事件监听也类似，估计用vue自带的事件监听方式，做了很多优化。
+![](/image/vue/value-event.jpg)
 
 
 
