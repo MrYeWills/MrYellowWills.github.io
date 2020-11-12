@@ -182,7 +182,8 @@ template 与 slot-scope 属于固定写法。这种模式向极了react的render
 
 ### template组件与v-once
 template是vue自带标签，可替换 v-if写法，如下，v-once 用于性能优化，让vue显示隐藏组件时不用卸载，可不用。
-![](/image/vue/slot-fn.jpg)
+![](/image/vue/tep.jpg)
+![](/image/vue/slot-pre1.jpg)
 
 ## 黑知识
 ### 列表渲染
