@@ -515,6 +515,27 @@ if(scrollHeight+screenHeight>sideHeight){
 #### scrollTop的应用
 参考上面《滚动距离+视口高度 与 侧边栏实际高度 比较》
 
+### 拖动导航条实时显示对应内容
+#### 概述
+如下，当touchstart 按住左侧导航条，往下拖动时，让左侧显示对应内容。
+![](/image/js_demo/touch.png)
+#### 实现方案
+左侧内容区是一个组件，导航条是一个组件。
+在导航条上监听三个事件 touchstart 等，三个事件，
+![](/image/js_demo/touch1.png)
+通过touchmove计算鼠标当前位置坐标，已知导航条顶部A字母所在位置的坐标，已知每个字母高度，鼠标位置坐标减去导航条顶部坐标，就可计算鼠标当前位于哪个字母上面，
+然后通过touchmove实时将对应的字母传给左侧内容组件，
+![](/image/js_demo/touch2.png)
+内容组件使用一个scoll插件，此插件可设置滚动到指定的位置，或滚动到指定的元素element上。
+因此要实现上面的功能，需要以下元素：
+- 获取对应字母的计算方案
+- 左侧内容区最好用一个scoll包裹，可设置显示指定位置
+
+#### touchstart touchmove touchend
+touchstart 与touchend的作用就是设置一个touchStatus，标识按住开始拖动时，允许做滚动逻辑处理，松开拖动时，不允许逻辑处理。
+剩下的逻辑处理交给touchmove。
+
+
 ### 网页定位导航特效
 
 #### demo与介绍

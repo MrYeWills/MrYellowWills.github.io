@@ -8,6 +8,9 @@ categories:
 ---
 
 ## 基础知识
+### 开发一个页面结构示范
+主要都是组件完成：
+![](/image/vue/demo.png)
 ### 挂载点，模版与实例
 ```js
 <div id="root"></div> //挂载点
@@ -227,6 +230,24 @@ transition-group 是vue用来做列表添加或删除某条数据时，过渡动
 貌似这个动画只在v-if有效，在v-show下无效，原因待研究。
 ![](/image/vue/css-fn1.jpg)
 ![](/image/vue/css-fn2.jpg)
+
+### keep-alive 与 activated (性能优化)
+#### 概述
+keep-alive可用于页面缓存渲染。
+keep-alive内的组件，都会多出一个 activated 生命周期函数。
+#### activated 与 mounted
+当使用keep-alive的时候，第二次渲染页面，不会触发 mounted，但触发 activated，除此之外二者一致。
+activated 可用于页面的ajax是否重新请求。
+
+
+下面讲解keep-alive 使用步骤：
+#### 包裹父节点
+![](/image/vue/keep1.png)
+
+#### 子组件(页面)使用
+在页面内保存一个装载组件时的key，若key不一样，就发起新请求。
+![](/image/vue/keep2.png)
+
 ## 黑知识
 ### 列表渲染
 #### 操作数组进行列表渲染时，必须用vue指定方法或改变引用
@@ -312,12 +333,51 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
 ![](/image/vue/event-native.jpg)
 
 ### 非父子组件传值
+#### 三种方式
+非父子组件传值有三种方式，
+一个是vuex；
+一个是总线方式；
+一个是传统方式，将值传给一个共有的父组件，让父组件分发给非父子组件，这种方式适用于简单的非父子组件传值，比如兄弟组件；
+#### bus总线方式(复杂)
 非父子组件传值，可通过vuex，也可以通过面向对象的继承模式，结合事件绑定(观察者模式)来做。
 这种做法也叫 bus／总线 传值。
 
 这种方式与window的事件监听也类似，估计用vue自带的事件监听方式，做了很多优化。
 ![](/image/vue/value-event.jpg)
+#### 传统方式(简单)
+思想跟react兄弟组件传值是一样的，详细参考上面的《三种方式》，适用于简单的非父子关系，如兄弟组件传值
+#### vuex
+#### 兄弟组件传值
+参考《传统方式(简单)》
 
+### 若为别名，必须加～ (style内import其他css)
+style内import其他css，若为别名，必须加～，js没有这个限定，如下css内，import一个全部变量css变量文件，styl文件：
+![](/image/vue/styl.jpg)
+![](/image/vue/styl2.jpg)
+
+### 图片加载的文字抖动问题
+#### 文字抖动原因
+当图片请求未完成时，文字在上面，图片加载完毕，文字跑到下面来。
+![](/image/vue/dou5.jpg)
+#### 设置overflow hidden
+解决原理，已知图片的宽度是手机屏幕宽度，且高度也是固定的，宽高比为31.25%.
+预先设置一个宽高比，由于height的百分比参考的是父元素高度，因此使用padding，padding参照自身元素的width。
+推荐：
+![](/image/vue/dou1.jpg)
+错误：
+![](/image/vue/dou3.jpg)
+#### 预先设置宽高比
+参考《设置overflow hidden》
+#### 使用padding不用height
+参考《设置overflow hidden》
+#### 也可使用vw，不过有兼容问题
+![](/image/vue/dou2.jpg)
+#### 通过Online设置3G 的技巧
+![](/image/vue/dou4.jpg)
+
+## 样式穿透
+使用 `>>>`做样式穿透，不受 scoped限制，下图表示 .wrapper下的 .swiper... 类穿透 scoped，是一个全局样式。
+![](/image/vue/port.png)
 
 
 ## vue-cli
@@ -345,6 +405,21 @@ vue create hello-world
 ```
 vue ui
 ```
+### static目录会被放在服务器上(mock)
+vue-cli创建的工程，会将satic目录放在服务中，类似 node 的static插件。
+所有mock json可放置其中。
+![](/image/vue/static.png)
+
+### 设计ajax
+#### 业务中使用
+在后台没有接口，使用mock数据完成开发后，为了让接入真实后台api后，不用重新修改业务中api代码，
+通常做法：业务中使用标准后台API，利用vue-cli生成的config配置代理，代理到mock路径。
+![](/image/vue/ajax1.png)
+#### config配置代理 (webpack) 
+vue-cli的代理底层基于webpack实现。
+![](/image/vue/ajax2.png)
+#### 保证了业务api不用更改
+参考上面《业务中使用》
 
 ## router
 ### 简单示例
@@ -436,12 +511,8 @@ export default {
  
 }
 ```
-
-
-
-
-
-
+### 别名
+如果不想使用vuex store时写法啰嗦，也可通过 vuex 提供的API做别名map映射。
 
 
 ## 定义组件
@@ -491,6 +562,8 @@ export default {
 
 #### mounted 内定义 window.vue=this;
 如题，在控制台不用断点，就可以通过window.vue拿到vue实例。
+
+
 
 
 
