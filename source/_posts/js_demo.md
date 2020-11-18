@@ -381,6 +381,174 @@ $loading.addEventListener('webkitAnimationStart',runstart);
 $loading.addEventListener('animationend',runend)
 $loading.addEventListener('animationiteration',intertation)
 ```
+
+## 虚拟列表
+### 实现原理
+写一个div，内部有两个div，一个用于撑开高度，让滚动条真实显示，不过隐藏显示；
+一个用于真正渲染数据的div；
+下面监听整个div的 scroll事件，通过滑动距离scrollTop，计算实时显示的数据。
+主要通过scrollTop与每条数据高度进行计算此时scrollTop应该位于哪个start index，然后通过整个div高度，计算出end index， 实时改变渲染的data。
+注意的是，需要通过Transform来模拟滚动的这个技巧。
+```js
+	updateVisibleData(scrollTop) {
+    	scrollTop = scrollTop || 0;
+    	const visibleCount = Math.ceil(this.$el.clientHeight / this.itemHeight);
+      const start = Math.floor(scrollTop / this.itemHeight);
+      const end = start + visibleCount;
+      this.visibleData = this.data.slice(start, end);
+      this.$refs.content.style.webkitTransform = `translate3d(0, ${ start * this.itemHeight }px, 0)`;
+    },
+```
+### 高度一致最好
+高度一致，意味着不用重新计算全部条数据高度，单凭数据length即可计算，性能最高。
+
+### 拓展：高度不一致、缓存计算
+如果高度不一致时，就需要做缓存计算，否则比较耗性能，
+
+### 疑问
+todo
+为什么要做`webkitTransform = translate3d(0, ${ start * this.itemHeight }`. 才能让页面正常显示。
+
+### 参考
+[参考博客](https://juejin.im/post/6844903577807241223)
+[先看原理视频](https://www.bilibili.com/s/video/BV1qz4y1o7QA)
+
+### 源码如下
+```css
+.list-view {
+  height: 400px;
+  overflow: auto;
+  position: relative;
+  color: #333;
+  border: 1px solid #aaa;
+}
+
+.list-view-phantom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.list-view-content {
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.list-view-item {
+  padding: 5px;
+  color: #666;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+```
+```html
+<script src="//unpkg.com/vue@2.5.15/dist/vue.js"></script>
+<script type="text/x-template" id="list-template">
+  <div 
+    class="list-view" 
+    ref="list" 
+    @scroll="handleScroll">
+     <!-- 用于撑开高度，隐藏显示，这个是全部数据的长度 -->
+    <div     
+      class="list-view-phantom"       
+      :style="{
+         height: contentHeight
+      }">
+    </div>
+    <!-- 覆盖上面的div，父级监听scroll，实时设置transform驱动此div，模拟滚动，也称虚拟滚动 -->
+    <div
+      ref="content"
+      class="list-view-content">
+      <div
+        class="list-view-item"
+        :style="{
+          height: itemHeight + 'px'
+        }"
+        v-for="item in visibleData">
+        {{ item.value }}
+      </div>
+    </div>
+  </div>
+</script>
+<div id="app">
+<template>
+  <list-view :data="data"></list-view>
+</template>
+</div>
+```
+
+```js
+const ListView = {
+	name: 'ListView',
+
+  template: '#list-template',
+	
+	props: {
+  	data: {
+    	type: Array,
+      required: true
+    },
+
+    itemHeight: {
+      type: Number,
+      default: 30
+    }
+  },
+  
+  computed: {
+  	contentHeight() {
+    	return this.data.length * this.itemHeight + 'px';
+    }
+  },
+
+  mounted() {
+    this.updateVisibleData();
+  },
+
+  data() {
+    return {
+      visibleData: []
+    };
+  },
+
+  methods: {
+  	updateVisibleData(scrollTop) {
+    	scrollTop = scrollTop || 0;
+    	const visibleCount = Math.ceil(this.$el.clientHeight / this.itemHeight);
+      const start = Math.floor(scrollTop / this.itemHeight);
+      const end = start + visibleCount;
+      this.visibleData = this.data.slice(start, end);
+      this.$refs.content.style.webkitTransform = `translate3d(0, ${ start * this.itemHeight }px, 0)`;
+    },
+
+    handleScroll() {
+      const scrollTop = this.$el.scrollTop;
+      this.updateVisibleData(scrollTop);
+    }
+  }
+};
+
+new Vue({
+  components: {
+  	ListView
+  },
+
+  data() {
+    const data = [];
+    for (let i = 0; i < 10000; i++) {
+      data.push({ value: i });
+    }
+
+    return {
+      data
+    };
+  }
+}).$mount('#app')
+```
  
 ## 其他demo
 ### 图片预加载
