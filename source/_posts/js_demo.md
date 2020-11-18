@@ -409,6 +409,8 @@ $loading.addEventListener('animationiteration',intertation)
 todo
 为什么要做`webkitTransform = translate3d(0, ${ start * this.itemHeight }`. 才能让页面正常显示。
 
+### 缺点(待研究)
+这种做法，在mac屏幕上没有滚动条，但在4k分屏上有， 而next上的虚拟列表则都可以。日后可以思考下。
 ### 参考
 [参考博客](https://juejin.im/post/6844903577807241223)
 [先看原理视频](https://www.bilibili.com/s/video/BV1qz4y1o7QA)
