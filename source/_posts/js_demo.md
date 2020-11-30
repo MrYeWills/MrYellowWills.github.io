@@ -383,6 +383,8 @@ $loading.addEventListener('animationiteration',intertation)
 ```
 
 ## 虚拟列表
+
+
 ### 实现原理
 写一个div，内部有两个div，一个用于撑开高度，让滚动条真实显示，不过隐藏显示；
 一个用于真正渲染数据的div；
@@ -399,23 +401,94 @@ $loading.addEventListener('animationiteration',intertation)
       this.$refs.content.style.webkitTransform = `translate3d(0, ${ start * this.itemHeight }px, 0)`;
     },
 ```
-### 高度一致最好
+### css与html设计
+
+![](/image/js_demo/list.png)
+
+```html
+  <div class="list-view">
+    <!-- 撑开全部长度 -->
+    <div class="list-view-phantom" ></div>
+    <!-- 实际显示内容区域 -->
+    <div class="list-view-content" ></div>
+  </div>
+```
+```css
+.list-view {
+    height: 400px;
+    overflow: auto;
+    position: relative;
+    color: #333;
+    border: 1px solid #aaa;
+  }
+  
+  .list-view-phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+```
+
+虽然滚动在list-view-content，但会冒泡到 父层；
+当滚动发生时，.list-view-content 也随着滚动上去，因为我们只给.list-view-content渲染可视区域长度，滚动发生时，.list-view-content内容将马上被滚动上去，内容隐藏看不见，此时，就必须给.list-view-content一个`webkitTransform = translate3d(0, ${ start * this.itemHeight }`. 才能让页面正常显示。
+
+
+```css
+  /* 也可以不使用绝对定位,直接普通 */
+  .list-view-content {
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+  }
+```
+
+### 高度不定时
+#### 预判高度的策略
+参考《高度不定时，预判高度设计为固定高度》
+
+#### 没有滚动到底时，总高度一直在变
+高度不定时，一直滚动，总高度一直变，这时因为没有滚动到底时，总高度用的是预判高度，而预判高度与实际计算高度有差距。
+当滚到底后，使用的是缓存高度，总高度不变。
+
+
+### 你想不到的
+#### 监听到的scrollTop值用于list-view偏移时非常精确
+监听到父层到scrolltop值，用于给list-view偏移，非常精确，始终让list-view基本上达到不偏不倚正常显示内容区。
+
+#### 高度不定时，预判高度设计为固定高度
+当高度不定时，需要预先计算位置的剩余index高度，这些高度虽然实际高度不一样，但在未滚动到前，一律设定一个默认高度，
+用于计算整个列表高度。
+
+#### 如何保证滚动条正常高度
+![](/image/js_demo/scroll.png)
+解决之道在于要设计一个div框拥有实际列表总长，隐藏这个div，但又让此div撑开父层，因此设计z-index  -1 。
+
+#### 要设计一个div框拥有实际列表总长
+参考《如何保证滚动条正常高度》
+#### 不用担心父层滚动条被遮住问题
+就算你有多层div叠加，上层div也不会覆盖父层滚动条，浏览器只会让滚动条在右侧再增加个位置放置滚动条。
+#### 被误解的滚动条遮住问题
+一开始以为如果上层 left 0  right 0 时，父层的滚动条会被遮住，后来发现是对浏览器的滚动行为误解了。
+参考上面《不用担心父层滚动条被遮住问题》
+
+
+### 其他
+
+#### 高度一致最好
 高度一致，意味着不用重新计算全部条数据高度，单凭数据length即可计算，性能最高。
 
-### 拓展：高度不一致、缓存计算
+#### 拓展：高度不一致、缓存计算
 如果高度不一致时，就需要做缓存计算，否则比较耗性能，
 
-### 疑问
-todo
-为什么要做`webkitTransform = translate3d(0, ${ start * this.itemHeight }`. 才能让页面正常显示。
-
-### 缺点(待研究)
-这种做法，在mac屏幕上没有滚动条，但在4k分屏上有， 而next上的虚拟列表则都可以。日后可以思考下。
-### 参考
+### 参考 与 源码
+#### 参考
 [参考博客](https://juejin.im/post/6844903577807241223)
 [先看原理视频](https://www.bilibili.com/s/video/BV1qz4y1o7QA)
 
-### 源码如下
+#### 源码如下
 ```css
 .list-view {
   height: 400px;
