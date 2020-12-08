@@ -230,6 +230,33 @@ export default function App(props){
 ## useLayoutEffect
 用法同useEffect，只有在useEffect不满足情况下才使用，它的特点在于dom布局时同步触发，而不是渲染完成后触发，服务端不要使用此API。
 
+
+## hooks出现的意义
+
+### 概述
+hooks 实现了state状态的复用，以前state状态的复用，只能通过高阶组件，
+现在可以通过hooks，但hooks比高阶组件复用状态时，写法简单，方便，可读性，易维护性更强。
+
+以前必须使用高阶组件实现的state复用，现在只需要一段自定义hooks就可以马上实现非常简洁，清晰，易读易维护。
+[更多，参考这篇博客，讲的很好](https://blog.csdn.net/qq_40962320/article/details/87043581)
+
+### 非常重要：可读性易维护性 
+hooks的重要意义一方面是增加了方便性，比如可以替代原来高阶组件所实现的功能。
+另外一个重要的核心就是，增加了可读性，易维护性，这点非常重要。
+
+就好像es6没有出现前，一个变量可能被层层污染，不知道哪里被重新设置了，
+es6的出现很好解决了这点。
+![](/image/react/hooks-read.png)
+[参考](https://blog.csdn.net/weixin_43606158/article/details/106715134)
+
+### 功能是一方面，可读易维护也是重要方面
+参考上面《非常重要：可读性易维护性 》
+### hooks与高阶组件区别
+hooks与高阶组件都可以实现代码复用，比如state复用，二者本质上无区别，
+但使用方式上却一个繁杂沉余，且要多一层组件包裹。
+但hooks写法灵活，简单，且可读性极强。
+[更多，参考这篇博客，讲的很好](https://blog.csdn.net/qq_40962320/article/details/87043581)
+
 ## FAQ之一
 ### 我应该使用单个还是多个 state 变量？
 我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。
@@ -381,5 +408,15 @@ function Table(props) {
 render prop 的介绍看[官网](https://react.docschina.org/docs/render-props.html)，或者看另外一篇博客《React 笔记 - 其他技术 -- Render Props 代替 HOC 》。
 据官网介绍，hooks的出现与 render prop的运用有很大关系[参考---Hook 使用了哪些现有技术？](https://react.docschina.org/docs/hooks-faq.html#what-is-the-prior-art-for-hooks).
 因此在react开发中，无论是hooks还是class组件，要注重这种思想的运用。
+
+更多参考，另外一篇笔记《React 笔记  --  组合模式 与 Render Props模式   --   Render Props模式》
+
+
+
+
+
+
+
+
 
 

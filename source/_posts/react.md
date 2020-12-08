@@ -507,6 +507,8 @@ class MouseTracker extends React.Component {
 }
 ```
 ### Render Props模式
+
+单独一章说明 《Render Props模式》
 #### 定义
 Render Props模式是在组合模式延伸而来；
 function内返回一个React对象，然后将此function作为props传递给子组件，这种设计模式就是Render Props模式，详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
@@ -514,7 +516,57 @@ function内返回一个React对象，然后将此function作为props传递给子
 详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
 #### 可以将父子组件进行交互
 详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+
 ### 二者区别和联系
 二者区别在于，组合模式只能拿到父组件信息，render props 能拿到两个组件的信息，并且可以做交互。
 联系在于，render props 基于 组合模式发展而来。
+
+## Render Props模式
+
+### 概述
+#### 定义
+Render Props模式是在组合模式延伸而来；
+function内返回一个React对象，然后将此function作为props传递给子组件，这种设计模式就是Render Props模式，详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+#### 可以拿到父子两个组件的state
+详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+#### 可以将父子组件进行交互
+详细参考《需求延伸：如何拿到子组件数据(父子组件交互)》
+
+### 与组合模式的区别
+见 《组合模式 与 Render Props模式   --  二者区别和联系》
+### 与普通组件的区别
+#### 概述
+这点最容易迷惑，很多人认为 写成render props模式与直接写成组件有什么区别，
+毕竟二者都是一个函数。
+render是函数， 组件也是一个函数。但有区别。
+
+#### 组件是国中国，render Props还是一国
+比如封装next 的form的时候，使用自定义组件，自定义组件的state与父组件是隔绝的
+render props则与父组件一体，用的是父组件状态。
+
+其实用组件也好还是render props好，大多情况不会碰到太多区别，除非，就是上次封装next form时，就是一个经典的区别。
+
+#### render Props 比组件更灵活
+如下图，render props 获取父组件的state非常方便灵活，虽然自定义组件也可以获取，但要定义props等等，写法上要做出改变。
+![](/image/react/renderprops1.png)
+
+[参考](https://blog.csdn.net/qq_40962320/article/details/87043581)
+
+
+#### render props 可以实现高阶组件类似的代码复用
+[参考](https://blog.csdn.net/qq_40962320/article/details/87043581)
+
+#### render props重大作用之一就是代码复用
+参考上面的《render props 可以实现高阶组件类似的代码复用》
+
+### 与高阶组件的区别
+[参考](https://blog.csdn.net/qq_40962320/article/details/87043581)
+
+### 与hooks的区别
+[参考](https://blog.csdn.net/qq_40962320/article/details/87043581)
+
+
+
+
+
 
