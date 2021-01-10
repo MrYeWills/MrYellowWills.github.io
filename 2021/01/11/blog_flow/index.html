@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>博客持续集成的实现 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="travis">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>博客持续集成的实现</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">博客持续集成的实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-10T16:10:04.472Z" itemprop="datePublished" class="page-time">
+  2021-01-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-blog_flow" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">博客持续集成的实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-11 00:10:04" datetime="2021-01-10T16:10:04.472Z" itemprop="datePublished">2021-01-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="持续集成的需求"><a href="#持续集成的需求" class="headerlink" title="持续集成的需求"></a>持续集成的需求</h2><p>基于github的博客持续集成，在博客分支下，以master作为发布分支；<br>blog_code作为开发分支；<br>当监听到blog_code提交commit时，将触发travis工具，执行 <code>hexo g</code>的编译，并将编译后的代码合并到master分支的过程。</p>
+<h2 id="github-token"><a href="#github-token" class="headerlink" title="github token"></a>github token</h2><p>创建token，路径如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">settings / Developer settings / Personal access tokens</span><br></pre></td></tr></table></figure></p>
+<p>任意定义一个token 的名字，如果没有特殊要求，可先全部勾选所有权限：<br><figure class="image-box">
+                <a rel="博客持续集成的实现" href="/image/blog_flow/token.jpg" title="undefined" data-fancybox="images"><img src="/image/blog_flow/token.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>token类似一个秘钥，授权其他的应用来操作github的权限，比如创建、切换、提交分支的权限。</p>
+<h2 id="travis-cli"><a href="#travis-cli" class="headerlink" title="travis-cli"></a>travis-cli</h2><h3 id="选择要操作的branch"><a href="#选择要操作的branch" class="headerlink" title="选择要操作的branch"></a>选择要操作的branch</h3><p>操作地址<a href="https://travis-ci.org/account/repositories，" target="_blank" rel="noopener">https://travis-ci.org/account/repositories，</a><br>选择要操作的branch，点击滑动开关<br><figure class="image-box">
+                <a rel="博客持续集成的实现" href="/image/blog_flow/branch.jpg" title="undefined" data-fancybox="images"><img src="/image/blog_flow/branch.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="填写github-token"><a href="#填写github-token" class="headerlink" title="填写github token"></a>填写github token</h3><p>点击旁边的setting，设置setting，将gitbuh token填写上就行，其他默认。<br><figure class="image-box">
+                <a rel="博客持续集成的实现" href="/image/blog_flow/setting.jpg" title="undefined" data-fancybox="images"><img src="/image/blog_flow/setting.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>至此，travis-cli设置完毕，在首页将看到如下：<br><figure class="image-box">
+                <a rel="博客持续集成的实现" href="/image/blog_flow/view.jpg" title="undefined" data-fancybox="images"><img src="/image/blog_flow/view.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h2 id="travis-sh"><a href="#travis-sh" class="headerlink" title="_travis.sh"></a>_travis.sh</h2><p>.sh文件是linux命令文件。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#定义时间</span></span><br><span class="line">time=`date +%Y-%m-%d\ %H:%M:%S`</span><br><span class="line"></span><br><span class="line"><span class="comment">#执行成功</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">success</span></span>()&#123;</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"success"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#执行失败</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">failure</span></span>()&#123;</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"failure"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#默认执行</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">default</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">  git <span class="built_in">clone</span> https://<span class="variable">$&#123;GH_REF&#125;</span> .deploy_git</span><br><span class="line">  <span class="built_in">cd</span> .deploy_git</span><br><span class="line"></span><br><span class="line">  git checkout master</span><br><span class="line">  <span class="built_in">cd</span> ../</span><br><span class="line"></span><br><span class="line">  mv .deploy_git/.git/ ./public/</span><br><span class="line">  <span class="built_in">cd</span> ./public</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF &gt;&gt; README.md</span><br><span class="line">部署状态 | 集成结果 | 参考值</span><br><span class="line">---|---|---</span><br><span class="line">完成时间 | <span class="variable">$time</span> | yyyy-mm-dd hh:mm:ss</span><br><span class="line">部署环境 | <span class="variable">$TRAVIS_OS_NAME</span> + <span class="variable">$TRAVIS_NODE_VERSION</span> | window \| linux + stable</span><br><span class="line">部署类型 | <span class="variable">$TRAVIS_EVENT_TYPE</span> | push \| pull_request \| api \| cron</span><br><span class="line">启用Sudo | <span class="variable">$TRAVIS_SUDO</span> | <span class="literal">false</span> \| <span class="literal">true</span></span><br><span class="line">仓库地址 | <span class="variable">$TRAVIS_REPO_SLUG</span> | owner_name/repo_name</span><br><span class="line">提交分支 | <span class="variable">$TRAVIS_COMMIT</span> | <span class="built_in">hash</span> 16位</span><br><span class="line">提交信息 | <span class="variable">$TRAVIS_COMMIT_MESSAGE</span> |</span><br><span class="line">Job ID   | <span class="variable">$TRAVIS_JOB_ID</span> |</span><br><span class="line">Job NUM  | <span class="variable">$TRAVIS_JOB_NUMBER</span> |</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">  git init</span><br><span class="line">  git config user.name <span class="string">"yeWills"</span></span><br><span class="line">  git config user.email <span class="string">"xxxx@qq.com"</span></span><br><span class="line">  git add .</span><br><span class="line">  git commit -m <span class="string">"Update Blog By TravisCI With Build <span class="variable">$TRAVIS_BUILD_NUMBER</span>"</span></span><br><span class="line">  <span class="comment"># Github Pages</span></span><br><span class="line">  git push --force --quiet <span class="string">"https://<span class="variable">$&#123;GH_TOKEN&#125;</span>@<span class="variable">$&#123;GH_REF&#125;</span>"</span> master:master</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Create Tag</span></span><br><span class="line">  git tag v1.2.<span class="variable">$TRAVIS_BUILD_NUMBER</span> -a -m <span class="string">"Auto Taged By TravisCI With Build <span class="variable">$TRAVIS_BUILD_NUMBER</span>"</span></span><br><span class="line">  <span class="comment"># Github Pages</span></span><br><span class="line">  git push --quiet <span class="string">"https://<span class="variable">$&#123;GH_TOKEN&#125;</span>@<span class="variable">$&#123;GH_REF&#125;</span>"</span> master:master --tags</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">    <span class="string">"success"</span>)</span><br><span class="line">	     success</span><br><span class="line">       ;;</span><br><span class="line">    <span class="string">"failure"</span>)</span><br><span class="line">	     failure</span><br><span class="line">	     ;;</span><br><span class="line">	         *)</span><br><span class="line">       default</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="travis-yml"><a href="#travis-yml" class="headerlink" title=".travis.yml"></a>.travis.yml</h2><p>描述文件 yml<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="comment"># 虚拟环境下安装 11.12.0版本node</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"11.12.0"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sudo:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#cache</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">  directories:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"node_modules"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">notifications:</span></span><br><span class="line">  <span class="comment"># 邮件发送部署结果通知</span></span><br><span class="line"><span class="attr">  email:</span></span><br><span class="line"><span class="attr">    recipients:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">xxxx@qq.com</span></span><br><span class="line"><span class="attr">    on_success:</span> <span class="string">change</span></span><br><span class="line"><span class="attr">    on_failure:</span> <span class="string">always</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># S: Build Lifecycle</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="string">install</span> <span class="string">libnotify-bin</span></span><br><span class="line"></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="comment">#  - gem install travis</span></span><br><span class="line"><span class="comment">#  - travis login --pro --github-token $&#123;GH_TOKEN&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">export</span> <span class="string">TZ='Asia/Shanghai'</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="bullet">-g</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">_travis.sh</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="comment"># - hexo clean &amp;&amp; hexo g</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_success:</span></span><br><span class="line"> <span class="comment"># - LAST_BUILD_NUMBER=68</span></span><br><span class="line"> <span class="comment"># - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">./_travis.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># E: Build LifeCycle</span></span><br><span class="line"></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">  only:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">blog_code</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr"> global:</span></span><br><span class="line"><span class="attr">   - GH_REF:</span> <span class="string">github.com/YeWills/YeWills.github.io.git</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-01-10T16:10:04.472Z" itemprop="dateUpdated">2021-01-11 00:10:04</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/01/11/blog_flow/" target="_blank" rel="external">https://yewills.github.io/2021/01/11/blog_flow/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/travis/">travis</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/01/11/blog_flow/&title=《博客持续集成的实现》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/01/11/blog_flow/&title=《博客持续集成的实现》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/01/11/js_design_main/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">js设计模式下</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/01/11/css_big/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">css知识点汇</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#持续集成的需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">持续集成的需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#github-token"><span class="post-toc-number">2.</span> <span class="post-toc-text">github token</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#travis-cli"><span class="post-toc-number">3.</span> <span class="post-toc-text">travis-cli</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择要操作的branch"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">选择要操作的branch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#填写github-token"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">填写github token</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#travis-sh"><span class="post-toc-number">4.</span> <span class="post-toc-text">_travis.sh</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#travis-yml"><span class="post-toc-number">5.</span> <span class="post-toc-text">.travis.yml</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/01/11/blog_flow/&title=《博客持续集成的实现》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/01/11/blog_flow/&title=《博客持续集成的实现》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aUXLDIAwAUd//0u4BUuOVBJkglq9MQmIenVElwXXhcX+Mp0/JfPKta8WQIUPGtox7OMYPGM95eif6erw2GTJknMN4imDjOTzg8uBLnitDhgwZnJELuIQkQ4YMGasDbi6Y/tz/DRkyZPwYgxSx0R4XX8RXa3EZMmRsyOBd9++/XnK+IUOGjK0Yd3CsWNZdHjJkyOjN4AGOJ2TRmfz9l6fIkCHjYEa0TK2UmuRKR7hrKEOGjM0ZZEFjTLT0rV87+2e+DBkyWjN4wK1cv4iGVL5ZMmTIOIFR34PoMWf0iga6uiFDhozWjKef4wkc/7TyC+iYQYYMGccweMMrd10jF+JR6ilDhozWjFwxyZNI0laLJpcvT5chQ0YjxoqykxefuRAfOBKQIUNGIwYvIzmPpH28QH1JHGXIkNGaQUJhpZStNPJ42ipDhozejHoJeqcGugPCN0iGDBkHMEhgnVVw8lAbvjMiQ4aMpgxeD455uWZcLqCXyloZMmRsy6i0yXJzZu364ymHDBkyDmDwFG1WICbfQomgDBkyDmBEm/LjRZDC+AoOdKNNhgwZjRjrGvr8W7y19/J3kCFDRlNG7toEasrjdls0WeTbJEOGjE4MEmRzDf3cdiQ3S4YMGQcwco2wHDtXSCdrcRkyZBzMqBwzREMzWoMMGTJkBAPurCI20M6TIUPGAQyS6vEHV8A84MqQIeMcxqxeVjQ1jBauEw41ZciQsR/jD7uRVYNBRBtQAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
