@@ -108,6 +108,43 @@ host配置如下：
 ![](/image/proxy/origin.jpg)
 如果有上面这些信息，就允许跨域正常响应客户端。
 
+#### 示例
+- 下面是正常的跨域请求，并且被浏览器正常响应：
+![](/image/proxy/origin3.jpg)
+
+- 下面是正常非跨域请求，以此与上面跨域请求做对比：
+![](/image/proxy/origin4.jpg)
+
+### 解读跨域异常信息
+#### 概述
+下面是一份常见跨域请求的异常提示，细细解读这个跨域提示也是很好玩的：
+```js
+Access to XMLHttpRequest at 'http://test.com/upload.json' from 
+origin 'http://local123.com:8080' has been blocked by CORS policy: 
+Response to preflight request doesn't pass access control check: 
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
+- Access to XMLHttpRequest :侧面证明了跨域只针对 xhr(XMLHttpRequest)请求
+- blocked by CORS policy : CORS是一个W3C标准,全称是"跨域资源共享"
+- Response to preflight request doesn't pass access control check ： 预检请求(preflight request)得到的响应没有通过权限控制审核,是不是侧面证明了 跨域请求可能会发送两次，一次预检请求，一次正式请求，如下就是发送了两次：
+关于请求发几次，会单独讲解
+![](/image/proxy/origin5.jpg)
+- No 'Access-Control-Allow-Origin' header is present on the requested resource. ： 请求的资源上(服务器上)没有设置'Access-Control-Allow-Origin'响应头， 侧面说明服务器上设置 'Access-Control-Allow-Origin'来解除跨域。
+
+有上面解读知道跨域至少具备以下几个特征：
+
+#### 只针对xhr(XMLHttpRequest)请求
+如上。
+#### 套路是Access-Control-Allow-Origin
+如上。
+#### 预检请求(preflight request)
+跨域请求可能会发两次
+可能会发一次预检请求，一次正式请求
+![](/image/proxy/origin5.jpg)
+#### 请求可能会发两次
+如上。是否会发两次，下面单独说明。
+#### CORS就是跨域的代名词
+CORS是一个W3C标准,全称是"跨域资源共享"
 ### 黑知识
 #### 浏览器是先判断还是先执行
 对于跨域，你发的跨域请求，请求会正常到服务端，服务端也会正常响应，只是浏览器会判断请求是否跨域，如果是跨域，
@@ -137,6 +174,43 @@ host配置如下：
 
 这也就说明了 设置请求头 与 响应头 的重要性了。
 
+#### 请求会发几次
+这点下面单独说明。
+
+### 请求会发几次
+
+#### 先执行 还是 先判断
+跨域是先执行还是先判断？
+先执行，说明跨域请求只做一次请求就完成。
+先判断，说明跨域请求要在正式请求前，多发一次 预检请求，于是会发两次请求。
+#### 简单请求 与 非简单请求
+对于简单跨域请求，浏览器先执行，此时只发一次请求；
+非简单请求，浏览器需要先预检判断，此时会发两次请求，一次预检、一次正式请求；
+
+什么是简单请求：
+方法为GET、HEAD、POST的请求，并且请求头（header）里面没有自定义头；
+而且满足：
+Content-Type：
+text/plain、
+multipart/form-data、
+application/x-www-form-urlencoded。
+
+什么是非简单请求：
+除上之外，就是非简单请求：
+比如：方法为PUT、DELETE的请求，发送JSON格式的ajax请求、带自定义请求头的ajax请求。
+
+以上简单、非简单需求 是经验总结，不一定正确，只参考。
+
+#### 预检请求及其缓存、性能优化
+如果跨域请求每次都需要进行 跨域预检(preflight request)，发两次请求，未免性能影响，
+为此可以在服务端针对此接口 设置 预检缓存，在一定时间内，不进行预检请求，一次请求即可完成跨域响应：
+```js
+res.addHeader("Access-Control-Max-Age", "3600")，表示隔60分钟才发起预检请求
+```
+
+#### 小结
+简单跨域请求只发一次，非简单请求会发两次；
+但非简单请求也不是一定要发两次，如果做了预检缓存，下一次发起跨域请求时，可能只需发送一次。
 ### 后端解决跨域的套路
 #### 概述
 后端解决跨域一般是设置 这两个响应头：
@@ -163,21 +237,34 @@ res.addHeader("Access-Control-Allow-Methods", "*");
 更多参考上面
 
 ### 带cookie的跨域
+#### 概述
 ```
   $.ajax({
     type: "get",
     xhrFields: {
-        widthCredentials: true // 发送ajax请求的时候会带上cookie
+        widthCredentials: true // 告诉服务器，请求要读取后台设置的cookie
     }
 })
 
 
-4、带cookie时，后台代码注意以下2点：
+4、跨域接口发送cookie时，后台代码注意以下2点：
 （1）带cookie了的时候，Access-Control-Allow-Origin，必须是全匹配，如http://localhost:8081， 不能是 *
 （2）enable cookie
 res.addHeader("Access-Control-Allow-Credentials", "true")
+
+为了能够匹配多个域，后端代码会写成这样：
+String origin = req.getHeader("Origin");
+if (!org.springframework.util.StringUtils.isEmpty(origin)) {
+    res.addHeader("Access-Control-Allow-Origin", origin)
+}
 ```
 
+#### 注意点
+这里说的带cookie跨域应该是，接口如何读取 服务端域名下的cookie；
+而不是将客户端域名下的cookie发送给 跨域下的接口。
+这里的cookie并不是接口发送域下的，因为浏览器默认发送的cookie都只能是本域名下的。
+
+带cookie的跨域，有很多需要再研究，这里只是稍微笔记下。
 
 ## jsonp
 ### 试一试
@@ -274,6 +361,11 @@ $.ajax({
 - 发送对不是XHR请求， XHR请求有很多有点，比如异步发送，各种事件，而jsonp不是xhr请求，因此不具备这些有点。
 
 
+## http
+一些http的知识，暂时统计在这里
+#### Access-Control-Allow-Headers
+说明请求需要询问服务器后台是否允许这个content-type头;
+![](/image/proxy/http.jpg)
 
 
 
