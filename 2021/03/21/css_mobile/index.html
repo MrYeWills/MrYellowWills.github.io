@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>css之移动开发 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="屏幕分辨率,物理像素,css像素,ppi,dpr,多倍图的响应式设计,视口">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>css之移动开发</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">css之移动开发</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-21T09:51:04.001Z" itemprop="datePublished" class="page-time">
+  2021-03-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-css_mobile" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">css之移动开发</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-21 17:51:04" datetime="2021-03-21T09:51:04.001Z" itemprop="datePublished">2021-03-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="分辨率与像素"><a href="#分辨率与像素" class="headerlink" title="分辨率与像素"></a>分辨率与像素</h2><p>这是三星 GALAXY S5 手机<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/mobile1.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/mobile1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="pixels单词含义"><a href="#pixels单词含义" class="headerlink" title="pixels单词含义"></a>pixels单词含义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pixels //此单词含义为：像素</span><br></pre></td></tr></table></figure>
+<p>所以px，指得就是像素。</p>
+<h3 id="物理像素-与-分辨率"><a href="#物理像素-与-分辨率" class="headerlink" title="物理像素 与 分辨率"></a>物理像素 与 分辨率</h3><h4 id="物理像素"><a href="#物理像素" class="headerlink" title="物理像素"></a>物理像素</h4><p>上图中1920X1080像素，其实就是1920pxX1080px；如下图：<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/mobile2.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/mobile2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>没错，这个像素就是(设备)物理像素(physical pixels)，它的单位也是px。(注意，这个px 非 css中使用的px，后面有讲解)。<br>上图表面，这个手机 横向的物理像素为 1080px; 竖向的物理像素为 1920px；<br>物理像素是一个虚拟的单位，与现实当中的厘米，毫米是两个东西，物理像素，能大能小，随不同设备变化。<br>(设备)物理像素，1px表示如下图的一个小方块：<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/img.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/img.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>上图中Device pixels说的就是物理像素 (物理像素英文名肯定是physical pixels，这毫无疑问，但对是否是Device pixels还存一些考证，下面章节做了一些补充《别名 – Device pixels》)。</p>
+<h4 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h4><p>屏幕分辨率为：1920*1080px；屏幕分辨率其实就是横向和竖向物理像素的组合表达的。因此：<br>(屏幕)分辨率是由横向和竖向的物理像素值表示的一种屏幕参考。</p>
+<h4 id="分辨率不等同于物理像素"><a href="#分辨率不等同于物理像素" class="headerlink" title="分辨率不等同于物理像素"></a>分辨率不等同于物理像素</h4><p>由上分辨率的概念，屏幕分辨率不等同于物理像素。</p>
+<h3 id="dpr-与-css像素"><a href="#dpr-与-css像素" class="headerlink" title="dpr 与 css像素"></a>dpr 与 css像素</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>dpr (devicePixelRatio)，设备像素比。<br>我们在实际开发中，会发现GALAXY S5的屏幕是 360pxX640px：<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/dpr.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/dpr.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>GALAXY S5 的横向物理像素是1080px,为什么在上图中就变成360px了呢？<br>原来，手机厂商在手机出厂时，为每个手机提供了一个参数，这个参数就是dpr，通过window.devicePixelRatio获取。<br>根据MDN的解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpr = 物理像素/css像素</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="noopener">MDN的解释原文</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The Window property devicePixelRatio returns the ratio of the resolution in physical pixels (物理像素) to the resolution in CSS pixels (css像素) for the current display device.</span><br></pre></td></tr></table></figure></p>
+<p>因此，拿到一个手机的分辨率后，再通过window.devicePixelRatio 获取dpr后，就知道这个手机在前端开发时，它的css像素的 宽高。</p>
+<h4 id="dpr是联系分辨率与css像素的桥梁"><a href="#dpr是联系分辨率与css像素的桥梁" class="headerlink" title="dpr是联系分辨率与css像素的桥梁"></a>dpr是联系分辨率与css像素的桥梁</h4><p>由上可知，如何让分辨率为前端技术所用，就是通过手机厂商定义的dpr，把分辨率变成我们前端可以理解的css像素。</p>
+<h4 id="css像素"><a href="#css像素" class="headerlink" title="css像素"></a>css像素</h4><p>以上什么分辨率，物理像素，通通我们都不熟悉，都与前端开发无关，因为他们不是前端技术的度量范畴，此时说到css像素，是不是倍感亲切了，<br>它就是我们日常用的px，上面部分说的css像素就是这个东西。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//这个100px就是css像素</span><br><span class="line">.wrap&#123;</span><br><span class="line">    width:100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="dpr与css像素关系"><a href="#dpr与css像素关系" class="headerlink" title="dpr与css像素关系"></a>dpr与css像素关系</h4><p>在iPhone4之前，手机的dpr一般都是1，那时候手机的物理像素就是css像素。<br>随着iPhone4及以后高清屏的出现，dpr开始大于1，目前dpr场景值为 1、1.5、2、3。</p>
+<h4 id="iPhone4是Retina屏"><a href="#iPhone4是Retina屏" class="headerlink" title="iPhone4是Retina屏"></a>iPhone4是Retina屏</h4><p>从iPhone4开始，及以后的iPhone都是Retina屏。<a href="https://baike.baidu.com/item/Retina/4616695?fr=aladdin" target="_blank" rel="noopener">参考</a></p>
+<h3 id="放大2倍还是4倍？"><a href="#放大2倍还是4倍？" class="headerlink" title="放大2倍还是4倍？"></a>放大2倍还是4倍？</h3><p>下图 左侧是dpr=1，右侧dpr=2；<br>这里的放大几倍基于物理像素(英文可以是physical pixels 或 Device pixels )而言，<br>一个css像素为2X2px的元素。<br>dpr=1下，物理像素是 2X2px；<br>dpr=2下，物理像素是 4X4px；<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/img.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/img.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>dpr=2下，原来的1小方块变成4个方块表示，好像是放大了四倍，其实不然，<br>1个方块可以写成：1X1px;<br>4个方块可以写成：2X2px；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//其实就是放大2倍</span><br><span class="line">(2*2px)/(1*1px) === 2</span><br><span class="line"></span><br><span class="line">//其实还是放大2倍</span><br><span class="line">(4*4px)/(2*2px) === 2</span><br></pre></td></tr></table></figure></p>
+<p>所以dpr=2时相比dpr=1时，只是放大了两倍。<br>下面讲到的响应式设计时，用到媒体查询，需要UI根据dpr设计不同倍率的图片，需要多少倍的图片，由上面就知道了。</p>
+<h3 id="多倍图响应式设计"><a href="#多倍图响应式设计" class="headerlink" title="多倍图响应式设计"></a>多倍图响应式设计</h3><p>当dpr大于1是，容易出现图片模糊的问题，以iPhone6为例:<br>iPnone6参数：<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/flex.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/flex.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>iPnone6 的 dpr为2，对应的屏幕的css像素尺寸为：375X667px；<br>由图片可知，i6的横向物理像素为750px，此时，如果在html页面定义展示一个img{width:375px}的图片，<br>i6在展示时因为会将此图片拉伸两倍，导致图片失真。解决的方法是，让UI设计一个750px的图片，避免失真，<br>这里解释失真可能有些牵强，姑且这样理解吧，也或者简单理解成，凡是dpr大于1的手机，<strong>只要提供与手机物理像素不一致的图片,显示时都会失真；</strong><br>不用太穷究为什么要失真，知道这样会失真就行。如果对失真有兴趣，去网上搜索，很多资源。</p>
+<p>高清时，一般也就图片这种失真的情况，其他还好，为了解决这个图片失真，一般采用媒体查询方式。</p>
+<h4 id="如何才图片不失真"><a href="#如何才图片不失真" class="headerlink" title="如何才图片不失真"></a>如何才图片不失真</h4><p>由上面推测可知，<strong>只有UI给的图片与手机的物理像素相等时才不失真</strong>，<br>比如，我在html上定义了一个100px css像素的图片；<br>手机的dpr为2；<br>此时这个100px css像素，对应的是 100*2=200px 的物理像素尺寸。<br>此时只有UI提供200px的图片放在上面的HTMl上才不失真。</p>
+<h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><p>解决方法如下，详细的可网上搜索：<br>主要思路，就是让UI提供几种不同尺寸的图片，通过媒体查询方式灵活使用。<a href="https://www.cnblogs.com/sese/p/5977486.html" target="_blank" rel="noopener">参考</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.css&#123;/* 普通显示屏(设备像素比例小于等于1.3)使用1倍的图 */ </span><br><span class="line">    background-image: url(img_1x.png);</span><br><span class="line">&#125;</span><br><span class="line">@media only screen and (-webkit-min-device-pixel-ratio:1.5),</span><br><span class="line">       (min-resolution: 1.5dppx)&#123;</span><br><span class="line">            .css&#123;/* 高清显示屏(设备像素比例大于等于1.5)使用2倍图  */</span><br><span class="line">                background-image: url(img_2x.png);</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>媒体查询设备像素比主要查询 min-resolution,而webkit-min-device-pixel-ratio是一个意思，为了兼容safari。见《精通css》P233<br>当然，解决失真的方式还有js或svg矢量图的方式。</p>
+<h3 id="ppi"><a href="#ppi" class="headerlink" title="ppi"></a>ppi</h3><p>ppi:屏幕像素密度,这个概念其实与前端开发无关，可以不用过多了解。<br>只是最上面的图片中提到了GALAXY S5 的像素密度，具体公式如下，<a href="https://www.jianshu.com/p/c3387bcc4f6e" target="_blank" rel="noopener">详细了解点击这里</a>：<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/ppi.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/ppi.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>下面列举了如 设备独立像素、什么其他像素…这些统统不要管，与前端开发无关，与前端开发有关的东西，上面已经单独列出讲解。<br>在这里写一些别名，只是为了在阅读别人的文文章时，他们写出这些名词你知道是什么，避免看不懂其他人的文章。</p>
+<h4 id="设备独立像素"><a href="#设备独立像素" class="headerlink" title="设备独立像素"></a>设备独立像素</h4><p>有很多地方将 dpr = 物理像素 /设备独立像素;<br>显然这里 将设备独立像素看成是css像素了。我这里不说对不对，这里只是让大家知道<strong>设备独立像素 把它简单认为是 css像素就好，不必深究。</strong>关于dpr的定义还是以MDN网址定义为准，请看上文《dpr 与 css像素》<br><a href="https://www.jianshu.com/p/3d28f4959c5a?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">参见</a></p>
+<p>我们再看 它的定义：<br><a href="https://www.cnblogs.com/jiangzilong/p/6700023.html" target="_blank" rel="noopener">设备独立像素（Device Independent Pixel）：与设备无关的逻辑像素，代表可以通过程序控制使用的虚拟像素，是一个总体概念，包括了CSS像素</a></p>
+<h4 id="设备无关的像素"><a href="#设备无关的像素" class="headerlink" title="设备无关的像素"></a>设备无关的像素</h4><p>参考《设备独立像素》。<br>设备无关的像素 其实就是 设备独立像素 的说法，下面公式是相等的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSS像素 =设备独立像素 = 设备无关的像素</span><br></pre></td></tr></table></figure></p>
+<h4 id="逻辑像素"><a href="#逻辑像素" class="headerlink" title="逻辑像素"></a>逻辑像素</h4><p><a href="https://www.jianshu.com/p/3d28f4959c5a?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">这篇文章提到:</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSS像素 =设备独立像素 = 逻辑像素</span><br></pre></td></tr></table></figure></p>
+<h4 id="设备像素"><a href="#设备像素" class="headerlink" title="设备像素"></a>设备像素</h4><p>设备像素也是物理像素，物理像素全称，设备物理像素，下面公式成立：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">物理像素===设备像素===设备物理像素===physical pixels====Device pixels</span><br></pre></td></tr></table></figure></p>
+<h4 id="虚拟像素"><a href="#虚拟像素" class="headerlink" title="虚拟像素"></a>虚拟像素</h4><p>其实 物理像素、css像素、这些都是虚拟像素。(个人认为，未佐证)</p>
+<h4 id="Device-pixels"><a href="#Device-pixels" class="headerlink" title="Device pixels"></a>Device pixels</h4><p>Device pixels应该就是物理像素的英文名称，<a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank" rel="noopener">根据外文W3c – CSS Units 中关于 px的解释</a>，原文如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* Pixels (px) 【css像素】 are relative to the viewing device. For low-dpi devices, 1px is one device pixel (dot) of the display. For printers and high resolution screens 1px implies multiple device pixels【多倍的设备像素】.</span><br></pre></td></tr></table></figure></p>
+<p>结合上面的分析，我们知道，屏幕中一般只有一种设备像素，那就是物理像素，因此物理像素的另外英文名称为 device pixels.</p>
+<h3 id="物理像素的px与css像素px区别"><a href="#物理像素的px与css像素px区别" class="headerlink" title="物理像素的px与css像素px区别"></a>物理像素的px与css像素px区别</h3><p>虽然通过上面的分析，我们知道物理像素与css像素，有本质上的不同。<br>不过通过分析多倍dpr图片失真问题，解决失真，就要放与物理像素相同的px图片时才不失真。我们知否可大胆推测物理像素的px可能与css像素的px是一回事。<br>以上仅代表个人揣测。<br>然而物理像素确实又与css像素有本质区别。</p>
+<h2 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h2><p>视口部分，参考《精通css》这边书，若有问题，查询这边书的第八章。</p>
+<h3 id="理想视口"><a href="#理想视口" class="headerlink" title="理想视口"></a>理想视口</h3><p>理想视口就是每个手机的屏幕css像素尺寸，例如GALAXY S5屏幕360pxX640px，它的理想视口就是360pxX640px 的css像素尺寸。 见《dpr 与 css像素》。</p>
+<h3 id="默认视口"><a href="#默认视口" class="headerlink" title="默认视口"></a>默认视口</h3><p>手机设备都有一个默认视口，且不同类型的手机设备，其默认视口都是一样的尺寸，不同类型手机设备的默认视口，宽约为1000px css像素。<br>每想到吧，默认视口居然还有一个统一的宽度：约为1000px css像素，而且不同类型的手机宽度一样。</p>
+<h3 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h3><h4 id="理想视口显示"><a href="#理想视口显示" class="headerlink" title="理想视口显示"></a>理想视口显示</h4><p>使用 理想视口显示，设置meta如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="默认视口显示"><a href="#默认视口显示" class="headerlink" title="默认视口显示"></a>默认视口显示</h4><p>如果不设置meta，那么手机将采用默认视口显示，将html写的页面按照屏幕宽大约1000px排列布局好，然后把它缩小显示到手机中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;vs_test&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .wrap &#123;</span><br><span class="line">            background: rebeccapurple;</span><br><span class="line">            word-break: break-word;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">        &#125;</span><br><span class="line">        .cell&#123;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            height: 50px;</span><br><span class="line">            width: 100px;</span><br><span class="line">            font-size: 40px;</span><br><span class="line">        &#125;</span><br><span class="line">        .cell:nth-child(even)&#123;</span><br><span class="line">            background: #FF9800</span><br><span class="line">        &#125;</span><br><span class="line">        .cell:nth-child(odd)&#123;</span><br><span class="line">            background: #00BCD4</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;wrap&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;1&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;2&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;3&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;4&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;5&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;6&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;7&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;8&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;9&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;0&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p> GALAXY S5手机端显示如下：<br><figure class="image-box">
+                <a rel="css之移动开发" href="/image/css_mobile/view-port.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/view-port.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="默认视口-与-qq截图工具量元素尺寸"><a href="#默认视口-与-qq截图工具量元素尺寸" class="headerlink" title="默认视口 与 qq截图工具量元素尺寸"></a>默认视口 与 qq截图工具量元素尺寸</h4><p>如上图所示， 采用默认视口显示，会将原来在大约1000px显示好的页面，缩小到GALAXY S5手机宽360px的屏幕显示，<br>这样调试的时候，我们就无法使用qq或微信的截图工具里面显示的尺寸，来量元素的尺寸。<br>以此举一反三，只有移动端采用理想视口的情况时，才可以使用qq截图工具量元素尺寸。<br>不过，pc浏览器屏幕不存在此情况，pc浏览器任何情况下可以采用qq截图工具量尺寸。</p>
+<h3 id="不要禁用缩放"><a href="#不要禁用缩放" class="headerlink" title="不要禁用缩放"></a>不要禁用缩放</h3><p>很多人喜欢用下面的方式来定义meta，下面配置了user-scalable=no，禁用了缩放，这样是不推荐的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//不推荐这种写法，因为禁用了缩放</span><br><span class="line">&lt;meta </span><br><span class="line">    name=&quot;viewport&quot; </span><br><span class="line">    content=&quot;width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no&quot;</span><br><span class="line"> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>推荐写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//推荐写法：</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面写initial-scale=1完全是为了兼容，如果不考虑兼容，直接这样写就行，因为initial-scale=1表达的意思和width=device-width一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//推荐写法也可以这样写</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http://www.ituring.com.cn/book/1910" target="_blank" rel="noopener">精通css 高级web标准解决方案</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="noopener">MDN –devicePixelRatio</a><br><a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank" rel="noopener">外文W3c –CSS Units</a><br><a href="https://www.cnblogs.com/sese/p/5977486.html" target="_blank" rel="noopener">高清屏及适配不同设备的方案总结</a><br><a href="https://www.jianshu.com/p/c3387bcc4f6e" target="_blank" rel="noopener">（全解析）屏幕尺寸，分辨率，像素，PPI之间到底什么关系？</a><br><a href="https://www.jianshu.com/p/3d28f4959c5a?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">一篇文章搞懂CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport</a><br><a href="https://www.cnblogs.com/jiangzilong/p/6700023.html" target="_blank" rel="noopener">CSS像素、设备独立像素、设备像素之间关系</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-21T09:51:04.001Z" itemprop="dateUpdated">2021-03-21 17:51:04</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/03/21/css_mobile/" target="_blank" rel="external">https://yewills.github.io/2021/03/21/css_mobile/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css像素/">css像素</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dpr/">dpr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ppi/">ppi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多倍图的响应式设计/">多倍图的响应式设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/屏幕分辨率/">屏幕分辨率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物理像素/">物理像素</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视口/">视口</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/21/css_mobile/&title=《css之移动开发》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/21/css_mobile/&title=《css之移动开发》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/03/21/canvas-demo/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">canvas demo</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/21/d3_basics/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">d3的三种模式 及 append、data、selectAll</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分辨率与像素"><span class="post-toc-number">1.</span> <span class="post-toc-text">分辨率与像素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pixels单词含义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">pixels单词含义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物理像素-与-分辨率"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">物理像素 与 分辨率</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#物理像素"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">物理像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分辨率"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">分辨率</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分辨率不等同于物理像素"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">分辨率不等同于物理像素</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dpr-与-css像素"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">dpr 与 css像素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dpr是联系分辨率与css像素的桥梁"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">dpr是联系分辨率与css像素的桥梁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#css像素"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">css像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dpr与css像素关系"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">dpr与css像素关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#iPhone4是Retina屏"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">iPhone4是Retina屏</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#放大2倍还是4倍？"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">放大2倍还是4倍？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多倍图响应式设计"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">多倍图响应式设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何才图片不失真"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">如何才图片不失真</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#媒体查询"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">媒体查询</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ppi"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">ppi</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#别名"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">别名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">注意</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设备独立像素"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">设备独立像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设备无关的像素"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">设备无关的像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#逻辑像素"><span class="post-toc-number">1.7.4.</span> <span class="post-toc-text">逻辑像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设备像素"><span class="post-toc-number">1.7.5.</span> <span class="post-toc-text">设备像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#虚拟像素"><span class="post-toc-number">1.7.6.</span> <span class="post-toc-text">虚拟像素</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Device-pixels"><span class="post-toc-number">1.7.7.</span> <span class="post-toc-text">Device pixels</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物理像素的px与css像素px区别"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">物理像素的px与css像素px区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视口"><span class="post-toc-number">2.</span> <span class="post-toc-text">视口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#理想视口"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">理想视口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#默认视口"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">默认视口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">显示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#理想视口显示"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">理想视口显示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#默认视口显示"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">默认视口显示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#默认视口-与-qq截图工具量元素尺寸"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">默认视口 与 qq截图工具量元素尺寸</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不要禁用缩放"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">不要禁用缩放</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考："><span class="post-toc-number">3.</span> <span class="post-toc-text">参考：</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/21/css_mobile/&title=《css之移动开发》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/21/css_mobile/&title=《css之移动开发》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aO3LDMAwFQN//0k7rFJbfA/MZkavKk7EpLgsEAPF4xM/z5Xn9S/79fM3rXy09GBgYt2U8L5/r7yQrX2/x+oCSvWFgYJzDSDbxbunrQ8nflYd1DAwMjJzx21vEwMDAWGHkG81TzH8IuBgYGLdiJC9oGdHryzT0B2pxDAyMGzLyrvvff/6V+w0MDIxbMZ7l0149zpK/elcYGBhbM/IAlydneWq4EnAxMDDOZLRhtA2OCTi/cohqcQwMjC0YeZhrh8ZWksi85fctw8XAwNiUkRSW7ZXkbHOzRPORVMwYGBg3Z8ySs5XGXLL1NjRjYGCcw8jb+u2G2gNq94CBgXEOow2FyZhXkmImyeWHt2NgYGzNqL9ajkS09XR7KBgYGBhtAteuMGu0vf0VBgbGMYxZW60dHZsF98dsIQwMjJsz1gezZuMRsyOIZkYwMDC2Y8zKxZW0L2/kza4ZMDAw9mO0wxCz1C0ZxWjfhYGBcQ6jrQTbpdsUMCmhPxwcBgbGpoy8HG0bcEk7Lz+IDxgMDIwDGG0Slgfo9oDawTIMDAyMvGOXl7Jtcy06XAwMjE0Zz/KZTTvMjqOuvzEwMDZlzMLcbLuzIbAiNcTAwNia0Q54tYnjLHzX542BgXEAIw9865te+Q9Q3MFiYGAcz2hLzZXxr6iIxcDAwAiC5srYRNK8+3AoGBgYBzDykYj8wjJP/vIkEgMD40zGrHRMkG2a2DbgMDAwDmB8AT2gaphmsB7VAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
