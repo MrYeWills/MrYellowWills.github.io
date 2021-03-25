@@ -28,5 +28,8 @@ UDP 无连接，不安全，不过效率更快；
 ![](/image/http_again/ceng4.png)
 ![](/image/http_again/ceng5.png)
 
+
+![](/image/http_again/back.jpg)
+
  
 
