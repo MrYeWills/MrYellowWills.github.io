@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>mongoose 与 mongodb笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="mongoose,mongodb">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>mongoose 与 mongodb笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">mongoose 与 mongodb笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-28T10:13:04.129Z" itemprop="datePublished" class="page-time">
+  2021-03-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-mongoose_mongodb" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">mongoose 与 mongodb笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-28 18:13:04" datetime="2021-03-28T10:13:04.129Z" itemprop="datePublished">2021-03-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>关于 mongoose 与 mongodb笔记 暂时以问答方式叙述。</p>
+<h2 id="mongoose-与-mongodb-基本知识"><a href="#mongoose-与-mongodb-基本知识" class="headerlink" title="mongoose 与 mongodb 基本知识"></a>mongoose 与 mongodb 基本知识</h2><h3 id="什么是mongodb服务端和客户端"><a href="#什么是mongodb服务端和客户端" class="headerlink" title="什么是mongodb服务端和客户端"></a>什么是mongodb服务端和客户端</h3><p>启动mongodb服务端，cmd命令为 mongod；这表明在电脑上启动了mongodb服务，启动了mongodb服务端；<br>启动mongodb客户端，cmd命令为 mongo；此命令执行后，cmd处于输入状态，可以对数据库进行增删改查；<br>以上两面命令 都基于mongodb安装目录(C:\Program Files\MongoDB\Server\4.0\bin)下的mongod.exe和mongo.exe；</p>
+<h3 id="在哪些目录下执行mongo等命令才能连接数据库"><a href="#在哪些目录下执行mongo等命令才能连接数据库" class="headerlink" title="在哪些目录下执行mongo等命令才能连接数据库?"></a>在哪些目录下执行mongo等命令才能连接数据库?</h3><p>启动mongodb有两层意思，一个是启动mongodb服务器，一个是启动mongodb的客户端mongo。<br>上面两个动作没有目录限制，这个命令是全局的，在任意目录上都启动cmd都可以操作MongoDB数据库。<br>整个电脑，任何项目创建的数据库，都可以通过任意目录下，启动<br>cmd都可以查到，并且对数据库进行增删改查操作。</p>
+<h3 id="启动mongodb-以及数据库、表格的查看"><a href="#启动mongodb-以及数据库、表格的查看" class="headerlink" title="启动mongodb 以及数据库、表格的查看"></a>启动mongodb 以及数据库、表格的查看</h3><p>主要为两个命令：<br>mongod //启动mongod 服务器，这是一切操作数据库的基础准备工作<br>mongo //启动mongodb客户端，用来连接mongodb并进行相关数据的查询<br>具体步骤如下：</p>
+<h4 id="在任意目录下启动cmd-执行-mongod"><a href="#在任意目录下启动cmd-执行-mongod" class="headerlink" title="在任意目录下启动cmd 执行 mongod;"></a>在任意目录下启动cmd 执行 mongod;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ mongod</span><br><span class="line">2019-03-24T11:25:33.479+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols &apos;none&apos;</span><br><span class="line">2019-03-24T11:25:33.483+0800 I CONTROL  [initandlisten] MongoDB starting : pid=8380 port=27017 dbpath=C:\data\db\ 64-bit host=UO4SB7YL9WOZ3OK</span><br><span class="line">2019-03-24T11:25:33.483+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2</span><br><span class="line">2019-03-24T11:25:33.483+0800 I CONTROL  [initandlisten] db version v4.0.6</span><br><span class="line">2019-03-24T11:25:33.483+0800 I CONTROL  [initandlisten] git version: caa42a1f75a56c7643d0b68d3880444375ec42e3</span><br><span class="line">2019-03-24T11:25:33.483+0800 I CONTROL  [initandlisten] allocator: tcmalloc</span><br><span class="line">2019-03-24T11:25:33.483+0800 I CONTROL  [initandlisten] modules: none</span><br><span class="line">2019-03-24T11:25:33.484+0800 I CONTROL  [initandlisten] build environment:</span><br><span class="line">2019-03-24T11:25:33.484+0800 I CONTROL  [initandlisten]     distmod: 2008plus-ssl</span><br><span class="line">2019-03-24T11:25:33.484+0800 I CONTROL  [initandlisten]     distarch: x86_64</span><br><span class="line">2019-03-24T11:25:33.484+0800 I CONTROL  [initandlisten]     target_arch: x86_64</span><br><span class="line">2019-03-24T11:25:33.484+0800 I CONTROL  [initandlisten] options: &#123;&#125;</span><br><span class="line">2019-03-24T11:25:33.486+0800 I STORAGE  [initandlisten] exception in initAndListen: NonExistentPath: Data directory C:\data\db\ not found., terminating</span><br><span class="line">2019-03-24T11:25:33.486+0800 I NETWORK  [initandlisten] shutdown: going to close listening sockets...</span><br><span class="line">2019-03-24T11:25:33.486+0800 I CONTROL  [initandlisten] now exiting</span><br><span class="line">2019-03-24T11:25:33.486+0800 I CONTROL  [initandlisten] shutting down with code:100</span><br></pre></td></tr></table></figure>
+<h4 id="接着执行-mongo；"><a href="#接着执行-mongo；" class="headerlink" title="接着执行 mongo；"></a>接着执行 mongo；</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br><span class="line">MongoDB shell version v4.0.6</span><br><span class="line">connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb</span><br><span class="line">Implicit session: session &#123; &quot;id&quot; : UUID(&quot;4f84c125-8db8-4d3a-ad61-5c85b2817fb7&quot;) &#125;</span><br><span class="line">MongoDB server version: 4.0.6</span><br></pre></td></tr></table></figure>
+<p>此时命令窗口处于等待输入命令的状态，就像输入node后，等待执行的情况。</p>
+<h4 id="数据库、表格的查看；"><a href="#数据库、表格的查看；" class="headerlink" title="数据库、表格的查看；"></a>数据库、表格的查看；</h4><p>此时在此cmd窗口，接着输入以下命令，对数据库进行增删改查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br><span class="line">MongoDB shell version v4.0.6</span><br><span class="line">connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb</span><br><span class="line">Implicit session: session &#123; &quot;id&quot; : UUID(&quot;4f84c125-8db8-4d3a-ad61-5c85b2817fb7&quot;) &#125;</span><br><span class="line">MongoDB server version: 4.0.6</span><br><span class="line">show dbs  //显示MongoDB目前有多少数据库</span><br><span class="line">admin           0.000GB</span><br><span class="line">config          0.000GB</span><br><span class="line">douban-test     0.000GB</span><br><span class="line">douban-trailer  0.000GB</span><br><span class="line">local           0.000GB</span><br><span class="line">test            0.000GB</span><br><span class="line">yyy             0.000GB</span><br><span class="line">use yyy //使用yyy数据库，use 数据库name，有此name就是用此数据库，没有就是创建数据库</span><br><span class="line">switched to db yyy</span><br><span class="line">show tables //显示数据库有多少表格</span><br><span class="line">fruits</span><br><span class="line">db.fruits.find() //显示 fruits 表格的数据内容</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5c964dbe52f3fd21d06da3a0&quot;), &quot;category&quot; : &quot;apple&quot;, &quot;name&quot; : &quot;apple&quot;, &quot;__v&quot; : 0 &#125;</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5c964dca541443051483e3c8&quot;), &quot;category&quot; : &quot;apple&quot;, &quot;name&quot; : &quot;apple&quot;, &quot;__v&quot; : 0 &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/shirly77/p/6536327.html" target="_blank" rel="noopener">更多信息点击</a></p>
+<h3 id="用mongodb原生命令还是mongoose操作数据库？"><a href="#用mongodb原生命令还是mongoose操作数据库？" class="headerlink" title="用mongodb原生命令还是mongoose操作数据库？"></a>用mongodb原生命令还是mongoose操作数据库？</h3><p>在这里只讨论node端。<br>值得注意的是，我们大多不通过mongodb原生命令操作数据库，而是通过mongoose；<br>一个是mongoose 更能优雅地进行MongoDB对象建模，<br>而且Mongoose写了很多mongodb的验证机制、类型转换与业务逻辑模板，然后提供几个简单的api给我们，简化了工作，等等。<br>因此在实际项目开发中，包括连接数据库以及之后的所有操作都是通过mongoose来操作。<br>因此建议不用太去花太多时间去看mongodb的api教程，稍微了解下即可，然后多看看mongoose的相关操作。</p>
+<h3 id="花更多时间学mongodb还是mongoose教程？"><a href="#花更多时间学mongodb还是mongoose教程？" class="headerlink" title="花更多时间学mongodb还是mongoose教程？"></a>花更多时间学mongodb还是mongoose教程？</h3><p>请参看《用mongodb原生命令还是mongoose操作数据库？》。</p>
+<h3 id="要不要手动建文件夹目录data-db？"><a href="#要不要手动建文件夹目录data-db？" class="headerlink" title="要不要手动建文件夹目录data\db？"></a>要不要手动建文件夹目录data\db？</h3><p>我在刚接触 mongodb时，以为启动mongodb要建文件夹目录，用来存放数据库数据，其实不必了。<br>只要在cmd上启动好mongodb服务器就好，其他的就交给项目使用mongoose来操作mongodb就好。<br>不要创建什么数据库文件夹目录。</p>
+<h3 id="经典demo-创建数据库、表格和数据"><a href="#经典demo-创建数据库、表格和数据" class="headerlink" title="经典demo-创建数据库、表格和数据"></a>经典demo-创建数据库、表格和数据</h3><h4 id="demo-代码"><a href="#demo-代码" class="headerlink" title="demo 代码"></a>demo 代码</h4><p>启动mongodb后，在任意目录下，使用node 执行如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const mongoose = require(&apos;mongoose&apos;);</span><br><span class="line">//mongoose.connect 连接mongodb服务器中的数据库，newdbName是数据库名，有则连，无此name数据，就创建</span><br><span class="line">mongoose.connect(&apos;mongodb://localhost:27017/newdbName&apos;,&#123;</span><br><span class="line">    useNewUrlParser:true</span><br><span class="line">&#125;);</span><br><span class="line">//Schema 定义表格Field的类型和规则，这个过程称为 建数据模型</span><br><span class="line">var schema = new mongoose.Schema(&#123; name: &apos;string&apos;, size: &apos;string&apos; &#125;);</span><br><span class="line">//Model 将Schema定义的模型继承过来，生成表格tables,这里生成的名字为 Tank，在数据库中表格名是复数，见《的解释》</span><br><span class="line">var Model = mongoose.model(&apos;Tank&apos;, schema);</span><br><span class="line">//new Model()此方法用来表格数据的增删改查,</span><br><span class="line">var small = new Model(&#123; size: &apos;small&apos; &#125;);</span><br><span class="line">small.save(function (err) &#123;</span><br><span class="line">  if (err) return handleError(err);</span><br><span class="line">  console.log(&apos;创建成功&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="mongodb客户端mongo检测是否生成成功"><a href="#mongodb客户端mongo检测是否生成成功" class="headerlink" title="mongodb客户端mongo检测是否生成成功"></a>mongodb客户端mongo检测是否生成成功</h4><p>将以上代码复制到js中，然后 node 该js试试，如果出现创建成功；<br>然后任意目录下 启动cmd，打开mongodb客户端，查看newdbName数据库是否生成，以下是正常生成的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Administrator@UO4SB7YL9WOZ3OK MINGW64 ~/Desktop</span><br><span class="line">$ mongo</span><br><span class="line">MongoDB shell version v4.0.6</span><br><span class="line">connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb</span><br><span class="line">Implicit session: session &#123; &quot;id&quot; : UUID(&quot;a6d3c14e-703d-44d8-851f-60dbb5ad2b9e&quot;) &#125;</span><br><span class="line">MongoDB server version: 4.0.6</span><br><span class="line">show dbs</span><br><span class="line">admin           0.000GB</span><br><span class="line">config          0.000GB</span><br><span class="line">douban-test     0.000GB</span><br><span class="line">douban-trailer  0.000GB</span><br><span class="line">local           0.000GB</span><br><span class="line">newdbName       0.000GB</span><br><span class="line">onedb           0.000GB</span><br><span class="line">test            0.000GB</span><br><span class="line">twodb           0.000GB</span><br><span class="line">yyy             0.000GB</span><br><span class="line">use newdbName</span><br><span class="line">switched to db newdbName</span><br><span class="line">show tables</span><br><span class="line">tanks</span><br><span class="line">db.tanks.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5c974d5df84c0d2b9450f43c&quot;), &quot;size&quot; : &quot;small&quot;, &quot;__v&quot; : 0 &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="mongodb、mongoose概念"><a href="#mongodb、mongoose概念" class="headerlink" title="mongodb、mongoose概念"></a>mongodb、mongoose概念</h3><p>本节内容参考如下，如有疑问点击如下连接详细了解。<br><a href="https://www.cnblogs.com/chris-oil/p/9142795.html" target="_blank" rel="noopener">参考1</a><br><a href="http://www.runoob.com/mongodb/mongodb-databases-documents-collections.html" target="_blank" rel="noopener">参考2</a></p>
+<h4 id="mongodb-与-传统数据库-概念对比"><a href="#mongodb-与-传统数据库-概念对比" class="headerlink" title="mongodb 与 传统数据库 概念对比"></a>mongodb 与 传统数据库 概念对比</h4><figure class="image-box">
+                <a rel="mongoose" 与="" mongodb笔记="" href="/image/mongodb/db.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/db.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="mongodb-、mongoose-与-传统数据库-概念对比"><a href="#mongodb-、mongoose-与-传统数据库-概念对比" class="headerlink" title="mongodb 、mongoose 与 传统数据库 概念对比"></a>mongodb 、mongoose 与 传统数据库 概念对比</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><figure class="image-box">
+                <a rel="mongoose" 与="" mongodb笔记="" href="/image/mongodb/mongoose.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/mongoose.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="mongoose核心概念-与-数据库知识-对应关系"><a href="#mongoose核心概念-与-数据库知识-对应关系" class="headerlink" title="mongoose核心概念 与 数据库知识 对应关系"></a>mongoose核心概念 与 数据库知识 对应关系</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><figure class="image-box">
+                <a rel="mongoose" 与="" mongodb笔记="" href="/image/mongodb/index.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/index.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
+<li>mongodb中说的集合，其实就是tables，通过model生成；</li>
+<li>mongodb中说的文档，其实就是tables的行数据，通过model实例生成；</li>
+<li>mongoose的重点在Schema和model，其实与数据直接打交道最多的是model；</li>
+<li>至于生成或连接数据库，就是mongoose.connect方法。</li>
+</ul>
+<h3 id="mongoose-model第一个参数的复数才是tables名字！！"><a href="#mongoose-model第一个参数的复数才是tables名字！！" class="headerlink" title="mongoose.model第一个参数的复数才是tables名字！！"></a>mongoose.model第一个参数的复数才是tables名字！！</h3><p>mongoose.model(abc,oneSchema)定义的第一个参数abc,abc并非tables表格名字,它的复数才是，数据库中的表格名字是abces。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let Model = mongoose.model(&quot;fruit&quot;,Schema);</span><br><span class="line">let apple = new Model(&#123;</span><br><span class="line">        category:&apos;apple&apos;,</span><br><span class="line">        name:&apos;apple&apos;</span><br><span class="line">    &#125;);</span><br><span class="line">	apple.save()</span><br><span class="line">	</span><br><span class="line">cmd中执行命令：</span><br><span class="line">show tables，</span><br><span class="line">名字是fruits,非 fruit。</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建或连接数据库"><a href="#创建或连接数据库" class="headerlink" title="创建或连接数据库"></a>创建或连接数据库</h3><p>创建和连接数据库一般通过mongoose，用的命令都是mongoose.connect。</p>
+<p>在任意目录cmd，然后执行如下命令，看到mongodb服务器中有数据库twodb；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line">show dbs</span><br><span class="line">admin           0.000GB</span><br><span class="line">config          0.000GB</span><br><span class="line">local           0.000GB</span><br><span class="line">newdbName       0.000GB</span><br><span class="line">onedb           0.000GB</span><br><span class="line">test            0.000GB</span><br><span class="line">twodb           0.000GB</span><br></pre></td></tr></table></figure></p>
+<p>例如我现在要连接 数据库twodb，步骤如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connect(&apos;mongodb://localhost:27017/twodb&apos;,&#123;</span><br><span class="line">    useNewUrlParser:true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如上，mongodb://localhost:27017/ 这是默认写法，twodb是数据库写法，<br>当twodb这个数据库在mongodb存在时，就连接此数据库，当不存在时，就是创建名为twodb的数据库。</p>
+<h3 id="mongodb-localhost-27017-dbName"><a href="#mongodb-localhost-27017-dbName" class="headerlink" title="mongodb://localhost:27017/dbName"></a>mongodb://localhost:27017/dbName</h3><p>我们如果要连接dbName数据库，为什么mongoose.connect的时候，却要写成mongodb://localhost:27017/twodb;<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connect(&apos;mongodb://localhost:27017/twodb&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>那么为什么要这样呢。<br><strong>原来这是mongodb的标准 URI 连接语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>mongodb:// 这是固定的格式，必须要指定。</li>
+<li>username:password@ 可选项，如果设置，在连接数据库服务器之后，驱动都会尝试登陆这个数据库</li>
+<li>host1 必须的指定至少一个host, host1 是这个URI唯一要填写的。它指定了要连接服务器的地址。如果要连接复制集，请指定多个主机地址。</li>
+<li>portX 可选的指定端口，如果不填，默认为27017</li>
+<li>/database 如果指定username:password@，连接并验证登陆指定数据库。若不指定，默认打开 test 数据库。</li>
+<li>?options 是连接选项。如果不使用/database，则前面需要加上/。所有连接选项都是键值对name=value，键值对之间通过&amp;或;（分号）隔开<br>这里就不展开了，<a href="http://www.runoob.com/mongodb/mongodb-connections.html" target="_blank" rel="noopener">更详细的请点击这里了解</a>。</li>
+</ul>
+<p>一般使用mongoose.connect(‘mongodb://localhost:27017/twodb’)连接即可。</p>
+<h3 id="mongodb目录"><a href="#mongodb目录" class="headerlink" title="mongodb目录"></a>mongodb目录</h3><p>C:\Program Files\MongoDB\Server\4.0\bin</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/chris-oil/p/9142795.html" target="_blank" rel="noopener">深入浅出mongoose—–包括mongoose基本所有操作,非常实用!!!!!</a><br><a href="https://www.cnblogs.com/shirly77/p/6536327.html" target="_blank" rel="noopener">mongodb 怎样检测 安装成功 以及mongodb的一些增删改查命令</a><br><a href="http://www.runoob.com/mongodb/mongodb-query.html" target="_blank" rel="noopener">MongoDB 教程</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-28T10:13:04.129Z" itemprop="dateUpdated">2021-03-28 18:13:04</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/03/28/mongoose_mongodb/" target="_blank" rel="external">https://yewills.github.io/2021/03/28/mongoose_mongodb/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongoose/">mongoose</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/28/mongoose_mongodb/&title=《mongoose 与 mongodb笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/28/mongoose_mongodb/&title=《mongoose 与 mongodb笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/03/28/js_design_start/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">js设计模式上(面向对象、闭包、命名空间)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/28/react_form/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">react中的表单处理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mongoose-与-mongodb-基本知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">mongoose 与 mongodb 基本知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是mongodb服务端和客户端"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是mongodb服务端和客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在哪些目录下执行mongo等命令才能连接数据库"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">在哪些目录下执行mongo等命令才能连接数据库?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动mongodb-以及数据库、表格的查看"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">启动mongodb 以及数据库、表格的查看</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在任意目录下启动cmd-执行-mongod"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">在任意目录下启动cmd 执行 mongod;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接着执行-mongo；"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">接着执行 mongo；</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据库、表格的查看；"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">数据库、表格的查看；</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用mongodb原生命令还是mongoose操作数据库？"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">用mongodb原生命令还是mongoose操作数据库？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#花更多时间学mongodb还是mongoose教程？"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">花更多时间学mongodb还是mongoose教程？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#要不要手动建文件夹目录data-db？"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">要不要手动建文件夹目录data\db？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典demo-创建数据库、表格和数据"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">经典demo-创建数据库、表格和数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo-代码"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">demo 代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb客户端mongo检测是否生成成功"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">mongodb客户端mongo检测是否生成成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb、mongoose概念"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">mongodb、mongoose概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb-与-传统数据库-概念对比"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">mongodb 与 传统数据库 概念对比</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb-、mongoose-与-传统数据库-概念对比"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">mongodb 、mongoose 与 传统数据库 概念对比</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongoose核心概念-与-数据库知识-对应关系"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">mongoose核心概念 与 数据库知识 对应关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.8.4.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongoose-model第一个参数的复数才是tables名字！！"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">mongoose.model第一个参数的复数才是tables名字！！</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建或连接数据库"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">创建或连接数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb-localhost-27017-dbName"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">mongodb://localhost:27017/dbName</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb目录"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">mongodb目录</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/28/mongoose_mongodb/&title=《mongoose 与 mongodb笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/28/mongoose_mongodb/&title=《mongoose 与 mongodb笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aS26EMBAFQO5/6ckBIsh7ticSdrGKIgZcLFr9u674+jxeyf3PT/79q+sbFwYGxmsZyRFbxu8j3v3nDlO/FwMD4wBG/ujn4Jh8jjxAJ2fDwMDAyBO4JKUbSxYxMDAw1jLyojR/AgYGBkZexM404NqE8ou1OAYGxgsZedf9///+ynwDAwPjVYxPebVpXH7P1KkwMDC2Zqxqk+XhclXAxcDAOIfRlotjwbFdxciD8jW2nYGBgfFCRvLjFpN/phxwez8GBsYBjCSBW9Xubxc1otYbBgbG1oz5o48tW7ThNQnuGBgYezOSx7XN/VURMl8Uw8DA2JUx1tBvtx2SI44NSm8HAxgYGBsx8lvHGG04Hmy3YWBgHMBI2mdJuGwL1HyBI1/7wMDA2JXRvjJP8tpxwuIpBwYGxhaMPOTVaVkZZNtRxO3OCAYGxnaMvGU2325r23Zt8oqBgbE3Iw+mY+lgnly2RSwGBsZpjDwRjAaKQ+G1beoVNTEGBsYWjLzd3w4p808w80ExMDDOYQzOPB8D7qqmXhFwMTAwDmOMrWXM3NkOGzAwMPZmfMprvvhMAnqdgGJgYGzNaMPcfNOtXQKbX/jAwMDYg9GOGOeDb7u6UX9pDAyMTRlF1TuzEjFd0P6R52JgYGDEiePYW9pVDAwMDIx2MSI/RD7ULEgYGBgHMPJhQF64tuF46pkYGBhbM6ZKx0XhuG0IDg41MTAw3sf4AQOadHJiV9qpAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

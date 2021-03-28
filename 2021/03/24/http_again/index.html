@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>再读http协议 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="前端,http协议">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>再读http协议</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">再读http协议</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-23T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2021-03-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-http_again" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">再读http协议</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-24 00:00:00" datetime="2021-03-23T16:00:00.000Z" itemprop="datePublished">2021-03-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="html协议基础"><a href="#html协议基础" class="headerlink" title="html协议基础"></a>html协议基础</h2><h3 id="了解http协议"><a href="#了解http协议" class="headerlink" title="了解http协议"></a>了解http协议</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>http协议是构建在TCP/IP协议基础上的，是TCP/IP协议的一个子集；</p>
+<p>TCP/IP协议是有四层协议组成度系统：<br>应用层，传输层、网络层、数据链路层<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/http1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>传输层 有两个性质不同的协议：<br>tcp 是有连接的(三次握手)，安全、不过效率低点；<br>UDP 无连接，不安全，不过效率更快；</p>
+<p>下面是数据包封装过程：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/data.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/data.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/datah.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/datah.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/ceng1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/ceng1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/ceng3.png" title="undefined" data-fancybox="images"><img src="/image/http_again/ceng3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/ceng2.png" title="undefined" data-fancybox="images"><img src="/image/http_again/ceng2.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/ceng4.png" title="undefined" data-fancybox="images"><img src="/image/http_again/ceng4.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/ceng5.png" title="undefined" data-fancybox="images"><img src="/image/http_again/ceng5.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/back.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/back.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>http连接何时结束：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/leave.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/leave.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="无连接-请求完即关闭-与-面向连接-三次握手"><a href="#无连接-请求完即关闭-与-面向连接-三次握手" class="headerlink" title="无连接(请求完即关闭) 与 面向连接(三次握手)"></a>无连接(请求完即关闭) 与 面向连接(三次握手)</h4><p>如题。http拥有此特性。</p>
+<h4 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h4><p>对于服务器而言，无论第一次还是第几次请求 都一样，服务器返回的东西是一样的，服务器不会记住之前的请求情况，<br>这就是http请求的无状态性</p>
+<h4 id="两种保持连接状态的手段：cookie与session"><a href="#两种保持连接状态的手段：cookie与session" class="headerlink" title="两种保持连接状态的手段：cookie与session"></a>两种保持连接状态的手段：cookie与session</h4><p>参考《session》</p>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><h4 id="session-一般于-cookie一起使用"><a href="#session-一般于-cookie一起使用" class="headerlink" title="session 一般于 cookie一起使用"></a>session 一般于 cookie一起使用</h4><p>显然无状态性质难以满足某些需求，因此产生了两种保持状态的手段cookie与session；<br>前者存储于客户端，后者存储于服务端；<br>比如你之前做过 登录的http请求，你就有cookie， 第二次请求服务器的时候，虽然请求还是无状态的，<br>但是通过cookie这种技术手段，可以保存之前的请求信息，为下次服务器响应提供信息。</p>
+<p>也称为会话跟踪技术。</p>
+<p>session 基本上要与 cookie 一起使用；<br>如下图，通过session信息 设置cookie，通过cookie，每次更新session信息，进而更新cookie。<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cookie.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cookie.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cookie1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cookie1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cookie2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cookie2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="session与cookie-区别和异同"><a href="#session与cookie-区别和异同" class="headerlink" title="session与cookie 区别和异同"></a>session与cookie 区别和异同</h4><p>前者用户服务端，后者客户端；<br>前者有时效性，可能很短； 后者cookie，可以设置无限长时间；</p>
+<h4 id="session-也可于-url-一起使用"><a href="#session-也可于-url-一起使用" class="headerlink" title="session 也可于 url 一起使用"></a>session 也可于 url 一起使用</h4><p>百分之九十的网站使用cookie 配合 session使用；<br>也有浏览器禁用了cookie，是不是就不能使用session了呢；<br>此时可以使用url 配合 session使用；<br>session本质上是服务端给客户端存储的用户档案；<br>只要有技术能将客户访问信息传给服务端那么 session就可以发挥档案存储作用；<br>除了cookie，客户端可通过url把用户信息(session)传给服务端：<br>一种是给url 添加附加信息(分号隔开)传给服务端：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/url.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/url.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>一种是给url，添加查询信息：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/url1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/url1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="http的长短连接-本质是TCP长短连接"><a href="#http的长短连接-本质是TCP长短连接" class="headerlink" title="http的长短连接 本质是TCP长短连接"></a>http的长短连接 本质是TCP长短连接</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>http协议是应用层的协议，而连接是传输的意思；<br>因此http的长短连接，本质上是传输层的TCP协议；</p>
+<h4 id="http1-1默认长连接"><a href="#http1-1默认长连接" class="headerlink" title="http1.1默认长连接"></a>http1.1默认长连接</h4><p>http1.0默认用短连接；<br>http1.1默认用长连接；</p>
+<h4 id="长连接需要服务端和客户端都支持"><a href="#长连接需要服务端和客户端都支持" class="headerlink" title="长连接需要服务端和客户端都支持"></a>长连接需要服务端和客户端都支持</h4><p>如题。</p>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>长连接适合 要频繁请求的；<br>短连接适合 不常请求；</p>
+<h4 id="长连接要考虑的"><a href="#长连接要考虑的" class="headerlink" title="长连接要考虑的"></a>长连接要考虑的</h4><p>服务端应该要考虑 哪些连接如果长时间处于空闲，就应该关闭连接；<br>或者当一台电脑于服务器长连接超过一定数量时，关闭一些长连接；</p>
+<h3 id="代理-与-抓包"><a href="#代理-与-抓包" class="headerlink" title="代理 与 抓包"></a>代理 与 抓包</h3><p>如下为什么很多抓包工具都使用了代理呢，<br>因为抓包工具都需要抓取请求的入参和返回，只有通过一层抓包工具的代理，所有的请求都发往抓包代理服务器，<br>进行转发，如此，抓包工具就可以抓取 入参和响应，市面上场景抓包工具都有用代理，可以这样验证：<br>打开一个抓包工具，然后点击浏览器的代理设置，此时应该浏览器走了代理了<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/proxy1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/proxy1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/proxy.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/proxy.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p>网关跟代理相似，不同的是，代理只能转发协议相同的请求；<br>网关则没有这个限制；<br>网关是一个协议转换器。<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/gateway.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/gateway.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/gateway1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/gateway1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/gateway2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/gateway2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/gateway3.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/gateway3.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><h4 id="一般对静态资源缓存"><a href="#一般对静态资源缓存" class="headerlink" title="一般对静态资源缓存"></a>一般对静态资源缓存</h4><p>一般页面对请求频率不大的做缓存，比如静态资源，如js、css、图片等；</p>
+<h4 id="缓存一般通过请求头与响应头实现"><a href="#缓存一般通过请求头与响应头实现" class="headerlink" title="缓存一般通过请求头与响应头实现"></a>缓存一般通过请求头与响应头实现</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>Expires 与 Cache-ConTrol 的 max-age共存时，优先级比 max-age地；<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache3.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache3.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>Etag优先级比 Last-Modified 高；</p>
+<h4 id="请求场景demo"><a href="#请求场景demo" class="headerlink" title="请求场景demo"></a>请求场景demo</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache4.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache4.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>如果过了Expires时间，但是文件又没有修改呢，此时引入 Last-Modified，如果Expires过期，但Last-Modified没有变化，那么认为文件是同一个，返回304；<br>Last-Modified优先级比Expires高。<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache5.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache5.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache5-1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache5-1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>Last-Modified是一个秒或者毫秒单位，也有可能在同一秒甚至毫秒内，文件也被改变的情况，此时引入 Etag 作为文件的唯一标识，<br>如果 Etag 改变，其他缓存头都无效，Etag优先级最高。<br>如果Etag未改变，则直接认为 304；<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache6.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache6.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cache6-1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cache6-1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="cdn"><a href="#cdn" class="headerlink" title="cdn"></a>cdn</h3><h4 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h4><p>一个城市只有火车站才能售票，<br>此时城东、城西、城北、城南 的人都只能去火车站买票，<br>一来加大了买票人购票效率，让购票更加麻烦；<br>二来加大了火车站承受压力，全城的人都去火车站买票，火车站就这么大，无法扩建，这样火车站就承受了很大的售票压力。<br>此时火车站在城市各地设置了 火车票代售点，既方便了购票人，也减轻了火车站总站的压力；<br>而cdn就类似这样的火车票代售点。<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cdn.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cdn.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>提高了访问速度；<br>一个是就近提高了访问速度；<br>另外一方面，比如北方大多人用联调，南方大多用电信，此时北方人通过联调cdn服务器肯定要比电信cdn服务器快。</li>
+<li>减轻了对服务端总站访问的压力；</li>
+</ul>
+<h4 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cdn4.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cdn4.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/cdn3.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/cdn3.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h3 id="内容协商机制：不同地区访问，返回不同语言页"><a href="#内容协商机制：不同地区访问，返回不同语言页" class="headerlink" title="内容协商机制：不同地区访问，返回不同语言页"></a>内容协商机制：不同地区访问，返回不同语言页</h3><h4 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/accept1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/accept1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>同一个url，不同地区访问时，可能出现不同语言的页面，<br>这与服务端与客户端内容协商返回机制有关，<br>目前主流的内容协商机制是 服务端判断请求头信息，进行内容返回，<br>如下是主要的内容协商 的请求头：</p>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/accept.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/accept.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="近似匹配-q"><a href="#近似匹配-q" class="headerlink" title="近似匹配 q"></a>近似匹配 q</h4><p>下图 q用来表示优先级权重，用于近似匹配：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/accept2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/accept2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="断点续传和多线程下载"><a href="#断点续传和多线程下载" class="headerlink" title="断点续传和多线程下载"></a>断点续传和多线程下载</h3><h4 id="Range"><a href="#Range" class="headerlink" title="Range"></a>Range</h4><p>断点续传的请求，请求头会包含 Range 请求头：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/range0.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/range0.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>迅雷的下载暂停与继续下载，或者 下载过程 网络异常或中断，网络连接后 继续下载，这些都是断点续传。</p>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/range.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/range.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/range1-1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/range1-1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="206"><a href="#206" class="headerlink" title="206"></a>206</h4><p>断点续传成功后返回的状态码是 206 而不是 200。<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/range1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/range1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="断点续传过程"><a href="#断点续传过程" class="headerlink" title="断点续传过程"></a>断点续传过程</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/range2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/range2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="多线程下载-分片下载"><a href="#多线程下载-分片下载" class="headerlink" title="多线程下载(分片下载)"></a>多线程下载(分片下载)</h4><p>多线程下载与断点续传一样，只是断点续传是被动，一个片段一个片段下载；<br>多线程下载是主动将下载切割成多个片段，同时进行下载。</p>
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><h4 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/http1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/http2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/http2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/http3.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/http3.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/http4.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/http4.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h4><p>406 响应码：<br><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr3.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr3.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr4.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr4.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr5.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr5.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr6-1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr6-1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr6-2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr6-2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/httpattr7.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/httpattr7.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/code1.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/code1.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/code2.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/code2.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/code3.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/code3.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/code4.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/code4.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="再读http协议" href="/image/http_again/code5.jpg" title="undefined" data-fancybox="images"><img src="/image/http_again/code5.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-28T10:13:04.125Z" itemprop="dateUpdated">2021-03-28 18:13:04</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/03/24/http_again/" target="_blank" rel="external">https://yewills.github.io/2021/03/24/http_again/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http协议/">http协议</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/24/http_again/&title=《再读http协议》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/24/http_again/&title=《再读http协议》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/03/28/css/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/01/19/proxy_cores/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">代理 跨域 host代理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#html协议基础"><span class="post-toc-number">1.</span> <span class="post-toc-text">html协议基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#了解http协议"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">了解http协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无连接-请求完即关闭-与-面向连接-三次握手"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">无连接(请求完即关闭) 与 面向连接(三次握手)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无状态"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">无状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#两种保持连接状态的手段：cookie与session"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">两种保持连接状态的手段：cookie与session</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#session"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">session</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#session-一般于-cookie一起使用"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">session 一般于 cookie一起使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#session与cookie-区别和异同"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">session与cookie 区别和异同</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#session-也可于-url-一起使用"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">session 也可于 url 一起使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#http的长短连接-本质是TCP长短连接"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">http的长短连接 本质是TCP长短连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#http1-1默认长连接"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">http1.1默认长连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#长连接需要服务端和客户端都支持"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">长连接需要服务端和客户端都支持</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#适用场景"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">适用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#长连接要考虑的"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">长连接要考虑的</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理-与-抓包"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">代理 与 抓包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网关"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">网关</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缓存"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">缓存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一般对静态资源缓存"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">一般对静态资源缓存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缓存一般通过请求头与响应头实现"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">缓存一般通过请求头与响应头实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求场景demo"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">请求场景demo</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cdn"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">cdn</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#工作机制"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">工作机制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内容协商机制：不同地区访问，返回不同语言页"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">内容协商机制：不同地区访问，返回不同语言页</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-3"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#近似匹配-q"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">近似匹配 q</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#断点续传和多线程下载"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">断点续传和多线程下载</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Range"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">Range</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#206"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">206</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#断点续传过程"><span class="post-toc-number">1.9.3.</span> <span class="post-toc-text">断点续传过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多线程下载-分片下载"><span class="post-toc-number">1.9.4.</span> <span class="post-toc-text">多线程下载(分片下载)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#请求头"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">请求头</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-4"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#accept"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">accept</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他"><span class="post-toc-number">1.10.3.</span> <span class="post-toc-text">其他</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/24/http_again/&title=《再读http协议》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/24/http_again/&title=《再读http协议》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aS27DMAxF0ex/0+4KLNxHOkFNXo2KwrF0PCD40eeD13WzyPPkzemvikuGDBmvZVzHdbfBU0c8v5mcTYYMGXsY5BDnZ+425nvxjyVDhgwZZ0bw6vYRZciQIaPDOCdw/MlaAipDhoydDLIBD6ykrOVB+eFaXIYMGS9k8K777//+ynxDhgwZr2Jc4SItftL0r40Bbk8lQ4aM0Yx0GElSNJ4adgKuDBky9jDioNbIytLxJ3nygUPIkCHj3zP4j9OULk0NO0mkDBkyNjA6TTGSJqYJZWsAIEOGjKGMWvhLL2HUhp3k08iQIWM2ozYA4FcoajUmGS2gSlqGDBmDGLwRxptfnVFlnLbKkCFjNKPWVuMjgTQc16pUGTJk7GHwjWsjxlqrjqeYMmTImMogA8W0uV+7qJFWo+hFMmTIGMFIBwP8WlgaZMmOxQxXhgwZL2ekATdN9fopIwrWMmTIGM0gTf9OSscvcNSKWBkyZOxhkDFkf2yZppK1VFWGDBlTGaSk7IfIdCCajldlyJCxgZGWlPwQaUsuvVgmQ4aMPYz+rY2nBpa8hJYhQ8YGRudqRXppI/0ccf0tQ4aMoYxamCP/T4vYTtErQ4aMDYxaqcnDaCd8B99bhgwZCxhp4ONU3qrrnFaGDBkyaslfp0n39YArQ4aMBQyyfSe55OmmDBky9jBIEcsbZ/3kr3XZQoYMGeMYtbyLIGtpHx+IypAhYwHjD4swiYdNMgOaAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

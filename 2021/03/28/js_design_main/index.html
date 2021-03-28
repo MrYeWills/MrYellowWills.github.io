@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>js设计模式下 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="js设计模式,单例模式,观察者模式,状态模式,单一职责原则,开放封闭原则,舍弃高效率而取可移植性">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>js设计模式下</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">js设计模式下</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-28T10:13:04.129Z" itemprop="datePublished" class="page-time">
+  2021-03-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-js_design_main" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">js设计模式下</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-28 18:13:04" datetime="2021-03-28T10:13:04.129Z" itemprop="datePublished">2021-03-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>js设计模式分两篇来写，此为下篇，上篇为 《js设计模式上(面向对象、闭包、命名空间)》。<br>主要讲设计原则与设计模式两部分。</p>
+<h1 id="js设计原则"><a href="#js设计原则" class="headerlink" title="js设计原则"></a>js设计原则</h1><p>js设计原则有四五个，但真正在js编程中的用得最多的差不多就两个：单一职责原则、开放封闭原则。<br>另外在本节的最后部分，附上《unix／linux 设计哲学》书中提到的几个linux的编码准则，列举其中对js编码有启发意义的几个。</p>
+<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>单一职责原则：一个对象（方法）只做一件事情。<br>单一职责原则要求我们在写复杂方法时，将方法进行抽象，分离颗粒化成多个方法，让每个方法只做一件事情。</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：让一个方法只做一个事情，将复杂职责分解为多个职责，后期维护代码的时候，修改其中一个职责，也就不会影响其他职责，这样代码可读性、可维护性、可扩张、可移植性更好，也更符合开放封闭原则。<br>缺点：增加编写代码的复杂度（能写出单一职责设计原则代码的程序员，也是要求他有一定编程水平才能写出的），当我们按照职责把对象分解成更小粒度之后，实际上也增大了这些对象之间相互联系的难度。</p>
+<p>单一职责原则是js编写代码最重要的两个准则之一，在它的优点面前，它的缺点不值得一提。</p>
+<h2 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>开放封闭原则：对扩展开放，对修改封闭。<br>开放封闭原则要求我们写出来的方法，当对程序方法进行扩展时，更加方便，不要修改原来的行为方法。</p>
+<p>通过一段代码来体现 开放封闭原则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 这是原代码，此代码相比之下，每次扩展都需要修改makeSound方法，违反了开放封闭原则</span><br><span class="line">//每次扩展时，因为要修改公共方法makeSound，你还要担心有回归测试的一些问题，还要去测试Duck和Chicken</span><br><span class="line">var makeSound = function(animal)&#123;</span><br><span class="line">  if(animal instanceof Duck)&#123;</span><br><span class="line">    console.log(&apos;嘎嘎嘎&apos;);</span><br><span class="line">  &#125;else if(animal instanceof Chicken)&#123;</span><br><span class="line">    console.log(&apos;咯咯咯&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var Duck = function()&#123;&#125;</span><br><span class="line">var Chicken = function()&#123;&#125;</span><br><span class="line">makeSound(new Duck);</span><br><span class="line">makeSound(new Chicken);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 这是改良后代码，此代码相比之下，每次扩展都不用修改makeSound方法，更加易于扩展，而且makeSound是一个公共的方法，</span><br><span class="line">//每次扩展时，因为不用修改公共方法makeSound，就不会担心有回归测试的一些问题，不用担心还要去测试Duck和Chicken</span><br><span class="line">var makeSound = function(animal)&#123;</span><br><span class="line">  animal.sound();</span><br><span class="line">&#125;</span><br><span class="line">var Duck = function()&#123;&#125;</span><br><span class="line">Duck.prototype.sound = function()&#123;</span><br><span class="line">  console.log(&apos;嘎嘎嘎&apos;);</span><br><span class="line">&#125;</span><br><span class="line">var Chicken = function()&#123;&#125;</span><br><span class="line">Chicken.prototype.sound = function()&#123;</span><br><span class="line">  console.log(&apos;咯咯咯&apos;);</span><br><span class="line">&#125;</span><br><span class="line">makeSound(new Duck);</span><br><span class="line">makeSound(new Chicken);</span><br><span class="line"></span><br><span class="line">//增加新需求，添加一个Dog行为</span><br><span class="line">var Dog = function()&#123;&#125;</span><br><span class="line">Dog.prototype.sound = function()&#123;</span><br><span class="line">  console.log(&apos;汪汪汪&apos;);</span><br><span class="line">&#125;</span><br><span class="line">makeSound(new Dog);</span><br></pre></td></tr></table></figure>
+<h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：从上面代码例子中看到，开放封闭原则的代码，后期可维护性更高，扩展性更强，当有扩展新功能时，风险更小，要做的回归测试问题更少，因此维护、扩展成本更低。<br>缺点：在项目刚开始时，因为业务不熟，或业务不稳定，因此你很难抽象出 方法中永远变化的部分和永远不变化的部分进行封装。</p>
+<h3 id="接受第一次愚弄"><a href="#接受第一次愚弄" class="headerlink" title="接受第一次愚弄"></a>接受第一次愚弄</h3><p>为了解决上面说的缺点，一种现实的做法是，在项目刚开始时，我们假设方法的所有部分都是不变化的，不对方法进行开放封闭进行抽象封装处理，项目初期快速编码完成需求，不影响项目进度。<br>当后期变化发生时，再来回过头来封装这些变化地方，确保下一次不会掉进同一个坑里。<br>我们将这条编码经验称之为 ‘接受第一次愚弄’，但永远不会被同样的招数击倒第二次。</p>
+<h2 id="其他准则"><a href="#其他准则" class="headerlink" title="其他准则"></a>其他准则</h2><p>下面是unix／linux 设计哲学 的 几条准则，对js编程依然有借鉴：<br>准则1:小即是美<br>准则2:让每个程序只做好一件事情<br>准则3:快速建立原型（快速更早将功能骨架做好，先让用户用起来，然后客户边用边反馈，开发根据这个实施开发客户反馈需求）<br>准则4:舍弃高效率而取可移植性（硬件升级或浏览器内核升级后，原来不高效的写法，因为计算机硬件提高，原来不高效写法不影响效率了）<br>准则5:充分地抽象封装程序，以此达到程序复用性</p>
+<h1 id="js设计模式"><a href="#js设计模式" class="headerlink" title="js设计模式"></a>js设计模式</h1><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>单例模式 定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<h3 id="标准单例模式示例"><a href="#标准单例模式示例" class="headerlink" title="标准单例模式示例"></a>标准单例模式示例</h3><p>标准的单例模式示例，如下代码符合单例模式的几点定义：</p>
+<ul>
+<li>Singletom是一个类；</li>
+<li>new Singletom 是它点实例；</li>
+<li>全局范围内，可通过Singletom访问这个类。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//标准的单例模式示例</span><br><span class="line">var Singletom = function(name)&#123;</span><br><span class="line">            console.log(name)</span><br><span class="line">          &#125;</span><br><span class="line">Singletom.getInstance = (function()&#123;</span><br><span class="line">var instance = null;</span><br><span class="line">return function(name)&#123;</span><br><span class="line">    if(!instance)&#123;</span><br><span class="line">    instance = new Singletom(name);</span><br><span class="line">    &#125;</span><br><span class="line">    return instance;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)()</span><br><span class="line">var a = Singletom.getInstance(&apos;sven1&apos;);</span><br><span class="line">var b = Singletom.getInstance(&apos;sven2&apos;);</span><br><span class="line">console.log(a === b)//true</span><br></pre></td></tr></table></figure>
+<h3 id="将以上-标准单例模式示例-优化"><a href="#将以上-标准单例模式示例-优化" class="headerlink" title="将以上 标准单例模式示例 优化"></a>将以上 标准单例模式示例 优化</h3><p>上面的标准示例，将new 实例和 管理是否有无两个功能放在一个函数内，违背了 单一职责原则，在此改造下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//优化后的单例模式示例</span><br><span class="line">var CreateDiv = function(html)&#123;</span><br><span class="line">          this.html = html;</span><br><span class="line">          this.init()</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">CreateDiv.prototype.init = function()&#123;</span><br><span class="line">    var div = document.createElement(&apos;div&apos;);</span><br><span class="line">    div.innerHTML = this.html;</span><br><span class="line">    document.body.appendChild(div);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var ProxySingletonCreateDiv = (function()&#123;</span><br><span class="line">    var instance;</span><br><span class="line">    return function(html)&#123;</span><br><span class="line">    if(! instance)&#123;</span><br><span class="line">        instance = new CreateDiv(html);</span><br><span class="line">    &#125;</span><br><span class="line">    return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">var a = new ProxySingletonCreateDiv(&apos;sven1&apos;);</span><br><span class="line">var b = new ProxySingletonCreateDiv(&apos;sven2&apos;);</span><br><span class="line">console.log(a === b)//true</span><br></pre></td></tr></table></figure></p>
+<h3 id="通用的单例模式示例"><a href="#通用的单例模式示例" class="headerlink" title="通用的单例模式示例"></a>通用的单例模式示例</h3><p>上面我们解释了标准的单例模式，这样可以更加容易理解单例模式是什么，在实际应用中，我们更偏向使用基于以上标准单例模式改造而来的通用的单例模式。<br>我们不必拘泥于单例模式的定义，单例模式必须要求是一个类 和 实例，<br>其实类也是一个函数，实例其实就是对call或apply的应用，我们不必拘泥于new 实例，大可 将 函数的直接执行 来 代替实例。<br>单例模式的精神就是：</p>
+<ul>
+<li>有一个全局的函数（类）</li>
+<li>此函数被执行或被实例一次<br>满足了以上两个条件，都可以称之为单例设计模式；<br>下面写了一个经典 单例模式示例：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//优化后的单例模式示例</span><br><span class="line">var num = 0;</span><br><span class="line">var CreateDiv = function(...args)&#123;</span><br><span class="line">    num ++;</span><br><span class="line">    console.log(args[0],`一共执行了$&#123;num&#125;次`);</span><br><span class="line">    var div = document.createElement(&apos;div&apos;);</span><br><span class="line">    div.innerHTML = this.html;</span><br><span class="line">    document.body.appendChild(div);</span><br><span class="line">    return div;</span><br><span class="line">&#125;</span><br><span class="line">ProxySingletonCreateDiv 专门用来管理 函数是否执行</span><br><span class="line">var ProxySingletonCreateDiv = function(fn)&#123;</span><br><span class="line">    var instance;</span><br><span class="line">    return function()&#123;</span><br><span class="line">    if(! instance)&#123;</span><br><span class="line">        instance = fn.apply(this, arguments);</span><br><span class="line">    &#125;</span><br><span class="line">    return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var a = ProxySingletonCreateDiv(CreateDiv);</span><br><span class="line"></span><br><span class="line">a(&apos;单例模式&apos;)//单例模式 一共执行了1次</span><br><span class="line">a(&apos;单例模式&apos;)//单例模式 一共执行了1次</span><br><span class="line"></span><br><span class="line">//如果我们要扩展，增加一个CreateFrame，只需这样做,非常容易扩展</span><br><span class="line">var CreateFrame = function(...args)&#123;</span><br><span class="line">    console.log(args[0]);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">var f = ProxySingletonCreateDiv(CreateFrame);</span><br><span class="line">f(&apos;单例模式&apos;)//单例模式 一共执行了1次</span><br><span class="line">f(&apos;单例模式&apos;)//单例模式 一共执行了1次</span><br></pre></td></tr></table></figure>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>购物车，登陆，redux 的 store都是单例模式的运用。</p>
+<h3 id="如何写一个单例模式"><a href="#如何写一个单例模式" class="headerlink" title="如何写一个单例模式"></a>如何写一个单例模式</h3><p>由上面例子看到，写一个单例模式的功能，基本上要借助闭包来实现。<br>通过上面的例子看到，在单例模式中，请将管理单例 和 功能函数 分开编写。</p>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>观察者模式也称为发布订阅模式</p>
+<h3 id="es6示例"><a href="#es6示例" class="headerlink" title="es6示例"></a>es6示例</h3><h4 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h4><p>对下面例子解说，<br>新闻公司通过 暴露出来一个接口attach，用来给订阅者(观察者)报名或参加订阅，<br>新闻公司内部，用以下几个属性用来记录情况：<br>this.foodState —- 将要推送的 食品消息<br>this.houseState —- 将要推送的 房产消息<br>this.foodObservers —- 食品消息订阅者个人信息<br>this.houseObservers —- 房产消息订阅者个人信息<br>this.deliveryType —- 将要推送的消息的类别<br>deliveryState —- 推送消息<br>notifyAllObservers  —- 给每个订阅者打电话将消息通知给订阅者<br>getState —- 暴露给订阅者的API,订阅者接到通知消息的电话后，可通过公司提供的渠道网站或短信来看新闻</p>
+<p>订阅者：<br>订阅者用以下几个属性来记录情况<br>this.phoneNum —- 订阅新闻需要提供给新闻公司的 手机号码<br>this.subscribeType  —- 订阅新闻需要提供给新闻公司的 新闻类别<br>this.company  —- 用来保存公司资料，刚开始是根据公司提供的报名方式attach进行报名，后期新闻发送消息是，<br>                   可以通过公司提供的渠道(this.company.getState)查看消息，也可以针对新闻服务公司的服务态度，给公司反馈或投诉建议<br>this.company.attach 通过公司对外暴露的接口，登记报名订阅。</p>
+<p>cellphone 订阅者对外暴露给新闻公司自己接收消息的方式，用来update。</p>
+<h4 id="示例小结"><a href="#示例小结" class="headerlink" title="示例小结"></a>示例小结</h4><p>新闻公司必须 对订阅者暴露 订阅方式attach；<br>订阅者必须 对公司暴露 接收消息方式cellphone；<br>因为订阅者要 保存公司的资料，例如获取订阅方式等等，所以订阅者必须设计一个属性用来保存公司这个对象总类；<br>因为公司要 保存订阅者的资料，例如获取订阅者的接收方式等等，所以公司必须设计一个属性用来保存订阅者完整类；</p>
+<p>因为公司要 发送消息deliveryState，就要用一个属性来保存将要发的消息foodState，然后要执行打电话通知notifyAllObservers，<br>通知完后，还要提供网站或app或短信等渠道getState，让订阅者查看新闻。</p>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><p>此代码针对上面解说而写的，此示例代码的好处是可以很好地先理解好观察者到底是一个什么东西。<br>但此代码也有弊端，例如NewsCompany不易维护性，NewsCompany中维护了food，house，如果将来增加了money等等呢，需要改写NewsCompany内部。所以NewsCompany需要进一步优化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">// 主题，接收状态变化，触发每个观察者</span><br><span class="line"></span><br><span class="line">class NewsCompany &#123;</span><br><span class="line">    constructor() &#123;</span><br><span class="line">        this.foodState = 0</span><br><span class="line">        this.houseState = 0</span><br><span class="line">        this.foodObservers = []</span><br><span class="line">        this.houseObservers = []</span><br><span class="line">        this.deliveryType = 0</span><br><span class="line">    &#125;</span><br><span class="line">    getState() &#123;</span><br><span class="line">        if(this.deliveryType === &apos;food&apos;)&#123;</span><br><span class="line">            return this.foodState</span><br><span class="line">        &#125;</span><br><span class="line">        return this.houseState</span><br><span class="line">    &#125;</span><br><span class="line">    deliveryState(state,deliveryType) &#123;</span><br><span class="line">        if(deliveryType === &apos;food&apos;)&#123;</span><br><span class="line">            this.foodState = state</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.houseState = state</span><br><span class="line">        &#125;</span><br><span class="line">        this.deliveryType = deliveryType;</span><br><span class="line">        this.notifyAllObservers(deliveryType)</span><br><span class="line">    &#125;</span><br><span class="line">    attach(observer) &#123;</span><br><span class="line">        if(observer.subscribeType === &apos;food&apos;)&#123;</span><br><span class="line">            this.foodObservers.push(observer)</span><br><span class="line">        &#125;</span><br><span class="line">        if(observer.subscribeType === &apos;house&apos;)&#123;</span><br><span class="line">            this.houseObservers.push(observer)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    notifyAllObservers(type) &#123;</span><br><span class="line">        const observers = type === &apos;food&apos; ? this.foodObservers : this.houseObservers;</span><br><span class="line">        observers.forEach(observer =&gt; &#123;</span><br><span class="line">            //发布消息，给每个订阅者留的电话打电话，通知订阅者</span><br><span class="line">            observer.cellphone()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 观察者，等待被触发</span><br><span class="line">class Observer &#123;</span><br><span class="line">    constructor(phoneNum, subscribeType ,company) &#123;</span><br><span class="line">        this.phoneNum = phoneNum</span><br><span class="line">        //订阅的第一步，就必须获得订阅内容的资料或对象，我们把这个对象看成是新闻服务公司，这个新闻服务公司提供很多种类的新闻：房产新闻，食品新闻，体育新闻。。。。</span><br><span class="line">        this.company = company //必不可少，将公司资料保存下来，可以针对新闻服务公司的服务态度，给公司反馈或投诉建议</span><br><span class="line">        this.subscribeType = subscribeType</span><br><span class="line">        this.company.attach(this)//报名，参加订阅，这一步是不是可以理解为订阅.attach就是公司给订阅者的报名方式</span><br><span class="line">    &#125;</span><br><span class="line">    //cellphone 新闻服务公司，有消息时会打电话给每个订阅者，cellphone模拟的是订阅者手机接到电话的行为，很多示例中将cellphone写作update，不过为了方便理解，在此写成cellphone</span><br><span class="line">    cellphone() &#123;</span><br><span class="line">        console.log(`$&#123;this.phoneNum&#125; 收到, state新闻: $&#123;this.company.getState()&#125;`)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 测试代码</span><br><span class="line">let newsCompany = new NewsCompany()</span><br><span class="line">//对于新闻服务公司来说，他只需要知道 订阅者 电话号码 和 订阅内容即可，一个人可以有很多特性，例如名字，性别，爱好等等，</span><br><span class="line">//但对于新闻服务公司而言，它只需要知道订阅者的 手机号码 和 新闻类别，所以一个订阅者的对象，只需要具备手机号码和订阅新闻类别两个属性即可。</span><br><span class="line">//所以我们上面设计的订阅者类Observer，只有phoneNum, subscribeType 两个属性。</span><br><span class="line">//从观察者的角度看，它还需要 一个属性来将公司资料保存下来，可以针对新闻服务公司的服务态度，给公司反馈或投诉建议</span><br><span class="line">//基于以上，一个订阅者，需要设置三个属性，而cellphone是公司打电话来时，模拟订阅者手机接到电话的行为</span><br><span class="line">let o1 = new Observer(&apos;15099281126&apos;, &apos;food&apos;, newsCompany)</span><br><span class="line">let o2 = new Observer(&apos;15099281127&apos;, &apos;food&apos;, newsCompany)</span><br><span class="line">let o3 = new Observer(&apos;15099281128&apos;, &apos;food&apos;, newsCompany)</span><br><span class="line">newsCompany.deliveryState(&apos;奶制食品新闻&apos;,&apos;food&apos;);//给每个订阅者发布消息</span><br><span class="line"></span><br><span class="line">let o7 = new Observer(&apos;13899761271&apos;, &apos;house&apos;, newsCompany)</span><br><span class="line">let o8 = new Observer(&apos;13899761272&apos;, &apos;house&apos;, newsCompany)</span><br><span class="line">let o9 = new Observer(&apos;13899761273&apos;, &apos;house&apos;, newsCompany)</span><br><span class="line">newsCompany.deliveryState(&apos;房产新闻&apos;,&apos;house&apos;);//给每个订阅者发布消息</span><br></pre></td></tr></table></figure></p>
+<h4 id="优化及延伸方式一"><a href="#优化及延伸方式一" class="headerlink" title="优化及延伸方式一"></a>优化及延伸方式一</h4><p>对示例代码优化及延伸方式一：<br>上面代码不易扩展，将上面代码优化：NewsCompany中去掉constructor，并且改写food与house切换，将cellphone改为callback不再统一管理callback：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">class NewsCompany &#123;</span><br><span class="line">    deliveryState(state,deliveryType) &#123;</span><br><span class="line">        this[`$&#123;deliveryType&#125;State`] = state;</span><br><span class="line">        this.deliveryType = deliveryType;</span><br><span class="line">        this.notifyAllObservers()</span><br><span class="line">    &#125;</span><br><span class="line">    attach(observer) &#123;</span><br><span class="line">        const &#123;subscribeType&#125; = observer;</span><br><span class="line">        if(!this[`$&#123;subscribeType&#125;Observers`])&#123;</span><br><span class="line">            this[`$&#123;subscribeType&#125;Observers`] = [];</span><br><span class="line">        &#125;</span><br><span class="line">        this[`$&#123;subscribeType&#125;Observers`].push(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    notifyAllObservers() &#123;</span><br><span class="line">        const observers = this[`$&#123;this.deliveryType&#125;Observers`];</span><br><span class="line">        observers.forEach(observer =&gt; &#123;</span><br><span class="line">            observer.callback(this[`$&#123;this.deliveryType&#125;State`], this, observer)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 观察者，等待被触发</span><br><span class="line">class Observer &#123;</span><br><span class="line">    constructor(phoneNum, subscribeType ,company, callback) &#123;</span><br><span class="line">        this.phoneNum = phoneNum</span><br><span class="line">        this.subscribeType = subscribeType</span><br><span class="line">        this.callback = callback</span><br><span class="line">        company.attach(this)//报名，参加订阅，</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let newsCompany = new NewsCompany()</span><br><span class="line">//state, newsCompany, observerMyself 将newsCompany和observerMyself都传给callback，以备不时之需</span><br><span class="line">let o1 = new Observer(&apos;15099281126&apos;, &apos;food&apos;, newsCompany, (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">    console.log(`15099281126 收到, state新闻: `,state)</span><br><span class="line">&#125;)</span><br><span class="line">let o2 = new Observer(&apos;15099281127&apos;, &apos;food&apos;, newsCompany, (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">    console.log(`15099281127 收到, state新闻: `,state)</span><br><span class="line">&#125;)</span><br><span class="line">let o3 = new Observer(&apos;15099281128&apos;, &apos;food&apos;, newsCompany, (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">    console.log(`15099281128 收到, state新闻: `,state)</span><br><span class="line">&#125;)</span><br><span class="line">newsCompany.deliveryState(&apos;奶制食品新闻&apos;,&apos;food&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let o7 = new Observer(&apos;13899761271&apos;, &apos;house&apos;, newsCompany, (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">    console.log(`13899761271 收到, state新闻: `,state)</span><br><span class="line">&#125;)</span><br><span class="line">let o8 = new Observer(&apos;13899761272&apos;, &apos;house&apos;, newsCompany, (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">    console.log(`13899761272 收到, state新闻: `,state)</span><br><span class="line">&#125;)</span><br><span class="line">let o9 = new Observer(&apos;13899761273&apos;, &apos;house&apos;, newsCompany, (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">    console.log(`13899761273 收到, state新闻: `,state)</span><br><span class="line">&#125;)</span><br><span class="line">newsCompany.deliveryState(&apos;房产新闻&apos;,&apos;house&apos;);</span><br></pre></td></tr></table></figure>
+<h4 id="优化及延伸方式二"><a href="#优化及延伸方式二" class="headerlink" title="优化及延伸方式二"></a>优化及延伸方式二</h4><p>对示例代码优化及延伸方式二：<br>你会发现上面的phoneNum其实可有可无，NewsCompany保持跟上面不变，改造其他部分：<br>删除phoneNum,<br>将attach提取出来，<br>删除Observer类，直接用参数来代替，<br>参数因为可能会超过3个改成options对象方式容易扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let newsCompany = new NewsCompany()</span><br><span class="line">//state, newsCompany, observerMyself 将newsCompany和observerMyself都传给callback，以备不时之需</span><br><span class="line">newsCompany.attach(&#123;</span><br><span class="line">    subscribeType : &apos;food&apos;, </span><br><span class="line">    callback: (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">      console.log(`o1 订阅或观察者 收到, state新闻: `,state)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">newsCompany.attach(&#123;</span><br><span class="line">    subscribeType : &apos;food&apos;, </span><br><span class="line">    callback: (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">      console.log(`o2 订阅或观察者 收到, state新闻: `,state)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">newsCompany.attach(&#123;</span><br><span class="line">    subscribeType : &apos;food&apos;, </span><br><span class="line">    callback: (state, newsCompany, observerMyself)=&gt;&#123;</span><br><span class="line">      console.log(`o3 订阅或观察者 收到, state新闻: `,state)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">newsCompany.deliveryState(&apos;奶制食品新闻&apos;,&apos;food&apos;);</span><br></pre></td></tr></table></figure>
+<p>此时，你是否可以将attach想象成 addEventListener，deliveryState想象成fire或trigger。</p>
+<h3 id="es5示例"><a href="#es5示例" class="headerlink" title="es5示例"></a>es5示例</h3><p>由于js天生可以很优雅地使用花括号来构造一个对象，而不用通过class实例化，因此我们可很容易通过es5来写一个观察者与订阅模式示例：</p>
+<h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">var Event = (function()&#123;</span><br><span class="line">    var ClientList = &#123;&#125;,</span><br><span class="line">    listen,</span><br><span class="line">    trigger,</span><br><span class="line">    remove;</span><br><span class="line">    listen = function(key, fn)&#123;</span><br><span class="line">        if(!ClientList[key])&#123;</span><br><span class="line">            ClientList[key] = []</span><br><span class="line">        &#125;</span><br><span class="line">        ClientList[key].push(fn);</span><br><span class="line">    &#125;</span><br><span class="line">    trigger = function()&#123;</span><br><span class="line">        var key = Array.prototype.shift.call(arguments),</span><br><span class="line">        fns = ClientList[key];</span><br><span class="line">        if(!fns || fns.listen === 0)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        for(var i = 0; i&lt;fns.length; i++)&#123;</span><br><span class="line">            fns[i].apply(this,arguments);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    remove = function(key, fn)&#123;</span><br><span class="line">        var fns = ClientList[key];</span><br><span class="line">        if(!fns)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        var fns = ClientList[key];</span><br><span class="line">        if(!fn)&#123;</span><br><span class="line">            fns &amp;&amp; (fns.length = 0);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            for (var l = fns.length -1;l&gt;0;l--)&#123;</span><br><span class="line">                var _fn = fns[l];</span><br><span class="line">                if(_fn === fn)&#123;</span><br><span class="line">                    fns.splice(l,1);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;listen,trigger,remove&#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">Event.listen(&apos;squeremeter88&apos;, function(price)&#123;</span><br><span class="line">    console.log(&apos;价格= &apos;+price);</span><br><span class="line">&#125;)</span><br><span class="line">Event.listen(&apos;squeremeter88&apos;, function(price)&#123;</span><br><span class="line">    console.log(&apos;价格_111= &apos;+price);</span><br><span class="line">&#125;)</span><br><span class="line">Event.trigger(&apos;squeremeter88&apos;, 20000);</span><br></pre></td></tr></table></figure>
+<p>当业务复杂后，可能出现命名污染的现象，这个时候，我们可以改写Event，通过Event.creat(namespace).listen(add),<br>Event.creat(namespace).trigger(add),详细可看 《js设计模式》书</p>
+<h4 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h4><p>一个按钮被点击时，出发一个div显示最新的count值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;button id=&quot;count&quot;&gt;click&lt;/button&gt;</span><br><span class="line">&lt;div id=&quot;show&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var a = (function()&#123;</span><br><span class="line">    var count = 0;</span><br><span class="line">    var button = document.getElementById(&apos;count&apos;);</span><br><span class="line">    button.onclick = function()&#123;</span><br><span class="line">        //Event 就是上面的Event不变。</span><br><span class="line">        Event.trigger(&apos;add&apos;, count++)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">var b = (function()&#123;</span><br><span class="line">    var div = document.getElementById(&apos;show&apos;);</span><br><span class="line">    Event.listen(&apos;add&apos;, function(count)&#123;</span><br><span class="line">        div.innerHTML = count</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)()</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>网页事件绑定，promise的一系列then，还有react的生命周期函数其实都是定义callbase，是一种观察者模式</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>它定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都将得到通知。<br>它的特征是，</p>
+<ul>
+<li>发布和订阅</li>
+<li>一对多（包含一对一）<br>设计的原则：<br>主题与观察者分离，不是主动触发而是被动监听，两者解耦。</li>
+</ul>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>上面举例来es6和es5两种方式的观察者模式示例，es6和es5两种方式，各有各的优点，本质上也是一样的，为了便于直观理解观察者模式，可先行记忆es5示例的形式。</p>
+<h3 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h3><p>缺点 观察者模式容易隐藏 代码逻辑，过量使用观察者模式，后期后期维护时，可能不好找入口的风险带来一些麻烦。<br>优点 观察者模式可以用来很好地写异步编程，事件驱动编程。</p>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2><h3 id="反例"><a href="#反例" class="headerlink" title="反例"></a>反例</h3><p>举例一个常规编程，但这个编程是一个不好的例子–反例，下节会基于此做优化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var Light = function()&#123;</span><br><span class="line">    this.state = &apos;off&apos;</span><br><span class="line">    this.button = null</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Light.prototype.init = function()&#123;</span><br><span class="line">    var button = document.createElement(&apos;button&apos;),</span><br><span class="line">    self = this;</span><br><span class="line">    this.button = document.body.appendChild(button);</span><br><span class="line">    this.button.innerHTML = &apos;开关&apos;;</span><br><span class="line">    this.button.onclick = function()&#123;</span><br><span class="line">        self.buttonWasPressed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Light.prototype.buttonWasPressed = function(newState)&#123;</span><br><span class="line">   if(this.state === &apos;off&apos;)&#123;</span><br><span class="line">       console.log(&apos;弱光&apos;);//用console来象征 状态行为</span><br><span class="line">       this.state = &apos;weakLight&apos;;</span><br><span class="line">   &#125;else if(this.state === &apos;weakLight&apos;)&#123;</span><br><span class="line">       console.log(&apos;高光&apos;);</span><br><span class="line">       this.state = &apos;strongLight&apos;;</span><br><span class="line">   &#125;else if(this.state === &apos;strongLight&apos;)&#123;</span><br><span class="line">       console.log(&apos;关灯&apos;);</span><br><span class="line">       this.state = &apos;off&apos;;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var light = new Light();</span><br><span class="line">light.init();</span><br></pre></td></tr></table></figure></p>
+<p>需求来了，如果再增加一个超级强光，那么就要改写buttonWasPressed，违反了开放封闭原则，而且Light.prototype.buttonWasPressed会越来越臃肿，<br>代码中状态行为只有一句console.log(),但实际开发中，肯定不止这一句代码，基于以上两点理由，因为有必要 改写成下一节的示例代码</p>
+<h3 id="标准状态模式示例"><a href="#标准状态模式示例" class="headerlink" title="标准状态模式示例"></a>标准状态模式示例</h3><p>将上节反例demo改造，优化，以下是标准状态模式demo：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//标准状态模式示例</span><br><span class="line">var LightState = function(nextState, stateCallback)&#123;</span><br><span class="line">    this.stateCallback = stateCallback;</span><br><span class="line">    this.nextState = nextState;</span><br><span class="line">&#125;</span><br><span class="line">LightState.prototype.buttonWasPressed = function()&#123;</span><br><span class="line">    this.stateCallback();//对应的行为</span><br><span class="line">    this.light.setState(this.nextState) //切换状态</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var OffLightState = function(light)&#123;</span><br><span class="line">    this.light = light;</span><br><span class="line">&#125;</span><br><span class="line">OffLightState.prototype = new LightState(&apos;weakLightState&apos;, function()&#123;</span><br><span class="line">    console.log(&apos;弱光&apos;);//自定义对应的行为</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var WeakLightState = function(light)&#123;</span><br><span class="line">    this.light = light;</span><br><span class="line">&#125;</span><br><span class="line">WeakLightState.prototype = new LightState(&apos;strongLightState&apos; ,function()&#123;</span><br><span class="line">    console.log(&apos;强光&apos;);//自定义对应的行为</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var StrongLightState = function(light)&#123;</span><br><span class="line">    this.light = light;</span><br><span class="line">&#125;</span><br><span class="line">StrongLightState.prototype = new LightState(&apos;offLightState&apos; , function()&#123;</span><br><span class="line">    console.log(&apos;关灯&apos;);//自定义对应的行为</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var LightContext = function()&#123;</span><br><span class="line">    this.offLightState = new OffLightState(this)</span><br><span class="line">    this.weakLightState = new WeakLightState(this)</span><br><span class="line">    this.strongLightState = new StrongLightState(this)</span><br><span class="line">    this.button = null</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LightContext.prototype.init = function()&#123;</span><br><span class="line">    var button = document.createElement(&apos;button&apos;),</span><br><span class="line">    self = this;</span><br><span class="line">    this.button = document.body.appendChild(button);</span><br><span class="line">    this.button.innerHTML = &apos;开关&apos;;</span><br><span class="line">    this.currState = this.offLightState; //设置开始状态</span><br><span class="line">    this.button.onclick = function()&#123;</span><br><span class="line">        self.currState.buttonWasPressed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">LightContext.prototype.setState = function(newState)&#123;</span><br><span class="line">   this.currState = this[newState]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var light = new LightContext();</span><br><span class="line">light.init();</span><br></pre></td></tr></table></figure></p>
+<p>当增加一个超级强光时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var SuperStrongLightState = function(light)&#123;</span><br><span class="line">    this.light = light;</span><br><span class="line">&#125;</span><br><span class="line">SuperStrongLightState.prototype = new LightState(&apos;offLightState&apos; , function()&#123;</span><br><span class="line">    console.log(&apos;关灯&apos;);//自定义对应的行为</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">StrongLightState.prototype = new LightState(&apos;superStrongLightState&apos; , function()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var LightContext = function()&#123;</span><br><span class="line">...</span><br><span class="line">    this.superStrongLightState = new SuperStrongLightState(this)</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="状态模式的优缺点"><a href="#状态模式的优缺点" class="headerlink" title="状态模式的优缺点"></a>状态模式的优缺点</h3><p>以上就是状态模式的魅力，符合开放封闭原则，可以不让buttonWasPressed臃肿，其实就是不让context无限臃肿。<br>缺点 会增加代码量，把逻辑分散到状态类中，无法在一个地方就可以将逻辑不能一目了然。</p>
+<h3 id="设计原则与定义"><a href="#设计原则与定义" class="headerlink" title="设计原则与定义"></a>设计原则与定义</h3><p>状态模式，最重要的特征是定义状态类(如上的LightState)，并将逻辑分散到状态类中。<br>将状态(LightState)与主体(LightContext)分离，状态变化的逻辑单独到每个状态类中(例如OffLightState)处理。</p>
+<p>状态模式的定义较晦涩：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。<br>这个定义基本看不懂，可以忽视掉。<br>状态模式的精髓在于 定义状态类，并状态对应的逻辑封装到状态类中。</p>
+<h3 id="什么情况下使用"><a href="#什么情况下使用" class="headerlink" title="什么情况下使用"></a>什么情况下使用</h3><p>什么情况下使用状态模式，<br>如上面优缺点说的，<br>当你不希望Light.prototype.buttonWasPressed太臃肿时；<br>当每次有新需求你不希望每次都去修改Light.prototype.buttonWasPressed时；<br>当你做的功能业务有太多状态变化，且每个状态逻辑较多时；<br>那么就请使用状态模式吧</p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h3 id="两者代理模式的概念"><a href="#两者代理模式的概念" class="headerlink" title="两者代理模式的概念"></a>两者代理模式的概念</h3><p>js中用得最多的虚拟代理和缓存代理；<br>虚拟代理指通过代理，将一个函数延迟或等到真正需要执行的时候再执行，说白了就是延时下，例如下面例子中，等图片完全加载好后再执行真正的加载。<br>缓存代理，如下例子中，指通过代理，不用每次都执行函数，开始执行完函数后，后期从缓存取，如果我计算或2+3，后面再2+3时，直接从缓存取。<br>代理模式很简单直接通过以下两个例子来领略下代理模式；</p>
+<h3 id="虚拟代理示例"><a href="#虚拟代理示例" class="headerlink" title="虚拟代理示例"></a>虚拟代理示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var myImage = (function()&#123;</span><br><span class="line">    var imgNode = document.createElement(&apos;img&apos;);</span><br><span class="line">    document.body.appendChild(imgNode);</span><br><span class="line">    return &#123;</span><br><span class="line">        setSrc: function(src)&#123;</span><br><span class="line">            imgNode.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">var proxyImage = (function()&#123;</span><br><span class="line">    var img = new Image;</span><br><span class="line">    img.onload = function()&#123;</span><br><span class="line">        myImage.setSrc(this.src)</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">        setSrc:function(src)&#123;</span><br><span class="line">            myImage.setSrc(&apos;file:// /c:/user/abc.gif&apos;);</span><br><span class="line">            img.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">//myImage.setSrc(&apos;http://s9.knowsky.com/bizhi/l/20100615/2010112611%20(1).jpg&apos;)</span><br><span class="line">proxyImage.setSrc(&apos;http://s9.knowsky.com/bizhi/l/20100615/2010112611%20(1).jpg&apos;)</span><br></pre></td></tr></table></figure>
+<p>注意一个现象，myImage有一个setSrc接口，proxyImage也有一个setSrc接口，并且代理函数体内用了myImage.setSrc；</p>
+<h3 id="缓存代理示例"><a href="#缓存代理示例" class="headerlink" title="缓存代理示例"></a>缓存代理示例</h3><h4 id="简单版示例"><a href="#简单版示例" class="headerlink" title="简单版示例"></a>简单版示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var mult = function()&#123;</span><br><span class="line">    console.log(&apos;开始计算乘积&apos;);</span><br><span class="line">    var a = 1;</span><br><span class="line">    for (var i =0, l = arguments.length; i&lt;l; i++)&#123;</span><br><span class="line">        a = a*arguments[i]</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var proxyMult = (function()&#123;</span><br><span class="line">    var cache = &#123;&#125;;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var args = Array.prototype.join.call(arguments, &apos;,&apos;);</span><br><span class="line">        if(args in cache)&#123;</span><br><span class="line">            return cache[args];</span><br><span class="line">        &#125;</span><br><span class="line">        return cache[args] = mult.apply(this, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(proxyMult(1,2,3,4))</span><br><span class="line">console.log(proxyMult(1,2,3,4))</span><br></pre></td></tr></table></figure>
+<h4 id="延伸版示例"><a href="#延伸版示例" class="headerlink" title="延伸版示例"></a>延伸版示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var plus = function()&#123;</span><br><span class="line">    console.log(&apos;开始计算加和&apos;);</span><br><span class="line">    var a = 0;</span><br><span class="line">    for (var i =0, l = arguments.length; i&lt;l; i++)&#123;</span><br><span class="line">        a = a+arguments[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var createProxyFactory = function(fn)&#123;</span><br><span class="line">    var cache = &#123;&#125;;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var args = Array.prototype.join.call(arguments, &apos;,&apos;);</span><br><span class="line">        if(args in cache)&#123;</span><br><span class="line">            return cache[args];</span><br><span class="line">        &#125;</span><br><span class="line">        return cache[args] = fn.apply(this, arguments)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var proxyMult = createProxyFactory(mult);</span><br><span class="line"></span><br><span class="line">console.log(proxyMult(11,2,3,4))</span><br><span class="line">console.log(proxyMult(11,2,3,4))</span><br></pre></td></tr></table></figure>
+<p>注意一个现象，proxyMult代理函数体内用了fn.apply,且mult与proxyMult接收的参数是一致的，可以认为二者接口一致。</p>
+<h3 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h3><p>从上面的示例我们可以看到，<br>设计一个代理模式，有一个小技巧：</p>
+<ul>
+<li>就是代理函数 要 提供跟被代理函数一摸一样的接口，或者有一摸一样的接收传参方式；</li>
+<li>代理函数体内 引用 被代理函数。</li>
+</ul>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>策略模式的思想：<br>定义一系列的算法，把他们一个个封装起来，并且使他们可以相互替换。<br>最代表性和关键的操作是将每种算法单独封装成类，或者函数。</p>
+<h3 id="经典示例一"><a href="#经典示例一" class="headerlink" title="经典示例一"></a>经典示例一</h3><p>下面看一个策略模式最代表的例子：</p>
+<h4 id="反例-1"><a href="#反例-1" class="headerlink" title="反例"></a>反例</h4><p>计算绩效奖金，最开始的写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 这是反例</span><br><span class="line">var calculateBonus = function(performanceLevel, salary)&#123;</span><br><span class="line">    if(performanceLevel === &apos;S&apos;)&#123;</span><br><span class="line">        return salary*4;</span><br><span class="line">    &#125;</span><br><span class="line">    if(performanceLevel === &apos;A&apos;)&#123;</span><br><span class="line">        return salary*3;</span><br><span class="line">    &#125;</span><br><span class="line">    if(performanceLevel === &apos;B&apos;)&#123;</span><br><span class="line">        return salary*2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">calculateBonus(&apos;B&apos;, 20000);</span><br><span class="line">calculateBonus(&apos;S&apos;, 6000);</span><br></pre></td></tr></table></figure></p>
+<p>上面写法致命缺点在于，将来如果有更多的绩效等级，例如C、D、E、F…时，都需要在calculateBonus中增加代码逻辑；<br>改进上面代码的关键，在于精简calculateBonus。</p>
+<h4 id="标准示例"><a href="#标准示例" class="headerlink" title="标准示例"></a>标准示例</h4><p>改进如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//标准策略模式示例</span><br><span class="line">var S = function(salary)&#123;</span><br><span class="line">    return salary*4;</span><br><span class="line">&#125;</span><br><span class="line">var A = function(salary)&#123;</span><br><span class="line">    return salary*3;</span><br><span class="line">&#125;</span><br><span class="line">var B = function(salary)&#123;</span><br><span class="line">    return salary*2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var calculateBonus = function(func, salary)&#123;</span><br><span class="line">    return func(salary);</span><br><span class="line">&#125;</span><br><span class="line">calculateBonus(B, 20000);</span><br><span class="line">calculateBonus(S, 6000);</span><br></pre></td></tr></table></figure></p>
+<p>改进后，将每个等级的逻辑封装成单独的类或函数，<br>无论未来增加多少绩效逻辑，都将单独定义绩效逻辑类，不会影响现有类，同时calculateBonus都不变。<br>改进用到的策略模式技巧：</p>
+<ul>
+<li>将算法类直接以算法名字命名</li>
+</ul>
+<h3 id="经典示例二"><a href="#经典示例二" class="headerlink" title="经典示例二"></a>经典示例二</h3><p>如果只需了解 策略模式，只需看以上内容即可，这部分内容只是再举例加深理解。</p>
+<p>下面再看一个经典测试模式示例</p>
+<h4 id="反例-2"><a href="#反例-2" class="headerlink" title="反例"></a>反例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//这是反例</span><br><span class="line">&lt;form action=&quot;#&quot; id=&quot;registerForm&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">    请输入用户名：&lt;input type=&quot;text&quot; name=&quot;userName&quot;/&gt;</span><br><span class="line">    请输入密码：&lt;input type=&quot;text&quot; name=&quot;passWord&quot; /&gt;</span><br><span class="line">    请输入手机号码：&lt;input type=&quot;text&quot; name=&quot;phoneNumber&quot; /&gt;</span><br><span class="line">    &lt;button&gt;提交&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">var registerForm = document.getElementById(&apos;registerForm&apos;);</span><br><span class="line">registerForm.onsubmit = function()&#123;</span><br><span class="line">    if(registerForm.userName.value === &apos;&apos;)&#123;</span><br><span class="line">        alert(&apos;用户名不能为空&apos;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    if(registerForm.userName.length &lt; 6)&#123;</span><br><span class="line">        alert(&apos;用户名不能少于6位&apos;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    if(registerForm.password.length &lt; 6)&#123;</span><br><span class="line">        alert(&apos;密码不能少于6位&apos;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="标准示例-1"><a href="#标准示例-1" class="headerlink" title="标准示例"></a>标准示例</h4><p>对以上示例进行改进：</p>
+<ul>
+<li>将每种验证方法 封装成单独的类或函数，如strategies.isNonEmpty;</li>
+<li>Validator可以看作是本节的第一个标准示例中的calculateBonus，<br>validataForm可以看作是calculateBonus(B, 20000);</li>
+<li>将验证Validator分两步逻辑，一步是逐条添加规则，一步是一次性验证所有规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">//将一系列 规则算法 封装成单独的函数</span><br><span class="line">var strategies = &#123;</span><br><span class="line">    isNonEmpty: function(value, errorMsg)&#123;</span><br><span class="line">        if(!value)&#123;</span><br><span class="line">            return errorMsg;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    minLength: function(value, length, errorMsg)&#123;</span><br><span class="line">        if(value.length&lt;length)&#123;</span><br><span class="line">            return errorMsg</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    isMobile: function(value, errorMsg)&#123;</span><br><span class="line">        if(!/13511112222/.test(value))&#123;</span><br><span class="line">            return errorMsg;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var Validator = function()&#123;</span><br><span class="line">    this.cache = [];</span><br><span class="line">&#125;</span><br><span class="line">//设计 添加 和 验证 规则的逻辑</span><br><span class="line">Validator.prototype.add = function(dom, rules)&#123;</span><br><span class="line">    var self = this;</span><br><span class="line">    for (var i = 0,rule; rule = rules[i++];)&#123;</span><br><span class="line">        (function(rule)&#123;</span><br><span class="line">            var strategyAry = rule.strategy.split(&apos;:&apos;);</span><br><span class="line">            var errorMsg = rule.errorMsg;</span><br><span class="line">            self.cache.push(function()&#123;</span><br><span class="line">                var strategy = strategyAry.shift();</span><br><span class="line">                strategyAry.unshift(dom.value);</span><br><span class="line">                strategyAry.push(errorMsg);</span><br><span class="line">                return strategies[strategy].apply(dom, strategyAry);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)(rule)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Validator.prototype.start = function()&#123;</span><br><span class="line">    for(var i= 0,validatorFunc; validatorFunc = this.cache[i++];)&#123;</span><br><span class="line">        var errorMsg = validatorFunc();</span><br><span class="line">        if(errorMsg)&#123;</span><br><span class="line">            return errorMsg;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//为表单实际添加规则 和 验证</span><br><span class="line">var registerForm = document.getElementById(&apos;registerForm&apos;);</span><br><span class="line">var validataForm = function()&#123;</span><br><span class="line">    var validator = new Validator();</span><br><span class="line">    validator.add(registerForm.userName,[&#123;</span><br><span class="line">        strategy: &apos;isNonEmpty&apos;,</span><br><span class="line">        errorMsg: &apos;不能为空&apos;</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        strategy: &apos;minLength:10&apos;,</span><br><span class="line">        errorMsg: &apos;长度不能小于10&apos;</span><br><span class="line">    &#125;])</span><br><span class="line">    validator.add(registerForm.passWord,[&#123;</span><br><span class="line">        strategy: &apos;isNonEmpty&apos;,</span><br><span class="line">        errorMsg: &apos;不能为空&apos;</span><br><span class="line">    &#125;])</span><br><span class="line"></span><br><span class="line">    var errorMsg = validator.start();</span><br><span class="line">    return errorMsg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">registerForm.onsubmit = function()&#123;</span><br><span class="line">    var errorMsg = validataForm();</span><br><span class="line">    if(errorMsg)&#123;</span><br><span class="line">        alert(errorMsg);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>改进后，这种模式很好的适应了大型项目规则验证。</p>
+<h3 id="编写策略模式技巧"><a href="#编写策略模式技巧" class="headerlink" title="编写策略模式技巧"></a>编写策略模式技巧</h3><ul>
+<li>将策略算法 封装成单独函数或类；</li>
+<li>直接以算法名称 命名 函数和类，如上面经典示例一</li>
+</ul>
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><p>主要讲解es5装饰者模式的其中的两种实现方式：一个是定义类(构造函数)的方式，一个是修改超级函数Function原型的方式。<br>下面对这两种方式分别讲解：</p>
+<h3 id="构造函数方式"><a href="#构造函数方式" class="headerlink" title="构造函数方式"></a>构造函数方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var Plan = function()&#123;&#125;</span><br><span class="line">Plan.prototype.fire = function()&#123;</span><br><span class="line">    console.log(&apos;发射普通子弹&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var MissleDecorator = function(plan)&#123;</span><br><span class="line">    this.plan = plan;</span><br><span class="line">&#125;</span><br><span class="line">MissleDecorator.prototype.fire = function()&#123;</span><br><span class="line">    this.plan.fire();</span><br><span class="line">    console.log(&apos;发射导弹&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var AtomDecorator = function(plan)&#123;</span><br><span class="line">    this.plan = plan;</span><br><span class="line">&#125;</span><br><span class="line">AtomDecorator.prototype.fire = function()&#123;</span><br><span class="line">    this.plan.fire();</span><br><span class="line">    console.log(&apos;发射原子弹&apos;);</span><br><span class="line">&#125;</span><br><span class="line">var plan = new Plan();</span><br><span class="line">plan = new MissleDecorator(plan);</span><br><span class="line">plan = new AtomDecorator(plan);</span><br><span class="line">plan.fire();</span><br></pre></td></tr></table></figure>
+<h3 id="Function原型方式"><a href="#Function原型方式" class="headerlink" title="Function原型方式"></a>Function原型方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.before = function(beforefn)&#123;</span><br><span class="line">        var _self = this;//保存原函数的引用</span><br><span class="line">        return function()&#123;//返回包含类原函数和新函数的代理函数</span><br><span class="line">            beforefn.apply(this,arguments);//执行新函数，且保证this不被劫持，新函数接受的参数</span><br><span class="line">            return _self.apply(this, arguments);//执行原函数，并且返回原函数的执行结果，并且保持this不被劫持</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Function.prototype.after = function(afterfn)&#123;</span><br><span class="line">        var _self = this;</span><br><span class="line">        return function()&#123;</span><br><span class="line">            var ret = _self.apply(this,arguments);</span><br><span class="line">            afterfn.apply(this,arguments);</span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var func = function(param)&#123;</span><br><span class="line">        console.log(param);</span><br><span class="line">    &#125;</span><br><span class="line">    func = func.before(function(param)&#123;</span><br><span class="line">        param.b = &apos;b&apos;;</span><br><span class="line">    &#125;)</span><br><span class="line">    func(&#123;a:&apos;a&apos;&#125;);//&#123;a:&apos;a&apos;, b:&apos;b&apos;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="es6中的修饰器（Decorator）"><a href="#es6中的修饰器（Decorator）" class="headerlink" title="es6中的修饰器（Decorator）"></a>es6中的修饰器（Decorator）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@testable</span><br><span class="line">class MyTestableClass &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line">function testable(target) &#123;</span><br><span class="line">  target.isTestable = true;</span><br><span class="line">&#125;</span><br><span class="line">MyTestableClass.isTestable // true</span><br></pre></td></tr></table></figure>
+<p>注意，修饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。这意味着，修饰器能在编译阶段运行代码。也就是说，修饰器本质就是编译时执行的函数。</p>
+<h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><p>装饰者，经常用到的小技巧，不改变原函数情况下，增加函数功能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a = function()&#123;</span><br><span class="line">        alert(1)</span><br><span class="line">    &#125;</span><br><span class="line">    var _a = a;</span><br><span class="line">    a = function()&#123;</span><br><span class="line">        _a();</span><br><span class="line">        alert(2);</span><br><span class="line">    &#125;</span><br><span class="line">    a();</span><br></pre></td></tr></table></figure></p>
+<p>在开发中，我们常用这种方式，实现页面回退，加载等等事件时，增加功能。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-28T10:13:04.129Z" itemprop="dateUpdated">2021-03-28 18:13:04</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/03/28/js_design_main/" target="_blank" rel="external">https://yewills.github.io/2021/03/28/js_design_main/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js设计模式/">js设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单一职责原则/">单一职责原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开放封闭原则/">开放封闭原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状态模式/">状态模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/舍弃高效率而取可移植性/">舍弃高效率而取可移植性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/观察者模式/">观察者模式</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/28/js_design_main/&title=《js设计模式下》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/28/js_design_main/&title=《js设计模式下》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/03/28/react_hooks/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React hooks 笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/28/blog_flow/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">博客持续集成的实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js设计原则"><span class="post-toc-number">1.</span> <span class="post-toc-text">js设计原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单一职责原则"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">单一职责原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优缺点"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">优缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开放封闭原则"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">开放封闭原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念-1"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优缺点-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">优缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接受第一次愚弄"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">接受第一次愚弄</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他准则"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">其他准则</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js设计模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">js设计模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单例模式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">单例模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标准单例模式示例"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">标准单例模式示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#将以上-标准单例模式示例-优化"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">将以上 标准单例模式示例 优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用的单例模式示例"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">通用的单例模式示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用场景"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">应用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何写一个单例模式"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">如何写一个单例模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#观察者模式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">观察者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#es6示例"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">es6示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设计思路"><span class="post-toc-number">2.2.1.1.</span> <span class="post-toc-text">设计思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例小结"><span class="post-toc-number">2.2.1.2.</span> <span class="post-toc-text">示例小结</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例代码"><span class="post-toc-number">2.2.1.3.</span> <span class="post-toc-text">示例代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优化及延伸方式一"><span class="post-toc-number">2.2.1.4.</span> <span class="post-toc-text">优化及延伸方式一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优化及延伸方式二"><span class="post-toc-number">2.2.1.5.</span> <span class="post-toc-text">优化及延伸方式二</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#es5示例"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">es5示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例代码-1"><span class="post-toc-number">2.2.2.1.</span> <span class="post-toc-text">示例代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#应用场景："><span class="post-toc-number">2.2.2.2.</span> <span class="post-toc-text">应用场景：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用场景-1"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">应用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-1"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优缺点-2"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">优缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#状态模式"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">状态模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反例"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">反例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标准状态模式示例"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">标准状态模式示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态模式的优缺点"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">状态模式的优缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计原则与定义"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">设计原则与定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么情况下使用"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">什么情况下使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代理模式"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">代理模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两者代理模式的概念"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">两者代理模式的概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#虚拟代理示例"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">虚拟代理示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缓存代理示例"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">缓存代理示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单版示例"><span class="post-toc-number">2.4.3.1.</span> <span class="post-toc-text">简单版示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#延伸版示例"><span class="post-toc-number">2.4.3.2.</span> <span class="post-toc-text">延伸版示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计原则"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">设计原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#策略模式"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">策略模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-2"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典示例一"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">经典示例一</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反例-1"><span class="post-toc-number">2.5.2.1.</span> <span class="post-toc-text">反例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标准示例"><span class="post-toc-number">2.5.2.2.</span> <span class="post-toc-text">标准示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典示例二"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">经典示例二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反例-2"><span class="post-toc-number">2.5.3.1.</span> <span class="post-toc-text">反例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标准示例-1"><span class="post-toc-number">2.5.3.2.</span> <span class="post-toc-text">标准示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编写策略模式技巧"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">编写策略模式技巧</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#装饰者模式"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">装饰者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构造函数方式"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">构造函数方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Function原型方式"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">Function原型方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#es6中的修饰器（Decorator）"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">es6中的修饰器（Decorator）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小技巧"><span class="post-toc-number">2.6.4.</span> <span class="post-toc-text">小技巧</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/28/js_design_main/&title=《js设计模式下》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/28/js_design_main/&title=《js设计模式下》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAwFwN7/0um2i9p9j0oKWBqtgnxsjgMQFKmvr3i9LtbPT6++n1y5/dVwYWBgPJbxul1X37kC5CHmr+9jw8DAOIeRBHFPyj9NsmUeGwYGBkaSWNsQ70tADAwMjHcx7svH5J38+xgYGBj5JrZtw60k5Q/uxTEwMB7IyLvu///6I/MNDAyMRzFe5coTZT6SbJPsL3fEwMDYmtG20t7VmKs3qEk8GBgYmzLabepKokzCzQefl/8DBgbGdoy8cZZfuh0MzFp+de8QAwPjsYwkwc0AbXArZSIGBsYJjLxom1ViRWE3ejQYGBh7M+5LrrbFlh+zaK8ZtfMwMDAOYCSbz/ZAxmwwOTv2gYGBsSsjb5nloawMNYePCQMDY2vG/S3zFNwOEpJU245UMTAwTmDMkmnbLMuT+9KUAwMDY1NGPqTMC8E8yc4adpelIQYGxgGMvHAsRozlveqEjoGBcQAjb+vPhp1tws2vhoGBcQJj/eBFXmLOTkfUG2kMDIztGPmW8r2nPNpw/8BgYGAcwEjKr3wwOSsKV4amGBgY5zDym7XN/eQRzA6HYWBg7M14lSs/TtG24Wbpvj4tgoGB8UBGvvLB5HpibTe9GBgYJzDysm+2vZwNGOrnjYGBcQCj2PWWmPa3s2gxMDAw1ou/2ftFVYuBgYFRttXakWQyQqgnsRgYGNsx2vHk7NhEWyx+pN2GgYHxQMbsiEM7gFwZbb5tqImBgfE8xjfE80HPiAgPOwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
