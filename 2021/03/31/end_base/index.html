@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>后端笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="egg,node,koa,express">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>后端笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">后端笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-03-31T15:05:42.169Z" itemprop="datePublished" class="page-time">
+  2021-03-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-end_base" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">后端笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-03-31 23:05:42" datetime="2021-03-31T15:05:42.169Z" itemprop="datePublished">2021-03-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="express是一个nodejs框架"><a href="#express是一个nodejs框架" class="headerlink" title="express是一个nodejs框架"></a>express是一个nodejs框架</h3><p>如下图，express其实封装了原生写法的http等等nodejs的模块，<br>只是原生的http模块用来写req、res有很多要处理的功能，<br>express封装了很多功能到req、res中，用起来更加方便。<br>因此express与nodejs的关系 就好比 jquery 与 js 的关系。<br>因此可以认为express就是一个nodejs框架。<br><figure class="image-box">
+                <a rel="后端笔记" href="/image/end_base/express.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/express.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="express是对http等的封装"><a href="#express是对http等的封装" class="headerlink" title="express是对http等的封装"></a>express是对http等的封装</h3><p>参考上面《express是一个nodejs框架》</p>
+<h3 id="一个url被web渲染经历了什么"><a href="#一个url被web渲染经历了什么" class="headerlink" title="一个url被web渲染经历了什么"></a>一个url被web渲染经历了什么</h3><p>url 通过dns域名解析，<br>找到目标服务器（进入目标服务器）；<br>服务器通过服务器路由对这个url请求做出相应；</p>
+<p>服务器路由是处理请求接口如何响应的规则。</p>
+<h3 id="uri"><a href="#uri" class="headerlink" title="uri"></a>uri</h3><p>通俗的讲，一个完整的url中，除了域名和端口的部分，剩下的就是uri，可以用uri唯一标识资源。如下：<br><code>https://blog.csdn.net/qq_32595453/article/details/79516787</code>;<br>上面的uri就是 <code>/qq_32595453/article/details/79516787</code>;</p>
+<h2 id="express"><a href="#express" class="headerlink" title="express"></a>express</h2><h3 id="all-API的用法"><a href="#all-API的用法" class="headerlink" title="all API的用法"></a>all API的用法</h3><h4 id="匹配所有的请求类型"><a href="#匹配所有的请求类型" class="headerlink" title="匹配所有的请求类型"></a>匹配所有的请求类型</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.all(<span class="string">'/demo'</span>,(req, res)=&gt;&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="匹配所有的uri"><a href="#匹配所有的uri" class="headerlink" title="匹配所有的uri"></a>匹配所有的uri</h4><p>使用*来匹配所有的uri，常用的场景有打印请求日志 等等。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.all(<span class="string">'*'</span>,(req, res)=&gt;&#123;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="app-use-中间件的使用"><a href="#app-use-中间件的使用" class="headerlink" title="app.use 中间件的使用"></a>app.use 中间件的使用</h3><h4 id="匹配所有的请求类型-1"><a href="#匹配所有的请求类型-1" class="headerlink" title="匹配所有的请求类型"></a>匹配所有的请求类型</h4><p>use一般用于中间件的集成，不过也可以用来做路由的定义，可以轻松实现上面的功能：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/demo'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test get use'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//与下面等效：</span></span><br><span class="line">app.all(<span class="string">'/demo'</span>,(req, res)=&gt;&#123;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="匹配所有的uri-1"><a href="#匹配所有的uri-1" class="headerlink" title="匹配所有的uri"></a>匹配所有的uri</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test all use'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//与下面等效：</span></span><br><span class="line">app.all(<span class="string">'*'</span>,(req, res)=&gt;&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="注意：一般不做请求的响应"><a href="#注意：一般不做请求的响应" class="headerlink" title="注意：一般不做请求的响应"></a>注意：一般不做请求的响应</h4><p>app.use一般不做上面的《匹配所有的请求类型》《匹配所有的uri》接口编写。<br>一般用于中间件的使用，也可以用来做路由的拆分。</p>
+<h4 id="路由拆分-express-Router"><a href="#路由拆分-express-Router" class="headerlink" title="路由拆分(express.Router)"></a>路由拆分(express.Router)</h4><p>由于内容较多，拆成独立一节，参考《路由拆分(express.Router)》</p>
+<h3 id="路由拆分-express-Router-1"><a href="#路由拆分-express-Router-1" class="headerlink" title="路由拆分(express.Router)"></a>路由拆分(express.Router)</h3><p><a href="https://www.imooc.com/video/20689" target="_blank" rel="noopener">参考慕课视频</a></p>
+<h4 id="基本用法-单个"><a href="#基本用法-单个" class="headerlink" title="基本用法(单个)"></a>基本用法(单个)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.router.js</span></span><br><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/list'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test router'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span>  appRouter = <span class="built_in">require</span>(<span class="string">'./app.router'</span>) ; <span class="comment">//app.router.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.use(appRouter)</span><br><span class="line">app.listen(<span class="number">3000</span>, ()=&gt;<span class="built_in">console</span>.log(<span class="string">'please open 3000 port'</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="多个路由"><a href="#多个路由" class="headerlink" title="多个路由"></a>多个路由</h4><p>在上面单个路由的基础上，增加一个路由，写法与第一个路由一摸一样,此时会遇到一个问题，当发<code>http://127.0.0.1:3000/list</code>请求时，<br>只能被第一个appRouter截取，moreRouter无法获得。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.moreRouter.js</span></span><br><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/list'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test router'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span>  appRouter = <span class="built_in">require</span>(<span class="string">'./app.router'</span>) ; <span class="comment">//app.router.js</span></span><br><span class="line"><span class="keyword">const</span>  moreRouter = <span class="built_in">require</span>(<span class="string">'./app.moreRouter'</span>) ; <span class="comment">//app.moreRouter.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.use(appRouter)</span><br><span class="line">app.use(moreRouter)</span><br><span class="line">app.listen(<span class="number">3000</span>, ()=&gt;<span class="built_in">console</span>.log(<span class="string">'please open 3000 port'</span>))</span><br></pre></td></tr></table></figure>
+<p>为了解决上面的问题，在app.use上定义路由，其他不变：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span>  appRouter = <span class="built_in">require</span>(<span class="string">'./app.router'</span>) ; <span class="comment">//app.router.js</span></span><br><span class="line"><span class="keyword">const</span>  moreRouter = <span class="built_in">require</span>(<span class="string">'./app.moreRouter'</span>) ; <span class="comment">//app.moreRouter.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.use(<span class="string">'/main'</span>,appRouter) <span class="comment">//http://127.0.0.1:3000/main/list</span></span><br><span class="line">app.use(<span class="string">'/more'</span>,moreRouter) <span class="comment">//http://127.0.0.1:3000/more/list</span></span><br><span class="line">app.listen(<span class="number">3000</span>, ()=&gt;<span class="built_in">console</span>.log(<span class="string">'please open 3000 port'</span>))</span><br></pre></td></tr></table></figure></p>
+<h4 id="路由文件内再拆分-router-use"><a href="#路由文件内再拆分-router-use" class="headerlink" title="路由文件内再拆分(router.use)"></a>路由文件内再拆分(router.use)</h4><p>如上面的<code>app.moreRouter.js</code>内，可以使用<code>router.use</code>再进行嵌套拆分，不过一般不推荐这种多层嵌套的做法。<br>就像数据追求扁平化一样，路由设计也不要追求深层嵌套。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.moreRouter.js</span></span><br><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/list'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test router'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//可以再进行路由拆分</span></span><br><span class="line">router.use(......)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></p>
+<h3 id="会不会同时被多个路由响应"><a href="#会不会同时被多个路由响应" class="headerlink" title="会不会同时被多个路由响应"></a>会不会同时被多个路由响应</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>如下，如果写一个url：<code>http://127.0.0.1:3000/test</code>;<br>会被下面两个路由同时捕获吗？<br>实际上只会被第一个 all 捕获，第二个路由不会被捕获，究其原因是在第一个路由上使用了res.json.<br>如果没有res，且使用next就会被第二个路由捕获。<br>由此可看出，res.json和next都相当于return，如果使用res.json 那么后面代码就不执行。next以此类推。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//http://127.0.0.1:3000/test 被匹配 </span></span><br><span class="line">app.all(<span class="string">'*'</span>, (req,res, next)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test all '</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//因为上面已经 res.json 因此这里 http://127.0.0.1:3000/test 不被匹配 </span></span><br><span class="line">app.get(<span class="string">'/test'</span>, (req,res, next)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test 11 '</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="配合next可被多个路由匹配"><a href="#配合next可被多个路由匹配" class="headerlink" title="配合next可被多个路由匹配"></a>配合next可被多个路由匹配</h4><p>下面路由中，第一个用于打印日志，第二个用于真正接口的响应。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//http://127.0.0.1:3000/test 被匹配 </span></span><br><span class="line">app.all(<span class="string">'*'</span>, (req,res, next)=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'打印日志'</span>, req.originalUrl)</span><br><span class="line">    next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//因为上面使用next 这里 http://127.0.0.1:3000/test 被匹配 </span></span><br><span class="line">app.get(<span class="string">'/test'</span>, (req,res, next)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test 11 '</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="只会被一个路由响应"><a href="#只会被一个路由响应" class="headerlink" title="只会被一个路由响应"></a>只会被一个路由响应</h4><p>通过《概述》的例子看出，当任意一个路由使用了res.json来响应后，接口处理程序将终止，不会被第二个路由匹配到。<br>因此只会被一个路由响应。</p>
+<h4 id="res-json、next相当于return"><a href="#res-json、next相当于return" class="headerlink" title="res.json、next相当于return"></a>res.json、next相当于return</h4><p>参考上面《概述》</p>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><h4 id="自定义中间件"><a href="#自定义中间件" class="headerlink" title="自定义中间件"></a>自定义中间件</h4><p>valid_name_middleware 就是一个中间件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> valid_name_middleware = <span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;name&#125; = req.query;</span><br><span class="line">    <span class="keyword">if</span>(!name ||!name.length)&#123;</span><br><span class="line">        res.json(&#123;<span class="attr">msg</span>:<span class="string">'缺少name参数'</span>&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.all(<span class="string">'*'</span>, valid_name_middleware)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/test'</span>, (req,res, next)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test '</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用场景或级别"><a href="#使用场景或级别" class="headerlink" title="使用场景或级别"></a>使用场景或级别</h4><ul>
+<li>app级别</li>
+<li>router级别</li>
+<li>异常处理（其实也可能是app或router级别）</li>
+</ul>
+<h4 id="app级别"><a href="#app级别" class="headerlink" title="app级别"></a>app级别</h4><p>注册的时候，一定是最顶级，在express实例时就进行。<br>使用方式是，使用app.use来集成。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> log_mid = <span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'请求来了'</span>)</span><br><span class="line">    next();</span><br><span class="line">&#125;</span><br><span class="line">app.use(log_mid)</span><br></pre></td></tr></table></figure></p>
+<p>express内置了很多app级别的中间件，比如 static：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="comment">//指定index.html放在static目录下：express-router/static/index.html</span></span><br><span class="line">app.use(express.static(<span class="string">'static'</span>,&#123;</span><br><span class="line">    extensions:[<span class="string">'html'</span>, <span class="string">'htm'</span>]</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure></p>
+<h4 id="router级别"><a href="#router级别" class="headerlink" title="router级别"></a>router级别</h4><p>第一种情况与 app级别用法一样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"><span class="keyword">const</span> log_mid = <span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'请求来了'</span>)</span><br><span class="line">    next();</span><br><span class="line">&#125;</span><br><span class="line">router.use(log_mid)</span><br></pre></td></tr></table></figure></p>
+<p>这里要讲 <strong>路由内部中间件</strong>的使用。<br>下面是给登陆接口写两个校验参数的中间件：<br>访问<code>http://127.0.0.1:3000/main/login?password=2&amp;id=2</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.js</span></span><br><span class="line">app.use(<span class="string">'/main'</span>,appRouter)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//router.js</span></span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"><span class="keyword">const</span> valid_pwd = <span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;password&#125; = req.query;</span><br><span class="line">    <span class="keyword">if</span>(!password ||!password.length)&#123;</span><br><span class="line">        res.json(&#123;<span class="attr">msg</span>:<span class="string">'缺少密码参数'</span>&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> valid_id = <span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;id&#125; = req.query;</span><br><span class="line">    <span class="keyword">if</span>(!id ||!id.length)&#123;</span><br><span class="line">        res.json(&#123;<span class="attr">msg</span>:<span class="string">'缺少user id参数'</span>&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主要利用路由级别内的路由函数，第二个参数可以是定义一系列中间件的</span></span><br><span class="line">router.get(<span class="string">'/login'</span>,[valid_pwd, valid_id],(req,res)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'登陆成功'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="中间件传递数据给路由"><a href="#中间件传递数据给路由" class="headerlink" title="中间件传递数据给路由"></a>中间件传递数据给路由</h4><p>给req任意定义一个属性来保存数据，到下一步路由时，凭借此属性拿取数据。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> valid_id = <span class="function">(<span class="params">req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;id, password&#125; = req.query;</span><br><span class="line">    <span class="keyword">if</span>(!id ||!id.length)&#123;</span><br><span class="line">        res.json(&#123;<span class="attr">msg</span>:<span class="string">'缺少user id参数'</span>&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="comment">//给req任意定义一个属性来保存数据</span></span><br><span class="line">        req.midCustom = &#123;id, password&#125;</span><br><span class="line">        next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/login'</span>,[valid_pwd, valid_id],(req,res)=&gt;&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        user:req.midCustom,<span class="comment">//凭借midCustom属性拿取数据</span></span><br><span class="line">        msg:<span class="string">'登陆成功'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="根据回调的传参个数判定操作类别"><a href="#根据回调的传参个数判定操作类别" class="headerlink" title="根据回调的传参个数判定操作类别"></a>根据回调的传参个数判定操作类别</h4><p>四个传参的回调函数被自动识别为异常处理函数。<br>express框架层面应该做了识别处理，<br>如果你给app.use传递一个有四个传参 的回调函数，那么express认为此回调函数是错误处理函数，那么回调函数传参依次为 ：<code>err,req, res, next</code>;<br>如果你给app.use传递一个有三个传参的回调函数，那么express认为此回调函数是错误处理函数，那么回调函数传参依次为 ：<br><code>req, res, next</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> errorHandle = <span class="function">(<span class="params">err,req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;message&#125;= err;</span><br><span class="line">        res.status(<span class="number">500</span>)</span><br><span class="line">        .json(&#123;</span><br><span class="line">            message:<span class="string">`<span class="subst">$&#123;message || <span class="string">'请求异常'</span>&#125;</span>`</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> matchAll = <span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'test all use'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">app.use(matchAll)</span><br><span class="line">app.use(errorHandle)</span><br></pre></td></tr></table></figure></p>
+<h4 id="异常处理放置最后"><a href="#异常处理放置最后" class="headerlink" title="异常处理放置最后"></a>异常处理放置最后</h4><p>异常处理一般放在所有路由或中间件的最后取定义。</p>
+<h4 id="404-not-found处理"><a href="#404-not-found处理" class="headerlink" title="404 not found处理"></a>404 not found处理</h4><p>在路由的最后位置：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> errorHandle = <span class="function">(<span class="params">err,req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;message&#125;= err;</span><br><span class="line">        res.status(<span class="number">500</span>)</span><br><span class="line">        .json(&#123;</span><br><span class="line">            message:<span class="string">`<span class="subst">$&#123;message || <span class="string">'请求异常'</span>&#125;</span>`</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> notfound = <span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'请求的接口不存在'</span><span class="comment">//404</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">app.use(notfound)</span><br><span class="line">app.use(errorHandle)</span><br></pre></td></tr></table></figure></p>
+<h3 id="接口返回一个静态文件"><a href="#接口返回一个静态文件" class="headerlink" title="接口返回一个静态文件"></a>接口返回一个静态文件</h3><h4 id="不指定路由"><a href="#不指定路由" class="headerlink" title="不指定路由"></a>不指定路由</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.static(path.resolve(__dirname, <span class="string">'public'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment">//访问 http://127.0.0.1:3000/test.js</span></span><br></pre></td></tr></table></figure>
+<h4 id="指定路由"><a href="#指定路由" class="headerlink" title="指定路由"></a>指定路由</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/pub'</span>,express.static(path.resolve(__dirname, <span class="string">'public'</span>)))</span><br><span class="line"><span class="comment">//访问 http://127.0.0.1:3000/pub/test.js</span></span><br></pre></td></tr></table></figure>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="https://github.com/YeWills/learns/tree/master/sequelize-demo" target="_blank" rel="noopener">异常处理、模型表数据修改 demo</a><br>也可参考 《sequelize集成使用》 章节的demo和参考</p>
+<h2 id="sequlize集成使用"><a href="#sequlize集成使用" class="headerlink" title="sequlize集成使用"></a>sequlize集成使用</h2><h3 id="sequelize-cli初始化工程"><a href="#sequelize-cli初始化工程" class="headerlink" title="sequelize-cli初始化工程"></a>sequelize-cli初始化工程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli init</span><br></pre></td></tr></table></figure>
+<p>修改 文件如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//config.json</span><br><span class="line"> "development": &#123;</span><br><span class="line">    "username": "root",</span><br><span class="line">    "password": "root1111",</span><br><span class="line">    "database": "sqe_db",</span><br><span class="line">    "host": "127.0.0.1",</span><br><span class="line">    "dialect": "mysql"</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<h3 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h3><figure class="image-box">
+                <a rel="后端笔记" href="/image/end_base/right.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/right.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="后端笔记" href="/image/end_base/db.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/db.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h3 id="sequelize-cli创建模型"><a href="#sequelize-cli创建模型" class="headerlink" title="sequelize-cli创建模型"></a>sequelize-cli创建模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli model:generate --name User --attributes name:string</span><br></pre></td></tr></table></figure>
+<p>命令会做以下事情：</p>
+<ul>
+<li>生成 migrate文件 ： 在 models 文件夹中创建了一个 user 模型文件;</li>
+<li>生成 model文件 ：在 migrations 文件夹中创建了一个名字像 XXXXXXXXXXXXXX-create-user.js 的迁移文件.<h3 id="将刚才的模型添加到数据库中-生成表"><a href="#将刚才的模型添加到数据库中-生成表" class="headerlink" title="将刚才的模型添加到数据库中(生成表)"></a>将刚才的模型添加到数据库中(生成表)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli db:migrate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>一般命令后要设置env，如果不设置则默认使用development。与下面命令等效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli db:migrate --env=development</span><br></pre></td></tr></table></figure></p>
+<p>这里的development就是<code>sequelize-demo/config/config.json</code>的：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"development"</span>: &#123;</span><br><span class="line">    <span class="attr">"username"</span>: <span class="string">"root"</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"root1111"</span>,</span><br><span class="line">    <span class="attr">"database"</span>: <span class="string">"sqe_db"</span>,</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"dialect"</span>: <span class="string">"mysql"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"test"</span>: &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">  "production": &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>将模型添加到数据库后，你就会在数据库中看到模型中添加的表(模型生产的)<br><figure class="image-box">
+                <a rel="后端笔记" href="/image/end_base/db.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/db.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>至此，桥接数据库，通过sequelize在数据库中建表的工作完成，下一步就是使用express操作数据库。</p>
+<h3 id="使用express操作数据库"><a href="#使用express操作数据库" class="headerlink" title="使用express操作数据库"></a>使用express操作数据库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span> models = <span class="built_in">require</span>(<span class="string">'../models'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.get(<span class="string">'/create'</span>, <span class="keyword">async</span> (req,res, next)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;name&#125; = req.query;</span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> models.User.create(&#123;</span><br><span class="line">        name</span><br><span class="line">    &#125;)</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'create success!'</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="mysql2"><a href="#mysql2" class="headerlink" title="mysql2"></a>mysql2</h3><p>如下，node应用通过orm来操作 mysql数据库，必须借助node环境下的mysql驱动，而这个驱动就是mysql2.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node-application -- ORM(sequelize) --&gt; 驱动(node-mysql 其实就是mysql2) --&gt; mysql db</span><br></pre></td></tr></table></figure></p>
+<h2 id="demo与参考"><a href="#demo与参考" class="headerlink" title="demo与参考"></a>demo与参考</h2><p><a href="https://github.com/YeWills/learns/tree/sequelize-demo/sequelize-demo" target="_blank" rel="noopener">demo</a><br>也可参考本文其他章节的相关demo。<br><a href="https://www.imooc.com/video/20693" target="_blank" rel="noopener">本节视频参考</a><br><a href="https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/other-topics/migrations.md" target="_blank" rel="noopener">sequelize migrations</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-03-31T15:05:42.169Z" itemprop="dateUpdated">2021-03-31 23:05:42</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/03/31/end_base/" target="_blank" rel="external">https://yewills.github.io/2021/03/31/end_base/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/egg/">egg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/koa/">koa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/31/end_base/&title=《后端笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/31/end_base/&title=《后端笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/03/31/dva_umi/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">dva与umi笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/03/31/git/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#express是一个nodejs框架"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">express是一个nodejs框架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#express是对http等的封装"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">express是对http等的封装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一个url被web渲染经历了什么"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">一个url被web渲染经历了什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#uri"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">uri</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#express"><span class="post-toc-number">2.</span> <span class="post-toc-text">express</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#all-API的用法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">all API的用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#匹配所有的请求类型"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">匹配所有的请求类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#匹配所有的uri"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">匹配所有的uri</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#app-use-中间件的使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">app.use 中间件的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#匹配所有的请求类型-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">匹配所有的请求类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#匹配所有的uri-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">匹配所有的uri</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意：一般不做请求的响应"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">注意：一般不做请求的响应</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#路由拆分-express-Router"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">路由拆分(express.Router)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路由拆分-express-Router-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">路由拆分(express.Router)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本用法-单个"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">基本用法(单个)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多个路由"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">多个路由</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#路由文件内再拆分-router-use"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">路由文件内再拆分(router.use)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#会不会同时被多个路由响应"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">会不会同时被多个路由响应</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配合next可被多个路由匹配"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">配合next可被多个路由匹配</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#只会被一个路由响应"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">只会被一个路由响应</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#res-json、next相当于return"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">res.json、next相当于return</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#中间件"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">中间件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义中间件"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">自定义中间件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用场景或级别"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">使用场景或级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#app级别"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">app级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#router级别"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">router级别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#中间件传递数据给路由"><span class="post-toc-number">2.5.5.</span> <span class="post-toc-text">中间件传递数据给路由</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异常处理"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">异常处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据回调的传参个数判定操作类别"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">根据回调的传参个数判定操作类别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异常处理放置最后"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">异常处理放置最后</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#404-not-found处理"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">404 not found处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接口返回一个静态文件"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">接口返回一个静态文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不指定路由"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">不指定路由</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指定路由"><span class="post-toc-number">2.7.2.</span> <span class="post-toc-text">指定路由</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">demo</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sequlize集成使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">sequlize集成使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sequelize-cli初始化工程"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">sequelize-cli初始化工程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建数据库"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">新建数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sequelize-cli创建模型"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">sequelize-cli创建模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#将刚才的模型添加到数据库中-生成表"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">将刚才的模型添加到数据库中(生成表)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用express操作数据库"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">使用express操作数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mysql2"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">mysql2</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#demo与参考"><span class="post-toc-number">4.</span> <span class="post-toc-text">demo与参考</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/03/31/end_base/&title=《后端笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/03/31/end_base/&title=《后端笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aQW7DIBAF0Nz/0q7UXZU6+R/iqobHKkodzGMxhZl5POJxfI/nb85G+6vnvz6uGBgYGLdl5As6W1a+xLPZkifPZsbAwNiH8TrItrDXS0lCeb42DAwMjISULKgNrBgYGBgzjPy3yaU0PzJiYGBgjCXO8vTc2PHxkrs4BgbGDRltYeAvP19Y38DAwLgJ4yhHe4nND4vHxMDAwFibMZbqasuQeetGG12jfcLAwLg5Y6xtK39x2/iVFz5/PI+BgbEZoy0YtK9sE2dRYg4DA2MDRltEvCIE54t+c7bFwMDYgDFTMGgvxvObiIGBsQNjvtEhv3bmrRXJ57owgIGBsRCjDcTt4ubnPw2+GBgYGzDyo1t7NMyTd8n8bwIuBgbGooyxdod52FjTxputwcDAWI6RX1nbxeWHwvba/Ms8GBgYSzPydH9eqmwTbe2RMW/UwMDAWIlxxGMm3daWAepAjIGBsTRjrIVirGDQXlyLZgsMDIwNGHkh8+oiZT5b1OmGgYFxc8bVt+GxsFu3mmFgYGzPyBsm8vCaB/Ho3wAGBsbSjPnkfnu8m79hf7i+gYGB8e8ZRzlyapviT/b7dLMwMDCWZuQjn2LsxW1hAAMDYzdGEmRnnmnLD4PXVwwMjA0YVwTB/Hj3gbs4BgYGRhBMZxJ2beT85RsMDAyMshWsfTLZoDdPYmBgbMBoL6ifyuolgTs6UGJgYCzNGCsM5EfAtqlirKSKgYGxKOMLQimtY7yOGhcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
