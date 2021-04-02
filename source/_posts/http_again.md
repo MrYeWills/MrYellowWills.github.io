@@ -47,6 +47,9 @@ http连接何时结束：
  #### 两种保持连接状态的手段：cookie与session
 参考《session》
  ### session
+ #### 概述
+ 如下用户登录，后台生成session，然后将session写入cookie，页面的后续操作都通过cookie读取，对比session。
+ ![](/image/http_again/sess.png)
 
  #### session 一般于 cookie一起使用
 显然无状态性质难以满足某些需求，因此产生了两种保持状态的手段cookie与session；
