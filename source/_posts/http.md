@@ -254,6 +254,15 @@ app.use(async (ctx, next) => {
 - 默认关闭浏览器失效
 - 可通过设置cookie的有效期，让浏览器关闭后，cookie仍然有效
 
+#### cookie有效期补充
+- 没有设置失效时间（会话cookie）；
+  (1）关闭浏览器；
+ （2）手动清除Cookie；
+
+- 设置时间；
+（1）时间到了失效，即使关闭了浏览器也不会被清除，因为cookie信息被保存在了硬盘上，浏览器再次打开的时候就会读取硬盘上的数据，而且不同的浏览器之间是可以共享的；
+（2）手动清除Cookie；
+
 ![](/image/http/setcookie1.jpg)
 #### cookie概述
 cookie是后台传给前台，前台再利用浏览器的cookie可以随http发回给后台的特性，对发回对cookie进行验证。
