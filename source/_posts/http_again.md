@@ -460,6 +460,14 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
 点击浏览器解码后的传参view source：
 ![](/image/http_again/form-mul2.jpg)
 
+```
+boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW
+```
+如上,boundary是分界线，只要是multipart/form-data请求，浏览器默认会生成这个分割线参数。
+为什么包含二进制流(文件)的入参时，只能用multipart/form-data 不能用以前的application/x-www-form-urlencoded ，因为二进制流 无法字符串化，只能分割发送给服务器；
+而这个分割是通过 `boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW`来分割的
+
+
 - post请求
 改为post请求：
 ```html
@@ -469,7 +477,33 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
         <input type="submit" >
     </form>
 ```
-浏览器貌似不作任何解析：
+浏览器貌似不作任何解析，目前原因位置，原生form发送的，如果带file一律不解析，因此我们用fetch来做：
 ![](/image/http_again/form-mul3.jpg)
 
 
+#### multipart/form-data (fetch)
+```html
+ <form action="/form" id="form" method="POST"  enctype="multipart/form-data">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="file" name="freeword">
+        <input type="submit" >
+    </form>
+    <script>
+        var form = document.getElementById('form');
+        form.addEventListener('submit', function(e){
+            console.log(form)
+            e.preventDefault()
+            var formData = new FormData(form);
+            fetch('/form',{
+                method:'POST',
+                body:formData
+            })
+
+        })
+    </script>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-mul4.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-mul5.jpg)
