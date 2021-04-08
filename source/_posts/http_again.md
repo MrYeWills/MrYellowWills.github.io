@@ -368,4 +368,108 @@ http连接其实不准确，只有http请求，没有http连接，
 没有所谓的长短http连接。
 http请求 得到响应后，这次http请求就完成和关闭。
 
+### 表单提交
+
+#### 概述
+[详细参考博客](https://blog.csdn.net/java_xxxx/article/details/81205315)
+#### enctype
+form默认自带以下三种enctype，其他enctype需要自己封装：
+EncType表明提交数据的格式 用 Enctype 属性指定将数据回发到服务器时浏览器使用的编码类型。 
+下边是说明： 
+application/x-www-form-urlencoded(form 默认)： 窗体数据被编码为名称/值对。这是标准的编码格式。 
+multipart/form-data： 窗体数据被编码为一条消息，页上的每个控件对应消息中的一个部分。 
+text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控件或格式字符。
+
+#### application/x-www-form-urlencoded
+
+- get请求
+
+```html
+  <!-- form 默认是get请求 -->
+<form action="/form" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+![](/image/http_again/form1.jpg)
+点击浏览器未解码传参前：
+![](/image/http_again/form2.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form3.jpg)
+
+- post请求
+改为post请求：
+```html
+<form action="/form" method="POST" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-1-post.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-1-post1.jpg)
+
+上面发现一个现象，当变成post请求时，变成了Form Data；
+原来当get请求时，是Query string parameters
+
+#### text/plain
+
+- get请求
+
+```html
+  <form action="/form"  enctype="text/plain">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-text1.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-text2.jpg)
+
+- post请求
+改为post请求：
+```html
+<form action="/form" method="POST"  enctype="text/plain">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+浏览器貌似不作任何解析：
+![](/image/http_again/form-text3.jpg)
+
+#### multipart/form-data (原生)
+用form自带原生请求讲解：
+- get请求
+
+```html
+  <form action="/form" method="GET"  enctype="multipart/form-data">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="file" name="freeword">
+        <input type="submit" >
+    </form>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-mul1.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-mul2.jpg)
+
+- post请求
+改为post请求：
+```html
+<form action="/form" method="POST"  enctype="text/plain">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+浏览器貌似不作任何解析：
+![](/image/http_again/form-mul3.jpg)
+
 
