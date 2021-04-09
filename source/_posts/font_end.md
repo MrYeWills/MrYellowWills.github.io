@@ -53,6 +53,252 @@ CSRF中文称之为 跨站请求伪造。
 - demo
 [小demo](https://github.com/YeWills/learns/tree/master/node/xss)
 
+
+## 表单提交
+
+### 概述
+[详细参考博客](https://blog.csdn.net/java_xxxx/article/details/81205315)
+### enctype
+form默认自带以下三种enctype，其他enctype需要自己封装：
+EncType表明提交数据的格式 用 Enctype 属性指定将数据回发到服务器时浏览器使用的编码类型。 
+下边是说明： 
+application/x-www-form-urlencoded(form 默认)： 窗体数据被编码为名称/值对。这是标准的编码格式。 
+multipart/form-data： 窗体数据被编码为一条消息，页上的每个控件对应消息中的一个部分。 
+text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控件或格式字符。
+
+### application/x-www-form-urlencoded
+
+- get请求
+
+```html
+  <!-- form 默认是get请求 -->
+<form action="/form" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+![](/image/http_again/form1.jpg)
+点击浏览器未解码传参前：
+![](/image/http_again/form2.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form3.jpg)
+
+- post请求
+改为post请求：
+```html
+<form action="/form" method="POST" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-1-post.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-1-post1.jpg)
+
+上面发现一个现象，当变成post请求时，变成了Form Data；
+原来当get请求时，是Query string parameters
+
+### text/plain
+
+- get请求
+
+```html
+  <form action="/form"  enctype="text/plain">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-text1.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-text2.jpg)
+
+- post请求
+改为post请求：
+```html
+<form action="/form" method="POST"  enctype="text/plain">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+浏览器貌似不作任何解析：
+![](/image/http_again/form-text3.jpg)
+
+### multipart/form-data (原生)
+用form自带原生请求讲解：
+- get请求
+
+```html
+  <form action="/form" method="GET"  enctype="multipart/form-data">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="file" name="freeword">
+        <input type="submit" >
+    </form>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-mul1.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-mul2.jpg)
+
+```
+boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW
+```
+如上,boundary是分界线，只要是multipart/form-data请求，浏览器默认会生成这个分割线参数。
+为什么包含二进制流(文件)的入参时，只能用multipart/form-data 不能用以前的application/x-www-form-urlencoded ，因为二进制流 无法字符串化，只能分割发送给服务器；
+而这个分割是通过 `boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW`来分割的
+
+
+- post请求
+改为post请求：
+```html
+<form action="/form" method="POST"  enctype="text/plain">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="submit" >
+    </form>
+```
+浏览器貌似不作任何解析，目前原因位置，原生form发送的，如果带file一律不解析，因此我们用fetch来做：
+![](/image/http_again/form-mul3.jpg)
+
+
+### multipart/form-data (fetch)
+```html
+ <form action="/form" id="form" method="POST"  enctype="multipart/form-data">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="file" name="freeword">
+        <input type="submit" >
+    </form>
+    <script>
+        var form = document.getElementById('form');
+        form.addEventListener('submit', function(e){
+            console.log(form)
+            e.preventDefault()
+            var formData = new FormData(form);
+            fetch('/form',{
+                method:'POST',
+                body:formData
+            })
+
+        })
+    </script>
+```
+点击浏览器未解码传参前：
+![](/image/http_again/form-mul4.jpg)
+点击浏览器解码后的传参view source：
+![](/image/http_again/form-mul5.jpg)
+
+### 文件上传
+
+#### 为什么要用formdata
+为什么要用formdata，因为有multipart/form-data，formdata只是multipart/form-data的实现方式；
+目前浏览器传输和服务端解析，基本上用 multipart/form-data ，都有了一套成熟的服务端传输文本流，服务端正常解析文本流的规范，
+所以上传必须用multipart/form-data 或者 formData
+当然也可以用 application/json，但必须将流转base64文本，且后端配合解析，这些都没有现成工具，因此请用multipart/form-data。
+
+[参考好文](https://segmentfault.com/a/1190000037411957)
+
+#### 文件上传难点：如何传输流
+浏览器如何将流通过tcp传输到服务器：
+目前有两种思路：
+- 通过 js 的 formData 模拟form 或 直接用multipart/form-data form ，配合xhr(ajax)发送给服务器，这是浏览器支持的传送流的报文。
+- 将流转为文本，通过其他方式传输都可以，比如流转base64。但是相应的服务端也要配合解析这串base64，所以比较麻烦，一般不用这种方式
+
+#### 两点：浏览器能传流，服务端有工具解析流
+实现文件上传必须满足以上两点，目前浏览器传输流的方式只有multipart/form-data 或 js 的 formData 方式。
+以下是formdata的解释：
+```
+A library to create readable "multipart/form-data" streams. Can be used to submit forms and file uploads to other web applications.
+The API of this library is inspired by the XMLHttpRequest-2 FormData Interface.
+```
+因为浏览器都是通过formData方式传递流，所以服务端对待有流的请求时，也必须用配套的formdata工具解析这个流，还好，服务端有一套标准解析formdata。
+
+#### FormData demo 1
+用下面任何目录下建一个html，然后使用node 的 http-server 启动一个服务器，访问：
+**如果没有服务器将发送失败**
+```html
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+         setTimeout(()=>{
+            var form = document.getElementById('form');
+            form.addEventListener('submit', function(e){
+            e.preventDefault()
+        })
+         }, 1000)
+        function onclick1(){
+            var data = new FormData(form);
+            $.ajax({
+                url: "/form",
+                type: 'POST',
+                cache: false,
+                data: data,
+                processData: false,//必须这样设置，原因可去百度查
+                contentType: false,//必须这样设置，原因可去百度查
+                success: function (result) {
+                },
+                error: function (err) {
+                }
+            });
+        }
+    </script>
+    <form action="/form" id="form" method="POST"  enctype="multipart/form-data">
+        <input type="text" name="usename">
+        <input type="password" name="psw">
+        <input type="file" name="freeword">
+        <input type="submit" onclick="onclick1()" >
+    </form>
+```
+#### FormData demo2
+html一样，js改为
+```js
+  function onclick1(){
+            var data = new FormData();
+            data.append('usename', 112)
+            data.append('psw', 11)
+            data.append('freeword', $('#file1')[0].files[0])
+            $.ajax({
+                url: "/form",
+                type: 'POST',
+                cache: false,
+                data: data,
+                processData: false,//必须这样设置
+                contentType: false,
+                success: function (result) {
+                },
+                error: function (err) {
+                }
+            });
+        }
+```
+
+#### FormData fetch
+上面html不变，js改变如下：
+```js
+ setTimeout(()=>{
+            var form = document.getElementById('form');
+            form.addEventListener('submit', function(e){
+            console.log(form)
+            e.preventDefault()
+            var formData = new FormData(form);
+            fetch('/form',{
+                method:'POST',
+                body:formData
+            })
+        })
+         }, 1000)
+```
+
+#### 参考
+[参考好文](https://segmentfault.com/a/1190000037411957)
+[参考好文](https://segmentfault.com/a/1190000022331737)
+[参考好文](https://blog.csdn.net/u010216786/article/details/53168079)
+
 ## 登录
 ### 密码md5加密
 密码信息不能明文传输，数据库也不应知道用户的密码，所以前后端可采用同一套md5进行加密。
