@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>eslint笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="eslint">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>eslint笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">eslint笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-08T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2021-05-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-eslint" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">eslint笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-09 00:00:00" datetime="2021-05-08T16:00:00.000Z" itemprop="datePublished">2021-05-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h2><h3 id="eslint-配合-vscode-使用"><a href="#eslint-配合-vscode-使用" class="headerlink" title="eslint 配合 vscode 使用"></a>eslint 配合 vscode 使用</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>eslint在vscode生效：<br>安装eslint插件在vscode中；<br>如果用到airbnb的，就安装相关的airbnb 的 node_module包即可。<br>不用设置什么setting。json。<br>任意打开一个js文件，不能是ts文件哦，看是否生效。</p>
+<h4 id="必须要打开vscode的eslit配置"><a href="#必须要打开vscode的eslit配置" class="headerlink" title="必须要打开vscode的eslit配置"></a>必须要打开vscode的eslit配置</h4><p>打开vscode，点击下面进行eslint设置，<br>如下图是设置好的，没有设置好，是禁用，可参考<a href="https://blog.csdn.net/jinlx_/article/details/109381941" target="_blank" rel="noopener">blog</a><br><figure class="image-box">
+                <a rel="eslint笔记" href="/image/blog_flow/pro.jpg" title="undefined" data-fancybox="images"><img src="/image/blog_flow/pro.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h4><p>很多人以为eslint要设置一大堆的vscode插件，其实不然，只需要安装一个eslint插件即可。</p>
+<h3 id="禁用规则"><a href="#禁用规则" class="headerlink" title="禁用规则"></a>禁用规则</h3><p>基本上所有的规则都可以通过设置 值为 0的数组来禁用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;no-unused-expressions&quot;: [0]</span><br></pre></td></tr></table></figure></p>
+<h3 id="eslint-不生效"><a href="#eslint-不生效" class="headerlink" title="eslint 不生效"></a>eslint 不生效</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>想要vscode的fix all autoFixable problem；配置airbnb后 eslint不生效；<br>首先eslint除了上面说的 vscode 可能需要安装linter-eslint外，因为用了 airbnb，所有一定要在安装airbnb相关的两个node_module:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint-config-airbnb&quot;: &quot;^17.0.0&quot;,</span><br><span class="line">&quot;eslint-import-resolver-babel-module&quot;: &quot;^4.0.0&quot;,</span><br></pre></td></tr></table></figure></p>
+<p>当然还要安装其他相关的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;babel-eslint&quot;: &quot;^8.2.6&quot;,</span><br><span class="line"></span><br><span class="line">&quot;eslint-plugin-import&quot;: &quot;^2.13.0&quot;,</span><br><span class="line">&quot;eslint-plugin-jsx-a11y&quot;: &quot;^6.1.1&quot;,</span><br><span class="line">&quot;eslint-plugin-react&quot;: &quot;^7.10.0&quot;,</span><br><span class="line">&quot;eslint-plugin-react-hooks&quot;: &quot;^3.0.0&quot;,</span><br></pre></td></tr></table></figure></p>
+<p>之所以在webpack未运行时，eslint能够起作用，估计是eslint默认直接通过 ‘/node_module/eslint-config-airbnb/index.js’等的方式引用了相关文件，如果这些引用存在，eslint将开启实时监听。</p>
+<h4 id="其他情况"><a href="#其他情况" class="headerlink" title="其他情况"></a>其他情况</h4><p>注意的是，vscode使用eslint时，必须安装 linter-eslint 插件才能生效，装了插件后才能识别根目录下的eslint配置文件。</p>
+<h4 id="ts-tsx不生效，js生效"><a href="#ts-tsx不生效，js生效" class="headerlink" title="ts tsx不生效，js生效"></a>ts tsx不生效，js生效</h4><p>如果你的项目中使用了ts，可能对于ts tsx的文件，ts自带的验证规则将优先于eslint，此时eslint可能在js文件中生效，ts文件中不生效。<br>不过ts文件中有ts自带的验证规则生效。</p>
+<h4 id="没有安装prettier"><a href="#没有安装prettier" class="headerlink" title="没有安装prettier"></a>没有安装prettier</h4><p>没有安装一下两个依赖是不生效的，用vscode的时候，你如果注意观察vscode给予的错误提示，会发现，错误提示基本上都是prettier报错的，因此相关的包不安装肯定不生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint-config-prettier&quot;: &quot;^4.3.0&quot;,</span><br><span class="line"> &quot;eslint-plugin-prettier&quot;: &quot;^3.1.4&quot;,</span><br></pre></td></tr></table></figure>
+<h3 id="eslintc-配置与package-json联系"><a href="#eslintc-配置与package-json联系" class="headerlink" title=".eslintc 配置与package.json联系"></a>.eslintc 配置与package.json联系</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//package.json</span><br><span class="line">"eslint": "^5.16.0",</span><br><span class="line">"babel-eslint": "^8.2.3",</span><br><span class="line">"eslint-config-airbnb": "^17.1.0",</span><br><span class="line">"eslint-config-prettier": "^4.3.0",</span><br><span class="line">"eslint-plugin-compat": "^2.2.0",</span><br><span class="line">"eslint-plugin-import": "^2.20.2",</span><br><span class="line">"eslint-plugin-jsx-a11y": "^6.0.3",</span><br><span class="line">"eslint-plugin-prettier": "^3.1.4",</span><br><span class="line">"eslint-plugin-react": "^7.20.0",</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//.eslintc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line">  <span class="attr">"plugins"</span>: [</span><br><span class="line">    <span class="string">"react"</span>, //对应上面 eslint-plugin-react</span><br><span class="line">    <span class="string">"jsx-a11y"</span>, //对应上面 eslint-plugin-jsx-a11y</span><br><span class="line">    <span class="string">"import"</span> //对应上面 eslint-plugin-import</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"extends"</span>: [</span><br><span class="line">    <span class="string">"airbnb"</span>, //对应上面 eslint-config-airbnb</span><br><span class="line">    <span class="string">"prettier"</span> //对应上面 eslint-config-prettier</span><br><span class="line">  ],</span><br></pre></td></tr></table></figure>
+<h3 id="eslint对webpack别名报错"><a href="#eslint对webpack别名报错" class="headerlink" title="eslint对webpack别名报错"></a>eslint对webpack别名报错</h3><p>安装插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint-import-resolver-webpack&quot;: &quot;^0.13.0&quot;,</span><br></pre></td></tr></table></figure></p>
+<p>在.eslintrc中配置：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"settings": &#123;</span><br><span class="line">   "import/resolver": &#123;</span><br><span class="line">     "webpack": &#123;</span><br><span class="line">       "config": "./webpack.config.base.js"//这里导入webpack中关于别名的配置</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
+<h3 id="存疑airbnb"><a href="#存疑airbnb" class="headerlink" title="存疑airbnb"></a>存疑airbnb</h3><p>在我用的项目中，貌似不必直接安装 airbnb包，一般都是安装”eslint-config-airbnb”包就可以了。就可以生效eslint了。</p>
+<h2 id="prettier"><a href="#prettier" class="headerlink" title="prettier"></a>prettier</h2><h3 id="在eslint中生效prettier-prettier"><a href="#在eslint中生效prettier-prettier" class="headerlink" title="在eslint中生效prettier/prettier"></a>在eslint中生效prettier/prettier</h3><h4 id="配置eslit"><a href="#配置eslit" class="headerlink" title="配置eslit"></a>配置eslit</h4><p>代码格式、美观程度 要配置prettier，要想prettier生效，必须在下面三处配置：<br>不过eslint一般可以可以通过<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line"><span class="string">"plugins"</span>: [</span><br><span class="line">  <span class="string">"react"</span>,</span><br><span class="line">  <span class="string">"jsx-a11y"</span>,</span><br><span class="line">  <span class="string">"import"</span>,</span><br><span class="line">  <span class="string">"prettier"</span><span class="comment">//必须配置</span></span><br><span class="line">],</span><br><span class="line"><span class="string">"extends"</span>: [</span><br><span class="line">  <span class="string">"airbnb"</span>,</span><br><span class="line">  <span class="string">"prettier"</span><span class="comment">//必须配置</span></span><br><span class="line">],</span><br><span class="line"><span class="string">"rules"</span>: &#123;</span><br><span class="line">  <span class="string">"prettier/prettier"</span>: <span class="string">"error"</span>,<span class="comment">//必须配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过eslint一般可以可以通过下面设置 空行控制，缩进设置，因此也可以不设置prettier；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line"><span class="string">"plugins"</span>: [</span><br><span class="line">  <span class="string">"react"</span>,</span><br><span class="line">],</span><br><span class="line"><span class="string">"extends"</span>: [</span><br><span class="line">  <span class="string">"airbnb"</span>,</span><br><span class="line">],</span><br><span class="line"><span class="string">"rules"</span>: &#123;</span><br><span class="line">  <span class="string">"indent"</span>: [<span class="string">"warn"</span>, <span class="number">2</span>],</span><br><span class="line">  <span class="string">"no-multiple-empty-lines"</span>: [<span class="string">"warn"</span>, &#123; <span class="string">"max"</span>: <span class="number">2</span>, <span class="string">"maxEOF"</span>: <span class="number">1</span> &#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="记得要安装prettier"><a href="#记得要安装prettier" class="headerlink" title="记得要安装prettier"></a>记得要安装prettier</h4><p>除了上面的prettier插件，还要记得安装prettier。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-05-10T01:10:21.632Z" itemprop="dateUpdated">2021-05-10 09:10:21</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/05/09/eslint/" target="_blank" rel="external">https://yewills.github.io/2021/05/09/eslint/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eslint/">eslint</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/09/eslint/&title=《eslint笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/09/eslint/&title=《eslint笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/05/10/css/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/04/15/nginx_base/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">nginx笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#eslint"><span class="post-toc-number">1.</span> <span class="post-toc-text">eslint</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eslint-配合-vscode-使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">eslint 配合 vscode 使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#必须要打开vscode的eslit配置"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">必须要打开vscode的eslit配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#误区"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">误区</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#禁用规则"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">禁用规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eslint-不生效"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">eslint 不生效</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他情况"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">其他情况</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ts-tsx不生效，js生效"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">ts tsx不生效，js生效</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#没有安装prettier"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">没有安装prettier</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eslintc-配置与package-json联系"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">.eslintc 配置与package.json联系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eslint对webpack别名报错"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">eslint对webpack别名报错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存疑airbnb"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">存疑airbnb</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prettier"><span class="post-toc-number">2.</span> <span class="post-toc-text">prettier</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在eslint中生效prettier-prettier"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">在eslint中生效prettier/prettier</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置eslit"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">配置eslit</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#记得要安装prettier"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">记得要安装prettier</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/09/eslint/&title=《eslint笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/09/eslint/&title=《eslint笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3ay67CMAxFUf7/p3ulO2LS9DwCIsnuCKFQsjpw7divl3xd/9f75/dv7r5319zdedoFAwaMZRnX8LpbM96EsnL8mPS9wYAB4xyGHmSzkKr8VgHffg8DBgwYQogcr1HYGRUGDBgw3BRwHGTHtedXAy4MGDAWZDSBTwmsTfo4uRaHAQPGgoysMfCdzx/vb8CAAePnGZd5NX+vpJLhrmDAgLE1Izu4b4rP/s1gZLgwYMDYiNH/TC9xm7BbPQ4YMGAszsgKSGXMom8VGA8CBgwYhzH0g3j3EWSDrVLyCgMGjK0ZetLmjn8pm+7bnzBgwDiT4aZ07ubcwtgobmHAgLEdww12/RCGG2qV+8CAAeM0Rnas765xE8GHFwAMGDC2ZjSJXTZgoQRfKcjqp4YwYMBYnOEe5evNRT0pzNoSxnsDBgwYizPcAjUbpFA2mu0EBgwYJzDmFrHuIJfe2nwIxDBgwNiaoS/qS013o8qdjRwWBgwYWzCaMrIpMrMQbJwawoABY3GGm67px2p92DUCPQwYMI5hZIdi7vGZ9AYwC2YYMGDszXCTOffQXx9FdUdmYcCAcQ7jMi/jqZhH/HqovZ0ZgQEDxqYMN8y5K91xDb3lAAMGjNMYWQszGyPr25mTO7EwYMBYitEHQbeFkL0BHgIuDBgwjmdkBWeTJirBGgYMGDCy7bqF6IR2KQwYMA5gNEWsgunboh8/boMBA8YPM7LGgFLiKuNfbqAPATBgwFiV8QccTfUboamoZAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
