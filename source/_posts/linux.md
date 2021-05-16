@@ -47,6 +47,151 @@ exit
 执行su进入超级用户；
 执行exit退出超级用户。
 
+### 命令行技巧
+
+#### 概述
+
+- Ctrl + r 查找使用过的命令
+- Ctrl + a 回到命令首字符
+- Ctrl + e 回到命令结尾
+- history 列出之前使用过的所有命令， 此时输入` ! + index(数字)` 可以执行对应命令
+
+#### 常用命令
+
+- pwd 命令 ： 显示当前目录
+- which 命令接受一个参数，可打印出此参数命令对应的程序安装目录
+```s
+$ which git
+/mingw64/bin/git
+
+$ which node
+/c/Program Files/nodejs/node
+
+```
+
+
+### linux 与 windows
+#### 一切皆文件
+这是Linux与Windows最大区别；
+
+#### 万有之源，斜杠青年
+linux有且只有一个根目录，就是 / 斜杠，根目录就是Linux最顶层的目录。
+
+#### window反斜杠/与linux斜杆
+- window 文件目录以反斜杠：
+![](/image/linux/unsame.jpg)
+
+- linux 文件目录以斜杠：
+linux中用斜杠/来标明目录的层级与包含关系
+![](/image/linux/unsame1.jpg)
+
+#### 根目录直属子目录
+- window
+![](/image/linux/win.jpg)
+
+- linux
+见《根目录直属子目录》
+
+### linux根目录直属子目录
+#### 通过命令查看目录
+[更多详细参考这里](https://linuxtoy.org/archives/linux-file-structure.html)
+
+```s
+# ls / 是查看 根目录
+[hz@localhost ~]$ ls /
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+```
+
+#### bin
+- bin 英语binary的缩写，表示 “二进制文件”
+- 我们知道可执行文件是二进制的
+- bin目录包含了会被所有用户使用的可执行程序
+
+#### boot
+- 英语boot表示 “启动”
+- 目录包含与linux启动密切相关的文件
+
+#### dev
+- 英语 device缩写，表示 设备
+- 包含外设，它里面的子目录，每一个对应一个外设
+- 比如代表我们的光盘驱动器的文件就会出现在这个目录下面
+
+#### etc
+
+- 有点不能顾名思义了，etc是法语 et cetera的缩写
+- 翻译成英语就是 and so on， 表示 等等；
+- etc 目录包含系统的配置文件
+
+为什么在/etc下面存放配置文件
+- 按照原始的unix说法，这下面放的都是一堆零零碎碎的东西，就叫etc好了，是历史遗留因素，所以叫etc。
+
+
+#### home
+- 英语home表示 家， 用户的私人目录；
+- 在home目录中，我们放置私人的文件；
+- 类似Windows中的documents文件夹，也叫 “我的文档”
+- linux 中的每个用户都在home目录下有一个私人目录
+- (除了大管家用户root)
+- root用户拥有所有权限，比较任性，根普通用户不住在一起
+- 假如我的用户名是oscar，那么我的私人目录就是 `/home/oscar`
+- 假如另外一个用户叫john，那么他的私人目录就是 `/home/john`
+#### lib
+- 英语library的缩写，表示 库
+- 目录包含被程序所调用的库文件，例如.so结尾的文件
+- Windows 下这样的库文件则是以.dll结尾
+
+#### media
+- 英语 media 表示 媒体
+- 可移动的外设（USB盘，SD卡，DVD,光盘 等等）插入电脑时
+- linux可以让我们通过media的子目录来访问这些外设中的内容
+
+#### mnt
+- mount的缩写，表示 挂载
+- 有点类似 media目录，但一般用于临时挂载一些装置
+
+#### opt
+- 可选的应用软件包
+- 用于安装多数第三方软件和插件
+#### root
+- 根 的意思
+- 超级用户 root 的家目录
+- 一般的用户的家目录位于 /home下，root用户是个例外
+
+#### sbin
+- system binary的缩写，表示 系统二进制文件
+- 比bin目录多了一个前缀 system
+- sbin目录包含系统级的重要可执行程序
+
+#### srv
+- service 的缩写，表示 服务
+- 包含一些网络服务启动之后所需取用的数据
+
+#### tmp
+- 临时的，普通用户和程序存放临时文件的地方
+
+#### usr
+- 英语 Unix Software Resource 的缩写，表示 Unix操作系统软件资源(类似etc，也是历史遗留的命名)
+- 是最庞大的目录之一
+- 类似Windows中的`C:\windows` 和 `C:\Program Files` 这两个文件夹的集合
+- usr目录里安装了大部分用户要调用的程序
+
+#### var
+- variable 的缩写，表示 动态的 可变的
+- 通常包含程序的数据，比如log日志文件
+
+
+#### 类Unix操作系统是类似的
+以上目录列表形式，在类Unix操作系统是类似的，如macOS的目录结构也是从根目录/开始的。
+
+
+
+
+
+
+
+
+
 ### 其他
 
 #### 启动电脑过程
