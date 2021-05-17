@@ -82,6 +82,103 @@ cd ../.. #回退两个目录
 
 - du -ah 查看当前目录下所有文件大小
 
+#### 用于显示文件的命令
+- cat 和 less 都可显示文件内容
+ cat 一次性终端中显示文件所有内容， 适合显示小文件
+ ```s
+  cat source/_posts/linux.md
+  cat source/_posts/linux.md -n # -n 显示内容时，加上行号
+ ```
+强大的 less 查看命令
+less 分页显示文件内容；
+按空格查看下一个屏幕
+按回车健查看下一行
+按u键查看前进半个屏幕
+按q退出
+按 = 查看当前情况如下：
+```s
+#目前处于 1-14行的位置，文件内容总共238行； 目前占的字符175，总字符6686，当前页占整个内容3%；
+source/_posts/linux.md lines 1-14/238 byte 175/6686 3%  (press RETURN)
+```
+按h键，查看less的帮助文档；
+按/进入搜索模式
+
+- head 显示文件开头
+- tail 显示文件最后
+```s
+#-n 5 显示最后5行；
+$ tail -n 5 less source/_posts/linux.md
+``` 
+tail另外一个强大地方是配合 -f 一起使用，实时监听文件最新修改：
+```s
+#-n 5 显示最后5行；tail默认每过1秒检查文件是否有新内容，
+$ tail -f  less source/_posts/linux.md
+#-n 5 显示最后5行；每隔4秒监听一次
+$ tail -f -s 4  less source/_posts/linux.md
+``` 
+
+#### 其他命令
+
+- touch 如果文件不存在就创建一个空白文件，如果存在，就不创建
+如何创建一个包含空格文件名的文件，使用 双引号：
+```s
+$ touch new_fule  #推荐
+$ touch "new file"  #不推荐带空格的文件名
+``` 
+
+- mkdir 创建目录
+可使用 -p 递归创建目录结构，注意window下的linux工具，不支持-p。
+```s
+$ mkdir aa/cc -p
+``` 
+
+- cp 拷贝文件或目录
+```s
+$ cp file file_copy #拷贝file，重命令为file_copy
+$ cp file aa/file_copy #拷贝file，到目录aa下，命令为file_copy
+$ cp -r one one_copy #拷贝目录要加 -r， 拷贝目录one，得到目录one_copy，里面所有文件都被拷贝
+``` 
+配合 通配符 * 使用，大大提高拷贝效率
+```s
+$ cp *.txt one 把当前目录下所有txt文件拷贝到one目录下
+$ cp ha* one 把当前目录以ha开头的文件都拷贝到one目录中
+``` 
+
+- mv 移动文件/目录(也可用于重命名)
+用法与cp相似，不同的是，mv操作目录时，不需要用额外的 -f参数
+```s
+$ mv newfile one 将newfile文件移动到one目录，原先的newfile将不存在于先前目录
+$ mv one twp 将one 目录 移到 twp目录下
+$ mv *.txt one 把当前目录下所有txt文件移动到one目录下
+# 得益于mv的移动机制，因此mv也可以用于重命名
+$ mv one twp 将one 目录 重命名 为 twp (前提是twp不存在，如果存在，就是移动了)
+``` 
+
+- rm 删除文件和目录
+ - 删除文件：
+```s
+$ rm newfile 直接删除文件
+$ rm -i  newfile  删除之前会询问是否删除
+$ rm -f  newfile  强制删除
+``` 
+ - 删除目录及其内的一切文件：
+```s
+$ rm -r  one  # 删除one目录，删除目录需要带-r
+``` 
+危险的操作
+```s
+$ rm -rf  one   强制删除one目录
+``` 
+毁灭地球的命令
+```s
+$ rm -rf  /* 或 $ rm -rf  / #直接删除你/根目录下的整个系统；
+#作为一种保护机制，一般linux系统，只有超级管理员才拥有此命令权限
+``` 
+
+
+
+
+
 
 
 ### linux 与 windows
