@@ -431,6 +431,118 @@ sudo rpm -e 包名 用于卸载；
  sudo yum remove 包名 用于卸载；
 ```
 
+### RTFM 阅读那该死的手册
+
+RTFM ：read the fucking manual 缩写；
+
+#### man 命令
+man 命令 manual 缩写
+后接你想要显示使用手册的命令，函数 等等；
+此命令用于查看系统中自带的各种参考手册；
+具体可查命令如下：
+- 可执行程序或shell命令
+- 系统调用（linux 内核提供的函数）
+- 库调用（程序库中的函数）
+- 文件（例如 /etc/passwd）
+- 特殊文件（通常在/dev下）
+- 杂项（比如man（7），groff（7））
+- 系统管理命令（通常只能被root用户使用）
+- 内核子程序
+
+#### 安装man命令
+```s
+sudo yum install -y man-pages
+```
+手册不全，更新man数据库
+```s
+sudo mandb
+```
+
+#### man命令使用
+输入 man 数字 命令/函数 ， 可以查到相关的命令和函数；
+如果不加数字，man默认从数字较小的手册中寻找相关命令和函数；
+```s
+man rand
+man 3 rand
+random()
+```
+#### 手册中搜索
+/键 ： 实现搜索，和之前在less命令中功能类似；
+
+在谷歌或百度 直接搜索 man ls 也可以出来手册的内容；
+
+#### apropos 查找命令
+可通过 apropos sound 查找相关命令 如 amixer 音量调节器；
+
+#### whatis 命令(man精简版)
+
+```s
+whatis ls
+```
+或者用：
+-h 或 --help
+
+### 查找文件
+#### locate 命令
+对于刚创建不久的文件，因为它们还没被收录进文件数据库，因此用locate命令就找不到其索引，自然就不会返回任何结果。
+linux系统一般每天会更新一次文件数据库，只要你相隔24小时再用locate查找，就能找到刚创建的文件。
+
+#### sudo updated
+可使用 sudo updated 更新文件数据库
+
+#### find命令
+find的区别：
+find 查找磁盘
+locate 查找文件数据库
+
+find 何处 何物 做什么
+find 默认查找当前目录及其子目录，也可以指定 查找目录 如 /home
+```s
+find /var/log -name "newfile"
+find /var/log -name "newfile*"
+find /var -size +10M #查找超过10M的文件 M是兆，也就是10的6次方
+find -name "*.txt"-atime -7 #查找最近7天内修改过的txt文件
+```
+
+type 类型
+-type d : 只查找目录类型。 d是 directory 目录；
+-type f : 只查找文件类型；
+```s
+find . -name "newfile" -type d #.是当前目录，
+```
+#### find进行操作
+
+```s
+find -name "*.jpg" -delete #删除所有查找到的jpg文件，
+```
+
+#### -exec与 -ok
+```s
+find one -name "*.txt" -exec chmod 600 {} \; #对于每个找到的txt文件，都进行-exec参数指定操作，如给txt文件设置600权限；
+find one -name "*.txt" -ok chmod 600 {} \; #ok跟 exec 一样， 只是ok操作时，会询问是否继续；
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  
