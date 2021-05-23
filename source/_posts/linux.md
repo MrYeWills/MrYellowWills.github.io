@@ -1006,6 +1006,42 @@ unrar l sort.rar  # 不解开，直接看内容
 见《rar编译安装》
 
 
+### 安装centos 服务器
+这里选用 CentOS-7-x86_64-Minimal-2009 版本；
+下面箭头部分是设置磁盘，点击进去，，按照默认选中下，然后点击done 即可，其他设置安装默认来：
+这个页面还可设置其他配置，不过一般默认就行了，这里列举下可以设置什么：
+
+![](/image/linux/ser.png)
+![](/image/linux/ser1.png)
+
+因为是服务器，所有这里只需设置root即可，不需要设置其他用户。
+
+下面就是等待安装了，安装好后，使用root登录：
+![](/image/linux/ser2.png)
+
+#### 网络设置及其相关命令
+查看ip信息的两个命令
+ifconfig  比较旧的命令 net-tools中命令
+ip addr 比较新的命令 iproute2中的命令
+[关于ifconfig与ip addr](https://www.jianshu.com/p/6fff29bd42b3)
+
+设置网络为桥接模式，方便其他虚拟机centos访问到这台虚拟机：
+[VirtualBox中有4中网络连接方式](https://www.cnblogs.com/jpfss/p/8616613.html)
+[enp0s3 与 ens33](https://www.jianshu.com/p/5fc492060e70)
+
+![](/image/linux/ip.png)
+
+注意的是，虚拟机链接网络时，需要设置下图 ONBOOT = yes,然后重启电脑，否则无法链接网络
+![](/image/linux/ser3.png)
+
+如果要使用ifconfig，需要安排 net-tools，
+安装：`yum install net-tools`，然后一路yes就行；
+
+
+
+
+
+
 
 
 
