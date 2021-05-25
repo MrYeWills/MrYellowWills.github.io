@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>linux笔记(中) | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="linux">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>linux笔记(中)</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">linux笔记(中)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-25T01:11:29.563Z" itemprop="datePublished" class="page-time">
+  2021-05-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-linux_more" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">linux笔记(中)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-25 09:11:29" datetime="2021-05-25T01:11:29.563Z" itemprop="datePublished">2021-05-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="SSH相关及其登录"><a href="#SSH相关及其登录" class="headerlink" title="SSH相关及其登录"></a>SSH相关及其登录</h3><h4 id="SSH概述"><a href="#SSH概述" class="headerlink" title="SSH概述"></a>SSH概述</h4><p>客户机，把连接到服务器的机器称之为客户机。</p>
+<p>SSH协议是英语 Secure SHell的缩写， 表示“安全的shell”， shell 是英语 “壳”的意思。</p>
+<h4 id="SSH加密方式"><a href="#SSH加密方式" class="headerlink" title="SSH加密方式"></a>SSH加密方式</h4><p>对称加密， 也叫对称密钥加密； 致命缺陷，会话开始前 传递的密钥 可能会被截取， 从而变成相当于明文传输。</p>
+<p>非对称 公钥加密 私钥解密；</p>
+<p>SSH 结合使用非对称加密和对称加密两种方法；<br>首先 使用非对称加密，安全地传输对称加密的密钥；<br>之后，就一直使用对称加密的密钥来作为加密 和 解密的手段。</p>
+<h4 id="服务器安装SSH服务"><a href="#服务器安装SSH服务" class="headerlink" title="服务器安装SSH服务"></a>服务器安装SSH服务</h4><p>centos 服务器版本 默认安装 SSH服务，<br>安装SSH: yum install openssh-server<br>启动： systemctl start(或 restart) sshd<br>设置开启启动： systemctl enable sshd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#查看是否运行</span><br><span class="line">ps -ef | grep ssh</span><br><span class="line"></span><br><span class="line">#查看是否系统开机启动</span><br><span class="line">systemctl list-unit-files | grep enabled</span><br></pre></td></tr></table></figure></p>
+<h4 id="客户端安装ssh工具"><a href="#客户端安装ssh工具" class="headerlink" title="客户端安装ssh工具"></a>客户端安装ssh工具</h4><p>windows： 安装 putty，xshell， secureCRT， 这三款都是ssh的一个客户端，用于连接ssh服务器端；<br>linux： yum install openssh-clients<br>macOS 默认已经安装了ssh客户端；</p>
+<p>ssh默认的端口是22,下面是putty安装：<br>推出连接：exit<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/put.png" title="undefined" data-fancybox="images"><img src="/image/linux/put.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>centos和macOS中连接是一样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@172.20.10.2</span><br></pre></td></tr></table></figure></p>
+<p>查看 sshd 运行情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status sshd</span><br></pre></td></tr></table></figure></p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/run.png" title="undefined" data-fancybox="images"><img src="/image/linux/run.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h4><p>在man 查找命令后，输入 <code>/</code>进行搜索。<br>man sshd_config</p>
+<p>全局config文件有两个<br>ssh客户端配置： /etc/ssh/ssh_config (全局) 或 ~/.ssh/config (个人目录))<br>ssh服务端配置： /etc/ssh/sshd_config<br>查看使用手册：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man sshd_config (ssh客户端)</span><br><span class="line">man ssh_config (ssh客户端)</span><br></pre></td></tr></table></figure></p>
+<p>服务端config常用配置参数<br>PermitRootLogin 是否允许root用户身份登录<br>PasswordAuthentication 是否允许密码验证登录<br>PubkeyAuthentication 是否允许公钥登录<br>PermiEmptyPasswords 是否运行空密码登录</p>
+<p>修改配置后，重启sshd服务立即生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure></p>
+<h4 id="生成-ssh目录"><a href="#生成-ssh目录" class="headerlink" title="生成.ssh目录"></a>生成.ssh目录</h4><p>root用户的家目录下，如果没有.ssh目录<br>使用以下命令生成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost</span><br></pre></td></tr></table></figure></p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/host.png" title="undefined" data-fancybox="images"><img src="/image/linux/host.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/host1.png" title="undefined" data-fancybox="images"><img src="/image/linux/host1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="客户端配置登录"><a href="#客户端配置登录" class="headerlink" title="客户端配置登录"></a>客户端配置登录</h4><p>客户端配置.ssh config<br>局部的客户端config文件在用户家目录的.ssh隐藏目录中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh/config #(个人目录))</span><br></pre></td></tr></table></figure></p>
+<p>此文件一般默认没有创建，可以手动创建；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br><span class="line">cd .ssh</span><br><span class="line">touch config</span><br><span class="line">chmod 600 config #修改权限，最好修改下，也可不修改</span><br><span class="line">ls -l</span><br><span class="line">nano config</span><br><span class="line">Host rootali</span><br><span class="line">    HostName 192.168.1.103</span><br><span class="line">    Port 22</span><br><span class="line">    User root</span><br><span class="line"># 重新在客户端登录：</span><br><span class="line">ssh rootali #rootali上面配置的别名</span><br><span class="line">#输入密码可以登录了</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-05-25T01:11:29.563Z" itemprop="dateUpdated">2021-05-25 09:11:29</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/05/25/linux_more/" target="_blank" rel="external">https://yewills.github.io/2021/05/25/linux_more/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/25/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/25/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/05/25/hexo/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">hexo笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/05/25/mac_linux/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mac和linux笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SSH相关及其登录"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">SSH相关及其登录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SSH概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">SSH概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SSH加密方式"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">SSH加密方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务器安装SSH服务"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">服务器安装SSH服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户端安装ssh工具"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">客户端安装ssh工具</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置SSH"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">配置SSH</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成-ssh目录"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">生成.ssh目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户端配置登录"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">客户端配置登录</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/25/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/25/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOElEQVR42u3aMY7DMAwF0dz/0k6bwlbmk04AU6NqsXAsPRcERfL1wuv4WJ//4c/zd65/1VoyZMh4LONYrvUz5M3kQ6z/RrvLkCFjAwY5BAmp683We/GwLkOGDBmcQVK6zhFlyJAho/Y6njKSFLN2VZYhQ8aeDHIgkiaSElsalG++i8uQIeOBDF51///fP+lvyJAh41GMI1xpEKwli/GpZMiQMZrBAxxPznhqWHvDZYFPhgwZGzD4kFYtXKY53hqG7uIyZMgYxKgV1Ei5v5MI8oaEDBkyZjNqP+bJYnolJsH35NPLkCFjAwa5RvKBjJuPSHI/GTJkbMNIN0ubjumVOBgUkyFDxmYMcnReDkvTyvSTXQZcGTJkDGL00zveYEiHz+KqoQwZMjZg8I07yDS486AvQ4aMqYxaAldrc/5wUEyGDBmjGWnDMg2d6ZOtQC9DhoyhjDSMphvwVijfS4YMGXsy0qZmmrqRgTB+kT55XoYMGaMZvFjPQ3PaPEhHYNNmgwwZMmYweDrYCZH3Xpi/DFvIkCFjNIO0J/lYBgmsvADXqhrKkCFjECMdyUpHNFpZ6voSK0OGjKGMI1ydyypvA8SfSYYMGaMZtTCXFujJBbV26W3VDmXIkPEoRhpk++MXtZZnnDPKkCFjHIMHPt4kIMNh6XG/5LkyZMiQ0SiiERJ5/uaAK0OGjNGMTrGMlOF4OU+GDBn7MNKRiNollsfM4rCFDBkyhjJqeRcfCKulff3xDhkyZIxgvAGfcdsZpPgAcQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
