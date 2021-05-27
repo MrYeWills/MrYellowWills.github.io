@@ -242,6 +242,12 @@ websocket的优点：
 ![](/image/http_again/spdy1.jpg)
 ![](/image/http_again/spdy2.jpg)
 ![](/image/http_again/spdy3.jpg)
+
+### 认识url
+
+www.github.com
+
+www 是主机名，github.com 是域名；
 ## http协议进阶
 
 ### 多种加密方式(https)

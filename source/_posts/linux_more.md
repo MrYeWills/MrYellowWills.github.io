@@ -253,6 +253,20 @@ I键 用于插入内容： 进入块可视模式，光标选中相应字符，�
 ![](/image/linux/vim1.png)
 
 
+### 命令集合
+
+#### scp 网间拷贝
+scp 是 secure copy 缩写 安全拷贝，可以使我们通过网络，把文件从一台电脑拷贝到另一台。
+scp 基于 SSH(Secure SHell)的原理来运作的。
+SSH 会在两台网络连接的电脑之间创建一条安全通信的管道
+scp 就利用这条管道安全地拷贝文件
+
+scp sourcefile destinationfile 前者是源文件，后者是目标文件 就是拷贝产生的文件；
+上面两个文件都可以以 user@ip:file_name 来表示； 其中ip 也可以是 域名。
+```s
+scp file.txt root@192.168.1.5:/root # 表示从我的电脑中当前文件夹下的file。txt 拷贝到远程电脑。
+```
+
 
 
 

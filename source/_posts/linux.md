@@ -299,6 +299,7 @@ boot  etc  lib   media  opt  root  sbin  sys  usr
 
 为什么在/etc下面存放配置文件
 - 按照原始的unix说法，这下面放的都是一堆零零碎碎的东西，就叫etc好了，是历史遗留因素，所以叫etc。
+目前，大多全局的配置都是放在 etc下，如 /etc/hosts文件等等；
 
 
 #### home
@@ -1037,6 +1038,40 @@ ip addr 比较新的命令 iproute2中的命令
 如果要使用ifconfig，需要安排 net-tools，
 安装：`yum install net-tools`，然后一路yes就行；
 
+这里可以查看 net-tools iproute2 下都有哪些命令
+![](/image/linuxm/lan3.png)
+
+查看 ifconfig 命令是哪个安装包：
+使用rpm -qf 来查看 安装模块。
+```s
+[hz@localhost ~]$ which ifconfig
+/usr/sbin/ifconfig
+[hz@localhost ~]$ rpm -qf /usr/sbin/ifconfig
+net-tools-2.0-0.25.20131004git.el7.x86_64 #说明是net-tools安装模板
+[hz@localhost ~]$ 
+
+```
+
+### 解读ifconfig
+
+#### 旧版
+如下命令行执行此命令后，会显示三个接口：
+
+- eth0 对应有限连接，对应你的有线网卡，一般是RJ45网线，eth是 Ethernet 的缩写，表示以太网，有些电脑可能有几条网线连着，此时会有eth1，eth2.
+- lo 本地回环 local loopback 缩写，对应虚拟网卡，对应ip 127.0.0.1,一般用于访问自己；
+![](/image/linux/lo.png)
+- wlan0 对应wi-fi 无线连接，对应你的无线网卡，wlan 是 wireless Local Area Network 的缩写，表示无线局域网，若你有几个无线网卡，就有wlan1 wlan2...
+
+关于下图的解析：
+红框框出的， 无线没有发包和收包， 本地回环有包的发送，这是正常的； 最多的发包数量是有线连接，所以判定有线连接。
+![](/image/linuxm/lan1.png)
+
+#### 新版
+- enp0s3 en 代表以太网卡，是Ethernet的缩写， p0s3 代表PCI接口的物理地址为（0，3），
+  其中横坐标代表bug总线，纵坐标代表slot 槽、插口
+
+还有一个虚拟接口，可以不用管，这里就不列出了。
+![](/image/linuxm/lan2.png)
 
 
 
