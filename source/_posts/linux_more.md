@@ -267,6 +267,322 @@ scp sourcefile destinationfile 前者是源文件，后者是目标文件 就是
 scp file.txt root@192.168.1.5:/root # 表示从我的电脑中当前文件夹下的file。txt 拷贝到远程电脑。
 ```
 
+## Shell
+### shell 概述
+几乎所有unix发展而来的系统都是基于sh开发出来的shell。
+
+
+
+shell 有以下几个分类：
+![](/image/linux/shell0.png)
+
+关于bash：
+其中bash是非常有名的shell，
+是大多数linux发行版的默认shell；
+也是苹果的macOS操作系统的默认Shell(据说因为版权问题以后会缓存Zsh)
+
+
+shell可以做什么呢？
+shell是管理命令行的程序；
+记住你之前在终端输入过的命令；
+用组合键ctrl+R在终端的历史纪录中搜索执行过的命令；
+输入命令后，连续两次tab键 展示所有以此开头的命令；
+输入命令后，按一次tab键 补全；
+控制命令进程，比如ctrl+z 终止进程；
+重定向命令(用到< > | 等符号)
+定义别名
+
+如下图，shell好比用户和内核沟通的一个桥梁：
+![](/image/linux/shell1.png)
+
+切换shell
+为了切换shell，需要用到以下命令 chsh ，change shell 的缩写；
+
+### 创建脚本文件
+
+- vim test.sh
+- sh 就是shell的缩写；
+- 后缀.sh已经成为一种约定俗成的命名惯例，你也可以不加后缀；
+- 写一个shell脚本时，第一要做的就是指定哪种shell来 解析/运行 它；
+- 因为sh ksh bash 等等shell的语法不尽相同；
+
+- `#！`被称作sha-bang,或者shebang；指定脚本用哪种shell来运行；
+- 你之前学过的命令在shell中都可以使用，比如 ls， cat等等；
+- 注释使用 #；
+- 给脚本文件添加可执行的权限 `chmod +x test.sh`
+
+编辑test.sh内容如下：
+```s
+#!/bin/bash   #sha-bang,指定脚本用bash shell来运行
+ls
+```
+
+```s
+[hz@localhost ~]$ ls -l
+-rw-rw-r--.  1 hz   hz           16 May 29 06:53 test.sh #-rw-rw-r--里没有x，说明没有运行权限；
+
+#添加可执行的权限
+[hz@localhost ~]$ chmod +x test.sh
+[hz@localhost ~]$ ls -l
+-rwxrwxr-x.  1 hz   hz           16 May 29 06:53 test.sh #-rwxrwxr-x有x，说明有运行权限；
+
+#使用 ./test.sh 运行此sh文件
+[hz@localhost ~]$ ./test.sh
+Documents  htop-2.2.0.tar.gz  	test.sh
+
+```
+
+shell命令相比输入行的优势之一，就是一次性可以输入很多个命令；
+
+以调试模式运行
+
+- 调试一个脚本程序 bash -x test.sh
+- 参数 -x表示以调试模式运行
+- shell就会把我们的脚本文件运行时的细节打印出来
+```s
+[hz@localhost ~]$ bash -x test.sh
++ ls # bash -x test.sh 调试模式下，
+Desktop    htop-2.2.0	     test.sh
+[hz@localhost ~]$ 
+
+```
+
+创建属于自己的命令
+为什么pwd这些命令直接可以运行，时因为这些命令都在PATH中；
+PATH是linux的一个系统变量
+这个变量包含了你系统里所有可以被直接执行的程序路径；
+可用 echo $PATH可以打印PATH，将创建的sh文件拷贝到PATH中的任意一个目录，即创建成功：
+```s
+[hz@localhost ~]$ echo $PATH
+/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/hz/.local/bin:/home/hz/bin
+[hz@localhost ~]$ sudo cp test.sh /usr/local/sbin #将sh拷贝到PATH里面任意一个目录下，即可在任意地方运行test.sh命令了；
+[hz@localhost ~]$ test.sh 
+Desktop    htop-2.2.0		test.sh
+```
+
+
+Shell中的变量
+可以用变量在内存中暂时储存信息
+定义变量：
+```s
+#变量名是message,注意=左右不要有空格，加空格将让系统认为message是一个命令
+message='hello world' 
+# 反斜杠\，也成为转义字符，在变量值中加入单引号，需要用转义符
+message='hello ,it\'s me' 
+```
+
+echo
+```s
+#注意下面两种方式，打印结果是一样的，不过本质不一样
+[hz@localhost ~]$ echo hello world # 向echo传递两个参数，分别为hello 和 world ，因此被打印出来
+hello world
+[hz@localhost ~]$ echo "hello world" # 用双引号括起来后，相当于一个参数，向echo传递一个参数 ：hello world
+hello world
+```
+
+- 如果要插入换行符，需要用到 -e 参数 :为了使 转义符 发生作用
+- 比如换行转义符 \n ,如下
+```s
+[hz@localhost ~]$ echo -e "hello world\nsecond line"
+hello world
+second line
+```
+- 显示变量： bash脚本中，如果要显示一个变量，用echo后，必须要在变量名前加 $
+```s
+# 直接在命令行中定义变量
+[hz@localhost ~]$ msg1="888" #定义变量msg1，此变量将被写入系统内存
+[hz@localhost ~]$ echo $msg1 #为什么可以读取，因为该变量被写入内存了
+888
+
+# 在shell脚本中定义，注意的是，脚本中定义的变量，直接在命令行中无法打印出来
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+msg="hello world"
+echo $msg
+
+[hz@localhost ~]$ ./test.sh  #运行命令
+hello world
+
+[hz@localhost ~]$ echo $msg # 直接在命令行中无法打印出来
+
+```
+
+单引号与双引号的区别
+定义变量值时，单引号与双引号有区别；
+- 单引号
+如果变量被包含在单引号里面
+那么变量不会被解析
+美元符号 $ 保持原样输出,因为单引号忽略被它括起来的所有特殊字符;
+- 双引号
+双引号也会忽略大多数特殊字符，
+不同的是，双引号不会忽略 这些符号：$  反引号(`) 反斜杠
+不忽略上面的$符号，在双引号内可进行变量名替换
+```s
+[hz@localhost ~]$ msg1="888"
+[hz@localhost ~]$ echo $msg1
+888
+[hz@localhost ~]$ echo 'price is $msg1'  #单引号，那么变量不会被解析, 因为单引号忽略被它括起来的所有特殊字符
+price is $msg1
+[hz@localhost ~]$ echo "price is $msg1"  #双引号，可正常输出变量
+price is 888
+
+```
+
+反引号 
+- 反引号要求shell执行被它括起来的内容(如 命令)，反引号用法广泛
+```s
+[hz@localhost ~]$ msg=`pwd`  #反引号 msg的值就是shell执行pwd之后的结果
+[hz@localhost ~]$ echo "you are in dir $msg"
+you are in dir /home/hz
+```
+
+read 请求输入
+- read 命令读取到的文本会被立即储存在一个变量里
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+read name  #将read读取到的内容 赋值给变量 name
+echo "hellow $name !"
+
+[hz@localhost ~]$ ./test.sh
+hz   #运行后，光标这里闪烁，提示你输入内容，输入完毕，回车后read读取你输入的内容，执行后续命令
+hellow hz !
+```
+- 同时给几个变量赋值
+read命令一个单词一个单词(单词是用空格分开的)地读取你输入的参数，并把每个参数赋值给对应变量
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+read name place #空格分隔变量名
+echo "hellow $name , welcome $place !"
+
+[hz@localhost ~]$ ./test.sh
+hz chengdu #输入时，以空格分隔
+hellow hz , welcome chengdu !
+```
+
+- -p 显示提示信息
+read命令的-p参数，p是 prompt，表示提示
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+read -p 'please enter your name: ' name #-p 定义提示语
+echo "hellow $name !"
+
+[hz@localhost ~]$ ./test.sh
+please enter your name: hz #关闭闪烁提示输入时，有上面定义的提示语
+hellow hz !
+```
+
+- -n 限制字符数目
+用-n参数可以限制用户输入的字符串最大长度(字符数)
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+read -p 'please enter your name(5 characters max): ' -n 5 name #-n 定义长度
+echo -e "\nhellow $name !"
+
+[hz@localhost ~]$ ./test.sh
+please enter your name(5 characters max): huang #当输入上面超过5个字符时，不需要回车，系统直接执行后面命令
+hellow huang !
+```
+
+- -t 限制输入时间
+用法根上面一样，超过输入时间，就不读取直接执行后续命令
+
+- -s 隐藏输入内容
+用法与上一样，通常用于密码输入，场景有登录root用户时，输入密码是隐藏显示的。
+
+
+数学运算
+牢记 ：在bash中，所有的变量都是字符串！
+bash本身不会操纵数字，隐藏它也不会做运算
+可以用let来达到运算目的，let命令可以用于赋值
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+let "a = 5"
+let "b = 6"
+let "c = a + b"
+echo "c =  $c"
+
+[hz@localhost ~]$ ./test.sh
+c =  11
+```
+shell支持的运算符：
+![](/image/linux/calc.png)
+
+
+### 环境变量
+#### shell的查看和使用
+shell中，每个脚本内的变量 不能被 其他脚本使用；
+不过shell中的环境变量可以被此种shell的任意脚本程序使用
+我们有时也把环境变量称之为 全局变量
+可以用env命令来显示你目前所有的环境变量
+![](/image/linux/env.png)
+其中重要的变量有：
+- SHELL
+- PATH : PATH是一系列路径的集合，
+只要有可执行程序位于任意一个存在与PATH中的路径，
+那么我们就可以直接输入可执行程序名字来执行
+- HOME :你的家目录所在路径
+- PWD ：你当前所在目录
+变量使用时，只需在前加$,比如：`echo $PATH`
+
+#### 自定义环境变量
+自定义环境变量 使用 export， 我们一般在rc文件中定义环境变量
+```S
+[hz@localhost ~]$ cat .bashrc
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+ export EDITOR=nano
+
+```
+
+参数变量
+
+可以这样调用我们的脚本文件
+./test.sh 参数1 参数2 ...
+这些个参数1 参数2 ... 被称之为 "参数变量"
+
+![](/image/linux/var.png)
+```S
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+echo "you have executed $0, there are $# params"
+echo "first params is  $1"
+
+[hz@localhost ~]$ ./test.sh money beauti  #输入参数
+you have executed ./test.sh, there are 2 params
+first params is  money
+```
+
+shift命令来 挪移 参数，一边依次处理；
+shift命令常被用在循环中，使得参数一个接一个地被处理
+
+
+数组
+如下，
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+arr=('value0' 'value1' 'value2') #定义数组，用小括号，每个元素用空格分隔
+arr[5]='value5'
+echo ${arr[0]}  #使用数组 用 ${}, 可通过下标访问，也可以通过通配符，访问所有
+echo ${arr[*]} #也可以通过通配符，访问所有
+
+[hz@localhost ~]$ ./test.sh
+value0
+value0 value1 value2 value5
+```
+
+
+
 
 
 
