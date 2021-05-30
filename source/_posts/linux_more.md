@@ -183,7 +183,7 @@ vim 的多种模式 ： 交互模式(默认模式，也叫正常模式)、插入
 输入命令后，回车将执行此命令，执行命令后，将回到交互模式；
 当然了，如果直接按esc键也可以回到交互模式；
 
-![](/image/linux/vim.png)
+![](/image/linuxm/vim.png)
 
 
 vim 基本操作（移动，写入，保存，等等）
@@ -250,7 +250,7 @@ ctrl + v 块可视模式；
 配合 d 和 I 可实现很方便操作：
 d键 用于删除选中的内容；
 I键 用于插入内容： 进入块可视模式，光标选中相应字符，按I进入insert模式，输入插入的字符，按esc，就会在选中的字符前都插入对应字符非常好用。
-![](/image/linux/vim1.png)
+![](/image/linuxm/vim1.png)
 
 
 ### 命令集合
@@ -274,7 +274,7 @@ scp file.txt root@192.168.1.5:/root # 表示从我的电脑中当前文件夹下
 
 
 shell 有以下几个分类：
-![](/image/linux/shell0.png)
+![](/image/linuxm/shell0.png)
 
 关于bash：
 其中bash是非常有名的shell，
@@ -293,7 +293,7 @@ shell是管理命令行的程序；
 定义别名
 
 如下图，shell好比用户和内核沟通的一个桥梁：
-![](/image/linux/shell1.png)
+![](/image/linuxm/shell1.png)
 
 切换shell
 为了切换shell，需要用到以下命令 chsh ，change shell 的缩写；
@@ -510,7 +510,7 @@ echo "c =  $c"
 c =  11
 ```
 shell支持的运算符：
-![](/image/linux/calc.png)
+![](/image/linuxm/calc.png)
 
 
 ### 环境变量
@@ -519,7 +519,7 @@ shell中，每个脚本内的变量 不能被 其他脚本使用；
 不过shell中的环境变量可以被此种shell的任意脚本程序使用
 我们有时也把环境变量称之为 全局变量
 可以用env命令来显示你目前所有的环境变量
-![](/image/linux/env.png)
+![](/image/linuxm/env.png)
 其中重要的变量有：
 - SHELL
 - PATH : PATH是一系列路径的集合，
@@ -550,7 +550,7 @@ fi
 ./test.sh 参数1 参数2 ...
 这些个参数1 参数2 ... 被称之为 "参数变量"
 
-![](/image/linux/var.png)
+![](/image/linuxm/var.png)
 ```S
 [hz@localhost ~]$ cat test.sh
 #!/bin/bash
@@ -580,6 +580,182 @@ echo ${arr[*]} #也可以通过通配符，访问所有
 value0
 value0 value1 value2 value5
 ```
+
+条件语句
+
+- if
+如下中括号两侧都要有空格：
+![](/image/linuxm/if.png)
+上面图片中， fi是if的反转写法，表示 if语句结束。
+另外一种写法，中括号右侧加分号：
+![](/image/linuxm/if1.png)
+
+- 等于号
+在shell中，特别是在if条件内，判断是否相等用一个等于号，当然你用两个等于号也是可以的，如下：
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+name1="test"
+name2="demo"
+
+if [ $name1 = $name2 ]  #判断是否相等用一个等于号
+then
+    echo "you have the same name"
+else 
+    echo "you diffrent name"
+fi
+
+[hz@localhost ~]$ ./test.sh
+you diffrent name
+```
+
+- elif 否则 如果
+elif 是 else if 的缩写。
+![](/image/linuxm/if2.png)
+
+
+不同的测试类型
+![](/image/linuxm/test.png)
+
+- 字符串判断
+在shell中，所有的变量都是字符串：
+![](/image/linuxm/test1.png)
+
+
+- 数字判断
+尽管shell把所有变量都看成字符串，但我们还是可以做数字的条件测试：
+
+![](/image/linuxm/num.png)
+
+- 文件判断
+相比主流变成语言，
+shell的一大优势就是可以非常方便地测试文件：
+![](/image/linuxm/file.png)
+![](/image/linuxm/file1.png)
+
+&& 且的应用
+类似的还有 或|| 的应用：
+![](/image/linuxm/sum.png)
+
+case的应用
+- 简单使用
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+
+case $1 in
+     "matth")
+        echo "hello matth"
+        ;;  #两个分号 类似js 的break
+     "mark") #也可以用通配符加上字符串
+        echo "hello mark"
+        ;;
+     *)  #通配符
+        echo "sorry,i do not know you"
+      ;;
+esac #case的结束符号
+[hz@localhost ~]$ ./test.sh mark
+hello mark
+[hz@localhost ~]$ ./test.sh hz
+sorry,i do not know you
+```
+- 使用单|而不是||测试或
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+
+case $1 in
+     "matth" | "lucy" | "jim") #case内使用或时，不能用双||,而要用单|
+        echo "hello matth"
+        ;;
+     *mark) #通配符加上字符串,此时要去掉双引号
+        echo "hello mark"
+        ;;
+     *)
+        echo "sorry,i do not know you"
+      ;;
+esac
+[hz@localhost ~]$ ./test.sh jim
+hello matth
+[hz@localhost ~]$ ./test.sh supermark
+hello mark
+[hz@localhost ~]$ ./test.sh liuxijun
+sorry,i do not know you
+```
+
+
+shell循环语句
+
+![](/image/linuxm/while1.png)
+![](/image/linuxm/while2.png)
+![](/image/linuxm/while3.png)
+
+```s
+[hz@localhost ~]$ vim test.sh
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+
+while [ -z $response ] || [ $response != 'yes' ] #若变量输入为空 或 非 yes，则一直让你循环输入
+do
+    read -p 'say yes: ' response
+done
+[hz@localhost ~]$ ./test.sh
+say yes: 
+say yes: d
+say yes: yes
+[hz@localhost ~]$ 
+```
+
+与while相反的 是until，用法一样。
+
+for循环
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+for file in `ls *.sh`  #使用反引号，列出目录下所有sh文件，赋值给变量file
+do
+    cp $file $file-copy #将变量file的所有文件copy一份
+done
+[hz@localhost ~]$ ls *.sh
+test.sh
+[hz@localhost ~]$ ./test.sh
+[hz@localhost ~]$ ls *.sh
+test.sh
+[hz@localhost ~]$ ls *.sh-copy
+test.sh-copy
+```
+
+seq 配合 for使用
+seq是sequence 序列的意思：
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+
+for i in `seq 1 5` #产生1到5的序列值
+do 
+    echo $i
+done
+[hz@localhost ~]$ ./test.sh
+1
+2
+3
+4
+5
+
+
+[hz@localhost ~]$ vim test.sh
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+
+for i in `seq 1 2 5` #产生1到5的序列值,中间间隔2
+do 
+    echo $i
+done
+[hz@localhost ~]$ ./test.sh
+1
+3
+5
+```s
 
 
 
