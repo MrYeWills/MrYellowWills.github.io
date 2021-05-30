@@ -157,24 +157,43 @@ ssh-copy-id 会把客户机的公钥追加到服务器的一个文件：`~/.ssh/
 ssh -o  PreferredAuthentications=password -o PubkeyAuthentication=no root@192.168.1.104
 ```
 
-### vim
 
-vim下输入大写，是按shift+对应字母
+### 命令集合
 
+#### scp 网间拷贝
+scp 是 secure copy 缩写 安全拷贝，可以使我们通过网络，把文件从一台电脑拷贝到另一台。
+scp 基于 SSH(Secure SHell)的原理来运作的。
+SSH 会在两台网络连接的电脑之间创建一条安全通信的管道
+scp 就利用这条管道安全地拷贝文件
+
+scp sourcefile destinationfile 前者是源文件，后者是目标文件 就是拷贝产生的文件；
+上面两个文件都可以以 user@ip:file_name 来表示； 其中ip 也可以是 域名。
+```s
+scp file.txt root@192.168.1.5:/root # 表示从我的电脑中当前文件夹下的file。txt 拷贝到远程电脑。
+```
+
+## vim
+
+### 注意点
+- vim下输入大写，是按shift+对应字母
+- vim有替换模式，参考如下《替换模式》
+- vim中 数字+指令 是很通用的方式；下面有相关解释
+
+### vim 的多种模式
 vim 的多种模式 ： 交互模式(默认模式，也叫正常模式)、插入模式、命令模式、可视模式(不常用)
 
-交互模式：
+####  交互模式：
 每次运行vim，就会进入这种模式；
 这个模式下，你不能输入文本；
 可以让我们在文本间移动，删除一行文本，复制粘贴文本；
 可以跳转到指定行，撤销操作等等；
 
-插入模式：
+#### 插入模式：
 是我们熟悉的文本编辑器的一贯作风，
 按i进入这种模式，其他进入这种模式的方法有 I（大写i）、a 和 A、o和O；
 退出此模式：按下Esc键
 
-命令(行)模式：
+#### 命令(行)模式：
 也称为 底线命令模式
 这个模式下 可以运行一些命令例如 退出 保存 等等；
 也可以用这个模式来激活一些vim配置，例如语法高亮，显示行号 等等；
@@ -186,55 +205,8 @@ vim 的多种模式 ： 交互模式(默认模式，也叫正常模式)、插入
 ![](/image/linuxm/vim.png)
 
 
-vim 基本操作（移动，写入，保存，等等）
- 
- 【win下一定使用 git bash 操作】
-
-保存文件：
-:w 保存文件： 需先在交互模式下，按冒号进入命令模式，按w，write的缩写，是写入保存的意思；
-如果是新创建的文件，可 :w newfilename ,就是保存新文件
-保存文件后，就回到了交互模式，可以进行退出；
-:q 退出， 需先在交互模式下，按冒号进入命令模式，按q,就是quit，退出；
-文件若已经修改，但未保存，执行退出命令，vim将红色提醒，如果要直接退出，可运行命令 :q！
-:wq 保存然后退出：这是两个命令的组合：w和q；
-:x 与 :wq 有同样效果。
-
-
-
-标准操作（复制，粘贴，撤销，等等）
-
-交互模式下：
-x 删除； 先按数字 再按 x；删除指定数字的字符；
-dd 删除单词或者行,先按数字 再按 dd；删除指定数字的行 ；
-d0 删除从光标到行首
-d$ 删除从光标到行末；
-以上 d开头的其实是剪切，可以配合粘贴p使用，不过是剪切达到了删除的效果;
-
-yy 复制一行
-yw 复制一个单词
-y$ 复制到光标到行尾
-y0 复制光标到行首
-
-p 粘贴
- 先按数字 再按 p；表示粘贴几次
-
-
-R 替换模式 ：使用大写的R会进入替换模式，要退出此模式按esc
-
-u 撤销操作，
-6 u 撤销之前6次操作；
-
-vim中 数字+指令 是很通用的方式；
-
-Ctrl + r 重做
-为了取消撤销，也就是重做之前的修改
-只需要按下ctrl+r， r是redo 重做
-
-:set nu  vim显示行号，nu number；
-:set nonu vim不显示行号；
-
-
-可视模式：都从交互模式开始
+#### 可视模式：
+都从交互模式开始,
 在交互模式下：
 v 字符可视模式；
 V 行可视模式；
@@ -253,36 +225,77 @@ I键 用于插入内容： 进入块可视模式，光标选中相应字符，�
 ![](/image/linuxm/vim1.png)
 
 
-### 命令集合
+### vim 基本操作（移动，写入，保存，等等）
+ 
+ 【win下一定使用 git bash 操作】
 
-#### scp 网间拷贝
-scp 是 secure copy 缩写 安全拷贝，可以使我们通过网络，把文件从一台电脑拷贝到另一台。
-scp 基于 SSH(Secure SHell)的原理来运作的。
-SSH 会在两台网络连接的电脑之间创建一条安全通信的管道
-scp 就利用这条管道安全地拷贝文件
+####  保存文件：
+:w 保存文件： 需先在交互模式下，按冒号进入命令模式，按w，write的缩写，是写入保存的意思；
+如果是新创建的文件，可 :w newfilename ,就是保存新文件
+保存文件后，就回到了交互模式，可以进行退出；
+:q 退出， 需先在交互模式下，按冒号进入命令模式，按q,就是quit，退出；
+文件若已经修改，但未保存，执行退出命令，vim将红色提醒，如果要直接退出，可运行命令 :q！
+:wq 保存然后退出：这是两个命令的组合：w和q；
+:x 与 :wq 有同样效果。
 
-scp sourcefile destinationfile 前者是源文件，后者是目标文件 就是拷贝产生的文件；
-上面两个文件都可以以 user@ip:file_name 来表示； 其中ip 也可以是 域名。
-```s
-scp file.txt root@192.168.1.5:/root # 表示从我的电脑中当前文件夹下的file。txt 拷贝到远程电脑。
-```
+
+
+###  标准操作（复制，粘贴，撤销，等等）
+以下都必须处于 **交互模式下**：
+
+#### 删除
+x 删除； 先按数字 再按 x；删除指定数字的字符；
+dd 删除单词或者行,先按数字 再按 dd；删除指定数字的行 ；
+d0 删除从光标到行首
+d$ 删除从光标到行末；
+以上 d开头的其实是剪切，可以配合粘贴p使用，不过是剪切达到了删除的效果;
+
+#### 复制
+yy 复制一行
+yw 复制一个单词
+y$ 复制到光标到行尾
+y0 复制光标到行首
+
+#### 粘贴
+p 粘贴
+ 先按数字 再按 p；表示粘贴几次
+
+#### 替换模式
+R 替换模式 ：使用大写的R会进入替换模式，要退出此模式按esc
+
+#### 撤销操作
+u 撤销操作，
+6 u 撤销之前6次操作；
+
+**vim中 数字+指令 是很通用的方式；**
+
+#### 重做
+Ctrl + r 重做
+为了取消撤销，也就是重做之前的修改
+只需要按下ctrl+r， r是redo 重做
+
+#### 设置配置 :set
+:set nu  vim显示行号，nu number；
+:set nonu vim不显示行号；
+
+
+
+
 
 ## Shell
 ### shell 概述
 几乎所有unix发展而来的系统都是基于sh开发出来的shell。
 
-
-
 shell 有以下几个分类：
 ![](/image/linuxm/shell0.png)
 
-关于bash：
+### 关于bash：
 其中bash是非常有名的shell，
 是大多数linux发行版的默认shell；
 也是苹果的macOS操作系统的默认Shell(据说因为版权问题以后会缓存Zsh)
 
 
-shell可以做什么呢？
+### shell可以做什么呢？
 shell是管理命令行的程序；
 记住你之前在终端输入过的命令；
 用组合键ctrl+R在终端的历史纪录中搜索执行过的命令；
@@ -295,11 +308,12 @@ shell是管理命令行的程序；
 如下图，shell好比用户和内核沟通的一个桥梁：
 ![](/image/linuxm/shell1.png)
 
-切换shell
+### 切换shell
 为了切换shell，需要用到以下命令 chsh ，change shell 的缩写；
 
 ### 创建脚本文件
 
+### 关于脚本的说明
 - vim test.sh
 - sh 就是shell的缩写；
 - 后缀.sh已经成为一种约定俗成的命名惯例，你也可以不加后缀；
@@ -316,6 +330,8 @@ shell是管理命令行的程序；
 #!/bin/bash   #sha-bang,指定脚本用bash shell来运行
 ls
 ```
+
+#### chmod添加可执行的权限
 
 ```s
 [hz@localhost ~]$ ls -l
@@ -334,7 +350,7 @@ Documents  htop-2.2.0.tar.gz  	test.sh
 
 shell命令相比输入行的优势之一，就是一次性可以输入很多个命令；
 
-以调试模式运行
+#### 以调试模式运行
 
 - 调试一个脚本程序 bash -x test.sh
 - 参数 -x表示以调试模式运行
@@ -347,7 +363,9 @@ Desktop    htop-2.2.0	     test.sh
 
 ```
 
-创建属于自己的命令
+### 创建属于自己的命令
+
+#### 关于PATH
 为什么pwd这些命令直接可以运行，时因为这些命令都在PATH中；
 PATH是linux的一个系统变量
 这个变量包含了你系统里所有可以被直接执行的程序路径；
@@ -361,9 +379,10 @@ Desktop    htop-2.2.0		test.sh
 ```
 
 
-Shell中的变量
+### Shell中的变量
 可以用变量在内存中暂时储存信息
-定义变量：
+
+#### 定义变量：
 ```s
 #变量名是message,注意=左右不要有空格，加空格将让系统认为message是一个命令
 message='hello world' 
@@ -371,7 +390,7 @@ message='hello world'
 message='hello ,it\'s me' 
 ```
 
-echo
+#### echo
 ```s
 #注意下面两种方式，打印结果是一样的，不过本质不一样
 [hz@localhost ~]$ echo hello world # 向echo传递两个参数，分别为hello 和 world ，因此被打印出来
@@ -380,6 +399,7 @@ hello world
 hello world
 ```
 
+#### -e 插入换行符
 - 如果要插入换行符，需要用到 -e 参数 :为了使 转义符 发生作用
 - 比如换行转义符 \n ,如下
 ```s
@@ -387,6 +407,8 @@ hello world
 hello world
 second line
 ```
+
+#### 变量名前加 $
 - 显示变量： bash脚本中，如果要显示一个变量，用echo后，必须要在变量名前加 $
 ```s
 # 直接在命令行中定义变量
@@ -407,7 +429,7 @@ hello world
 
 ```
 
-单引号与双引号的区别
+### 单引号与双引号的区别
 定义变量值时，单引号与双引号有区别；
 - 单引号
 如果变量被包含在单引号里面
@@ -428,7 +450,7 @@ price is 888
 
 ```
 
-反引号 
+### 反引号 
 - 反引号要求shell执行被它括起来的内容(如 命令)，反引号用法广泛
 ```s
 [hz@localhost ~]$ msg=`pwd`  #反引号 msg的值就是shell执行pwd之后的结果
@@ -436,7 +458,8 @@ price is 888
 you are in dir /home/hz
 ```
 
-read 请求输入
+### read 请求输入
+#### 概述
 - read 命令读取到的文本会被立即储存在一个变量里
 ```s
 [hz@localhost ~]$ cat test.sh
@@ -448,7 +471,8 @@ echo "hellow $name !"
 hz   #运行后，光标这里闪烁，提示你输入内容，输入完毕，回车后read读取你输入的内容，执行后续命令
 hellow hz !
 ```
-- 同时给几个变量赋值
+
+#### 同时给几个变量赋值
 read命令一个单词一个单词(单词是用空格分开的)地读取你输入的参数，并把每个参数赋值给对应变量
 ```s
 [hz@localhost ~]$ cat test.sh
@@ -461,7 +485,7 @@ hz chengdu #输入时，以空格分隔
 hellow hz , welcome chengdu !
 ```
 
-- -p 显示提示信息
+#### -p 显示提示信息
 read命令的-p参数，p是 prompt，表示提示
 ```s
 [hz@localhost ~]$ cat test.sh
@@ -474,7 +498,7 @@ please enter your name: hz #关闭闪烁提示输入时，有上面定义的提�
 hellow hz !
 ```
 
-- -n 限制字符数目
+#### -n 限制字符数目
 用-n参数可以限制用户输入的字符串最大长度(字符数)
 ```s
 [hz@localhost ~]$ cat test.sh
@@ -487,15 +511,18 @@ please enter your name(5 characters max): huang #当输入上面超过5个字符
 hellow huang !
 ```
 
-- -t 限制输入时间
+#### -t 限制输入时间
 用法根上面一样，超过输入时间，就不读取直接执行后续命令
 
-- -s 隐藏输入内容
+#### -s 隐藏输入内容
 用法与上一样，通常用于密码输入，场景有登录root用户时，输入密码是隐藏显示的。
 
 
-数学运算
+### 数学运算
+#### 在bash中，所有的变量都是字符串！
 牢记 ：在bash中，所有的变量都是字符串！
+
+#### let命令可以用于赋值
 bash本身不会操纵数字，隐藏它也不会做运算
 可以用let来达到运算目的，let命令可以用于赋值
 ```s
@@ -509,7 +536,7 @@ echo "c =  $c"
 [hz@localhost ~]$ ./test.sh
 c =  11
 ```
-shell支持的运算符：
+#### shell支持的运算符：
 ![](/image/linuxm/calc.png)
 
 
@@ -544,8 +571,9 @@ fi
 
 ```
 
-参数变量
+### 参数变量
 
+#### 概述
 可以这样调用我们的脚本文件
 ./test.sh 参数1 参数2 ...
 这些个参数1 参数2 ... 被称之为 "参数变量"
@@ -562,11 +590,12 @@ you have executed ./test.sh, there are 2 params
 first params is  money
 ```
 
+#### shift命令挪移
 shift命令来 挪移 参数，一边依次处理；
 shift命令常被用在循环中，使得参数一个接一个地被处理
 
 
-数组
+### 数组
 如下，
 ```s
 [hz@localhost ~]$ cat test.sh
@@ -581,16 +610,16 @@ value0
 value0 value1 value2 value5
 ```
 
-条件语句
+### 条件语句
 
-- if
+#### if
 如下中括号两侧都要有空格：
 ![](/image/linuxm/if.png)
 上面图片中， fi是if的反转写法，表示 if语句结束。
 另外一种写法，中括号右侧加分号：
 ![](/image/linuxm/if1.png)
 
-- 等于号
+#### 等于号
 在shell中，特别是在if条件内，判断是否相等用一个等于号，当然你用两个等于号也是可以的，如下：
 ```s
 [hz@localhost ~]$ cat test.sh
@@ -609,36 +638,36 @@ fi
 you diffrent name
 ```
 
-- elif 否则 如果
+#### elif 否则 如果
 elif 是 else if 的缩写。
 ![](/image/linuxm/if2.png)
 
 
-不同的测试类型
+### 不同的测试类型
 ![](/image/linuxm/test.png)
 
-- 字符串判断
+#### 字符串判断
 在shell中，所有的变量都是字符串：
 ![](/image/linuxm/test1.png)
 
 
-- 数字判断
+#### 数字判断
 尽管shell把所有变量都看成字符串，但我们还是可以做数字的条件测试：
 
 ![](/image/linuxm/num.png)
 
-- 文件判断
+#### 文件判断
 相比主流变成语言，
 shell的一大优势就是可以非常方便地测试文件：
 ![](/image/linuxm/file.png)
 ![](/image/linuxm/file1.png)
 
-&& 且的应用
+### && 且的应用
 类似的还有 或|| 的应用：
 ![](/image/linuxm/sum.png)
 
-case的应用
-- 简单使用
+### case的应用
+#### 简单使用
 ```s
 [hz@localhost ~]$ cat test.sh
 #!/bin/bash
@@ -659,7 +688,7 @@ hello mark
 [hz@localhost ~]$ ./test.sh hz
 sorry,i do not know you
 ```
-- 使用单|而不是||测试或
+#### 使用单|而不是||测试或
 ```s
 [hz@localhost ~]$ cat test.sh
 #!/bin/bash
@@ -684,8 +713,9 @@ sorry,i do not know you
 ```
 
 
-shell循环语句
+### shell循环语句
 
+#### while
 ![](/image/linuxm/while1.png)
 ![](/image/linuxm/while2.png)
 ![](/image/linuxm/while3.png)
@@ -705,10 +735,10 @@ say yes: d
 say yes: yes
 [hz@localhost ~]$ 
 ```
-
+#### until
 与while相反的 是until，用法一样。
 
-for循环
+#### for循环
 ```s
 [hz@localhost ~]$ cat test.sh
 #!/bin/bash
@@ -725,7 +755,7 @@ test.sh
 test.sh-copy
 ```
 
-seq 配合 for使用
+#### seq 配合 for使用
 seq是sequence 序列的意思：
 ```s
 [hz@localhost ~]$ cat test.sh
