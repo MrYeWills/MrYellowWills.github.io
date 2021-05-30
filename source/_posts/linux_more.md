@@ -785,7 +785,136 @@ done
 1
 3
 5
+```
+
+### 函数
+
+#### 两种定义方式
+![](/image/linuxm/fun.png)
+![](/image/linuxm/fun1.png)
 ```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+print (){
+ echo hello $1
+}
+print   # 调用函数，无传参
+print lucy # 调用函数，并传参
+[hz@localhost ~]$ ./test.sh
+hello
+hello lucy
+```
+
+#### 函数返回方式一：return 与 $?
+
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+print () {
+  echo hello $1
+  return 1
+}
+print lily
+
+echo return value of previous funtion is $? # $?代表 上一次函数的返回值
+[hz@localhost ~]$ ./test.sh
+hello lily
+return value of previous funtion is 1 
+```
+
+#### 函数返回方式二：用命令(如cat)代替return
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+
+getlines () {
+  cat $1 | wc -l  #$1 getlines函数的入参 ；此外cat也起到了上面return的作用
+}
+
+linenum=$(getlines $1)  #$1 作为test.sh 命令的入参； 使用$() 包含，说明是一个表达式；
+
+echo the files $1 has $linenum lines.
+[hz@localhost ~]$ ./test.sh bb.txt
+the files bb.txt has 8 lines.
+```
+
+#### 变量作用范围
+默认来说，一个变量是全局的，
+要定义一个局部变量， 需要用local关键字
+![](/image/linuxm/fun2.png)
+![](/image/linuxm/fun3.png)
+
+#### 重载命令
+我们可以用函数来实现命令的重载；
+也就是说把函数的名字取成与我们通常在命令行用的命令相同的名字：
+如下，我们想重载ls这个命令，此时可以用 command，注意如果不用command，会让程序无限循环执行。
+```s
+[hz@localhost ~]$ cat test.sh
+#!/bin/bash
+ls (){
+  command ls -lh
+}
+
+ls
+```
+
+### 示例
+
+#### 生成缩略图并html展示
+[代码和必要的素材在这里](https://github.com/YeWills/linux-test/tree/master/code/shell/6)
+注意，要安装缩略图插件：
+```s
+ yum install ImageMagick
+```
+
+```s
+#!/bin/bash
+
+# 如果命令参数为空(-z zero)，就用默认的gallery.html
+if [ -z $1 ]
+then
+    output='gallery.html'
+else
+    output=$1
+fi
+
+# 使用空字符串替换文件内容  >输出重定向
+echo '' > $output
+
+if [ ! -e thumbnails ]  # 如果不存在thumbnails目录
+then
+    mkdir thumbnails
+fi
+
+# Beginning of HTML（HTML 文件的开头）
+echo '<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Gallery</title>
+  </head>
+  <body>
+    <p>' >> $output  #`>>` 重定向文件末尾
+
+#  `2>` 将错误信息输出重定向到文件中， /dev/null是黑洞目录，完全丢弃
+for image in `ls *.jpg *.png *.jpeg *.gif 2>/dev/null` 
+do
+    convert $image -thumbnail '200x200>' thumbnails/$image  #压缩的图片放置thumbnails/目录下
+    echo '      <a href="'$image'"><img src="thumbnails/'$image'" alt=""/></a>' >> $output
+done
+
+# End of HTML（HTML 文件的结尾）
+echo '    </p>
+  </body>
+</html>' >> $output
+
+```
+
+```s
+执行上面的命令：
+./gallery.sh test.html
+```
+
+
 
 
 

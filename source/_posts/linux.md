@@ -809,6 +809,29 @@ echo "export EDITOR=nano" >> ~/.bashrc
 # .bashrc 是bash shell 的配置文件
 sudo find / -name "你共享文件的名字"
 ```
+当以上方法找不到共享文件夹时，可以通过以下方法，[详细参考](https://blog.csdn.net/leacas/article/details/114678676)
+```s
+[root@localhost hz]#  vmware-hgfsclient  #命令查看当前有哪些共享的目录，这里我只使用了shared文件夹 
+vmshare1
+#命令挂载该共享文件夹(注意：带.号的哦)，其中.host:/Documents是共享名，只需把Documents换成 
+[root@localhost hz]# sudo vmhgfs-fuse .host:/vmshare1 /mnt/hgfs
+[root@localhost hz]# ls  /mnt/hgfs 成功找到获取到共享文件夹
+6        git.md  htop-2.2.0.tar.gz  test.csv  tyyyu.txt
+aa.txty  he.txt  ok.rar             tt.csv    uu.txt
+```
+你也可以将上面写成一个shell：
+```js
+[root@localhost Desktop]# cat share.sh
+get_share_dirname(){
+  echo `vmware-hgfsclient`
+}
+vmhgfs-fuse ".host:/$(get_share_dirname)" /mnt/hgfs
+```
+到此为止是可以使用该共享文件夹了，但每次都得重复mount一次，所以需要设置为随机启动后自动挂载 ,
+编辑 /etc/fstab，添加下面一行,不过以下方式存在问题，且放这里做一个参考，不建议执行
+```s 
+.host:/vmshare1 /mnt/hgfs vmhgfs defaults 0 0
+```
 
 #### 修改共享文件权限为普通用户
 共享文件一般在root下，比如：`/mnt/hgfs/vmshare/`
