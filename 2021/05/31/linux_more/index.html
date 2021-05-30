@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>linux笔记(中) | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="linux">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>linux笔记(中)</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">linux笔记(中)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-30T16:20:39.305Z" itemprop="datePublished" class="page-time">
+  2021-05-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-linux_more" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">linux笔记(中)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-31 00:20:39" datetime="2021-05-30T16:20:39.305Z" itemprop="datePublished">2021-05-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="SSH相关及其登录"><a href="#SSH相关及其登录" class="headerlink" title="SSH相关及其登录"></a>SSH相关及其登录</h3><h4 id="SSH概述"><a href="#SSH概述" class="headerlink" title="SSH概述"></a>SSH概述</h4><p>客户机，把连接到服务器的机器称之为客户机。</p>
+<p>SSH协议是英语 Secure SHell的缩写， 表示“安全的shell”， shell 是英语 “壳”的意思。</p>
+<h4 id="SSH加密方式"><a href="#SSH加密方式" class="headerlink" title="SSH加密方式"></a>SSH加密方式</h4><p>对称加密， 也叫对称密钥加密； 致命缺陷，会话开始前 传递的密钥 可能会被截取， 从而变成相当于明文传输。</p>
+<p>非对称 公钥加密 私钥解密；</p>
+<p>SSH 结合使用非对称加密和对称加密两种方法；<br>首先 使用非对称加密，安全地传输对称加密的密钥；<br>之后，就一直使用对称加密的密钥来作为加密 和 解密的手段。</p>
+<h4 id="服务器安装SSH服务"><a href="#服务器安装SSH服务" class="headerlink" title="服务器安装SSH服务"></a>服务器安装SSH服务</h4><p>centos 服务器版本 默认安装 SSH服务，<br>安装SSH: yum install openssh-server<br>启动： systemctl start(或 restart) sshd<br>设置开启启动： systemctl enable sshd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#查看是否运行</span><br><span class="line">ps -ef | grep ssh</span><br><span class="line"></span><br><span class="line">#查看是否系统开机启动</span><br><span class="line">systemctl list-unit-files | grep enabled</span><br></pre></td></tr></table></figure></p>
+<h4 id="客户端安装ssh工具"><a href="#客户端安装ssh工具" class="headerlink" title="客户端安装ssh工具"></a>客户端安装ssh工具</h4><p>windows： 安装 putty，xshell， secureCRT， 这三款都是ssh的一个客户端，用于连接ssh服务器端；<br>linux： yum install openssh-clients<br>macOS 默认已经安装了ssh客户端；</p>
+<p>ssh默认的端口是22,下面是putty安装：<br>推出连接：exit<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/put.png" title="undefined" data-fancybox="images"><img src="/image/linux/put.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>centos和macOS中连接是一样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@172.20.10.2</span><br></pre></td></tr></table></figure></p>
+<p>查看 sshd 运行情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status sshd</span><br></pre></td></tr></table></figure></p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/run.png" title="undefined" data-fancybox="images"><img src="/image/linux/run.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h4><p>在man 查找命令后，输入 <code>/</code>进行搜索。<br>man sshd_config</p>
+<p>全局config文件有两个<br>ssh客户端配置： /etc/ssh/ssh_config (全局) 或 ~/.ssh/config (个人目录))<br>ssh服务端配置： /etc/ssh/sshd_config<br>查看使用手册：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man sshd_config (ssh客户端)</span><br><span class="line">man ssh_config (ssh客户端)</span><br></pre></td></tr></table></figure></p>
+<p>服务端config常用配置参数<br>PermitRootLogin 是否允许root用户身份登录<br>PasswordAuthentication 是否允许密码验证登录<br>PubkeyAuthentication 是否允许公钥登录<br>PermiEmptyPasswords 是否运行空密码登录</p>
+<p>修改配置后，重启sshd服务立即生效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure></p>
+<h4 id="生成-ssh目录"><a href="#生成-ssh目录" class="headerlink" title="生成.ssh目录"></a>生成.ssh目录</h4><p>root用户的家目录下，如果没有.ssh目录<br>使用以下命令生成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost</span><br></pre></td></tr></table></figure></p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/host.png" title="undefined" data-fancybox="images"><img src="/image/linux/host.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linux/host1.png" title="undefined" data-fancybox="images"><img src="/image/linux/host1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="客户端配置登录"><a href="#客户端配置登录" class="headerlink" title="客户端配置登录"></a>客户端配置登录</h4><p>客户端配置.ssh config<br>局部的客户端config文件在用户家目录的.ssh隐藏目录中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh/config #(个人目录))</span><br></pre></td></tr></table></figure></p>
+<p>此文件一般默认没有创建，可以手动创建；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br><span class="line">cd .ssh</span><br><span class="line">touch config</span><br><span class="line">chmod 600 config #修改权限，最好修改下，也可不修改</span><br><span class="line">ls -l</span><br><span class="line">nano config</span><br><span class="line">Host rootali</span><br><span class="line">    HostName 192.168.1.103</span><br><span class="line">    Port 22</span><br><span class="line">    User root</span><br><span class="line"># 重新在客户端登录： </span><br><span class="line">ssh rootali #rootali上面配置的别名</span><br><span class="line">#输入密码可以登录了</span><br></pre></td></tr></table></figure></p>
+<h3 id="SSH免密码登录"><a href="#SSH免密码登录" class="headerlink" title="SSH免密码登录"></a>SSH免密码登录</h3><p>基于密钥的验证<br>客户机生成密钥对（公钥和私钥），把公钥上传到服务器；<br>并与服务器的公钥进行比较；<br>这种验证登录的方法更加安全，也被称之为 “公钥验证登录”</p>
+<ul>
+<li><p>在客户机中生成密钥对（公钥和私钥）<br>ssh-keygen（默认使用RSA非对称加密算法）<br>执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 注意，在非联机服务器时执行此命令</span><br><span class="line">ssh-keygen #此命令会在 `~/.ssh/`目录下，会新生成两个文件：</span><br><span class="line"># id_rsa.pub 公钥；</span><br><span class="line"># id_rsa 私钥；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把客户机的公钥传送到服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@192.168.1.103 #等价于 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.1.103</span><br><span class="line">#其中 -i 是指定文件拷贝</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>下次登录就用命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.1.103</span><br></pre></td></tr></table></figure></p>
+<p>ssh-copy-id 会把客户机的公钥追加到服务器的一个文件：<code>~/.ssh/authorized_keys</code>;<br>你会发现 authorized_keys 的内容与 上面的 id_rsa.pub 是一样的。</p>
+<p>上面的ssh-copy-id命令其实就是一个复制命令，你可以不执行此命令，直接把公钥的内容拷贝到authorized_keys文件中。</p>
+<p>如果你不想使用免密登录了，可在客户机执行下面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o  PreferredAuthentications=password -o PubkeyAuthentication=no root@192.168.1.104</span><br></pre></td></tr></table></figure></p>
+<h3 id="命令集合"><a href="#命令集合" class="headerlink" title="命令集合"></a>命令集合</h3><h4 id="scp-网间拷贝"><a href="#scp-网间拷贝" class="headerlink" title="scp 网间拷贝"></a>scp 网间拷贝</h4><p>scp 是 secure copy 缩写 安全拷贝，可以使我们通过网络，把文件从一台电脑拷贝到另一台。<br>scp 基于 SSH(Secure SHell)的原理来运作的。<br>SSH 会在两台网络连接的电脑之间创建一条安全通信的管道<br>scp 就利用这条管道安全地拷贝文件</p>
+<p>scp sourcefile destinationfile 前者是源文件，后者是目标文件 就是拷贝产生的文件；<br>上面两个文件都可以以 user@ip:file_name 来表示； 其中ip 也可以是 域名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp file.txt root@192.168.1.5:/root # 表示从我的电脑中当前文件夹下的file。txt 拷贝到远程电脑。</span><br></pre></td></tr></table></figure></p>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<li>vim下输入大写，是按shift+对应字母</li>
+<li>vim有替换模式，参考如下《替换模式》</li>
+<li>vim中 数字+指令 是很通用的方式；下面有相关解释</li>
+</ul>
+<h3 id="vim-的多种模式"><a href="#vim-的多种模式" class="headerlink" title="vim 的多种模式"></a>vim 的多种模式</h3><p>vim 的多种模式 ： 交互模式(默认模式，也叫正常模式)、插入模式、命令模式、可视模式(不常用)</p>
+<h4 id="交互模式："><a href="#交互模式：" class="headerlink" title="交互模式："></a>交互模式：</h4><p>每次运行vim，就会进入这种模式；<br>这个模式下，你不能输入文本；<br>可以让我们在文本间移动，删除一行文本，复制粘贴文本；<br>可以跳转到指定行，撤销操作等等；</p>
+<h4 id="插入模式："><a href="#插入模式：" class="headerlink" title="插入模式："></a>插入模式：</h4><p>是我们熟悉的文本编辑器的一贯作风，<br>按i进入这种模式，其他进入这种模式的方法有 I（大写i）、a 和 A、o和O；<br>退出此模式：按下Esc键</p>
+<h4 id="命令-行-模式："><a href="#命令-行-模式：" class="headerlink" title="命令(行)模式："></a>命令(行)模式：</h4><p>也称为 底线命令模式<br>这个模式下 可以运行一些命令例如 退出 保存 等等；<br>也可以用这个模式来激活一些vim配置，例如语法高亮，显示行号 等等；<br>甚至还可以发送一些命令给终端命令行，例如ls cp 等等；<br>进入方式：首先处于交互模式下，按下冒号键；<br>输入命令后，回车将执行此命令，执行命令后，将回到交互模式；<br>当然了，如果直接按esc键也可以回到交互模式；</p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/vim.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/vim.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="可视模式："><a href="#可视模式：" class="headerlink" title="可视模式："></a>可视模式：</h4><p>都从交互模式开始,<br>在交互模式下：<br>v 字符可视模式；<br>V 行可视模式；<br>ctrl + v 块可视模式；</p>
+<p>v 字符可视模式：<br>可使用上下左右光标 选中字符，配合 d实现删除；<br>V 行可视模式：<br>行可视模式默认选中光标所在行，配合d实现删除；</p>
+<p>ctrl + v 块可视模式；<br>【win下一定使用 git bash 操作，否则光标选中不一样】<br>配合 d 和 I 可实现很方便操作：<br>d键 用于删除选中的内容；<br>I键 用于插入内容： 进入块可视模式，光标选中相应字符，按I进入insert模式，输入插入的字符，按esc，就会在选中的字符前都插入对应字符非常好用。<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/vim1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/vim1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="vim-基本操作（移动，写入，保存，等等）"><a href="#vim-基本操作（移动，写入，保存，等等）" class="headerlink" title="vim 基本操作（移动，写入，保存，等等）"></a>vim 基本操作（移动，写入，保存，等等）</h3><p> 【win下一定使用 git bash 操作】</p>
+<h4 id="保存文件："><a href="#保存文件：" class="headerlink" title="保存文件："></a>保存文件：</h4><p>:w 保存文件： 需先在交互模式下，按冒号进入命令模式，按w，write的缩写，是写入保存的意思；<br>如果是新创建的文件，可 :w newfilename ,就是保存新文件<br>保存文件后，就回到了交互模式，可以进行退出；<br>:q 退出， 需先在交互模式下，按冒号进入命令模式，按q,就是quit，退出；<br>文件若已经修改，但未保存，执行退出命令，vim将红色提醒，如果要直接退出，可运行命令 :q！<br>:wq 保存然后退出：这是两个命令的组合：w和q；<br>:x 与 :wq 有同样效果。</p>
+<h3 id="标准操作（复制，粘贴，撤销，等等）"><a href="#标准操作（复制，粘贴，撤销，等等）" class="headerlink" title="标准操作（复制，粘贴，撤销，等等）"></a>标准操作（复制，粘贴，撤销，等等）</h3><p>以下都必须处于 <strong>交互模式下</strong>：</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>x 删除； 先按数字 再按 x；删除指定数字的字符；<br>dd 删除单词或者行,先按数字 再按 dd；删除指定数字的行 ；<br>d0 删除从光标到行首<br>d$ 删除从光标到行末；<br>以上 d开头的其实是剪切，可以配合粘贴p使用，不过是剪切达到了删除的效果;</p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>yy 复制一行<br>yw 复制一个单词<br>y$ 复制到光标到行尾<br>y0 复制光标到行首</p>
+<h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><p>p 粘贴<br> 先按数字 再按 p；表示粘贴几次</p>
+<h4 id="替换模式"><a href="#替换模式" class="headerlink" title="替换模式"></a>替换模式</h4><p>R 替换模式 ：使用大写的R会进入替换模式，要退出此模式按esc</p>
+<h4 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h4><p>u 撤销操作，<br>6 u 撤销之前6次操作；</p>
+<p><strong>vim中 数字+指令 是很通用的方式；</strong></p>
+<h4 id="重做"><a href="#重做" class="headerlink" title="重做"></a>重做</h4><p>Ctrl + r 重做<br>为了取消撤销，也就是重做之前的修改<br>只需要按下ctrl+r， r是redo 重做</p>
+<h4 id="设置配置-set"><a href="#设置配置-set" class="headerlink" title="设置配置 :set"></a>设置配置 :set</h4><p>:set nu  vim显示行号，nu number；<br>:set nonu vim不显示行号；</p>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><h3 id="shell-概述"><a href="#shell-概述" class="headerlink" title="shell 概述"></a>shell 概述</h3><p>几乎所有unix发展而来的系统都是基于sh开发出来的shell。</p>
+<p>shell 有以下几个分类：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/shell0.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/shell0.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="关于bash："><a href="#关于bash：" class="headerlink" title="关于bash："></a>关于bash：</h3><p>其中bash是非常有名的shell，<br>是大多数linux发行版的默认shell；<br>也是苹果的macOS操作系统的默认Shell(据说因为版权问题以后会缓存Zsh)</p>
+<h3 id="shell可以做什么呢？"><a href="#shell可以做什么呢？" class="headerlink" title="shell可以做什么呢？"></a>shell可以做什么呢？</h3><p>shell是管理命令行的程序；<br>记住你之前在终端输入过的命令；<br>用组合键ctrl+R在终端的历史纪录中搜索执行过的命令；<br>输入命令后，连续两次tab键 展示所有以此开头的命令；<br>输入命令后，按一次tab键 补全；<br>控制命令进程，比如ctrl+z 终止进程；<br>重定向命令(用到&lt; &gt; | 等符号)<br>定义别名</p>
+<p>如下图，shell好比用户和内核沟通的一个桥梁：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/shell1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/shell1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="切换shell"><a href="#切换shell" class="headerlink" title="切换shell"></a>切换shell</h3><p>为了切换shell，需要用到以下命令 chsh ，change shell 的缩写；</p>
+<h3 id="创建脚本文件"><a href="#创建脚本文件" class="headerlink" title="创建脚本文件"></a>创建脚本文件</h3><h3 id="关于脚本的说明"><a href="#关于脚本的说明" class="headerlink" title="关于脚本的说明"></a>关于脚本的说明</h3><ul>
+<li>vim test.sh</li>
+<li>sh 就是shell的缩写；</li>
+<li>后缀.sh已经成为一种约定俗成的命名惯例，你也可以不加后缀；</li>
+<li>写一个shell脚本时，第一要做的就是指定哪种shell来 解析/运行 它；</li>
+<li><p>因为sh ksh bash 等等shell的语法不尽相同；</p>
+</li>
+<li><p><code>#！</code>被称作sha-bang,或者shebang；指定脚本用哪种shell来运行；</p>
+</li>
+<li>你之前学过的命令在shell中都可以使用，比如 ls， cat等等；</li>
+<li>注释使用 #；</li>
+<li>给脚本文件添加可执行的权限 <code>chmod +x test.sh</code></li>
+</ul>
+<p>编辑test.sh内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash   #sha-bang,指定脚本用bash shell来运行</span><br><span class="line">ls</span><br></pre></td></tr></table></figure></p>
+<h4 id="chmod添加可执行的权限"><a href="#chmod添加可执行的权限" class="headerlink" title="chmod添加可执行的权限"></a>chmod添加可执行的权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ ls -l</span><br><span class="line">-rw-rw-r--.  1 hz   hz           16 May 29 06:53 test.sh #-rw-rw-r--里没有x，说明没有运行权限；</span><br><span class="line"></span><br><span class="line">#添加可执行的权限</span><br><span class="line">[hz@localhost ~]$ chmod +x test.sh</span><br><span class="line">[hz@localhost ~]$ ls -l</span><br><span class="line">-rwxrwxr-x.  1 hz   hz           16 May 29 06:53 test.sh #-rwxrwxr-x有x，说明有运行权限；</span><br><span class="line"></span><br><span class="line">#使用 ./test.sh 运行此sh文件</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">Documents  htop-2.2.0.tar.gz  	test.sh</span><br></pre></td></tr></table></figure>
+<p>shell命令相比输入行的优势之一，就是一次性可以输入很多个命令；</p>
+<h4 id="以调试模式运行"><a href="#以调试模式运行" class="headerlink" title="以调试模式运行"></a>以调试模式运行</h4><ul>
+<li>调试一个脚本程序 bash -x test.sh</li>
+<li>参数 -x表示以调试模式运行</li>
+<li>shell就会把我们的脚本文件运行时的细节打印出来<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ bash -x test.sh</span><br><span class="line">+ ls # bash -x test.sh 调试模式下，</span><br><span class="line">Desktop    htop-2.2.0	     test.sh</span><br><span class="line">[hz@localhost ~]$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="创建属于自己的命令"><a href="#创建属于自己的命令" class="headerlink" title="创建属于自己的命令"></a>创建属于自己的命令</h3><h4 id="关于PATH"><a href="#关于PATH" class="headerlink" title="关于PATH"></a>关于PATH</h4><p>为什么pwd这些命令直接可以运行，时因为这些命令都在PATH中；<br>PATH是linux的一个系统变量<br>这个变量包含了你系统里所有可以被直接执行的程序路径；<br>可用 echo $PATH可以打印PATH，将创建的sh文件拷贝到PATH中的任意一个目录，即创建成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ echo $PATH</span><br><span class="line">/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/hz/.local/bin:/home/hz/bin</span><br><span class="line">[hz@localhost ~]$ sudo cp test.sh /usr/local/sbin #将sh拷贝到PATH里面任意一个目录下，即可在任意地方运行test.sh命令了；</span><br><span class="line">[hz@localhost ~]$ test.sh </span><br><span class="line">Desktop    htop-2.2.0		test.sh</span><br></pre></td></tr></table></figure></p>
+<h3 id="Shell中的变量"><a href="#Shell中的变量" class="headerlink" title="Shell中的变量"></a>Shell中的变量</h3><p>可以用变量在内存中暂时储存信息</p>
+<h4 id="定义变量："><a href="#定义变量：" class="headerlink" title="定义变量："></a>定义变量：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#变量名是message,注意=左右不要有空格，加空格将让系统认为message是一个命令</span><br><span class="line">message=&apos;hello world&apos; </span><br><span class="line"># 反斜杠\，也成为转义字符，在变量值中加入单引号，需要用转义符</span><br><span class="line">message=&apos;hello ,it\&apos;s me&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#注意下面两种方式，打印结果是一样的，不过本质不一样</span><br><span class="line">[hz@localhost ~]$ echo hello world # 向echo传递两个参数，分别为hello 和 world ，因此被打印出来</span><br><span class="line">hello world</span><br><span class="line">[hz@localhost ~]$ echo &quot;hello world&quot; # 用双引号括起来后，相当于一个参数，向echo传递一个参数 ：hello world</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<h4 id="e-插入换行符"><a href="#e-插入换行符" class="headerlink" title="-e 插入换行符"></a>-e 插入换行符</h4><ul>
+<li>如果要插入换行符，需要用到 -e 参数 :为了使 转义符 发生作用</li>
+<li>比如换行转义符 \n ,如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ echo -e &quot;hello world\nsecond line&quot;</span><br><span class="line">hello world</span><br><span class="line">second line</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="变量名前加"><a href="#变量名前加" class="headerlink" title="变量名前加 $"></a>变量名前加 $</h4><ul>
+<li>显示变量： bash脚本中，如果要显示一个变量，用echo后，必须要在变量名前加 $<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 直接在命令行中定义变量</span><br><span class="line">[hz@localhost ~]$ msg1=&quot;888&quot; #定义变量msg1，此变量将被写入系统内存</span><br><span class="line">[hz@localhost ~]$ echo $msg1 #为什么可以读取，因为该变量被写入内存了</span><br><span class="line">888</span><br><span class="line"></span><br><span class="line"># 在shell脚本中定义，注意的是，脚本中定义的变量，直接在命令行中无法打印出来</span><br><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">msg=&quot;hello world&quot;</span><br><span class="line">echo $msg</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh  #运行命令</span><br><span class="line">hello world</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ echo $msg # 直接在命令行中无法打印出来</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="单引号与双引号的区别"><a href="#单引号与双引号的区别" class="headerlink" title="单引号与双引号的区别"></a>单引号与双引号的区别</h3><p>定义变量值时，单引号与双引号有区别；</p>
+<ul>
+<li>单引号<br>如果变量被包含在单引号里面<br>那么变量不会被解析<br>美元符号 $ 保持原样输出,因为单引号忽略被它括起来的所有特殊字符;</li>
+<li>双引号<br>双引号也会忽略大多数特殊字符，<br>不同的是，双引号不会忽略 这些符号：$  反引号(`) 反斜杠<br>不忽略上面的$符号，在双引号内可进行变量名替换<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ msg1=&quot;888&quot;</span><br><span class="line">[hz@localhost ~]$ echo $msg1</span><br><span class="line">888</span><br><span class="line">[hz@localhost ~]$ echo &apos;price is $msg1&apos;  #单引号，那么变量不会被解析, 因为单引号忽略被它括起来的所有特殊字符</span><br><span class="line">price is $msg1</span><br><span class="line">[hz@localhost ~]$ echo &quot;price is $msg1&quot;  #双引号，可正常输出变量</span><br><span class="line">price is 888</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="反引号"><a href="#反引号" class="headerlink" title="反引号"></a>反引号</h3><ul>
+<li>反引号要求shell执行被它括起来的内容(如 命令)，反引号用法广泛<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ msg=`pwd`  #反引号 msg的值就是shell执行pwd之后的结果</span><br><span class="line">[hz@localhost ~]$ echo &quot;you are in dir $msg&quot;</span><br><span class="line">you are in dir /home/hz</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="read-请求输入"><a href="#read-请求输入" class="headerlink" title="read 请求输入"></a>read 请求输入</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li>read 命令读取到的文本会被立即储存在一个变量里<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">read name  #将read读取到的内容 赋值给变量 name</span><br><span class="line">echo &quot;hellow $name !&quot;</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">hz   #运行后，光标这里闪烁，提示你输入内容，输入完毕，回车后read读取你输入的内容，执行后续命令</span><br><span class="line">hellow hz !</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="同时给几个变量赋值"><a href="#同时给几个变量赋值" class="headerlink" title="同时给几个变量赋值"></a>同时给几个变量赋值</h4><p>read命令一个单词一个单词(单词是用空格分开的)地读取你输入的参数，并把每个参数赋值给对应变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">read name place #空格分隔变量名</span><br><span class="line">echo &quot;hellow $name , welcome $place !&quot;</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">hz chengdu #输入时，以空格分隔</span><br><span class="line">hellow hz , welcome chengdu !</span><br></pre></td></tr></table></figure></p>
+<h4 id="p-显示提示信息"><a href="#p-显示提示信息" class="headerlink" title="-p 显示提示信息"></a>-p 显示提示信息</h4><p>read命令的-p参数，p是 prompt，表示提示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">read -p &apos;please enter your name: &apos; name #-p 定义提示语</span><br><span class="line">echo &quot;hellow $name !&quot;</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">please enter your name: hz #关闭闪烁提示输入时，有上面定义的提示语</span><br><span class="line">hellow hz !</span><br></pre></td></tr></table></figure></p>
+<h4 id="n-限制字符数目"><a href="#n-限制字符数目" class="headerlink" title="-n 限制字符数目"></a>-n 限制字符数目</h4><p>用-n参数可以限制用户输入的字符串最大长度(字符数)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">read -p &apos;please enter your name(5 characters max): &apos; -n 5 name #-n 定义长度</span><br><span class="line">echo -e &quot;\nhellow $name !&quot;</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">please enter your name(5 characters max): huang #当输入上面超过5个字符时，不需要回车，系统直接执行后面命令</span><br><span class="line">hellow huang !</span><br></pre></td></tr></table></figure></p>
+<h4 id="t-限制输入时间"><a href="#t-限制输入时间" class="headerlink" title="-t 限制输入时间"></a>-t 限制输入时间</h4><p>用法根上面一样，超过输入时间，就不读取直接执行后续命令</p>
+<h4 id="s-隐藏输入内容"><a href="#s-隐藏输入内容" class="headerlink" title="-s 隐藏输入内容"></a>-s 隐藏输入内容</h4><p>用法与上一样，通常用于密码输入，场景有登录root用户时，输入密码是隐藏显示的。</p>
+<h3 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h3><h4 id="在bash中，所有的变量都是字符串！"><a href="#在bash中，所有的变量都是字符串！" class="headerlink" title="在bash中，所有的变量都是字符串！"></a>在bash中，所有的变量都是字符串！</h4><p>牢记 ：在bash中，所有的变量都是字符串！</p>
+<h4 id="let命令可以用于赋值"><a href="#let命令可以用于赋值" class="headerlink" title="let命令可以用于赋值"></a>let命令可以用于赋值</h4><p>bash本身不会操纵数字，隐藏它也不会做运算<br>可以用let来达到运算目的，let命令可以用于赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">let &quot;a = 5&quot;</span><br><span class="line">let &quot;b = 6&quot;</span><br><span class="line">let &quot;c = a + b&quot;</span><br><span class="line">echo &quot;c =  $c&quot;</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">c =  11</span><br></pre></td></tr></table></figure></p>
+<h4 id="shell支持的运算符："><a href="#shell支持的运算符：" class="headerlink" title="shell支持的运算符："></a>shell支持的运算符：</h4><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/calc.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/calc.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><h4 id="shell的查看和使用"><a href="#shell的查看和使用" class="headerlink" title="shell的查看和使用"></a>shell的查看和使用</h4><p>shell中，每个脚本内的变量 不能被 其他脚本使用；<br>不过shell中的环境变量可以被此种shell的任意脚本程序使用<br>我们有时也把环境变量称之为 全局变量<br>可以用env命令来显示你目前所有的环境变量<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/env.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/env.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>其中重要的变量有：</p>
+<ul>
+<li>SHELL</li>
+<li>PATH : PATH是一系列路径的集合，<br>只要有可执行程序位于任意一个存在与PATH中的路径，<br>那么我们就可以直接输入可执行程序名字来执行</li>
+<li>HOME :你的家目录所在路径</li>
+<li>PWD ：你当前所在目录<br>变量使用时，只需在前加$,比如：<code>echo $PATH</code></li>
+</ul>
+<h4 id="自定义环境变量"><a href="#自定义环境变量" class="headerlink" title="自定义环境变量"></a>自定义环境变量</h4><p>自定义环境变量 使用 export， 我们一般在rc文件中定义环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat .bashrc</span><br><span class="line"># .bashrc</span><br><span class="line"></span><br><span class="line"># Source global definitions</span><br><span class="line">if [ -f /etc/bashrc ]; then</span><br><span class="line">	. /etc/bashrc</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"> export EDITOR=nano</span><br></pre></td></tr></table></figure></p>
+<h3 id="参数变量"><a href="#参数变量" class="headerlink" title="参数变量"></a>参数变量</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>可以这样调用我们的脚本文件<br>./test.sh 参数1 参数2 …<br>这些个参数1 参数2 … 被称之为 “参数变量”</p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/var.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/var.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;you have executed $0, there are $# params&quot;</span><br><span class="line">echo &quot;first params is  $1&quot;</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh money beauti  #输入参数</span><br><span class="line">you have executed ./test.sh, there are 2 params</span><br><span class="line">first params is  money</span><br></pre></td></tr></table></figure>
+<h4 id="shift命令挪移"><a href="#shift命令挪移" class="headerlink" title="shift命令挪移"></a>shift命令挪移</h4><p>shift命令来 挪移 参数，一边依次处理；<br>shift命令常被用在循环中，使得参数一个接一个地被处理</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>如下，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">arr=(&apos;value0&apos; &apos;value1&apos; &apos;value2&apos;) #定义数组，用小括号，每个元素用空格分隔</span><br><span class="line">arr[5]=&apos;value5&apos;</span><br><span class="line">echo $&#123;arr[0]&#125;  #使用数组 用 $&#123;&#125;, 可通过下标访问，也可以通过通配符，访问所有</span><br><span class="line">echo $&#123;arr[*]&#125; #也可以通过通配符，访问所有</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">value0</span><br><span class="line">value0 value1 value2 value5</span><br></pre></td></tr></table></figure></p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><p>如下中括号两侧都要有空格：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/if.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/if.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>上面图片中， fi是if的反转写法，表示 if语句结束。<br>另外一种写法，中括号右侧加分号：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/if1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/if1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="等于号"><a href="#等于号" class="headerlink" title="等于号"></a>等于号</h4><p>在shell中，特别是在if条件内，判断是否相等用一个等于号，当然你用两个等于号也是可以的，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">name1=&quot;test&quot;</span><br><span class="line">name2=&quot;demo&quot;</span><br><span class="line"></span><br><span class="line">if [ $name1 = $name2 ]  #判断是否相等用一个等于号</span><br><span class="line">then</span><br><span class="line">    echo &quot;you have the same name&quot;</span><br><span class="line">else </span><br><span class="line">    echo &quot;you diffrent name&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">you diffrent name</span><br></pre></td></tr></table></figure></p>
+<h4 id="elif-否则-如果"><a href="#elif-否则-如果" class="headerlink" title="elif 否则 如果"></a>elif 否则 如果</h4><p>elif 是 else if 的缩写。<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/if2.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/if2.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="不同的测试类型"><a href="#不同的测试类型" class="headerlink" title="不同的测试类型"></a>不同的测试类型</h3><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/test.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/test.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="字符串判断"><a href="#字符串判断" class="headerlink" title="字符串判断"></a>字符串判断</h4><p>在shell中，所有的变量都是字符串：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/test1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/test1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="数字判断"><a href="#数字判断" class="headerlink" title="数字判断"></a>数字判断</h4><p>尽管shell把所有变量都看成字符串，但我们还是可以做数字的条件测试：</p>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/num.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/num.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h4 id="文件判断"><a href="#文件判断" class="headerlink" title="文件判断"></a>文件判断</h4><p>相比主流变成语言，<br>shell的一大优势就是可以非常方便地测试文件：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/file.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/file.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/file1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/file1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="amp-amp-且的应用"><a href="#amp-amp-且的应用" class="headerlink" title="&amp;&amp; 且的应用"></a>&amp;&amp; 且的应用</h3><p>类似的还有 或|| 的应用：<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/sum.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/sum.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="case的应用"><a href="#case的应用" class="headerlink" title="case的应用"></a>case的应用</h3><h4 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">     &quot;matth&quot;)</span><br><span class="line">        echo &quot;hello matth&quot;</span><br><span class="line">        ;;  #两个分号 类似js 的break</span><br><span class="line">     &quot;mark&quot;) #也可以用通配符加上字符串</span><br><span class="line">        echo &quot;hello mark&quot;</span><br><span class="line">        ;;</span><br><span class="line">     *)  #通配符</span><br><span class="line">        echo &quot;sorry,i do not know you&quot;</span><br><span class="line">      ;;</span><br><span class="line">esac #case的结束符号</span><br><span class="line">[hz@localhost ~]$ ./test.sh mark</span><br><span class="line">hello mark</span><br><span class="line">[hz@localhost ~]$ ./test.sh hz</span><br><span class="line">sorry,i do not know you</span><br></pre></td></tr></table></figure>
+<h4 id="使用单-而不是-测试或"><a href="#使用单-而不是-测试或" class="headerlink" title="使用单|而不是||测试或"></a>使用单|而不是||测试或</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">     &quot;matth&quot; | &quot;lucy&quot; | &quot;jim&quot;) #case内使用或时，不能用双||,而要用单|</span><br><span class="line">        echo &quot;hello matth&quot;</span><br><span class="line">        ;;</span><br><span class="line">     *mark) #通配符加上字符串,此时要去掉双引号</span><br><span class="line">        echo &quot;hello mark&quot;</span><br><span class="line">        ;;</span><br><span class="line">     *)</span><br><span class="line">        echo &quot;sorry,i do not know you&quot;</span><br><span class="line">      ;;</span><br><span class="line">esac</span><br><span class="line">[hz@localhost ~]$ ./test.sh jim</span><br><span class="line">hello matth</span><br><span class="line">[hz@localhost ~]$ ./test.sh supermark</span><br><span class="line">hello mark</span><br><span class="line">[hz@localhost ~]$ ./test.sh liuxijun</span><br><span class="line">sorry,i do not know you</span><br></pre></td></tr></table></figure>
+<h3 id="shell循环语句"><a href="#shell循环语句" class="headerlink" title="shell循环语句"></a>shell循环语句</h3><h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/while1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/while1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/while2.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/while2.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/while3.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/while3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ vim test.sh</span><br><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">while [ -z $response ] || [ $response != &apos;yes&apos; ] #若变量输入为空 或 非 yes，则一直让你循环输入</span><br><span class="line">do</span><br><span class="line">    read -p &apos;say yes: &apos; response</span><br><span class="line">done</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">say yes: </span><br><span class="line">say yes: d</span><br><span class="line">say yes: yes</span><br><span class="line">[hz@localhost ~]$</span><br></pre></td></tr></table></figure>
+<h4 id="until"><a href="#until" class="headerlink" title="until"></a>until</h4><p>与while相反的 是until，用法一样。</p>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">for file in `ls *.sh`  #使用反引号，列出目录下所有sh文件，赋值给变量file</span><br><span class="line">do</span><br><span class="line">    cp $file $file-copy #将变量file的所有文件copy一份</span><br><span class="line">done</span><br><span class="line">[hz@localhost ~]$ ls *.sh</span><br><span class="line">test.sh</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">[hz@localhost ~]$ ls *.sh</span><br><span class="line">test.sh</span><br><span class="line">[hz@localhost ~]$ ls *.sh-copy</span><br><span class="line">test.sh-copy</span><br></pre></td></tr></table></figure>
+<h4 id="seq-配合-for使用"><a href="#seq-配合-for使用" class="headerlink" title="seq 配合 for使用"></a>seq 配合 for使用</h4><p>seq是sequence 序列的意思：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">for i in `seq 1 5` #产生1到5的序列值</span><br><span class="line">do </span><br><span class="line">    echo $i</span><br><span class="line">done</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[hz@localhost ~]$ vim test.sh</span><br><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">for i in `seq 1 2 5` #产生1到5的序列值,中间间隔2</span><br><span class="line">do </span><br><span class="line">    echo $i</span><br><span class="line">done</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">5</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="两种定义方式"><a href="#两种定义方式" class="headerlink" title="两种定义方式"></a>两种定义方式</h4><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/fun.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/fun.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/fun1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/fun1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">print ()&#123;</span><br><span class="line"> echo hello $1</span><br><span class="line">&#125;</span><br><span class="line">print   # 调用函数，无传参</span><br><span class="line">print lucy # 调用函数，并传参</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">hello</span><br><span class="line">hello lucy</span><br></pre></td></tr></table></figure>
+<h4 id="函数返回方式一：return-与"><a href="#函数返回方式一：return-与" class="headerlink" title="函数返回方式一：return 与 $?"></a>函数返回方式一：return 与 $?</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">print () &#123;</span><br><span class="line">  echo hello $1</span><br><span class="line">  return 1</span><br><span class="line">&#125;</span><br><span class="line">print lily</span><br><span class="line"></span><br><span class="line">echo return value of previous funtion is $? # $?代表 上一次函数的返回值</span><br><span class="line">[hz@localhost ~]$ ./test.sh</span><br><span class="line">hello lily</span><br><span class="line">return value of previous funtion is 1</span><br></pre></td></tr></table></figure>
+<h4 id="函数返回方式二：用命令-如cat-代替return"><a href="#函数返回方式二：用命令-如cat-代替return" class="headerlink" title="函数返回方式二：用命令(如cat)代替return"></a>函数返回方式二：用命令(如cat)代替return</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">getlines () &#123;</span><br><span class="line">  cat $1 | wc -l  #$1 getlines函数的入参 ；此外cat也起到了上面return的作用</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">linenum=$(getlines $1)  #$1 作为test.sh 命令的入参； 使用$() 包含，说明是一个表达式；</span><br><span class="line"></span><br><span class="line">echo the files $1 has $linenum lines.</span><br><span class="line">[hz@localhost ~]$ ./test.sh bb.txt</span><br><span class="line">the files bb.txt has 8 lines.</span><br></pre></td></tr></table></figure>
+<h4 id="变量作用范围"><a href="#变量作用范围" class="headerlink" title="变量作用范围"></a>变量作用范围</h4><p>默认来说，一个变量是全局的，<br>要定义一个局部变量， 需要用local关键字<br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/fun2.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/fun2.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(中)" href="/image/linuxm/fun3.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/fun3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h4 id="重载命令"><a href="#重载命令" class="headerlink" title="重载命令"></a>重载命令</h4><p>我们可以用函数来实现命令的重载；<br>也就是说把函数的名字取成与我们通常在命令行用的命令相同的名字：<br>如下，我们想重载ls这个命令，此时可以用 command，注意如果不用command，会让程序无限循环执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ cat test.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">ls ()&#123;</span><br><span class="line">  command ls -lh</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ls</span><br></pre></td></tr></table></figure></p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="生成缩略图并html展示"><a href="#生成缩略图并html展示" class="headerlink" title="生成缩略图并html展示"></a>生成缩略图并html展示</h4><p><a href="https://github.com/YeWills/linux-test/tree/master/code/shell/6" target="_blank" rel="noopener">代码和必要的素材在这里</a><br>注意，要安装缩略图插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ImageMagick</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 如果命令参数为空(-z zero)，就用默认的gallery.html</span><br><span class="line">if [ -z $1 ]</span><br><span class="line">then</span><br><span class="line">    output=&apos;gallery.html&apos;</span><br><span class="line">else</span><br><span class="line">    output=$1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 使用空字符串替换文件内容  &gt;输出重定向</span><br><span class="line">echo &apos;&apos; &gt; $output</span><br><span class="line"></span><br><span class="line">if [ ! -e thumbnails ]  # 如果不存在thumbnails目录</span><br><span class="line">then</span><br><span class="line">    mkdir thumbnails</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># Beginning of HTML（HTML 文件的开头）</span><br><span class="line">echo &apos;&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;My Gallery&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;p&gt;&apos; &gt;&gt; $output  #`&gt;&gt;` 重定向文件末尾</span><br><span class="line"></span><br><span class="line">#  `2&gt;` 将错误信息输出重定向到文件中， /dev/null是黑洞目录，完全丢弃</span><br><span class="line">for image in `ls *.jpg *.png *.jpeg *.gif 2&gt;/dev/null` </span><br><span class="line">do</span><br><span class="line">    convert $image -thumbnail &apos;200x200&gt;&apos; thumbnails/$image  #压缩的图片放置thumbnails/目录下</span><br><span class="line">    echo &apos;      &lt;a href=&quot;&apos;$image&apos;&quot;&gt;&lt;img src=&quot;thumbnails/&apos;$image&apos;&quot; alt=&quot;&quot;/&gt;&lt;/a&gt;&apos; &gt;&gt; $output</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"># End of HTML（HTML 文件的结尾）</span><br><span class="line">echo &apos;    &lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;&apos; &gt;&gt; $output</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">执行上面的命令：</span><br><span class="line">./gallery.sh test.html</span><br></pre></td></tr></table></figure>
+<h4 id="统计文本内字符出现的次数"><a href="#统计文本内字符出现的次数" class="headerlink" title="统计文本内字符出现的次数"></a>统计文本内字符出现的次数</h4><h5 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h5><p><a href="https://github.com/YeWills/linux-test/tree/master/code/shell/7" target="_blank" rel="noopener">代码和素材</a><br>本命令是要统计words.txt 文件内英文字母 a-z 出现的次数，并且以如下方式展示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A - 276526</span><br><span class="line">B - 27652699</span><br><span class="line">C - 27652699</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">if [ -z $1 ] # 如果命令参数为空(-z zero)</span><br><span class="line">then</span><br><span class="line">    echo &quot;Please enter the file of dictionary !&quot;</span><br><span class="line">    exit  # 退出程序</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ ! -e $1 ] # if判断文件是否存在的命令 -e exist</span><br><span class="line">then</span><br><span class="line">    echo &quot;Please make sure that the file of dictionary exists !&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># Definition of function</span><br><span class="line"># 函数定义</span><br><span class="line">statistics () &#123;</span><br><span class="line">  for char in &#123;a..z&#125;  # 遍历 a 到 z 字符</span><br><span class="line">  do</span><br><span class="line">    # &quot;$char - `grep -io &quot;$char&quot; $1`&quot;  在文件中查找字符如a，-i 忽略大小写， -o 寻找出所有字符，如果不加，</span><br><span class="line">    #一行中若有多个字符匹配也只认为是找到一行</span><br><span class="line">    # wc -l 统计行数 (-l line)</span><br><span class="line">    # tr /a-z/ /A-Z/  tr是转换， 将小写 a-z 转换 为 A-Z 大写；</span><br><span class="line">    # &gt;&gt; tmp.txt 追加到一个临时用于存储的文件，创造此文件，在于后面能配合sort使用</span><br><span class="line">    echo &quot;$char - `grep -io &quot;$char&quot; $1 | wc -l`&quot; | tr /a-z/ /A-Z/ &gt;&gt; tmp.txt</span><br><span class="line">  done</span><br><span class="line">  # -r 倒序排列， -n 用于对数字排序 ， -k 2 指定 第2列排序 ， -t  - 指定列之间以-作为分隔符</span><br><span class="line">  sort -rn -k 2 -t - tmp.txt</span><br><span class="line">  rm tmp.txt #统计完后，tmp.txt就不需要了，删除掉</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Use of function</span><br><span class="line"># 函数使用</span><br><span class="line">statistics $1</span><br></pre></td></tr></table></figure>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">执行上面的命令：</span><br><span class="line">./statistics.sh words.txt</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-05-30T16:20:39.305Z" itemprop="dateUpdated">2021-05-31 00:20:39</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/05/31/linux_more/" target="_blank" rel="external">https://yewills.github.io/2021/05/31/linux_more/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/31/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/31/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/05/31/react_hooks/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React hooks 笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/05/31/js_design_main/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js设计模式下</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SSH相关及其登录"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">SSH相关及其登录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SSH概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">SSH概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SSH加密方式"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">SSH加密方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务器安装SSH服务"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">服务器安装SSH服务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户端安装ssh工具"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">客户端安装ssh工具</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置SSH"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">配置SSH</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成-ssh目录"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">生成.ssh目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户端配置登录"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">客户端配置登录</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SSH免密码登录"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">SSH免密码登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令集合"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">命令集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#scp-网间拷贝"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">scp 网间拷贝</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vim"><span class="post-toc-number">2.</span> <span class="post-toc-text">vim</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意点"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">注意点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vim-的多种模式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">vim 的多种模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#交互模式："><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">交互模式：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#插入模式："><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">插入模式：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#命令-行-模式："><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">命令(行)模式：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可视模式："><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">可视模式：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vim-基本操作（移动，写入，保存，等等）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">vim 基本操作（移动，写入，保存，等等）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#保存文件："><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">保存文件：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标准操作（复制，粘贴，撤销，等等）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">标准操作（复制，粘贴，撤销，等等）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">删除</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复制"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">复制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#粘贴"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">粘贴</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#替换模式"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">替换模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#撤销操作"><span class="post-toc-number">2.4.5.</span> <span class="post-toc-text">撤销操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重做"><span class="post-toc-number">2.4.6.</span> <span class="post-toc-text">重做</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置配置-set"><span class="post-toc-number">2.4.7.</span> <span class="post-toc-text">设置配置 :set</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Shell"><span class="post-toc-number">3.</span> <span class="post-toc-text">Shell</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell-概述"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">shell 概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于bash："><span class="post-toc-number">3.2.</span> <span class="post-toc-text">关于bash：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell可以做什么呢？"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">shell可以做什么呢？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#切换shell"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">切换shell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建脚本文件"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">创建脚本文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于脚本的说明"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">关于脚本的说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#chmod添加可执行的权限"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">chmod添加可执行的权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#以调试模式运行"><span class="post-toc-number">3.6.2.</span> <span class="post-toc-text">以调试模式运行</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建属于自己的命令"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">创建属于自己的命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于PATH"><span class="post-toc-number">3.7.1.</span> <span class="post-toc-text">关于PATH</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Shell中的变量"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">Shell中的变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义变量："><span class="post-toc-number">3.8.1.</span> <span class="post-toc-text">定义变量：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#echo"><span class="post-toc-number">3.8.2.</span> <span class="post-toc-text">echo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#e-插入换行符"><span class="post-toc-number">3.8.3.</span> <span class="post-toc-text">-e 插入换行符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量名前加"><span class="post-toc-number">3.8.4.</span> <span class="post-toc-text">变量名前加 $</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单引号与双引号的区别"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">单引号与双引号的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反引号"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">反引号</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#read-请求输入"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">read 请求输入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">3.11.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#同时给几个变量赋值"><span class="post-toc-number">3.11.2.</span> <span class="post-toc-text">同时给几个变量赋值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#p-显示提示信息"><span class="post-toc-number">3.11.3.</span> <span class="post-toc-text">-p 显示提示信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#n-限制字符数目"><span class="post-toc-number">3.11.4.</span> <span class="post-toc-text">-n 限制字符数目</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#t-限制输入时间"><span class="post-toc-number">3.11.5.</span> <span class="post-toc-text">-t 限制输入时间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#s-隐藏输入内容"><span class="post-toc-number">3.11.6.</span> <span class="post-toc-text">-s 隐藏输入内容</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数学运算"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">数学运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在bash中，所有的变量都是字符串！"><span class="post-toc-number">3.12.1.</span> <span class="post-toc-text">在bash中，所有的变量都是字符串！</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#let命令可以用于赋值"><span class="post-toc-number">3.12.2.</span> <span class="post-toc-text">let命令可以用于赋值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#shell支持的运算符："><span class="post-toc-number">3.12.3.</span> <span class="post-toc-text">shell支持的运算符：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境变量"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">环境变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#shell的查看和使用"><span class="post-toc-number">3.13.1.</span> <span class="post-toc-text">shell的查看和使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义环境变量"><span class="post-toc-number">3.13.2.</span> <span class="post-toc-text">自定义环境变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参数变量"><span class="post-toc-number">3.14.</span> <span class="post-toc-text">参数变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">3.14.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#shift命令挪移"><span class="post-toc-number">3.14.2.</span> <span class="post-toc-text">shift命令挪移</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组"><span class="post-toc-number">3.15.</span> <span class="post-toc-text">数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件语句"><span class="post-toc-number">3.16.</span> <span class="post-toc-text">条件语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#if"><span class="post-toc-number">3.16.1.</span> <span class="post-toc-text">if</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#等于号"><span class="post-toc-number">3.16.2.</span> <span class="post-toc-text">等于号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#elif-否则-如果"><span class="post-toc-number">3.16.3.</span> <span class="post-toc-text">elif 否则 如果</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不同的测试类型"><span class="post-toc-number">3.17.</span> <span class="post-toc-text">不同的测试类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串判断"><span class="post-toc-number">3.17.1.</span> <span class="post-toc-text">字符串判断</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数字判断"><span class="post-toc-number">3.17.2.</span> <span class="post-toc-text">数字判断</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文件判断"><span class="post-toc-number">3.17.3.</span> <span class="post-toc-text">文件判断</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#amp-amp-且的应用"><span class="post-toc-number">3.18.</span> <span class="post-toc-text">&amp;&amp; 且的应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#case的应用"><span class="post-toc-number">3.19.</span> <span class="post-toc-text">case的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单使用"><span class="post-toc-number">3.19.1.</span> <span class="post-toc-text">简单使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用单-而不是-测试或"><span class="post-toc-number">3.19.2.</span> <span class="post-toc-text">使用单|而不是||测试或</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell循环语句"><span class="post-toc-number">3.20.</span> <span class="post-toc-text">shell循环语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#while"><span class="post-toc-number">3.20.1.</span> <span class="post-toc-text">while</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#until"><span class="post-toc-number">3.20.2.</span> <span class="post-toc-text">until</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#for循环"><span class="post-toc-number">3.20.3.</span> <span class="post-toc-text">for循环</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#seq-配合-for使用"><span class="post-toc-number">3.20.4.</span> <span class="post-toc-text">seq 配合 for使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数"><span class="post-toc-number">3.21.</span> <span class="post-toc-text">函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#两种定义方式"><span class="post-toc-number">3.21.1.</span> <span class="post-toc-text">两种定义方式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数返回方式一：return-与"><span class="post-toc-number">3.21.2.</span> <span class="post-toc-text">函数返回方式一：return 与 $?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数返回方式二：用命令-如cat-代替return"><span class="post-toc-number">3.21.3.</span> <span class="post-toc-text">函数返回方式二：用命令(如cat)代替return</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量作用范围"><span class="post-toc-number">3.21.4.</span> <span class="post-toc-text">变量作用范围</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重载命令"><span class="post-toc-number">3.21.5.</span> <span class="post-toc-text">重载命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例"><span class="post-toc-number">3.22.</span> <span class="post-toc-text">示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成缩略图并html展示"><span class="post-toc-number">3.22.1.</span> <span class="post-toc-text">生成缩略图并html展示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#统计文本内字符出现的次数"><span class="post-toc-number">3.22.2.</span> <span class="post-toc-text">统计文本内字符出现的次数</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/31/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/31/linux_more/&title=《linux笔记(中)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQZLCMAwFUe5/6bBlE9NfClTZ6qwoinH8vNBIll4v/Fwfz+c3/Pd8zfVftR4ZMmRsy7iWT+cF6xX45/XeZMiQMYdBNnG39PpQ+Lt4WJchQ4YMziDhuLNFGTJkyOgw1qkbAa+DtQwZMmTUilie3pGylgflh2txGTJkbMioXZz95/NP+hsyZMjYinGFTxoEa8livCsZMmQczeABjidnPDWsrXCbhsqQIWMAo1YuxmEx3dwNLK7FZciQsTmj1qQk1/2dRDBto8qQIWMyY53M8SKWU1ttBhkyZBzHSJO2NJV8+KTvQrAMGTLGMDqvfKpATVNStIQMGTIOZZCXpfhaExSNZciQIeNoBg95tZZAOubVOj4ZMmSMYaTLdVaoDW2gloAMGTKOZtSu1Xir4HeDYjJkyJjGqJWg6aF0WgVBhitDhozNGenYVnp9T1LGWhNChgwZcxhpYlfbBDmOzjWfDBkyJjDS1/MWAlmTvwWNXMiQIeNoRi04ppdlnc/FYQsZMmQcyiCFYlrK8pI4HSyTIUPGNEY67kACbjpwxi/aZMiQMYFxhQ8pTdPBr1bhyitjGTJkbMvoR2t+ZVYbAqulrTJkyDiP0Qmy6QgXOUX+y+C/hwwZMo5g8MCXJoUkBPPtfslzZciQIQOUoPy6rXZADwdcGTJkDGDU2gbkGo58E/c3ZMiQsTkjHYmoFbE87SsOW8iQIeNQRq105ANhPE3kF3bFpqYMGTL2Y7wBdWf6CBM2/ZQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

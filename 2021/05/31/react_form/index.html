@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>react中的表单处理 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="form,react">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>react中的表单处理</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">react中的表单处理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-30T16:20:39.305Z" itemprop="datePublished" class="page-time">
+  2021-05-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-react_form" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">react中的表单处理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-31 00:20:39" datetime="2021-05-30T16:20:39.305Z" itemprop="datePublished">2021-05-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="不封装form可以吗"><a href="#不封装form可以吗" class="headerlink" title="不封装form可以吗"></a>不封装form可以吗</h2><p>很多人第一印象觉得有UI框架如ant-design，或者bootstrap，就不需要二次封装form了，其实不然。<br>如果不封装form，你只有一个UI库给你，你引入input select 等组件后，<br>需要自己做以下事情：</p>
+<ul>
+<li>每个filed写value onChange</li>
+<li>要写validate</li>
+<li>要写样式</li>
+<li>要写 submit 逻辑，如果是pop，还要写hide close；</li>
+</ul>
+<p>上面这些，就算你咬着牙写完了一个表单，下一个表单你一切还得重新来，因此为项目二次封装抽象这些公共逻辑势在必行。<br>说得直白点，你还要抽象form的一些公共逻辑，封装得越好，项目开发起来就越爽，越快。<br>要想抽象form的公共逻辑，那么你必须要深刻认识form。</p>
+<h2 id="认识form很重要"><a href="#认识form很重要" class="headerlink" title="认识form很重要"></a>认识form很重要</h2><h3 id="每个filed都有value-onchange"><a href="#每个filed都有value-onchange" class="headerlink" title="每个filed都有value onchange"></a>每个filed都有value onchange</h3><p>在form中，input，select，checkbox，等等，都包含了 value onchange 熟悉；<br>因此，可以为每个filed抽象出value、onchange逻辑；</p>
+<h3 id="validate"><a href="#validate" class="headerlink" title="validate"></a>validate</h3><p>一般表单验证都是即时验证，也就是输入框实时输入时就要验证；<br>有些还要加一个提交时再验证，做一个双保险。</p>
+<h3 id="validate的error信息显示"><a href="#validate的error信息显示" class="headerlink" title="validate的error信息显示"></a>validate的error信息显示</h3><p>这个跟validate基本属于同一个问题。</p>
+<h3 id="实时form值"><a href="#实时form值" class="headerlink" title="实时form值"></a>实时form值</h3><p>要有一个公共的form值，实时反应各个field的值。</p>
+<h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p>大多form都有一个reset功能</p>
+<h2 id="设计模式很重要"><a href="#设计模式很重要" class="headerlink" title="设计模式很重要"></a>设计模式很重要</h2><p>每次field改变后，如何让form响应变动渲染最新的值呢。<br>一般有两种模式：将form定义为完全受控组件；让form存储自己的状态；</p>
+<h3 id="将form定义为完全受控组件"><a href="#将form定义为完全受控组件" class="headerlink" title="将form定义为完全受控组件"></a>将form定义为完全受控组件</h3><p>这种设计模式是最直观的，给form定义一个value和onchange，form内任何一个filed改变时都触发这个onchange，这个onchange改变整个form值。<br>这种模式有个特点，它的value值是整个form值，因此是一个对象。</p>
+<h3 id="让form存储自己的状态-推荐"><a href="#让form存储自己的状态-推荐" class="headerlink" title="让form存储自己的状态(推荐)"></a>让form存储自己的状态(推荐)</h3><h4 id="如何在父层获取form的state"><a href="#如何在父层获取form的state" class="headerlink" title="如何在父层获取form的state"></a>如何在父层获取form的state</h4><p>这种设计模式要求form维护自己的状态，首先我们想到的是，设置一个state，这个state包含了各个filed的值。但这样但花就有个问题在于在form的父层无法实时获取form值。</p>
+<h4 id="改变state的同时，修改存储store"><a href="#改变state的同时，修改存储store" class="headerlink" title="改变state的同时，修改存储store"></a>改变state的同时，修改存储store</h4><p>解决之道在于定义一个公共的store，每次filed改变state值的时候，同时改变store。<br>form渲染使用state，外层提交使用store，而这个store由父层构造而来，那么内部渲染和外部数据使用都兼顾了。</p>
+<h2 id="方案的实施"><a href="#方案的实施" class="headerlink" title="方案的实施"></a>方案的实施</h2><h3 id="选定方案–让form存储自己的状态"><a href="#选定方案–让form存储自己的状态" class="headerlink" title="选定方案–让form存储自己的状态"></a>选定方案–让form存储自己的状态</h3><p>我们一般选用上面的《让form存储自己的状态(推荐)》这种模式。<strong>下面的讲解都以此模式展开</strong>，<br><strong>本实施方案，参考博客<a href="https://zhuanlan.zhihu.com/p/57820186" target="_blank" rel="noopener"> React 实现高度简洁的 Form 组件 </a></strong>，以下如有疑问，可查阅此博客</p>
+<h3 id="设计filed"><a href="#设计filed" class="headerlink" title="设计filed"></a>设计filed</h3><p>filed都由一个value 和 onchange，还有一个errortip，而value和errortip都是由onchange触发生成。<br>此时我们给filed传递一个预设的store，在store中有一个filed onchange 方法，我们叫做store.set，此方法每次都改变value和errortip值，同时将这些值存储到store中。</p>
+<h3 id="即时验证"><a href="#即时验证" class="headerlink" title="即时验证"></a>即时验证</h3><p>见《设计filed》</p>
+<h3 id="生成error-tip"><a href="#生成error-tip" class="headerlink" title="生成error tip"></a>生成error tip</h3><p>见《设计filed》</p>
+<h3 id="预设store"><a href="#预设store" class="headerlink" title="预设store"></a>预设store</h3><p>上面说到了预设的store，在这个store中我们的主要任务是，实时改变store的value和error值，并暴露出相关API给上面的《设计filed》使用。由此可见，我们将validate 实时存储的逻辑抽象到了store中。</p>
+<h3 id="如何传递store"><a href="#如何传递store" class="headerlink" title="如何传递store"></a>如何传递store</h3><p>上面看到了filed用到了store，如何将store传给filed呢，我们的做法是，在父层new 一个store，让这个store作为props传递给form，form拿到这个store设置为contex，form下面的所有组件都可以使用此context</p>
+<h3 id="天花板式的第三方包与功能"><a href="#天花板式的第三方包与功能" class="headerlink" title="天花板式的第三方包与功能"></a>天花板式的第三方包与功能</h3><p>我们先分析下(让form存储自己的状态)的模式：</p>
+<ul>
+<li>为了让父层拿到实时的form值，我们必须在父层给构造一个store对象，用于存储form值；–天花板</li>
+<li>store与from进行互动，以便存储值(把store对象传递给form，form在与store沟通时，将值顺利存储到store)；–第三方包与程序<br>上面的第一步，我们要在父层定义store，父层就是天花板，这个store就类似一个d3.js第三方包，form值的获取就好比用d3框架画出的各式各样的绘图，form必须遵守d3的API才能正确画图，这画出来的图就是做出来的功能。<br>(让form存储自己的状态)的模式他的设计思想 跟 天花板式的第三方包与功能及其相似。<br>你开发一个form框架，然后在filed中使用这个框架。<h3 id="为什么不把-store与filed直接结合一起"><a href="#为什么不把-store与filed直接结合一起" class="headerlink" title="为什么不把 store与filed直接结合一起"></a>为什么不把 store与filed直接结合一起</h3>为什么不把 store与filed直接结合一起，或者store集成到filed上，不用在父层传递store。<br>原因就是刚才说到的：为了让父层拿到实时的form值，我们必须在父层给构造一个store对象，用于存储form值。<h3 id="各个元素如何排版布局"><a href="#各个元素如何排版布局" class="headerlink" title="各个元素如何排版布局"></a>各个元素如何排版布局</h3>每个filed的html如下，因为html是固定的，因此可以统一制定好样式：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">label</span> <span class="attr">className</span>=<span class="string">"form__label"</span>&gt;</span>&#123;label&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"form__content"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"form__control"</span>&gt;</span>&#123;child&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"form__message"</span>&gt;</span>&#123;error&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="注入验证规则"><a href="#注入验证规则" class="headerlink" title="注入验证规则"></a>注入验证规则</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> FormStore(&#123;<span class="comment">/* 初始值 */</span>, &#123;</span><br><span class="line">  username: <span class="function">(<span class="params">val</span>) =&gt;</span> !!val.trim() || <span class="string">'用户名不能为空'</span>,</span><br><span class="line">  password: <span class="function">(<span class="params">val</span>) =&gt;</span> !!(val.length &gt; <span class="number">6</span> &amp;&amp; val.length &lt; <span class="number">18</span>) || <span class="string">'密码长度必须大于6个字符，小于18个字符'</span>,</span><br><span class="line">  passwordAgain: <span class="function">(<span class="params">val, vals</span>) =&gt;</span> val === vals.password || <span class="string">'两次输入密码不一致'</span></span><br><span class="line">&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="未说细节"><a href="#未说细节" class="headerlink" title="未说细节"></a>未说细节</h3><p>将filed的onchange逻辑使用一个替身listen代替，采用（取消）订阅方式，执行此onchange等一系列动作。详见博客<a href="https://zhuanlan.zhihu.com/p/57820186" target="_blank" rel="noopener">React 实现高度简洁的 Form 组件 </a>。</p>
+<h3 id="小结与代码"><a href="#小结与代码" class="headerlink" title="小结与代码"></a>小结与代码</h3><p>封装这个表单：</p>
+<ul>
+<li>要封装一个store，这一部分是纯js逻辑处理；</li>
+<li>要封装一个公共的filed，以便抽取filed公共的逻辑到filed，这一部分采用组合模式设计；</li>
+<li>要封装一个form，这个form要配合filed和父层的引用；<br>具体代码如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//store</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FormStore</span> </span>&#123;</span><br><span class="line">  <span class="comment">// constructor ...</span></span><br><span class="line">  <span class="comment">// subscribe ...</span></span><br><span class="line">  <span class="comment">// notify ...</span></span><br><span class="line">  <span class="comment">// 获取表单值</span></span><br><span class="line">  get(name) &#123;</span><br><span class="line">    <span class="comment">// 如果传入name，返回对应的表单值，否则返回整个表单的值</span></span><br><span class="line">    <span class="keyword">return</span> name === <span class="literal">undefined</span> ? <span class="keyword">this</span>.values : <span class="keyword">this</span>.values[name];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 设置表单值</span></span><br><span class="line">  set(name, value) &#123;</span><br><span class="line">    <span class="comment">//如果指定了name</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> name === <span class="string">"string"</span>) &#123;</span><br><span class="line">      <span class="comment">// 设置name对应的值</span></span><br><span class="line">      <span class="keyword">this</span>.values[name] = value;</span><br><span class="line">      <span class="comment">// 执行表单校验，见下</span></span><br><span class="line">      <span class="keyword">this</span>.validate(name);</span><br><span class="line">      <span class="comment">// 通知表单变动</span></span><br><span class="line">      <span class="keyword">this</span>.notify(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 批量设置表单值</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (name) &#123;</span><br><span class="line">      <span class="keyword">const</span> values = name;</span><br><span class="line">      <span class="built_in">Object</span>.keys(values).forEach(<span class="function"><span class="params">key</span> =&gt;</span> <span class="keyword">this</span>.set(key, values[key]));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 重置表单值</span></span><br><span class="line">  reset() &#123;</span><br><span class="line">    <span class="comment">// 清空错误信息</span></span><br><span class="line">    <span class="keyword">this</span>.errors = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 重置默认值</span></span><br><span class="line">    <span class="keyword">this</span>.values = deepCopy(<span class="keyword">this</span>.defaultValues);</span><br><span class="line">    <span class="comment">// 执行通知</span></span><br><span class="line">    <span class="keyword">this</span>.notify(<span class="string">"*"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//filed</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValueFromEvent</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> e &amp;&amp; e.target</span><br><span class="line">    ? e.target.type === <span class="string">"checkbox"</span></span><br><span class="line">      ? e.target.checked</span><br><span class="line">      : e.target.value</span><br><span class="line">    : e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Field</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; label, name, children &#125; = props;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 拿到Form传下来的FormStore实例</span></span><br><span class="line">  <span class="keyword">const</span> store = React.useContext(FormStoreContext);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 组件内部状态，用于触发组件的重新渲染</span></span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = React.useState(</span><br><span class="line">    name &amp;&amp; store ? store.get(name) : <span class="literal">undefined</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">const</span> [error, setError] = React.useState(</span><br><span class="line">    name &amp;&amp; store ? store.error(name) : <span class="literal">undefined</span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 表单组件onChange事件，用于从事件中取得表单值</span></span><br><span class="line">  <span class="keyword">const</span> onChange = React.useCallback(</span><br><span class="line">    (...args) =&gt; name &amp;&amp; store &amp;&amp; store.set(name, valueGetter(...args)),</span><br><span class="line">    [name, store]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 订阅表单数据变动</span></span><br><span class="line">  React.useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!name || !store) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> store.subscribe(<span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 当前name的数据发生了变动，获取数据并重新渲染</span></span><br><span class="line">      <span class="keyword">if</span> (n === name || n === <span class="string">"*"</span>) &#123;</span><br><span class="line">        setValue(store.get(name));</span><br><span class="line">        setError(store.error(name));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, [name, store]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> child = children;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果children是一个合法的组件，传入value和onChange</span></span><br><span class="line">  <span class="keyword">if</span> (name &amp;&amp; store &amp;&amp; React.isValidElement(child)) &#123;</span><br><span class="line">    <span class="keyword">const</span> childProps = &#123; value, onChange &#125;;</span><br><span class="line">    child = React.cloneElement(child, childProps);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 表单结构，具体的样式就不贴出来了</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"form"</span>&gt;</span><br><span class="line">      &lt;label className=<span class="string">"form__label"</span>&gt;&#123;label&#125;&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div className="form__content"&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div className="form__control"&gt;&#123;child&#125;&lt;/</span>div&gt;</span><br><span class="line">        &lt;div className=<span class="string">"form__message"</span>&gt;&#123;error&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//form</span></span><br><span class="line"><span class="keyword">const</span> FormStoreContext = React.createContext(<span class="literal">undefined</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Form</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; store, children, onSubmit &#125; = props;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;FormStoreContext.Provider value=&#123;store&#125;&gt;</span><br><span class="line">      &lt;form onSubmit=&#123;onSubmit&#125;&gt;&#123;children&#125;&lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>FormStoreContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.store = <span class="keyword">new</span> FormStore();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  onSubmit = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">this</span>.store.get();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Form store=&#123;<span class="keyword">this</span>.store&#125; onSubmit=&#123;<span class="keyword">this</span>.onSubmit&#125;&gt;</span><br><span class="line">        &lt;Field name=<span class="string">"username"</span>&gt;</span><br><span class="line">          &lt;input /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Field&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Field name="password"&gt;</span></span><br><span class="line"><span class="regexp">          &lt;input type="password" /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/Field&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button&gt;Submit&lt;/</span>button&gt;</span><br><span class="line">      &lt;<span class="regexp">/Form&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="优化与不足"><a href="#优化与不足" class="headerlink" title="优化与不足"></a>优化与不足</h3><p>本方案实施主要是针对 <a href="https://zhuanlan.zhihu.com/p/57820186" target="_blank" rel="noopener">React 实现高度简洁的 Form 组件 </a> 博客的解读。<br>我觉得这里有几块可以优化的，</p>
+<h4 id="动态生成表单"><a href="#动态生成表单" class="headerlink" title="动态生成表单"></a>动态生成表单</h4><p>上面博客中，使用如下：<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Field name=<span class="string">"password"</span> label=<span class="string">"密码"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"password"</span> /&gt;</span><br><span class="line">&lt;<span class="regexp">/Field&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在filed中转化为：<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;div className=<span class="string">"form"</span>&gt;</span><br><span class="line">    &lt;label className=<span class="string">"form__label"</span>&gt;&#123;label&#125;&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div className="form__content"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div className="form__control"&gt;&#123;child&#125;&lt;/</span>div&gt;</span><br><span class="line">      &lt;div className=<span class="string">"form__message"</span>&gt;&#123;error&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure></p>
+<p>因此filed只需要知道 name type label这三个信息，因此完全可以以json的方式传递给form，动态生成表单。</p>
+<h4 id="联动、自定义-设计不足"><a href="#联动、自定义-设计不足" class="headerlink" title="联动、自定义 设计不足"></a>联动、自定义 设计不足</h4><p>通篇博客读下来，没看到对联动做的逻辑封装。</p>
+<h2 id="动态表单"><a href="#动态表单" class="headerlink" title="动态表单"></a>动态表单</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>无论是传统的html方式使用form，还是配置化的生成表单方式，都是基于以上设计模式上的扩展。动态表单的优点在于，快捷生成表单，就好像使用json通过模版引擎批量生成表单一样，非常爽。<br>但是动态表单在设计上都有一个痛点在于 如何联动与自定义需求。</p>
+<p>参考 另外两篇博客 《EnForm动态表单的使用》 《EnForm动态表单封装》</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-05-30T16:20:39.305Z" itemprop="dateUpdated">2021-05-31 00:20:39</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/05/31/react_form/" target="_blank" rel="external">https://yewills.github.io/2021/05/31/react_form/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/form/">form</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/31/react_form/&title=《react中的表单处理》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/31/react_form/&title=《react中的表单处理》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/05/31/mongoose_mongodb/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mongoose 与 mongodb笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/05/31/react_form_design/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">EnForm动态表单封装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不封装form可以吗"><span class="post-toc-number">1.</span> <span class="post-toc-text">不封装form可以吗</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#认识form很重要"><span class="post-toc-number">2.</span> <span class="post-toc-text">认识form很重要</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#每个filed都有value-onchange"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">每个filed都有value onchange</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validate"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">validate</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validate的error信息显示"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">validate的error信息显示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实时form值"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">实时form值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reset"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">reset</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式很重要"><span class="post-toc-number">3.</span> <span class="post-toc-text">设计模式很重要</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#将form定义为完全受控组件"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">将form定义为完全受控组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#让form存储自己的状态-推荐"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">让form存储自己的状态(推荐)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何在父层获取form的state"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">如何在父层获取form的state</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#改变state的同时，修改存储store"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">改变state的同时，修改存储store</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方案的实施"><span class="post-toc-number">4.</span> <span class="post-toc-text">方案的实施</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选定方案–让form存储自己的状态"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">选定方案–让form存储自己的状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计filed"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">设计filed</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#即时验证"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">即时验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生成error-tip"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">生成error tip</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预设store"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">预设store</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何传递store"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">如何传递store</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#天花板式的第三方包与功能"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">天花板式的第三方包与功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么不把-store与filed直接结合一起"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">为什么不把 store与filed直接结合一起</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#各个元素如何排版布局"><span class="post-toc-number">4.9.</span> <span class="post-toc-text">各个元素如何排版布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注入验证规则"><span class="post-toc-number">4.10.</span> <span class="post-toc-text">注入验证规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#未说细节"><span class="post-toc-number">4.11.</span> <span class="post-toc-text">未说细节</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结与代码"><span class="post-toc-number">4.12.</span> <span class="post-toc-text">小结与代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优化与不足"><span class="post-toc-number">4.13.</span> <span class="post-toc-text">优化与不足</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态生成表单"><span class="post-toc-number">4.13.1.</span> <span class="post-toc-text">动态生成表单</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#联动、自定义-设计不足"><span class="post-toc-number">4.13.2.</span> <span class="post-toc-text">联动、自定义 设计不足</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态表单"><span class="post-toc-number">5.</span> <span class="post-toc-text">动态表单</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">概述</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/31/react_form/&title=《react中的表单处理》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/31/react_form/&title=《react中的表单处理》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQW7DMAwFUd//0u6my1qZTyYNJI5WQRFHei5AUCSvC6/7YZHv8++Qp1pLhgwZ2zLu5Xr6Dv/l9aHJZ/QSZciQMYBBDkFC6nqz9V5r6ovfkSFDhozaT7ePKEOGDBkdBgnBaYr5hYArQ4aMrRjkElvjveuVve0uLkOGjA0ZtcLZ/3z+SH9DhgwZWzHucKVBkCeLtfP8PitDhoyjGTzA8eSMp4adgCtDhow5jDioNbKyNMdbv5o//g8yZMgYw+AbkHJ/mlbWkkgZMmSczai1JHmyWDtusc0gQ4aMQxm1MlknaH6k2SlDhowBDPJYbcv0gpomiBev1cmQIeMgBin683JYrVUZj33IkCHjaAbfMg2OaUsyDfqo3CZDhowxDLJZ+pfO0MbjUzJkyBjASBM4sk2nLZpekmXIkHEqo5/ekcYA4fGG6IuZERkyZBzH4Meqle9Jypg2KmTIkCGjltLx5iUfLOOhWYYMGRMYnSDIkzl+MS6mqjJkyBjA4MNYadpXa47yBoMMGTLmMNISf3qVrYXU4FXKkCFjAIOHtk4pjQfW9EosQ4aMUxl3uNIhMD6WwctzcTdDhgwZmzP4Ssv66SW2dumNYTJkyNiWUQuy6faog8p7rZ05ERkyZGzL6ByrVqrrjG7IkCFDRloO4+E4bXwGQV+GDBkywqJYbVyjVs6TIUPGHAYfiUiPwpM/fpGWIUPGNEbt6thH9udEZMiQMYDxA17FQc+SRN6DAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

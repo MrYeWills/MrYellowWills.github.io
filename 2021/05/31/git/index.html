@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>git笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="git">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>git笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">git笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-30T16:20:39.305Z" itemprop="datePublished" class="page-time">
+  2021-05-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-git" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">git笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-31 00:20:39" datetime="2021-05-30T16:20:39.305Z" itemprop="datePublished">2021-05-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>一直在用git，也想总结一点git笔记，因此就有了本篇。</p>
+<h3 id="git图形化工具误你一生"><a href="#git图形化工具误你一生" class="headerlink" title="git图形化工具误你一生"></a>git图形化工具误你一生</h3><p>使用git图形化工具是使用git的错误开始，使用图形化越深，错的越深。<br>珍爱git，及早丢弃图形化。</p>
+<h3 id="git-init-与-git-remote"><a href="#git-init-与-git-remote" class="headerlink" title="git init 与 git remote"></a>git init 与 git remote</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>本地一个文件夹，里面有很多文件，你想从现在开始，对此文件进行版本管理，执行git init即可；<br>git init后，就可以尽情地对此项目各种版本管理操作；<br>有一天你想对这个git init项目上传到github上，<br>在命令窗口执行 git remote，cmd窗口会提示你如何上传到GitHub服务器上。</p>
+<h4 id="git-remote-相关问题"><a href="#git-remote-相关问题" class="headerlink" title="git remote 相关问题"></a>git remote 相关问题</h4><p>本地仓库git init后，在关联远程地址时，要求做如下操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Either specify the URL from the command-line or configure a remote repository using</span><br><span class="line">//这里的name 通常为 remote name，默认的远程名字为origin，</span><br><span class="line">//所以此处name请记住一定要写origin，不然会导致下面讲到的无法使用git push 就可以轻松push。</span><br><span class="line">//当然如果有需求，也可以定义其他远程名。</span><br><span class="line">    git remote add &lt;name&gt; &lt;url&gt;</span><br><span class="line"></span><br><span class="line">and then push using the remote name</span><br><span class="line">//这里的name是远程上的branch名，仓库第一个分支名通常命名为 master</span><br><span class="line">    git push &lt;name&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="git-push时，要求-git-remote-add-的问题"><a href="#git-push时，要求-git-remote-add-的问题" class="headerlink" title="git push时，要求 git remote add  的问题"></a>git push时，要求 git remote add <name> <url>的问题</url></name></h4><p>此问题与上面说的 《git remote 相关问题》一脉相承，<br>这里我们要了解一个知识点， <strong>使用git push 推送到服务器时，默认是推送到名字为 origin的远程上</strong>，所以本地分支与远程分支建立联系时，使用的是origin，那么该分支每次push时，使用git push就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add orgin https://.....</span><br></pre></td></tr></table></figure></p>
+<p>从该分支checkout出来的branch，push到远程时，也能正常使用 git push即可推送。</p>
+<h3 id="看cmd窗口提示很关键"><a href="#看cmd窗口提示很关键" class="headerlink" title="看cmd窗口提示很关键"></a>看cmd窗口提示很关键</h3><p>上面说到了执行git remote cmd窗口会有提示，按照提示，就可以完成想做的事情。<br>git 提供了强大的提示功能，要重视cmd窗口提示信息，很关键。<br>git bash 粘贴复制很好用</p>
+<h3 id="使用git-bash，放弃cmd"><a href="#使用git-bash，放弃cmd" class="headerlink" title="使用git bash，放弃cmd"></a>使用git bash，放弃cmd</h3><p>git bash才是最适合用来管理git的命令窗口，比如 git bash 能时刻显示当前你所处的分支名，能完整保留git的操作，因为cmd超过一定操作会删除以前的操作日志。</p>
+<h3 id="git-fetch-git-pull-切远程分支"><a href="#git-fetch-git-pull-切远程分支" class="headerlink" title="git fetch\git pull\切远程分支"></a>git fetch\git pull\切远程分支</h3><p>git fetch 将远程分支更新到本地，但不与本地分支合并，下载到本地的分支的名字前面都有origin/,例如origin/master.<br>git pull 是git fetch与git merge origin/branch 的两步。</p>
+<h4 id="拉取新项目时，如何切换到项目的其他分支"><a href="#拉取新项目时，如何切换到项目的其他分支" class="headerlink" title="拉取新项目时，如何切换到项目的其他分支"></a>拉取新项目时，如何切换到项目的其他分支</h4><p>执行 git fetch后，git checkout即可</p>
+<h3 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h3><p>git checkout . 清除所有<br>git checkout string  ，此string可以是分支名，也可是commitHash</p>
+<h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><h4 id="PR冲突时，处理冲突"><a href="#PR冲突时，处理冲突" class="headerlink" title="PR冲突时，处理冲突"></a>PR冲突时，处理冲突</h4><p>多人开发，在提PR给develop分支时，当github页面提示有冲突时,处理如下：<br>切到自己的分支(PR到develop的分支)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git rebase develop</span><br><span class="line">//这时会显示冲突内容，解决冲突，执行</span><br><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br><span class="line">git push origin -f</span><br></pre></td></tr></table></figure></p>
+<p>然后重新PR,这时就不报错了<br>有人将上一操作过程称为变基。<br>git rebase 功能类似 git merge，区别在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。<br>git rebase则不同，git rebase后，你与develop不同的提交(也就是你修改的)commit将显示在第一条，(注意的是，git rebase冲突修改将不会生成commit，从上面只有git add,没有git commit得到佐证，因为只有git commit 才会生成一条commit):<br><figure class="image-box">
+                <a rel="git笔记" href="/image/git/git3.png" title="undefined" data-fancybox="images"><img src="/image/git/git3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>以上过程是把git rebase 当git merge来用，git rebase的这种当merge的用法，用的不多，用得最多的就是上面展示的，用来处理PR后的冲突。</p>
+<h4 id="将最新修改合并过来，且保证提交的连续性"><a href="#将最新修改合并过来，且保证提交的连续性" class="headerlink" title="将最新修改合并过来，且保证提交的连续性"></a>将最新修改合并过来，且保证提交的连续性</h4><p>比如，你在做用户管理功能，同事在做登录功能；<br>你的用户管理的页面效果写好了，要做接口联调，需要用到同事做的登录功能的用户参数；<br>注意，<br>你可以直接merge 同事的代码过来，但弊端是，你自己做的用户管理提交可能无法显示在git log的最前面；<br>在此推荐用rebase 同事的代码，好处是，既将同事的修改merge过来，又可以将自己的修改显示最上方，保证当前业务功能的commit的连续性和直观性。</p>
+<h4 id="rebase-与-merge"><a href="#rebase-与-merge" class="headerlink" title="rebase 与 merge"></a>rebase 与 merge</h4><p>如上所说，rebase有这么多好处，merge能做到的，rebase都能做到，为什么不都用rebase呢？<br>因为merge是无害的，不改变commithash值；<br>而rebase有改变commithash值的风险，这就意味着你做分支的合并时就会出现冲突，如果你有一群小伙伴一起开发，那么这个冲突起来，会让你hold不住，然而这并不妨碍你对rebase的热爱。</p>
+<p>因此鉴于merge的无害性，一般情况下分支合并就使用merge；<br>在特定场景下才使用rebase；</p>
+<h4 id="合并commit"><a href="#合并commit" class="headerlink" title="合并commit"></a>合并commit</h4><p>这是日常开发必备用法，不会此法，不能说会使用git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//正常使用</span><br><span class="line">git rebase -i HEAD~6</span><br><span class="line">按字母i键，进入insert模式(编辑模式)</span><br><span class="line">留一个最上面的pick，</span><br><span class="line">后面的pick全部换成s；</span><br><span class="line">修改好后，按esc键(退出编辑模式)</span><br><span class="line">:wq //保存编辑修改，vim命令</span><br><span class="line">:q! //不保存编辑修改，vim命令</span><br></pre></td></tr></table></figure>
+<p>如果遇到冲突，除了以上命令，按提示操作，还会执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//注意的是，执行完git add . 后，不必执行git commit</span><br><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure></p>
+<p>放弃rebase<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure></p>
+<p>注意的是以下两种方法都支持，两种方法各有优点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~6</span><br><span class="line">git rebase -i c9r26r869b8  //c9r26r869b8 此hash值不被合并，此hash以前的所有commit将被合并</span><br></pre></td></tr></table></figure></p>
+<h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><h4 id="将分支回滚到指定历史版本"><a href="#将分支回滚到指定历史版本" class="headerlink" title="将分支回滚到指定历史版本"></a>将分支回滚到指定历史版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// --hard 是强制的意思</span><br><span class="line">git reset --hard commitHash</span><br></pre></td></tr></table></figure>
+<h4 id="放弃所有修改，回到干净的当前仓库版本"><a href="#放弃所有修改，回到干净的当前仓库版本" class="headerlink" title="放弃所有修改，回到干净的当前仓库版本"></a>放弃所有修改，回到干净的当前仓库版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+<h4 id="git-reset-HEAD"><a href="#git-reset-HEAD" class="headerlink" title="git reset HEAD~"></a>git reset HEAD~</h4><p>这个方法非常好用，本意是重新修改上一次提交。<br>执行这个命令后，将上一次提交的所有文件将至于 not staged 状态,<br>然后，你可很直观看到这次提交修改的所有文件，<br>并且vscode对于not staged状态的文件，会将他们集中显示到源代码管理窗口，<br>这对于git rebase 很多commit后，然后再次整理或格式化所有的修改内容 是很棒的功能。</p>
+<h4 id="回到指定提交后，并重新修改这一次提交内容"><a href="#回到指定提交后，并重新修改这一次提交内容" class="headerlink" title="回到指定提交后，并重新修改这一次提交内容"></a>回到指定提交后，并重新修改这一次提交内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commitHash</span><br><span class="line">//~ 指的是上一次的意思</span><br><span class="line">git reset HEAD~</span><br></pre></td></tr></table></figure>
+<h4 id="再次对前几次commit修改的内容修改"><a href="#再次对前几次commit修改的内容修改" class="headerlink" title="再次对前几次commit修改的内容修改"></a>再次对前几次commit修改的内容修改</h4><p>我们做一个面包屑菜单功能，可能做了很多次提交，现在想对这么多次的提交所修改的所有内容，重新审阅一遍，以便修改内容或者格式化，解决方案如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~6</span><br><span class="line">git reset HEAD~</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;面包屑功能&quot;</span><br></pre></td></tr></table></figure></p>
+<p>参考《git reset HEAD~》</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>git reset后，要push时，都需加上-f，强制push</p>
+<h3 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h3><p>如果你使用git reset,那么git log无法查到当前提交之后的提交日志，此时使用 git reflog</p>
+<h3 id="git-cherry-pick"><a href="#git-cherry-pick" class="headerlink" title="git cherry-pick"></a>git cherry-pick</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>不懂git cherry-pick，说明你还不懂git这位美女的基本套路，必备git操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick commitHash</span><br></pre></td></tr></table></figure></p>
+<p>git cherry-pick 与 git reset 配合使用可以尽情任意穿插回滚修改版本提交，只有此时，你才懂git的美，从此爱不释手，相逢恨晚。</p>
+<h4 id="commitHash值会变"><a href="#commitHash值会变" class="headerlink" title="commitHash值会变"></a>commitHash值会变</h4><p>当一个commit从一个branch cherry-pick到另外一个branch的时候，在新的branch上，对应的commit的hash值与原始的hash值不一样，有了变化。不过其他信息，包含时间信息，都么有变。</p>
+<h4 id="commit会置顶"><a href="#commit会置顶" class="headerlink" title="commit会置顶"></a>commit会置顶</h4><p>cherry-pick的commit在新的branch上会置顶。</p>
+<h4 id="行为类似rebase"><a href="#行为类似rebase" class="headerlink" title="行为类似rebase"></a>行为类似rebase</h4><p>结合以上，说明cherry-pick的行为类似rebase的过程（置顶与hash码变化）</p>
+<h3 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -D branch //删除本地分支</span><br><span class="line">git branch -a // 查看远程有多少分支</span><br></pre></td></tr></table></figure>
+<h3 id="git-push-删除远程分支"><a href="#git-push-删除远程分支" class="headerlink" title="git push 删除远程分支"></a>git push 删除远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin -d branch</span><br></pre></td></tr></table></figure>
+<h3 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h3><p>命令简单，Google下命令即可，git tag很重要也很好用，<br>tag的好处有，它既像一个branch，保存了当次tag的所有提交，又提供了一个zip包，<br>很多开源框架的 历史版本API 都是通过tag完成，非常之好用</p>
+<h3 id="gitk"><a href="#gitk" class="headerlink" title="gitk"></a>gitk</h3><p>非常好用的查看工具，git自带，此工具太好用，是查历史，凭关键字查提交的一把好手，太重要，用得太频繁，你必需会，<br>启动方法：<br>git bash中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitk</span><br></pre></td></tr></table></figure></p>
+<p>比较好的gitk命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//查询abc.js文件的历史修改记录，比任何插件显示的全</span><br><span class="line">gitk -- **/ abc.js</span><br></pre></td></tr></table></figure></p>
+<h3 id="工作目录、index、HEAD、object、快照"><a href="#工作目录、index、HEAD、object、快照" class="headerlink" title="工作目录、index、HEAD、object、快照"></a>工作目录、index、HEAD、object、快照</h3><p>工作目录、index（暂存区）、HEAD（当前所处commit）、object（文件树）。<br>快照：可以理解为版本每次提交后，git会给提交拍照，用来记录版本信息。<br>尤其 工作目录、index、HEAD 这三个概念是git的三驾马车，就好比 action、reducer、selector 是react-redux的三驾马车一样。<br>要多刷视频和书籍《精通git》了解这仨，了解git一切只是什么指针或快照，虽然我现在也忘得差不多，但一定要了解。<br><figure class="image-box">
+                <a rel="git笔记" href="/image/git/git1.png" title="undefined" data-fancybox="images"><img src="/image/git/git1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br>工作目录，index（暂存区）、HEAD（master分支）、objexts（树）。<br>index与HEAD都是通过指针指向文件树objects；</p>
+<h3 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git stash apply</span><br><span class="line">git checkout -b branch</span><br><span class="line">git log -n</span><br><span class="line">git commit -amend</span><br><span class="line">git help stash //使用help方式一</span><br><span class="line">git stash --help //使用help方式二</span><br><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<h3 id="git-技巧"><a href="#git-技巧" class="headerlink" title="git 技巧"></a>git 技巧</h3><h4 id="空格使用"><a href="#空格使用" class="headerlink" title="空格使用"></a>空格使用</h4><p>清除多个或merge多个 可使用空格，一次搞定，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout file1.js file2.js</span><br><span class="line">git merge branch1 branch2</span><br></pre></td></tr></table></figure></p>
+<h4 id="–abort"><a href="#–abort" class="headerlink" title="–abort"></a>–abort</h4><p>–abort一般是放弃的意思，如<br>放弃merge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --abort</span><br></pre></td></tr></table></figure></p>
+<h4 id="–contnue"><a href="#–contnue" class="headerlink" title="–contnue"></a>–contnue</h4><p>–abort一般是放弃的意思，如<br>放弃merge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --contnue</span><br></pre></td></tr></table></figure></p>
+<h4 id="字母q"><a href="#字母q" class="headerlink" title="字母q"></a>字母q</h4><p>在git log命令出来一堆历史时，按回车或其他键，只会显示更多历史，按字母q可退出。</p>
+<h4 id="i"><a href="#i" class="headerlink" title="-i"></a>-i</h4><p>-i表示交互的意思。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~6</span><br></pre></td></tr></table></figure></p>
+<h4 id="双点号，三点号的特殊意义"><a href="#双点号，三点号的特殊意义" class="headerlink" title="双点号，三点号的特殊意义"></a>双点号，三点号的特殊意义</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p master..origin/master 查看二者区别</span><br></pre></td></tr></table></figure>
+<h4 id="gitk查看历史最可靠"><a href="#gitk查看历史最可靠" class="headerlink" title="gitk查看历史最可靠"></a>gitk查看历史最可靠</h4><p>vscode的一些插件(如 Git History)，可以很好地查看历史，不过也会有一些历史被漏掉，如对于一些git rebase -i的历史或者处理冲突的历史 有可能被漏掉不被显示，此时请使用gitk查历史，gitk最可靠，会显示所以提交，巨细无遗。</p>
+<h4 id="多程序同时操作一个文件引起的报错"><a href="#多程序同时操作一个文件引起的报错" class="headerlink" title="多程序同时操作一个文件引起的报错"></a>多程序同时操作一个文件引起的报错</h4><p>执行复杂操作时，报 permission错误，可能是由于其他程序和git同时操作一个文件引起的，<br>此时，可以停止npm start或关闭编辑器，只让git一个程序操作项目，解决此问题。</p>
+<h4 id="merge-commitHash"><a href="#merge-commitHash" class="headerlink" title="merge commitHash"></a>merge commitHash</h4><p>git merge branch，也可以git merge commitHash；<br>同理估计也可以git rebase commitHash</p>
+<h4 id="vim命令"><a href="#vim命令" class="headerlink" title="vim命令"></a>vim命令</h4><p>需要懂那么点vim 操作知识，如:wq :q! 参考 《git rebase》</p>
+<h4 id="手动处理冲突"><a href="#手动处理冲突" class="headerlink" title="手动处理冲突"></a>手动处理冲突</h4><p>手动处理冲突其实很简单，而且又做到不依赖插件。</p>
+<h4 id="ssh可能并没有你想象重要"><a href="#ssh可能并没有你想象重要" class="headerlink" title="ssh可能并没有你想象重要"></a>ssh可能并没有你想象重要</h4><p>由于公司原因一直也没设置ssh，各种push什么的，也很少需要输入用户密码，不影响工作，也许ssh没有你现象的高大上。</p>
+<h3 id="推荐使用vscode"><a href="#推荐使用vscode" class="headerlink" title="推荐使用vscode"></a>推荐使用vscode</h3><p>vscode内置了对git的支持，对git支持太友好，vscode自带的显示git版本变化的功能很好用，<br>配合vscode的一些git插件，能够很好的显示每行代码的历史记录，是甩锅，找坑的必备良器。</p>
+<h3 id="不会用GitHub就是耍流氓"><a href="#不会用GitHub就是耍流氓" class="headerlink" title="不会用GitHub就是耍流氓"></a>不会用GitHub就是耍流氓</h3><p>用git，不会使用GitHub的基本操作，就是耍流氓，既然你跟git感情这么好，干嘛不更好一点，娶了她呢，这不是耍流氓吗。<br>主要要熟练 github的git workflow (也就是PR代码审核) 和 fork功能，以及看tag。<br>理解 git workflow的最核心的两大目的:PR代码审核 以及 维护一套测试、稳定和发布分支。<br><figure class="image-box">
+                <a rel="git笔记" href="/image/git/git2.png" title="undefined" data-fancybox="images"><img src="/image/git/git2.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="git入门阶段不需知道的"><a href="#git入门阶段不需知道的" class="headerlink" title="git入门阶段不需知道的"></a>git入门阶段不需知道的</h3><h4 id="git-rebase-i-HEAD后记得合并到test-branch"><a href="#git-rebase-i-HEAD后记得合并到test-branch" class="headerlink" title="git rebase -i HEAD后记得合并到test branch"></a>git rebase -i HEAD后记得合并到test branch</h4><p>分支PR到develop后，如果在PR前做了合并历史(git rebase -i HEAD)，如果test branch基于develop创建，记得将自己被PR的分支 merge一次到test branch，由于test branch 滞后于develop branch，防止 从develop新建的branch merge到test branch时冲突，</p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><h4 id="unable-to-access-Could-not-resolve-host-github-com"><a href="#unable-to-access-Could-not-resolve-host-github-com" class="headerlink" title="unable to access ..Could not resolve host: github.com"></a>unable to access ..Could not resolve host: github.com</h4><p>之前git push还是好好的，用着用着就 git push 异常，并报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access &apos;https://github.com/YeWills/YeWills.github.io.git/&apos;: Could not resolve host: github.com</span><br></pre></td></tr></table></figure>
+<p>不过令人费解的是，<strong>试github其他仓库，不用科学上网，可以push成功的。</strong></p>
+<p>终极解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># step1. ping github.com </span><br><span class="line">获取到github.com的ip为192.30.252.128 </span><br><span class="line"># step2. 在/etc/hosts中添加一行如下: </span><br><span class="line">sudo  vim /etc/hosts</span><br><span class="line">192.30.252.128 github.com</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/piaotiejun/article/details/48734175" target="_blank" rel="noopener">参考</a><br>一般情况，上面即可解决，如果解决不了，考虑下面方法：</p>
+<p>造成以上原因，有可能为以下几点：<br>网络被墙了？<br>使用了强制push –force （普通push是可以的）</p>
+<p>亲测以下几种方式偶尔可以解决：</p>
+<ul>
+<li>科学上网，然后push，此方法有时有效，有时也无效；</li>
+<li>重设账号密码：<br>（1）先重新设置本机git配置：git config –global credential.helper store （这一步可以不用）<br>（2）输入github账号和密码 （这一步可以不用）<br>（3）最后push代码：git push -u origin master （这一步必须，如果是强制push，加上 -f）</li>
+</ul>
+<p><a href="https://blog.csdn.net/mhs624014469/article/details/77124540?utm_source=blogxgwz3" target="_blank" rel="noopener">这里还有另外几种解决方式</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-05-30T16:20:39.305Z" itemprop="dateUpdated">2021-05-31 00:20:39</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/05/31/git/" target="_blank" rel="external">https://yewills.github.io/2021/05/31/git/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/31/git/&title=《git笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/31/git/&title=《git笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/05/31/tool/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">前端以外笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/05/31/house/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">决定房价的因素</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git图形化工具误你一生"><span class="post-toc-number">1.</span> <span class="post-toc-text">git图形化工具误你一生</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-init-与-git-remote"><span class="post-toc-number">2.</span> <span class="post-toc-text">git init 与 git remote</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-remote-相关问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">git remote 相关问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-push时，要求-git-remote-add-的问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">git push时，要求 git remote add  的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#看cmd窗口提示很关键"><span class="post-toc-number">3.</span> <span class="post-toc-text">看cmd窗口提示很关键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用git-bash，放弃cmd"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用git bash，放弃cmd</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-fetch-git-pull-切远程分支"><span class="post-toc-number">5.</span> <span class="post-toc-text">git fetch\git pull\切远程分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拉取新项目时，如何切换到项目的其他分支"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">拉取新项目时，如何切换到项目的其他分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-checkout"><span class="post-toc-number">6.</span> <span class="post-toc-text">git checkout</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-number">7.</span> <span class="post-toc-text">git rebase</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PR冲突时，处理冲突"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">PR冲突时，处理冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将最新修改合并过来，且保证提交的连续性"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">将最新修改合并过来，且保证提交的连续性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#rebase-与-merge"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">rebase 与 merge</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#合并commit"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">合并commit</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-reset"><span class="post-toc-number">8.</span> <span class="post-toc-text">git reset</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将分支回滚到指定历史版本"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">将分支回滚到指定历史版本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#放弃所有修改，回到干净的当前仓库版本"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">放弃所有修改，回到干净的当前仓库版本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-reset-HEAD"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">git reset HEAD~</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回到指定提交后，并重新修改这一次提交内容"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">回到指定提交后，并重新修改这一次提交内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#再次对前几次commit修改的内容修改"><span class="post-toc-number">8.5.</span> <span class="post-toc-text">再次对前几次commit修改的内容修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意"><span class="post-toc-number">8.6.</span> <span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-reflog"><span class="post-toc-number">9.</span> <span class="post-toc-text">git reflog</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-cherry-pick"><span class="post-toc-number">10.</span> <span class="post-toc-text">git cherry-pick</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#commitHash值会变"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">commitHash值会变</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#commit会置顶"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">commit会置顶</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#行为类似rebase"><span class="post-toc-number">10.4.</span> <span class="post-toc-text">行为类似rebase</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-branch"><span class="post-toc-number">11.</span> <span class="post-toc-text">git branch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-push-删除远程分支"><span class="post-toc-number">12.</span> <span class="post-toc-text">git push 删除远程分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-tag"><span class="post-toc-number">13.</span> <span class="post-toc-text">git tag</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gitk"><span class="post-toc-number">14.</span> <span class="post-toc-text">gitk</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工作目录、index、HEAD、object、快照"><span class="post-toc-number">15.</span> <span class="post-toc-text">工作目录、index、HEAD、object、快照</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他常用命令"><span class="post-toc-number">16.</span> <span class="post-toc-text">其他常用命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-技巧"><span class="post-toc-number">17.</span> <span class="post-toc-text">git 技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空格使用"><span class="post-toc-number">17.1.</span> <span class="post-toc-text">空格使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#–abort"><span class="post-toc-number">17.2.</span> <span class="post-toc-text">–abort</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#–contnue"><span class="post-toc-number">17.3.</span> <span class="post-toc-text">–contnue</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字母q"><span class="post-toc-number">17.4.</span> <span class="post-toc-text">字母q</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#i"><span class="post-toc-number">17.5.</span> <span class="post-toc-text">-i</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双点号，三点号的特殊意义"><span class="post-toc-number">17.6.</span> <span class="post-toc-text">双点号，三点号的特殊意义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#gitk查看历史最可靠"><span class="post-toc-number">17.7.</span> <span class="post-toc-text">gitk查看历史最可靠</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多程序同时操作一个文件引起的报错"><span class="post-toc-number">17.8.</span> <span class="post-toc-text">多程序同时操作一个文件引起的报错</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#merge-commitHash"><span class="post-toc-number">17.9.</span> <span class="post-toc-text">merge commitHash</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vim命令"><span class="post-toc-number">17.10.</span> <span class="post-toc-text">vim命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#手动处理冲突"><span class="post-toc-number">17.11.</span> <span class="post-toc-text">手动处理冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ssh可能并没有你想象重要"><span class="post-toc-number">17.12.</span> <span class="post-toc-text">ssh可能并没有你想象重要</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推荐使用vscode"><span class="post-toc-number">18.</span> <span class="post-toc-text">推荐使用vscode</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不会用GitHub就是耍流氓"><span class="post-toc-number">19.</span> <span class="post-toc-text">不会用GitHub就是耍流氓</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git入门阶段不需知道的"><span class="post-toc-number">20.</span> <span class="post-toc-text">git入门阶段不需知道的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-rebase-i-HEAD后记得合并到test-branch"><span class="post-toc-number">20.1.</span> <span class="post-toc-text">git rebase -i HEAD后记得合并到test branch</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">21.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#unable-to-access-Could-not-resolve-host-github-com"><span class="post-toc-number">21.1.</span> <span class="post-toc-text">unable to access ..Could not resolve host: github.com</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/31/git/&title=《git笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/31/git/&title=《git笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvklEQVR42u3aS27DMAwFwNz/0u42QBGZTx86LUarIFHkkRcEKer1Ko/rbbx/8+nz7/nj1TYPXFzcZe41HOM560+pG3Bxcfu5nx4wDlXjdcYzP61/Y8PFxf1K7nqShIuL+1+5kwlK+DpwcXGf5W4LNGGqdLBWw8XF3RNbNjxy7vOR811cXNwp7hWO8aFGGpjip+Pi4rZw0zSlnvqkbdr6v3BxcU9zK5cq0gRlvXS5CWG4uLgPcVeuYdW3Ec/ExcVt4aZtkspli3RL6QvCxcU9za0g5lqkc6HqZh1cXNxGbuWSRDqnqfjBxcU9wN2FqwTBetgKPLi4uMe4pfSiPHPu16DpgouLe5g7Lk7Wr2pV/hUUUbi4uC3cCjEtadIjj/TABRcXt4ebBpT6BtIGTOkF4eLiNnLXl0vLp0qj5aYnjIuL28hNW61B8yNs38b1Ey4u7jL3Ckc9iamsE28SFxe3hTt3JWKuKTt3WjO5GVxc3GVuPehU0prKIUv9qAUXF/dZ7lwbtbKllfbthriIi4vbyE3DXBrOcHFx/xb3eKgaz8fFxW3k7i1p6iGv3uDBxcXt5M41PleWS8MiLi5uI/cHfYU9rAui/AgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
