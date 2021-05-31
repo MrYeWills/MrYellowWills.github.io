@@ -1,6 +1,6 @@
 ---
 title: linux笔记(中)
-date: {{ date }}
+date: 2021/5/21
 tags: linux
 categories: 
 - 前端工具
