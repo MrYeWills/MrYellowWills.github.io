@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>npm包开发 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="npm">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>npm包开发</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">npm包开发</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-06-01T22:54:59.406Z" itemprop="datePublished" class="page-time">
+  2021-06-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-npm" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">npm包开发</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-06-02 06:54:59" datetime="2021-06-01T22:54:59.406Z" itemprop="datePublished">2021-06-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="npm包集中管理项目"><a href="#npm包集中管理项目" class="headerlink" title="npm包集中管理项目"></a>npm包集中管理项目</h2><h3 id="概述与地址"><a href="#概述与地址" class="headerlink" title="概述与地址"></a>概述与地址</h3><p><a href="https://github.com/YeWills/npmtest" target="_blank" rel="noopener">项目地址</a><br>如果发布的npm包比较多，能集中管理这些包，是一种很好的提效方式。<br>为此，本项目使用 lerna 来集中管理发布，让lerna集中做包 version 等的管理，并集中发布到npm。<br>使用umi团队的 father (father-build) 来将packages包内的 src 编译到 lib（father默认将src编译到lib），<br>以便发布时使用编译后的es5代码。</p>
+<h3 id="lerna-npm发布利器"><a href="#lerna-npm发布利器" class="headerlink" title="lerna npm发布利器"></a>lerna npm发布利器</h3><h4 id="集中发布管理"><a href="#集中发布管理" class="headerlink" title="集中发布管理"></a>集中发布管理</h4><p>如上分析，lerna可以用于集中对包做version等管理。并集中发布。<br>lerna功能比较多，它会比对各个包，如果包没有变化，不改变包版本，如果有变化，会智能叠加小版本号。</p>
+<h4 id="集中安装包依赖"><a href="#集中安装包依赖" class="headerlink" title="集中安装包依赖"></a>集中安装包依赖</h4><p><code>lerna bootstrap</code>可以用于集中安装packages下的包的依赖。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>可网上查阅lerna。</p>
+<h3 id="father编译es5-father-build"><a href="#father编译es5-father-build" class="headerlink" title="father编译es5 (father-build)"></a>father编译es5 (father-build)</h3><p>参考《概述与地址》讲解</p>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "private": false,//工程是私有或公有，若发布，默认设置false</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "bootstrap": "lerna bootstrap",//给package下的包，安装依赖</span><br><span class="line">    "build": "father-build",// yarn build -w  src 编译到 lib，father默认将src编译到lib</span><br><span class="line">    "changelog": "lerna-changelog",</span><br><span class="line">    "clean": "lerna clean -y",</span><br><span class="line">    "lint": "eslint --ext .js packages",</span><br><span class="line">    "precommit": "lint-staged",</span><br><span class="line">    "prettier": "prettier --write '**/*.&#123;js,jsx,tsx,ts,less,md,json&#125;'",</span><br><span class="line">    "dpublish": "lerna publish"//集中管理发布包，包含name version ，发布前，将根目录下git push</span><br><span class="line">  &#125;,</span><br><span class="line">  "lint-staged": &#123;</span><br><span class="line">    "**/*.&#123;js,jsx,tsx,ts,less,json&#125;": [</span><br><span class="line">      "prettier --write",</span><br><span class="line">      <span class="string">"git add"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  "devDependencies": &#123;</span><br><span class="line">    "father-build": "^1.13.1",</span><br><span class="line">    "husky": "1.2.0",</span><br><span class="line">    "lerna": "3.6.0",</span><br><span class="line">  &#125;,</span><br><span class="line">  "dependencies": &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="lerna-json"><a href="#lerna-json" class="headerlink" title="lerna.json"></a>lerna.json</h3><p><code>lerna bootstrap</code>可以用于集中安装packages下的包的依赖。使用npm或yarn安装时，<br>请定义好<code>&quot;npmClient&quot;: &quot;npm&quot;</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"packages"</span>: [<span class="string">"packages/*"</span>],</span><br><span class="line">  <span class="attr">"command"</span>: &#123;</span><br><span class="line">    <span class="attr">"version"</span>: &#123;</span><br><span class="line">      <span class="attr">"exact"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  "npmClient": "npm",//使用yarn 或 npm 命令安装</span><br><span class="line">  "version": "independent"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="husky-提交前验证"><a href="#husky-提交前验证" class="headerlink" title="husky 提交前验证"></a>husky 提交前验证</h3><p>见项目源码。</p>
+<h3 id="包发布前，必须提交项目代码"><a href="#包发布前，必须提交项目代码" class="headerlink" title="包发布前，必须提交项目代码"></a>包发布前，必须提交项目代码</h3><p>执行 <code>yarn dpublish</code>前，必须根目录下，提交项目所有代码，否则出错。</p>
+<h3 id="发布时注意-npm-源的控制；"><a href="#发布时注意-npm-源的控制；" class="headerlink" title="发布时注意 npm 源的控制；"></a>发布时注意 npm 源的控制；</h3><p>发布时，将包发布到npm指定到源，就可以在对应的源上进行npm install。</p>
+<h3 id="实时编译-w"><a href="#实时编译-w" class="headerlink" title="实时编译 -w"></a>实时编译 -w</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &quot;father-build&quot;,// yarn build -w  src 编译到 lib，father默认将src编译到lib</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yarn build -w //开启代码实时监听编译，当packages内的包的src文件有变化时，实时编译到对应的lib文件内。</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;版本修改&quot;</span><br><span class="line">git push</span><br><span class="line">yarn dpublish //代码编译，并提交后，将包发布到npm服务器上</span><br></pre></td></tr></table></figure>
+<h2 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h2><h3 id="npm-link"><a href="#npm-link" class="headerlink" title="npm link"></a>npm link</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>npm包未发布到线上时，需要本地调试，为解决npm包开发项目，与实际使用的业务项目不在同一个目录下的问题。<br>在npm包所在的目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//比如 packages/yewBtn根目录下</span><br><span class="line">npm link</span><br></pre></td></tr></table></figure></p>
+<p>npm在电脑本地内，将形成一个本地映射，在实际开发目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm link packageName</span><br></pre></td></tr></table></figure></p>
+<p>本地项目下将可以使用此包，且包的开发文件内，如果有改动，实际业务项目内将会获取到。</p>
+<h4 id="只需要执行一次npm-link"><a href="#只需要执行一次npm-link" class="headerlink" title="只需要执行一次npm link"></a>只需要执行一次npm link</h4><p>在包目录下，只需要执行一次npm link，在业务代码中就可以拿到最新源码</p>
+<h4 id="通过node-module包看是否最新"><a href="#通过node-module包看是否最新" class="headerlink" title="通过node module包看是否最新"></a>通过node module包看是否最新</h4><p>想知道node module包引用的是否为npm link最新代码，直接取node module包看就行。</p>
+<h4 id="以目录地址为标识"><a href="#以目录地址为标识" class="headerlink" title="以目录地址为标识"></a>以目录地址为标识</h4><p>在源码上执行 npm link 后，npm 将会建立以这个源码目录为标志的软链接，只要目录地址不变，<br>只需要最初执行一次npm link，以后业务代码中都可以用到最新。</p>
+<h4 id="与lerna一起使用的技巧"><a href="#与lerna一起使用的技巧" class="headerlink" title="与lerna一起使用的技巧"></a>与lerna一起使用的技巧</h4><p>一般业务代码中只能使用编译后es5版本的代码，开启 lerna –watch 后，只要源码有改变，就实时编译，业务代码中npm link到的代码就最新。</p>
+<h2 id="npm包开发"><a href="#npm包开发" class="headerlink" title="npm包开发"></a>npm包开发</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>npm的开发主要是日常包开发，调试，发布，三个内容。<br>更多，可参考<a href="https://www.jianshu.com/p/f33a919443ed" target="_blank" rel="noopener">如何在npm上发布自己的包</a></p>
+<h3 id="package-json-1"><a href="#package-json-1" class="headerlink" title="package.json"></a>package.json</h3><p>相关信息查阅网上，这里挑几个重点。</p>
+<h4 id="files"><a href="#files" class="headerlink" title="files"></a>files</h4><p>选择要发布到npm服务器上的files<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"files": [</span><br><span class="line">   "cli.js",</span><br><span class="line">   "index.js",</span><br><span class="line">   <span class="string">"lib"</span></span><br><span class="line"> ],</span><br></pre></td></tr></table></figure></p>
+<h4 id="bin"><a href="#bin" class="headerlink" title="bin"></a>bin</h4><p>如果设置此属性，意味着安装此包后，可执行如下<code>create-umi</code>命令，就会执行右侧cli.js。<br>bin的实现，大多使用<code>Yeoman</code>完成。<br>可参考 create-umi 包中bin开发处理。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"bin": &#123;</span><br><span class="line">   "create-umi": "cli.js"</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
+<h4 id="dependencies与devDependencies区别技巧"><a href="#dependencies与devDependencies区别技巧" class="headerlink" title="dependencies与devDependencies区别技巧"></a>dependencies与devDependencies区别技巧</h4><p>devDependencies通常用于开发时，如eslint，或者启动命令的包 如 cross-env 等等。<br>还有一个最直观的：<br>凡事在项目业务或组件代码中，明确做来import依赖的，说明是生产必须包 dependencies ，<br>其他没有被import的，基本上是 devDependencies</p>
+<h3 id="以create-umi为示例"><a href="#以create-umi为示例" class="headerlink" title="以create-umi为示例"></a>以create-umi为示例</h3><p>create-umi是npm包开发的一个典范，可以参照其源码进行开发。</p>
+<h3 id="Yeoman写bin"><a href="#Yeoman写bin" class="headerlink" title="Yeoman写bin"></a>Yeoman写bin</h3><p>umi的bin，市面上很多bin的编写都使用了<code>Yeoman</code>。<br>参考《package.json  -  bin》</p>
+<h2 id="创建一个npm工程"><a href="#创建一个npm工程" class="headerlink" title="创建一个npm工程"></a>创建一个npm工程</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="image-box">
+                <a rel="npm包开发" href="/image/npm/menu.png" title="undefined" data-fancybox="images"><img src="/image/npm/menu.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>### </p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-06-01T22:54:59.406Z" itemprop="dateUpdated">2021-06-02 06:54:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/06/02/npm/" target="_blank" rel="external">https://yewills.github.io/2021/06/02/npm/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/02/npm/&title=《npm包开发》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/02/npm/&title=《npm包开发》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/06/02/nginx/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">nginx代理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/06/02/npmscript/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">npm script</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm包集中管理项目"><span class="post-toc-number">1.</span> <span class="post-toc-text">npm包集中管理项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述与地址"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概述与地址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lerna-npm发布利器"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">lerna npm发布利器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#集中发布管理"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">集中发布管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#集中安装包依赖"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">集中安装包依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#father编译es5-father-build"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">father编译es5 (father-build)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#package-json"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">package.json</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lerna-json"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">lerna.json</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#husky-提交前验证"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">husky 提交前验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包发布前，必须提交项目代码"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">包发布前，必须提交项目代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布时注意-npm-源的控制；"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">发布时注意 npm 源的控制；</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实时编译-w"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">实时编译 -w</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试技巧"><span class="post-toc-number">2.</span> <span class="post-toc-text">调试技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm-link"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">npm link</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#只需要执行一次npm-link"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">只需要执行一次npm link</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过node-module包看是否最新"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">通过node module包看是否最新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#以目录地址为标识"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">以目录地址为标识</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与lerna一起使用的技巧"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">与lerna一起使用的技巧</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm包开发"><span class="post-toc-number">3.</span> <span class="post-toc-text">npm包开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#package-json-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">package.json</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#files"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">files</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bin"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">bin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dependencies与devDependencies区别技巧"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">dependencies与devDependencies区别技巧</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#以create-umi为示例"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">以create-umi为示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Yeoman写bin"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Yeoman写bin</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个npm工程"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建一个npm工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目录结构"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">目录结构</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/02/npm/&title=《npm包开发》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/02/npm/&title=《npm包开发》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aQW7EIAwF0Ln/pVOp2zbhGwMzrR6raBIxDxYWtnm94nF9j+ffO8+LBy4ubpt7PY6f3+TLuPv+ef67b3Bxcc9z8yCVhKdO4BvYcHFxP4w7CDHFAIeLi/ufuHNvcXFx/yI3SX7ysFWdc0uuhouL2+BWC6Y7njfWd3FxcYvca2rMzVMNXr/MgIuLe4SbJyfVt9XGSZJE4eLinuTOHW7Wvk22AxcX9yQ3CR9rGyc5blDFwcXF3cxNjil5vaLarC0sBhcXdzM3+YPkjJE3UJNwOdhXXFzcI9xOE6WPKxx6cHFxj3A7Vx/mwtNczxQXF/c8t5rMzBVHqolWwYCLi7uUm3yaL2YuhBX2FRcX9wO4c22SarE1WR4uLu5Jbn5MSabLy6/VEgkuLu5J7nMwyi9GVI8seXC8bbLi4uJu4+bBpZ8m5c2bpAiLi4u7j3sVR2dhebp1u4m4uLhHuPnIL1h0FtZp5ODi4q7l5sGrE+aS6xfRsnFxcQ9yO4WPVQlPlKvh4uJ+MLea3sxd/4rqN7i4uG/lVhOVuQNQ4c4ILi7uZm6e/HTaLcn1jsFG4OLiHuEu6NAWU6acuLi+i4uLO+Z+ASFnbMP4UhS1AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

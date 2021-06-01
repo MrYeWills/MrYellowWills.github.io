@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>ListBuilder引发的React暗黑思考 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="react">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>ListBuilder引发的React暗黑思考</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">ListBuilder引发的React暗黑思考</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-06-01T22:54:59.406Z" itemprop="datePublished" class="page-time">
+  2021-06-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-react_listBuilder" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">ListBuilder引发的React暗黑思考</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-06-02 06:54:59" datetime="2021-06-01T22:54:59.406Z" itemprop="datePublished">2021-06-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="edit与search的无法调和是一切暗黑的源头"><a href="#edit与search的无法调和是一切暗黑的源头" class="headerlink" title="edit与search的无法调和是一切暗黑的源头"></a>edit与search的无法调和是一切暗黑的源头</h2><h3 id="需求：edit-与-search-功能"><a href="#需求：edit-与-search-功能" class="headerlink" title="需求：edit 与 search 功能"></a>需求：edit 与 search 功能</h3><p>场景为：edit 功能只能定义在业务组建内，且 edit 功能每次都要setState ListBuilder的data。<br><strong>search功能必须放在ListBuilder内</strong>，search功能每次也要改变ListBuilder的data。</p>
+<h3 id="为什么无法调和"><a href="#为什么无法调和" class="headerlink" title="为什么无法调和"></a>为什么无法调和</h3><p>二者无法调和是在于，edit与search要求同时都完全控制state，但edit必须位于组件外层，search必须位于组件内层，<br>由于edit位于外层，你必须将listBuilder组件做成完全受控组件，要求组件内部使用props渲染；<br>由于search位于内层，且要求完全操控数据，因为组件必须做成state方式，不能响应外层props数据变动；<br>解决方法（也是下面的 <strong>终极方案</strong>）：</p>
+<ul>
+<li>将组件做成完全受控，完成edit功能；</li>
+<li>将组件的数据做成对象方式，search时，实时改动对象，利用对象引用特征，改动完后 使用forceUpdate，渲染组件，在render上每次 function重新组件props数据；</li>
+</ul>
+<p>这样组件就可以同时响应edit和search的变动。</p>
+<h3 id="方案一-否定"><a href="#方案一-否定" class="headerlink" title="方案一(否定)"></a>方案一(否定)</h3><p>search和edit都放在业务组建内写，此时就不会有问题，但是明显违背了上面说的 <strong>search功能必须放在ListBuilder内</strong>。此方案不行。</p>
+<h3 id="方案二-否定"><a href="#方案二-否定" class="headerlink" title="方案二(否定)"></a>方案二(否定)</h3><p>在ListBuilder内部维护state，同时用 getDerivedStateFromProps 让ListBuilder组件完全受控：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> getDerivedStateFromProps(props,state)&#123;    </span><br><span class="line">    <span class="keyword">if</span>(props.value !== state.value)&#123;      </span><br><span class="line">        <span class="keyword">return</span> &#123;        </span><br><span class="line">            value:props.value      </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上，我们通过edit 来维护props，用search 维护自身的state，这样说起来，貌似完美解决来问题。<br>但你注意看上面的代码，你会发现，这种模式有一下弊端：</p>
+<ul>
+<li>我们希望是当有props改动的时候，state值为props；state自身改动时，state值响应为自身state；但上面的getDerivedStateFromProps代码实际上只响应props，state完全响应props的变化，自身state的值无法注入给自己。</li>
+<li>就算通过各种if else 让组件能够达到同时响应props和state，这个过程痛苦不说，也会有很多弊端，其中之一就是，父层如何实时知道ListBuilder最新渲染的data值。</li>
+<li>这种写出来的组件，后期扩展时同时要测试 getDerivedStateFromProps，麻烦不说，还容易出现意想不到的bug。<h3 id="终极方案–forceUpdate-实时生成render最新props-对象引用"><a href="#终极方案–forceUpdate-实时生成render最新props-对象引用" class="headerlink" title="终极方案–forceUpdate+实时生成render最新props+对象引用"></a>终极方案–forceUpdate+实时生成render最新props+对象引用</h3>已知，data为下面的形式：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'row1'</span>, <span class="attr">value</span>: <span class="string">'r1'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'row2'</span>, <span class="attr">value</span>: <span class="string">'r3'</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上方案都不行，还有什么方法了，没办法，只能开启暗黑方式了：</p>
+<ul>
+<li>我们可以在 edit 时还是setState ListBuilder的data，</li>
+<li><p>然后在ListBuilder组件内部，search功能时，我们给data的每条数据<code>{name: &#39;row1&#39;, value: &#39;r1&#39;}</code>，添加一个 visable属性，按条件重置为true或false，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'row1'</span>, <span class="attr">value</span>: <span class="string">'r1'</span>, <span class="attr">visable</span>: <span class="literal">true</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'row2'</span>, <span class="attr">value</span>: <span class="string">'r3'</span>, <span class="attr">visable</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>search完后，在ListBuilder内部，执行一次，此时ListBuilder内部render函数就会执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.forceUpdate()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在ListBuilder的内部render方法内定义一个function，过滤掉false的，只留下 <code>visable: true</code>;</p>
+</li>
+<li>由于search操作的是data内的每条数据，而每条数据又是一个对象，利用对象的引用类型特性，一处改变，其他地方都会改变，因此根本不需要setState，在render使用data放在function上过滤时，就已经有visable属性了。</li>
+<li>这样给render内的组件如(grid 或 TreeList)传的值就达到预期要求。</li>
+</ul>
+<p>这一种方案太妙了，因为其功能的强大性，用起来很爽，但又是一种反模式运用，让用起来的时候很由于，故称暗黑。</p>
+<p>这种方案，关键在于利用了对象引用特征，在修改完数据后，使用forceUpdate，触发render，然后在render中 实时生成props.</p>
+<h3 id="完全受控组件如何自己改变状态"><a href="#完全受控组件如何自己改变状态" class="headerlink" title="完全受控组件如何自己改变状态"></a>完全受控组件如何自己改变状态</h3><p>上面的《终极方案–forceUpdate+实时生成render最新props+对象引用》为我们提供了一种思路，当我们面临 像上面需求一样，<br>父层要实时操控一个完全受控的子组件，而完全受控的子组件同时又想在内部自己改变状态。<br>此时我们可以像上面一样，利用引用类型特性，render时每次生成最新状态的方案。</p>
+<h3 id="如何让父组件和子组件同时可以改变子组件的state"><a href="#如何让父组件和子组件同时可以改变子组件的state" class="headerlink" title="如何让父组件和子组件同时可以改变子组件的state"></a>如何让父组件和子组件同时可以改变子组件的state</h3><p>其实我们也可以这样描述上面的需要，如何让父组件和子组件同时可以改变子组件的state。</p>
+<h3 id="setState之外的setState方案"><a href="#setState之外的setState方案" class="headerlink" title="setState之外的setState方案"></a>setState之外的setState方案</h3><p>我们可以将上面 《终极方案–forceUpdate+实时生成render最新props+对象引用》称之为 setState之外的setState方案，毕竟它让ListBuilder内部实现了一次setState，而又不通过任何setState方法。</p>
+<h3 id="如果data的每条数据是一个字符串"><a href="#如果data的每条数据是一个字符串" class="headerlink" title="如果data的每条数据是一个字符串"></a>如果data的每条数据是一个字符串</h3><p>如下，如题，此时，我们可以将data在使用之前使用一个方法将data转化为一个每条数据为对象的data结构，然后就可以使用上面的方案了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [<span class="string">'row1'</span>, <span class="string">'row2'</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="listRow"><a href="#listRow" class="headerlink" title="listRow"></a>listRow</h2><h3 id="需求：内容可以是TreeList-与-Grid"><a href="#需求：内容可以是TreeList-与-Grid" class="headerlink" title="需求：内容可以是TreeList 与 Grid"></a>需求：内容可以是TreeList 与 Grid</h3><p>由 《edit与search的无法调和是一切暗黑的源头》决定了 demo采用 《终极方案–forceUpdate+实时生成render最新props+对象引用》的方式。<br>接着考虑下面的需求：ListBuilder内的组件可以是 TreeList 与 Grid，且 ListBuilder要将向左向右移动的公共逻辑抽象出来。</p>
+<h3 id="TreeList与Grid数据结构不一样"><a href="#TreeList与Grid数据结构不一样" class="headerlink" title="TreeList与Grid数据结构不一样"></a>TreeList与Grid数据结构不一样</h3><p>此时我们面临着一个问题，TreeList与Grid的数据结构是不一样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> gridData = [</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'row1'</span>, <span class="attr">value</span>: <span class="string">'r1'</span>, <span class="attr">visable</span>: ture&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'row2'</span>, <span class="attr">value</span>: <span class="string">'r3'</span>, <span class="attr">visable</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> treeData = [</span><br><span class="line">    &#123;<span class="attr">isBranch</span>: <span class="literal">true</span>, <span class="attr">name</span>: <span class="string">'branch-name'</span>, <span class="attr">children</span>: [<span class="string">'tree-cell1'</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">isBranch</span>: <span class="literal">false</span>, <span class="attr">name</span>: <span class="string">'tree-cell1'</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h3 id="ListBuilder向左-右移动逻辑不需关心数据结构"><a href="#ListBuilder向左-右移动逻辑不需关心数据结构" class="headerlink" title="ListBuilder向左\右移动逻辑不需关心数据结构"></a>ListBuilder向左\右移动逻辑不需关心数据结构</h3><p>不过另外一个方面，向左，向右但移动逻辑根本不需要关心TreeList与Grid所用的数据结构，我们是不是可以新建一种专门用于左右移动的数据结构呢。在ListBuilder内使用ListRow数据的state进行左右移动，在给具体TreeList、Grid时，在Render函数内，将ListRow转换为上面格式的gridData、treeData。<br>基于此想法，我们创建了ListRow这种数据结构。</p>
+<h3 id="创建ListRow的data"><a href="#创建ListRow的data" class="headerlink" title="创建ListRow的data"></a>创建ListRow的data</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListRow</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(key, row)&#123;</span><br><span class="line">        <span class="keyword">this</span>.dataRow= row;</span><br><span class="line">        <span class="keyword">this</span>._id_ = key;</span><br><span class="line">        <span class="keyword">this</span>.visable = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = data.map(<span class="function"><span class="params">row</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> newRow = <span class="keyword">new</span> ListRow(row);</span><br><span class="line">    newRow.visable = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> newRow;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="标记删除而不直接删除-左右移动"><a href="#标记删除而不直接删除-左右移动" class="headerlink" title="标记删除而不直接删除 - 左右移动"></a>标记删除而不直接删除 - 左右移动</h3><p>由于我们在render的时候总是通过function 读取 data，重新生成 grid等真正使用的data，所以，我们并不需要直接删除data，而只需给data内的ListRow加一个visable属性，来标记删除。</p>
+<h3 id="visable可用于search、左右移动。"><a href="#visable可用于search、左右移动。" class="headerlink" title="visable可用于search、左右移动。"></a>visable可用于search、左右移动。</h3><p>见上面的分析。</p>
+<h3 id="必须配合render时实时重新生成props"><a href="#必须配合render时实时重新生成props" class="headerlink" title="必须配合render时实时重新生成props"></a>必须配合render时实时重新生成props</h3><p>由上面分析可知，专门创建一个ListRow数据来做左右移动，然后在render的时候，必须同时使用function重新生成Grid或TreeList需要的数据，以传给它们。</p>
+<h3 id="ListRow的好处"><a href="#ListRow的好处" class="headerlink" title="ListRow的好处"></a>ListRow的好处</h3><h4 id="隔绝了业务逻辑影响"><a href="#隔绝了业务逻辑影响" class="headerlink" title="隔绝了业务逻辑影响"></a>隔绝了业务逻辑影响</h4><p>创建一个listRow后，ListBuilder组件不需要关心业务当中到底是Grid或TreeList。</p>
+<h4 id="ListBuilder可凭ListRow专心抽象公共逻辑"><a href="#ListBuilder可凭ListRow专心抽象公共逻辑" class="headerlink" title="ListBuilder可凭ListRow专心抽象公共逻辑"></a>ListBuilder可凭ListRow专心抽象公共逻辑</h4><p>ListRow是专门为了search、左右移动而创建的数据结构，ListBuilder可以因此专心抽象这部分的公共逻辑。</p>
+<h4 id="注意，必须配合render时实时重新生成props"><a href="#注意，必须配合render时实时重新生成props" class="headerlink" title="注意，必须配合render时实时重新生成props"></a>注意，必须配合render时实时重新生成props</h4><p>这不是listRow的好处，但此时再次提醒，说明了创建ListRow的代价也好，使用特点也好，都render具体组件时，都需要render函数内实时重新生成props。<br><figure class="image-box">
+                <a rel="ListBuilder引发的React暗黑思考" href="/image/react/list_row.jpg" title="undefined" data-fancybox="images"><img src="/image/react/list_row.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h3 id="使用特点与弊端"><a href="#使用特点与弊端" class="headerlink" title="使用特点与弊端"></a>使用特点与弊端</h3><p>参考 《ListRow的好处 — 注意，必须配合render时实时重新生成props》，render函数内实时重新生成props是一种反模式运用。可能也是一个弊端，但当前浏览器对于同步代码执行效率太好，感觉总是谈性能的，就好像一个伪命题一样</p>
+<h2 id="组件的模版设计"><a href="#组件的模版设计" class="headerlink" title="组件的模版设计"></a>组件的模版设计</h2><h3 id="组件模版设计图"><a href="#组件模版设计图" class="headerlink" title="组件模版设计图"></a>组件模版设计图</h3><figure class="image-box">
+                <a rel="ListBuilder引发的React暗黑思考" href="/image/react/comp.jpg" title="undefined" data-fancybox="images"><img src="/image/react/comp.jpg" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h3 id="暴露给外层的设计"><a href="#暴露给外层的设计" class="headerlink" title="暴露给外层的设计"></a>暴露给外层的设计</h3><p>如上图，因为ListBuilder在内部会封装左右移动，所以外层使用的时候，只需定义业务组件的grid等等这些左右两边面板。</p>
+<h3 id="ListBuilder本身设计"><a href="#ListBuilder本身设计" class="headerlink" title="ListBuilder本身设计"></a>ListBuilder本身设计</h3><p>此处抽象左右移动的公共逻辑</p>
+<h3 id="listPanel设计"><a href="#listPanel设计" class="headerlink" title="listPanel设计"></a>listPanel设计</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>面板的渲染统统在ListPanel组件内，不同的业务组件，如Grid、TreeList，在render函数内，在此使用一个function 生成对应的props，</p>
+<h4 id="render实时重新生成props的好处"><a href="#render实时重新生成props的好处" class="headerlink" title="render实时重新生成props的好处"></a>render实时重新生成props的好处</h4><p>listPanel组件内可以非常方便地获取ListBuilder所有的信息，在实时生成props时，比如生成双击事件的props时，可以将ListBuilder所有的信息可以非常方便的传给双击事件这个props属性。</p>
+<h4 id="业务代码通过function-config注入"><a href="#业务代码通过function-config注入" class="headerlink" title="业务代码通过function config注入"></a>业务代码通过function config注入</h4><p>Grid、TreeList组件的特定props(业务层面逻辑)可在此通过config配置的方式注入，由render 时，每次执行function(config)注入。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ListPanel</span></span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="keyword">const</span> allProps = Fn(config)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;SearchBox /&gt;</span><br><span class="line">      &lt;Grid &#123;...allProps&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="React-cloneElement"><a href="#React-cloneElement" class="headerlink" title="React.cloneElement"></a>React.cloneElement</h2><h3 id="cloneElement让模版设计成为可能"><a href="#cloneElement让模版设计成为可能" class="headerlink" title="cloneElement让模版设计成为可能"></a>cloneElement让模版设计成为可能</h3><h4 id="只要传组件进来，我就能给你组装"><a href="#只要传组件进来，我就能给你组装" class="headerlink" title="只要传组件进来，我就能给你组装"></a>只要传组件进来，我就能给你组装</h4><p>无论你通过什么方式将组件传给ListBuilder，通过props也好，还是child也好，在ListBuilder内部都可以通过React.cloneElement将组件再次组装，重新render。</p>
+<h4 id="cloneElement再次组装props非常方便"><a href="#cloneElement再次组装props非常方便" class="headerlink" title="cloneElement再次组装props非常方便"></a>cloneElement再次组装props非常方便</h4><p>这是cloneElement的特性。</p>
+<h3 id="cloneElement的其他好处"><a href="#cloneElement的其他好处" class="headerlink" title="cloneElement的其他好处"></a>cloneElement的其他好处</h3><h4 id="很方便地给props增加其他组件的数据"><a href="#很方便地给props增加其他组件的数据" class="headerlink" title="很方便地给props增加其他组件的数据"></a>很方便地给props增加其他组件的数据</h4><p>比如可以很方便地将父层的function，state，props，注入到被组装的组件中。</p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="props同时为function和string"><a href="#props同时为function和string" class="headerlink" title="props同时为function和string"></a>props同时为function和string</h3><p>比如给一个ListRow指定一个唯一Id，假如有identity 这个props，定义identity为 str时， id为 <code>ListRow[identity]</code>,当为function时，id为identity(ListRow).<br>我们在设置props属性时，一般希望此属性最好是一种类型，不要设置多种，但是可以function是一个例外，可以给props设置多一个function属性，因为很function让程序<strong>更灵活，扩展性强</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const &#123;identity&#125; = this.props;</span><br><span class="line">typeof identity === &apos;function&apos; ? identity(ListRow) : ListRow[identity]</span><br></pre></td></tr></table></figure></p>
+<h3 id="map的使用"><a href="#map的使用" class="headerlink" title="map的使用"></a>map的使用</h3><p>如果左右两边的数据有映射关系，要关注下map的方式来做数据映射信息存储。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>listBuilder最精彩的运用之一在于：</p>
+<ul>
+<li>通过render实时生成最新props代替setState，</li>
+<li>通过创建一个全新的数据结构ListRow 来隔离业务逻辑，专心公共逻辑的抽象</li>
+<li>React.cloneElement精彩运用</li>
+<li>不要认为render实时生成最新props会影响性能，要想功能丰富，可以考虑此方案。<br>诚然，这样写，会导致多次渲染和不必要计算，貌似会影响性能，但相比高效的浏览器来，静态代码的执行，可能是一个伪命题。</li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-06-01T22:54:59.406Z" itemprop="dateUpdated">2021-06-02 06:54:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/06/02/react_listBuilder/" target="_blank" rel="external">https://yewills.github.io/2021/06/02/react_listBuilder/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/02/react_listBuilder/&title=《ListBuilder引发的React暗黑思考》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/02/react_listBuilder/&title=《ListBuilder引发的React暗黑思考》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/06/02/react_form_next/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">next form 封装</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/06/02/react_redux/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">react-redux笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#edit与search的无法调和是一切暗黑的源头"><span class="post-toc-number">1.</span> <span class="post-toc-text">edit与search的无法调和是一切暗黑的源头</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需求：edit-与-search-功能"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">需求：edit 与 search 功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么无法调和"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">为什么无法调和</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案一-否定"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">方案一(否定)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案二-否定"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">方案二(否定)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#终极方案–forceUpdate-实时生成render最新props-对象引用"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">终极方案–forceUpdate+实时生成render最新props+对象引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完全受控组件如何自己改变状态"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">完全受控组件如何自己改变状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何让父组件和子组件同时可以改变子组件的state"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">如何让父组件和子组件同时可以改变子组件的state</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#setState之外的setState方案"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">setState之外的setState方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果data的每条数据是一个字符串"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">如果data的每条数据是一个字符串</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#listRow"><span class="post-toc-number">2.</span> <span class="post-toc-text">listRow</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需求：内容可以是TreeList-与-Grid"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">需求：内容可以是TreeList 与 Grid</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TreeList与Grid数据结构不一样"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">TreeList与Grid数据结构不一样</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListBuilder向左-右移动逻辑不需关心数据结构"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">ListBuilder向左\右移动逻辑不需关心数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建ListRow的data"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">创建ListRow的data</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标记删除而不直接删除-左右移动"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">标记删除而不直接删除 - 左右移动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#visable可用于search、左右移动。"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">visable可用于search、左右移动。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#必须配合render时实时重新生成props"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">必须配合render时实时重新生成props</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListRow的好处"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">ListRow的好处</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#隔绝了业务逻辑影响"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">隔绝了业务逻辑影响</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ListBuilder可凭ListRow专心抽象公共逻辑"><span class="post-toc-number">2.8.2.</span> <span class="post-toc-text">ListBuilder可凭ListRow专心抽象公共逻辑</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意，必须配合render时实时重新生成props"><span class="post-toc-number">2.8.3.</span> <span class="post-toc-text">注意，必须配合render时实时重新生成props</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用特点与弊端"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">使用特点与弊端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组件的模版设计"><span class="post-toc-number">3.</span> <span class="post-toc-text">组件的模版设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件模版设计图"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">组件模版设计图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#暴露给外层的设计"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">暴露给外层的设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListBuilder本身设计"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">ListBuilder本身设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#listPanel设计"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">listPanel设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#render实时重新生成props的好处"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">render实时重新生成props的好处</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#业务代码通过function-config注入"><span class="post-toc-number">3.4.3.</span> <span class="post-toc-text">业务代码通过function config注入</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React-cloneElement"><span class="post-toc-number">4.</span> <span class="post-toc-text">React.cloneElement</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cloneElement让模版设计成为可能"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">cloneElement让模版设计成为可能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#只要传组件进来，我就能给你组装"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">只要传组件进来，我就能给你组装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cloneElement再次组装props非常方便"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">cloneElement再次组装props非常方便</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cloneElement的其他好处"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">cloneElement的其他好处</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#很方便地给props增加其他组件的数据"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">很方便地给props增加其他组件的数据</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小技巧"><span class="post-toc-number">5.</span> <span class="post-toc-text">小技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#props同时为function和string"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">props同时为function和string</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#map的使用"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">map的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">6.</span> <span class="post-toc-text">小结</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/02/react_listBuilder/&title=《ListBuilder引发的React暗黑思考》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/02/react_listBuilder/&title=《ListBuilder引发的React暗黑思考》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3ay26FMAxFUf7/p6nUaQXsY3N7FWdnVFUUsjJw/chx4HX+Lv7M+WddPX/1V8cnlgwZMpZlnLfrinH/+asNka/cH8clVYYMGRsweADlIZW8//7IyN5kyJAhgwTceyoJtfy7MmTIkMGL0ndD8Bf+b8iQIWNBRqe8fPdQPl6Ly5AhY0FGOhj4z58/ON+QIUPGIowzXLzpX5swFnclQ4aM0QzeSiOhsN/i5ylpXBnLkCFjWQZv93cuhPFUjxfGcaiVIUPG4gx+Fax2hYIkgrWKVYYMGbsx0lSPbJ0kfLxsRsNLGTJkjGOkJWit0cZTwNooVIYMGbMZtdStc50iPTJU3MqQIWMbRqe5RrbCjyYel8qQIWMDRq0e7AfWWgtPhgwZuzH44DBNENOtp3uQIUPGPoz0A52WfTpmICH+qJ2TDBkylmLwwMdf2h8t8OD7MN+QIUPGCAb5DA95/Ddk08FByJAhYzSjFjpr6eNbA86HQlqGDBlDGWkylwbNfpGMYDJkyBjKaOlfLWI7hbQMGTJ2YNQCYr/c5VPWh+AuQ4aM0YxO+56PKkkzjqeVDwmiDBkyxjHOcPFN18rg4kUxGTJkjGakrTFexNYacLwMliFDxm6MtEBNB5C8fG0dhAwZMjZg8CtZryVqjUD8UIvLkCFjY0ZteEmSyE7RK0OGDBn8mc61DPLO4jxWhgwZgxi1Zn1ayvIiOR2RypAhYzaj1qwnH+Pt/jTdLGJkyJCxHuMHHjeJhyfkgXIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
