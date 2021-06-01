@@ -133,7 +133,7 @@ systemctl stop firewalld
 
 ```
 然后在客户机上访问，出现下面页面说明成功：
-![](/image/linuxt/apa1.png)
+![](/image/linuxt/apa.png)
 
 ```s
 #方法二 推荐：
@@ -145,16 +145,12 @@ firewall-cmd reload
 firewall-cmd --zone=public --remove-port=80/tcp --permanent
 ```
 
-注意的是 每次你的虚拟机如果更换了网络，需要用 `systemctl restart network` 重新更新虚拟机ip配置；
+注意的是 每次你的虚拟机如果更换了网络或者网络断开重连后，需要用 `systemctl restart network` 重新更新虚拟机ip配置；
 
 
 ### 配置 Apache服务
 #### 下面是Apache服务的配置文件地址
 ![](/image/linuxt/apac.png)
-
-```s
- vi /etc/httpd/conf/httpd.conf
-```
 
 #### 配置文件有以下类型：
 ![](/image/linuxt/apac1.png)
@@ -229,7 +225,7 @@ Policy deny_unknown status:     allowed
 Max kernel policy version:      31
 ```
 
-### 设置apache配置实战之设置访问首页内容
+### 配置实战 ：修改访问首页内容
 #### 步骤如下
 ```s
 [root@localhost /]# cd /
@@ -349,6 +345,249 @@ restorecon reset /home/web context unconfined_u:object_r:home_root_t:s0->unconfi
 restorecon reset /home/web/index.html context unconfined_u:object_r:home_root_t:s0->unconfined_u:object_r:httpd_sys_content_t:s0
 ```
 经过上面一顿操作后，重新访问，发现能正常访问新页面了
+
+
+
+### DHCP 动态、静态分配IP
+
+
+#### DHCP: 动态主机配置协议
+dynamic host configuration protocol 的缩写；
+表示 动态主机配置协议
+是一种基于UDP协议且仅限于在局域网内部使用的网络协议；
+主要用于局域网环境或者存在较多办公设备的局域网环境中；
+主要是为局域网内部的设备或网络供应商自动分配IP地址等参数；
+可以自动管理主机的IP地址、子网掩码、网关、DNS地址，等参数；
+```s
+ifconfig
+ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.103  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::82b:eb85:8c19:22d1  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:70:c9:77  txqueuelen 1000  (Ethernet)
+        RX packets 740  bytes 76328 (74.5 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 452  bytes 53516 (52.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+DHCP 属于网络配置，配置目录在这里 `/etc/sysconfig/network-scripts/ifcfg-ens33`:
+ifcfg-ens33  这里的ens33，就是上面ifconfig执行时 以太网接口的ens33，可能不同机器不同
+
+#### 设置固定虚拟机的IP地址
+```s
+vim /etc/sysconfig/network-scripts/ifcfg-ens33
+#以下原配置
+TYPE=Ethernet #设备模式
+PROXY_METHOD=none 
+BROWSER_ONLY=no 
+BOOTPROTO=dhcp #地址分配模式
+DEFROUTE=yes 
+IPV4_FAILURE_FATAL=no 
+IPV6INIT=yes 
+IPV6_AUTOCONF=yes 
+IPV6_DEFROUTE=yes 
+IPV6_FAILURE_FATAL=no 
+IPV6_ADDR_GEN_MODE=stable-privacy 
+NAME=ens33 #网卡名称
+UUID=0b309202-2bc1-41e3-ba5e-f8d356fbebd8 
+DEVICE=ens33 
+ONBOOT=yes #是否启动, 这个很重要，一定是启动的，不然无法联网
+
+只需改动以下部分
+BOOTPROTO=static #修改
+IPADDR=192.168.1.109 #IP地址  #设置为静态，必须指定IP地址
+NETMASK=255.255.255.0 #子网掩码 #指定IP地址,必须指定子网掩码
+PREFIX=24 #24 是 255.255.255.0 二进制表示有24个1，跟上面一个意思；
+GATEWAY=192.168.1.1 #网关地址
+DNS1=192.168.0.1 #dns服务器
+
+
+systemctl restart network # 重启，让配置生效；
+```
+
+上面的网关地址需要虚拟机所在的 主机window上看，
+window查看 默认网关地址，dns地址
+```s
+ipconfig /all
+```
+![](/image/linuxt/ip.png)
+
+注意的是，不要在客户机设置 ip，不然出现卡顿，最好是在服务器端设置。
+
+
+### 服务器主机的分类
+
+更多参考 [知乎](https://www.zhihu.com/question/19856629?sort=created)
+#### 独立服务器
+这台服务器仅提供给用户一个人使用；
+用户对服务器硬件配置有完全的控制权；
+适合大中型网站；
+
+#### 虚拟主机
+虚拟主机的英语是 virtual host
+在一台服务器中划分一定的磁盘空间；
+仅提供基础的网站访问、数据存放与传输功能；
+一般比较便宜，也几乎不需要用户自行维护网站以外的服务；
+适合小型网站；
+
+#### VPS
+virtual private server 的缩写
+表示 虚拟专用服务器
+在一台服务器中利用虚拟化技术模拟出多台 主机
+每个 主机 都有独立的 IP地址、操作系统；
+需要具备一定的维护系统能力
+适合小型网站；
+
+#### ECS
+elastic compute service 缩写 弹性计算服务
+也就是一般说的 云服务器 ，如 阿里云服务器
+整合了计算 存储 网络 ，能够做到弹性伸缩的计算服务；
+和VPS的差别：云服务器是建立在一组集群服务器中；
+每个服务器都会保存一个主机的镜像（备份），安全性和稳定性更高；
+分布式架构。适合大中小型网站
+
+### 如何选择服务器主机
+
+#### 适合创业阶段的小站群体的服务器类型
+建议选择 云服务器， 价格不贵，性能强劲；
+
+#### 适合创建小型个人网站的服务器类型
+建议选中 虚拟主机/vps，或者用 GitHub pages等；
+
+
+### apache的虚拟主机功能
+
+#### 概述
+服务器基于用户请求的不同 IP 地址、主机域名或端口号
+能够提供多个网站同时为外部提供访问服务的技术；
+用户请求的资源不同，获取到的网页内容也不相同；
+
+
+#### 基于IP地址；
+如果一台服务器有多个IP地址；
+每个IP地址与服务器上部署的每个网站一一对应；
+这样用户去请求访问不同IP地址的时候，会访问到不同网站的资源；
+而且每个网站都有一个独立的IP
+
+#### 基于IP地址配置实战
+增加服务器IP的方式（增加两个IP 192.168.1.10  192.168.1.20）：
+```s
+vim /etc/sysconfig/network-scripts/ifcfg-ens33
+# 增加以下内容：
+IPADDR1=192.168.1.10
+PREFIX1=24
+NETMASK1=255.255.255.0
+
+IPADDR2=192.168.1.20
+PREFIX2=24
+NETMASK2=255.255.255.0
+
+systemctl restart network
+
+# 然后ping下看是否设置成功：
+ping 192.168.1.10
+ping 192.168.1.20
+```
+接上面的《配置实战 ：修改访问首页内容》
+
+我们在 `/home/web` 新增两个目录和文件
+```s
+  mkdir /home/web/10
+  mkdir /home/web/20
+  echo "ip : 192.168.1.10" >/home/web/10/index.html
+  echo "ip : 192.168.1.20" >/home/web/20/index.html
+```
+`/etc/httpd/conf/httpd.conf`增加以下部分如下：
+```conf
+<VirtualHost 192.168.1.10>
+    DocumentRoot /home/web/10
+    ServerName www.linuxabc.com
+    <Directory "/home/web">
+        AllowOverride None
+        # Allow open access:
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+<VirtualHost 192.168.1.20>
+    DocumentRoot /home/web/20
+    ServerName www.linuxddd.com
+    <Directory "/home/web">
+        AllowOverride None
+        # Allow open access:
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+其中上面 ServerName 随便设置；
+
+```s
+systemctl reload httpd # 重启，让配置生效
+```
+在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》：
+![](/image/linuxt/vi1.png)
+![](/image/linuxt/vi2.png)
+
+问题，为什么这次设置后，就可以不受 SELinux 安全限制呢，
+因为我们在 《配置实战 ：修改访问首页内容》已经对 /home/web 修改文件安全上下文 了，如果换其他目录，请按上面《修改文件安全上下文》修改上下文。
+
+
+
+#### 基于主机域名
+
+当你的服务器无法为每个网站分配独立的IP时，
+你可以让apache去自动识别用户请求的域名，根据域名传输不同内容给用户；
+这种情况，就只需保证服务器中只要有一个IP可用就行了
+
+#### 基于主机域名配置实战
+客户机中修改host:
+`C:\Windows\System32\drivers\etc`
+以管理员身份运行git bash ；
+```s
+cd /c/Windows/System32/drivers/etc
+vi host
+```
+使用vi 编辑host:
+
+`192.168.1.10 www.linuxabc.com www.linuxddd.com`
+
+```s
+  mkdir /home/web/abc
+  mkdir /home/web/ddd
+  echo "host : www.linuxabc.com" >/home/web/abc/index.html
+  echo "ip : www.linuxddd.com" >/home/web/ddd/index.html
+```
+
+
+`/etc/httpd/conf/httpd.conf`增加以下部分如下：
+```conf
+<VirtualHost 192.168.1.10>
+    DocumentRoot /home/web/abc
+    ServerName www.linuxabc.com
+    <Directory "/home/web/abc">
+        AllowOverride None
+        # Allow open access:
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+<VirtualHost 192.168.1.10>
+    DocumentRoot /home/web/ddd
+    ServerName www.linuxddd.com
+    <Directory "/home/web/ddd">
+        AllowOverride None
+        # Allow open access:
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》
+：
+![](/image/linuxt/vi3.png)
+![](/image/linuxt/vi4.png)
+
+注意的是，192.168.1.10 是我们之前 《基于IP地址》创建的，如果没有，你按照此创建；
+另外，为了消除影响，可将上面《基于IP地址》中创建的 httpd配置 以及 /home/web/10 20 目录删除；
+
 
 
 
