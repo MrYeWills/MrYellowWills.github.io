@@ -588,6 +588,53 @@ vi host
 注意的是，192.168.1.10 是我们之前 《基于IP地址》创建的，如果没有，你按照此创建；
 另外，为了消除影响，可将上面《基于IP地址》中创建的 httpd配置 以及 /home/web/10 20 目录删除；
 
+## https
+https 可以确保所有经过服务器传输的数据包都是经过加密的；
+使得假冒服务器无法冒充真正的服务器
+
+
+### CA
+CA 证书公证权威机构
+CA 用于为客户端确认所连接的网站的服务器提供的证书是否合法
+数字证书是经过CA认证的公钥，其内容不止包含公钥；
+
+[read more](https://www.cnblogs.com/hthf/p/4986507.html)
+
+### Apache 服务器配置HTTPS
+
+#### 防火墙开启443端口
+firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --reload  更新配置
+firewall-cmd --list-ports 查看已经放行的端口
+
+#### 安装apache的SSL支持模块
+yum install -y mod_ssl
+
+systemctl restart httpd #重启 Apache服务
+[PKI 体系概述 : 所有与数字证书相关的各种概念和技术，统称为 PKI](https://www.jianshu.com/p/46a911bd49a7)
+
+
+
+[root@localhost ~]# ls /etc/httpd/conf.d/ssl.conf
+/etc/httpd/conf.d/ssl.conf #mod_ssl 针对 apache 的 ssl 配置文件
+centos 默认提供ssl机制需要的证书文件和私钥
+[root@localhost ~]# ls /etc/pki/tls/private/localhost.key #centos 默认提供ssh私钥,可以用来制作证书
+/etc/pki/tls/private/localhost.key
+[root@localhost ~]# ls /etc/pki/tls/certs/ #这里是证书的集合目录
+ca-bundle.crt        localhost.crt    Makefile
+ca-bundle.trust.crt  make-dummy-cert  renew-dummy-cert
+[root@localhost ~]# ls /etc/pki/tls/certs/localhost.crt  #加密后证书的文件，也就是签名后的证书
+/etc/pki/tls/certs/localhost.crt
+[root@localhost ~]#
+
+我们是通过mod_ssl 生成的 因此不是经过第三方认证注册的，所有谷歌浏览器才有以下提示；
+注意这里用来访问的IP，请使用服务器主机IP，而不要使用虚拟IP，否则可能访问不成功。
+![](/image/linuxt/https1.png)
+![](/image/linuxt/https2.png)
+
+![](/image/linuxt/ca1.png)
+公钥加密方法，使用期限默认一年
+![](/image/linuxt/ca2.png)
 
 
 
