@@ -589,35 +589,59 @@ vi host
 另外，为了消除影响，可将上面《基于IP地址》中创建的 httpd配置 以及 /home/web/10 20 目录删除；
 
 ## https
+
+### 为什么要https
 https 可以确保所有经过服务器传输的数据包都是经过加密的；
 使得假冒服务器无法冒充真正的服务器
 
-
 ### CA
+
+#### 概述
 CA 证书公证权威机构
 CA 用于为客户端确认所连接的网站的服务器提供的证书是否合法
-数字证书是经过CA认证的公钥，其内容不止包含公钥；
+数字证书是经过CA认证的公钥，其内容不仅包含公钥，还包含其他内容；
+
+#### 浏览器、服务器、ca证书机构 三者关系
+你可以生成私钥，制作出必要的证书数据 并向 ca机构注册，完成注册并生成已注册的证书(公钥)，
+
+浏览器浏览时，浏览器会主动向ca去确认证书是否是合法注册的；如何合法，浏览器将把自己的密钥通过 证书(公钥)加密，发给服务器；
+服务器用上面的私钥 解密出 密钥，然后后续的电话都是通过这个密钥进行对称加密。
 
 [read more](https://www.cnblogs.com/hthf/p/4986507.html)
 
+#### 为什么CA能防止冒充真正的服务器
+如上，浏览器会主动像ca去确认证书是否是服务器xxxx合法注册的；
+此时有人假冒服务器xxx证书，
+想假冒的人肯定需要向ca注册证书，但ca机构说服务器xxx已经注册证书了，你又来注册，你是骗子吧；
+如果假冒的人不注册ca证书，不好意思，此证书直接无效；
+ca会告诉浏览器，服务器xxx注册的证书是另外一个，不是当前这个假冒证书；
+那么浏览器就会提示不安全，浏览器也不会后续活动；
+
+#### 浏览器/服务器 对话 对称加密和非对称加密
+如上，浏览器与服务器 通过非对称加密，加密 对称加密的密钥，
+后续通过使用对称加密。
+
 ### Apache 服务器配置HTTPS
 
-#### 防火墙开启443端口
+#### 防火墙放开443端口安全限制
+防火墙放开443端口安全限制后，浏览器端将可以443端口（https默认端口）访问服务器
+```s
 firewall-cmd --zone=public --add-port=443/tcp --permanent
 firewall-cmd --reload  更新配置
 firewall-cmd --list-ports 查看已经放行的端口
-
+```
 #### 安装apache的SSL支持模块
-yum install -y mod_ssl
+```s
+yum install -y mod_ssl #apache的SSL支持模块 mod_ssl
+systemctl restart httpd #因为安装mod_ssl的过程，相当于配置了apache，需重启
 
-systemctl restart httpd #重启 Apache服务
+```
 [PKI 体系概述 : 所有与数字证书相关的各种概念和技术，统称为 PKI](https://www.jianshu.com/p/46a911bd49a7)
 
-
-
+```s
 [root@localhost ~]# ls /etc/httpd/conf.d/ssl.conf
 /etc/httpd/conf.d/ssl.conf #mod_ssl 针对 apache 的 ssl 配置文件
-centos 默认提供ssl机制需要的证书文件和私钥
+# centos 默认提供ssl机制需要的证书文件和私钥
 [root@localhost ~]# ls /etc/pki/tls/private/localhost.key #centos 默认提供ssh私钥,可以用来制作证书
 /etc/pki/tls/private/localhost.key
 [root@localhost ~]# ls /etc/pki/tls/certs/ #这里是证书的集合目录
@@ -625,9 +649,10 @@ ca-bundle.crt        localhost.crt    Makefile
 ca-bundle.trust.crt  make-dummy-cert  renew-dummy-cert
 [root@localhost ~]# ls /etc/pki/tls/certs/localhost.crt  #加密后证书的文件，也就是签名后的证书
 /etc/pki/tls/certs/localhost.crt
-[root@localhost ~]#
-
+```
 我们是通过mod_ssl 生成的 因此不是经过第三方认证注册的，所有谷歌浏览器才有以下提示；
+
+#### 请使用服务器主机IP
 注意这里用来访问的IP，请使用服务器主机IP，而不要使用虚拟IP，否则可能访问不成功。
 ![](/image/linuxt/https1.png)
 ![](/image/linuxt/https2.png)
@@ -637,8 +662,73 @@ ca-bundle.trust.crt  make-dummy-cert  renew-dummy-cert
 ![](/image/linuxt/ca2.png)
 
 
+### 使用自签名的证书
+使用自签名的证书其实就是自己加密生成 证书(公钥)和私钥
+需要用openssl这个软件来生成证书文件；
 
+#### openssl生成私钥
+```s
+yum install -y openssl
+cd /etc/httpd #可以是任意目录，不过一般apache配置相关都放这里
+mkdir pki #所有与数字证书相关的各种概念 称之为pki，因此增加目录pki，
+#当然你可以命名任意名字
+cd pki pki
 
+# 使用 gen rsa 即 rsa 算法来生成私钥，私钥 名字为 server.key ,私钥是2048位
+openssl genrsa -out server.key 2048 
+
+```
+#### 生成了server.crt证书
+CSR 是 证书签名的请求 的意思；
+```s
+
+[root@localhost pki]# ls
+server.csr  server.key #生成了 server.csr 这样一个证书请求
+
+#x509 类型的自签名证书，是一种标准签名证书
+#-days 3650 有效期 10年
+# -in server.csr 输入文件是server.csr
+# -signkey server.key 用私钥server.key来签名证书
+# -out server.crt输出得到的证书
+[root@localhost pki]# openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
+Signature ok
+subject=/C=CN/ST=ZHEJIANG/L=HANGZHOU/O=ALI/OU=LINU/CN=192.168.1.109/emailAddress=AA.QQ.COM
+Getting Private key
+[root@localhost pki]#  ls
+server.crt  server.csr  server.key
+```
+
+#### 修改ssl配置文件
+ssl是https加密配置文件
+```s
+vim conf.d/ssl.conf
+```
+修改内容如下
+```conf
+SSLCertificateFile /etc/pki/tls/certs/server.crt #证书
+SSLCertificateKeyFile /etc/pki/tls/private/server.key #私钥
+```
+```s
+systemctl restart httpd #重启 Apache服务
+```
+![](/image/linuxt/cert1.png)
+![](/image/linuxt/cert.png)
+
+#### 为什么可以http访问
+值得注意的是，我们依然可以http访问，因为apache服务器中，我们也放开了防火墙80端口的监听
+至于为什么我们可以用https访问，是一样的原因，在apache服务器中，我们也放开了防火墙443的监听；
+![](/image/linuxt/cert2.png)
+
+#### 有些服务器能用http访问，不能用https
+我们在调试的时候，有时候用webpack启动一个服务，然后通过http，是可以访问的，但换成https不能访问，
+本质原因，就跟我们上面看到的，apache内放开了80端口防火墙时，我们可以http访问；
+如果放开了 443 防火墙端口，我们可以通过https访问；
+而webpack启动一份服务的时候，估计内部只做了http的80端口开放；没有做443端口开放；
+
+https 是否能访问服务器 ，本质是 看服务器是否放开 80和443端口，并配置相关页面资源。
+
+https 与 http 本质是 80 和 443 端口的不同
+这就很好理解了，我们启动一个服务器，我们可能只启动一个80或一个443 是很合理的。
 
 
 
