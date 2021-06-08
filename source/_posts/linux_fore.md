@@ -1,0 +1,165 @@
+---
+title: linux笔记(巽)
+date: 2021/6/8
+tags: linux
+categories: 
+- 前端工具
+series: linux
+---
+
+## 安装 MariaDB 数据库软件
+MariaDB是MySQL的一个社区维护版本，开源分支；
+几乎完全兼容mysql；
+mysql作者以他女儿名字命令的软件；
+ 
+ #mariadb主程序， mariadb-server 服务器程序
+ yum install mariadb mariadb-server  
+ 安装完成后，记得启动程序
+ systemctl start mariadb 启动程序
+ systemctl status mariadb 查看运行状态
+ systemctl enable mariadb 设置开机启动
+
+对 MariaDB 进行初始化操作
+安装之后，不要立即使用，先进行初始化操作
+
+[root@localhost ~]# mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+请输入数据库root用户的密码，刚安装数据库root密码默认为空，因此不用输入直接回车
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+是否要设置root密码
+Set root password? [Y/n] y
+New password:
+Re-enter new password:
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+是否要删除匿名用户，匿名用户的数据库任何账号都可以访问，因此可以删除
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+是否禁止远程登陆root用户
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+是否删除测试数据库和授权
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+是否让刚才设置的立即生效
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+
+
+修改字符编码为 utf8
+在 MariaDB 的配置文件 /etc/my.cnf中加入以下两句配置
+
+character_set_server=utf8
+init_connect='SET NAMES utf8'
+
+修改完成后，需要重启
+
+ systemctl restart mariadb 启动程序
+
+
+[root@localhost ~]# mysql
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+[root@localhost ~]#  mysql -u root -p
+Enter password:
+# 进入数据库输入命令时，请以分号结尾，否则命令不执行
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 5.5.68-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+# 出现 MariaDB [(none)]> 说明登录成功，进入数据库了：
+输入命令注意加分号
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+查看刚才设置的字符串utf8
+MariaDB [(none)]> show variables like '%character_set%';
+# character_set_client 客户端 和character_set_server服务器
+都是utf8
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8                       |
+| character_set_connection | utf8                       |
+| character_set_database   | latin1                     |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8                       |
+| character_set_server     | latin1                     |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+8 rows in set (0.00 sec)
+
+MariaDB [(none)]>
+
+quit exit 等都可以退出数据库
+
+重新设置 可以远程访问
+
+mysql_secure_installation
+改这里就行：
+是否禁止远程登陆root用户
+Disallow root login remotely? [Y/n] n
+设置防火墙，让防火墙放行对数据库程序软件的请求
+
+MariaDB 默认以 3306 端口进行访问
+
+在防火墙策略中，服务端统称为mysql
+
+防火墙放行数据库访问请求
+
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+mysql和MariaDB，对于防火墙而言都一样，在防火墙策略中，服务端统称为mysql，因此这句命令既设置了 mysql，又设置了 MariaDB
+firewall-cmd --zone=public --add-service=mysql --permanent
+firewall-cmd --reload 需要重载之后，查看已经放行接口
+firewall-cmd --list-ports
+443/tcp 80/tcp 3306/tcp
+

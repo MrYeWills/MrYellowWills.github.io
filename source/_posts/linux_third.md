@@ -1,5 +1,5 @@
 ---
-title: linux笔记(下)
+title: linux笔记(震)
 date: 2021/5/30
 tags: linux
 categories: 

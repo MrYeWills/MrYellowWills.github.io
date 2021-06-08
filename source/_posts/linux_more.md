@@ -1,5 +1,5 @@
 ---
-title: linux笔记(中)
+title: linux笔记(坤)
 date: 2021/5/21
 tags: linux
 categories: 
