@@ -407,11 +407,204 @@ https://192.168.1.109/wordpress/wp-admin/setup-config.php
 登录成功后，
 进入网站后台管理系统：
 ![](/image/linuxf/wd9.png)
-![](/image/linuxf/wd10.png)
+![](/image/linuxf/wd10.png) 
 
 进入自己的网站主站点：
 ![](/image/linuxf/wd11.png)
 ![](/image/linuxf/wd12.png)
+
+
+Linux开发神器
+
+java web 应用的世界
+
+servlet tomcat 和 Jenkins
+
+Jenkins
+是java开发的一种持续集成（CI）工具
+CI是 continuous integration 的缩写，表示持续集成；
+能够让软件的测试 编译 和部署自动化
+通常与版本管理工具 如svn git、 构建工具结合使用；
+常用的构建工具有 Ant、 Maven、 Gradle；
+
+还有其他持续集成工具，比如 gitlab CI/CD
+
+java的web应用程序的世界：
+servlet， jsp 等；
+
+
+servlet
+java中旨在动态生成html代码的应用程序通常采用servlet的形式；
+servlet是尊重java servlet api 的java web应用程序；
+
+Jenkins
+Jenkins是以servlet形式提供的
+它采用扩展名为.war 的二进制文件的形式；
+war是web archive的缩写，表示 网络归档文件
+
+
+servlet
+servlet = service + applet， 表示 小服务程序
+service 表示 服务， applet表示 小应用程序
+
+创建 servlet 两种方式
+- 要么编写纯java代码并编译
+- 要么写一个jsp（Java server pages）
+
+
+jsp
+
+jsp 实际上是一个html页面，其中添加了对java代码的调用
+jsp 编译器编译jsp，将其转换为 servlet；
+
+servlet容器
+要能够在服务器上运行servlet并将http请求传递给它们；
+需要一个servlet容器；
+tomcat是apache软件基金会发布的servlet容器
+
+
+tomcat
+由几个组件构成： Catalina 、coyote、jasper
+
+Catalina 它本身是servlet的容器，并负责其执行；
+coyote 是一个http链接器，因此是一个微型web服务器，它将http请求传输到Catalina；
+jasper是tomcat的jsp编译器；
+
+[apache和tomcat有什么不同](https://blog.csdn.net/u010129985/article/details/80831518)
+
+Jenkins的运行
+为了使用Jenkins应用程序，需要安装tomcat服务器
+Jenkins也可以独立运行；
+因为它自身也包含了名为 winstone 的servlet微型容器；
+
+
+Jenkins servlet tomcat (jsp java) 三者关系
+
+servlet是遵守 java servlet api 的java web 应用程序
+servlet 可由 纯java代码编写，也可以从jsp页面生成
+servlet 由servlet容器执行；
+tomcat 是apache软件基金会发布的servlet容器
+也可以作为轻量级的web应用服务器
+Jenkins是作为servlet提供的Java应用程序；
+
+
+配置java环境并安装tomcat
+yum install tomcat #可以直接安装 tomcat 而且附带安装 Java运行时的环境 JRE(用来使java应用运行起来)，但不会安装JDK;
+java -version # 安装tomcat时，其实已经把java运行时环境JRE安装上了，因此可以执行java命令,比如查看java版本
+
+systemctl status tomcat  查看运行状态
+systemctl start tomcat 启动tomcat
+systemctl enable tomcat 设置开启启动
+rpm -ql tomcat 查看tomcat相关目录和配置文件
+
+[root@localhost ~]# rpm -ql tomcat
+/etc/logrotate.d/tomcat
+/etc/sysconfig/tomcat
+/etc/tomcat
+/etc/tomcat/conf.d/README
+/etc/tomcat/context.xml
+/etc/tomcat/log4j.properties
+/etc/tomcat/logging.properties
+/etc/tomcat/server.xml  这是tocat配置服务器文件，比如这里可配置tomcat 默认8080端口
+/etc/tomcat/tomcat-users.xml 配置用户
+/etc/tomcat/tomcat.conf  主配置文件
+/usr/share/tomcat/logs
+/usr/share/tomcat/temp
+/usr/share/tomcat/webapps web应用程序相关配置在这里，此文件也是/var/lib/tomcat/webapps的软连接
+/usr/share/tomcat/work
+/var/lib/tomcat/webapps
+
+[root@localhost ~]# ls -dl /usr/share/tomcat/webapps
+#说明 /usr/share/tomcat/webapps 是软连接到  /var/lib/tomcat/webapps 文件的；
+lrwxrwxrwx. 1 root tomcat 23 Jun  9 10:46 /usr/share/tomcat/webapps -> /var/lib/tomcat/webapps
+[root@localhost ~]#
+
+
+
+tomcat 默认端口 8080
+
+
+openjdk 与 jdk
+自动java 被oracle收购后，很多程序就用 openjdk 代替 jdk使用，二者功能一致；
+在centos中，使用openjdk代替 jdk使用
+
+[root@localhost ~]# yum search java | grep openjdk  此命令可以查找可安装的 openjdk 版本，
+java-1.6.0-openjdk.x86_64 : OpenJDK Runtime Environment
+java-1.6.0-openjdk-demo.x86_64 : OpenJDK Demos
+java-1.6.0-openjdk-devel.x86_64 : OpenJDK Development Environment
+java-1.8.0-openjdk-devel.x86_64 : OpenJDK 8 Development Environment
+...
+
+如果要安装开发jdk版本可以 安装 
+
+yum install java-1.8.0-openjdk-devel.x86_64
+javac # 安装jdk后，可执行此命令，此命令为 java编译器
+
+
+浏览器访问 
+配置上面的tomcat后，
+http://192.168.1.109:8080/
+发现无法访问，原来缺少了
+web应用程序的管理软件包：
+yum install tomcat-webapps tomcat-admin-webapps
+yum install tomcat-docs-webapp tomcat-javadoc # 这是参考文档，可以不用安装
+systemctl restart tomcat
+
+再次访问
+http://192.168.1.109:8080/
+发现还是无法访问，原来防火墙的原因，执行命令
+
+ systemctl stop firewalld
+
+再次访问
+http://192.168.1.109:8080/
+成功了：
+![](/image/linuxf/tom.png)
+
+放开防火墙 8080端口
+ systemctl start firewalld
+
+ firewall-cmd --list-ports
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --reload  更新配置
+firewall-cmd --list-ports 查看已经放行的端口
+
+
+设置用户
+![](/image/linuxf/user.png)
+
+ vim /etc/tomcat/tomcat-users.xml
+
+文件中下面注释了，把这个放开，这是系统配置好的默认测试用户，可以把密码设置简单点，比如123456
+```conf
+<user name="admin" password="123456" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status" />
+```
+
+systemctl restart tomcat
+
+然后点击上图按钮，登录：
+
+![](/image/linuxf/login.png)
+![](/image/linuxf/login1.png)
+![](/image/linuxf/mana.png)
+如图上，红框内，这些应用都在目录：
+
+[root@localhost ~]# ls /var/lib/tomcat/webapps/
+docs  examples  host-manager  manager  ROOT  sample
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

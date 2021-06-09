@@ -626,7 +626,7 @@ ca会告诉浏览器，服务器xxx注册的证书是另外一个，不是当前
 #### 防火墙放开443端口安全限制
 防火墙放开443端口安全限制后，浏览器端将可以443端口（https默认端口）访问服务器
 ```s
-firewall-cmd --zone=public --add-port=443/tcp --permanent
+firewall-cmd --zone=public --add-port=443/tcp --permanent  permanent永久
 firewall-cmd --reload  更新配置
 firewall-cmd --list-ports 查看已经放行的端口
 ```
