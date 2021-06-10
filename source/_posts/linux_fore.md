@@ -592,6 +592,24 @@ systemctl restart tomcat
 [root@localhost ~]# ls /var/lib/tomcat/webapps/
 docs  examples  host-manager  manager  ROOT  sample
 
+安装Jenkins持续集成环境
+
+
+
+Jenkins 是Java写的一个应用程序
+可以单独运行，也可以在servlet容器中运行
+
+在tomcat这个servlet容器里安装Jenkins
+
+Jenkins的war文件
+war 是 web application archive 意思是 web 的归档文件
+
+
+http://mirrors.jenkins.io/war-stable/2.204.1/jenkins.war
+
+
+
+
 
 
 
