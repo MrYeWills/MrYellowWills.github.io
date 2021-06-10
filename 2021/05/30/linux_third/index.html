@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>linux笔记(下) | Mr.Yellow.Wills</title>
+    <title>linux笔记(震) | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="linux">
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>linux笔记(下)</span>
+            <span>linux笔记(震)</span>
             
         </div>
         
@@ -152,7 +152,7 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">linux笔记(下)</h1>
+        <h1 class="title">linux笔记(震)</h1>
         <h5 class="subtitle">
             
                 <time datetime="2021-05-29T16:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -187,7 +187,7 @@
 <div class="container body-wrap">
     <article id="post-linux_third" class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">linux笔记(下)</h1>
+        <h1 class="post-card-title">linux笔记(震)</h1>
         <div class="post-meta">
             <time class="post-time" title="2021-05-30 00:00:00" datetime="2021-05-29T16:00:00.000Z" itemprop="datePublished">2021-05-30</time>
 
@@ -209,14 +209,14 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost h2]# ps -o ppid,pid,tty,cmd # -o 是指定显示什么内容列 PPID 父进程id， pid 自己id， tt就是tty窗口 cmd 什么进程</span><br><span class="line">  PPID    PID TT       CMD</span><br><span class="line">  2697  16107 pts/0    sudo su</span><br><span class="line"> 16107  16109 pts/0    su</span><br><span class="line"> 16109  16112 pts/0    bash</span><br><span class="line"> 16112  28766 pts/0    ps -o ppid,pid,tty,cmd</span><br><span class="line">[root@localhost h2]#</span><br></pre></td></tr></table></figure>
 <h4 id="守护进程-特殊进程"><a href="#守护进程-特殊进程" class="headerlink" title="守护进程 (特殊进程)"></a>守护进程 (特殊进程)</h4><p> linux有些特殊进程 只在后台运行；<br> 这些父进程的PID为1；<br> PID为1的进程只在系统关闭时才会被销毁；<br> 我们将这类特殊进程称之为 daemon 守护进程；daemon是古希腊神话中的半神半人精灵、守护神；<br> 因此守护进程也称为 精灵进程；<br> 守护进程也被称为 service（服务）；<br> 服务器软件大多都是以守护进程的形式运行的；<br> 守护进程的名字通常会在最后有一个d，表示 daemon；<br> 例如 systemd，httpd， smbd 等等；</p>
 <h4 id="linux操作系统的开机过程"><a href="#linux操作系统的开机过程" class="headerlink" title="linux操作系统的开机过程"></a>linux操作系统的开机过程</h4><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/ser.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ser.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/ser.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ser.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <h4 id="初始化进程服务"><a href="#初始化进程服务" class="headerlink" title="初始化进程服务"></a>初始化进程服务</h4><p>centos自从 centos7以来，以systemd命令来设置服务，关键字是 systemctl ：<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/ser1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ser1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/ser1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ser1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/ser2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ser2.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/ser2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ser2.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <h3 id="用systemd管理系统服务"><a href="#用systemd管理系统服务" class="headerlink" title="用systemd管理系统服务"></a>用systemd管理系统服务</h3><h4 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h4><p>systemd 是几乎所有最新的linux发行版采用的初始化系统；也可以称之为初始化进程服务；<br>systemd 的 pid 是1；<br>其他进程都是它的子进程； </p>
@@ -226,7 +226,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install samba  #smb命令需要安装samba</span><br><span class="line">systemctl start smb</span><br><span class="line">ps -aux | grep smb</span><br><span class="line">systemctl status smb</span><br><span class="line">systemctl stop smb</span><br><span class="line">systemctl #不传参数相当于 systemctl list-units</span><br><span class="line">systemctl list-units --type=service #查看unit type 为 service的 进程</span><br></pre></td></tr></table></figure>
 <p>target名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-units --type=target --all</span><br></pre></td></tr></table></figure></p>
 <figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/tar.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/tar.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/tar.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/tar.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><p>可以通过 journalctl 命令来管理系统日志；<br>可以通过 systemd-analyze 命令来查看启动耗时；</p>
@@ -235,39 +235,39 @@
 <p>在centos等 red hat 一族中， apache 程序的名字叫 httpd ，因此安装 Apache 就是 安装 httpd；<br>httpd，后面有d，说明是一个精灵进程，后台一直运行。<br>在Ubuntu 等 linux发行版中，依然叫 Apache；</p>
 <h3 id="systemctl-管理-httpd"><a href="#systemctl-管理-httpd" class="headerlink" title="systemctl 管理 httpd"></a>systemctl 管理 httpd</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd #启动Apache服务</span><br><span class="line">systemctl stop httpd #停止Apache服务</span><br><span class="line">systemctl restart httpd #重启 Apache服务</span><br><span class="line">systemctl reload httpd #重载Apache服务的配置文件，使配置生效</span><br><span class="line">systemctl status httpd #查看状态</span><br><span class="line">systemctl enable httpd #设置开机自动启动 Apache服务</span><br><span class="line">systemctl disable httpd #设置开机不启动 Apache服务</span><br><span class="line">systemctl is-enabled httpd #查看Apache服务是否开机启动</span><br></pre></td></tr></table></figure>
 <h3 id="服务器ip在-客户机访问Apache首页"><a href="#服务器ip在-客户机访问Apache首页" class="headerlink" title="服务器ip在 客户机访问Apache首页"></a>服务器ip在 客户机访问Apache首页</h3><p>Apache服务如果安装成功，那么可以通过服务器ip在 客户机访问，<br>但因为有防火墙的缘故访问不了，因为防火墙没有开放此端口号，<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/apa1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apa1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/apa1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apa1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure><br>可以通过命令来查看服务器开放的端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure></p>
 <h3 id="客户机如何访问服务器的Apache服务"><a href="#客户机如何访问服务器的Apache服务" class="headerlink" title="客户机如何访问服务器的Apache服务"></a>客户机如何访问服务器的Apache服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#方法一：</span><br><span class="line">#可以通过关闭服务器防火墙来访问：</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
 <p>然后在客户机上访问，出现下面页面说明成功：<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/apa.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apa.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/apa.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apa.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#方法二 推荐：</span><br><span class="line">#设置防火墙开放80端口 永久--permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">#上面设置后，使用此命令使设置立即生效，也可以不用此命令，重启电脑后生效</span><br><span class="line">firewall-cmd reload </span><br><span class="line">#设置防火墙关闭80端口 永久--permanent</span><br><span class="line">firewall-cmd --zone=public --remove-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
 <p>注意的是 每次你的虚拟机如果更换了网络或者网络断开重连后，需要用 <code>systemctl restart network</code> 重新更新虚拟机ip配置；</p>
 <h3 id="配置-Apache服务"><a href="#配置-Apache服务" class="headerlink" title="配置 Apache服务"></a>配置 Apache服务</h3><h4 id="下面是Apache服务的配置文件地址"><a href="#下面是Apache服务的配置文件地址" class="headerlink" title="下面是Apache服务的配置文件地址"></a>下面是Apache服务的配置文件地址</h4><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/apac.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/apac.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <h4 id="配置文件有以下类型："><a href="#配置文件有以下类型：" class="headerlink" title="配置文件有以下类型："></a>配置文件有以下类型：</h4><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/apac1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/apac1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <p> 全局配置，如下不用 <code>&lt;Directory&gt;</code> 包起来，比如 LogLevel warn 等等;<br> 区域配置，如下区域配置一般用 <code>&lt;Directory&gt;</code> 包起来;</p>
 <h4 id="下面是配置文件部分示例"><a href="#下面是配置文件部分示例" class="headerlink" title="下面是配置文件部分示例"></a>下面是配置文件部分示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;/var/www/html&quot;  #  全局配置 </span><br><span class="line">LogLevel warn # 全局配置</span><br><span class="line"></span><br><span class="line">&lt;Directory /&gt;  # 区域配置</span><br><span class="line">    AllowOverride none</span><br><span class="line">    Require all denied</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line"># 说明针对 &quot;/var/www&quot; 的区域设置</span><br><span class="line">&lt;Directory &quot;/var/www&quot;&gt; </span><br><span class="line">    AllowOverride None</span><br><span class="line">    # Allow open access:</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="配置文件中常用的-httpd参数"><a href="#配置文件中常用的-httpd参数" class="headerlink" title="配置文件中常用的 httpd参数,"></a>配置文件中常用的 httpd参数,</h4><p>下面参数中，有些是全局配置，有些是区域配置参数<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/apac2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac2.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/apac2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac2.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <p>如上图 Directory 是配置网站数据目录的权限，如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt; #  配置根目录/</span><br><span class="line">    AllowOverride none</span><br><span class="line">    Require all denied</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line"># 配置目录/var/www</span><br><span class="line">&lt;Directory &quot;/var/www&quot;&gt; </span><br><span class="line">    AllowOverride None</span><br><span class="line">    # Allow open access:</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="SELinux-安全子系统"><a href="#SELinux-安全子系统" class="headerlink" title="SELinux 安全子系统"></a>SELinux 安全子系统</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>SELinux 是 security-enhanced linux 缩写，表示 安全增强型 linux；</p>
 <figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/sel0.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/sel0.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/sel0.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/sel0.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <h4 id="防火墙和-SELinux-的区别"><a href="#防火墙和-SELinux-的区别" class="headerlink" title="防火墙和 SELinux 的区别"></a>防火墙和 SELinux 的区别</h4><p>防火墙就像防盗门，用于抵御外部的危险；<br>SELinux就像保险柜，用于保护内部的资源；<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/sel.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/sel.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/sel.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/sel.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <h4 id="sestatus"><a href="#sestatus" class="headerlink" title="sestatus"></a>sestatus</h4><p>sestatus  selinux status 缩写；此命令用于查看selinux状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sestatus  </span><br><span class="line">SELinux status:                 enabled  # 是否启动</span><br><span class="line">SELinuxfs mount:                /sys/fs/selinux</span><br><span class="line">SELinux root directory:         /etc/selinux  # SELinux 主目录</span><br><span class="line">Loaded policy name:             targeted</span><br><span class="line">Current mode:                   enforcing  #  模式</span><br><span class="line">Mode from config file:          enforcing</span><br><span class="line">Policy MLS status:              enabled</span><br><span class="line">Policy deny_unknown status:     allowed</span><br><span class="line">Max kernel policy version:      31</span><br></pre></td></tr></table></figure></p>
@@ -277,7 +277,7 @@
 <h4 id="配置的首页不生效"><a href="#配置的首页不生效" class="headerlink" title="配置的首页不生效"></a>配置的首页不生效</h4><p>在客户机中访问服务器ip，发现还是原来的内容，没有显示自己设置的内容，<br>这是由于上面的SELinux安全限制的原因，由于 SELinux 的限制，让服务器继续显示之前的页面；</p>
 <h4 id="配置SELinux"><a href="#配置SELinux" class="headerlink" title="配置SELinux"></a>配置SELinux</h4><p>通过以下命令，可访问正确的页面；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# setenforce 0  可使用下面命令暂时停掉 SELinux 服务，</span><br><span class="line"># setenforce是暂时设置，系统重启后用原来的配置</span><br><span class="line"># setenforce 1 是暂时设置为强制安全模式</span><br><span class="line"></span><br><span class="line">[root@localhost /]# getenforce  查看 SELinux 的配置，发现是Permissive不限制的；</span><br><span class="line">Permissive</span><br></pre></td></tr></table></figure></p>
 <p>再次访问可以显示正确页面：<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/apac3.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac3.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/apac3.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/apac3.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <h4 id="配置不生效的本质原因"><a href="#配置不生效的本质原因" class="headerlink" title="配置不生效的本质原因"></a>配置不生效的本质原因</h4><p>如下 <code>/var/www/html</code> 是 httpd 默认的原首页内容显示目录；<br><code>/home/web</code>是 httpd 目前首页内容显示目录；<br>二者的安全上下文不同，从而触发了SELinux的安全策略，因此无法正常显示 设置后的页面内容。<br>解决之法，就是设置 安全上下文 根 <code>/var/www/html</code> 一样</p>
@@ -301,7 +301,7 @@
 <h4 id="设置固定虚拟机的IP地址"><a href="#设置固定虚拟机的IP地址" class="headerlink" title="设置固定虚拟机的IP地址"></a>设置固定虚拟机的IP地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line">#以下原配置</span><br><span class="line">TYPE=Ethernet #设备模式</span><br><span class="line">PROXY_METHOD=none </span><br><span class="line">BROWSER_ONLY=no </span><br><span class="line">BOOTPROTO=dhcp #地址分配模式</span><br><span class="line">DEFROUTE=yes </span><br><span class="line">IPV4_FAILURE_FATAL=no </span><br><span class="line">IPV6INIT=yes </span><br><span class="line">IPV6_AUTOCONF=yes </span><br><span class="line">IPV6_DEFROUTE=yes </span><br><span class="line">IPV6_FAILURE_FATAL=no </span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy </span><br><span class="line">NAME=ens33 #网卡名称</span><br><span class="line">UUID=0b309202-2bc1-41e3-ba5e-f8d356fbebd8 </span><br><span class="line">DEVICE=ens33 </span><br><span class="line">ONBOOT=yes #是否启动, 这个很重要，一定是启动的，不然无法联网</span><br><span class="line"></span><br><span class="line">只需改动以下部分</span><br><span class="line">BOOTPROTO=static #修改</span><br><span class="line">IPADDR=192.168.1.109 #IP地址  #设置为静态，必须指定IP地址</span><br><span class="line">NETMASK=255.255.255.0 #子网掩码 #指定IP地址,必须指定子网掩码</span><br><span class="line">PREFIX=24 #24 是 255.255.255.0 二进制表示有24个1，跟上面一个意思；</span><br><span class="line">GATEWAY=192.168.1.1 #网关地址</span><br><span class="line">DNS1=192.168.0.1 #dns服务器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl restart network # 重启，让配置生效；</span><br></pre></td></tr></table></figure>
 <p>上面的网关地址需要虚拟机所在的 主机window上看，<br>window查看 默认网关地址，dns地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /all</span><br></pre></td></tr></table></figure></p>
 <figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/ip.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ip.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/ip.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ip.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <p>注意的是，不要在客户机设置 ip，不然出现卡顿，最好是在服务器端设置。</p>
@@ -321,10 +321,10 @@
 <p>其中上面 ServerName 随便设置；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload httpd # 重启，让配置生效</span><br></pre></td></tr></table></figure>
 <p>在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》：<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/vi1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/vi1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/vi2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi2.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/vi2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi2.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <p>问题，为什么这次设置后，就可以不受 SELinux 安全限制呢，<br>因为我们在 《配置实战 ：修改访问首页内容》已经对 /home/web 修改文件安全上下文 了，如果换其他目录，请按上面《修改文件安全上下文》修改上下文。</p>
@@ -335,10 +335,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/web/abc</span><br><span class="line">mkdir /home/web/ddd</span><br><span class="line">echo &quot;host : www.linuxabc.com&quot; &gt;/home/web/abc/index.html</span><br><span class="line">echo &quot;ip : www.linuxddd.com&quot; &gt;/home/web/ddd/index.html</span><br></pre></td></tr></table></figure>
 <p><code>/etc/httpd/conf/httpd.conf</code>增加以下部分如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost 192.168.1.10&gt;</span><br><span class="line">    DocumentRoot /home/web/abc</span><br><span class="line">    ServerName www.linuxabc.com</span><br><span class="line">    &lt;Directory &quot;/home/web/abc&quot;&gt;</span><br><span class="line">        AllowOverride None</span><br><span class="line">        # Allow open access:</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost 192.168.1.10&gt;</span><br><span class="line">    DocumentRoot /home/web/ddd</span><br><span class="line">    ServerName www.linuxddd.com</span><br><span class="line">    &lt;Directory &quot;/home/web/ddd&quot;&gt;</span><br><span class="line">        AllowOverride None</span><br><span class="line">        # Allow open access:</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure></p>
 <p>在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》<br>：<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/vi3.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi3.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/vi3.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi3.png" alt="" title="" class=""></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/vi4.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi4.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/vi4.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/vi4.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <p>注意的是，192.168.1.10 是我们之前 《基于IP地址》创建的，如果没有，你按照此创建；<br>另外，为了消除影响，可将上面《基于IP地址》中创建的 httpd配置 以及 /home/web/10 20 目录删除；</p>
@@ -349,24 +349,24 @@
 <p><a href="https://www.cnblogs.com/hthf/p/4986507.html" target="_blank" rel="noopener">read more</a></p>
 <h4 id="为什么CA能防止冒充真正的服务器"><a href="#为什么CA能防止冒充真正的服务器" class="headerlink" title="为什么CA能防止冒充真正的服务器"></a>为什么CA能防止冒充真正的服务器</h4><p>如上，浏览器会主动像ca去确认证书是否是服务器xxxx合法注册的；<br>此时有人假冒服务器xxx证书，<br>想假冒的人肯定需要向ca注册证书，但ca机构说服务器xxx已经注册证书了，你又来注册，你是骗子吧；<br>如果假冒的人不注册ca证书，不好意思，此证书直接无效；<br>ca会告诉浏览器，服务器xxx注册的证书是另外一个，不是当前这个假冒证书；<br>那么浏览器就会提示不安全，浏览器也不会后续活动；</p>
 <h4 id="浏览器-服务器-对话-对称加密和非对称加密"><a href="#浏览器-服务器-对话-对称加密和非对称加密" class="headerlink" title="浏览器/服务器 对话 对称加密和非对称加密"></a>浏览器/服务器 对话 对称加密和非对称加密</h4><p>如上，浏览器与服务器 通过非对称加密，加密 对称加密的密钥，<br>后续通过使用对称加密。</p>
-<h3 id="Apache-服务器配置HTTPS"><a href="#Apache-服务器配置HTTPS" class="headerlink" title="Apache 服务器配置HTTPS"></a>Apache 服务器配置HTTPS</h3><h4 id="防火墙放开443端口安全限制"><a href="#防火墙放开443端口安全限制" class="headerlink" title="防火墙放开443端口安全限制"></a>防火墙放开443端口安全限制</h4><p>防火墙放开443端口安全限制后，浏览器端将可以443端口（https默认端口）访问服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --reload  更新配置</span><br><span class="line">firewall-cmd --list-ports 查看已经放行的端口</span><br></pre></td></tr></table></figure></p>
+<h3 id="Apache-服务器配置HTTPS"><a href="#Apache-服务器配置HTTPS" class="headerlink" title="Apache 服务器配置HTTPS"></a>Apache 服务器配置HTTPS</h3><h4 id="防火墙放开443端口安全限制"><a href="#防火墙放开443端口安全限制" class="headerlink" title="防火墙放开443端口安全限制"></a>防火墙放开443端口安全限制</h4><p>防火墙放开443端口安全限制后，浏览器端将可以443端口（https默认端口）访问服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent  permanent永久</span><br><span class="line">firewall-cmd --reload  更新配置</span><br><span class="line">firewall-cmd --list-ports 查看已经放行的端口</span><br></pre></td></tr></table></figure></p>
 <h4 id="安装apache的SSL支持模块"><a href="#安装apache的SSL支持模块" class="headerlink" title="安装apache的SSL支持模块"></a>安装apache的SSL支持模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mod_ssl #apache的SSL支持模块 mod_ssl</span><br><span class="line">systemctl restart httpd #因为安装mod_ssl的过程，相当于配置了apache，需重启</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.jianshu.com/p/46a911bd49a7" target="_blank" rel="noopener">PKI 体系概述 : 所有与数字证书相关的各种概念和技术，统称为 PKI</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /etc/httpd/conf.d/ssl.conf</span><br><span class="line">/etc/httpd/conf.d/ssl.conf #mod_ssl 针对 apache 的 ssl 配置文件</span><br><span class="line"># centos 默认提供ssl机制需要的证书文件和私钥</span><br><span class="line">[root@localhost ~]# ls /etc/pki/tls/private/localhost.key #centos 默认提供ssh私钥,可以用来制作证书</span><br><span class="line">/etc/pki/tls/private/localhost.key</span><br><span class="line">[root@localhost ~]# ls /etc/pki/tls/certs/ #这里是证书的集合目录</span><br><span class="line">ca-bundle.crt        localhost.crt    Makefile</span><br><span class="line">ca-bundle.trust.crt  make-dummy-cert  renew-dummy-cert</span><br><span class="line">[root@localhost ~]# ls /etc/pki/tls/certs/localhost.crt  #加密后证书的文件，也就是签名后的证书</span><br><span class="line">/etc/pki/tls/certs/localhost.crt</span><br></pre></td></tr></table></figure>
 <p>我们是通过mod_ssl 生成的 因此不是经过第三方认证注册的，所有谷歌浏览器才有以下提示；</p>
 <h4 id="请使用服务器主机IP"><a href="#请使用服务器主机IP" class="headerlink" title="请使用服务器主机IP"></a>请使用服务器主机IP</h4><p>注意这里用来访问的IP，请使用服务器主机IP，而不要使用虚拟IP，否则可能访问不成功。<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/https1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/https1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/https1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/https1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/https2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/https2.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/https2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/https2.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/ca1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ca1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/ca1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ca1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <p>公钥加密方法，使用期限默认一年<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/ca2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ca2.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/ca2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/ca2.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <h3 id="使用自签名的证书"><a href="#使用自签名的证书" class="headerlink" title="使用自签名的证书"></a>使用自签名的证书</h3><p>使用自签名的证书其实就是自己加密生成 证书(公钥)和私钥<br>需要用openssl这个软件来生成证书文件；</p>
@@ -376,15 +376,15 @@
 <p>修改内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SSLCertificateFile /etc/pki/tls/certs/server.crt #证书</span><br><span class="line">SSLCertificateKeyFile /etc/pki/tls/private/server.key #私钥</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart httpd #重启 Apache服务</span><br></pre></td></tr></table></figure>
 <figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/cert1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/cert1.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/cert1.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/cert1.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/cert.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/cert.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/cert.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/cert.png" alt="" title="" class=""></a>
                 <p></p>
             </figure>
 <h4 id="为什么可以http访问"><a href="#为什么可以http访问" class="headerlink" title="为什么可以http访问"></a>为什么可以http访问</h4><p>值得注意的是，我们依然可以http访问，因为apache服务器中，我们也放开了防火墙80端口的监听<br>至于为什么我们可以用https访问，是一样的原因，在apache服务器中，我们也放开了防火墙443的监听；<br><figure class="image-box">
-                <a rel="linux笔记(下)" href="/image/linuxt/cert2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/cert2.png" alt="" title="" class=""></a>
+                <a rel="linux笔记(震)" href="/image/linuxt/cert2.png" title="undefined" data-fancybox="images"><img src="/image/linuxt/cert2.png" alt="" title="" class=""></a>
                 <p></p>
             </figure></p>
 <h4 id="有些服务器能用http访问，不能用https"><a href="#有些服务器能用http访问，不能用https" class="headerlink" title="有些服务器能用http访问，不能用https"></a>有些服务器能用http访问，不能用https</h4><p>我们在调试的时候，有时候用webpack启动一个服务，然后通过http，是可以访问的，但换成https不能访问，<br>本质原因，就跟我们上面看到的，apache内放开了80端口防火墙时，我们可以http访问；<br>如果放开了 443 防火墙端口，我们可以通过https访问；<br>而webpack启动一份服务的时候，估计内部只做了http的80端口开放；没有做443端口开放；</p>
@@ -397,7 +397,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-02T15:41:22.617Z" itemprop="dateUpdated">2021-06-02 23:41:22</time>
+    Last updated: <time datetime="2021-06-10T14:31:10.809Z" itemprop="dateUpdated">2021-06-10 22:31:10</time>
 </span><br>
 
 
@@ -431,7 +431,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(下)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -443,7 +443,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(下)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -469,9 +469,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2021/06/02/css/" id="post-prev" class="post-nav-link">
+      <a href="/2021/06/08/linux_fore/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">css笔记</h4>
+        <h4 class="title">linux笔记(巽)</h4>
       </a>
     </div>
   
@@ -480,7 +480,7 @@
     <div class="next">
       <a href="/2021/05/21/linux_more/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">linux笔记(中)</h4>
+        <h4 class="title">linux笔记(坤)</h4>
       </a>
     </div>
   
@@ -588,7 +588,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(下)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -600,7 +600,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(下)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>

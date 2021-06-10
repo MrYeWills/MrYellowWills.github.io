@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>linux笔记(巽) | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="linux">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>linux笔记(巽)</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">linux笔记(巽)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-06-07T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2021-06-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-linux_fore" class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">linux笔记(巽)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-06-08 00:00:00" datetime="2021-06-07T16:00:00.000Z" itemprop="datePublished">2021-06-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="安装-MariaDB-数据库软件"><a href="#安装-MariaDB-数据库软件" class="headerlink" title="安装 MariaDB 数据库软件"></a>安装 MariaDB 数据库软件</h2><p>MariaDB是MySQL的一个社区维护版本，开源分支；<br>几乎完全兼容mysql；<br>mysql作者以他女儿名字命令的软件；</p>
+<p> #mariadb主程序， mariadb-server 服务器程序<br> yum install mariadb mariadb-server<br> 安装完成后，记得启动程序<br> systemctl start mariadb 启动程序<br> systemctl status mariadb 查看运行状态<br> systemctl enable mariadb 设置开机启动</p>
+<p>对 MariaDB 进行初始化操作<br>安装之后，不要立即使用，先进行初始化操作</p>
+<p>[root@localhost ~]# mysql_secure_installation</p>
+<p>NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB<br>      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!</p>
+<p>In order to log into MariaDB to secure it, we’ll need the current<br>password for the root user.  If you’ve just installed MariaDB, and<br>you haven’t set the root password yet, the password will be blank,<br>so you should just press enter here.<br>请输入数据库root用户的密码，刚安装数据库root密码默认为空，因此不用输入直接回车<br>Enter current password for root (enter for none):<br>OK, successfully used password, moving on…</p>
+<p>Setting the root password ensures that nobody can log into the MariaDB<br>root user without the proper authorisation.<br>是否要设置root密码<br>Set root password? [Y/n] y<br>New password:<br>Re-enter new password:<br>Password updated successfully!<br>Reloading privilege tables..<br> … Success!</p>
+<p>By default, a MariaDB installation has an anonymous user, allowing anyone<br>to log into MariaDB without having to have a user account created for<br>them.  This is intended only for testing, and to make the installation<br>go a bit smoother.  You should remove them before moving into a<br>production environment.<br>是否要删除匿名用户，匿名用户的数据库任何账号都可以访问，因此可以删除<br>Remove anonymous users? [Y/n] y<br> … Success!</p>
+<p>Normally, root should only be allowed to connect from ‘localhost’.  This<br>ensures that someone cannot guess at the root password from the network.<br>是否禁止远程登陆root用户<br>Disallow root login remotely? [Y/n] y<br> … Success!</p>
+<p>By default, MariaDB comes with a database named ‘test’ that anyone can<br>access.  This is also intended only for testing, and should be removed<br>before moving into a production environment.<br>是否删除测试数据库和授权<br>Remove test database and access to it? [Y/n] y</p>
+<ul>
+<li>Dropping test database…<br>… Success!</li>
+<li>Removing privileges on test database…<br>… Success!</li>
+</ul>
+<p>Reloading the privilege tables will ensure that all changes made so far<br>will take effect immediately.<br>是否让刚才设置的立即生效<br>Reload privilege tables now? [Y/n] y<br> … Success!</p>
+<p>Cleaning up…</p>
+<p>All done!  If you’ve completed all of the above steps, your MariaDB<br>installation should now be secure.</p>
+<p>Thanks for using MariaDB!</p>
+<p>修改字符编码为 utf8<br>在 MariaDB 的配置文件 /etc/my.cnf中加入以下两句配置</p>
+<p>character_set_server=utf8<br>init_connect=’SET NAMES utf8’</p>
+<p>修改完成后，需要重启</p>
+<p> systemctl restart mariadb 启动程序</p>
+<p>[root@localhost ~]# mysql<br>ERROR 1045 (28000): Access denied for user ‘root‘@’localhost’ (using password: NO)<br>[root@localhost ~]#  mysql -u root -p<br>Enter password:</p>
+<h1 id="进入数据库输入命令时，请以分号结尾，否则命令不执行"><a href="#进入数据库输入命令时，请以分号结尾，否则命令不执行" class="headerlink" title="进入数据库输入命令时，请以分号结尾，否则命令不执行"></a>进入数据库输入命令时，请以分号结尾，否则命令不执行</h1><p>Welcome to the MariaDB monitor.  Commands end with ; or \g.<br>Your MariaDB connection id is 3<br>Server version: 5.5.68-MariaDB MariaDB Server</p>
+<p>Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</p>
+<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<h1 id="出现-MariaDB-none-gt-说明登录成功，进入数据库了："><a href="#出现-MariaDB-none-gt-说明登录成功，进入数据库了：" class="headerlink" title="出现 MariaDB [(none)]&gt; 说明登录成功，进入数据库了："></a>出现 MariaDB [(none)]&gt; 说明登录成功，进入数据库了：</h1><p>输入命令注意加分号<br>MariaDB [(none)]&gt; show databases;<br>+——————–+<br>| Database           |<br>+——————–+<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>+——————–+<br>3 rows in set (0.00 sec)</p>
+<p>查看刚才设置的字符串utf8<br>MariaDB [(none)]&gt; show variables like ‘%character_set%’;</p>
+<h1 id="character-set-client-客户端-和character-set-server服务器"><a href="#character-set-client-客户端-和character-set-server服务器" class="headerlink" title="character_set_client 客户端 和character_set_server服务器"></a>character_set_client 客户端 和character_set_server服务器</h1><p>都是utf8<br>+————————–+—————————-+<br>| Variable_name            | Value                      |<br>+————————–+—————————-+<br>| character_set_client     | utf8                       |<br>| character_set_connection | utf8                       |<br>| character_set_database   | latin1                     |<br>| character_set_filesystem | binary                     |<br>| character_set_results    | utf8                       |<br>| character_set_server     | latin1                     |<br>| character_set_system     | utf8                       |<br>| character_sets_dir       | /usr/share/mysql/charsets/ |<br>+————————–+—————————-+<br>8 rows in set (0.00 sec)</p>
+<p>MariaDB [(none)]&gt;</p>
+<p>quit exit 等都可以退出数据库</p>
+<p>重新设置 可以远程访问</p>
+<p>mysql_secure_installation<br>改这里就行：<br>是否禁止远程登陆root用户<br>Disallow root login remotely? [Y/n] n<br>设置防火墙，让防火墙放行对数据库程序软件的请求</p>
+<p>MariaDB 默认以 3306 端口进行访问</p>
+<p>在防火墙策略中，服务端统称为mysql</p>
+<p>防火墙放行数据库访问请求</p>
+<p>firewall-cmd –zone=public –add-port=3306/tcp –permanent<br>mysql和MariaDB，对于防火墙而言都一样，在防火墙策略中，服务端统称为mysql，因此这句命令既设置了 mysql，又设置了 MariaDB<br>firewall-cmd –zone=public –add-service=mysql –permanent<br>firewall-cmd –reload 需要重载之后，查看已经放行接口<br>firewall-cmd –list-ports<br>443/tcp 80/tcp 3306/tcp</p>
+<p>安装PHP，搭建 LAMP 架构</p>
+<p>静态网站的服务器和客户端的连接<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/lamp.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/lamp.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>动态网站<br>动态网站的网页编程语言和数据库接口<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/say.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/say.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>PHP<br>在服务端执行的脚本语言，是常用的网站编程语言<br>php的代码可以直接嵌入html网页中，不需要编辑就可以执行</p>
+<p>LAMP架构<br>Linux + apache + mysql + （mariaDB） + php 的开发架构<br>经常被用于搭建动态网站<br>单独的apache只能搭建静态网站</p>
+<p>安排 php</p>
+<p>php php主程序（包含给apache使用的模块）<br>php-mysql 使php程序能读取mysql数据库的模块</p>
+<p>yum install php<br>yum install php-mysql<br>rpm -ql php 查看安装信息<br>rpm -ql php-mysql 查看安装信息</p>
+<p>在apache服务器的web页面放置目录创建文件；<br>由于我们之前配置apache的时候，将目录配置在了 /home/web</p>
+<p>vim /home/web/info.php<br>&lt;?php<br> phpinfo();<br>?&gt;</p>
+<p>上面 phpinfo 是 php的函数，会显示php所有的配置信息</p>
+<p>systemctl restart httpd</p>
+<p>页面访问：<br><a href="http://192.168.1.109/info.php" target="_blank" rel="noopener">http://192.168.1.109/info.php</a></p>
+<p>看到下面说明 搭建 LAMP 架构 完成<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/php.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/php.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/php1.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/php1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>php的配置<br>/etc/php.ini PHP的主配置文件<br>/etc/httpd/conf.d/php.conf php给apache使用的模块的配置<br>/etc/php.d/mysql.ini  php程序读取mysql数据库的模块配置</p>
+<p>LAMP配合wordpress 建站</p>
+<p>WordPress<br>wordpress 是使用php语言开发的博客平台，也是一款 CMS(内容管理系统)，<br>是全球使用最广泛的博客平台；<br>很多非博客网站也会使用wordpress 搭建</p>
+<p>在客户机电脑中浏览器下载 wordpress 无论 win或mac版本都可以；<br>比如 <a href="http://www.pc6.com/softview/SoftView_14956.html" target="_blank" rel="noopener">这里下载</a>;</p>
+<p>使用 scp 进行 ssh 远程拷贝</p>
+<p>客户机使用git bash 执行以下命令：<br>$ scp wordpressv5.7.zip <a href="mailto:root@192.168.1.109" target="_blank" rel="noopener">root@192.168.1.109</a>:/root<br><a href="mailto:root@192.168.1.109" target="_blank" rel="noopener">root@192.168.1.109</a>‘s password:<br>wordpressv5.7.zip                             100%   16MB   4.9MB/s   00:03</p>
+<p>unzip 解压缩 （安装unzip）</p>
+<p>yum install unzip<br>unzip wordpressv5.7.zip</p>
+<p>将wordpress解压包拷贝到apache页面目录下<br>[root@localhost wordpress]# cp -r wordpress /home/web<br>[root@localhost wordpress]# cd /home/web/wordpress/<br>[root@localhost wordpress]# ls</p>
+<p>#wp-admin 是配置目录 setup-config.php 是其目录下 安装的一些配置文件<br>index.php        wp-blog-header.php    wp-includes        wp-settings.php<br>license.txt      wp-comments-post.php  wp-links-opml.php  wp-signup.php<br>readme.html      wp-config-sample.php  wp-load.php        wp-trackback.php<br>wp-activate.php  wp-content            wp-login.php       xmlrpc.php<br>wp-admin         wp-cron.php           wp-mail.php<br>[root@localhost wordpress]#</p>
+<p>访问出现问题<br>页面访问刚才的php文件<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>升级 php<br><a href="https://blog.csdn.net/qq_34829953/article/details/78078790" target="_blank" rel="noopener">参考这篇博客</a>，从博客中第二个开始执行：</p>
+<p>  135  rpm -Uvh <a href="https://mirror.webtatic.com/yum/el7/epel-release.rpm" target="_blank" rel="noopener">https://mirror.webtatic.com/yum/el7/epel-release.rpm</a><br>  136  rpm -Uvh <a href="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" target="_blank" rel="noopener">https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</a><br>  137  yum remove php-common -y<br>  138  yum install -y php56w php56w-opcache php56w-xml php56w-mcrypt php56w-gd php56w-devel php56w-mysql php56w-intl php56w-mbstring</p>
+<p>其实你也没必要安装这么多，你只需安装 php56w 和 php56w-mysql (让php能够读取mysql数据库)</p>
+<p>[root@localhost wordpress]# php -v<br>PHP 5.6.40 (cli) (built: Jan 12 2019 13:11:15)<br>Copyright (c) 1997-2016 The PHP Group<br>Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies<br>    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies<br>[root@localhost wordpress]# systemctl restart httpd</p>
+<p><a rel="linux笔记(巽)" href="/image/linuxf/wd2.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd2.png" alt=""></a><br>再次刷新页面，显示如下，说明正常了</p>
+<p>scp<br>scp是 secure copy的缩写, scp是linux系统下基于ssh登陆进行安全的远程文件拷贝命令。<br><a href="https://www.cnblogs.com/pluslius/p/9893340.html" target="_blank" rel="noopener">scp命令</a></p>
+<p>如上图，其实已经告诉我们如何接下来配置了</p>
+<p>[root@localhost wordpress]# mysql -u root -p<br>Enter password:<br>Welcome to the MariaDB monitor.  Commands end with ; or \g.<br>Your MariaDB connection id is 3<br>Server version: 5.5.68-MariaDB MariaDB Server</p>
+<p>Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</p>
+<p>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<p>MariaDB [(none)]&gt; create database wordpress; 创建表<br>Query OK, 1 row affected (0.01 sec)</p>
+<p>MariaDB [(none)]&gt; show databases;<br>+——————–+<br>| Database           |<br>+——————–+<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| wordpress          |<br>+——————–+<br>4 rows in set (0.01 sec)<br>GRANT ALL ON wordpress.<em> 在 wordpress 数据库上开放所有权限 给主机用户‘imooc‘@’192.168.1.109’ ， 密码是123456<br>MariaDB [(none)]&gt; GRANT ALL ON wordpress.</em> TO ‘imooc‘@’192.168.1.109’ IDENTIFIED BY ‘123456’;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>[root@localhost wordpress]# pwd<br>/home/web/wordpress<br>[root@localhost wordpress]# cp wp-config-sample.php wp-config.php<br>[root@localhost wordpress]# ls<br>index.php        wp-blog-header.php    wp-cron.php        wp-mail.php<br>license.txt      wp-comments-post.php  wp-includes        wp-settings.php<br>readme.html      wp-config.php         wp-links-opml.php  wp-signup.php<br>wp-activate.php  wp-config-sample.php  wp-load.php        wp-trackback.php<br>wp-admin         wp-content            wp-login.php       xmlrpc.php<br>[root@localhost wordpress]# vim wp-config.php</p>
+<p>修改地方如下：</p>
+<p>define( ‘DB_NAME’, ‘wordpress’ );</p>
+<p>/*<em> MySQL database username </em>/<br>define( ‘DB_USER’, ‘imooc’ );</p>
+<p>/*<em> MySQL database password </em>/<br>define( ‘DB_PASSWORD’, ‘123456’ );</p>
+<p>/*<em> MySQL hostname </em>/<br>define( ‘DB_HOST’, ‘192.168.1.109’ );</p>
+<p>systemctl restart httpd</p>
+<p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>点击下图 的安装：</p>
+<figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd3.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd3.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>建立数据库时出错：</p>
+<figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd4.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd4.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>SELinux 的安全策略问题导致的；<br>getenforce 说明SELinux是开启的<br>验证下：<br>setenforce 0</p>
+<p>[root@localhost wordpress]# getenforce<br>Enforcing  说明 SELinux 是开启的<br>关闭SELinux验证下：<br>[root@localhost wordpress]# setenforce 0</p>
+<p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>变成下图，说明安装成功了<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd5.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd5.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>解决 SELinux</p>
+<p>[root@localhost wordpress]# setenforce 1 开启 SELinux<br>[root@localhost wordpress]# getsebool -a | grep httpd 查询 SELinux 的一些布尔值设置<br>httpd_anon_write –&gt; off<br>httpd_builtin_scripting –&gt; on<br>httpd_can_check_spam –&gt; off<br>httpd_can_connect_ftp –&gt; off<br>httpd_can_connect_ldap –&gt; off<br>httpd_can_connect_mythtv –&gt; off<br>httpd_can_connect_zabbix –&gt; off<br>httpd_can_network_connect –&gt; off  是否允许apache网络访问数据库<br>httpd_can_network_connect_cobbler –&gt; off<br>httpd_can_network_connect_db –&gt; off<br>….</p>
+<p>[root@localhost wordpress]# setsebool -P httpd_can_network_connect=1 开启apache网络访问数据库<br>[root@localhost wordpress]#</p>
+<p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/install.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/install.php</a> 或<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>变成下图，说明安装成功了，进入了wordpress 5分钟安装程序</p>
+<p>配置网站信息，比如网站名，网站管理员，邮箱，这些都可以随便写<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd6.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd6.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd7.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd7.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd8.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd8.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>登录成功后，<br>进入网站后台管理系统：<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd9.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd9.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd10.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd10.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure> </p>
+<p>进入自己的网站主站点：<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd11.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd11.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/wd12.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd12.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>Linux开发神器</p>
+<p>java web 应用的世界</p>
+<p>servlet tomcat 和 Jenkins</p>
+<p>Jenkins<br>是java开发的一种持续集成（CI）工具<br>CI是 continuous integration 的缩写，表示持续集成；<br>能够让软件的测试 编译 和部署自动化<br>通常与版本管理工具 如svn git、 构建工具结合使用；<br>常用的构建工具有 Ant、 Maven、 Gradle；</p>
+<p>还有其他持续集成工具，比如 gitlab CI/CD</p>
+<p>java的web应用程序的世界：<br>servlet， jsp 等；</p>
+<p>servlet<br>java中旨在动态生成html代码的应用程序通常采用servlet的形式；<br>servlet是尊重java servlet api 的java web应用程序；</p>
+<p>Jenkins<br>Jenkins是以servlet形式提供的<br>它采用扩展名为.war 的二进制文件的形式；<br>war是web archive的缩写，表示 网络归档文件</p>
+<p>servlet<br>servlet = service + applet， 表示 小服务程序<br>service 表示 服务， applet表示 小应用程序</p>
+<p>创建 servlet 两种方式</p>
+<ul>
+<li>要么编写纯java代码并编译</li>
+<li>要么写一个jsp（Java server pages）</li>
+</ul>
+<p>jsp</p>
+<p>jsp 实际上是一个html页面，其中添加了对java代码的调用<br>jsp 编译器编译jsp，将其转换为 servlet；</p>
+<p>servlet容器<br>要能够在服务器上运行servlet并将http请求传递给它们；<br>需要一个servlet容器；<br>tomcat是apache软件基金会发布的servlet容器</p>
+<p>tomcat<br>由几个组件构成： Catalina 、coyote、jasper</p>
+<p>Catalina 它本身是servlet的容器，并负责其执行；<br>coyote 是一个http链接器，因此是一个微型web服务器，它将http请求传输到Catalina；<br>jasper是tomcat的jsp编译器；</p>
+<p><a href="https://blog.csdn.net/u010129985/article/details/80831518" target="_blank" rel="noopener">apache和tomcat有什么不同</a></p>
+<p>Jenkins的运行<br>为了使用Jenkins应用程序，需要安装tomcat服务器<br>Jenkins也可以独立运行；<br>因为它自身也包含了名为 winstone 的servlet微型容器；</p>
+<p>Jenkins servlet tomcat (jsp java) 三者关系</p>
+<p>servlet是遵守 java servlet api 的java web 应用程序<br>servlet 可由 纯java代码编写，也可以从jsp页面生成<br>servlet 由servlet容器执行；<br>tomcat 是apache软件基金会发布的servlet容器<br>也可以作为轻量级的web应用服务器<br>Jenkins是作为servlet提供的Java应用程序；</p>
+<p>配置java环境并安装tomcat<br>yum install tomcat #可以直接安装 tomcat 而且附带安装 Java运行时的环境 JRE(用来使java应用运行起来)，但不会安装JDK;<br>java -version # 安装tomcat时，其实已经把java运行时环境JRE安装上了，因此可以执行java命令,比如查看java版本</p>
+<p>systemctl status tomcat  查看运行状态<br>systemctl start tomcat 启动tomcat<br>systemctl enable tomcat 设置开启启动<br>rpm -ql tomcat 查看tomcat相关目录和配置文件</p>
+<p>[root@localhost ~]# rpm -ql tomcat<br>/etc/logrotate.d/tomcat<br>/etc/sysconfig/tomcat<br>/etc/tomcat<br>/etc/tomcat/conf.d/README<br>/etc/tomcat/context.xml<br>/etc/tomcat/log4j.properties<br>/etc/tomcat/logging.properties<br>/etc/tomcat/server.xml  这是tocat配置服务器文件，比如这里可配置tomcat 默认8080端口<br>/etc/tomcat/tomcat-users.xml 配置用户<br>/etc/tomcat/tomcat.conf  主配置文件<br>/usr/share/tomcat/logs<br>/usr/share/tomcat/temp<br>/usr/share/tomcat/webapps web应用程序相关配置在这里，此文件也是/var/lib/tomcat/webapps的软连接<br>/usr/share/tomcat/work<br>/var/lib/tomcat/webapps</p>
+<p>[root@localhost ~]# ls -dl /usr/share/tomcat/webapps</p>
+<p>#说明 /usr/share/tomcat/webapps 是软连接到  /var/lib/tomcat/webapps 文件的；<br>lrwxrwxrwx. 1 root tomcat 23 Jun  9 10:46 /usr/share/tomcat/webapps -&gt; /var/lib/tomcat/webapps<br>[root@localhost ~]#</p>
+<p>tomcat 默认端口 8080</p>
+<p>openjdk 与 jdk<br>自动java 被oracle收购后，很多程序就用 openjdk 代替 jdk使用，二者功能一致；<br>在centos中，使用openjdk代替 jdk使用</p>
+<p>[root@localhost ~]# yum search java | grep openjdk  此命令可以查找可安装的 openjdk 版本，<br>java-1.6.0-openjdk.x86_64 : OpenJDK Runtime Environment<br>java-1.6.0-openjdk-demo.x86_64 : OpenJDK Demos<br>java-1.6.0-openjdk-devel.x86_64 : OpenJDK Development Environment<br>java-1.8.0-openjdk-devel.x86_64 : OpenJDK 8 Development Environment<br>…</p>
+<p>如果要安装开发jdk版本可以 安装 </p>
+<p>yum install java-1.8.0-openjdk-devel.x86_64<br>javac # 安装jdk后，可执行此命令，此命令为 java编译器</p>
+<p>浏览器访问<br>配置上面的tomcat后，<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>发现无法访问，原来缺少了<br>web应用程序的管理软件包：<br>yum install tomcat-webapps tomcat-admin-webapps<br>yum install tomcat-docs-webapp tomcat-javadoc # 这是参考文档，可以不用安装<br>systemctl restart tomcat</p>
+<p>再次访问<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>发现还是无法访问，原来防火墙的原因，执行命令</p>
+<p> systemctl stop firewalld</p>
+<p>再次访问<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>成功了：<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/tom.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/tom.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p>放开防火墙 8080端口<br> systemctl start firewalld</p>
+<p> firewall-cmd –list-ports<br>firewall-cmd –zone=public –add-port=8080/tcp –permanent<br>firewall-cmd –reload  更新配置<br>firewall-cmd –list-ports 查看已经放行的端口</p>
+<p>设置用户<br><figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/user.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/user.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<p> vim /etc/tomcat/tomcat-users.xml</p>
+<p>文件中下面注释了，把这个放开，这是系统配置好的默认测试用户，可以把密码设置简单点，比如123456<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;user name=&quot;admin&quot; password=&quot;123456&quot; roles=&quot;admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>systemctl restart tomcat</p>
+<p>然后点击上图按钮，登录：</p>
+<figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/login.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/login.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/login1.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/login1.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<figure class="image-box">
+                <a rel="linux笔记(巽)" href="/image/linuxf/mana.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/mana.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<p>如图上，红框内，这些应用都在目录：</p>
+<p>[root@localhost ~]# ls /var/lib/tomcat/webapps/<br>docs  examples  host-manager  manager  ROOT  sample</p>
+<p>安装Jenkins持续集成环境</p>
+<p>Jenkins 是Java写的一个应用程序<br>可以单独运行，也可以在servlet容器中运行</p>
+<p>在tomcat这个servlet容器里安装Jenkins</p>
+<p>Jenkins的war文件<br>war 是 web application archive 意思是 web 的归档文件</p>
+<p>安装Jenkins持续集成环境</p>
+<p>在window下，下载文件：<br><a href="http://mirrors.jenkins.io/war-stable/2.204.1/jenkins.war" target="_blank" rel="noopener">http://mirrors.jenkins.io/war-stable/2.204.1/jenkins.war</a></p>
+<p>scp将文件拷贝至centos<br>scp jenkins.war <a href="mailto:root@192.168.0.106" target="_blank" rel="noopener">root@192.168.0.106</a>:/root</p>
+<p>移动至 tomcat的web目录<br>mv jenkins.war /var/lib/tomcat/webapps<br>cd /var/lib/tomcat/webapps<br>ls</p>
+<p>执行tomcat命令生成 Jenkins 目录<br>systemctl restart tomcat<br>只需要把 Jenkins.war 放置在<code>/var/lib/tomcat/webapps</code>目录下，执行 <code>systemctl restart tomcat</code> ，<br>tomcat就会在该目录下 生成 Jenkins目录，</p>
+<p>wget下载文件和scp拷贝文件区别<br>不过你执行此命令后，却发现没有生成jenkins目录，<br>但是，如果我用wget 直接下载  jenkins.war 到 目录 <code>/var/lib/tomcat/webapps</code>，<br>是可以生成目录jenkins；<br>为什么呢，原来是 wget 下载下来的 文件安全上下文 比 scp过来的好，<br>此时SELinux就不会阻止，可以生成目录，<br>你可以通过把 SELinux安装验证关闭 (执行命令 setenforce 0)，再次执行以上命令，就会发现可以生成目录。</p>
+<p>解决SELinux 的 scp拷贝问题</p>
+<p>[root@localhost webapps]# cd /var/lib/tomcat/webapps<br>[root@localhost webapps]# ls<br>docs  examples  host-manager  jenkins.war  manager  ROOT  sample<br>[root@localhost webapps]# ls -Zd .  查看当前目录安全上下文<br>drwxrwxr-x. root tomcat system_u:object_r:tomcat_var_lib_t:s0 .<br>[root@localhost webapps]# ls -Zd jenkins.war<br>-rw-r–r–. root root unconfined_u:object_r:admin_home_t:s0 jenkins.war<br>[root@localhost webapps]# semanage fcontext -a -t tomcat_var_lib_t jenkins.war<br>[root@localhost webapps]# restorecon -Rv .   重启该目录安全上下文</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2021-06-10T14:31:10.809Z" itemprop="dateUpdated">2021-06-10 22:31:10</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/06/08/linux_fore/" target="_blank" rel="external">https://yewills.github.io/2021/06/08/linux_fore/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/08/linux_fore/&title=《linux笔记(巽)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/08/linux_fore/&title=《linux笔记(巽)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2021/06/10/css/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2021/05/30/linux_third/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">linux笔记(震)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-MariaDB-数据库软件"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装 MariaDB 数据库软件</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#进入数据库输入命令时，请以分号结尾，否则命令不执行"><span class="post-toc-number"></span> <span class="post-toc-text">进入数据库输入命令时，请以分号结尾，否则命令不执行</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#出现-MariaDB-none-gt-说明登录成功，进入数据库了："><span class="post-toc-number"></span> <span class="post-toc-text">出现 MariaDB [(none)]&gt; 说明登录成功，进入数据库了：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#character-set-client-客户端-和character-set-server服务器"><span class="post-toc-number"></span> <span class="post-toc-text">character_set_client 客户端 和character_set_server服务器</span></a>
+            </li></nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/08/linux_fore/&title=《linux笔记(巽)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/08/linux_fore/&title=《linux笔记(巽)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3a0U7DMAwFUP7/p4fEE9K0cq+zITU5fUKsNDmdZBzbX1/x9fi5rn/z/Gl7T/JXSxcGBsZtGY/L63nTyZ3Jpy3s1TMxMDDOYVwH2dmmk5CdvLLkaRgYGBjDR8fbTdbFwMDAyANuTm2TQgwMDIxrRnv4XA+v7bpvO4tjYGDckNE2Bv7z5w/2NzAwMG7CeJTXrIif3z/cFQYGxtaMdpCiTe9mqeQsJcXAwDiBkRfIZsGxzfHqF42BgXEAY6UBsNIYSJLO6FMMDIxNGeuDX7OBiZVViu8BAwNjC0abnLWJYF6qa4fMigMtBgbGRox8sWT5JGWctRDqGTcMDIwtGEmylYfg9YJa207AwMA4k/Gu9kA75tXyMDAwTmC86zg6G924LvNhYGBg/Ga0E1azSt7nmgoYGBgnMPJGZjHBEbdIZ62Cl/83MDAwNmXMgm9y3G1Tz3bsYxjvMTAwbsVoH9EGx7Zh0LYc/vhOMDAwtmasl8Paxmc+jhZNi2BgYGzEaMv9s7QvD8F1kMXAwDiG0QbEtnC/8lKisIuBgbE1I28lrjQ42xZmctyt+7EYGBi3ZTzKqxjVCu5sJyVePgcDA2NrRhvm8hGuYXF/4TVhYGDszZgdVj/Rkpy1PzEwMM5htFvJAXnRrd1nfRbHwMA4gDFjt9u6PtYWjUwMDIyDGe3xtUW2LU8MDIxzGO24Qz5S9t525stXgIGBsTVjVj5bWX7WTmhTTwwMjC0Y32UWqHbcEdgHAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
