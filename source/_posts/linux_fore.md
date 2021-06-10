@@ -605,7 +605,51 @@ Jenkins的war文件
 war 是 web application archive 意思是 web 的归档文件
 
 
+安装Jenkins持续集成环境
+
+在window下，下载文件：
 http://mirrors.jenkins.io/war-stable/2.204.1/jenkins.war
+
+scp将文件拷贝至centos
+scp jenkins.war root@192.168.0.106:/root
+
+移动至 tomcat的web目录
+mv jenkins.war /var/lib/tomcat/webapps
+cd /var/lib/tomcat/webapps
+ls
+
+执行tomcat命令生成 Jenkins 目录
+systemctl restart tomcat
+只需要把 Jenkins.war 放置在`/var/lib/tomcat/webapps`目录下，执行 `systemctl restart tomcat` ， 
+tomcat就会在该目录下 生成 Jenkins目录，
+
+wget下载文件和scp拷贝文件区别
+不过你执行此命令后，却发现没有生成jenkins目录，
+但是，如果我用wget 直接下载  jenkins.war 到 目录 `/var/lib/tomcat/webapps`，
+是可以生成目录jenkins；
+为什么呢，原来是 wget 下载下来的 文件安全上下文 比 scp过来的好，
+此时SELinux就不会阻止，可以生成目录，
+你可以通过把 SELinux安装验证关闭 (执行命令 setenforce 0)，再次执行以上命令，就会发现可以生成目录。
+
+解决SELinux 的 scp拷贝问题
+
+[root@localhost webapps]# cd /var/lib/tomcat/webapps
+[root@localhost webapps]# ls
+docs  examples  host-manager  jenkins.war  manager  ROOT  sample
+[root@localhost webapps]# ls -Zd .  查看当前目录安全上下文
+drwxrwxr-x. root tomcat system_u:object_r:tomcat_var_lib_t:s0 .
+[root@localhost webapps]# ls -Zd jenkins.war
+-rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 jenkins.war
+[root@localhost webapps]# semanage fcontext -a -t tomcat_var_lib_t jenkins.war
+[root@localhost webapps]# restorecon -Rv .   重启该目录安全上下文
+
+
+
+
+
+
+
+
 
 
 
