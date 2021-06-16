@@ -647,6 +647,10 @@ drwxrwxr-x. root tomcat system_u:object_r:tomcat_var_lib_t:s0 .
 
 方法二：
 直接拷贝进去，也可以，此时就避免了安全上下文
+cd /var/lib/tomcat/webapps
+rm -rf jenkins jenkins.war
+
+在客服端执行
 scp jenkins.war root@192.168.1.109:/var/lib/tomcat/webapps
 
 
