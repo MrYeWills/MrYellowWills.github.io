@@ -742,6 +742,53 @@ Jenkins的运行
 或者在tomcat这样的servlet容器里运行(上面演示的过程就是在tomcat容器里运行jenkins)
 
 
+安装 Jenkins
+如下选择任意一个进行安装，如果顺利，就算了，
+![](/image/linuxf/jenk5.png)
+
+也有可能不顺利：
+![](/image/linuxf/jenk6.png)
+
+此时就选择，不安装任何插件，把Jenkins安装好再说：
+![](/image/linuxf/jenk7.png)
+选择none，不安装任何插件
+![](/image/linuxf/jenk8.png)
+安装完成：
+![](/image/linuxf/jenk9.png)
+
+如果顺利，就选择安装推荐插件
+![](/image/linuxf/jk1.png)
+![](/image/linuxf/jk2.png)
+![](/image/linuxf/jk3.png)
+出现以下页面，说明Jenkins安装好：
+![](/image/linuxf/jk4.png)
+
+查看已经安装好的插件
+![](/image/linuxf/jk5.png)
+![](/image/linuxf/jk6.png)
+![](/image/linuxf/jk7.png)
+
+
+tomcat的 coyote web 服务器
+
+- tomcat的 coyote web 服务器的局限 
+
+coyote 是tomcat自带的轻量级web服务器；
+coyote web 服务器不能用于直接服务客户端连接
+它在处理静态文件时效率较低
+并且本身不支持 https 协议
+
+- 解决办法
+使用功能更强大的web服务器， 比如 apache 或 nginx 作为代理服务器， 将请求转发到 tomcat；
+web服务器将管理https连接、访问限制和静态页面；
+只有对java应用程序的请求会被转发到tomcat；
+
+
+web服务器和tomcat应用服务器之间的通信方式
+- 使用http协议，web服务器将会做一个http重定向到tomcat服务器；
+- 使用某些插件，例如仅适用于apache的mod_jk插件，该插件使用特殊协议在apache和tomcat之间进行通信；
+
+
 
 
 
