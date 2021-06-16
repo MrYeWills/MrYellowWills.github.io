@@ -633,6 +633,7 @@ wget下载文件和scp拷贝文件区别
 
 解决SELinux 的 scp拷贝问题
 
+方法一：
 [root@localhost webapps]# cd /var/lib/tomcat/webapps
 [root@localhost webapps]# ls
 docs  examples  host-manager  jenkins.war  manager  ROOT  sample
@@ -642,6 +643,103 @@ drwxrwxr-x. root tomcat system_u:object_r:tomcat_var_lib_t:s0 .
 -rw-r--r--. root root unconfined_u:object_r:admin_home_t:s0 jenkins.war
 [root@localhost webapps]# semanage fcontext -a -t tomcat_var_lib_t jenkins.war
 [root@localhost webapps]# restorecon -Rv .   重启该目录安全上下文
+
+
+方法二：
+直接拷贝进去，也可以，此时就避免了安全上下文
+scp jenkins.war root@192.168.1.109:/var/lib/tomcat/webapps
+
+
+访问依然报错：
+http://192.168.1.109:8080/jenkins
+
+Unable to create the home directory ‘/usr/share/tomcat/.jenkins’. This is most likely a permission problem.
+
+To change the home directory, use JENKINS_HOME environment variable or set the JENKINS_HOME system property. See Container-specific documentation for more details of how to do this.
+
+解决方法：
+ cd /usr/share/tomcat
+  mkdir .jenkins
+  chown tomcat:tomcat .jenkins
+  systemctl restart tomcat
+
+终极解决方法：
+如果还不能解决，就关闭安全校验：
+
+setenforce 0
+systemctl restart tomcat
+
+再次访问：
+http://192.168.1.109:8080/jenkins 
+就会跳转到：
+![](/image/linuxf/jenk1.png)
+
+复制图片中的地址 
+
+
+[root@localhost tomcat]# cat /usr/share/tomcat/.jenkins/secrets/initialAdminPassword
+41d9a966b9e6470e97a534d4c69ef517
+
+将上面的密码复制到上面页面上，点击继续：
+
+
+修改 Jenkins 目录
+如果你要修改 /usr/share/tomcat/.jenkins 目录，可以这样修改
+
+mkdir /var/lib/jenkins
+chown tomcat:tomcat /var/lib/jenkins
+vim /etc/tomcat/context.xml
+
+在 Context 内增加一行
+<Context>
+    <Environment name="JENKINS_HOME" value="/var/lib/jenkins" type="java.lang.String"/>
+</Context>
+
+systemctl restart tomcat
+
+http://192.168.1.109:8080/jenkins 
+![](/image/linuxf/jenk2.png)
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+a3aba81d552b42238184305d6687a020
+
+等待一分钟，出现页面
+
+![](/image/linuxf/jenk3.png)
+
+
+
+出现offline(离线)问题
+此时也可能出现offline 问题， 没有这个问题，可不用管。
+
+![](/image/linuxf/jenk4.png)
+
+这是证书问题，
+解决方法：
+vim /var/lib/jenkins/hudson.model.UpdateCenter.xml
+将其中
+ <url>https://updates.jenkins.io/update-center.json</url>
+ 改为 http，即为：
+  <url>http://updates.jenkins.io/update-center.json</url>
+
+systemctl restart tomcat
+
+再次刷新
+http://192.168.1.109:8080/jenkins 
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+a3aba81d552b42238184305d6687a020
+密码登录下即可
+
+
+Jenkins的运行
+可以直接运行 java -jar jenkins.war
+也可以修改端口运行 java -jar jenkins.war --httpPort=8081
+或者在tomcat这样的servlet容器里运行(上面演示的过程就是在tomcat容器里运行jenkins)
+
+
+
+
 
 
 
