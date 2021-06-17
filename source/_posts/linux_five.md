@@ -48,6 +48,9 @@ http://192.168.1.109/
 [root@localhost ~]# rpm -ql nginx  查看nginx相关配置
 /etc/nginx/nginx.conf  主配置文件
 /usr/share/nginx/html/index.html  上面http://192.168.1.109/浏览器上显示的页面
+/usr/lib/systemd/system/nginx.service  决定了 可使用systemctl start nginx 启动
+/usr/sbin/nginx 决定了 可使用nginx 直接启动
+
 ...
 
 
@@ -186,9 +189,182 @@ setenforce 1
 配置nginx
 [官网文档](http://nginx.org/en/docs/)
 
+ vim /etc/nginx/nginx.conf  主配置文件
+ 
+## nginx配置
+### 语法
+#### 全局变量
+没有用花括号包含的，就是全局变量，比如下面就是全局变量：
+user nginx;  
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+#### 花括号(局部变量 和 区块)
+如下，events的相关区块信息都定义在花括号内，花括号内定义的变量是局部变量：
+events {
+    worker_connections 1024;
+}
+
+#### 定义一个名字
+如下 
+http {
+  #log_format定义了日志的格式以 右侧一长串字符串格式形式，
+  #因为access_log也要用到这串长字符串，因此log_format给字符串定义了一个名字 main
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;   #main代表了上面的长字符串
+}
+
+#### include 导入
+相当于import，在配置中导入其他配置文件
+include /etc/nginx/conf.d/*.conf;
+
+#### 以分号结尾
+代码行以分号结尾，如：
+worker_connections 1024;
+
+### 含义
+
+#### server (虚拟主机 和 端口服务等)
+nginx 的 server 相当于 apache的虚拟主机：
+
+  server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+        }
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
+
+#### 全局变量含义介绍
+user nginx;  说明用户是nginx
+worker_processes auto; nginx 的cpu 核心数设置，单核或多核 ，可设置值为 auto ，也可为 1，2，3等
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+events { nginx是基于事件的
+    worker_connections 1024; 对应上面的worker_processes的，每个work进程可以有多少个连接
+}
+
+http {} 这里配置一些http协议
 
 
+#### nginx主配置文件
+以下是主配置文件，这里注释一些上面没有解释到的内容，
+```conf
+[root@localhost nginx]# cat /etc/nginx/nginx.conf
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
 
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
 
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
 
+events {
+    worker_connections 1024;
+}
 
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;  #nginx默认使用80端口,这是针对 ipv4
+        listen       [::]:80 default_server; #nginx默认使用80端口,这是针对 ipv6
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+        }
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
+
+# Settings for a TLS enabled server.   #nginx定义https
+#
+#    server {
+#        listen       443 ssl http2 default_server;
+#        listen       [::]:443 ssl http2 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+#
+#        ssl_certificate "/etc/pki/nginx/server.crt";
+#        ssl_certificate_key "/etc/pki/nginx/private/server.key";
+#        ssl_session_cache shared:SSL:1m;
+#        ssl_session_timeout  10m;
+#        ssl_ciphers HIGH:!aNULL:!MD5;
+#        ssl_prefer_server_ciphers on;
+#
+#        # Load configuration files for the default server block.
+#        include /etc/nginx/default.d/*.conf;
+#
+#        location / {
+#        }
+#
+#        error_page 404 /404.html;
+#        location = /404.html {
+#        }
+#
+#        error_page 500 502 503 504 /50x.html;
+#        location = /50x.html {
+#        }
+#    }
+
+}
+```
+
+### 配置https
+
+[root@localhost nginx]# nginx  启动nginx
+[root@localhost nginx]# systemctl start tomcat 启动jenkins
+
+页面即可访问：
+http://192.168.1.109/   nginx驱动页面
+http://192.168.1.109:8080/jenkins/  jenkins驱动页面
