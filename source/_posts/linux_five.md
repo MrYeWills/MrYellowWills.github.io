@@ -368,3 +368,25 @@ http {
 页面即可访问：
 http://192.168.1.109/   nginx驱动页面
 http://192.168.1.109:8080/jenkins/  jenkins驱动页面
+
+
+
+ upstream backend_jenkins {  upstream上游的意思，定义jenkins服务器后端
+        server 127.0.0.1:8080;
+    }
+  upstream backend_apache {  定义apache服务器后端
+      server 127.0.0.1:7080;
+  }
+
+
+  server {
+        server_name  www.linuxcoreaqq.com linuxcoreapp.com; 设置域名 ，使用空格隔开 可设置多个域名
+        location / {  location是域名后接的path，/ 代表 www.linuxcoreaqq.com 将重定向转接到 apache服务器
+                proxy_pass http://backend_apache;   #proxy_pass proxy是代理 pass是转接，代理到上面定义的backend_apache apache服务器
+        }
+
+        location /jenkins {   /jenkins 代表 www.linuxcoreaqq.com/jenkins 将重定向转接到jenkins服务器
+                proxy_pass http://backend_jenkins;   #代理到上面定义的backend_jenkins  jenkins服务器
+        }
+
+        }
