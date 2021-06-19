@@ -686,3 +686,128 @@ nameserver 202.106.0.20  #这是新增的 北京网通的DNS服务器地址
 如果还遇到问题
 据到服务器端，执行
 [root@localhost ~]# systemctl restart squid
+另外貌似每次服务器重启后， /etc/resolv.conf 配置文件就会被重制，要重新设置。
+
+
+
+squid 的配置文件
+主配置文件 /etc/squid/squid.conf
+筛选此文件的内容：grep -vE "^#|^$" /etc/squid/squid.conf   -E 是使用正常表达式 -v是取反  "^#|^$" "以井号开后|以结尾开头(空行)"
+
+[root@localhost ~]# grep -vE "^#|^$" /etc/squid/squid.conf
+acl localnet src 10.0.0.0/8     # RFC1918 possible internal network #localnet acl 指令
+acl localnet src 172.16.0.0/12  # RFC1918 possible internal network #localnet acl 指令
+acl localnet src 192.168.0.0/16 # RFC1918 possible internal network #localnet acl 指令
+acl localnet src fc00::/7       # RFC 4193 local private network range #localnet acl 指令，这是ipv6
+acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines #localnet acl 指令，这是ipv6
+acl SSL_ports port 443
+acl Safe_ports port 80          # http
+acl Safe_ports port 21          # ftp
+acl Safe_ports port 443         # https
+acl Safe_ports port 70          # gopher
+acl Safe_ports port 210         # wais
+acl Safe_ports port 1025-65535  # unregistered ports
+acl Safe_ports port 280         # http-mgmt
+acl Safe_ports port 488         # gss-http
+acl Safe_ports port 591         # filemaker
+acl Safe_ports port 777         # multiling http
+acl CONNECT method CONNECT
+http_access deny !Safe_ports  #拒绝非Safe_ports的端口
+http_access deny CONNECT !SSL_ports
+http_access allow localhost manager
+http_access deny manager
+http_access allow localnet
+http_access allow localhost
+http_access deny all  #http_access 的指令的结尾最好用 deny结尾，跟 switch breack一样
+http_port 3128
+coredump_dir /var/spool/squid
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern ^gopher:        1440    0%      1440
+refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
+refresh_pattern .               0       20%     4320
+[root@localhost ~]#
+
+
+http_port 指令
+指定squid 监听的地址和端口
+默认情况下，squid监听3128端口上所有的网络接口；
+可以配置多个http_port指令，以便squid监听多个地址或端口
+
+acl 指令
+access control lists缩写表示 访问控制列表
+ACL是访问控制规则，这些规则之后将被 http_access使用
+用于根据这些规则允许或禁止连接
+
+下面是acl指令
+ acl localnet src 10.0.0.0/8     # RFC1918 possible internal network
+
+第二个字段是ACL的名称
+具有相同名称的多个acl指令将叠加每个指令的条件
+
+第三个字段是ACL的类型
+最重要的是src 来源，
+另外还有 dst 目的地， port 端口， time 时间；
+
+第四个字段是acl的值
+根据acl的类型，值可以是网络地址，端口 等等；
+
+
+
+http_access指令
+http_access指令后接 allow 或 deny
+用于控制对代理缓存的访问，拒绝或允许。
+使用特点，建议以deny结尾，用！表示非。
+http_access deny !Safe_ports  #拒绝非Safe_ports的端口
+http_access deny all  #httpd 的指令的结尾最好用 deny结尾，跟 switch breack一样
+
+### demo测试
+
+#### 允许指定ip的客户机访问
+[root@localhost ~]# vim /etc/squid/squid.conf
+在顶部添加：
+只允许 来自 192.168.1.107 ip 的客户端访问
+acl client src 192.168.1.107
+http_access allow client
+http_access deny all
+
+
+[root@localhost ~]# systemctl restart squid
+
+因为客户机 非 192.168.1.107, 因此挂掉了。
+![](/image/linuxfi/demo1.png)
+
+
+#### 禁止访问指定关键字url
+禁止url包含taobao的页面访问，
+acl deny_keyword url_regex -i taobao   url_regex 类型是url， 使用正则表达式匹配规则 -i表示忽略大小写 
+http_access deny deny_keyword
+
+![](/image/linuxfi/tao.png)
+
+#### 禁止特定网站
+acl deny_url url_regex www.imooc.com   url_regex 类型是url， 使用正则表达式匹配规则 禁止www.imooc.com 访问
+http_access deny deny_url
+
+#### 禁止下载指定类型的文件
+acl deny_file urlpath_regex -i \.rar$ \.avi$ \.zip$ \.exe$   urlpath_regex 类型是urlpath， 禁止文件下载
+http_access deny deny_file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
