@@ -1,6 +1,6 @@
 ---
 title: d3的三种模式 及 append、data、selectAll
-date: {{ date }}
+date: 2020/5/1
 tags: [d3.js]
 categories: 
 - 图形化

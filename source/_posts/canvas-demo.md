@@ -1,6 +1,6 @@
 ---
 title: canvas demo
-date: {{ date }}
+date: 2020/5/1
 tags: [canvas]
 categories: 
 - 图形化

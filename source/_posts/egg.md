@@ -1,6 +1,6 @@
 ---
 title: egg笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [egg]
 categories: 
 - 后端

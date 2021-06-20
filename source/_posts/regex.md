@@ -1,6 +1,6 @@
 ---
 title: 正则表达式
-date: {{ date }}
+date: 2020/5/1
 tags: [正则]
 categories: 
 - 前端

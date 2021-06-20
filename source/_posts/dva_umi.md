@@ -1,6 +1,6 @@
 ---
 title: dva与umi笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [dva, umi]
 categories:
 - react

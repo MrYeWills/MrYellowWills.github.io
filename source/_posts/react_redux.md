@@ -1,6 +1,6 @@
 ---
 title: react-redux笔记
-date: {{ date }}
+date: 2020/5/1
 tags: react react-redux
 categories: 
 - react

@@ -1,6 +1,6 @@
 ---
 title: 决定房价的因素
-date: {{ date }}
+date: 2020/5/1
 categories: 
 - 技术之外
 ---

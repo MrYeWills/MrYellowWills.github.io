@@ -1,6 +1,6 @@
 ---
 title: npm包开发
-date: {{ date }}
+date: 2020/5/1
 tags: npm
 categories: 
 - 前端工具

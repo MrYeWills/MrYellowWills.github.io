@@ -1,6 +1,6 @@
 ---
 title: 前端以外笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [前端以外]
 categories:
 - 前端以外

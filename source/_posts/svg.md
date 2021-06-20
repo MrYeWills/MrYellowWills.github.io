@@ -1,6 +1,6 @@
 ---
 title: svg笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [svg]
 categories: 
 - 图形化

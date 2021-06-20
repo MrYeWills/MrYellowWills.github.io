@@ -1,6 +1,6 @@
 ---
 title: css知识点汇
-date: {{ date }}
+date: 2020/5/1
 tags: css
 categories: 
 - css

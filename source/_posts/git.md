@@ -1,6 +1,6 @@
 ---
 title: git笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [git]
 categories: 
 - git

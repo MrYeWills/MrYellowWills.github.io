@@ -1,6 +1,6 @@
 ---
 title: React Router
-date: {{ date }}
+date: 2020/5/1
 tags: react
 categories: 
 - react

@@ -1,6 +1,6 @@
 ---
 title: npm script
-date: {{ date }}
+date: 2020/5/1
 tags: npm-script
 categories: 
 - 前端工具

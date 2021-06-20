@@ -1,6 +1,6 @@
 ---
 title: nginx代理
-date: {{ date }}
+date: 2021/6/21
 tags: nginx
 categories: 
 - 前端工具

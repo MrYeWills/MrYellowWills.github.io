@@ -1,6 +1,6 @@
 ---
 title: EnForm动态表单的使用
-date: {{ date }}
+date: 2020/5/1
 tags: [form, react]
 categories: 
 - react

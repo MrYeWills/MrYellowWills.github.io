@@ -1,6 +1,6 @@
 ---
 title: css之移动开发
-date: {{ date }}
+date: 2020/5/1
 tags: [屏幕分辨率, 物理像素, css像素, ppi, dpr, 多倍图的响应式设计, 视口]
 categories: 
 - css

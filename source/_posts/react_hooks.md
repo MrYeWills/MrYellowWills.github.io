@@ -1,6 +1,6 @@
 ---
 title: React hooks 笔记
-date: {{ date }}
+date: 2020/5/1
 tags: react hooks
 categories: 
 - react

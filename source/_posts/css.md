@@ -1,6 +1,6 @@
 ---
 title: css笔记
-date: {{ date }}
+date: 2020/5/1
 tags: css
 categories: 
 - css

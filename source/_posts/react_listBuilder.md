@@ -1,6 +1,6 @@
 ---
 title: ListBuilder引发的React暗黑思考
-date: {{ date }}
+date: 2020/5/1
 tags: react
 categories: 
 - react

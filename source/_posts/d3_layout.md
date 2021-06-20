@@ -1,6 +1,6 @@
 ---
 title: d3图形、demo讲解、使用经验
-date: {{ date }}
+date: 2020/5/1
 tags: [d3.js]
 categories: 
 - 图形化

@@ -1,6 +1,6 @@
 ---
 title: html笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [html5, html]
 categories: 
 - html

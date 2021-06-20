@@ -1,6 +1,6 @@
 ---
 title: js设计模式上(面向对象、闭包、命名空间)
-date: {{ date }}
+date: 2020/5/1
 tags: [js设计模式, 面向对象, 闭包, 命名空间]
 categories: 
 - js

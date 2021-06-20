@@ -1,6 +1,6 @@
 ---
 title: css之布局
-date: {{ date }}
+date: 2020/5/1
 tags: [布局的技术手段, 响应式布局(设计), 固定布局(设计), 弹性布局(设计), 流动布局(设计), 媒体查询, flex]
 categories: 
 - css

@@ -1,6 +1,6 @@
 ---
 title: next form 封装
-date: {{ date }}
+date: 2020/5/1
 tags: [form, react]
 categories: 
 - react

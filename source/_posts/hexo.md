@@ -1,6 +1,6 @@
 ---
 title: hexo笔记
-date: {{ date }}
+date: 2018/10/1
 tags: hexo
 categories: 
 - 前端工具

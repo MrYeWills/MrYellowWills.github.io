@@ -1,6 +1,6 @@
 ---
 title: mongoose 与 mongodb笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [mongoose, mongodb]
 categories: 
 - 后端

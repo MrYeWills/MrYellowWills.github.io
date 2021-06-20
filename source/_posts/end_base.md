@@ -1,6 +1,6 @@
 ---
 title: 后端笔记
-date: {{ date }}
+date: 2020/5/1
 tags: [node, koa, express, egg]
 categories: 
 - 后端

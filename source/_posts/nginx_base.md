@@ -1,6 +1,6 @@
 ---
 title: nginx笔记
-date: 2021/4/15
+date: 2021/6/22
 tags: nginx
 categories: 
 - 前端工具

@@ -1,6 +1,6 @@
 ---
 title: vertical-align、行盒子、baseline
-date: {{ date }}
+date: 2020/5/1
 tags: [css, vertical-align, baseline, 行盒子, x-height, line-height, 半铅空]
 categories: 
 - css

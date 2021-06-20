@@ -1,6 +1,6 @@
 ---
 title: mac和linux笔记
-date: {{ date }}
+date: 2020/5/1
 tags: mac
 categories: 
 - mac

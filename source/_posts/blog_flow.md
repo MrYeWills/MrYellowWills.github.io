@@ -1,6 +1,6 @@
 ---
 title: 博客持续集成的实现
-date: {{ date }}
+date: 2020/10/1
 tags: travis
 categories: 
 - 前端工具
