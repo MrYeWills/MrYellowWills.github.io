@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    docker: #执行容器
+      - image: circleci/node:12.8.0 #依赖环境
+    branches: #分支
+      only:
+      - blog_code
+    # Steps are a list of commands to run inside the docker container above.
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - '0a:31:77:85:ff:70:94:a3:04:90:72:c8:e9:73:6e:f9'  # 这个就是添加ssh key生成的指纹id，将其复制到这里即可
+      - checkout # 从githun拉去代码
+      # 注意 run 下面定义程序时，要严格遵守 空格 缩进
+      - run:
+          name: Install
+          command: npm install
+
+      - run:
+          name: Install Hexo CLI
+          command: |
+            sudo npm install hexo-cli -g
+      
+      - run:
+          name: HexoGenerate
+          command: hexo g
+    
+      - run:
+          name: AuthSet
+          command: chmod +x ./circleci-deploy.sh
+          
+      - run:
+          name: Deploy
+          command: ./circleci-deploy.sh
+      

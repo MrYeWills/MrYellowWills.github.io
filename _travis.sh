@@ -43,7 +43,8 @@ EOF
   git config user.name "yeWills"
   git config user.email "601661706@qq.com"
   git add .
-  git commit -m "Update Blog By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  #https://juejin.cn/post/6844904001218019342  handle error
+  git commit -m "Update Blog By TravisCI With Build $TRAVIS_BUILD_NUMBER [ci skip]"
   # Github Pages
   git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
