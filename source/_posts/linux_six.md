@@ -28,17 +28,18 @@ docker-ce 是社区版，免费的，一般用 docker-ce社区版。
 
 #### 安装
 下面安装步骤和使用全部[参考官网](https://docs.docker.com/engine/install/centos/)
-
+```s
  sudo yum install -y yum-utils
- 设置稳定仓库
+ #设置稳定仓库
  sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
+```
 
 ![](/image/linuxs/ins.png)
-
-yum install docker-ce docker-ce-cli containerd.io  docker-ce是免费版本
-
+```s
+yum install docker-ce docker-ce-cli containerd.io  #docker-ce是免费版本
+```
 至此安装完毕
 
 #### 使用一： hello-world
@@ -49,31 +50,29 @@ yum install docker-ce docker-ce-cli containerd.io  docker-ce是免费版本
 #### 使用二：安装和使用centos
 涉及到比较多，单独列出说明:《安装和使用centos》
 
-
-
-#### 异常
+#### 异常处理
+```s
 [root@localhost ~]# docker run -it centos bash
 Unable to find image 'centos:latest' locally
 docker: Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers).
 See 'docker run --help'.
-
+```
 如果遇到这样的异常，请多尝试几次
-
-
 
 ### 安装和使用centos
 #### 安装和使用
 `docker run -it centos bash` 这个命令是使用docker进入 centos 的bash终端；
 docker会首先从本地查看是否有centos，如果无，就会自动安装centos；
 然后进入centos 的bash终端
+```s
 [root@localhost ~]# docker run -it centos bash
 Unable to find image 'centos:latest' locally
 latest: Pulling from library/centos
 7a0437f04f83: Pull complete
 Digest: sha256:5528e8b1b1719d34604c87e11dcd1c0a20bedf46e83b5632cdeac91b8c04efc1
 Status: Downloaded newer image for centos:latest
-注意这里以及变成root@30c93c21d6d0 与上一步centos主机root@localhost
-这说明安装完后，默认进入centos终端，且使用root用户 
+#注意这里以及变成root@30c93c21d6d0 与上一步centos主机root@localhost
+#这说明安装完后，默认进入centos终端，且使用root用户 
 [root@30c93c21d6d0 /]# ls  
 bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 [root@30c93c21d6d0 /]# pwd
@@ -82,17 +81,19 @@ bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  s
 exit
 [root@localhost ~]# pwd
 /root
-退出docker centos系统后，仍然可以使用docker使用docker centos系统内的可运行程序，
-比如 docker centos系统内的echo 程序输出语句
+#退出docker centos系统后，仍然可以使用docker使用docker centos系统内的可运行程序，
+#比如 docker centos系统内的echo 程序输出语句
 [root@localhost ~]# docker run -it centos /bin/echo "hollo docker.."
 hollo docker..
 [root@localhost ~]#
+```
 
 #### 退出docker centos系统后仍可使用
 退出docker centos系统后，仍然可以使用docker使用docker centos系统内的可运行程序，见上面《安装和使用》的命令行
 
 
 ### 其他介绍
+```s
 [root@localhost ~]# docker images  #docker安装的镜像
 REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 hello-world   latest    d1165f221234   3 months ago   13.3kB
@@ -120,18 +121,21 @@ Options:
   -q, --quiet           Only display container IDs
   -s, --size            Display total file sizes
 [root@localhost ~]#
+```
 
+## LNMP架构安装使用
 
-LNMP架构
-
-Linux + nginx + mysql + （mariaDB） + php 的开发架构
+### LNMP架构介绍
+LNMP架构 ： Linux + nginx + mysql + （mariaDB） + php 的开发架构
+类似的有LAMP架构：
 LAMP架构 : Linux + apache + mysql + （mariaDB） + php 的开发架构
+
 php 与 apache 天生就搭配，但 nginx与php通讯必须要安装 FastCGI协议；
 
 
 Discuz！ 一个国内的论坛 BBS 软件系统
 
-FastCGI协议
+### FastCGI协议 与 php-fpm
 
 FastCGI协议是可以让nginx与php进行通讯的一个协议
 php-fpm就是一个这样的协议：
@@ -143,7 +147,7 @@ php-fpm就是一个这样的协议：
 
 #### 安装
 
-
+```s
 [root@localhost ~]# yum install php-fpm
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
@@ -160,11 +164,11 @@ Resolving Dependencies
 ---> Package php-common.x86_64 0:5.4.16-48.el7 will be installed
 --> Processing Conflict: php56w-common-5.6.40-1.w7.x86_64 conflicts php-common < 5.6
 --> Finished Dependency Resolution
-因为之前升级了php版本到 php56，与php-fpm 冲突
+#因为之前升级了php版本到 php56，与php-fpm 冲突
 Error: php56w-common conflicts with php-common-5.4.16-48.el7.x86_64
  You could try using --skip-broken to work around the problem
  You could try running: rpm -Va --nofiles --nodigest
-
+```
 
 #### 安装异常
 如上因为之前升级了php版本到 php56，与php-fpm 冲突，
@@ -172,24 +176,29 @@ Error: php56w-common conflicts with php-common-5.4.16-48.el7.x86_64
 
 #### 解决之道
 当然你也可以卸载php56，安装php低版本，不过不太好，直接安装php56w-fpm
-
+```s
 [root@localhost ~]# yum install php-fpm
 #安装完后，会发现nginx目录下下多了下面文件
 [root@localhost ~]# ls /etc/nginx/
  fastcgi.conf.default uwsgi_params fastcgi_params uwsgi_params.default
 ...
+```
 
 #### 安装完后继续使用 php-fpm
 虽然安装的是php56w-fpm，但安装好后，使用时，请使用php-fpm
+```s
 systemctl start php-fpm
 systemctl enable php-fpm
+```
 
+### 配置nginx和php通讯
 
-#### 配置nginx和php通讯
+#### 配置
+```s
 vim /etc/nginx/nginx.conf
 
  location / {
-              index index.html index.htm index.php;  网页的文件可以是这几种；
+              index index.html index.htm index.php;  #网页的文件可以是这几种类型；
         }
 
 #再次写个location，用来解析php文件， ~表示使用正则表达式， 凡是匹配到php的文件时
@@ -200,9 +209,9 @@ vim /etc/nginx/nginx.conf
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;  
           include fastcgi_params;
           }
+```
 
-
-访问页面
+#### 访问页面
 https://192.168.1.109/
 ![](/image/linuxs/ok1.png)
 https://192.168.1.109/index.php
@@ -210,10 +219,10 @@ https://192.168.1.109/index.php
 ![](/image/linuxs/ok2.png)
 
 
-调试技巧
-nginx -t 可以调试配置文件 /etc/nginx/nginx.conf 哪里哪一行出错，语法出错。
+#### 调试技巧
+nginx -t 可以调试配置文件 `/etc/nginx/nginx.conf` 哪里哪一行出错，语法出错。
 
-完整配置
+#### 完整配置
 ```s
 [root@localhost html]# cat /etc/nginx/nginx.conf
 # For more information on configuration, see:
@@ -330,7 +339,9 @@ http {
 [root@localhost html]#
 ```
 
-Discuz论坛搭建
+### Discuz论坛搭建(LNMP架构的实践)
+
+#### 参考官网安装
 Discuz论坛 就是基于LNMP架构
 Linux + nginx + mysql + （mariaDB） + php 的开发架构
 
@@ -343,9 +354,12 @@ Linux + nginx + mysql + （mariaDB） + php 的开发架构
 ![](/image/linuxs/doc23.png)
 
 执行命令
+```s
 $ scp Discuz_X3.4_SC_UTF8_20210520.zip root@192.168.1.109:/usr/share/nginx/html  这是nginx文档目录
+```
 
-在服务端执行以下命令
+#### 在服务端执行以下命令
+```s
  cd /usr/share/nginx/html/
  unzip Discuz_X3.4_SC_UTF8_20210520.zip
 [root@localhost html]# ls
@@ -359,22 +373,27 @@ api        connect.php      favicon.ico  icons      LICENSE     nginx-logo.png  
 api.php    crossdomain.xml  forum.php    img        m           plugin.php      readme         source      uc_server
 archiver   data             group.php    index.php  member.php  portal.php      readme.html    static      upload
 [root@localhost html]# chmod -Rf 777 .   设置权限为777 可读写
+```
 
-使用Discuz自带的页面安装程序 install
+#### 使用Discuz自带的页面安装程序 install
 
 页面访问 https://192.168.1.109/install
 
 ![](/image/linuxs/doc1.png)
 
-不可读写的问题
+#### 不可读写的问题
 是权限的问题
 ![](/image/linuxs/doc2.png)
-解决方法一：
+解决方法一(不推荐，此方法可能导致开机异常)：
+```s
  semanage fcontext -a -t httpd_sys_rw_content_t "(/.*)?"
  restorecon -Rv .
+```
 
-终极解决方法:
+终极解决方法(推荐):
+```s
 semanage 0
+```
 
 再次刷新页面：
 ![](/image/linuxs/ok3.png)
@@ -382,9 +401,9 @@ semanage 0
 点击下一步
 ![](/image/linuxs/doc3.png)
 
-
+```s
 [root@localhost html]# mysql -u root -p  #下图中的root就是根据你自己安装在centos上的mysql来的
-
+```
 ![](/image/linuxs/doc4.png)
 ![](/image/linuxs/doc5.png)
 ![](/image/linuxs/doc6.png)
