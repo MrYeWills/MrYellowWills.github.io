@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-css_grid" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-css_grid"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">grid布局</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-08-20 00:00:00" datetime="2020-08-20T00:00:00.000Z" itemprop="datePublished">2020-08-20</time>
+            <time class="post-time" title="2020-08-20 00:00:00" datetime="2020-08-20T00:00:00.000Z"  itemprop="datePublished">2020-08-20</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
@@ -206,23 +207,23 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             
             <h2 id="网格项上的属性"><a href="#网格项上的属性" class="headerlink" title="网格项上的属性"></a>网格项上的属性</h2><h3 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel="grid布局" href="/image/grid/grid-area.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/grid-area.jpg" alt="" title="" class=""></a>
+                <a rel=grid布局 href="/image/grid/grid-area.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/grid-area.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="等效写法"><a href="#等效写法" class="headerlink" title="等效写法"></a>等效写法</h4><figure class="image-box">
-                <a rel="grid布局" href="/image/grid/area.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/area.jpg" alt="" title="" class=""></a>
+                <a rel=grid布局 href="/image/grid/area.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/area.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="justify-content的start-stretch区别"><a href="#justify-content的start-stretch区别" class="headerlink" title="justify-content的start stretch区别"></a>justify-content的start stretch区别</h3><p>在固定宽度下，没有区别：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 固定宽度下，无区别，中间元素宽度始终为150px */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:150px</span> 150<span class="selector-tag">px</span> 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:start</span>／<span class="selector-tag">stretch</span>;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中间的元素能有多窄就有多窄 */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:150px</span> <span class="selector-tag">auto</span> 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:start</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中间的元素有多宽就有多宽 */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:150px</span> <span class="selector-tag">auto</span> 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:stretch</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h3><h4 id="等效写法-1"><a href="#等效写法-1" class="headerlink" title="等效写法"></a>等效写法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>:<span class="built_in">repeat</span>(3, 20px [clo-start]) <span class="number">5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h3><h4 id="等效写法-1"><a href="#等效写法-1" class="headerlink" title="等效写法"></a>等效写法</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>:<span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">20px</span> [clo-start]) <span class="number">5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>:<span class="number">20px</span> [col-start] <span class="number">20px</span> [col-start] <span class="number">20px</span> [col-start] <span class="number">5%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="auto-fill"><a href="#auto-fill" class="headerlink" title="auto-fill"></a>auto-fill</h4><p>auto-fill不能跟具体的数值一起，否则将不起效果。一般与minmax使用，如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>:<span class="built_in">repeat</span>(auto-fill, minmax(100px, 150px));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="auto-fill"><a href="#auto-fill" class="headerlink" title="auto-fill"></a>auto-fill</h4><p>auto-fill不能跟具体的数值一起，否则将不起效果。一般与minmax使用，如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>:<span class="built_in">repeat</span>(auto-fill, minmax(<span class="number">100px</span>, <span class="number">150px</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>auto-fit与auto-fill类似。</p>
 <h3 id="fit-content"><a href="#fit-content" class="headerlink" title="fit-content"></a>fit-content</h3><p>fit-content 给定网格项定义的宽度，但网格项按照自身的宽度展示。<br>这个属性有个作用是，在多行中，保证定义的列宽度是一致的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:100px</span> <span class="selector-tag">fit-content</span>(200<span class="selector-tag">px</span>) <span class="selector-tag">fit-content</span>(300<span class="selector-tag">px</span>) 10% 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br></pre></td></tr></table></figure></p>
 <figure class="image-box">
-                <a rel="grid布局" href="/image/grid/fit.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/fit.jpg" alt="" title="" class=""></a>
+                <a rel=grid布局 href="/image/grid/fit.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/fit.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="合并写法的改名"><a href="#合并写法的改名" class="headerlink" title="合并写法的改名"></a>合并写法的改名</h3><h4 id="place-content"><a href="#place-content" class="headerlink" title="place-content"></a>place-content</h4><p>这个是合并了 justify-content align-content 的写法。<br>隐式轨道</p>
@@ -233,7 +234,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.335Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.406Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -331,7 +332,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#网格项上的属性"><span class="post-toc-number">1.</span> <span class="post-toc-text">网格项上的属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-area"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">grid-area</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#等效写法"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">等效写法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#justify-content的start-stretch区别"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">justify-content的start stretch区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#repeat"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">repeat()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#等效写法-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">等效写法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#auto-fill"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">auto-fill</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fit-content"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">fit-content</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并写法的改名"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">合并写法的改名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#place-content"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">place-content</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -349,7 +350,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

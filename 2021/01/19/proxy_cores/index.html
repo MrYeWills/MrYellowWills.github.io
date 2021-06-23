@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-proxy_cores" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-proxy_cores"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">代理 跨域 host代理</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-01-19 00:00:00" datetime="2021-01-19T00:00:00.000Z" itemprop="datePublished">2021-01-19</time>
+            <time class="post-time" title="2021-01-19 00:00:00" datetime="2021-01-19T00:00:00.000Z"  itemprop="datePublished">2021-01-19</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
@@ -218,35 +219,35 @@
 </ul>
 <p>同时满足上面三点，才涉及跨域问题。<br>以上前两点好理解，第三点 什么是 XHR(XMLHttpRequest)请求？<br>单独一小节讲解。<br>一般用ajax 或 fetch 或 axios 请求的都是xhr请求，这些请求是有跨域问题。<br>而 script标签 img标签内的src 都不是xhr请求，就不会有跨域问题。</p>
 <h4 id="XHR-XMLHttpRequest-请求"><a href="#XHR-XMLHttpRequest-请求" class="headerlink" title="XHR(XMLHttpRequest)请求"></a>XHR(XMLHttpRequest)请求</h4><p>什么是xhr请求，简单理解就是凡事通过ajax请求的，都是xhr请求， 比如ajax 或 fetch 或 axios请求；<br>与此相对的就是 script标签 img标签内的src 都不是xhr请求；<br>通过控制台，可以看请求是否为 xhr请求：<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/xhr.png" title="undefined" data-fancybox="images"><img src="/image/proxy/xhr.png" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/xhr.png" title="undefined" data-fancybox="images"><img src="/image/proxy/xhr.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>更多详细参考《jsonp》</p>
 <h4 id="经典的跨域解决方式示意图"><a href="#经典的跨域解决方式示意图" class="headerlink" title="经典的跨域解决方式示意图"></a>经典的跨域解决方式示意图</h4><p>左侧是一个域名下的请求，右侧是另外一个域名下的客户端请求；<br>左侧客户端要请求右侧服务器，产生了跨域问题：<br>解决的方式有下面两种，不过都是基于中间层的处理，而不用动业务代码，保证了业务代码的纯粹性，从侧面说明了中间层的重要性。<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/controler.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/controler.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/controler.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/controler.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="跨域／普通-请求头区别"><a href="#跨域／普通-请求头区别" class="headerlink" title="跨域／普通 请求头区别"></a>跨域／普通 请求头区别</h4><p>以下是8081域名下，请求8080域名下的test/get1接口，是一个跨域请求，<br>当浏览器发现是跨域请求时，会在请求头上标识一个origin，如下图，普通请求头是没有origin字段的：<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin1.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin1.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin1.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin1.jpg" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin2.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin2.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin2.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin2.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <p>如果浏览器识别出是跨域请求，当接口响应时，浏览器会去读取响应头信息，看有没有跨域信息，如果没有，就报跨域异常。<br>一般跨域信息有如下：<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin.jpg" alt title class></a>
                 <p></p>
             </figure><br>如果有上面这些信息，就允许跨域正常响应客户端。</p>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ul>
 <li><p>下面是正常的跨域请求，并且被浏览器正常响应：</p>
 <figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin3.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin3.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin3.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin3.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
 <li><p>下面是正常非跨域请求，以此与上面跨域请求做对比：</p>
 <figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin4.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin4.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin4.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin4.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
@@ -256,7 +257,7 @@
 <li>Access to XMLHttpRequest :侧面证明了跨域只针对 xhr(XMLHttpRequest)请求</li>
 <li>blocked by CORS policy : CORS是一个W3C标准,全称是”跨域资源共享”</li>
 <li>Response to preflight request doesn’t pass access control check ： 预检请求(preflight request)得到的响应没有通过权限控制审核,是不是侧面证明了 跨域请求可能会发送两次，一次预检请求，一次正式请求，如下就是发送了两次：<br>关于请求发几次，会单独讲解<figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin5.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin5.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin5.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin5.jpg" alt title class></a>
                 <p></p>
             </figure></li>
 <li>No ‘Access-Control-Allow-Origin’ header is present on the requested resource. ： 请求的资源上(服务器上)没有设置’Access-Control-Allow-Origin’响应头， 侧面说明服务器上设置 ‘Access-Control-Allow-Origin’来解除跨域。</li>
@@ -265,7 +266,7 @@
 <h4 id="只针对xhr-XMLHttpRequest-请求"><a href="#只针对xhr-XMLHttpRequest-请求" class="headerlink" title="只针对xhr(XMLHttpRequest)请求"></a>只针对xhr(XMLHttpRequest)请求</h4><p>如上。</p>
 <h4 id="套路是Access-Control-Allow-Origin"><a href="#套路是Access-Control-Allow-Origin" class="headerlink" title="套路是Access-Control-Allow-Origin"></a>套路是Access-Control-Allow-Origin</h4><p>如上。</p>
 <h4 id="预检请求-preflight-request"><a href="#预检请求-preflight-request" class="headerlink" title="预检请求(preflight request)"></a>预检请求(preflight request)</h4><p>跨域请求可能会发两次<br>可能会发一次预检请求，一次正式请求<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin5.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin5.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin5.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin5.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="请求可能会发两次"><a href="#请求可能会发两次" class="headerlink" title="请求可能会发两次"></a>请求可能会发两次</h4><p>如上。是否会发两次，下面单独说明。</p>
@@ -287,7 +288,7 @@
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>简单跨域请求只发一次，非简单请求会发两次；<br>但非简单请求也不是一定要发两次，如果做了预检缓存，下一次发起跨域请求时，可能只需发送一次。</p>
 <h3 id="后端解决跨域的套路"><a href="#后端解决跨域的套路" class="headerlink" title="后端解决跨域的套路"></a>后端解决跨域的套路</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>后端解决跨域一般是设置 这两个响应头：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置响应头，告诉浏览器，允许域名为http://localhost:8081的请求跨域</span></span><br><span class="line">res.addHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"http://localhost:8081"</span>);</span><br><span class="line"><span class="comment">//设置响应头，告诉浏览器，允许get请求方式跨域</span></span><br><span class="line">res.addHeader(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"GET"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>控制台显示如下：<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/origin.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/origin.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/origin.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <p>上面是针对一个域名下的请求，允许跨域，如果要针对所有域名，可设置为如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res.addHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">res.addHeader(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"*"</span>);</span><br></pre></td></tr></table></figure></p>
@@ -305,7 +306,7 @@
 <h4 id="callback关键字"><a href="#callback关键字" class="headerlink" title="callback关键字"></a>callback关键字</h4><p>参考上面</p>
 <h4 id="服务端约定好后，callback关键字可以任意改"><a href="#服务端约定好后，callback关键字可以任意改" class="headerlink" title="服务端约定好后，callback关键字可以任意改"></a>服务端约定好后，callback关键字可以任意改</h4><p>如题</p>
 <h3 id="jquery-ajax-的jsonp-原理"><a href="#jquery-ajax-的jsonp-原理" class="headerlink" title="jquery ajax 的jsonp 原理"></a>jquery ajax 的jsonp 原理</h3><h4 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h4><p>jquery的ajax方法支持jsonp，其jquery底层原理是 创建一个script标签，然后在url上加上callback关键字。<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/cache.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/cache.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/cache.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/cache.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="ajax-jsonp调用"><a href="#ajax-jsonp调用" class="headerlink" title="ajax jsonp调用"></a>ajax jsonp调用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result;</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  url:base+<span class="string">'/test'</span>,</span><br><span class="line">  dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">  jsonp:<span class="string">'callback'</span>,<span class="comment">//jsonp默认关键字是callback，也可以改为callback123任意名字</span></span><br><span class="line">  success:<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span><br><span class="line">    result = json</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -315,7 +316,7 @@
 <h4 id="用jq-ajax-的jsonp请求与普通请求不同"><a href="#用jq-ajax-的jsonp请求与普通请求不同" class="headerlink" title="用jq ajax 的jsonp请求与普通请求不同"></a>用jq ajax 的jsonp请求与普通请求不同</h4><ul>
 <li><p>请求type不同<br>普通请求是xhr，jsonp 是script请求；</p>
 <figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/jsonp.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/jsonp.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/jsonp.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/jsonp.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
@@ -323,13 +324,13 @@
 </li>
 <li><p>url上会多callback<br>如上图，服务端返回时，是用callback入参名作为函数返回js，如下图：</p>
 <figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/jsonp2.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/jsonp2.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/jsonp2.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/jsonp2.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
 </ul>
 <h4 id="彩蛋：jq的jsonp避免缓存做法"><a href="#彩蛋：jq的jsonp避免缓存做法" class="headerlink" title="彩蛋：jq的jsonp避免缓存做法"></a>彩蛋：jq的jsonp避免缓存做法</h4><p>用jq 的ajax jsonp，默认url还会有一个随机数，这是为了避免请求被缓存，可不用。<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/cache.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/cache.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/cache.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/cache.jpg" alt title class></a>
                 <p></p>
             </figure><br>可以设置需要缓存，如下，再次jsonp请求时，就不会有随机数了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result;</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  url:base+<span class="string">'/test'</span>,</span><br><span class="line">  dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">  cache:<span class="literal">true</span>,</span><br><span class="line">  success:<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span><br><span class="line">    result = json</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h3 id="jsonp的弊端"><a href="#jsonp的弊端" class="headerlink" title="jsonp的弊端"></a>jsonp的弊端</h3><ul>
@@ -339,7 +340,7 @@
 </ul>
 <h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><p>一些http的知识，暂时统计在这里</p>
 <h4 id="Access-Control-Allow-Headers"><a href="#Access-Control-Allow-Headers" class="headerlink" title="Access-Control-Allow-Headers"></a>Access-Control-Allow-Headers</h4><p>说明请求需要询问服务器后台是否允许这个content-type头;<br><figure class="image-box">
-                <a rel="代理" 跨域="" host代理="" href="/image/proxy/http.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/http.jpg" alt="" title="" class=""></a>
+                <a rel=代理 跨域 host代理 href="/image/proxy/http.jpg" title="undefined" data-fancybox="images"><img src="/image/proxy/http.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 
@@ -349,7 +350,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.343Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -444,10 +445,10 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack代理"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack代理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同域名且同端口才会被匹配"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">同域名且同端口才会被匹配</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#proxy只要任意一处匹配到即可"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">proxy只要任意一处匹配到即可</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给webpack代理到的域名配置host代理"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">给webpack代理到的域名配置host代理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跨域"><span class="post-toc-number">2.</span> <span class="post-toc-text">跨域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#跨域的原因"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">跨域的原因</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XHR-XMLHttpRequest-请求"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">XHR(XMLHttpRequest)请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#经典的跨域解决方式示意图"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">经典的跨域解决方式示意图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#跨域／普通-请求头区别"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">跨域／普通 请求头区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解读跨域异常信息"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解读跨域异常信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#只针对xhr-XMLHttpRequest-请求"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">只针对xhr(XMLHttpRequest)请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#套路是Access-Control-Allow-Origin"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">套路是Access-Control-Allow-Origin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预检请求-preflight-request"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">预检请求(preflight request)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求可能会发两次"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">请求可能会发两次</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CORS就是跨域的代名词"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">CORS就是跨域的代名词</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#浏览器是先判断还是先执行"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">浏览器是先判断还是先执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求依然会正常到服务端，且服务端正常返回"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">请求依然会正常到服务端，且服务端正常返回</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#既然是浏览器的限制，为什么设置服务器可以解决跨域"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">既然是浏览器的限制，为什么设置服务器可以解决跨域</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原来服务器可通过响应头与浏览器这个壳对话"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">原来服务器可通过响应头与浏览器这个壳对话</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#了不起的响应头"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">了不起的响应头</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#没有【客户端／服务器】，只有【客户端／浏览器／服务器】"><span class="post-toc-number">2.3.6.</span> <span class="post-toc-text">没有【客户端／服务器】，只有【客户端／浏览器／服务器】</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求会发几次"><span class="post-toc-number">2.3.7.</span> <span class="post-toc-text">请求会发几次</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#请求会发几次-1"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">请求会发几次</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#先执行-还是-先判断"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">先执行 还是 先判断</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单请求-与-非简单请求"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">简单请求 与 非简单请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预检请求及其缓存、性能优化"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">预检请求及其缓存、性能优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后端解决跨域的套路"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">后端解决跨域的套路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不过如此：Access-Control-Allow-Origin"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">不过如此：Access-Control-Allow-Origin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不过如此：Access-Control-Allow-Methods"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">不过如此：Access-Control-Allow-Methods</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#带cookie的跨域"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">带cookie的跨域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意点"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">注意点</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jsonp"><span class="post-toc-number">3.</span> <span class="post-toc-text">jsonp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试一试"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">试一试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JSONP的实现原理与工作机制"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">JSONP的实现原理与工作机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-3"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#jsonp要求服务端修改"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">jsonp要求服务端修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务器默认修改"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">服务器默认修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#callback关键字"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">callback关键字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务端约定好后，callback关键字可以任意改"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">服务端约定好后，callback关键字可以任意改</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jquery-ajax-的jsonp-原理"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">jquery ajax 的jsonp 原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-4"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ajax-jsonp调用"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">ajax jsonp调用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#jsonp返回的是js代码"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">jsonp返回的是js代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要服务端作出修改-服务端默认作出修改了"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">需要服务端作出修改(服务端默认作出修改了)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用jq-ajax-的jsonp请求与普通请求不同"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">用jq ajax 的jsonp请求与普通请求不同</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#彩蛋：jq的jsonp避免缓存做法"><span class="post-toc-number">3.3.6.</span> <span class="post-toc-text">彩蛋：jq的jsonp避免缓存做法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jsonp的弊端"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">jsonp的弊端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#http"><span class="post-toc-number">4.</span> <span class="post-toc-text">http</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Access-Control-Allow-Headers"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">Access-Control-Allow-Headers</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack代理"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack代理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同域名且同端口才会被匹配"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">同域名且同端口才会被匹配</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#proxy只要任意一处匹配到即可"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">proxy只要任意一处匹配到即可</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给webpack代理到的域名配置host代理"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">给webpack代理到的域名配置host代理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跨域"><span class="post-toc-number">2.</span> <span class="post-toc-text">跨域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#跨域的原因"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">跨域的原因</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#XHR-XMLHttpRequest-请求"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">XHR(XMLHttpRequest)请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#经典的跨域解决方式示意图"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">经典的跨域解决方式示意图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#跨域／普通-请求头区别"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">跨域／普通 请求头区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#示例"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解读跨域异常信息"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解读跨域异常信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#只针对xhr-XMLHttpRequest-请求"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">只针对xhr(XMLHttpRequest)请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#套路是Access-Control-Allow-Origin"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">套路是Access-Control-Allow-Origin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预检请求-preflight-request"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">预检请求(preflight request)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求可能会发两次"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">请求可能会发两次</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CORS就是跨域的代名词"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">CORS就是跨域的代名词</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#浏览器是先判断还是先执行"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">浏览器是先判断还是先执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求依然会正常到服务端，且服务端正常返回"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">请求依然会正常到服务端，且服务端正常返回</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#既然是浏览器的限制，为什么设置服务器可以解决跨域"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">既然是浏览器的限制，为什么设置服务器可以解决跨域</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原来服务器可通过响应头与浏览器这个壳对话"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">原来服务器可通过响应头与浏览器这个壳对话</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#了不起的响应头"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">了不起的响应头</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#没有【客户端／服务器】，只有【客户端／浏览器／服务器】"><span class="post-toc-number">2.3.6.</span> <span class="post-toc-text">没有【客户端／服务器】，只有【客户端／浏览器／服务器】</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求会发几次"><span class="post-toc-number">2.3.7.</span> <span class="post-toc-text">请求会发几次</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#请求会发几次-1"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">请求会发几次</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#先执行-还是-先判断"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">先执行 还是 先判断</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单请求-与-非简单请求"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">简单请求 与 非简单请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预检请求及其缓存、性能优化"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">预检请求及其缓存、性能优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后端解决跨域的套路"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">后端解决跨域的套路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不过如此：Access-Control-Allow-Origin"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">不过如此：Access-Control-Allow-Origin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不过如此：Access-Control-Allow-Methods"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">不过如此：Access-Control-Allow-Methods</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#带cookie的跨域"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">带cookie的跨域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意点"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">注意点</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jsonp"><span class="post-toc-number">3.</span> <span class="post-toc-text">jsonp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试一试"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">试一试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JSONP的实现原理与工作机制"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">JSONP的实现原理与工作机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-3"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#jsonp要求服务端修改"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">jsonp要求服务端修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务器默认修改"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">服务器默认修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#callback关键字"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">callback关键字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务端约定好后，callback关键字可以任意改"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">服务端约定好后，callback关键字可以任意改</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jquery-ajax-的jsonp-原理"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">jquery ajax 的jsonp 原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-4"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ajax-jsonp调用"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">ajax jsonp调用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#jsonp返回的是js代码"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">jsonp返回的是js代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要服务端作出修改-服务端默认作出修改了"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">需要服务端作出修改(服务端默认作出修改了)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用jq-ajax-的jsonp请求与普通请求不同"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">用jq ajax 的jsonp请求与普通请求不同</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#彩蛋：jq的jsonp避免缓存做法"><span class="post-toc-number">3.3.6.</span> <span class="post-toc-text">彩蛋：jq的jsonp避免缓存做法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jsonp的弊端"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">jsonp的弊端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#http"><span class="post-toc-number">4.</span> <span class="post-toc-text">http</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Access-Control-Allow-Headers"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">Access-Control-Allow-Headers</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -465,7 +466,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

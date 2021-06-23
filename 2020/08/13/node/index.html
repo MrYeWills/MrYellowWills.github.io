@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-node" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-node"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">node笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-08-13 00:00:00" datetime="2020-08-13T00:00:00.000Z" itemprop="datePublished">2020-08-13</time>
+            <time class="post-time" title="2020-08-13 00:00:00" datetime="2020-08-13T00:00:00.000Z"  itemprop="datePublished">2020-08-13</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
@@ -222,9 +223,9 @@
 <h3 id="http-createServer"><a href="#http-createServer" class="headerlink" title="http.createServer"></a>http.createServer</h3><h4 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h4><p>http.createServer表明启了一个服务，光一个服务还不行，你需要告诉我端口，因为服务的完整地址肯定包括端口。<br>下面的listen的意思<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我来了'</span>)</span><br><span class="line">&#125;).listen(<span class="number">8000</span>)</span><br></pre></td></tr></table></figure></p>
 <h4 id="res-req"><a href="#res-req" class="headerlink" title="res req"></a>res req</h4><p>接着上面，既然访问了服务器，那么肯定要给一定响应,不然访问者就会一致访问且等待。<br>因此就有了req，res。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> file = req.url.replace(<span class="string">'/'</span>,<span class="string">''</span>) || <span class="string">'test.html'</span></span><br><span class="line">    fs.readFile(path.resolve(__dirname,file), (err, data)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>);</span><br><span class="line">            res.end(<span class="string">'404 not found'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        res.end(data)<span class="comment">//可以读取图片或html</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(port, ()=&gt;<span class="built_in">console</span>.log(<span class="string">`open port <span class="subst">$&#123;port&#125;</span>`</span>))</span><br></pre></td></tr></table></figure></p>
 <h4 id="在浏览器中显示html或图片"><a href="#在浏览器中显示html或图片" class="headerlink" title="在浏览器中显示html或图片"></a>在浏览器中显示html或图片</h4><p>参考《res req》，demo看参考里面。</p>
-<h4 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h4><p><a href="">图片和html 浏览器显示</a></p>
+<h4 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h4><p><a href>图片和html 浏览器显示</a></p>
 <h3 id="设置不同响应头类型，html显示不一样"><a href="#设置不同响应头类型，html显示不一样" class="headerlink" title="设置不同响应头类型，html显示不一样"></a>设置不同响应头类型，html显示不一样</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> file = req.url.replace(<span class="string">'/'</span>,<span class="string">''</span>) || <span class="string">'test.html'</span></span><br><span class="line">    fs.readFile(path.resolve(__dirname,file), (err, data)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>);</span><br><span class="line">            res.end(<span class="string">'404 not found'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.writeHead(<span class="number">200</span>,&#123;</span><br><span class="line">                <span class="comment">// "Content-Type":"text/plain;charset=utf-8"//作为txt文件返回</span></span><br><span class="line">                <span class="string">"Content-Type"</span>:<span class="string">"text/html;charset=utf-8"</span><span class="comment">//作为html文件返回</span></span><br><span class="line">            &#125;);</span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">      </span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(port, ()=&gt;<span class="built_in">console</span>.log(<span class="string">`open port <span class="subst">$&#123;port&#125;</span>`</span>))</span><br></pre></td></tr></table></figure>
-<p>这里是一个<a href="">demo  参看 typeApp.js</a>，表现了不同响应头类型后，html在浏览器上显示效果不一样，一个以txt文件渲染，一个以html实际解析效果渲染</p>
+<p>这里是一个<a href>demo  参看 typeApp.js</a>，表现了不同响应头类型后，html在浏览器上显示效果不一样，一个以txt文件渲染，一个以html实际解析效果渲染</p>
 <h3 id="res-writeHead设置响应头"><a href="#res-writeHead设置响应头" class="headerlink" title="res.writeHead设置响应头"></a>res.writeHead设置响应头</h3><p>参考《设置不同响应头类型，html显示不一样》</p>
 <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="神奇的相对路径"><a href="#神奇的相对路径" class="headerlink" title="神奇的相对路径"></a>神奇的相对路径</h3><h4 id="报错not-suce-file"><a href="#报错not-suce-file" class="headerlink" title="报错not suce file"></a>报错not suce file</h4><p>已知 test.md的路径为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sequelize-demo/src/test.md</span><br></pre></td></tr></table></figure></p>
 <p>已知 app.js的路径为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sequelize-demo/src/app.js</span><br></pre></td></tr></table></figure></p>
@@ -259,7 +260,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -357,7 +358,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#认识node的魔力很重要"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">认识node的魔力很重要</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#脱离浏览器下运行js"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">脱离浏览器下运行js</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提供底层操作能力"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">提供底层操作能力</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#中间层：服务器中负责IO读写的中间层服务器"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">中间层：服务器中负责IO读写的中间层服务器</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#把玩node的技巧"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">把玩node的技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用commonjs而不用import"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">使用commonjs而不用import</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#commonjs畅通无阻"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">commonjs畅通无阻</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可以写个小js打印下node的各种模块变量"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">可以写个小js打印下node的各种模块变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全局模块"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">全局模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#好用的process-argv"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">好用的process.argv</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dirname在编译和未编译的js中的区别"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">__dirname在编译和未编译的js中的区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#系统模块"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">系统模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exports-与-module-exports"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">exports 与 module.exports</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优先用module-exports"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">优先用module.exports</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区别"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#http-createServer"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">http.createServer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#listen"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">listen</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#res-req"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">res req</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在浏览器中显示html或图片"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">在浏览器中显示html或图片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">demo</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置不同响应头类型，html显示不一样"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">设置不同响应头类型，html显示不一样</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#res-writeHead设置响应头"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">res.writeHead设置响应头</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#神奇的相对路径"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">神奇的相对路径</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#报错not-suce-file"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">报错not suce file</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决方式一"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">解决方式一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决方式二-推荐"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">解决方式二(推荐)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如果同在根目录就没有此异常"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">如果同在根目录就没有此异常</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JSON-stringify与toString使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">JSON.stringify与toString使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JSON-stringify输出内容的二进制"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">JSON.stringify输出内容的二进制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#toString可输出字符串的Buffer二进制流"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">toString可输出字符串的Buffer二进制流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#toString输出正常内容"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">toString输出正常内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读取文件内容推荐toString"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">读取文件内容推荐toString</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#require的路径"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">require的路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack编译时可使用fs，页面js中不行，why？"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">webpack编译时可使用fs，页面js中不行，why？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么前端工程化都使用node"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">为什么前端工程化都使用node</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#node让js脱离浏览器运行成为可能"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">node让js脱离浏览器运行成为可能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#node为js提供了很多底层操作能力"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">node为js提供了很多底层操作能力</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#强大的npm生态"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">强大的npm生态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#node后端工程的业务js都有node功能"><span class="post-toc-number">2.5.5.</span> <span class="post-toc-text">node后端工程的业务js都有node功能</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node调试"><span class="post-toc-number">3.</span> <span class="post-toc-text">node调试</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -375,7 +376,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

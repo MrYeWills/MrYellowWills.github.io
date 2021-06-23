@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-mongoose_mongodb" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-mongoose_mongodb"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">mongoose 与 mongodb笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
@@ -223,15 +224,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Administrator@UO4SB7YL9WOZ3OK MINGW64 ~/Desktop</span><br><span class="line">$ mongo</span><br><span class="line">MongoDB shell version v4.0.6</span><br><span class="line">connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb</span><br><span class="line">Implicit session: session &#123; &quot;id&quot; : UUID(&quot;a6d3c14e-703d-44d8-851f-60dbb5ad2b9e&quot;) &#125;</span><br><span class="line">MongoDB server version: 4.0.6</span><br><span class="line">show dbs</span><br><span class="line">admin           0.000GB</span><br><span class="line">config          0.000GB</span><br><span class="line">douban-test     0.000GB</span><br><span class="line">douban-trailer  0.000GB</span><br><span class="line">local           0.000GB</span><br><span class="line">newdbName       0.000GB</span><br><span class="line">onedb           0.000GB</span><br><span class="line">test            0.000GB</span><br><span class="line">twodb           0.000GB</span><br><span class="line">yyy             0.000GB</span><br><span class="line">use newdbName</span><br><span class="line">switched to db newdbName</span><br><span class="line">show tables</span><br><span class="line">tanks</span><br><span class="line">db.tanks.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5c974d5df84c0d2b9450f43c&quot;), &quot;size&quot; : &quot;small&quot;, &quot;__v&quot; : 0 &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="mongodb、mongoose概念"><a href="#mongodb、mongoose概念" class="headerlink" title="mongodb、mongoose概念"></a>mongodb、mongoose概念</h3><p>本节内容参考如下，如有疑问点击如下连接详细了解。<br><a href="https://www.cnblogs.com/chris-oil/p/9142795.html" target="_blank" rel="noopener">参考1</a><br><a href="http://www.runoob.com/mongodb/mongodb-databases-documents-collections.html" target="_blank" rel="noopener">参考2</a></p>
 <h4 id="mongodb-与-传统数据库-概念对比"><a href="#mongodb-与-传统数据库-概念对比" class="headerlink" title="mongodb 与 传统数据库 概念对比"></a>mongodb 与 传统数据库 概念对比</h4><figure class="image-box">
-                <a rel="mongoose" 与="" mongodb笔记="" href="/image/mongodb/db.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/db.jpg" alt="" title="" class=""></a>
+                <a rel=mongoose 与 mongodb笔记 href="/image/mongodb/db.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/db.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="mongodb-、mongoose-与-传统数据库-概念对比"><a href="#mongodb-、mongoose-与-传统数据库-概念对比" class="headerlink" title="mongodb 、mongoose 与 传统数据库 概念对比"></a>mongodb 、mongoose 与 传统数据库 概念对比</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><figure class="image-box">
-                <a rel="mongoose" 与="" mongodb笔记="" href="/image/mongodb/mongoose.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/mongoose.jpg" alt="" title="" class=""></a>
+                <a rel=mongoose 与 mongodb笔记 href="/image/mongodb/mongoose.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/mongoose.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="mongoose核心概念-与-数据库知识-对应关系"><a href="#mongoose核心概念-与-数据库知识-对应关系" class="headerlink" title="mongoose核心概念 与 数据库知识 对应关系"></a>mongoose核心概念 与 数据库知识 对应关系</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><figure class="image-box">
-                <a rel="mongoose" 与="" mongodb笔记="" href="/image/mongodb/index.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/index.jpg" alt="" title="" class=""></a>
+                <a rel=mongoose 与 mongodb笔记 href="/image/mongodb/index.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/index.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
@@ -267,7 +268,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -365,7 +366,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mongoose-与-mongodb-基本知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">mongoose 与 mongodb 基本知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是mongodb服务端和客户端"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是mongodb服务端和客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在哪些目录下执行mongo等命令才能连接数据库"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">在哪些目录下执行mongo等命令才能连接数据库?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动mongodb-以及数据库、表格的查看"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">启动mongodb 以及数据库、表格的查看</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在任意目录下启动cmd-执行-mongod"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">在任意目录下启动cmd 执行 mongod;</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#接着执行-mongo；"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">接着执行 mongo；</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据库、表格的查看；"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">数据库、表格的查看；</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用mongodb原生命令还是mongoose操作数据库？"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">用mongodb原生命令还是mongoose操作数据库？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#花更多时间学mongodb还是mongoose教程？"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">花更多时间学mongodb还是mongoose教程？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#要不要手动建文件夹目录data-db？"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">要不要手动建文件夹目录data\db？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#经典demo-创建数据库、表格和数据"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">经典demo-创建数据库、表格和数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo-代码"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">demo 代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb客户端mongo检测是否生成成功"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">mongodb客户端mongo检测是否生成成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb、mongoose概念"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">mongodb、mongoose概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb-与-传统数据库-概念对比"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">mongodb 与 传统数据库 概念对比</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb-、mongoose-与-传统数据库-概念对比"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">mongodb 、mongoose 与 传统数据库 概念对比</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongoose核心概念-与-数据库知识-对应关系"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">mongoose核心概念 与 数据库知识 对应关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小结"><span class="post-toc-number">1.8.4.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongoose-model第一个参数的复数才是tables名字！！"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">mongoose.model第一个参数的复数才是tables名字！！</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建或连接数据库"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">创建或连接数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb-localhost-27017-dbName"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">mongodb://localhost:27017/dbName</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb目录"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">mongodb目录</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -383,7 +384,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

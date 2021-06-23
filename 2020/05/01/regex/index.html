@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-regex" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-regex"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">正则表达式</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
@@ -207,12 +208,12 @@
             
             <p>用正则久矣，一直想出一篇这方面的笔记，用来记录<strong>重难点</strong>。<br>博客重度参考慕课教程<a href="https://www.imooc.com/coursescore/706" target="_blank" rel="noopener">JavaScript正则表达式</a></p>
 <h3 id="regexper-com"><a href="#regexper-com" class="headerlink" title="regexper.com"></a>regexper.com</h3><p>这是一个很好的正则网址，此网不会用，可能显得不上档次？<a href="https://regexper.com/" target="_blank" rel="noopener">regexper.com</a>，这个网址如果受外网限制不好访问的话，也可通过npm安装到本地访问，具体谷歌或看上面的慕课教程。<br><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/com.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/com.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/com.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/com.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="m-多行搜索"><a href="#m-多行搜索" class="headerlink" title="m 多行搜索"></a>m 多行搜索</h3><h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><p>正则有如下修饰符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g:global 全文搜索 不添加只搜索第一个匹配即停止</span><br><span class="line">i : ignore case 忽略大小写 默认是大小写敏感</span><br><span class="line">m: multiple lines  多行搜索</span><br></pre></td></tr></table></figure></p>
 <h4 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h4><p>使用多行修饰符后，就可以匹配每一行的^开头字符。<br><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/mult.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/mult.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/mult.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/mult.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><h4 id="t-tab"><a href="#t-tab" class="headerlink" title="\t tab"></a>\t tab</h4><p>此符号，在mac下按下一个tab键，使用下面表达式不成立，在有些电脑上又可以，目前尚不知原因。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\t/.test(&apos;    &apos;)</span><br></pre></td></tr></table></figure></p>
@@ -230,25 +231,25 @@
 <p>假如前后字符为 0、9，a、z；那么就被识别，构成一个常见的范围类；<br>因此当-位于两个字符之间时，如果两个字符可以被识别，那么此-具有特殊意义，表示范围类的意思；<br>如果不是位于两个字符之间，-匹配自身-；</p>
 <h4 id="位于两个字符之间时的特殊意义"><a href="#位于两个字符之间时的特殊意义" class="headerlink" title="-位于两个字符之间时的特殊意义"></a>-位于两个字符之间时的特殊意义</h4><p>见上面的说明。</p>
 <h3 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h3><p>既然[0-9]表示范围类，正则使用预定义类来预先规定好逻辑直接表示这个范围类，下面是常见预定义类：<br><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/before.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/before.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/before.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/before.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="贪婪-非贪婪模式"><a href="#贪婪-非贪婪模式" class="headerlink" title="贪婪\非贪婪模式"></a>贪婪\非贪婪模式</h3><h4 id="贪婪模式-默认"><a href="#贪婪模式-默认" class="headerlink" title="贪婪模式(默认)"></a>贪婪模式(默认)</h4><p>如下，正则可以匹配3到6个，默认情况下正则匹配最大数6，是为贪婪模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;12345678&apos;.replace(/\d&#123;3,6&#125;/g,&apos;X&apos;) //X78</span><br></pre></td></tr></table></figure></p>
 <h4 id="量词后加？变成非贪婪模式"><a href="#量词后加？变成非贪婪模式" class="headerlink" title="量词后加？变成非贪婪模式"></a>量词后加？变成非贪婪模式</h4><p>非贪婪模式指可以匹配3到6个时，指匹配最小值3，{3,6}是量词：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;12345678&apos;.replace(/\d&#123;3,6&#125;?/g,&apos;X&apos;) //XX78</span><br></pre></td></tr></table></figure></p>
 <h3 id="分组与或"><a href="#分组与或" class="headerlink" title="分组与或"></a>分组与或</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/group2.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/group2.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/group2.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/group2.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="忽略分组"><a href="#忽略分组" class="headerlink" title="忽略分组 (?:)"></a>忽略分组 (?:)</h4><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/group3.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/group3.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/group3.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/group3.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="或与分组"><a href="#或与分组" class="headerlink" title="或与分组"></a>或与分组</h4><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/group1.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/group1.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/group1.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/group1.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="前瞻"><a href="#前瞻" class="headerlink" title="前瞻"></a>前瞻</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/above.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/above.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/above.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/above.jpg" alt title class></a>
                 <p></p>
             </figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a2*aa'</span>.replace(<span class="regexp">/\w(?=\d)/</span>,<span class="string">'H'</span>)    <span class="comment">//正向前瞻 "H2*aa"单词字符后面是数字的</span></span><br><span class="line"></span><br><span class="line"><span class="string">'dd4sfc'</span>.replace(<span class="regexp">/\w(?!\d)/</span>,<span class="string">'G'</span>);    <span class="comment">//负向前瞻 "Gd4sfc"单词字符后面不是数字的 ，下面《demo - 密码》有这个的应用</span></span><br></pre></td></tr></table></figure>
@@ -263,7 +264,7 @@
 <li>multiline：多行搜索，默认值是false</li>
 <li>lastIndex：当前表达式匹配内容的最后一个字符的下一个位置</li>
 <li>source：正则表达式的文本字符串<figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/attr.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/attr.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/attr.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/attr.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
@@ -278,7 +279,7 @@
 <h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>每次匹配前，手动地把lastIndex属性重置为0。</p>
 <h4 id="lastIndex为0的双重意思"><a href="#lastIndex为0的双重意思" class="headerlink" title="lastIndex为0的双重意思"></a>lastIndex为0的双重意思</h4><p>参考《目前只发现在全局g的正则存在此现象》</p>
 <h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><h4 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/exec.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/exec.jpg" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/exec.jpg" title="undefined" data-fancybox="images"><img src="/image/regex/exec.jpg" alt title class></a>
                 <p></p>
             </figure>
 <p>在非全局匹配模式下，此函数的作用和match()函数是一样的，只能够在字符串中匹配一次，如果没有找到匹配的字符串，那么返回null，否则将返回一个数组。</p>
@@ -308,7 +309,7 @@
 <li>全是数字 <code>(?!\d+$)</code></li>
 <li>全是特殊字符 <code>(?![!@#$%^&amp;*=\-\+\(\)\_]+$)</code></li>
 <li>字母与数字 <code>(?![a-zA-z\d]+$)</code><br>等等。<br>剔除到最后，就只剩下一种情况，字母、数字、特殊字符任意三种组成。<figure class="image-box">
-                <a rel="正则表达式" href="/image/regex/false.png" title="undefined" data-fancybox="images"><img src="/image/regex/false.png" alt="" title="" class=""></a>
+                <a rel=正则表达式 href="/image/regex/false.png" title="undefined" data-fancybox="images"><img src="/image/regex/false.png" alt title class></a>
                 <p></p>
             </figure>
 <a href="https://www.cnblogs.com/lsyy2017/p/12229940.html" target="_blank" rel="noopener"></a></li>
@@ -322,7 +323,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.343Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.414Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -394,18 +395,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/react_router/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/svg/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">React Router</h4>
+        <h4 class="title">svg笔记</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/svg/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/ts/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">svg笔记</h4>
+        <h4 class="title">typescript 笔记</h4>
       </a>
     </div>
   
@@ -420,7 +421,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#regexper-com"><span class="post-toc-number">1.</span> <span class="post-toc-text">regexper.com</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#m-多行搜索"><span class="post-toc-number">2.</span> <span class="post-toc-text">m 多行搜索</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修饰符"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">修饰符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">demo</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#元字符"><span class="post-toc-number">3.</span> <span class="post-toc-text">元字符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#t-tab"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">\t tab</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类-的概念"><span class="post-toc-number">4.</span> <span class="post-toc-text">字符类 的概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类取反"><span class="post-toc-number">5.</span> <span class="post-toc-text">字符类取反</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#与-范围类"><span class="post-toc-number">6.</span> <span class="post-toc-text">- 与 范围类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见范围类-a-zA-Z"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">常见范围类 [a-zA-Z]</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#位于两个字符之间时的特殊意义"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">-位于两个字符之间时的特殊意义</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预定义类"><span class="post-toc-number">7.</span> <span class="post-toc-text">预定义类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#贪婪-非贪婪模式"><span class="post-toc-number">8.</span> <span class="post-toc-text">贪婪\非贪婪模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#贪婪模式-默认"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">贪婪模式(默认)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#量词后加？变成非贪婪模式"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">量词后加？变成非贪婪模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分组与或"><span class="post-toc-number">9.</span> <span class="post-toc-text">分组与或</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略分组"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">忽略分组 (?:)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#或与分组"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">或与分组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前瞻"><span class="post-toc-number">10.</span> <span class="post-toc-text">前瞻</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#断言"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">断言</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#正向与负向的难理解性"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">正向与负向的难理解性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#正向前瞻"><span class="post-toc-number">10.4.</span> <span class="post-toc-text">正向前瞻?=</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#负向前瞻"><span class="post-toc-number">10.5.</span> <span class="post-toc-text">负向前瞻?!</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#正则式的对象性"><span class="post-toc-number">11.</span> <span class="post-toc-text">正则式的对象性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#子表达式"><span class="post-toc-number">12.</span> <span class="post-toc-text">子表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lastIndex让你怀疑人生"><span class="post-toc-number">13.</span> <span class="post-toc-text">lastIndex让你怀疑人生</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#test的现象"><span class="post-toc-number">13.1.</span> <span class="post-toc-text">test的现象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#每次test后正则式的lastIndex改变"><span class="post-toc-number">13.2.</span> <span class="post-toc-text">每次test后正则式的lastIndex改变</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目前只发现在全局g的正则存在此现象"><span class="post-toc-number">13.3.</span> <span class="post-toc-text">目前只发现在全局g的正则存在此现象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非全局下lastIndex无效？"><span class="post-toc-number">13.4.</span> <span class="post-toc-text">非全局下lastIndex无效？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#exec也有此现象"><span class="post-toc-number">13.5.</span> <span class="post-toc-text">exec也有此现象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决方法"><span class="post-toc-number">13.6.</span> <span class="post-toc-text">解决方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lastIndex为0的双重意思"><span class="post-toc-number">13.7.</span> <span class="post-toc-text">lastIndex为0的双重意思</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exec"><span class="post-toc-number">14.</span> <span class="post-toc-text">exec</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">14.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子表达式-1"><span class="post-toc-number">14.2.</span> <span class="post-toc-text">子表达式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#返回数组内容"><span class="post-toc-number">14.3.</span> <span class="post-toc-text">返回数组内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#返回数组属性"><span class="post-toc-number">14.4.</span> <span class="post-toc-text">返回数组属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#match"><span class="post-toc-number">15.</span> <span class="post-toc-text">match</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是否全局影响很大"><span class="post-toc-number">15.1.</span> <span class="post-toc-text">是否全局影响很大</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非全局模式"><span class="post-toc-number">15.2.</span> <span class="post-toc-text">非全局模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#全局模式"><span class="post-toc-number">15.3.</span> <span class="post-toc-text">全局模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#match与exec异同"><span class="post-toc-number">16.</span> <span class="post-toc-text">match与exec异同</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在非全局下-二者结果相同"><span class="post-toc-number">16.1.</span> <span class="post-toc-text">在非全局下 二者结果相同</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在全局下，有差别"><span class="post-toc-number">16.2.</span> <span class="post-toc-text">在全局下，有差别</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-number">17.</span> <span class="post-toc-text">其他</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#s匹配空白而不仅仅空格"><span class="post-toc-number">17.1.</span> <span class="post-toc-text">\s匹配空白而不仅仅空格</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见元字符"><span class="post-toc-number">17.2.</span> <span class="post-toc-text">常见元字符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#split-reg"><span class="post-toc-number">17.3.</span> <span class="post-toc-text">split(reg)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多个正则合并使用"><span class="post-toc-number">17.4.</span> <span class="post-toc-text">多个正则合并使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#或的使用"><span class="post-toc-number">17.5.</span> <span class="post-toc-text">|或的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo-1"><span class="post-toc-number">18.</span> <span class="post-toc-text">demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#密码"><span class="post-toc-number">18.1.</span> <span class="post-toc-text">密码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">19.</span> <span class="post-toc-text">参考</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -438,7 +439,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

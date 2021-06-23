@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-git" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-git"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">git笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
@@ -218,7 +219,7 @@
 <h3 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h3><p>git checkout . 清除所有<br>git checkout string  ，此string可以是分支名，也可是commitHash</p>
 <h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><h4 id="PR冲突时，处理冲突"><a href="#PR冲突时，处理冲突" class="headerlink" title="PR冲突时，处理冲突"></a>PR冲突时，处理冲突</h4><p>多人开发，在提PR给develop分支时，当github页面提示有冲突时,处理如下：<br>切到自己的分支(PR到develop的分支)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git rebase develop</span><br><span class="line">//这时会显示冲突内容，解决冲突，执行</span><br><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br><span class="line">git push origin -f</span><br></pre></td></tr></table></figure></p>
 <p>然后重新PR,这时就不报错了<br>有人将上一操作过程称为变基。<br>git rebase 功能类似 git merge，区别在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。<br>git rebase则不同，git rebase后，你与develop不同的提交(也就是你修改的)commit将显示在第一条，(注意的是，git rebase冲突修改将不会生成commit，从上面只有git add,没有git commit得到佐证，因为只有git commit 才会生成一条commit):<br><figure class="image-box">
-                <a rel="git笔记" href="/image/git/git3.png" title="undefined" data-fancybox="images"><img src="/image/git/git3.png" alt="" title="" class=""></a>
+                <a rel=git笔记 href="/image/git/git3.png" title="undefined" data-fancybox="images"><img src="/image/git/git3.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>以上过程是把git rebase 当git merge来用，git rebase的这种当merge的用法，用的不多，用得最多的就是上面展示的，用来处理PR后的冲突。</p>
@@ -249,7 +250,7 @@
 <h3 id="gitk"><a href="#gitk" class="headerlink" title="gitk"></a>gitk</h3><p>非常好用的查看工具，git自带，此工具太好用，是查历史，凭关键字查提交的一把好手，太重要，用得太频繁，你必需会，<br>启动方法：<br>git bash中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitk</span><br></pre></td></tr></table></figure></p>
 <p>比较好的gitk命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//查询abc.js文件的历史修改记录，比任何插件显示的全</span><br><span class="line">gitk -- **/ abc.js</span><br></pre></td></tr></table></figure></p>
 <h3 id="工作目录、index、HEAD、object、快照"><a href="#工作目录、index、HEAD、object、快照" class="headerlink" title="工作目录、index、HEAD、object、快照"></a>工作目录、index、HEAD、object、快照</h3><p>工作目录、index（暂存区）、HEAD（当前所处commit）、object（文件树）。<br>快照：可以理解为版本每次提交后，git会给提交拍照，用来记录版本信息。<br>尤其 工作目录、index、HEAD 这三个概念是git的三驾马车，就好比 action、reducer、selector 是react-redux的三驾马车一样。<br>要多刷视频和书籍《精通git》了解这仨，了解git一切只是什么指针或快照，虽然我现在也忘得差不多，但一定要了解。<br><figure class="image-box">
-                <a rel="git笔记" href="/image/git/git1.png" title="undefined" data-fancybox="images"><img src="/image/git/git1.png" alt="" title="" class=""></a>
+                <a rel=git笔记 href="/image/git/git1.png" title="undefined" data-fancybox="images"><img src="/image/git/git1.png" alt title class></a>
                 <p></p>
             </figure><br>工作目录，index（暂存区）、HEAD（master分支）、objexts（树）。<br>index与HEAD都是通过指针指向文件树objects；</p>
 <h3 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git stash apply</span><br><span class="line">git checkout -b branch</span><br><span class="line">git log -n</span><br><span class="line">git commit -amend</span><br><span class="line">git help stash //使用help方式一</span><br><span class="line">git stash --help //使用help方式二</span><br><span class="line">git diff</span><br></pre></td></tr></table></figure>
@@ -267,7 +268,7 @@
 <h4 id="ssh可能并没有你想象重要"><a href="#ssh可能并没有你想象重要" class="headerlink" title="ssh可能并没有你想象重要"></a>ssh可能并没有你想象重要</h4><p>由于公司原因一直也没设置ssh，各种push什么的，也很少需要输入用户密码，不影响工作，也许ssh没有你现象的高大上。</p>
 <h3 id="推荐使用vscode"><a href="#推荐使用vscode" class="headerlink" title="推荐使用vscode"></a>推荐使用vscode</h3><p>vscode内置了对git的支持，对git支持太友好，vscode自带的显示git版本变化的功能很好用，<br>配合vscode的一些git插件，能够很好的显示每行代码的历史记录，是甩锅，找坑的必备良器。</p>
 <h3 id="不会用GitHub就是耍流氓"><a href="#不会用GitHub就是耍流氓" class="headerlink" title="不会用GitHub就是耍流氓"></a>不会用GitHub就是耍流氓</h3><p>用git，不会使用GitHub的基本操作，就是耍流氓，既然你跟git感情这么好，干嘛不更好一点，娶了她呢，这不是耍流氓吗。<br>主要要熟练 github的git workflow (也就是PR代码审核) 和 fork功能，以及看tag。<br>理解 git workflow的最核心的两大目的:PR代码审核 以及 维护一套测试、稳定和发布分支。<br><figure class="image-box">
-                <a rel="git笔记" href="/image/git/git2.png" title="undefined" data-fancybox="images"><img src="/image/git/git2.png" alt="" title="" class=""></a>
+                <a rel=git笔记 href="/image/git/git2.png" title="undefined" data-fancybox="images"><img src="/image/git/git2.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="git入门阶段不需知道的"><a href="#git入门阶段不需知道的" class="headerlink" title="git入门阶段不需知道的"></a>git入门阶段不需知道的</h3><h4 id="git-rebase-i-HEAD后记得合并到test-branch"><a href="#git-rebase-i-HEAD后记得合并到test-branch" class="headerlink" title="git rebase -i HEAD后记得合并到test branch"></a>git rebase -i HEAD后记得合并到test branch</h4><p>分支PR到develop后，如果在PR前做了合并历史(git rebase -i HEAD)，如果test branch基于develop创建，记得将自己被PR的分支 merge一次到test branch，由于test branch 滞后于develop branch，防止 从develop新建的branch merge到test branch时冲突，</p>
@@ -290,7 +291,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.406Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -362,18 +363,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/house/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/end_base/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">决定房价的因素</h4>
+        <h4 class="title">后端笔记</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/html/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/house/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">html笔记</h4>
+        <h4 class="title">决定房价的因素</h4>
       </a>
     </div>
   
@@ -388,7 +389,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git图形化工具误你一生"><span class="post-toc-number">1.</span> <span class="post-toc-text">git图形化工具误你一生</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-init-与-git-remote"><span class="post-toc-number">2.</span> <span class="post-toc-text">git init 与 git remote</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-remote-相关问题"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">git remote 相关问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-push时，要求-git-remote-add-的问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">git push时，要求 git remote add  的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#看cmd窗口提示很关键"><span class="post-toc-number">3.</span> <span class="post-toc-text">看cmd窗口提示很关键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用git-bash，放弃cmd"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用git bash，放弃cmd</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-fetch-git-pull-切远程分支"><span class="post-toc-number">5.</span> <span class="post-toc-text">git fetch\git pull\切远程分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拉取新项目时，如何切换到项目的其他分支"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">拉取新项目时，如何切换到项目的其他分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-checkout"><span class="post-toc-number">6.</span> <span class="post-toc-text">git checkout</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-number">7.</span> <span class="post-toc-text">git rebase</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PR冲突时，处理冲突"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">PR冲突时，处理冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将最新修改合并过来，且保证提交的连续性"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">将最新修改合并过来，且保证提交的连续性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#rebase-与-merge"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">rebase 与 merge</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#合并commit"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">合并commit</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-reset"><span class="post-toc-number">8.</span> <span class="post-toc-text">git reset</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将分支回滚到指定历史版本"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">将分支回滚到指定历史版本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#放弃所有修改，回到干净的当前仓库版本"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">放弃所有修改，回到干净的当前仓库版本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-reset-HEAD"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">git reset HEAD~</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回到指定提交后，并重新修改这一次提交内容"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">回到指定提交后，并重新修改这一次提交内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#再次对前几次commit修改的内容修改"><span class="post-toc-number">8.5.</span> <span class="post-toc-text">再次对前几次commit修改的内容修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意"><span class="post-toc-number">8.6.</span> <span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-reflog"><span class="post-toc-number">9.</span> <span class="post-toc-text">git reflog</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-cherry-pick"><span class="post-toc-number">10.</span> <span class="post-toc-text">git cherry-pick</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#commitHash值会变"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">commitHash值会变</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#commit会置顶"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">commit会置顶</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#行为类似rebase"><span class="post-toc-number">10.4.</span> <span class="post-toc-text">行为类似rebase</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-branch"><span class="post-toc-number">11.</span> <span class="post-toc-text">git branch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-push-删除远程分支"><span class="post-toc-number">12.</span> <span class="post-toc-text">git push 删除远程分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-tag"><span class="post-toc-number">13.</span> <span class="post-toc-text">git tag</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gitk"><span class="post-toc-number">14.</span> <span class="post-toc-text">gitk</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工作目录、index、HEAD、object、快照"><span class="post-toc-number">15.</span> <span class="post-toc-text">工作目录、index、HEAD、object、快照</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他常用命令"><span class="post-toc-number">16.</span> <span class="post-toc-text">其他常用命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-技巧"><span class="post-toc-number">17.</span> <span class="post-toc-text">git 技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空格使用"><span class="post-toc-number">17.1.</span> <span class="post-toc-text">空格使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#–abort"><span class="post-toc-number">17.2.</span> <span class="post-toc-text">–abort</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#–contnue"><span class="post-toc-number">17.3.</span> <span class="post-toc-text">–contnue</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字母q"><span class="post-toc-number">17.4.</span> <span class="post-toc-text">字母q</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#i"><span class="post-toc-number">17.5.</span> <span class="post-toc-text">-i</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双点号，三点号的特殊意义"><span class="post-toc-number">17.6.</span> <span class="post-toc-text">双点号，三点号的特殊意义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#gitk查看历史最可靠"><span class="post-toc-number">17.7.</span> <span class="post-toc-text">gitk查看历史最可靠</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多程序同时操作一个文件引起的报错"><span class="post-toc-number">17.8.</span> <span class="post-toc-text">多程序同时操作一个文件引起的报错</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#merge-commitHash"><span class="post-toc-number">17.9.</span> <span class="post-toc-text">merge commitHash</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vim命令"><span class="post-toc-number">17.10.</span> <span class="post-toc-text">vim命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#手动处理冲突"><span class="post-toc-number">17.11.</span> <span class="post-toc-text">手动处理冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ssh可能并没有你想象重要"><span class="post-toc-number">17.12.</span> <span class="post-toc-text">ssh可能并没有你想象重要</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推荐使用vscode"><span class="post-toc-number">18.</span> <span class="post-toc-text">推荐使用vscode</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不会用GitHub就是耍流氓"><span class="post-toc-number">19.</span> <span class="post-toc-text">不会用GitHub就是耍流氓</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git入门阶段不需知道的"><span class="post-toc-number">20.</span> <span class="post-toc-text">git入门阶段不需知道的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git-rebase-i-HEAD后记得合并到test-branch"><span class="post-toc-number">20.1.</span> <span class="post-toc-text">git rebase -i HEAD后记得合并到test branch</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">21.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#unable-to-access-Could-not-resolve-host-github-com"><span class="post-toc-number">21.1.</span> <span class="post-toc-text">unable to access ..Could not resolve host: github.com</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -406,7 +407,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

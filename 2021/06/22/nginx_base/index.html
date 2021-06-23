@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-nginx_base" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-nginx_base"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">nginx笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-06-22 00:00:00" datetime="2021-06-22T00:00:00.000Z" itemprop="datePublished">2021-06-22</time>
+            <time class="post-time" title="2021-06-22 00:00:00" datetime="2021-06-22T00:00:00.000Z"  itemprop="datePublished">2021-06-22</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
@@ -206,7 +207,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             
             <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="静态服务器和反向代理"><a href="#静态服务器和反向代理" class="headerlink" title="静态服务器和反向代理"></a>静态服务器和反向代理</h3><p>nginx是一款静态服务器，可以自行处理客户端静态资源如js、css 等等的返回；<br>nginx并不能处理动态资源接口，所有的动态接口，如商品价格、库存量 等请求 都转发给 业务服务器，由业务服务器 返回给nginx，再由nginx返回给客户端。<br>这个过程中nginx起到一个代理的作用，上面的过程也是 nginx 反向代理的过程；<br>nginx 最重要的两个功能就是 静态服务器 和 反向代理；<br>其他的如负载均衡（当nginx作为代理时，当有多台服务器时，nginx如何将请求均衡发给多台服务器，达到负载均衡 性能优化），都是因此延伸出来。<br><figure class="image-box">
-                <a rel="nginx笔记" href="/image/nginx/busi.png" title="undefined" data-fancybox="images"><img src="/image/nginx/busi.png" alt="" title="" class=""></a>
+                <a rel=nginx笔记 href="/image/nginx/busi.png" title="undefined" data-fancybox="images"><img src="/image/nginx/busi.png" alt title class></a>
                 <p></p>
             </figure><br>另外可参考《一个http请求的全流程》图片看反向代理。</p>
 <p>反向代理其实就是 转发代理。</p>
@@ -227,7 +228,7 @@
 <li>请求发送到nginx，nginx响应静态资源；</li>
 <li>动态请求，nginx作为反向代理：将请求发送给 应用服务器（就是后端人员写的服务器），再有应用服务器响应nginx，由nginx返回客户端。</li>
 <li>应用服务器 接受请求后，请求DB 数据库服务器，对数据库进行增删改查，由数据库服务器响应最新数据给应用服务器。<figure class="image-box">
-                <a rel="nginx笔记" href="/image/nginx/http.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http.jpg" alt="" title="" class=""></a>
+                <a rel=nginx笔记 href="/image/nginx/http.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
@@ -246,7 +247,7 @@
 </li>
 </ul>
 <figure class="image-box">
-                <a rel="nginx笔记" href="/image/nginx/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http1.jpg" alt="" title="" class=""></a>
+                <a rel=nginx笔记 href="/image/nginx/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http1.jpg" alt title class></a>
                 <p></p>
             </figure>
 
@@ -256,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -347,7 +348,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态服务器和反向代理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">静态服务器和反向代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx相比apache的优势"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">nginx相比apache的优势</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx产生和流行的原因"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">nginx产生和流行的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有关http请求相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">有关http请求相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个http请求的全流程"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">一个http请求的全流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx处理请求过程"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">nginx处理请求过程</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -365,7 +366,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

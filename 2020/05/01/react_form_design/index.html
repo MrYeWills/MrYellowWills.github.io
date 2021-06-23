@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
     <title>EnForm动态表单封装 | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="form,react">
+    <meta name="keywords" content="react,form">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-react_form_design" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-react_form_design"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">EnForm动态表单封装</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
@@ -266,7 +267,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.343Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.414Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -347,9 +348,9 @@
 
   
     <div class="next">
-      <a href="/2020/05/01/react/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/react_form_next/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">React 笔记</h4>
+        <h4 class="title">next form 封装</h4>
       </a>
     </div>
   
@@ -364,7 +365,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#状态提升的运用"><span class="post-toc-number">2.</span> <span class="post-toc-text">状态提升的运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案一："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">方案一：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#经典逻辑抽象分离的实践"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">经典逻辑抽象分离的实践</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案二："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">方案二：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案三：-EnForm使用方案"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">方案三：(EnForm使用方案)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案四："><span class="post-toc-number">2.4.</span> <span class="post-toc-text">方案四：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态提升存于this-配合forceUpdate"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">状态提升存于this 配合forceUpdate</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#form的三个state"><span class="post-toc-number">3.</span> <span class="post-toc-text">form的三个state</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#认识表单中的元素"><span class="post-toc-number">4.</span> <span class="post-toc-text">认识表单中的元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作form数据的"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">操作form数据的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常规field"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">常规field</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自定义field"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">自定义field</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#依赖form数据做操作的"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">依赖form数据做操作的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#与form无数据交互"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">与form无数据交互</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单独提取Field"><span class="post-toc-number">5.</span> <span class="post-toc-text">单独提取Field</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常规field做的事情"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">常规field做的事情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义field做的事情"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">自定义field做的事情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于验证的思考"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">关于验证的思考</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#每个field的name唯一性"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">每个field的name唯一性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#validate"><span class="post-toc-number">6.</span> <span class="post-toc-text">validate</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filed-的rule可能有多个"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">filed 的rule可能有多个</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validate-增加相关联映射-filed-检测"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">validate 增加相关联映射 filed 检测</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validate-form-与-field的不同"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">validate form 与 field的不同</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#验证触发策略"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">验证触发策略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#即时验证-EnForm使用的策略"><span class="post-toc-number">6.4.1.</span> <span class="post-toc-text">即时验证 (EnForm使用的策略)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#失焦验证"><span class="post-toc-number">6.4.2.</span> <span class="post-toc-text">失焦验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开启验证的开关"><span class="post-toc-number">6.4.3.</span> <span class="post-toc-text">开启验证的开关</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#field-type组件二次封装"><span class="post-toc-number">7.</span> <span class="post-toc-text">field type组件二次封装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认排版样式"><span class="post-toc-number">8.</span> <span class="post-toc-text">默认排版样式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码与demo"><span class="post-toc-number">9.</span> <span class="post-toc-text">源码与demo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#react中的表单处理"><span class="post-toc-number">10.</span> <span class="post-toc-text">react中的表单处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#放弃的方案"><span class="post-toc-number">11.</span> <span class="post-toc-text">放弃的方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有限度的自由排列布局"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">有限度的自由排列布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#field最多只能在在第二层"><span class="post-toc-number">11.1.1.</span> <span class="post-toc-text">field最多只能在在第二层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么不要超过两层"><span class="post-toc-number">11.1.2.</span> <span class="post-toc-text">为什么不要超过两层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可以超过两层定义field吗"><span class="post-toc-number">11.1.3.</span> <span class="post-toc-text">可以超过两层定义field吗</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无限度的自由排列布局"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">无限度的自由排列布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#源码"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">源码</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -382,7 +383,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

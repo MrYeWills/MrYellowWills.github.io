@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-js" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-js"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">js笔记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-05-21 00:00:00" datetime="2019-05-21T00:00:00.000Z" itemprop="datePublished">2019-05-21</time>
+            <time class="post-time" title="2019-05-21 00:00:00" datetime="2019-05-21T00:00:00.000Z"  itemprop="datePublished">2019-05-21</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
@@ -251,7 +252,7 @@
 <h4 id="理解setTimeout-0"><a href="#理解setTimeout-0" class="headerlink" title="理解setTimeout 0"></a>理解setTimeout 0</h4><p>小于4毫秒时，浏览器认为都是0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;&#125;, 2)</span><br></pre></td></tr></table></figure></p>
 <h4 id="触发异步任务的API"><a href="#触发异步任务的API" class="headerlink" title="触发异步任务的API"></a>触发异步任务的API</h4><p>setTimeout或setInInterval<br>Dom事件<br>Promise</p>
 <h3 id="event-loop-事件循环-1"><a href="#event-loop-事件循环-1" class="headerlink" title="event loop (事件循环)"></a>event loop (事件循环)</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel="js笔记" href="/image/js/loop.jpg" title="undefined" data-fancybox="images"><img src="/image/js/loop.jpg" alt="" title="" class=""></a>
+                <a rel=js笔记 href="/image/js/loop.jpg" title="undefined" data-fancybox="images"><img src="/image/js/loop.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="区分出同步、异步任务"><a href="#区分出同步、异步任务" class="headerlink" title="区分出同步、异步任务"></a>区分出同步、异步任务</h4><p>浏览器引擎会对所有任务进行识别，会将同步任务放置到运行栈中;<br>会将其中的异步任务取出放在浏览器的线程中，等待如setTimeout任务的时间到了变成0后，再放到任务队列中；</p>
@@ -318,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -416,7 +417,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#js-常用知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">js 常用知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自运行函数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自运行函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自运行函数的17种写法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">自运行函数的17种写法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数表达式-和-函数声明"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">函数表达式 和 函数声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16种含函数表达式的不报错的函数语句"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">16种含函数表达式的不报错的函数语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是否以function开始对js解释器很重要"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">是否以function开始对js解释器很重要</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1种立即执行的函数声明形式"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">1种立即执行的函数声明形式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何让函数表达式、声明内的函数体立即执行"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">如何让函数表达式、声明内的函数体立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数表达式、声明-与-立即执行-关系"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">函数表达式、声明 与 立即执行 关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与-立即执行"><span class="post-toc-number">1.1.8.</span> <span class="post-toc-text">() 与 立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#放在哪些位置可以让函数体立即执行"><span class="post-toc-number">1.1.9.</span> <span class="post-toc-text">()放在哪些位置可以让函数体立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与-函数传参"><span class="post-toc-number">1.1.10.</span> <span class="post-toc-text">() 与 函数传参</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分号-与-立即执行"><span class="post-toc-number">1.1.11.</span> <span class="post-toc-text">分号 ; 与 立即执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#，-，！比（-）立即执行方式少一个字符"><span class="post-toc-number">1.1.12.</span> <span class="post-toc-text">+，-，！比（ ）立即执行方式少一个字符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#难点立即执行的demo分析"><span class="post-toc-number">1.1.13.</span> <span class="post-toc-text">难点立即执行的demo分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重要运用之一"><span class="post-toc-number">1.1.14.</span> <span class="post-toc-text">重要运用之一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自运行-参考资料"><span class="post-toc-number">1.1.15.</span> <span class="post-toc-text">自运行 参考资料</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#js规范写法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">js规范写法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#给常量起个名"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">给常量起个名</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#js运行机制"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">js运行机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何理解js的单线程"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">如何理解js的单线程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#任务队列"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">任务队列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-loop-事件循环"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">event loop (事件循环)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#宏任务与微任务"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">宏任务与微任务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#理解setTimeout-0"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">理解setTimeout 0</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#触发异步任务的API"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">触发异步任务的API</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#event-loop-事件循环-1"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">event loop (事件循环)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区分出同步、异步任务"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">区分出同步、异步任务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异步任务时间为0后放入任务队列中"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">异步任务时间为0后放入任务队列中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行栈执行同步任务"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">运行栈执行同步任务</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#运行栈与任务队列之间的Loop循环"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">运行栈与任务队列之间的Loop循环</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#generator-yeild"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">generator yeild</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#it-next-返回-value-done"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">it.next()返回{value,done}</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#it-next的传参是上一个yeild的值"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">it.next的传参是上一个yeild的值</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#async是-generator-co-promise的语法糖"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">async是 generator+co+promise的语法糖</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#co"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">co</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用async实现"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">使用async实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#手写promise"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">手写promise</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#手写源码要点"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">手写源码要点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setTimeout内需要重新try-catch"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">setTimeout内需要重新try catch</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建议使用class而非function原型来做继承"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">建议使用class而非function原型来做继承</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#reslove-reject是异步因为用了setTimeout"><span class="post-toc-number">1.7.4.</span> <span class="post-toc-text">reslove\reject是异步因为用了setTimeout</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.7.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dom-API"><span class="post-toc-number">2.</span> <span class="post-toc-text">Dom API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么都可绑定事件：dom-onclick-function-dom-addEventListener-‘click’"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么都可绑定事件：dom.onclick=function(){}\dom.addEventListener(‘click’)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dom事件级别"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">dom事件级别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件模型"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">事件模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件流"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">事件流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#捕获阶段"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">捕获阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目标处理阶段"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">目标处理阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#冒泡阶段"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">冒泡阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#document-addEventListener"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">document.addEventListener</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件捕获的具体流程"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">事件捕获的具体流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Event对象常见运用"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">Event对象常见运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-preventDefault"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">event.preventDefault()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-stopPropagation"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">event.stopPropagation()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-stopImmediatePropagation"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">event.stopImmediatePropagation()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-currentTarget"><span class="post-toc-number">2.6.4.</span> <span class="post-toc-text">event.currentTarget</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#event-target"><span class="post-toc-number">2.6.5.</span> <span class="post-toc-text">event.target</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他"><span class="post-toc-number">2.6.6.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义事件"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">自定义事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键盘事件"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">键盘事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyDown"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">keyDown</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyPress"><span class="post-toc-number">2.8.2.</span> <span class="post-toc-text">keyPress</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#keyUp"><span class="post-toc-number">2.8.3.</span> <span class="post-toc-text">keyUp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用keyUp代替keyDown"><span class="post-toc-number">2.8.4.</span> <span class="post-toc-text">用keyUp代替keyDown</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#避免this的使用-同时支持鼠标与键盘事件时"><span class="post-toc-number">2.8.5.</span> <span class="post-toc-text">避免this的使用-(同时支持鼠标与键盘事件时)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dom-API-黑知识"><span class="post-toc-number">3.</span> <span class="post-toc-text">Dom API 黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取dom-width-与-内联样式-的关系"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">获取dom width 与 内联样式 的关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dom-style-width-只能获取内联样式"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">dom.style.width 只能获取内联样式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#window-getComputedStyle-dom-width-获取宽高"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">window.getComputedStyle(dom).width 获取宽高</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dom-getBoundingClientRect-width"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">dom.getBoundingClientRect().width</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Jquery"><span class="post-toc-number">4.</span> <span class="post-toc-text">Jquery</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么jq插件要写在-fn对象中"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">为什么jq插件要写在$.fn对象中</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#场景运用"><span class="post-toc-number">5.</span> <span class="post-toc-text">场景运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拖拽的原生实现"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">拖拽的原生实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onmousemove的坐标实时计算"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">onmousemove的坐标实时计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#clientX-与-offsetLeft"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">clientX 与 offsetLeft</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">代码</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -434,7 +435,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

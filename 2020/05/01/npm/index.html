@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-npm" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-npm"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">npm包开发</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
@@ -210,8 +211,8 @@
 <h4 id="集中安装包依赖"><a href="#集中安装包依赖" class="headerlink" title="集中安装包依赖"></a>集中安装包依赖</h4><p><code>lerna bootstrap</code>可以用于集中安装packages下的包的依赖。</p>
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>可网上查阅lerna。</p>
 <h3 id="father编译es5-father-build"><a href="#father编译es5-father-build" class="headerlink" title="father编译es5 (father-build)"></a>father编译es5 (father-build)</h3><p>参考《概述与地址》讲解</p>
-<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "private": false,//工程是私有或公有，若发布，默认设置false</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "bootstrap": "lerna bootstrap",//给package下的包，安装依赖</span><br><span class="line">    "build": "father-build",// yarn build -w  src 编译到 lib，father默认将src编译到lib</span><br><span class="line">    "changelog": "lerna-changelog",</span><br><span class="line">    "clean": "lerna clean -y",</span><br><span class="line">    "lint": "eslint --ext .js packages",</span><br><span class="line">    "precommit": "lint-staged",</span><br><span class="line">    "prettier": "prettier --write '**/*.&#123;js,jsx,tsx,ts,less,md,json&#125;'",</span><br><span class="line">    "dpublish": "lerna publish"//集中管理发布包，包含name version ，发布前，将根目录下git push</span><br><span class="line">  &#125;,</span><br><span class="line">  "lint-staged": &#123;</span><br><span class="line">    "**/*.&#123;js,jsx,tsx,ts,less,json&#125;": [</span><br><span class="line">      "prettier --write",</span><br><span class="line">      <span class="string">"git add"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  "devDependencies": &#123;</span><br><span class="line">    "father-build": "^1.13.1",</span><br><span class="line">    "husky": "1.2.0",</span><br><span class="line">    "lerna": "3.6.0",</span><br><span class="line">  &#125;,</span><br><span class="line">  "dependencies": &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="lerna-json"><a href="#lerna-json" class="headerlink" title="lerna.json"></a>lerna.json</h3><p><code>lerna bootstrap</code>可以用于集中安装packages下的包的依赖。使用npm或yarn安装时，<br>请定义好<code>&quot;npmClient&quot;: &quot;npm&quot;</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"packages"</span>: [<span class="string">"packages/*"</span>],</span><br><span class="line">  <span class="attr">"command"</span>: &#123;</span><br><span class="line">    <span class="attr">"version"</span>: &#123;</span><br><span class="line">      <span class="attr">"exact"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  "npmClient": "npm",//使用yarn 或 npm 命令安装</span><br><span class="line">  "version": "independent"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"private"</span>: <span class="literal">false</span>,<span class="comment">//工程是私有或公有，若发布，默认设置false</span></span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"bootstrap"</span>: <span class="string">"lerna bootstrap"</span>,<span class="comment">//给package下的包，安装依赖</span></span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"father-build"</span>,<span class="comment">// yarn build -w  src 编译到 lib，father默认将src编译到lib</span></span><br><span class="line">    <span class="attr">"changelog"</span>: <span class="string">"lerna-changelog"</span>,</span><br><span class="line">    <span class="attr">"clean"</span>: <span class="string">"lerna clean -y"</span>,</span><br><span class="line">    <span class="attr">"lint"</span>: <span class="string">"eslint --ext .js packages"</span>,</span><br><span class="line">    <span class="attr">"precommit"</span>: <span class="string">"lint-staged"</span>,</span><br><span class="line">    <span class="attr">"prettier"</span>: <span class="string">"prettier --write '**/*.&#123;js,jsx,tsx,ts,less,md,json&#125;'"</span>,</span><br><span class="line">    <span class="attr">"dpublish"</span>: <span class="string">"lerna publish"</span><span class="comment">//集中管理发布包，包含name version ，发布前，将根目录下git push</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"**/*.&#123;js,jsx,tsx,ts,less,json&#125;"</span>: [</span><br><span class="line">      <span class="string">"prettier --write"</span>,</span><br><span class="line">      <span class="string">"git add"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"father-build"</span>: <span class="string">"^1.13.1"</span>,</span><br><span class="line">    <span class="attr">"husky"</span>: <span class="string">"1.2.0"</span>,</span><br><span class="line">    <span class="attr">"lerna"</span>: <span class="string">"3.6.0"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="lerna-json"><a href="#lerna-json" class="headerlink" title="lerna.json"></a>lerna.json</h3><p><code>lerna bootstrap</code>可以用于集中安装packages下的包的依赖。使用npm或yarn安装时，<br>请定义好<code>&quot;npmClient&quot;: &quot;npm&quot;</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"packages"</span>: [<span class="string">"packages/*"</span>],</span><br><span class="line">  <span class="attr">"command"</span>: &#123;</span><br><span class="line">    <span class="attr">"version"</span>: &#123;</span><br><span class="line">      <span class="attr">"exact"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"npmClient"</span>: <span class="string">"npm"</span>,<span class="comment">//使用yarn 或 npm 命令安装</span></span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"independent"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="husky-提交前验证"><a href="#husky-提交前验证" class="headerlink" title="husky 提交前验证"></a>husky 提交前验证</h3><p>见项目源码。</p>
 <h3 id="包发布前，必须提交项目代码"><a href="#包发布前，必须提交项目代码" class="headerlink" title="包发布前，必须提交项目代码"></a>包发布前，必须提交项目代码</h3><p>执行 <code>yarn dpublish</code>前，必须根目录下，提交项目所有代码，否则出错。</p>
 <h3 id="发布时注意-npm-源的控制；"><a href="#发布时注意-npm-源的控制；" class="headerlink" title="发布时注意 npm 源的控制；"></a>发布时注意 npm 源的控制；</h3><p>发布时，将包发布到npm指定到源，就可以在对应的源上进行npm install。</p>
@@ -232,7 +233,7 @@
 <h3 id="以create-umi为示例"><a href="#以create-umi为示例" class="headerlink" title="以create-umi为示例"></a>以create-umi为示例</h3><p>create-umi是npm包开发的一个典范，可以参照其源码进行开发。</p>
 <h3 id="Yeoman写bin"><a href="#Yeoman写bin" class="headerlink" title="Yeoman写bin"></a>Yeoman写bin</h3><p>umi的bin，市面上很多bin的编写都使用了<code>Yeoman</code>。<br>参考《package.json  -  bin》</p>
 <h2 id="创建一个npm工程"><a href="#创建一个npm工程" class="headerlink" title="创建一个npm工程"></a>创建一个npm工程</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="image-box">
-                <a rel="npm包开发" href="/image/npm/menu.png" title="undefined" data-fancybox="images"><img src="/image/npm/menu.png" alt="" title="" class=""></a>
+                <a rel=npm包开发 href="/image/npm/menu.png" title="undefined" data-fancybox="images"><img src="/image/npm/menu.png" alt title class></a>
                 <p></p>
             </figure>
 <p>### </p>
@@ -243,7 +244,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.343Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -324,9 +325,9 @@
 
   
     <div class="next">
-      <a href="/2020/05/01/react_form/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/react/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">react中的表单处理</h4>
+        <h4 class="title">React 笔记</h4>
       </a>
     </div>
   
@@ -341,7 +342,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm包集中管理项目"><span class="post-toc-number">1.</span> <span class="post-toc-text">npm包集中管理项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述与地址"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概述与地址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lerna-npm发布利器"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">lerna npm发布利器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#集中发布管理"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">集中发布管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#集中安装包依赖"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">集中安装包依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#father编译es5-father-build"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">father编译es5 (father-build)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#package-json"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">package.json</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lerna-json"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">lerna.json</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#husky-提交前验证"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">husky 提交前验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包发布前，必须提交项目代码"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">包发布前，必须提交项目代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布时注意-npm-源的控制；"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">发布时注意 npm 源的控制；</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实时编译-w"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">实时编译 -w</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试技巧"><span class="post-toc-number">2.</span> <span class="post-toc-text">调试技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm-link"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">npm link</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#只需要执行一次npm-link"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">只需要执行一次npm link</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过node-module包看是否最新"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">通过node module包看是否最新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#以目录地址为标识"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">以目录地址为标识</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与lerna一起使用的技巧"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">与lerna一起使用的技巧</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm包开发"><span class="post-toc-number">3.</span> <span class="post-toc-text">npm包开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#package-json-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">package.json</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#files"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">files</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bin"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">bin</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dependencies与devDependencies区别技巧"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">dependencies与devDependencies区别技巧</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#以create-umi为示例"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">以create-umi为示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Yeoman写bin"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Yeoman写bin</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个npm工程"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建一个npm工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目录结构"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">目录结构</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -359,7 +360,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

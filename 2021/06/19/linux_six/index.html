@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-linux_six" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-linux_six"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">linux笔记(离)</h1>
         <div class="post-meta">
-            <time class="post-time" title="2021-06-19 00:00:00" datetime="2021-06-19T00:00:00.000Z" itemprop="datePublished">2021-06-19</time>
+            <time class="post-time" title="2021-06-19 00:00:00" datetime="2021-06-19T00:00:00.000Z"  itemprop="datePublished">2021-06-19</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
@@ -207,25 +208,25 @@
             
             <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><p>dock 表示码头，docker是 码头工人的意思<br>docker 是一个容器(container)引擎</p>
 <h3 id="容器和虚拟机的区别"><a href="#容器和虚拟机的区别" class="headerlink" title="容器和虚拟机的区别"></a>容器和虚拟机的区别</h3><p>如下图，其中 app a 好比虚拟机centos中 yum install 各种软件 如httpd， squid<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/vir.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/vir.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/vir.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/vir.png" alt title class></a>
                 <p></p>
             </figure><br>还可以参考<a href="https://blog.csdn.net/jingzhunbiancheng/article/details/80994909" target="_blank" rel="noopener">Docker与VM虚拟机的区别以及Docker的特点</a><br>还可以参考<a href="https://www.zhihu.com/question/48174633" target="_blank" rel="noopener">docker容器与虚拟机有什么区别？</a></p>
 <h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>docker 企业版是收费的<br>docker-ce 是社区版，免费的，一般用 docker-ce社区版。<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/sim.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/sim.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/sim.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/sim.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="centos的docker安装和使用"><a href="#centos的docker安装和使用" class="headerlink" title="centos的docker安装和使用"></a>centos的docker安装和使用</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下面安装步骤和使用全部<a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">参考官网</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br><span class="line">#设置稳定仓库</span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">   --add-repo \</span><br><span class="line">   https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure></p>
 <figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/ins.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ins.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/ins.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ins.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker-ce docker-ce-cli containerd.io  #docker-ce是免费版本</span><br></pre></td></tr></table></figure>
 <p>至此安装完毕</p>
 <h4 id="使用一：-hello-world"><a href="#使用一：-hello-world" class="headerlink" title="使用一： hello-world"></a>使用一： hello-world</h4><p>安装好后，直接看文档这里<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/start.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/start.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/start.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/start.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/start1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/start1.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/start1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/start1.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="使用二：安装和使用centos"><a href="#使用二：安装和使用centos" class="headerlink" title="使用二：安装和使用centos"></a>使用二：安装和使用centos</h4><p>涉及到比较多，单独列出说明:《安装和使用centos》</p>
@@ -245,86 +246,86 @@
 <h4 id="安装完后继续使用-php-fpm"><a href="#安装完后继续使用-php-fpm" class="headerlink" title="安装完后继续使用 php-fpm"></a>安装完后继续使用 php-fpm</h4><p>虽然安装的是php56w-fpm，但安装好后，使用时，请使用php-fpm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start php-fpm</span><br><span class="line">systemctl enable php-fpm</span><br></pre></td></tr></table></figure></p>
 <h3 id="配置nginx和php通讯"><a href="#配置nginx和php通讯" class="headerlink" title="配置nginx和php通讯"></a>配置nginx和php通讯</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"> location / &#123;</span><br><span class="line">              index index.html index.htm index.php;  #网页的文件可以是这几种类型；</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">#再次写个location，用来解析php文件， ~表示使用正则表达式， 凡是匹配到php的文件时</span><br><span class="line">  location ~ \.php$ &#123;</span><br><span class="line">          fastcgi_pass 127.0.0.1:9000; #匹配到php文件是，传递给fastcgi，9000是fastcgi默认端口</span><br><span class="line">          fastcgi_index index.php;</span><br><span class="line">          #$document_root 代表配置文件中server模块下的root ： /usr/share/nginx/html;</span><br><span class="line">          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;  </span><br><span class="line">          include fastcgi_params;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h4><p><a href="https://192.168.1.109/" target="_blank" rel="noopener">https://192.168.1.109/</a><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/ok1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ok1.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/ok1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ok1.png" alt title class></a>
                 <p></p>
             </figure><br><a href="https://192.168.1.109/index.php" target="_blank" rel="noopener">https://192.168.1.109/index.php</a><br>显示下面文件，说明 php与nginx通讯正常了：<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/ok2.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ok2.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/ok2.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ok2.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h4><p>nginx -t 可以调试配置文件 <code>/etc/nginx/nginx.conf</code> 哪里哪一行出错，语法出错。</p>
 <h4 id="完整配置"><a href="#完整配置" class="headerlink" title="完整配置"></a>完整配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost html]# cat /etc/nginx/nginx.conf</span><br><span class="line"># For more information on configuration, see:</span><br><span class="line">#   * Official English Documentation: http://nginx.org/en/docs/</span><br><span class="line">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span><br><span class="line"></span><br><span class="line">user nginx;</span><br><span class="line">worker_processes auto;</span><br><span class="line">error_log /var/log/nginx/error.log;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span><br><span class="line">include /usr/share/nginx/modules/*.conf;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile            on;</span><br><span class="line">    tcp_nopush          on;</span><br><span class="line">    tcp_nodelay         on;</span><br><span class="line">    keepalive_timeout   65;</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line"></span><br><span class="line">    include             /etc/nginx/mime.types;</span><br><span class="line">    default_type        application/octet-stream;</span><br><span class="line"></span><br><span class="line">    # Load modular configuration files from the /etc/nginx/conf.d directory.</span><br><span class="line">    # See http://nginx.org/en/docs/ngx_core_module.html#include</span><br><span class="line">    # for more information.</span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line"></span><br><span class="line"> # upstream backend-apache &#123;</span><br><span class="line">  #    server 127.0.0.1:7080;</span><br><span class="line"> # &#125;</span><br><span class="line"> #upstream backend-jenkins &#123;</span><br><span class="line">  #      server 127.0.0.1:8080;</span><br><span class="line">   # &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80 default_server;</span><br><span class="line">        listen       [::]:80 default_server;</span><br><span class="line">        server_name  _;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        #location / &#123;</span><br><span class="line">       # &#125;</span><br><span class="line"></span><br><span class="line">       return 301 https://$host$request_uri;</span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"># Settings for a TLS enabled server.</span><br><span class="line">#</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       443 ssl http2 default_server;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  _;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/nginx/pki/server.crt&quot;;</span><br><span class="line">        ssl_certificate_key &quot;/etc/nginx/pki/server.key&quot;;</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">      #   location / &#123;</span><br><span class="line">       #         proxy_pass http://backend-apache;</span><br><span class="line">       # &#125;</span><br><span class="line"></span><br><span class="line">        #location /jenkins &#123;</span><br><span class="line">         #       proxy_pass http://backend-jenkins;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">              index index.html index.htm index.php;</span><br><span class="line">        &#125;</span><br><span class="line">  location ~ \.php$ &#123;</span><br><span class="line">          fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">          fastcgi_index index.php;</span><br><span class="line">          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">          include fastcgi_params;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">        location = /404.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[root@localhost html]#</span><br></pre></td></tr></table></figure>
 <h3 id="Discuz论坛搭建-LNMP架构的实践"><a href="#Discuz论坛搭建-LNMP架构的实践" class="headerlink" title="Discuz论坛搭建(LNMP架构的实践)"></a>Discuz论坛搭建(LNMP架构的实践)</h3><h4 id="参考官网安装"><a href="#参考官网安装" class="headerlink" title="参考官网安装"></a>参考官网安装</h4><p>Discuz论坛 就是基于LNMP架构<br>Linux + nginx + mysql + （mariaDB） + php 的开发架构</p>
 <p>安装教程参考 <a href="https://www.dismall.com/thread-77-1-1.html" target="_blank" rel="noopener">Discuz官网</a><br>任意电脑下下载安装包：<br>进入<a href="https://www.discuz.net/" target="_blank" rel="noopener">首页</a><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc20.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc20.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc20.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc20.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc21.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc21.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc21.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc21.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc22.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc22.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc22.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc22.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc23.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc23.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc23.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc23.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp Discuz_X3.4_SC_UTF8_20210520.zip root@192.168.1.109:/usr/share/nginx/html  这是nginx文档目录</span><br></pre></td></tr></table></figure></p>
 <h4 id="在服务端执行以下命令"><a href="#在服务端执行以下命令" class="headerlink" title="在服务端执行以下命令"></a>在服务端执行以下命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> cd /usr/share/nginx/html/</span><br><span class="line"> unzip Discuz_X3.4_SC_UTF8_20210520.zip</span><br><span class="line">[root@localhost html]# ls</span><br><span class="line"> readme   upload  utility ...  解压后多出这几个文件</span><br><span class="line">[root@localhost html]# rm -rf 404.html 50x.html index.html index.php  删除无用文件</span><br><span class="line">[root@localhost html]# mv upload/* .  将解压出来的 upload 内文件，移到到本目录</span><br><span class="line">[root@localhost html]# ls</span><br><span class="line">#有install文件夹，就是后面要访问的</span><br><span class="line">admin.php  config           en-US        home.php   install     misc.php        poweredby.png  robots.txt  template   utility</span><br><span class="line">api        connect.php      favicon.ico  icons      LICENSE     nginx-logo.png  qqqun.png      search.php  uc_client</span><br><span class="line">api.php    crossdomain.xml  forum.php    img        m           plugin.php      readme         source      uc_server</span><br><span class="line">archiver   data             group.php    index.php  member.php  portal.php      readme.html    static      upload</span><br><span class="line">[root@localhost html]# chmod -Rf 777 .   设置权限为777 可读写</span><br></pre></td></tr></table></figure>
 <h4 id="使用Discuz自带的页面安装程序-install"><a href="#使用Discuz自带的页面安装程序-install" class="headerlink" title="使用Discuz自带的页面安装程序 install"></a>使用Discuz自带的页面安装程序 install</h4><p>页面访问 <a href="https://192.168.1.109/install" target="_blank" rel="noopener">https://192.168.1.109/install</a></p>
 <figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc1.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc1.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="不可读写的问题"><a href="#不可读写的问题" class="headerlink" title="不可读写的问题"></a>不可读写的问题</h4><p>是权限的问题<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc2.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc2.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc2.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc2.png" alt title class></a>
                 <p></p>
             </figure><br>解决方法一(不推荐，此方法可能导致开机异常)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">semanage fcontext -a -t httpd_sys_rw_content_t &quot;(/.*)?&quot;</span><br><span class="line">restorecon -Rv .</span><br></pre></td></tr></table></figure></p>
 <p>终极解决方法(推荐):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">semanage 0</span><br></pre></td></tr></table></figure></p>
 <p>再次刷新页面：<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/ok3.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ok3.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/ok3.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/ok3.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>点击下一步<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc3.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc3.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc3.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc3.png" alt title class></a>
                 <p></p>
             </figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost html]# mysql -u root -p  #下图中的root就是根据你自己安装在centos上的mysql来的</span><br></pre></td></tr></table></figure>
 <figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc4.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc4.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc4.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc4.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc5.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc5.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc5.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc5.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc6.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc6.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc6.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc6.png" alt title class></a>
                 <p></p>
             </figure>
 <p>发帖<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc7.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc7.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc7.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc7.png" alt title class></a>
                 <p></p>
             </figure><br>管理中心<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/doc8.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc8.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/doc8.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/doc8.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>以后每次只需要通过 <a href="https://192.168.1.109/" target="_blank" rel="noopener">https://192.168.1.109/</a> 即可访问</p>
 <h2 id="救援模式"><a href="#救援模式" class="headerlink" title="救援模式"></a>救援模式</h2><p>由于上面配置Discuz时 修改了上下文 <code>semanage fcontext -a -t httpd_sys_rw_content_t &quot;(/.*)?&quot;</code>，<br>导致了开机服务器 centos时，安全验证的问题，无法开机，因此要进入救援模式，关闭 selinux，重启机器.<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/help1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help1.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/help1.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help1.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/help2.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help2.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/help2.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help2.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/help3.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help3.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/help3.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help3.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/help4.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help4.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/help4.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help4.png" alt title class></a>
                 <p></p>
             </figure><br>通过编辑 /etc/selinux/config 目录，可以永久关闭seLinux；<br>因为setenforce 0 是暂时关闭。<br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/help5.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help5.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/help5.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help5.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel="linux笔记(离)" href="/image/linuxs/help6.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help6.png" alt="" title="" class=""></a>
+                <a rel=linux笔记(离) href="/image/linuxs/help6.png" title="undefined" data-fancybox="images"><img src="/image/linuxs/help6.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>然后执行命令<br>exit  退出<br>reboot  重启就好了</p>
@@ -335,7 +336,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.410Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -433,7 +434,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker"><span class="post-toc-number">1.</span> <span class="post-toc-text">docker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#容器和虚拟机的区别"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">容器和虚拟机的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#版本"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#centos的docker安装和使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">centos的docker安装和使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用一：-hello-world"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">使用一： hello-world</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用二：安装和使用centos"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">使用二：安装和使用centos</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异常处理"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">异常处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装和使用centos"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">安装和使用centos</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装和使用"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">安装和使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#退出docker-centos系统后仍可使用"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">退出docker centos系统后仍可使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他介绍"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">其他介绍</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#LNMP架构安装使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">LNMP架构安装使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LNMP架构介绍"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">LNMP架构介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FastCGI协议-与-php-fpm"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">FastCGI协议 与 php-fpm</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#php-fpm"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">php-fpm</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装-1"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装异常"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">安装异常</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决之道"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">解决之道</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装完后继续使用-php-fpm"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">安装完后继续使用 php-fpm</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置nginx和php通讯"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">配置nginx和php通讯</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问页面"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">访问页面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调试技巧"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">调试技巧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#完整配置"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">完整配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Discuz论坛搭建-LNMP架构的实践"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Discuz论坛搭建(LNMP架构的实践)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考官网安装"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">参考官网安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在服务端执行以下命令"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">在服务端执行以下命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用Discuz自带的页面安装程序-install"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">使用Discuz自带的页面安装程序 install</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不可读写的问题"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">不可读写的问题</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#救援模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">救援模式</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -451,7 +452,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

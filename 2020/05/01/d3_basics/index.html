@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -175,7 +175,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -185,11 +185,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-d3_basics" class="post-article article-type-post" itemprop="blogPost">
+    <article id="post-d3_basics"
+  class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
         <h1 class="post-card-title">d3的三种模式 及 append、data、selectAll</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
@@ -210,44 +211,44 @@
 <p>以上是d3常用写法，下面示例皆以此为基础展开：</p>
 <h2 id="append"><a href="#append" class="headerlink" title="append"></a>append</h2><h3 id="单个使用"><a href="#单个使用" class="headerlink" title="单个使用"></a>单个使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var new_circle = svg.append(&apos;circle&apos;)</span><br><span class="line">            .attr(&apos;cx&apos;, 250)</span><br><span class="line">            .attr(&apos;cy&apos;, 50)</span><br><span class="line">            .attr(&apos;r&apos;, 25)</span><br><span class="line">            .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle1.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle1.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle1.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle1.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="多个使用"><a href="#多个使用" class="headerlink" title="多个使用"></a>多个使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 50)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br><span class="line">   svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 150)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;green&apos;)</span><br><span class="line">   svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 250)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;orange&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle4.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle4.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle4.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle4.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>由上可知append其实就是用来添加实际效果的。</p>
 <h2 id="selectAll"><a href="#selectAll" class="headerlink" title="selectAll"></a>selectAll</h2><h3 id="在上面《append》的代码上增加："><a href="#在上面《append》的代码上增加：" class="headerlink" title="在上面《append》的代码上增加："></a>在上面《append》的代码上增加：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var new_circle = svg.selectAll(&apos;circle&apos;)</span><br><span class="line">        .attr(&apos;cx&apos;, 250)</span><br><span class="line">        .attr(&apos;cy&apos;, 100)</span><br><span class="line">        .attr(&apos;fill&apos;, &apos;green&apos;)</span><br><span class="line">        .attr(&apos;r&apos;, 25)</span><br></pre></td></tr></table></figure>
 <p>效果：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle2.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle2.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle2.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle2.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h3><h4 id="在基本代码上增加如下代码"><a href="#在基本代码上增加如下代码" class="headerlink" title="在基本代码上增加如下代码"></a>在基本代码上增加如下代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 50)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br><span class="line">   svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 150)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;green&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle3.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle3.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle3.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle3.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="增加selectAll后："><a href="#增加selectAll后：" class="headerlink" title="增加selectAll后："></a>增加selectAll后：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">svg.selectAll(&apos;circle&apos;)</span><br><span class="line">             .attr(&apos;cx&apos;, 250)</span><br><span class="line">             .attr(&apos;cy&apos;, 350)</span><br><span class="line">             .attr(&apos;r&apos;, 25)</span><br><span class="line">             .attr(&apos;fill&apos;, &apos;yellowgreen&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle5.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle5.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle5.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle5.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>上面的例子都是单独使用selectAll，没有使用data()，此时selectAll选中所有的匹配，进行update，此时selectAll就是一个选择器，对selectAll进行链式操作，可将所有被命中的改写（可称之为update）</p>
 <h2 id="data"><a href="#data" class="headerlink" title="data()"></a>data()</h2><h3 id="在基本代码上，增加如下代码："><a href="#在基本代码上，增加如下代码：" class="headerlink" title="在基本代码上，增加如下代码："></a>在基本代码上，增加如下代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">svg.append(&apos;circle&apos;)</span><br><span class="line">                .attr(&apos;cx&apos;, 250)</span><br><span class="line">                .attr(&apos;cy&apos;, 50)</span><br><span class="line">                .attr(&apos;r&apos;, 25)</span><br><span class="line">                .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br><span class="line">    svg.append(&apos;circle&apos;)</span><br><span class="line">                .attr(&apos;cx&apos;, 250)</span><br><span class="line">                .attr(&apos;cy&apos;, 150)</span><br><span class="line">                .attr(&apos;r&apos;, 25)</span><br><span class="line">                .attr(&apos;fill&apos;, &apos;green&apos;)</span><br><span class="line"></span><br><span class="line">var data = [10, 20];</span><br><span class="line">svg.selectAll(&apos;circle&apos;)</span><br><span class="line">                .data(data)</span><br><span class="line">                .attr(&apos;cx&apos;, 250)</span><br><span class="line">                .attr(&apos;cy&apos;, 350)</span><br><span class="line">                .attr(&apos;r&apos;, 25)</span><br><span class="line">                .attr(&apos;fill&apos;, &apos;yellowgreen&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle5.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle5.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle5.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle5.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="修改data数组-length-1"><a href="#修改data数组-length-1" class="headerlink" title="修改data数组 length=1"></a>修改data数组 length=1</h3><p>修改以上代码中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var data = [10];</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle8.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle8.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle8.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle8.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="修改data数组-length-0"><a href="#修改data数组-length-0" class="headerlink" title="修改data数组 length=0"></a>修改data数组 length=0</h3><p>修改以上代码中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var data = [];</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle3.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle3.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle3.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle3.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="selectAll-与-data-的关系"><a href="#selectAll-与-data-的关系" class="headerlink" title="selectAll 与 data 的关系"></a>selectAll 与 data 的关系</h3><p>由上可知，selectAll 是一次性命中了所有，如果要对这所有对命中进行过滤等操作，就使用data();<br>且经过data()操作后，就拥有了enter或exit操作方法，当然你可以不使用这些方法。<br>因此说白了，enter和exit无非是data()\selectAll()选择数据能力的延伸。</p>
@@ -256,7 +257,7 @@
 <h3 id="enter-要与append搭配使用"><a href="#enter-要与append搭配使用" class="headerlink" title="enter()要与append搭配使用"></a>enter()要与append搭配使用</h3><p>见上面《基本用法》</p>
 <h3 id="enter-不会-改变已存在的"><a href="#enter-不会-改变已存在的" class="headerlink" title="enter 不会 改变已存在的"></a>enter 不会 改变已存在的</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var new_circle = svg.append(&apos;circle&apos;)</span><br><span class="line">            .attr(&apos;cx&apos;, 250)</span><br><span class="line">            .attr(&apos;cy&apos;, 50)</span><br><span class="line">            .attr(&apos;r&apos;, 25)</span><br><span class="line">            .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br><span class="line">var data = [10, 20];</span><br><span class="line">var new_circle = svg.selectAll(&apos;circle&apos;)</span><br><span class="line">        .data(data)</span><br><span class="line">        .enter()</span><br><span class="line">        .append(&apos;circle&apos;)</span><br><span class="line">        .attr(&apos;cx&apos;, 250)</span><br><span class="line">        .attr(&apos;cy&apos;, 100)</span><br><span class="line">        .attr(&apos;fill&apos;, &apos;green&apos;)</span><br><span class="line">        .attr(&apos;r&apos;, 25)</span><br></pre></td></tr></table></figure>
 <p>效果：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle3.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle3.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle3.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle3.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="比较好的exitdemo"><a href="#比较好的exitdemo" class="headerlink" title="比较好的exitdemo"></a>比较好的exitdemo</h3><ul>
@@ -264,28 +265,28 @@
 </ul>
 <h2 id="exit"><a href="#exit" class="headerlink" title="exit"></a>exit</h2><h3 id="不使用exit"><a href="#不使用exit" class="headerlink" title="不使用exit"></a>不使用exit</h3><p>在上面代码上增加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">svg.append(&apos;circle&apos;)</span><br><span class="line">            .attr(&apos;cx&apos;, 250)</span><br><span class="line">            .attr(&apos;cy&apos;, 50)</span><br><span class="line">            .attr(&apos;r&apos;, 25)</span><br><span class="line">            .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br><span class="line">svg.append(&apos;circle&apos;)</span><br><span class="line">            .attr(&apos;cx&apos;, 250)</span><br><span class="line">            .attr(&apos;cy&apos;, 150)</span><br><span class="line">            .attr(&apos;r&apos;, 25)</span><br><span class="line">            .attr(&apos;fill&apos;, &apos;green&apos;)</span><br><span class="line">svg.append(&apos;circle&apos;)</span><br><span class="line">            .attr(&apos;cx&apos;, 250)</span><br><span class="line">            .attr(&apos;cy&apos;, 250)</span><br><span class="line">            .attr(&apos;r&apos;, 25)</span><br><span class="line">            .attr(&apos;fill&apos;, &apos;orange&apos;)</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle4.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle4.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle4.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle4.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="使用exit"><a href="#使用exit" class="headerlink" title="使用exit"></a>使用exit</h3><p>在上面代码上加入以下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var data = [10];</span><br><span class="line"> svg.selectAll(&apos;circle&apos;)</span><br><span class="line">             .data(data)</span><br><span class="line">             .exit()</span><br><span class="line">             //exit不与append一起使用,此处不能使用append</span><br><span class="line">             //.append(&apos;circle&apos;)</span><br><span class="line">             .attr(&apos;cx&apos;, 250)</span><br><span class="line">             .attr(&apos;cy&apos;, 350)</span><br><span class="line">             .attr(&apos;r&apos;, 25)</span><br><span class="line">             .attr(&apos;fill&apos;, &apos;yellowgreen&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle7.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle7.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle7.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle7.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="exit不与append一起使用"><a href="#exit不与append一起使用" class="headerlink" title="exit不与append一起使用"></a>exit不与append一起使用</h3><p>使用《使用exit》代码中，注释的部分解注，效果将是：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle4.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle4.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle4.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle4.jpg" alt title class></a>
                 <p></p>
             </figure><br>此时exit没有任何作用。</p>
 <h3 id="exit将会改变已存在的"><a href="#exit将会改变已存在的" class="headerlink" title="exit将会改变已存在的"></a>exit将会改变已存在的</h3><p>参考《使用exit》</p>
 <h2 id="update"><a href="#update" class="headerlink" title="update"></a>update</h2><h3 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> var svg = d3.select(&quot;body&quot;)</span><br><span class="line">                 .append(&apos;svg&apos;)</span><br><span class="line">                 .attr(&apos;width&apos;, 800)</span><br><span class="line">                 .attr(&apos;height&apos;, 800);</span><br><span class="line">    svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 50)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;green&apos;)</span><br><span class="line">   svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 150)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;orange&apos;)</span><br><span class="line">   svg.append(&apos;circle&apos;)</span><br><span class="line">               .attr(&apos;cx&apos;, 250)</span><br><span class="line">               .attr(&apos;cy&apos;, 250)</span><br><span class="line">               .attr(&apos;r&apos;, 25)</span><br><span class="line">               .attr(&apos;fill&apos;, &apos;black&apos;)</span><br><span class="line">      </span><br><span class="line">var data = [10];</span><br><span class="line">svg.selectAll(&apos;circle&apos;)</span><br><span class="line">                .data(data)</span><br><span class="line">                .attr(&apos;fill&apos;, &apos;blue&apos;)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/circle9.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle9.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/circle9.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/circle9.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="示例二-1"><a href="#示例二-1" class="headerlink" title="示例二"></a>示例二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;default&lt;/p&gt;</span><br><span class="line">&lt;p&gt;default&lt;/p&gt;</span><br><span class="line">&lt;p&gt;default&lt;/p&gt;</span><br><span class="line">&lt;p&gt;default&lt;/p&gt;</span><br><span class="line">&lt;p&gt;default&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var data = [10, 20, 30];</span><br><span class="line">d3.selectAll(&apos;p&apos;)</span><br><span class="line">  .data(data)</span><br><span class="line">  .text(t=&gt;t)</span><br></pre></td></tr></table></figure>
 <p>效果如下：<br><figure class="image-box">
-                <a rel="d3的三种模式" 及="" append、data、selectall="" href="/image/d3/update.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/update.jpg" alt="" title="" class=""></a>
+                <a rel=d3的三种模式 及 append、data、selectAll href="/image/d3/update.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/update.jpg" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="update-p-data-arr"><a href="#update-p-data-arr" class="headerlink" title="update = p.data(arr)"></a>update = p.data(arr)</h3><p>比如示例二可写成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var data = [10, 20, 30];</span><br><span class="line">var update = d3.selectAll(&apos;p&apos;);</span><br><span class="line"></span><br><span class="line">update.data(data)</span><br><span class="line">  .text(t=&gt;t)</span><br></pre></td></tr></table></figure></p>
@@ -300,7 +301,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-22T16:39:06.339Z" itemprop="dateUpdated">2021-06-22 16:39:06</time>
+    Last updated: <time datetime="2021-06-23T00:01:40.406Z" itemprop="dateUpdated">2021-06-23 00:01:40</time>
 </span><br>
 
 
@@ -372,18 +373,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/css_vertical_align/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/css_mobile/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">vertical-align、行盒子、baseline</h4>
+        <h4 class="title">css之移动开发</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/d3_layout/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/egg/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">d3图形、demo讲解、使用经验</h4>
+        <h4 class="title">egg笔记</h4>
       </a>
     </div>
   
@@ -398,7 +399,7 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本代码"><span class="post-toc-number">1.</span> <span class="post-toc-text">基本代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#append"><span class="post-toc-number">2.</span> <span class="post-toc-text">append</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单个使用"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">单个使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多个使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">多个使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#selectAll"><span class="post-toc-number">3.</span> <span class="post-toc-text">selectAll</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在上面《append》的代码上增加："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">在上面《append》的代码上增加：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例二"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">示例二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在基本代码上增加如下代码"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">在基本代码上增加如下代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#增加selectAll后："><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">增加selectAll后：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#data"><span class="post-toc-number">4.</span> <span class="post-toc-text">data()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在基本代码上，增加如下代码："><span class="post-toc-number">4.1.</span> <span class="post-toc-text">在基本代码上，增加如下代码：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改data数组-length-1"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">修改data数组 length=1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改data数组-length-0"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">修改data数组 length=0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#selectAll-与-data-的关系"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">selectAll 与 data 的关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#selectAll-data-enter-exit-的联系"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">selectAll data enter exit 的联系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#enter"><span class="post-toc-number">5.</span> <span class="post-toc-text">enter</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本用法"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">基本用法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#enter-要与append搭配使用"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">enter()要与append搭配使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#enter-不会-改变已存在的"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">enter 不会 改变已存在的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较好的exitdemo"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">比较好的exitdemo</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#exit"><span class="post-toc-number">6.</span> <span class="post-toc-text">exit</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不使用exit"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">不使用exit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用exit"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">使用exit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exit不与append一起使用"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">exit不与append一起使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exit将会改变已存在的"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">exit将会改变已存在的</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#update"><span class="post-toc-number">7.</span> <span class="post-toc-text">update</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例一"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">示例一</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例二-1"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">示例二</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#update-p-data-arr"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">update = p.data(arr)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结-2"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大话各者之间关系"><span class="post-toc-number">8.</span> <span class="post-toc-text">大话各者之间关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择集-select-selectAll"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">选择集 - select selectAll</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据绑定-selection-data"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">数据绑定 - selection.data()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据绑定的选择集-enter-exit"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">数据绑定的选择集 - enter exit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM操作-attr-append-insert"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">DOM操作 - attr append insert</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程加载数据-d3-josn"><span class="post-toc-number">8.5.</span> <span class="post-toc-text">远程加载数据 d3.josn()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用demo"><span class="post-toc-number">9.</span> <span class="post-toc-text">应用demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#柱状图demo"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">柱状图demo</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">10.</span> <span class="post-toc-text">参考</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
-        </div></div></aside>
+        </aside>
     
 </article>
 
@@ -416,7 +417,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     
     <title>Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content>
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
@@ -32,7 +32,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu">
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -100,28 +100,28 @@
       <ul class="nav">
         
             <li class="">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
               </a>
             </li>
         
             <li class="">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 CATEGORIES
               </a>
             </li>
         
             <li class="">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
               </a>
             </li>
         
             <li class="">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
               </a>
@@ -170,7 +170,7 @@
         <span class="pull-left">
           <i class="icon icon-lg icon-search"></i>
         </span>
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
         <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
           <i class="icon icon-lg icon-close"></i>
         </a>
@@ -182,11 +182,12 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
-                <article id="post-css_layout" class="article-card article-type-post" itemprop="blogPost">
+                <article id="post-css_big"
+  class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/css_layout/"></a>
+    <a class="thumb-link" href="/2020/05/01/css_big/"></a>
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
@@ -196,7 +197,7 @@
 
   
     <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/css_layout/">css之布局</a>
+      <a class="post-title-link" href="/2020/05/01/css_big/">css知识点汇</a>
     </h3>
   
 
@@ -209,7 +210,7 @@
     
     
     <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
@@ -228,9 +229,14 @@
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        我们都知道，定位、浮动、flexbox，这些可以用来布局；我们也知道什么固定布局，流式布局等等，这些也是布局；那么定位、浮动这些是什么布局呢，是固定布局吗?都不是，所以固定布局、弹性布局、流式布局，这些更代表了一种布局的设计思想，一种布局方案，而定位、浮动、flexbox这些是一种布局的技术手段。我们大可这样理解：布局的设计方式有 固定设计方式、弹性设计方式、流式设计方式、响应式设计方式;布...
+        本篇的css知识点，都在《css笔记》中有列举，由于知识点篇幅较大，单独将知识点放置于本篇详细描述。
+float浮动定位浮动定位有以下特点：
+收缩为最小宽度除非已经定义了浮动元素的宽度，否则浮动元素收缩为适应元素内容的最小宽度。
+遇到块级元素将停止对于自身而言，浮动元素脱离文档流后，遇到块级元素将停止，
+脱离文档流，但不脱离文本流当一个元素变为浮动元素时，对不同类型的相邻元素影响如下：
+与行...
     
-    <a href="/2020/05/01/css_layout/" class="post-more waves-effect waves-button">
+    <a href="/2020/05/01/css_big/" class="post-more waves-effect waves-button">
         more
     </a>
     </div>
@@ -238,7 +244,7 @@
 
 <div class="post-footer">
     
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式布局-设计/">响应式布局(设计)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/固定布局-设计/">固定布局(设计)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/媒体查询/">媒体查询</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/布局的技术手段/">布局的技术手段</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/弹性布局-设计/">弹性布局(设计)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流动布局-设计/">流动布局(设计)</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
 </div>
 
@@ -246,7 +252,140 @@
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-css_mobile" class="article-card article-type-post" itemprop="blogPost">
+                <article id="post-css_vertical_align"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/01/css_vertical_align/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/01/css_vertical_align/">vertical-align、行盒子、baseline</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        本文讲解vertical-align, baseline, 行盒子, x-height, line-height, 半铅空,以及这些概念如何运用于行内元素居中、和使用line-height让元素居中，其中花了大量示例和说明介绍了如何确定父元素和行内元素的baseline。
+vertical-align为什么会这样描述如图两个定义为inline-block的div一模一样，就是一个多了555：...
+    
+    <a href="/2020/05/01/css_vertical_align/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/baseline/">baseline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/line-height/">line-height</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vertical-align/">vertical-align</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/x-height/">x-height</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/半铅空/">半铅空</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/行盒子/">行盒子</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-css"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/01/css/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/01/css/">css笔记</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        最近对从业以来的css知识从新梳理，整理成四篇博客，除本篇博客外，还有：《vertical-align、行盒子、baseline》《css之移动开发》《css之布局》
+css需求方案三角12345678&lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;.triangle&#123;  height: 0;  width: 0;  border...
+    
+    <a href="/2020/05/01/css/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-css_mobile"
+  class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
@@ -254,7 +393,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
     
 
 
@@ -273,7 +412,7 @@
     
     
     <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
@@ -318,137 +457,8 @@ pixels单词含义1pixels //此单词含义为：像素
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-css" class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/css/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/css/">css笔记</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        最近对从业以来的css知识从新梳理，整理成四篇博客，除本篇博客外，还有：《vertical-align、行盒子、baseline》《css之移动开发》《css之布局》
-css需求方案三角12345678&lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;.triangle&#123;  height: 0;  width: 0;  border...
-    
-    <a href="/2020/05/01/css/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-css_vertical_align" class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/css_vertical_align/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/css_vertical_align/">vertical-align、行盒子、baseline</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        本文讲解vertical-align, baseline, 行盒子, x-height, line-height, 半铅空,以及这些概念如何运用于行内元素居中、和使用line-height让元素居中，其中花了大量示例和说明介绍了如何确定父元素和行内元素的baseline。
-vertical-align为什么会这样描述如图两个定义为inline-block的div一模一样，就是一个多了555：...
-    
-    <a href="/2020/05/01/css_vertical_align/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/baseline/">baseline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/line-height/">line-height</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vertical-align/">vertical-align</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/x-height/">x-height</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/半铅空/">半铅空</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/行盒子/">行盒子</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-d3_basics" class="article-card article-type-post" itemprop="blogPost">
+                <article id="post-d3_basics"
+  class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
@@ -475,7 +485,7 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
     
     
     <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
@@ -513,7 +523,140 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-d3_layout" class="article-card article-type-post" itemprop="blogPost">
+                <article id="post-egg"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/01/egg/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/01/egg/">egg笔记</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        eggdemo开始创建项目，详细参考egg官网：12npm init egg --type=simplenpm i
+编写mysql
+    
+    <a href="/2020/05/01/egg/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/egg/">egg</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-d3"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/01/d3/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/01/d3/">d3笔记</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        d3知识d3文档介绍d3各版本变化官网英文
+d3小知识点或技巧gx.call(xAxis)与xAxis(gx)相等123456//生成底部轴线const xAxis = d3.axisBottom(xScale);//设置轴线偏移位置const gx = svg.append(&apos;g&apos;).attr(&apos;transform&apos;, `translate($&#1...
+    
+    <a href="/2020/05/01/d3/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3-js/">d3.js</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-d3_layout"
+  class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
@@ -521,7 +664,7 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
     
 
 
@@ -540,7 +683,7 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
     
     
     <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
@@ -581,137 +724,8 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-d3" class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/d3/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/d3/">d3笔记</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        d3知识d3文档介绍d3各版本变化官网英文
-d3小知识点或技巧gx.call(xAxis)与xAxis(gx)相等123456//生成底部轴线const xAxis = d3.axisBottom(xScale);//设置轴线偏移位置const gx = svg.append(&apos;g&apos;).attr(&apos;transform&apos;, `translate($&#1...
-    
-    <a href="/2020/05/01/d3/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3-js/">d3.js</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-egg" class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/egg/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/egg/">egg笔记</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        eggdemo开始创建项目，详细参考egg官网：12npm init egg --type=simplenpm i
-编写mysql
-    
-    <a href="/2020/05/01/egg/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/egg/">egg</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-dva_umi" class="article-card article-type-post" itemprop="blogPost">
+                <article id="post-dva_umi"
+  class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
@@ -738,7 +752,7 @@ d3小知识点或技巧gx.call(xAxis)与xAxis(gx)相等123456//生成底部轴�
     
     
     <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
@@ -781,7 +795,8 @@ user-dashboard项目细节.umi/ 目录 此目录为验证目录，npm start生�
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-end_base" class="article-card article-type-post" itemprop="blogPost">
+                <article id="post-end_base"
+  class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
@@ -808,7 +823,7 @@ user-dashboard项目细节.umi/ 目录 此目录为验证目录，npm start生�
     
     
     <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished">2020-05-01</time>
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/后端/">后端</a></li></ul>
