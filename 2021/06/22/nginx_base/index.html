@@ -206,13 +206,21 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>有孚维心，亨，行有尚。</p>
+            <p><em>有孚维心，亨，行有尚。</em></p>
 <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="静态服务器和反向代理"><a href="#静态服务器和反向代理" class="headerlink" title="静态服务器和反向代理"></a>静态服务器和反向代理</h3><p>nginx是一款静态服务器，可以自行处理客户端静态资源如js、css 等等的返回；<br>nginx并不能处理动态资源接口，所有的动态接口，如商品价格、库存量 等请求 都转发给 业务服务器，由业务服务器 返回给nginx，再由nginx返回给客户端。<br>这个过程中nginx起到一个代理的作用，上面的过程也是 nginx 反向代理的过程；<br>nginx 最重要的两个功能就是 静态服务器 和 反向代理；<br>其他的如负载均衡（当nginx作为代理时，当有多台服务器时，nginx如何将请求均衡发给多台服务器，达到负载均衡 性能优化），都是因此延伸出来。<br><figure class="image-box">
                 <a rel=nginx笔记(有) href="/image/nginx/busi.png" title="undefined" data-fancybox="images"><img src="/image/nginx/busi.png" alt title class></a>
                 <p></p>
             </figure><br>另外可参考《一个http请求的全流程》图片看反向代理。</p>
 <p>反向代理其实就是 转发代理。</p>
-<h3 id="nginx相比apache的优势"><a href="#nginx相比apache的优势" class="headerlink" title="nginx相比apache的优势"></a>nginx相比apache的优势</h3><p>apache是上一代服务器(当时的cpu也是单核的，apache也是根据这个单核cpu设计的,这个理由只当看看)，产生比较早，特点如下：</p>
+<h3 id="nginx特点"><a href="#nginx特点" class="headerlink" title="nginx特点"></a>nginx特点</h3><h4 id="nginx-特点介绍"><a href="#nginx-特点介绍" class="headerlink" title="nginx 特点介绍"></a>nginx 特点介绍</h4><ul>
+<li><p>高并发、高性能<br>nginx为 高并发而生；<br>通过 增加进程 来适应高并发；<br>通过合理设计 达到高性能</p>
+</li>
+<li><p>扩展性好</p>
+</li>
+<li><p>异步非阻塞的事件驱动模型</p>
+</li>
+</ul>
+<h4 id="nginx相比apache的优势"><a href="#nginx相比apache的优势" class="headerlink" title="nginx相比apache的优势"></a>nginx相比apache的优势</h4><p>apache是上一代服务器(当时的cpu也是单核的，apache也是根据这个单核cpu设计的,这个理由只当看看)，产生比较早，特点如下：</p>
 <ul>
 <li>一个进程处理一个请求；</li>
 <li>阻塞式的</li>
@@ -258,7 +266,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2021-06-23T00:50:22.904Z" itemprop="dateUpdated">2021-06-23 00:50:22</time>
+    最后更新时间：<time datetime="2021-06-23T01:12:38.074Z" itemprop="dateUpdated">2021-06-23 01:12:38</time>
 </span><br>
 
 
@@ -346,7 +354,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态服务器和反向代理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">静态服务器和反向代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx相比apache的优势"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">nginx相比apache的优势</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx产生和流行的原因"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">nginx产生和流行的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有关http请求相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">有关http请求相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个http请求的全流程"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">一个http请求的全流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx处理请求过程"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">nginx处理请求过程</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态服务器和反向代理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">静态服务器和反向代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx特点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">nginx特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-特点介绍"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">nginx 特点介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx相比apache的优势"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">nginx相比apache的优势</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx产生和流行的原因"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">nginx产生和流行的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有关http请求相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">有关http请求相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个http请求的全流程"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">一个http请求的全流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx处理请求过程"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">nginx处理请求过程</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
