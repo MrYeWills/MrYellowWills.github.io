@@ -1,11 +1,13 @@
 ---
-title: nginx笔记
+title: nginx笔记(有)
 date: 2021/6/22
 tags: nginx
 categories: 
 - 前端工具
 series: nginx
 ---
+
+有孚维心，亨，行有尚。
 
 ## 基础知识
 ### 静态服务器和反向代理
