@@ -72,4 +72,67 @@ nginx是最新一代服务器(根据当代多核cpu设计的,这个理由只当�
 ![](/image/nginx/http1.jpg)
 
 
+### 使用信号量管理master和worker
+#### linux中的常用信号量
+```s
+SIGHLD                  kill -17 pid   子进程down掉后，向其父进程发送的信号
+SIGQUIT                 kill -3 pid    也是关闭进程
+SIGTERM                 kill -15 pid  kill -15 和 kill 是一样的，kill 默认是15，关闭进程，等等进程当次处理完数据后关闭
+SIGKILL                 kill -9 pid   不等待进程处理完数据，立即关闭
+SIGHUP                  kill -1 pid  让程序重新读取配置文件
+SIGUSER1                kill -10 pid  用户自定义信号量
+SIGUSER2                kill -12 pid  用户自定义信号量
+SIGWINCH                kill -28 pid  处理就的进程关闭
+```
+
+#### 信号量的两种用法
+```s
+如上，
+kill -9 pidxxx 
+也可以用
+kill -s SIGKILL pidxxx  #s sign的缩写
+```
+nginx就是有一个master 主进程，和若干个 worker子进程构成的。
+
+可以用信号量 管理 master进程；
+worker进程一般是master进程控制的；
+一般使用信号量管理master进程，进而让master进程管理子进程；
+也可使用信号量直接管理worker子进程(虽然不推荐)，
+为什么不推荐呢，因为一旦直接关闭子进程，子进程会让master进程发送信号，master然重新启动一个子进程。
+master进程
+worker进程
+命令行
+
+命令行可以操作下面操作：
+
+reload 底层利用的是HUP信号量
+reload 底层利用的是USER1信号量
+stop 底层利用的是TERM信号量
+quit 底层利用的是QUIT信号量
+
+认识 nginx进程
+nginx的配置文件
+worker_processes auto; //自动识别电脑有几个cpu，下面的例子说明识别出4个进程
+![](/image/nginx/pid.png)
+
+nginx 配置文件重载原理
+配置文件更改，
+master主进程读取配置文件，检测是否有语法错误，若有，则不执行重载，
+若无语法错误，master则立即生成新配置的子进程，同时通知老的子进程执行完后关闭。
+此时就存在新的和老的子进程同时存在的情况。
+什么是老的子进程执行完之后完毕，
+比如，客户在浏览网页的时候，与老的子进程建立了连接，一直等客户关闭页面关闭连接，
+老的子进程才退出。
+![](/image/nginx/reload.png)
+
+
+nginx热部署升级 的过程
+![](/image/nginx/red.png)
+
+
+## nginx 配置
+
+### 配置文件结构
+![](/image/nginx/in.png)
+
 

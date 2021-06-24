@@ -20,7 +20,7 @@ series: linux
  grep "eslint 的使用"  eslint.md
 ```
 在linux中，双引号可用于带有空格内容的操作。
-## 基础知识
+## 基础知识一
 
 ### 虚拟机安装centos
 
@@ -610,6 +610,7 @@ cut -c 2-4 name.txt #剪切每一行的第二到第四个字符
     C:\Users\Administrator\Desktop\linux
 ```
 
+## 基础知识二
 ### 输出重定向
 - `>` 重定向到新的文件， 可以将命令的输出结果重定向到你选择的文件中
 ```s
@@ -1095,7 +1096,6 @@ net-tools-2.0-0.25.20131004git.el7.x86_64 #说明是net-tools安装模板
 
 还有一个虚拟接口，可以不用管，这里就不列出了。
 ![](/image/linuxm/lan2.png)
-
 
 
 
