@@ -259,6 +259,28 @@
                 <a rel=nginx笔记(有) href="/image/nginx/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http1.jpg" alt title class></a>
                 <p></p>
             </figure>
+<h3 id="使用信号量管理master和worker"><a href="#使用信号量管理master和worker" class="headerlink" title="使用信号量管理master和worker"></a>使用信号量管理master和worker</h3><h4 id="linux中的常用信号量"><a href="#linux中的常用信号量" class="headerlink" title="linux中的常用信号量"></a>linux中的常用信号量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SIGHLD                  kill -17 pid   子进程down掉后，向其父进程发送的信号</span><br><span class="line">SIGQUIT                 kill -3 pid    也是关闭进程</span><br><span class="line">SIGTERM                 kill -15 pid  kill -15 和 kill 是一样的，kill 默认是15，关闭进程，等等进程当次处理完数据后关闭</span><br><span class="line">SIGKILL                 kill -9 pid   不等待进程处理完数据，立即关闭</span><br><span class="line">SIGHUP                  kill -1 pid  让程序重新读取配置文件</span><br><span class="line">SIGUSER1                kill -10 pid  用户自定义信号量</span><br><span class="line">SIGUSER2                kill -12 pid  用户自定义信号量</span><br><span class="line">SIGWINCH                kill -28 pid  处理就的进程关闭</span><br></pre></td></tr></table></figure>
+<h4 id="信号量的两种用法"><a href="#信号量的两种用法" class="headerlink" title="信号量的两种用法"></a>信号量的两种用法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如上，</span><br><span class="line">kill -9 pidxxx </span><br><span class="line">也可以用</span><br><span class="line">kill -s SIGKILL pidxxx  #s sign的缩写</span><br></pre></td></tr></table></figure>
+<p>nginx就是有一个master 主进程，和若干个 worker子进程构成的。</p>
+<p>可以用信号量 管理 master进程；<br>worker进程一般是master进程控制的；<br>一般使用信号量管理master进程，进而让master进程管理子进程；<br>也可使用信号量直接管理worker子进程(虽然不推荐)，<br>为什么不推荐呢，因为一旦直接关闭子进程，子进程会让master进程发送信号，master然重新启动一个子进程。<br>master进程<br>worker进程<br>命令行</p>
+<p>命令行可以操作下面操作：</p>
+<p>reload 底层利用的是HUP信号量<br>reload 底层利用的是USER1信号量<br>stop 底层利用的是TERM信号量<br>quit 底层利用的是QUIT信号量</p>
+<p>认识 nginx进程<br>nginx的配置文件<br>worker_processes auto; //自动识别电脑有几个cpu，下面的例子说明识别出4个进程<br><figure class="image-box">
+                <a rel=nginx笔记(有) href="/image/nginx/pid.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pid.png" alt title class></a>
+                <p></p>
+            </figure></p>
+<p>nginx 配置文件重载原理<br>配置文件更改，<br>master主进程读取配置文件，检测是否有语法错误，若有，则不执行重载，<br>若无语法错误，master则立即生成新配置的子进程，同时通知老的子进程执行完后关闭。<br>此时就存在新的和老的子进程同时存在的情况。<br>什么是老的子进程执行完之后完毕，<br>比如，客户在浏览网页的时候，与老的子进程建立了连接，一直等客户关闭页面关闭连接，<br>老的子进程才退出。<br><figure class="image-box">
+                <a rel=nginx笔记(有) href="/image/nginx/reload.png" title="undefined" data-fancybox="images"><img src="/image/nginx/reload.png" alt title class></a>
+                <p></p>
+            </figure></p>
+<p>nginx热部署升级 的过程<br><figure class="image-box">
+                <a rel=nginx笔记(有) href="/image/nginx/red.png" title="undefined" data-fancybox="images"><img src="/image/nginx/red.png" alt title class></a>
+                <p></p>
+            </figure></p>
+<h2 id="nginx-配置"><a href="#nginx-配置" class="headerlink" title="nginx 配置"></a>nginx 配置</h2><h3 id="配置文件结构"><a href="#配置文件结构" class="headerlink" title="配置文件结构"></a>配置文件结构</h3><figure class="image-box">
+                <a rel=nginx笔记(有) href="/image/nginx/in.png" title="undefined" data-fancybox="images"><img src="/image/nginx/in.png" alt title class></a>
+                <p></p>
+            </figure>
 
         </div>
         
@@ -266,7 +288,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-06-23T01:12:38.074Z" itemprop="dateUpdated">2021-06-23 01:12:38</time>
+    最後更新時間：<time datetime="2021-06-24T01:09:13.593Z" itemprop="dateUpdated">2021-06-24 01:09:13</time>
 </span><br>
 
 
@@ -354,7 +376,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态服务器和反向代理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">静态服务器和反向代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx特点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">nginx特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-特点介绍"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">nginx 特点介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx相比apache的优势"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">nginx相比apache的优势</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx产生和流行的原因"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">nginx产生和流行的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有关http请求相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">有关http请求相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个http请求的全流程"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">一个http请求的全流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx处理请求过程"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">nginx处理请求过程</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态服务器和反向代理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">静态服务器和反向代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx特点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">nginx特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-特点介绍"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">nginx 特点介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx相比apache的优势"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">nginx相比apache的优势</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx产生和流行的原因"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">nginx产生和流行的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有关http请求相关"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">有关http请求相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个http请求的全流程"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">一个http请求的全流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx处理请求过程"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">nginx处理请求过程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用信号量管理master和worker"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用信号量管理master和worker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#linux中的常用信号量"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">linux中的常用信号量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#信号量的两种用法"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">信号量的两种用法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx-配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">nginx 配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置文件结构"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">配置文件结构</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
