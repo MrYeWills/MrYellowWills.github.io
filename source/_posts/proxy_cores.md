@@ -322,6 +322,43 @@ $.ajax({
 就会让服务器处理数据报错，需要服务端作出修改。
 
 而服务器通常是把data json当成 callback的入参，这样浏览器就能正常处理了
+
+#### ajax jsonp 原理分析
+```js
+//jquery 会在前端页面任意一个js上定义一个 全局的 callback getDataFn；
+function getDataCallbackFn(res){
+  console.log('这里是后端返回的jsonp数据：', res)
+}
+
+<script src="/https://www.imooc.com/activity/newcomer?callback=ddd"></script>
+
+///https://www.imooc.com/activity/newcomer?callback=ddd 返回一个js文件，文件内容：
+
+//返回为：
+getDataCallbackFn({"result":0,"data":{name:123},"msg":"\u6210\u529f"}）
+```
+
+因此就相当于一个前端js 定义了一个 callback函数；
+另外一个js 调用了 这个callback 函数；
+
+很多人只熟悉这种script 引入js
+```html
+<script src="/abc.js"></script>
+```
+但却忽略了 `/abc.js` 也是一个 script请求；
+
+用于jsonp的 `/https://www.imooc.com/activity/newcomer?callback=ddd` 同样也是一个 script请求；
+
+因此这二者形成的js是一个道理，一样的没有任何区别
+
+#### src="/abc.js" 与 src="/callback=ddd" 都是js文件
+
+如上《ajax jsonp 原理分析》
+
+#### 貌似奇怪的js文件引入方式 src="/callback=ddd"
+刚开始都以为 src="/callback=ddd" 这种方式引入的js特殊，其实没有任何特殊的，它跟"/abc.js" 方式都是js文件的请求；
+没有任何区别。
+如上《ajax jsonp 原理分析》
 #### 需要服务端作出修改(服务端默认作出修改了)
 参考上面《jsonp返回的是js代码》；
 简单说，如果要接口支持jsonp，需要后台定义接口时，如果捕获到是jsonp请求，就返回js 字符串，这样浏览器就可以正确响应了。

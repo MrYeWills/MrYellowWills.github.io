@@ -20,6 +20,15 @@ series: linux
  grep "eslint 的使用"  eslint.md
 ```
 在linux中，双引号可用于带有空格内容的操作。
+
+### 查找命令的安装包
+我们没有安装某命令，但又向用，不知道安装哪个安装包：
+
+```s
+[root@localhost ~]# rpm -qf /usr/bin/htpasswd
+httpd-tools-2.4.6-97.el7.centos.x86_64
+[root@localhost ~]# yum install httpd-tools -y
+```
 ## 基础知识一
 
 ### 虚拟机安装centos
