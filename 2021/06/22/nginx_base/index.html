@@ -408,7 +408,8 @@
                 <p></p>
             </figure> </p>
 <p>相关模块有：<br>gzip_comp_level 2; 压缩比<br>gzip_http_version 1.1 主流使用1.1压缩版本;</p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>gzip对压缩txt js html 文件压缩比达到几倍到几十倍，通过网络也能看到gzip的大文件渲染更快，非常推荐使用gzip</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>gzip对压缩txt js html 文件压缩比达到几倍到几十倍，通过网络也能看到gzip的大文件渲染更快，非常推荐使用gzip；</p>
+<p>弊端 gzip 会让文件同时存在 原文件以及gzip文件两份，对服务器磁盘有多占用的不好。</p>
 <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="ifconfig-与-ip-命令的不同-1"><a href="#ifconfig-与-ip-命令的不同-1" class="headerlink" title="ifconfig 与 ip 命令的不同"></a>ifconfig 与 ip 命令的不同</h3><p>参考上面《ifconfig 与 ip 命令的不同》</p>
 <h3 id="检测-nginx语法是否正确"><a href="#检测-nginx语法是否正确" class="headerlink" title="检测 nginx语法是否正确"></a>检测 nginx语法是否正确</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -tc /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
 <p>不过对于 include 的 conf 文件， 可能无法通过 -tc 检查语法是否正确。<br>此时通过重启 <code>systemctl restart nginx</code> 根据提示，可以查看相关的语法错误提示：<br> <code>systemctl status nginx.service | grep static.conf</code></p>
@@ -420,7 +421,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2021-06-29T16:43:04.457Z" itemprop="dateUpdated">2021-06-29 16:43:04</time>
+    Last updated: <time datetime="2021-06-29T16:46:50.286Z" itemprop="dateUpdated">2021-06-29 16:46:50</time>
 </span><br>
 
 
