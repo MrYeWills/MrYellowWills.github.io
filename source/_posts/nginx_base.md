@@ -537,6 +537,104 @@ http://192.168.228.131/admin.html
 ![](/image/nginx/auth2.png) 
 
 
+## gzip 静态资源配置和demo
+
+### 完整配置
+
+```conf
+server {
+    listen       80;
+    server_name  localhost;
+
+    sendfile on;
+    access_log  /var/log/nginx/host.access.log  main;
+
+#访问如 http://192.168.1.159/zhy.jpg
+    location ~ .*\.(jpg|gif|png)$ {
+        #gzip on;
+        #gzip_http_version 1.1;
+        #gzip_comp_level 2;
+        #gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+        root /opt/app/code/images;
+    }
+
+    #访问如 http://192.168.1.159/aa.js
+    location ~ .*\.(txt|xml)$ {
+        #gzip on;
+        #gzip_http_version 1.1;
+        #gzip_comp_level 1;
+        #gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+        root /opt/app/code/doc;
+    }
+
+    #访问如 http://192.168.1.159/download/testfile
+    #注意的是，请在  /opt/app/code 创建 download/testfile
+    location ~ ^/download {
+        #gzip_static on;
+        #tcp_nopush on;
+        root /opt/app/code;
+    }
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+}
+```
+
+### 方案图
+![](/image/nginx/jia1.png)
+
+### 相关模块
+#### 文件读取： sendfile
+语法： on | off
+默认： off
+context: http, server, location, if in location
+
+####  tcp_nopush
+语法： on | off
+默认： off
+context: http, server, location
+
+tcp_nopush 是否急需发送；
+如果是off，标识 等有一定传输时，才集中传输；
+大文件传输 推荐 打开；
+需要开启 sendfile on；
+
+
+####  tcp_nodelay
+语法： on | off
+默认： on
+context: http, server, location
+
+tcp_nodelay与 tcp_nopush 相反，表示立即发送；
+需要开启 keeplive；
+
+
+#### 文件压缩： gzip
+语法： on | off
+默认： on
+context: http, server, location
+
+原理如下，浏览器解压gzip， nginx 压缩文件为gzip；
+好处是 减少了 服务器带宽，文件变小传输更快；
+![](/image/nginx/gzip.png) 
+
+相关模块有：
+gzip_comp_level 2; 压缩比
+gzip_http_version 1.1 主流使用1.1压缩版本;
+
+#### 小结
+
+gzip对压缩txt js html 文件压缩比达到几倍到几十倍，通过网络也能看到gzip的大文件渲染更快，非常推荐使用gzip；
+
+弊端 gzip 会让文件同时存在 原文件以及gzip文件两份，对服务器磁盘有多占用的不好。
 
 ## 黑知识
 
@@ -546,6 +644,11 @@ http://192.168.228.131/admin.html
 ```s
 nginx -tc /etc/nginx/nginx.conf
 ```
+不过对于 include 的 conf 文件， 可能无法通过 -tc 检查语法是否正确。
+此时通过重启 `systemctl restart nginx` 根据提示，可以查看相关的语法错误提示：
+ `systemctl status nginx.service | grep static.conf`
+
+
 ### IP网段写法
 语法： allow address | CIDR |unix: | all;  允许IP|IP网段如192.168.1|用的不多|所有;
 IP段的写法比如：192.168.1.0/24

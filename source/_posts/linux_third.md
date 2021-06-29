@@ -373,6 +373,11 @@ DHCP 属于网络配置，配置目录在这里 `/etc/sysconfig/network-scripts/
 ifcfg-ens33  这里的ens33，就是上面ifconfig执行时 以太网接口的ens33，可能不同机器不同
 
 #### 设置固定虚拟机的IP地址
+
+注意的是，要设置为固定，必须 网络适配器设置为桥接，如下：
+
+![](/image/linuxt/card.png)
+
 ```s
 vim /etc/sysconfig/network-scripts/ifcfg-ens33
 #以下原配置
