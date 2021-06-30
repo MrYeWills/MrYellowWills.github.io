@@ -652,3 +652,8 @@ nginx -tc /etc/nginx/nginx.conf
 ### IP网段写法
 语法： allow address | CIDR |unix: | all;  允许IP|IP网段如192.168.1|用的不多|所有;
 IP段的写法比如：192.168.1.0/24
+
+## 浏览器缓存与nginx
+
+### 浏览器缓存原理
+![](/image/nginx/cache.png)
