@@ -642,10 +642,18 @@ gzip对压缩txt js html 文件压缩比达到几倍到几十倍，通过网络�
 参考上面《ifconfig 与 ip 命令的不同》
 ### 检测 nginx语法是否正确
 ```s
-nginx -tc /etc/nginx/nginx.conf
+[root@localhost ~]# nginx -tc /etc/nginx/nginx.conf
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[root@localhost ~]#
+
 ```
-不过对于 include 的 conf 文件， 可能无法通过 -tc 检查语法是否正确。
-此时通过重启 `systemctl restart nginx` 根据提示，可以查看相关的语法错误提示：
+注意的是，对于 被 主配置文件`/etc/nginx/nginx.conf` include的 defaultxxx.conf 等文件，检查其语法是否正确都是通过 ，检查其主配置文件：
+`nginx -tc /etc/nginx/nginx.conf`.
+只要主配置文件检查通过，说明被include的所有conf文件都正常语法。
+
+
+此外也可以通过重启 `systemctl restart nginx` 根据提示，可以查看相关的语法错误提示：
  `systemctl status nginx.service | grep static.conf`
 
 
