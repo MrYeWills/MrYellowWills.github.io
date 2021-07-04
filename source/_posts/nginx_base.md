@@ -942,6 +942,14 @@ proxy_read_timeout 60;
 
 ### 其他
 
+#### root 与 alias区别
+![](/image/nginx/root.png)
+![](/image/nginx/root1.png)
+
+#### 传递用户的真实IP地址
+![](/image/nginx/ipprops.png)
+
+
 #### 匹配所有路径的 正则
 
 ```conf
