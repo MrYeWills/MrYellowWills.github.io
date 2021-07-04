@@ -29,6 +29,52 @@ series: linux
 httpd-tools-2.4.6-97.el7.centos.x86_64
 [root@localhost ~]# yum install httpd-tools -y
 ```
+
+### 查找命令的安装包
+我们没有安装某命令，但又向用，不知道安装哪个安装包：
+
+```s
+[root@localhost ~]# rpm -qf /usr/bin/htpasswd
+httpd-tools-2.4.6-97.el7.centos.x86_64
+[root@localhost ~]# yum install httpd-tools -y
+```
+
+### 实用命令
+
+#### 查找占用的接口
+```s
+[root@localhost ~]# netstat -luntp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State                      PID/Program name
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN                     1148/master
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN                     1269/nginx: master
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN                     1269/nginx: master
+tcp        0      0 0.0.0.0:8082            0.0.0.0:*               LISTEN                     1269/nginx: master
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN                     986/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN                     1148/master
+tcp6       0      0 :::22                   :::*                    LISTEN                     986/sshd
+udp        0      0 127.0.0.1:323           0.0.0.0:*                                          663/chronyd
+udp6       0      0 ::1:323                 :::*                                               663/chronyd
+[root@localhost ~]# netstat -luntp | grep 80
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN                     1269/nginx: master
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN                     1269/nginx: master
+tcp        0      0 0.0.0.0:8082            0.0.0.0:*               LISTEN                     1269/nginx: master
+
+```
+
+#### 查看程序运行的所有pid
+以 nginx为例子。
+```s
+[root@localhost ~]# ps -aux | grep nginx
+nginx      1270  0.0  0.2  57312  2528 ?        S    Jul03   0:00 nginx: worker process
+nginx      1271  0.0  0.1  57092  1784 ?        S    Jul03   0:00 nginx: cache manager process
+root       1390  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=auto nginx
+[root@localhost ~]# kill -9 1270 1271
+[root@localhost ~]# ps -aux | grep nginx
+root       1393  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=auto nginx
+
+```
+
 ## 基础知识一
 
 ### 虚拟机安装centos

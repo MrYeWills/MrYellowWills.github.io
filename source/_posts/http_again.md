@@ -294,6 +294,13 @@ www 是主机名，github.com 是域名；
 因此中间人无法再通过自己伪造证书从浏览器端骗来 浏览器用于对称加密的密钥了。
 
 ### https
+
+#### 原理
+https 一般是 非对称加密 传输 会话密钥，
+会话使用对称加密：
+![](/image/http_again/ok.png)
+![](/image/http_again/ok1.png)
+
 #### 概述
 在国内https起源于2014年百度网站的率先使用，到如今不过6年多。
 ![](/image/http_again/httpsm1.jpg)

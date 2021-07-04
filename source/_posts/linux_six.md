@@ -135,6 +135,19 @@ php 与 apache 天生就搭配，但 nginx与php通讯必须要安装 FastCGI协
 
 Discuz！ 一个国内的论坛 BBS 软件系统
 
+### 认识FastCGI
+#### 架构示意图
+![](/image/linuxs/fa1.png)
+
+![](/image/linuxs/fa3.png)
+
+#### FastCGI是相对于早期的 CGI说的
+下面是早期的 CGI架构，因为有某些不足，因此就有了上面的 fastCGI.
+![](/image/linuxs/fa2.png)
+
+#### 延申讲解- uwsgi
+![](/image/linuxs/fa4.png)
+
 ### FastCGI协议 与 php-fpm
 
 FastCGI协议是可以让nginx与php进行通讯的一个协议

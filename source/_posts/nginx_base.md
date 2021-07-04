@@ -636,8 +636,205 @@ gzip对压缩txt js html 文件压缩比达到几倍到几十倍，通过网络�
 
 弊端 gzip 会让文件同时存在 原文件以及gzip文件两份，对服务器磁盘有多占用的不好。
 
-## 黑知识
+## 其他demo
 
+### 代理配置demo
+
+访问80端口 带有new关键字的请求，都转发到 8080 端口。
+#### 主要代码
+```s
+server {
+    listen     80;
+    server_name  localhost;
+    location ~ .*new.*$ {
+        proxy_pass http://192.168.1.159:8080;
+  }
+}
+
+
+server {
+    listen     8080;
+    server_name  localhost;
+
+    location / {
+        root   /opt/app/code;
+        index  index.html index.htm;
+  }
+
+  location ~ ^.*new.*$ {
+        root   /opt/app/code2;
+        index  index.html index.htm;
+  }
+}
+```
+
+浏览器范围：
+
+`http://192.168.1.159/new/down.html` 会被代理到 8080 端口。
+
+### 代理缓存的demo说明
+
+#### 概述
+```s
+#配置两个服务器，会达到这样的效果： nginx为了负载均衡，让多个请求会平均的分配到每个服务器中，保证每个服务器接收到的请求数量一致；
+#本地测试的效果是 每次刷新页面，nginx都会让请求转发到不同的服务器
+upstream imooc {
+   server 192.168.1.109:80;
+   server 192.168.1.159:8080;
+}
+#/opt/app/cache 缓存存放位置； levels 目录存放比，可默认设置；
+#keys_zone 定义标识缓存空间的名字，以备 后面的 proxy_cache 用到，
+#10m 10兆的意思，不懂就默认这样配置吧
+#max_size=10g 磁盘最大10G，超过10G 会被 nginx的算法删除；
+#inactive=60m  inactive 表示60分钟不活跃就被删除缓存；
+#use_temp_path=off;一般默认关闭， 不懂就默认这样配置吧
+proxy_cache_path /opt/app/cache levels=1:2 keys_zone=imooc_cache:10m max_size=10g inactive=60m use_temp_path=off;
+
+server {
+  listen    80;
+  server_name localhost;
+  
+  location / {
+    proxy_cache imooc_cache; #就是上面keys_zone定义的缓存空间名字
+	proxy_pass http://imooc;
+	proxy_cache_valid 200 304 12h; #表示 200 304 的请求 12小时过期；
+	proxy_cache_valid any 10m; #除上面200 304 的请求，10分钟过期
+	proxy_cache_key $host$uri$is_args$args;  #设置缓存key的唯一标识 
+
+	add_header Nginx-Cache "$upstream_cache_status"; #增加Nginx-Cache头信息，告诉客服端缓存是否upstream_cache_status命中
+	
+	proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;  #上面定义了两个服务器，当一个服务器出现 error timeout invalid_header http_500 http_502 http_503 http_504 时，就轮询到下一个服务器
+    include proxy_params;	# 此配置也可以不配置，使用nginx默认的
+  }
+}
+
+```
+
+#### 服务端清除代理缓存
+
+`cd /opt/app/cache ` 上面定义的缓存目录下，将里面的文件全部删除
+
+
+
+### websocket 代理
+
+#### 概念
+![](/image/nginx/ws1.png)
+![](/image/nginx/ws3.png)
+![](/image/nginx/ws4.png)
+
+#### 实现
+**因为全程都是在服务器端，因此都是用127.0.0.1。**
+```s
+#如果 $http_upgrade 有值， 就给$connection_upgrade设置值； 
+#$connection_upgrade默认 为 upgrade；
+#如果  $http_upgrade 为'',则 $connection_upgrade 值为 close;
+map $http_upgrade $connection_upgrade {
+  default upgrade;
+  '' close;
+}
+
+upstream websocket {
+  server 127.0.0.1:8010;  #node 启动的服务
+}
+
+server {
+  listen    8020;
+  
+  location / {
+	proxy_pass http://websocket;
+	proxy_http_version 1.1;
+	proxy_set_header Upgrade $http_upgrade; #这是配置 ws 代理转发的关键
+	proxy_set_header Connection $connection_upgrade; #这是配置 ws 代理转发的关键
+  }
+}
+
+```
+
+```js
+这是node js 文件
+var msg = '';
+var websoketServer = require('ws').Server;
+var wss = new WebSocketServer({port: 8010});
+wss.on('connection', function(ws){
+  ws.on('message', function(msg){
+    ws.send('server received from client: ' + msg)
+  })
+})
+```
+
+#### 测试
+```s
+#在服务端中的终端执行
+wscat --connect ws://127.0.0.1:8020
+```
+![](/image/nginx/ws2.png)
+
+
+### uwsgi代理与djiango
+Django 是一个开源的web的框架；
+Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django。
+![](/image/nginx/us.png)
+![](/image/nginx/us1.png)
+[安装Python等参考](https://www.imooc.com/article/26870)
+
+
+### rewrite的使用和demo
+
+#### 配置语法
+```conf
+rewrite regex replacement [flag];
+default:-
+context: server,location, if
+```
+
+#### flag
+对`rewrite regex replacement [flag];`中flag取值说明。
+![](/image/nginx/re2.png)
+
+#### 代码
+```conf
+server {
+  listen    80;
+  
+  root /opt/app/code;
+  location ~ ^/break {
+      #访问192.168.1.159/break 将是404， 
+      #因为这个/test/ 是指root /opt/app/code下的目录,此目录下没有test
+      #一般break 可这样配置 rewrite ^(.*)$ /pages/maintain.html break;
+	rewrite ^/break /test/ break; 
+  }
+
+  location ~ ^/last {
+      #访问192.168.1.159/last 将 正常返回 {"status":"success"}， 
+      #break 与 last的区别在于， break是重定向到目录， last是转接到另外一个接口请求，相当于转发，
+      #下面的/test/ 就是下面location定义的接口/test/
+	rewrite ^/last /test/ last; 
+  }
+  
+  location ~ /test/ {
+    default_type application/json;
+	return 200 '{"status":"success"}'; 
+  }
+  
+}
+
+```
+
+访问 http://192.168.1.159/last/
+
+![](/image/nginx/re.png)
+
+#### last break 区别
+如上的demo。注意的是last的状态码是200，不是30x.
+
+#### break妙用
+如下服务端静态文件目录 与 break结合使用。
+![](/image/nginx/re3.png)
+![](/image/nginx/re4.png)
+
+
+## 黑知识
 ### ifconfig 与 ip 命令的不同
 参考上面《ifconfig 与 ip 命令的不同》
 ### 检测 nginx语法是否正确
@@ -660,6 +857,141 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 ### IP网段写法
 语法： allow address | CIDR |unix: | all;  允许IP|IP网段如192.168.1|用的不多|所有;
 IP段的写法比如：192.168.1.0/24
+
+### 配置语法
+
+#### 一定要注意加空格
+在nginx中，配置时一定要注意加上空格，
+比如if语句：
+```s
+#错误
+if(){
+
+}
+```
+```s
+#加了空格，正确
+if ( ) {
+    
+}
+```
+
+### location以最后一个匹配为准
+多个location匹配时，最后一个location匹配的为准。
+
+### 看日志的妙处
+nginx 看日志，可以打印 变量名称，可以这样说，前端调试，日志是打开控制台 
+
+```s
+# 在主配置文件 /etc/nginx/nginx.conf 中
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+}
+
+```
+在控制台执行命令：
+```s
+tail -f /var/log/nginx/access.log
+```
+每次访问nginx，就会显示上面的日志信息。
+
+### include 用法
+```s
+    location / {
+        root   /opt/app/code;
+        index  index.html index.htm;
+
+        proxy_redirect default;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        proxy_connect_timeout 30;
+        proxy_send_timeout 60;
+        proxy_read_timeout 60;
+  }
+```
+相当于：
+
+定义一个文件：
+```s
+$ cat proxy_params
+proxy_redirect default;
+proxy_set_header Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+
+proxy_connect_timeout 30;
+proxy_send_timeout 60;
+proxy_read_timeout 60;
+```
+
+```s
+ location / {
+        root   /opt/app/code;
+        index  index.html index.htm;
+        
+        include proxy_params; #引入上面创建文件的文件proxy_params
+  }
+```
+
+这样做的好处就是模块化，方便引用，可读性好。
+
+### 其他
+
+#### 匹配所有路径的 正则
+
+```conf
+rewrite ^(.*)$ /pages/maintain.html break;  # ^(.*)$匹配所有路径
+rewrite ^(.*)$ /pages/$1 break;  # $1 为 ^(.*)$ 中(.*)部分，与正则表达式一样，可以有$1 $2 ...
+```
+
+#### 关闭nginx的方法
+```s
+[root@localhost ~]# ps -aux | grep nginx
+nginx      1270  0.0  0.2  57312  2528 ?        S    Jul03   0:00 nginx: worker process
+nginx      1271  0.0  0.1  57092  1784 ?        S    Jul03   0:00 nginx: cache manager process
+root       1390  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=auto nginx
+[root@localhost ~]# kill -9 1270 1271
+[root@localhost ~]# ps -aux | grep nginx
+root       1393  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=auto nginx
+```
+
+#### restart nginx报错时处理方式
+有时候nginx语法是正确的；
+端口也没有被占用；
+systemctl restart nginx 依然报错，此时可以关闭nginx，然后再重启。
+
+#### md5加密生成下载链接的sh脚本
+$() 的妙用,$()括号内，可写sh表达式：
+```s
+
+[root@localhost test]# cat md.sh
+
+#!/bin/sh
+#
+servername="jeson.t.com"
+download_file="/opt/app/"
+time_num=$( date -d "2021-10-18 00:00:00" +%s )  #$() 的妙用
+secret_num="imooc"
+
+# echo的输出相当于 openssl 需要的目录， 先进行 md5加密，后base64，再后面就是一些格式花处理
+res=$(echo -n "${time_num}${download_file} ${secret_num}"|openssl md5 -binary | openssl base64 | tr +/ -_ | tr -d =)
+
+echo "http://${servername}${download_file}?md5=${res}$&expires=${time_num}"
+[root@localhost test]# sh ./md.sh
+http://jeson.t.com/opt/app/?md5=kyo5J6MRVm1l-Rvjt9rzWw$&expires=1634529600
+[root@localhost test]#
+
+```
+
+#### 安装openssl指定版本的sh脚本
+
+![](/image/nginx/open.png)
+
 
 ## 浏览器缓存与nginx
 
