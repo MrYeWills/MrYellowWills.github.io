@@ -876,8 +876,83 @@ if ( ) {
 }
 ```
 
-### location以最后一个匹配为准
-多个location匹配时，最后一个location匹配的为准。
+### location匹配优先级
+#### 几种优先级
+= 进行普通字符精确匹配，也就是完全匹配； --优先级最高；
+^~ 表示普通字符匹配，使用前缀匹配，也就是以什么开头； --优先级次之；
+~ 或 \~*  都是正则匹配， 前者区分大小写， 后缀不区分大小写； --优先级次之；
+
+![](/image/nginx/lo3.png)
+![](/image/nginx/lo4.png)
+#### demo说明
+
+![](/image/nginx/lo.png)
+
+#### url结尾的反斜线
+![](/image/nginx/lo5.png)
+
+不带： 
+location /test :  
+- 首先 先尝试把/test 当成一个目录，去找 /test目录下的 index.html, 有就返回index.html, 
+- 如果没有index.html, 就把/test 当成一个文件处理，看是否存在 test 文件，如果存在就返回text文件；
+location /test/ : 去找 /test/目录下的 index.html, 有就返回index.html, 如果没有index.html, 就返回404；
+
+
+### server_name 写法 和 形式
+#### 四种写法
+![](/image/nginx/serv.png)
+
+#### 匹配优先级
+![](/image/nginx/serv2.png)
+
+#### 四种结构
+![](/image/nginx/serv1.png)
+
+
+
+#### 几种优先级
+= 进行普通字符精确匹配，也就是完全匹配； --优先级最高；
+^~ 表示普通字符匹配，使用前缀匹配，也就是以什么开头； --优先级次之；
+~ 或 \~*  都是正则匹配， 前者区分大小写， 后缀不区分大小写； --优先级次之；
+
+#### demo说明
+
+![](/image/nginx/lo.png)
+
+
+### 服务端处理客户端请求流程
+
+![](/image/nginx/url.png)
+
+- 用户
+发送一个tcp链接
+到我们的网卡上
+
+- 网卡收到之后
+把这个tcp链接拆包，
+此时拆包出来第二层信息，
+拆包后，就把这个包含第二层信息的数据包
+给我们的tcp/ip 协议栈
+
+- 我们的tcp/ip 协议栈 把这个包含第二层信息的数据包给拆掉之后
+发现一些三层信息 
+比如 
+是不是当前的ip，
+
+- 如果不是就直接将这个数据包丢掉，停止处理；
+
+- 如果是就继续处理；
+ 
+- 我们的tcp/ip协议继续拆包数据包
+这样就拆出来第四层信息，
+看下端口是谁，比如是80端口服务
+这个时候，我们的内核态会知道我们的80端口 到底监听在用户态的某一个程序中，
+比如nginx提供的服务；
+
+- 此时，tcp/ip协议栈 就把数据包传递给 nginx的worker子进程，交给nginx处理。
+
+
+
 
 ### 看日志的妙处
 nginx 看日志，可以打印 变量名称，可以这样说，前端调试，日志是打开控制台 
@@ -1005,3 +1080,40 @@ http://jeson.t.com/opt/app/?md5=kyo5J6MRVm1l-Rvjt9rzWw$&expires=1634529600
 
 ### 浏览器缓存原理
 ![](/image/nginx/cache.png)
+
+## 安全相关
+### 文件上传漏洞
+文件上传漏洞-利用这些可以上传的接口将恶意代码植入到服务器中，再通过url去访问以执行代码。
+
+http://www.imooc.com/upload/1.jpg/1.php
+nginx将1.jpg作为php代码执行。
+
+如果1.jpg 包含了php不好的代码，就会污染了服务器。
+
+解决之道，在于nginx内，识别url是否合规，并做相应返回：
+```conf
+location ^~ /upload {
+  root /opt/app/images;
+  if($request_filename ~* (.*)\.php){
+    return 403 #如果是php格式，就不要给显示或下载图片
+  }
+}
+```
+
+### sql注入
+sql注入 利用未过滤未审核用户输入的攻击方法，让应用运行本不应该运行的sql代码。
+
+![](/image/nginx/aql.png)
+![](/image/nginx/aql1.png)
+![](/image/nginx/aql2.png)
+![](/image/nginx/aql3.png)
+![](/image/nginx/aql4.png)
+
+当通过
+![](/image/nginx/aql5.png)
+![](/image/nginx/aql51.png)
+发现也登录成功了。
+![](/image/nginx/aql6.png)
+
+
+
