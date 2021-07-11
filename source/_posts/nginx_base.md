@@ -76,6 +76,59 @@ nginx是最新一代服务器(根据当代多核cpu设计的,这个理由只当�
 ![](/image/nginx/http1.jpg)
 
 
+### nginx的变量
+
+#### 变量分类
+nginx是用来处理请求的服务器，因此它的变量主要是围绕 请求处理而分类的。
+如下，有5种分类：
+![](/image/nginx/var1.png)
+
+为什么有tcp链接分类变量：
+其中 http 建立在tcp\ip协议上的，建立http链接，要经过tcp链接，在此之上进行http数据传输。
+
+理解 nginx内部变量：
+nginx自身运行时，也会产生相关变量。
+
+#### tcp连接相关变量
+
+remote_addr 客户端IP地址
+remote_port 客户端端口
+server_addr 服务端IP地址
+server_port 服务端端口
+server_protocol 服务端协议 比如http1.0 http1.1
+
+![](/image/nginx/var2.png)
+
+#### http请求过程相关变量
+
+uri 请求的url，不包含参数
+request_uri 请求的url，包含参数
+scheme 协议名，http或https
+request_method 请求方法
+request_length 全部请求的长度，包括请求行、请求头、请求体；
+args 全部参数字符串
+arg_参数名 获取具体参数名的参数值
+is_args 判断url中是否有参数，如果有参数，则返回?，否则返回空；
+query_string 与 args相同，二者可互换使用
+remote_user 由http basic authentication协议传入的用户名
+host 先看请求行，再看请求头，最后找server_name
+http_user_agent 用户浏览器
+http_referer 从那些链接过来
+http_via 经过一层代理服务器，添加对应代理服务器信息
+http_x_forwarded_for 获取用户真实IP
+http_cookie 用户cookie
+
+#### 处理http请求相关变量
+request_time 处理请求已耗费的时间
+request_completion 请求处理完成返回ok，否则返回空；
+server_name 匹配上请求的server_name值
+https 若开启https,则返回on，否则返回空；
+request_filename 磁盘文件系统待访问文件的完整路径
+document_root 由uri和root/alias规则生成的文件路径
+realpath_root 将document_root中的软链接换成真实路径
+limit_rate 返回响应时的速度上限值
+
+
 ## 使用信号量管理master和worker
 ### linux中的常用信号量
 ```s
@@ -1014,6 +1067,12 @@ proxy_read_timeout 60;
 ```
 
 这样做的好处就是模块化，方便引用，可读性好。
+
+### 你不知道的 proxy_pass
+
+#### 不带/ 和 带/ 的区别
+![](/image/nginx/pa1.png)
+![](/image/nginx/pa2.png)
 
 ### 其他
 
