@@ -95,3 +95,88 @@ class LikeButton extends React.Component <any, IState>{
   }
 }
 ```
+
+### style
+```ts
+const wrapperStyle: React.CSSProperties = {
+  padding: '20px 40px'
+}
+
+const storyWrapper = (stroyFn: any) => (
+  <div style={wrapperStyle}>
+    <h3>组件演示</h3>
+    {stroyFn()}
+  </div>
+)
+```
+
+### createContext
+
+```ts
+import React, { FC, useState, createContext, CSSProperties } from 'react'
+
+interface IMenuContext {
+  index: string;
+  onSelect?: (selectedIndex: string) => void;
+  mode?: MenuMode;
+  defaultOpenSubMenus?: string[];  
+}
+
+//createContext  可以接收一个泛型 IMenuContext
+export const MenuContext = createContext<IMenuContext>({index: '0'})
+```
+
+
+### click event ： React.MouseEvent
+
+```ts
+ const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setOpen(!menuOpen)
+  }
+```
+
+
+
+## props
+
+### 按钮的props定义demo
+#### demo
+```ts
+export type ButtonSize = 'lg' | 'sm'
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
+
+interface BaseButtonProps {
+  className?: string;
+  /**设置 Button 的禁用 */
+  disabled?: boolean;
+  /**设置 Button 的尺寸 */
+  size?: ButtonSize;
+  /**设置 Button 的类型 */
+  btnType?: ButtonType;
+  children: React.ReactNode;
+  href?: string;
+}
+// ButtonHTMLAttributes 这是react写的一个按钮的props，包含了 onClick 等等 button应该具备的所有属性的 接口。
+// AnchorHTMLAttributes 这是react写的一个锚点的props。
+// NativeButtonProps 具备了 BaseButtonProps 与 ButtonHTMLAttributes 共同的属性
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
+// Partial 是 ts 的关键字 ，将所有 props 属性 变为可选；
+// & 是 两个对象的合集，类似 js 的 Object.assign
+// 为什么要ButtonProps可选，因为不用可选，NativeButtonProps 等这些属性都是必填的，
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
+
+export const Button: FC<ButtonProps> = (props) => {
+
+```
+
+#### 按钮props
+
+ButtonHTMLAttributes , 参考demo
+#### 锚点props
+
+AnchorHTMLAttributes , 参考demo
+
+#### ts 的 Partial 
+参考demo

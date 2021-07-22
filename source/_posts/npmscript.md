@@ -7,6 +7,15 @@ categories:
 series: 前端工具
 ---
 
+
+## 基础知识
+
+### npx node-sass
+
+```s
+npx node-sass variables.scss var.css  #被编译的scss文件， 编译后输出的文件
+```
+
 ## 黑知识
 
 ### 关于pre的写法

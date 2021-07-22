@@ -207,3 +207,18 @@ transform: rotate(110deg);
 指的是一秒内有25张静止的图片，一般达到25帧，在视觉上可形成流畅的动画效果。
 ### 其他
 更多参考《前端demo讲解 -- 动画demo 及 css动画知识点》
+
+## scss
+
+### 以下标开头的文件不能直接编译 只能被import
+这是 scss的规则，如果文件 以下标开头命令， 将不能直接被编译：
+```s
+#被编译的scss文件， 编译后输出的文件， 发现输出文件 var.css 为空；
+npx node-sass _variables.scss var.css  
+```
+
+`index.scss` 引入 `_variables.scss`, 然后 npx 编译index.scss 即可。
+```css
+/* index.scss； */
+@import "_variables";
+```
