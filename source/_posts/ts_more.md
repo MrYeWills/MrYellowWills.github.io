@@ -168,7 +168,7 @@ ts会默认读取项目下所有的d.ts文件，无论在哪个目录存放 d.ts
 //jQuery.d.ts
 declare var jQuery: (selector: string) => any
 ```
-一般定义ddd文件后，项目内若有的ts文件都可以获得此声明，用于编译，
+一般定义d.ts文件后，项目内所有的ts文件都可以获得此声明，用于编译，
 但也有不行的时候，可以创建tsconfig.json，告诉ts，将声明用于项目下所有的ts文件。
 #### tsconfig.json 解决ts无法获取声明
 ```json

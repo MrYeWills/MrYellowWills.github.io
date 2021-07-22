@@ -566,7 +566,108 @@ render props则与父组件一体，用的是父组件状态。
 [参考](https://blog.csdn.net/qq_40962320/article/details/87043581)
 
 
+## 黑知识
+
+### 奇怪的渲染：每次渲染的状态是独立的黑箱
+```ts
+interface IState {
+  like: any,
+}
+class LikeButton extends React.Component <any, IState>{
+  constructor(props:any){
+    super(props)
+    this.state={like:0}
+  }
+  handleAlertClick =()=>{
+    const {like} = this.state;
+    setTimeout(() => {
+      alert('you clicked on ' + this.state.like)  //like 为 17
+    }, 3000)
+
+    setTimeout(() => {
+      alert('you clicked on ' + like) //like 为 5
+    }, 3000)
+  }
+
+  render(){
+    const {like} = this.state;
+    return (
+      <>
+      <button onClick={() => {this.setState({like: like + 1});}}>
+        {like} 👍
+      </button>
+      {/* like 为 5 的时候，  点击触发 handleAlertClick, 然后一直点击上面的onClick改变like值，3秒后like值变成17 */}
+      <button onClick={this.handleAlertClick}> Alert!
+      </button>
+      </>
+    )
+  }
+}
+```
+
+```ts
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { ThemeContext } from '../App'
+const LikeButton: React.FC = () => {
+  const [like, setLike] = useState(0)
+  const likeRef = useRef(0)
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert('you clicked on ' + like)  //也是5 非 17
+    }, 3000)
+  }
+  return (
+    <>
+    <button onClick={() => {setLike(like + 1); likeRef.current++}}>
+      {like} 👍
+    </button>
+    <button onClick={handleAlertClick}> Alert!
+    </button>
+    </>
+  )
+}
+export default LikeButton
+```
+
+每次渲染中 props state 是相互独立的黑箱（每次渲染会形成一个闭包）；
+其实render也是一个函数，render的执行是一次渲染，只是渲染jsx或dom；
+同样的handleAlertClick 函数内的程序执行，其实也是一次渲染，
+此次渲染的所有 props state 是相互独立的黑箱，其props state的值 由 handleAlertClick函数执行的那一刻决定。
+其props state的值就是handleAlertClick函数执行的那一刻的执行上下文。
+handleAlertClick函数执行的那一刻 this.state.like为 5 所以最终渲染的是5；
+至于直接使用 this.state.like 最终渲染成17 是因为 对象的引用导致。
+
+![](/image/react/hook.png)
+
+```js
+//错误写法
+function foo(){
+    var arr = [];
+    for(let i = 0; i < 2; i++){
+        arr[i] = function(){
+            return i;
+        }
+    }
+    return arr;
+}
+var bar = foo();
+console.log(bar[0]());//2
 
 
-
+//正确写法
+function foo(){
+    var arr = [];
+    for(var i = 0; i < 2; i++){
+        arr[i] = (function fn(j){
+            var _j = j;//定义一个变量，更容易理解
+            return function test(){
+                return _j;
+            }
+        })(i);
+    }
+    return arr;
+}
+var bar = foo();
+console.log(bar[0]());//0
+```
 

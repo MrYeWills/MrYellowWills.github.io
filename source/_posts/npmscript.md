@@ -26,3 +26,15 @@ series: 前端工具
     "prettier": "prettier -c --write \"**/*\""
   },
 ```
+
+### npm script、命令行、npx
+#### 三者关系
+shell能执行的命令，就可以写在npm script 上;
+特殊的是，npm script 的bin目录除了全局的外，还有 node_module 内的bin;
+如果不使用npm script，直接在命令行执行， 就必须 写 node_module的全命令;
+
+![](/image/npmscript/npx.png)
+![](/image/npmscript/run.png)
+#### npm script 与 环境变量 path
+npm run shell 命令 特殊之处 在于 在命令运行时，会将 node module 的bin 放入环境变量path 中，这样就能直接使用node moduel命令，
+npm run 执行完毕 又将此 path 变量 释放。
