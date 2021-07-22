@@ -57,3 +57,41 @@ const themes: IThemeProps = {
   }
 }
 ```
+
+### state
+解决 this.state.like 报错 `Property 'like' does not exist on type 'Readonly<{}>'`
+```ts
+interface IState {
+  like: any,
+}
+class LikeButton extends React.Component <any, IState>{
+  constructor(props:any){
+    super(props)
+    this.state={like:0}
+  }
+  handleAlertClick =()=>{
+    const {like} = this.state;
+    setTimeout(() => {
+      alert('you clicked on ' + this.state.like)  //like 为 17
+    }, 3000)
+
+    setTimeout(() => {
+      alert('you clicked on ' + like) //like 为 5
+    }, 3000)
+  }
+
+  render(){
+    const {like} = this.state;
+    return (
+      <>
+      <button onClick={() => {this.setState({like: like + 1});}}>
+        {like} 👍
+      </button>
+      {/* like 为 5 的时候，  点击触发 handleAlertClick, 然后一直点击上面的onClick改变like值，3秒后like值变成17 */}
+      <button onClick={this.handleAlertClick}> Alert!
+      </button>
+      </>
+    )
+  }
+}
+```
