@@ -139,6 +139,13 @@ http.createServer((req,res)=>{
 
 
 ## 黑知识
+
+### 路径中的 `**` 与 `*` 
+```json
+ "src/**/*.test.tsx",// 两个**匹配任意长度任意路径下
+ "src/**/*.stories.tsx",// 一个* 是通配符
+```
+
 ### 神奇的相对路径
 #### 报错not suce file
 

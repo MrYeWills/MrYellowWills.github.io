@@ -185,5 +185,32 @@ declare var jQuery: (selector: string) => any
 在[TypeSearch这里](https://microsoft.github.io/TypeSearch/)可以查询使用的库是否有声明文件。使用外网访问，不然查询不到。
 
 
+## 配置文件
+
+### 配置文件说明demo一
+
+```js
+//下面时 tsconfig.build.json
+{
+  "compilerOptions": {
+    "outDir": "dist", //输出目录
+    "module": "esnext",  //使用 es 模块标准，即 import export
+    "target": "es5", //编译成es5
+    "declaration": //true, 是否要生成声明文件
+    "jsx": "react", //打包编译的是react，可选值还有 react-native 等
+    "moduleResolution":"Node", //编译的路径 选择 node 的策略， 即常用的相对路径，绝对路径
+    "allowSyntheticDefaultImports": true, //设置为true时，import策略为 import React form 'react' 而非 import * as React form 'react'
+  },
+  "include": [
+    "src"  //只编译 src下
+  ],
+  "exclude": [ //不包含以下文件
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx",
+    "src/setupTests.ts",
+  ]
+}
+```
+
 
 

@@ -136,6 +136,23 @@ export const MenuContext = createContext<IMenuContext>({index: '0'})
   }
 ```
 
+### 定义onChange type ： React.ChangeEvent
+```ts
+import React, { ChangeEvent } from 'react'
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size' > {
+  onChange? : (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+//顶一个为 React.ChangeEvent后，  使用的时候，就e.target.value 这些属性
+onChange={(e) => {e.target.value}}
+```
+
+### 定义键盘事件
+```ts
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    switch(e.keyCode) {
+  }
+```
 
 
 ## props
@@ -180,3 +197,109 @@ AnchorHTMLAttributes , 参考demo
 
 #### ts 的 Partial 
 参考demo
+
+## 运用场景
+
+### 从一个对象类型中剔除某些属性 Omit
+[Omit](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)
+
+```ts
+import React, { FC, ReactElement, InputHTMLAttributes } from 'react'
+type InputSize = 'lg' | 'sm'
+//react InputHTMLAttributes 中定义了 size，且size类型是number，而我们也要定义size，且size类型为string，
+// 因此需要剔除掉 react InputHTMLAttributes 中定义的 size，不然报错
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size' > {
+  /**是否禁用 Input */
+  disabled?: boolean;
+  /**设置 input 大小，支持 lg 或者是 sm */
+  size?: InputSize;  
+   /**添加后缀 用于配置一些固定组合 */
+  append?: string | ReactElement;
+} 
+```
+
+### 定义react element 
+参考上面的 demo  ： React.ReactElement
+
+### 定义Promise 
+参考《type 的使用demo》
+
+### 定义ref
+
+以下也是 contains 的经典引用， 用于实现 点击元素之外任何地方 触发事件， 比如关闭弹框。
+
+```ts
+import { RefObject, useEffect } from "react";
+
+function useClickOutside(ref: RefObject<HTMLElement>, handler: Function) {
+  useEffect(() => {
+    const listener = (event: MouseEvent) => {
+      // 值得注意的是 ref.current.contains(event.targe) 可用于判断dom是否包含另外一个dom
+      if (!ref.current || ref.current.contains(event.target as HTMLElement)) {
+        return
+      }
+      handler(event)
+    }
+    document.addEventListener('click', listener)
+    return () => {
+      document.removeEventListener('click', listener)
+    }
+  }, [ref, handler])
+}
+
+export default useClickOutside
+```
+
+#### `TransMenu.Item = MenuItem`类型定义
+```ts
+import { FC } from 'react'
+import Menu, { MenuProps } from './menu'
+import SubMenu, { SubMenuProps } from './subMenu'
+import MenuItem, { MenuItemProps } from './menuItem'
+
+export type IMenuComponent = FC<MenuProps> & {
+  Item: FC<MenuItemProps>,
+  SubMenu: FC<SubMenuProps>
+}
+const TransMenu = Menu as IMenuComponent
+// 如果进行 TransMenu 类型定义，就无法export TransMenu.Item
+TransMenu.Item = MenuItem
+TransMenu.SubMenu = SubMenu
+
+export default TransMenu
+```
+
+### 定义file 和 file列表
+
+FileList 与 File 是 ts自带的类型【待进一步考证？】。
+```ts
+//  FileList 定义多个 file
+ const uploadFiles = (files: FileList) => {
+  }
+  //  File 定义单个 file
+  const post = (file: File) => {
+  }
+
+```
+
+
+
+### type 的使用demo
+
+#### 示例一
+```ts
+interface DataSourceObject {
+  value: string;
+}
+
+定义一个类型 DataSourceType 接收一个泛型，此泛型默认值为{} ，返回这个泛型 和 DataSourceObject 的并集 【是否并集待考证？】；
+export type DataSourceType<T = {}> = T & DataSourceObject
+export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
+  // 返回一个 Promise 或 DataSourceType[]类型
+  fetchSuggestions: (str: string) => DataSourceType[] | Promise<DataSourceType[]>;
+}
+```
+
+#### 示例二
+参考《`TransMenu.Item = MenuItem`类型定义》
+
