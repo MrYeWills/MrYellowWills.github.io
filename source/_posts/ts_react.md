@@ -1,5 +1,5 @@
 ---
-title: ts与react
+title: ts与react结合使用
 date: 2021/7/22
 tags: [typescript, react]
 categories: 
@@ -38,7 +38,27 @@ export default LikeButton
   
  function useRef<T>(initialValue: T|null): RefObject<T>;
  ```
+### react-router
 
+#### 定义props
+```js
+import React from "react";
+import { RouteComponentProps } from "react-router-dom";
+
+interface MatchParams {
+  touristRouteId: string;
+}
+
+// RouteComponentProps 接收一个泛型 MatchParams， 也可以不用传
+export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
+  props
+) => {
+//   console.log(props.history);
+//   console.log(props.location);
+//   console.log(props.match);
+  return <h1>路游路线详情页面, 路线ID: {props.match.params.touristRouteId}</h1>;
+};
+```
 ### 对象Object
 
 #### 定义key类型，value类型
@@ -56,6 +76,43 @@ const themes: IThemeProps = {
     background: '#222',
   }
 }
+```
+
+#### withRouter
+```js
+import React from "react";
+import { Image, Typography } from "antd";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+
+interface PropsType extends RouteComponentProps {
+  id: string | number;
+  size: "large" | "small";
+  imageSrc: string;
+  price: number | string;
+  title: string;
+}
+
+const ProductImageComponent: React.FC<PropsType> = ({
+  id,
+  size,
+  imageSrc,
+  price,
+  title,
+  history,
+  location,
+  match
+}) => {
+  // console.log(history)
+  // console.log(location)
+  // console.log(match)
+  return (
+    <div onClick={() => history.push(`detail/${id}`) }>
+    </div>
+  );
+};
+
+export const ProductImage = withRouter(ProductImageComponent);
+
 ```
 
 ### state
@@ -303,3 +360,8 @@ export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
 #### 示例二
 参考《`TransMenu.Item = MenuItem`类型定义》
 
+
+## 调试经验
+
+### 如何找到react元素的类型
+![](/image/type-react/debug.png)

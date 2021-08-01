@@ -671,3 +671,68 @@ var bar = foo();
 console.log(bar[0]());//0
 ```
 
+### setState 的函数使用 和 妙用
+react 的 setState 是异步更新，同步执行。
+setState 本身并非异步，但对state的处理机制给人一种异步的假象。
+
+下面是hook和class组件使用函数来setState，效果是一致的。
+下面代码利用了两点知识：
+- setState 是同步执行；
+- setState 接收函数时， 其入参是最新的state；
+```js
+ const [ num, setNum ] = useState(0)
+<Button onClick={()=>{
+          setNum(pre=>{
+            console.log(pre) //0
+            return pre+1
+          })
+           console.log(num) //0
+          // 因为 setState是同步执行，到这里的时候上面的 代码已经都执行过了，其状态已经更新；
+          // 利用接收函数时，入参可以得到 最新 state 的特性，这里可以取到最新的状态值。
+          setNum(pre=>{
+            console.log(pre) //1
+            return pre+1
+          })
+        }} >test</Button>
+```
+```js
+ const [ num, setNum ] = useState(0)
+<Button onClick={()=>{
+          setNum(num+1)
+          console.log(num) //0
+          setNum(pre=>{
+            console.log(pre) //1
+            return pre+1
+          })
+        }} >test</Button>
+```
+```js
+  this.state={
+    num:0
+  }
+  <Button onClick={()=>{
+           this.setState(pre=>{
+              console.log(pre.num) //0
+              return {num: pre.num + 1}
+            })
+            this.setState(pre=>{
+              console.log(pre.num) //1
+              return {num: pre.num + 1}
+            })
+        }} >test</Button>
+```
+
+## react 17
+
+### 没有新增新能力
+没有新增能力，为了后期能力的增加做铺垫：
+### 不同点
+以下特性， 源码层面的优化，react使用者而言 无感知，知道就行
+- 事件委托机制改变 
+- 向元素浏览器靠拢 
+- 删除事件池
+
+下面特性 没什么大变化，不过react使用者值得稍加注意：
+- useEffect 清理操作改为异步操作 ，以前是同步操作
+- jsx不可返回 undefined
+- 删除部分私有api ，是react native 的api ，pc端不用关心
