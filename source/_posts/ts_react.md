@@ -115,6 +115,18 @@ export const ProductImage = withRouter(ProductImageComponent);
 
 ```
 
+### redux
+#### redux
+原生的 redux 结合 react 使用的ts定义例子：
+[详细参考](https://gitee.com/mayising/typescript-react/tree/master/ch7/7.8%E3%80%90redux%E9%87%8D%E6%9E%84%E3%80%91action%20%E7%9A%84%E6%8B%86%E5%88%86%E4%B8%8E%E7%BB%9F%E4%B8%80)
+
+#### react-redux
+包含了 useSelector useDispatch connect 等等的使用技巧：
+[详细参考](https://gitee.com/mayising/typescript-react/tree/master/ch7/7.10%E3%80%90react-redux%E3%80%91%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6)
+
+其中一个 [useSelector 定义ts 小技巧](https://gitee.com/mayising/typescript-react/blob/master/ch7/7.10%E3%80%90react-redux%E3%80%91%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6/src/redux/hooks.ts)
+
+以及完整的 react-redux 综合应用 就看 [最后一节代码](https://gitee.com/mayising/typescript-react/blob/master/ch7)
 ### state
 解决 this.state.like 报错 `Property 'like' does not exist on type 'Readonly<{}>'`
 ```ts

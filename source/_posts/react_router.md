@@ -237,7 +237,20 @@ export const Header = withRouter(OriginHeader);
     <Route path="/signIn" component={SignInPage} />
 </BrowserRouter>
 ```
-这就好比 react的 Provider 顶级组件 内部所有子组件公用 context，
+这就好比 react-redux 的 Provider 顶级组件 内部所有子组件公用 context：
+```js
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
 
 因此BrowserRouter顶级组件做了一层 Provider 的 context, 将三大对象放入此顶级组件的上下文中。
 因此 BrowserRouter顶级组件内 所有的子组件，都可以通过 withRouter 或 hoc 获取到该 路由对象
