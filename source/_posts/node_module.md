@@ -115,5 +115,39 @@ parcel又build功能，build后生成的文件，可用于生产。
 [github](https://github.com/parcel-bundler/parcel)
 
 
+### npm view
+
+- `>` 是linux 的 重定向输出 符号，这里将命令行的输出 放到文件 log.txt 显示
+- 关于重定向 可查看 《Linux笔记(乾) 中 输出重定向》
+- --json 是 [npm view 的配置](https://docs.npmjs.com/cli/v7/commands/npm-view)，加上 --json 让输出的内容不会乱码
+```sh
+ npm view react --json > log.txt
+  #查看 log.txt，发现 其内容是一个非常丰富的对象， 可以显示对象的属性内容
+
+  npm view react time  #可显示react 所有版本 及其 发布时间
+  npm view react repository #显示npm地址
+  npm view react #可显示react当前稳定版本，及其其他简略信息
+```
+
+### concurrently
+npm script 中同时运行多个命令，遇到复杂情况，可能命令行提示不够，后面一个命令的提示覆盖了前一个，此时可以使用 concurrently。
+
+Run multiple commands concurrently. Like npm run watch-js & npm run watch-less but better.
+In package.json, escape quotes:
+```js
+// \" 是转义的意思
+"start": "concurrently \"command1 arg\" \"command2 arg\""
+```
+
+### qs.stringify
+```js
+const qs = require('qs');
+axios.post('/foo', qs.stringify({ 'bar': 123 }));
+```
+[参考](https://www.jianshu.com/p/798c8cb45ed5)
+[参考](https://blog.csdn.net/q290057637/article/details/104544757)
 
 
+### npm trends
+
+比较 npm 包下载量 https://www.npmtrends.com/

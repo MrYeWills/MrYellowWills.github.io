@@ -597,4 +597,28 @@ function fnMove(e,posX,posY){
 }
 ```
 
+## 杂汇
+### 合集
+#### url编码
+```js
+encodeURIComponent('骑手管理') //"%E9%AA%91%E6%89%8B%E7%AE%A1%E7%90%86"
+decodeURIComponent("%E9%AA%91%E6%89%8B%E7%AE%A1%E7%90%86") //"骑手管理"
+```
+## 编码技巧
+
+### 判断是否false
+```js
+const isFalsy = value => value === 0 ? false : !value 
+```
+
+
+
+
+
+
+
+
+
+
+
 

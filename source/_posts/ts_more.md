@@ -190,7 +190,7 @@ declare var jQuery: (selector: string) => any
 ### 配置文件说明demo一
 
 ```js
-//下面时 tsconfig.build.json
+//下面是 tsconfig.build.json
 {
   "compilerOptions": {
     "outDir": "dist", //输出目录
@@ -213,4 +213,25 @@ declare var jQuery: (selector: string) => any
 ```
 
 
+### tsconfig.json 技巧：去除定义 any的报错
+有些项目，如果不定义类型，就会报错ts，此时如果定义 `"noImplicitAny": "false"` 就可以不用定义any，ts也不会报错了。
 
+```js
+//下面是 tsconfig.json
+{
+  "compilerOptions": {
+    "noImplicitAny": "false", //不需要显式地声明变量的类型 any，
+  },
+}
+```
+
+### tsconfig.json 技巧：使用import
+```js
+//下面是 tsconfig.json
+{
+  "compilerOptions": {
+     "moduleResolution":"Node", //使用import语句时，需要定义这二者，待进一步考证？
+     "resolveJsonModule": true, 
+  },
+}
+```

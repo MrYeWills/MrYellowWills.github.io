@@ -194,7 +194,10 @@ node-sass ./src/styles/index.scss ./dist/index.css
 ```json
 {
   "main": "dist/index.js", 
-  "module": "dist/index.js", //用于tree shaking 优化
+  //module 用于tree shaking 优化 ， 
+  //此外module定义了库的入口文件，就是被项目 import的时候，指向的源码js入口, 其优先级高于上面的main，
+  //当没有定义module的时候，入口文件以上面的main定义的为准
+  "module": "dist/index.js", 
   "types": "dist/index.d.ts",
   //files 定义非常关键
   //files代表那些文件要上传到npm服务器上，如果你什么都不写，npm会参照 .gitignore 的内容进行上传
