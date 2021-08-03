@@ -138,6 +138,12 @@ function getName(n: NameOrResolver): string {
 #### 不使用联合类型报错
 ![](/image/ts/all.jpg)
 
+
+## 编译相关
+
+### ts的编译(creat-react-app)
+creat-react-app 使用的编译器是 babel-loader。
+![](/image/ts/babel.png)
 ## 黑知识
 ### 断言的传统与快捷写法
 ![](/image/ts/quick.jpg)

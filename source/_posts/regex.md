@@ -243,6 +243,24 @@ str.match(reg4) //["1az2", "a", "z", index: 1, input: "$1az2bb3cy4dd5ee", groups
 #### |或的使用
 参考《多个正则合并使用》
 
+示例二：
+| 在 replace上的运用：
+
+```js
+var url = '/test/good/detail'
+url.slice(url.split("/")[0].length + 1).replace(/\/|\?|\=|\*/g,"_")
+
+
+url: 
+
+var url = "/test/good?type=1_10"
+url.slice(url.split("/")[0].length + 1).replace(/\/|\?|\=|\*/g,"_")
+
+
+// 用上面的正则其实用 下面联合replace效果一样：
+/[\/\?\=\*]/g
+```
+
 ### demo
 #### 密码
 本例是?!的经典应用
@@ -267,5 +285,43 @@ str.match(reg4) //["1az2", "a", "z", index: 1, input: "$1az2bb3cy4dd5ee", groups
 [mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
 
+#### 千分位 与 $& 
+
+注意 ?: 的妙用
+
+```js
+function thousandth(str) {
+  return str.replace(/\d(?=(?:\d{3})+(?:\.\d+|$))/g, '$&,');
+}
+```
+千分位的思路应该是，不管小数点后面的东西，只管小数点左侧的，或者完全没有小数点,只关注整数：
+比如：
+1234.01 ，我们只想找到上面左侧的1,然后在其后加 ',';
+12345.01 ，我们只想找到2,然后在其后加 ',';
+1234567.01 ，我们只想找到4和1,然后在其后加 ',';
+
+要想找到以上的左侧想要的1 或 2 或 4 1，其实就是基于其右侧的条件决定，
+这就决定了需要配合断言；
+那么我们要找的数字 就是 \d;
+简单的断言就是 (?=\d{3})；
+但 只要3的倍数都可以，因此可以写成：(?=(\d{3})+)
+要想将一个表达式作为一个整体，最好使用 ?: ,这样符合正则的阅读习惯，因此写成 (?=(?:\d{3})+)
+
+数字可能直接以此结尾，也可能是小数点，因此可写成 (\.\d+|$)
+
+为了装逼也好，还是符合正则的阅读习惯，将(\.\d+|$) 连成一个表达式,我们就加一个?:，因此成了 (?:\.\d+|$)
+
+整体连起来就是：str.replace(/\d(?=(?:\d{3})+(\.\d+|$))/g, '$&,')
+
+附：
+关于$&的解释
+参考https://stackoverflow.com/questions/34510746/difference-between-1-and-in-regular-expressions
+
+(?:x)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions] ： 
+匹配 'x' 但是不记住匹配项。这种括号叫作非捕获括号，使得你能够定义与正则表达式运算符一起使用的子表达式。
+看看这个例子 /(?:foo){1,2}/。
+如果表达式是 /foo{1,2}/，{1,2} 将只应用于 'foo' 的最后一个字符 'o'。
+如果使用非捕获括号，则 {1,2} 会应用于整个 'foo' 单词。
+更多信息，可以参阅下文的 Using parentheses 条目.
 
 
