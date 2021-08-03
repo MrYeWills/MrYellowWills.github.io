@@ -240,7 +240,7 @@
 <h3 id="vikingship-生产编译"><a href="#vikingship-生产编译" class="headerlink" title="vikingship 生产编译"></a>vikingship 生产编译</h3><h4 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h4><p>vikingship 用的是 creat-react-app， 生产编译不依赖webpack,基于tsc自带的编译创建 <code>tsconfig.build.json</code>进行编译。<br>相关说明在 另外一篇博客《再读 typescript 笔记》</p>
 <p>通过 ts 编译 编译出 js文件；</p>
 <p>css文件需要使用 node-sass 编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node-sass ./src/styles/index.scss ./dist/index.css</span><br></pre></td></tr></table></figure></p>
-<h4 id="package-json-配置"><a href="#package-json-配置" class="headerlink" title="package.json 配置"></a>package.json 配置</h4><p>以下这三行一定要加上，不然生产编译出来的文件，外界import的时候，无法读取<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"dist/index.js"</span>, </span><br><span class="line">  <span class="attr">"module"</span>: <span class="string">"dist/index.js"</span>, <span class="comment">//用于tree shaking 优化</span></span><br><span class="line">  <span class="attr">"types"</span>: <span class="string">"dist/index.d.ts"</span>,</span><br><span class="line">  <span class="comment">//files 定义非常关键</span></span><br><span class="line">  <span class="comment">//files代表那些文件要上传到npm服务器上，如果你什么都不写，npm会参照 .gitignore 的内容进行上传</span></span><br><span class="line">  <span class="comment">//一些特定文件，无论是否在files内声明，都会被上传到npm服务器中，如 package.json ,README.md 等等</span></span><br><span class="line">  <span class="attr">"files"</span>: [ </span><br><span class="line">    <span class="string">"dist"</span> </span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="package-json-配置"><a href="#package-json-配置" class="headerlink" title="package.json 配置"></a>package.json 配置</h4><p>以下这三行一定要加上，不然生产编译出来的文件，外界import的时候，无法读取<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"dist/index.js"</span>, </span><br><span class="line">  <span class="comment">//module 用于tree shaking 优化 ， </span></span><br><span class="line">  <span class="comment">//此外module定义了库的入口文件，就是被项目 import的时候，指向的源码js入口, 其优先级高于上面的main，</span></span><br><span class="line">  <span class="comment">//当没有定义module的时候，入口文件以上面的main定义的为准</span></span><br><span class="line">  <span class="attr">"module"</span>: <span class="string">"dist/index.js"</span>, </span><br><span class="line">  <span class="attr">"types"</span>: <span class="string">"dist/index.d.ts"</span>,</span><br><span class="line">  <span class="comment">//files 定义非常关键</span></span><br><span class="line">  <span class="comment">//files代表那些文件要上传到npm服务器上，如果你什么都不写，npm会参照 .gitignore 的内容进行上传</span></span><br><span class="line">  <span class="comment">//一些特定文件，无论是否在files内声明，都会被上传到npm服务器中，如 package.json ,README.md 等等</span></span><br><span class="line">  <span class="attr">"files"</span>: [ </span><br><span class="line">    <span class="string">"dist"</span> </span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="关键的files"><a href="#关键的files" class="headerlink" title="关键的files"></a>关键的files</h4><p>参考上面源码中的解说。</p>
 <h3 id="使用此库"><a href="#使用此库" class="headerlink" title="使用此库"></a>使用此库</h3><p>其他应用使用这个库的时候， 需要全局引用 css， 也就是上面的 <code>./src/styles/index.scss</code>, 然后再import 上一步打包出来的 js文件即可.</p>
 <p>这种使用方式与 ant-design 、 fusion 是一样的：<br>先全局引用 css文件，<br>然后import 库；</p>
@@ -309,7 +309,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-08-01T06:05:11.896Z" itemprop="dateUpdated">2021-08-01 06:05:11</time>
+    最后更新时间：<time datetime="2021-08-03T01:18:13.184Z" itemprop="dateUpdated">2021-08-03 01:18:13</time>
 </span><br>
 
 
@@ -381,18 +381,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/mongoose_mongodb/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/npmscript/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">mongoose 与 mongodb笔记</h4>
+        <h4 class="title">npm script</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/npmscript/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/react_form/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">npm script</h4>
+        <h4 class="title">react中的表单处理</h4>
       </a>
     </div>
   
