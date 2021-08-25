@@ -458,3 +458,29 @@ travis 结合 GitHub pages 貌似有一套它们沟通好的钩子函数， 以�
 
 [库源码](https://github.com/YeWills/react-ts-ant-npm.git)
 [使用库的测试项目源码](https://github.com/YeWills/react-ts-npm-test.git)
+
+
+## 其他
+
+### 使用已有的npm账号发布
+
+#### 步骤
+[npm官网](https://www.npmjs.com/package/yewill-test-lint)登录进去，可查看自己的账号：
+![](/image/npm/acc.jpg)
+
+在npm包项目根目录控制台执行：
+npm login
+ybdt1201
+密码
+邮箱填上面图片的邮箱
+
+好了后，
+
+直接执行 npm publish 即可发布。
+非常简单。
+
+####  a 400 error bad request - email already registered
+
+执行npm login时报错 ` email already registered`，一般是把 上面的 账号 写成了 上面图片中的 name了，或者登录密码错了，
+就会导致这个错误。
+
