@@ -17,6 +17,7 @@ eslint 调试各种不生效
  - 延申 npm 的包知识
  - 为什么eslint总是不生效
 eslint 配合 vscode 使用
+    eslint 插件
 eslint 与 prettier
 eslint 配合 ts
 eslint 与 新的 babel parse
@@ -25,7 +26,7 @@ eslint extend与插件
 eslint 与stylelint
 eslint 踩坑
 eslint 学习感受
-
+ - 建议配置成 .eslintrc.js 配置；
 
 ## eslint 学习经验
 要多看或直接看各个eslint相关的包的github，因为那里才是最新的，github上讲的可能比博客更全面，更新；
@@ -68,10 +69,108 @@ eslint-plugin-prettier 依赖 eslint-config-prettier ，但 单独安装 eslint-
 如果 eslint相关包也指定安装babel，容易出现 babel版本不一致导致的冲突，
 因此会将这些公共的包放到 eslint中，避免冲突，同时告诉使用者，这些包是必须的，
 
+### plugin:prettier/recommended的实质
+参考eslint-plugin-prettier源码， plugin:prettier/recommended的实质是：
+```js
+ configs: {
+    recommended: {
+      extends: ['prettier'],
+      plugins: ['prettier'],
+      rules: {
+        'prettier/prettier': 'error',
+        'arrow-body-style': 'off',
+        'prefer-arrow-callback': 'off'
+      }
+    }
+  },
+```
+  plugin:prettier/recommended 是用 eslint-config-prettier关闭所有与eslint 冲突规则，然后使用eslint-plugin-prettier定义的规则(`'prettier/prettier': 'error'`)， 避免prettier之后又会因为不符合eslint规则，被eslint报错。
+
+### prettier配合eslint配置套路
+如`plugin:prettier/recommended`展示的，先使用eslint-config-prettier关闭 eslint冲突规则，然后在rules中定义 `'prettier/prettier': 'error'` 这里的 前一个 prettier 代指 eslint-plugin-prettier, 开启 prettier规则。
+
 ### 选择的方案
 不用prettier格式化项目，只使用集成了prettier的eslint来格式化 js；
 css less sass 格式化交给stylelint；
 md与json文件的格式化这部分本应该用 prettier，但项目用的不多，可以忽略不管；
+
+
+## airbnb
+### eslint-config-airbnb-base 与 eslint-config-airbnb
+参考GitHub官网：
+Our default export contains all of our ESLint rules, including ECMAScript 6+ and React. It requires eslint, eslint-plugin-import, eslint-plugin-react, eslint-plugin-react-hooks, and eslint-plugin-jsx-a11y. If you don't need React, see eslint-config-airbnb-base.
+
+### eslint-plugin-jsx-a11y 与 eslint-config-airbnb
+
+如上，eslint-config-airbnb 包含了 eslint-plugin-jsx-a11y 的规则。
+
+### 如果不用React，请用eslint-config-airbnb-base
+参考上面
+
+### 自定义规则通常结合eslint-config-airbnb-base
+
+自定义规则通常结合eslint-config-airbnb-base而非eslint-config-airbnb,
+然后自行引入 react、hooks 规则
+参考 https://github.com/umijs/fabric
+
+### npm info "eslint-config-airbnb@latest" peerDependencies
+此命令同 `npm view "eslint-config-airbnb@latest" peerDependencies`
+参考官网 https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb，
+使用此命令查看eslint-config-airbnb所有的安装依赖 
+
+### npx install-peerdeps --dev eslint-config-airbnb
+如果你是 npm install eslint-config-airbnb 只会安装 eslint-config-airbnb 本身，不会安装eslint-config-airbnb还依赖的其他包。
+此时用 npx install-peerdeps 可以安装eslint-config-airbnb包本身，以及他要sheng
+
+## eslint 调试 - 专治各种不生效
+
+### npx eslint --fix src/app.js
+之前一直习惯使用 vscode的插件使用eslint，总是遇到eslint不生效的问题，
+也不知道原因。
+此时运行命令 `npx eslint --fix src/app.js` ,就会告诉你不生效的原因。
+
+
+### peerDependencies
+比如使用airbnb不生效，可以去github官网查询 airbnb 的peerDependencies是否都安装了，
+参考上面的《eslint 与 prettier》有关 peerDependenciesMeta 的讲解。
+
+### 版本要一致
+各种包我都安装了，依然不生效，此时就要看版本是否一致了，可以去各个包的GitHub上看readme，上面会记录版本变动带来的使用方式的改变。
+比如 eslint-config-prettier ,8.0版本以前使用方法：
+```js
+extends: ['prettier', 'prettier/react']
+```
+8.0版本后，合并了'prettier/react'，只需要配置如下即可， 参考https://github.com/prettier/eslint-config-prettier：
+```js
+extends: ['prettier']
+```
+假如还是像以前一样配置成`['prettier', 'prettier/react']` eslint将不生效，
+但这种不生效最隐蔽，因为通过`npx eslint --fix src/app.js`并不会告诉你哪里出错了，然后凭借以前prettier的使用习惯，又不会认为有问题，
+最后可能要花费很多时间排查到原因。
+### 配置语法错误
+定义不存在的错误配置或错误的plugin会导致eslint不生效。
+这种不生效，可能运行 `npx eslint --fix src/app.js` 也不会提示，
+在试了eslint不生效的各种方法后，还未找到原因的，可以试试把rules的配置一个个删除，调试下。
+```js
+{
+  rules: {
+    //iAmErrorRulesxxxx 和 iAmErrorRulesxxxxPlugin 是不存在的rules。
+    'iAmErrorRulesxxxx': 'error',
+    'iAmErrorRulesxxxxPlugin/gogo': 'error',
+    }
+}
+```
+
+这一条适用于 stylelint ；
+
+### vscode调试eslint注意点
+安装了eslint相关包后，vscode的eslint插件可能不会对最新的eslint立即生效。
+可以通过以下方式查看最新的eslint生效情况：
+- 注释和解注释 .eslintrc.js 的 extends，达到让eslintrc.js配置onChange的效果，vscode的插件可能监听了.eslintrc.js的变化, 但此方法是否生效有一定的概率性。
+- 终端运行`npx eslint --fix src/app.js`，命令行始终能查看到最新的生效情况
+
+- 重启vscode，这是终极解决方法，把把灵光
+
 
 
 ## eslint 踩坑
@@ -174,3 +273,11 @@ md与json文件的格式化这部分本应该用 prettier，但项目用的不�
 
 #### 记得要安装prettier
 除了上面的prettier插件，还要记得安装prettier。
+
+
+
+## stylelint笔记
+
+### stylelint调试
+
+参考《eslint 调试 - 专治各种不生效》中的 《配置语法错误》
