@@ -27,10 +27,11 @@ eslint 与stylelint
 eslint 踩坑
 eslint 学习感受
  - 建议配置成 .eslintrc.js 配置；
+ - 使用eslint --init 初始化一个测试eslint项目，会直接生效；
 
 ## eslint 学习经验
 要多看或直接看各个eslint相关的包的github，因为那里才是最新的，github上讲的可能比博客更全面，更新；
-
+eslint的命令 的解释可以参考eslint官网，eslint官网内容不多，花点时间多将官网内容多刷几遍。
 
 ## eslint 与 prettier
 
@@ -88,6 +89,10 @@ eslint-plugin-prettier 依赖 eslint-config-prettier ，但 单独安装 eslint-
 
 ### prettier配合eslint配置套路
 如`plugin:prettier/recommended`展示的，先使用eslint-config-prettier关闭 eslint冲突规则，然后在rules中定义 `'prettier/prettier': 'error'` 这里的 前一个 prettier 代指 eslint-plugin-prettier, 开启 prettier规则。
+
+### 需配合.prettierrc.js使用(解决逗号等问题)
+除了在.eslintrc.js中配置相关的 eslint-plugin-prettier 规则外，还要在.prettierrc.js额外定义一些配置，以解决诸如 单引号、行尾是否需为LF、CRLF 等问题。
+eslint-plugin-prettier 都是基于prettier包的，此prettier包会读取.prettierrc.js配置。
 
 ### 选择的方案
 不用prettier格式化项目，只使用集成了prettier的eslint来格式化 js；
@@ -172,14 +177,50 @@ extends: ['prettier']
 - 重启vscode，这是终极解决方法，把把灵光
 
 
+## 重难点配置讲解
+
+### parserOptions.babelOptions
+parserOptions 是用来给 parser 配置的。
+babelOptions 的解释参考 @babel/eslint-parser github，是 @babel/eslint-parser 这个自定义parser的独有配置，
+如果没有配置，或未定义 babelOptions ，@babel/eslint-parser 将不解析很多实验性或很新的es语法。
+@babel/eslint-parser 是自定义parser，每个自定义parser有自己独有的parserOptions配置，比如babelOptions是@babel/eslint-parser的配置，
+但@typescript-eslint/parser 就没有parserOptions.babelOptions配置，
+parserOptions.project 是@typescript-eslint/parser独有配置
+
 
 ## eslint 踩坑
 
 ### 无用的  'prettier/react'
 无用的  'prettier/react' ，会导致 eslint 无效； 参考 https://github.com/prettier/eslint-config-prettier ， 从8.0 版本后，只需要配置 prettier 即可；
 
+## eslint 小技巧
 
+### --format=pretty 用来美化控制台信息的输出
+ `--format=pretty`用来格式化控制台信息的输出，控制台看起来更加美观；
+```s
+   npx eslint --format=pretty ./src/app.js    
+```
+详细参考https://eslint.org/docs/user-guide/formatters/#eslint-formatters
 
+### import/resolver解决eslint识别webpack别名
+import/resolver其实就是eslint-import-resolver-webpack。
+配置如下：
+```js
+//.eslintrc.js
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.base.js"
+      }
+    }
+  },
+```
+
+### 使用命令行生成eslint测试demo
+若有玩玩eslint的配置，可以在你的工程下，执行命令,会生成基础eslint配置和与之匹配的eslint版本，保证测试demo eslint一定生效：
+```
+npx eslint --init
+```
 
 ## eslint 配合 vscode 使用
 ### 必须要打开vscode的eslit配置
@@ -281,3 +322,32 @@ extends: ['prettier']
 ### stylelint调试
 
 参考《eslint 调试 - 专治各种不生效》中的 《配置语法错误》
+
+## 待做
+
+vscode 自带的format功能 与eslint插件修复功能，区别是什么？？
+有空研究一下 vscode 的 save fix 的配置，配合 eslint stylelint 的使用；几种save fix的区别。 
+  
+```js
+  "editor.codeActionsOnSave": {
+        "source.fixAll": true
+      }
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  }
+  
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.stylelint": false
+  }
+  
+  "[html]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": false
+    }
+  }
+  
+```
+
+beta 版本 是否不被下载； beta的作用用于线上测试， 如果是beta版本，是否不会被npm 自动安装上，这样就进行线上测试了？；

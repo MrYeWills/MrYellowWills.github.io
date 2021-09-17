@@ -140,6 +140,11 @@ http.createServer((req,res)=>{
 
 ## 黑知识
 
+### npm install 与 yarn install 的差异
+
+#### node_module内的包的说明信息内容不同
+可以自己试验用两种方式安装的包，看看最终node_module内此包内容是有差异的，源码功能是一致的。
+
 ### 路径中的 `**` 与 `*` 
 ```json
  "src/**/*.test.tsx",// 两个**匹配任意长度任意路径下
