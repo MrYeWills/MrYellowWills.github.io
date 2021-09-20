@@ -282,9 +282,13 @@ import/resolver其实就是eslint-import-resolver-webpack。
     }
   },
 ```
+[讲解参考这里：](https://www.jb51.net/article/153167.htm)
+ 这里传入webpack并不是import插件能识别webpack，而且通过npm安装了「eslint-import-resolver-webpack」，
+「import」插件通过「eslint-import-resolver-」+「webpack」找到该插件并使用，就能解析webpack配置项。使用里面的参数。
+ 主要是使用以下这些参数，共享给import规则，让其正确识别import路径
 
-### 使用命令行生成eslint测试demo
-若有玩玩eslint的配置，可以在你的工程下，执行命令,会生成基础eslint配置和与之匹配的eslint版本，保证测试demo eslint一定生效：
+### 使用`eslint --init`生成eslint测试demo
+若要玩玩eslint的配置，可以在你的工程下，执行命令,会生成基础eslint配置和与之匹配的eslint版本，保证测试demo eslint一定生效：
 ```
 npx eslint --init
 ```
