@@ -12,7 +12,7 @@ series: 前端工程
 *本文讲解的都基于vscode作为项目ide*
 eslint 学习之难 不在于eslint学习本身,主要在于eslint的关联性太广。
 eslint本身的知识 如各种规则、配置、命令行之外，还需对eslint 的 plugin 和 extends的开发机制有所了解 这二者缺一不可。
-除此之外，还需了解 babel、webpack、prettier、stylelint、vscode插件和配置、ts、npm(scripts、peerDependencies)。
+除此之外，还需了解 babel、webpack、prettier、stylelint、vscode插件和配置、ts、npm(scripts、peerDependencies)、husky(pre-commit)、lint-staged。
 eslint虽小，内有乾坤。
 
 ## prettier
@@ -294,10 +294,15 @@ npx eslint --init
 ```
 
 ## eslint 学习经验
+
+### 理论
 - 将eslint官网全部刷几遍，做到一定程度的理解，一定要全部刷几遍，这样才对eslint有立体认识。[点击查看官网](https://eslint.bootcss.com/docs/user-guide/configuring)
 
 - 要多看或直接看各个eslint相关的包的github，因为那里才是最新的，github上讲的比博客更全面更新：
 有些博客将的使用方法，可能已经过时了，在不生效的情况下，应该要去GitHub上看readme。
+
+### 实践
+把[umijs/fabric](https://github.com/umijs/fabric)源码多研究几次。`umijs/fabric`不一定适合你公司的需求，不过里面的设计思路非常好，对ts与js的eslint项目配置差异讲解不错。
 
 ## 参考
 
