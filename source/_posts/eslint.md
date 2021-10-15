@@ -277,8 +277,30 @@ eslint拥有的能力已经特征，可以参考上面《概述》说明
 参考《vscode eslint插件运行机制》
 
 ### 定义到setting.json，还是项目中
-不建议在setting中定义插件太多rules相关的，规则相关的全部定义到项目中，这样保证在不同编辑器下，项目lint保持一致。
+不建议在setting中定义插件太多rules相关的，规则相关的全部定义到项目中，这样保证在不同编辑器下或者在命令行中运行修复时，项目lint保持一致。
 参考《stylelint的vsocde插件配置》，说明了 vscode的插件是透出能力，能够通过vscode的setting.json来定义插件的lint rules。
+
+也可以参考 vscode插件prettier-vscode 的readme
+```
+There are multiple options for configuring Prettier with this extension. You can use VS Code settings, prettier configuration files, or an .editorconfig file. The VS Code settings are meant to be used as a fallback and are generally intended only for use on non-project files. It is recommended that you always include a prettier configuration file in your project specifying all settings for your project. This will ensure that no matter how you run prettier - from this extension, from the CLI, or from another IDE with Prettier, the same settings will get applied.
+```
+
+### setting.json在各插件的权重优先级
+
+setting.json 在各插件的权重优先级中，表现各不一致，看插件的作者自己设计了。
+在stylelint，貌似 setting.json 配置高于 a prettier configuration file in your project ：
+
+```
+<!-- stylelint.* VSCode settings -->
+stylelint.config
+    Type: Object
+    Default: null
+Sets the stylelint config option. Note that when this option is enabled, stylelint doesn't load configuration files.
+```
+
+
+而在prettier中, setting.json 只是一个备选方案， a prettier configuration file优先级最高。
+
 
 
 ## stylelint
@@ -301,6 +323,14 @@ eslint拥有的能力已经特征，可以参考上面《概述》说明
 Once a user follows the stylelint startup guide by creating a configuration file or by editing stylelint.* VSCode settings, stylelint automatically validates documents with these language identifiers:
 
 Though relying on a stylelint configuration file in your project is highly recommended, you can instead use the following extension settings:
+```
+
+```
+<!-- stylelint.* VSCode settings -->
+stylelint.config
+    Type: Object
+    Default: null
+Sets the stylelint config option. Note that when this option is enabled, stylelint doesn't load configuration files.
 ```
 
 
