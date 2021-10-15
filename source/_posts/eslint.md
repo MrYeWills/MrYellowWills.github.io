@@ -164,7 +164,7 @@ extends: ['prettier']
 
 - 重启vscode，这是终极解决方法，把把灵光
 
-## vscode
+## eslint插件与vscode
 ### 使用eslint插件
 下图的灯泡和错误红线高亮提示，都是vscode的eslint插件作用的效果。
 ![](/image/eslint/vs.png)
@@ -196,6 +196,91 @@ eslint插件安装只是前提条件，
 }
 ```
 
+### 提供的命令
+
+#### 以eslint.createConfig为例
+![](/image/eslint/ext2.png)
+vscode 快捷键 ctrl+shift+p 打开vscode的命令工具，也可通过下面方式打开：
+![](/image/eslint/ext6.png)
+输入 eslint.createConfig 就会出现下面：
+![](/image/eslint/ext3.png)
+![](/image/eslint/ext4.png)
+![](/image/eslint/ext5.png)
+
+### 依赖 eslint 包
+![](/image/eslint/ext5.png)
+
+### 注意点
+#### editor.formatOnSave 与 editor.codeActionsOnSave
+![](/image/eslint/vs-e1.png)
+若使用editor.codeActionsOnSave，请关闭 editor.formatOnSave 。
+```
+The old eslint.autoFixOnSave setting is now deprecated and can safely be removed. Please also note that if you use ESLint as your default formatter you should turn off editor.formatOnSave when you have turned on editor.codeActionsOnSave. Otherwise you file gets fixed twice which in unnecessary.
+```
+
+#### 关闭 editor.formatOnSave
+参考上面说明。
+
+#### 不需要的旧配置eslint.validate
+![](/image/eslint/vs-e2.png)
+
+#### eslint.autoFixOnSave 与 editor.codeActionsOnSave
+弃用的eslint.autoFixOnSave,请使用editor.codeActionsOnSave替代，
+下面也展示了 eslint插件保存自动修复的几种配置方式：
+![](/image/eslint/vs-e3.png)
+
+## vscode eslint插件运行机制
+
+### 概述
+vscode 的eslint插件的运行，必须依赖 npm eslint包。
+因为是vscode插件，因此可以读取到所有的vscode的setting.json（默认、工作区、用户 三种setting.json）,
+(vscode的setting.json就是共享给所有插件的，相当于vscode运行的上下文，vscode将此上下文暴露给所有vscode插件)。
+因为依赖的是npm eslint包，而.eslintrc.js是给 npm eslint包配置和使用的，
+.eslintrc.js配置了npm eslint包，因此也影响了 vscode的eslint插件表现行为。
+
+#### 可以在 setting.json 中定义的能力举例 ：
+
+设置eslint与vscode的交互，比如是否开启eslint的保存自动修复
+```
+<!-- 这是新版本eslint插件，配置方法 -->
+  "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+```
+```
+<!-- 这是老版本eslint插件，配置方法，现已经丢弃 -->
+  "eslint.autoFixOnSave": true
+```
+
+```
+<!-- 比如自定义eslint的配置文件路径 -->
+"eslint.options": { "configFile": "C:/mydirectory/.eslintrc.json" }
+```
+
+#### 在.eslintrc.js 中定义rules相关
+
+### 特点描述
+eslint拥有的能力已经特征，可以参考上面《概述》说明
+
+#### 依赖eslint npm包
+#### 读取vscode setting.json
+#### .eslintrc.js会影响vscode eslint行为
+
+#### vscode灯泡提示以及高亮
+#### vscode自动保存
+#### 给vscode集成各种命令
+
+## 必须要了解的vscode知识
+
+### setting.json
+
+参考《vscode eslint插件运行机制》
+
+### 定义到setting.json，还是项目中
+不建议在setting中定义插件太多rules相关的，规则相关的全部定义到项目中，这样保证在不同编辑器下，项目lint保持一致。
+参考《stylelint的vsocde插件配置》，说明了 vscode的插件是透出能力，能够通过vscode的setting.json来定义插件的lint rules。
+
+
 ## stylelint
 
 ### 配置
@@ -208,6 +293,15 @@ eslint插件安装只是前提条件，
 ### stylelint调试(踩坑)
 
 参考《eslint 调试 - 专治各种不生效》中的 《配置语法错误》
+
+### stylelint的vsocde插件配置
+尽管强烈建议您在项目中依赖stylelint配置文件，但您可以也可使用  stylelint.* VSCode settings 进行配置。
+参考插件的readme：
+```
+Once a user follows the stylelint startup guide by creating a configuration file or by editing stylelint.* VSCode settings, stylelint automatically validates documents with these language identifiers:
+
+Though relying on a stylelint configuration file in your project is highly recommended, you can instead use the following extension settings:
+```
 
 
 
@@ -228,6 +322,10 @@ babelOptions 的解释参考 [@babel/eslint-parser github](https://github.com/ba
 ```
 注意，在使用自定义解析器时，为了让 ESLint 在处理非 ECMAScript 5 特性时正常工作，配置属性 parserOptions 仍然是必须的。解析器会被传入 parserOptions，但是不一定会使用它们来决定功能特性的开关。
 ```
+
+### settings
+eslint的settings 是共享给所有 eslint的插件的上下文配置，这一点的理解同vscode的setting.json原理是一样的。
+更多参考《必须要了解的vscode知识 - setting.json》
 
 
 ### 其他配置
@@ -352,6 +450,9 @@ https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser
 为什么是在根目录的packages下，可以从package.json看出，
 所以面对一个github仓库管理多个npm包源码时，要多看package.json：
 ![](/image/eslint/a4.png)
+
+### 查看eslint-plugin-import所有的rules
+直接去[eslint-plugin-import官网](https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules)查看，查询其他eslint包的rules，可以此类推
 
 
 
