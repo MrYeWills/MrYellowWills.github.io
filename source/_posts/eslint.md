@@ -86,6 +86,67 @@ js jsx ts tsx 文件使用eslint格式化，不用prettier格式化，只使用�
 css less sass 格式化交给stylelint；
 md、json文件的格式化使用prettier, 如果项目这部分文件用的少，也可以忽略处理；
 
+### prettier vscode插件
+
+#### prettier 结合 lint 的原理
+
+先禁用lint(如eslint) 的格式化规则，然后使用prettier来进行格式化。
+
+```
+<!-- prettier vscode插件 readme介绍： -->
+Linter Integration
+The recommended way of integrating with linters is to let Prettier do the formatting and configure the linter to not deal with formatting rules. You can find instructions on how to configure each linter on the Prettier docs site. You can then use each of the linting extensions as you normally would. For details refere to the Prettier documentation.
+```
+
+## .editorconfig
+
+一下有关editorconfig的内容，几乎都能在EditorConfig for VS Code 插件readme上能看到
+### 概述
+vscode不能原生支持 .editorconfig， 需要安装插件 EditorConfig for VS Code， 目前此组件只支持.editorconfig部分属性，在插件readme中可见：
+```
+Supported Properties:
+root
+indent_style
+indent_size 
+tab_width #一般不需要设置，默认为indent_size值
+end_of_line (on save)   #保存的时候，会以什么结尾
+insert_final_newline (on save)  #保存的时候，在代码下面插入一行
+trim_trailing_whitespace (on save)  #保存的时候，会吃掉右侧多余空格
+```
+详细可参考[博客](https://www.cnblogs.com/jiaoshou/p/11252055.html)
+
+### setting.json也可实现上面功能
+
+#### 支持的功能
+```
+  "editor.tabSize": 12
+  "files.trimFinalNewlines": true,  #代码最后存在多个空行时，只保留一个空行
+  "files.trimTrailingWhitespace": true,  #效果同上面 trim_trailing_whitespace
+```
+
+#### 优先级
+
+当配置.editorconfig后，EditorConfig for VS Code 会屏蔽vscode相关setting,以 .editorconfig为准。
+
+### prettier实现了以上部分功能 
+如果你开通vscode保存后自动格式化功能，也能实现如下功能：
+```
+insert_final_newline (on save)  #保存的时候，在代码下面插入一行
+trim_trailing_whitespace (on save)  #保存的时候，会吃掉右侧多余空格
+```
+### 项目方案
+#### 若有eslint，则没有十分必要设置
+vscode只支持如下editorconfig属性
+```
+indent_style #eslint(prettier)规则对缩进是否为tab或空格已经做处理,保存后自动修复
+indent_size #同上
+tab_width #同上
+insert_final_newline (on save)  #同上
+trim_trailing_whitespace (on save)  #同上
+```
+
+在配置的eslint规则合适下，基本没有必要再配置 editorconfig。
+
 ## airbnb
 ### eslint-config-airbnb-base 与 eslint-config-airbnb
 参考GitHub官网：
@@ -301,6 +362,16 @@ Sets the stylelint config option. Note that when this option is enabled, styleli
 
 而在prettier中, setting.json 只是一个备选方案， a prettier configuration file优先级最高。
 
+```
+//prettier vscode插件 readme介绍：
+You can use VS Code settings to configure prettier. Settings will be read from (listed by priority):
+
+Prettier configuration file
+.editorconfig
+Visual Studio Code Settings (Ignored if any other configuration is present)
+NOTE: If any local configuration file is present (i.e. .prettierrc) the VS Code settings will NOT be used.
+```
+
 
 
 ## stylelint
@@ -454,6 +525,68 @@ npx eslint --init
 ### umijs/fabric
 - [umijs/fabric](https://github.com/umijs/fabric)
 
+## vscode
+
+### 基础
+
+### 编码技巧
+
+[Editing hacks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_editing-hacks)
+
+#### 插件
+[vscode流行插件](https://marketplace.visualstudio.com/VSCode)
+
+#### 多行快捷键
+Keyboard Shortcut: Ctrl+Alt+Up or Ctrl+Alt+Down
+[Multi cursor selection](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_multi-cursor-selection)
+
+#### 鼠标滑块多选快捷
+[Column (box) selection](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_column-box-selection)
+一次性选中所有行尾,可以鼠标往右多拖一点，保证选中所有行尾：
+```js
+const params = {
+			suitableShops,
+			shops,
+			projectData,
+			materialData,
+			detailUrl,
+			styleUrl,
+			editor,
+			purchaseInformation,
+			tagId,
+			sellPoint,
+		}
+```
+
+#### 快速滚动
+[Fast scrolling](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_fast-scrolling)
+按住alt滚动，会以5被速度。
+
+#### packagejson智能感知
+[packagejson](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_packagejson)
+在packagejson中，输入一个空字符串，会智能提示所有packagejson可选的属性
+
+#### html代码段快捷方式
+[emmet-syntax](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_emmet-syntax)
+
+####  选中搜索 Find In Selection
+[Find In Selection](https://code.visualstudio.com/docs/editor/codebasics#_find-in-selection)
+
+####  函数定义注释JSDoc support
+[JSDoc support](https://code.visualstudio.com/docs/languages/javascript#_jsdoc-support)
+
+
+####  Organize Imports
+可以 清除无用import；
+fix eslint
+fix stylelint
+[Organize Imports](https://code.visualstudio.com/docs/languages/javascript#_organize-imports)
+
+
+
+#### 待看
+https://code.visualstudio.com/docs/editor/debugging
+
 ## 彩蛋
 
 ### 找@babel/eslint-parser github仓库的方法
@@ -484,13 +617,23 @@ https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser
 ### 查看eslint-plugin-import所有的rules
 直接去[eslint-plugin-import官网](https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules)查看，查询其他eslint包的rules，可以此类推
 
+### cosmiconfig标准
+prettier eslint  stylelint 都使用这种配置标准：
+[cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
+```
+By default, Cosmiconfig will start where you tell it to start and search up the directory tree for the following:
 
+a package.json property
+a JSON or YAML, extensionless "rc file"
+an "rc file" with the extensions .json, .yaml, .yml, .js, or .cjs
+a .config.js or .config.cjs CommonJS module
+For example, if your module's name is "myapp", cosmiconfig will search up the directory tree for configuration in the following places:
 
-
-
-
-
-
-
+a myapp property in package.json
+a .myapprc file in JSON or YAML format
+a .myapprc.json, .myapprc.yaml, .myapprc.yml, .myapprc.js, or .myapprc.cjs file
+a myapp.config.js or myapp.config.cjs CommonJS module exporting an object
+Cosmiconfig continues to search up the directory tree, checking each of these places in each directory, until it finds some acceptable configuration (or hits the home directory).
+```
 
