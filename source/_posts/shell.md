@@ -40,3 +40,9 @@ npm script 定义：
 
 #### 注意 $REPLY 的使用
 如上
+
+### 命令行输出过多重定向到文本显示
+
+```s
+  npm list > test.txt
+```
