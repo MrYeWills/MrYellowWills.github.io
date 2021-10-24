@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>babel笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="babel">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>babel笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">babel笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-10-23T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2021-10-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-babel"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">babel笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-10-23 00:00:00" datetime="2021-10-23T00:00:00.000Z"  itemprop="datePublished">2021-10-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="astexplorer-ast可视化编译网址"><a href="#astexplorer-ast可视化编译网址" class="headerlink" title="astexplorer ast可视化编译网址"></a>astexplorer ast可视化编译网址</h3><p><a href="https://astexplorer.net/" target="_blank" rel="noopener">astexplorer ast可视化编译网址</a></p>
+<figure class="image-box">
+                <a rel=babel笔记 href="/image/babel/ast.png" title="undefined" data-fancybox="images"><img src="/image/babel/ast.png" alt title class></a>
+                <p></p>
+            </figure>
+<h3 id="parser的发展"><a href="#parser的发展" class="headerlink" title="parser的发展"></a>parser的发展</h3><figure class="image-box">
+                <a rel=babel笔记 href="/image/babel/parser.png" title="undefined" data-fancybox="images"><img src="/image/babel/parser.png" alt title class></a>
+                <p></p>
+            </figure>
+<h3 id="顺序"><a href="#顺序" class="headerlink" title="顺序"></a>顺序</h3><p>preset 和 plugin 从形式上差不多，但是应用顺序不同。</p>
+<p>babel 会按照如下顺序处理插件和 preset：</p>
+<p>先应用 plugin，再应用 preset<br>plugin 从前到后，preset 从后到前<br>这个顺序是 babel 的规定。</p>
+<h3 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h3><p><em>以下 摘自 <a href="https://juejin.cn/book/6946117847848321055/section/6946582521672892456" target="_blank" rel="noopener">Babel 插件通关秘籍 - Babel 插件和 preset</a>：</em></p>
+<p>babel 对插件名字的格式有一定的要求，比如最好包含 babel-plugin，如果不包含的话也会自动补充。</p>
+<p>babel plugin 名字的补全有这些规则：</p>
+<p>如果是 ./ 开头的相对路径，不添加 babel plugin，比如 ./dir/plugin.js<br>如果是绝对路径，不添加 babel plugin，比如 /dir/plugin.js<br>如果是单独的名字 aa，会添加为 babel-plugin-aa，所以插件名字可以简写为 aa<br>如果是单独的名字 aa，但以 module 开头，则不添加 babel plugin，比如 module:aa<br>如果 @scope 开头，不包含 plugin，则会添加 babel-plugin，比如 @scope/mod 会变为 @scope/babel-plugin-mod<br>babel 自己的 @babel 开头的包，会自动添加 plugin，比如 @babel/aa 会变成 @babel/plugin-aa<br>（preset也是一样）</p>
+<p>规则比较多，总结一下就是 babel 希望插件名字中能包含 babel plugin，这样写 plugin 的名字的时候就可以简化，然后 babel 自动去补充。所以我们写的 babel 插件最好是 babel-plugin-xx 和 @scope/babel-plugin-xx 这两种，就可以简单写为 xx 和 @scope/xx。</p>
+<p>写 babel 内置的 plugin 和 preset 的时候也可以简化，比如 @babel/preset-env 可以直接写@babel/env，babel 会自动补充为 @babel/preset-env。</p>
+<h3 id="插件分类"><a href="#插件分类" class="headerlink" title="插件分类"></a>插件分类</h3><p>babel 的 plugin，就 @babel/plugin-syntax-xxx, @babel/plugin-transform-xxx、@babel/plugin-proposal-xxx 3种。<em>语出 <a href="https://juejin.cn/book/6946117847848321055/section/6954550974698651680" target="_blank" rel="noopener">Babel 插件通关秘籍 - Babel 的内置功能（上）</a></em></p>
+<h3 id="babel-是微内核架构"><a href="#babel-是微内核架构" class="headerlink" title="babel 是微内核架构"></a>babel 是微内核架构</h3><p>babel 是微内核架构，就是因为核心只实现了编译流程，具体的转换功能都是通过插件来实现的<br>详细参考 <a href="https://juejin.cn/book/6946117847848321055/section/6994379397591466017" target="_blank" rel="noopener">手写 Babel： core篇</a><br><a href="https://juejin.cn/book/6946117847848321055/section/6995835006530617381" target="_blank" rel="noopener">手写 Babel： 总结</a></p>
+<h3 id="技术箴言"><a href="#技术箴言" class="headerlink" title="技术箴言"></a>技术箴言</h3><p>我觉得任何一个技术只有学习到一定的程度才是有意义的，让它化为你思想的一部分，而不是只是使用。只是使用没啥竞争力。 语出 <a href="https://juejin.cn/book/6946117847848321055/section/6947682728250736676" target="_blank" rel="noopener">Babel 插件通关秘籍</a></p>
+<h3 id="babel-测试"><a href="#babel-测试" class="headerlink" title="babel 测试"></a>babel 测试</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//"@babel/plugin-transform-runtime"</span></span><br><span class="line"><span class="comment">//"@babel/preset-env"</span></span><br><span class="line"><span class="keyword">const</span> &#123; transformFileSync &#125; = <span class="built_in">require</span>(<span class="string">'@babel/core'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; code &#125; = transformFileSync(path.join(__dirname, <span class="string">'./souce.js'</span>), &#123;</span><br><span class="line">    filename: <span class="string">'a.js'</span>,</span><br><span class="line">    plugins: [[</span><br><span class="line">        <span class="string">'@babel/transform-runtime'</span>, &#123;</span><br><span class="line">            corejs: <span class="number">3</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]],</span><br><span class="line">    presets: [[<span class="string">'@babel/env'</span>, &#123;</span><br><span class="line">        useBuiltIns:<span class="string">'usage'</span>,</span><br><span class="line">        targets:&#123;</span><br><span class="line">            browsers:<span class="string">'Chrome 45'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        corejs: <span class="number">3</span></span><br><span class="line">    &#125;]]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(code);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// souce.js</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>).fill(<span class="string">'1243'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="sourcemap"><a href="#sourcemap" class="headerlink" title="sourcemap"></a>sourcemap</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Tools/Debugger/How_to/Use_a_source_map" target="_blank" rel="noopener">为了调试工作能够使用source map</a>，你必须：<br>生产一个source map<br>加入一个注释在转换后的文件，它指向source map。注释的语法类似：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//# sourceMappingURL=http://example.com/path/to/your/sourcemap.map</span><br></pre></td></tr></table></figure></p>
+<p>这里有一个很好的<a href="https://github.com/YeWills/babel-plugin-exercize/blob/master/exercize-babel/test/html/test.html" target="_blank" rel="noopener">sourcemap 例子</a></p>
+<h3 id="同时定义-babel-transform-runtime-与-babel-preset-env"><a href="#同时定义-babel-transform-runtime-与-babel-preset-env" class="headerlink" title="同时定义 @babel/transform-runtime 与 @babel/preset-env"></a>同时定义 @babel/transform-runtime 与 @babel/preset-env</h3><h4 id="profill以-babel-transform-runtime为准"><a href="#profill以-babel-transform-runtime为准" class="headerlink" title="profill以@babel/transform-runtime为准"></a>profill以@babel/transform-runtime为准</h4><p>同时定义 @babel/transform-runtime 与 @babel/preset-env，此时profill 以  @babel/transform-runtime 为准，<br>@babel/preset-env 因为是之后执行，因此会看runtime是否已有相关plugin加载，若加载，就不再生成runtime，测试：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; transformFileSync &#125; = <span class="built_in">require</span>(<span class="string">'@babel/core'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; execSync &#125; = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; code &#125; = transformFileSync(path.join(__dirname, <span class="string">'./souce.js'</span>), &#123;</span><br><span class="line">    filename: <span class="string">'a.js'</span>,</span><br><span class="line">    plugins: [[</span><br><span class="line">        <span class="string">'@babel/transform-runtime'</span>, &#123;</span><br><span class="line">            corejs: <span class="number">3</span>,</span><br><span class="line">            proposals: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]],</span><br><span class="line">    presets: [[<span class="string">'@babel/env'</span>, &#123;</span><br><span class="line">        useBuiltIns:<span class="string">'usage'</span>,</span><br><span class="line">        <span class="comment">// debug :true,</span></span><br><span class="line">        targets:&#123;</span><br><span class="line">            browsers:<span class="string">'Chrome 44'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        corejs: <span class="number">3</span></span><br><span class="line">    &#125;]]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.writeFileSync(<span class="string">'./smap.js'</span>, code)</span><br><span class="line"></span><br><span class="line">execSync(<span class="string">'node ./smap.js'</span>, &#123; <span class="attr">cwd</span>: process.cwd() &#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="babel-transform-runtime-解决了全局污染问题"><a href="#babel-transform-runtime-解决了全局污染问题" class="headerlink" title="@babel/transform-runtime 解决了全局污染问题"></a>@babel/transform-runtime 解决了全局污染问题</h4><p>preset-env 会在使用到新特性的地方注入 helper 到 AST 中，并且会引入用到的特性的 polyfill （corejs + regenerator），这样会导致两个问题：</p>
+<p>重复注入 helper 的实现，导致代码冗余<br>polyfill 污染全局环境<br>解决这两个问题的思路就是抽离出来，然后作为模块引入，这样多个模块复用同一份代码就不会冗余了，而且 polyfill 是模块化引入的也不会污染全局环境。</p>
+<p>这个逻辑是在 @babel/plugin-transform-runtime 包里实现的。它可以把直接注入全局的方式改成模块化引入。<br><a href="https://juejin.cn/book/6946117847848321055/section/6947175741821812768" target="_blank" rel="noopener">参考</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-10-24T16:36:24.910Z" itemprop="dateUpdated">2021-10-24 16:36:24</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2021/10/23/babel/" target="_blank" rel="external">https://yewills.github.io/2021/10/23/babel/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/10/23/babel/&title=《babel笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/10/23/babel/&title=《babel笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2021/09/15/eslint_use/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">eslint项目使用经验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#astexplorer-ast可视化编译网址"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">astexplorer ast可视化编译网址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#parser的发展"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">parser的发展</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#顺序"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">顺序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#名字"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">名字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插件分类"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">插件分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#babel-是微内核架构"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">babel 是微内核架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#技术箴言"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">技术箴言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#babel-测试"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">babel 测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sourcemap"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">sourcemap</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同时定义-babel-transform-runtime-与-babel-preset-env"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">同时定义 @babel/transform-runtime 与 @babel/preset-env</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#profill以-babel-transform-runtime为准"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">profill以@babel/transform-runtime为准</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#babel-transform-runtime-解决了全局污染问题"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">@babel/transform-runtime 解决了全局污染问题</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2021
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/10/23/babel/&title=《babel笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/10/23/babel/&title=《babel笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aS3LCMBAFQO5/aXKAFM57I5MqS60VC2OpWQyaz+sVr/ev9emZ/Pnrb72+sTAwMB7LeF+ulnF9rN/fvX4mORsGBsY5jCQUtkeJtr/8mZKzYWBgYMyOvh6CMTAwMNYDbhsc2ysgBgYGxiyJbY9bHCIu292Qi2NgYDyQkVfd///zV/obGBgYj2K8y3UdNGfHysPrx1NhYGBszcgDXHtxzN/ZXhw/7oKBgbE1Iwl/K83LnDEL7hgYGHsz1ktsbWshHzsrwjoGBsbWjHtT0HZEI0mSkyYEBgbG3oxZia29CM6ajsXoBgYGxgGMJIFMrnRtwM3f8McfAAYGxpGMfKirLa7Ndvzj6omBgXEAY1YCS4JsEl7b6+CwaoiBgfFwxizVzNuNbaGtJWFgYOzNWElTZ6E5uuqNBsUwMDB2ZczalncNjc2amtHVEAMDYzvGLO3Mi2srJbmo9IaBgXEAY5bQfiPg3jZsgYGBsREjzwrXw2U0NhHvXmTnGBgYWzCSQJkX5hJ82wSNfggMDIwjGUkZrg2a+VWv/q/AwMA4htFu2QbZur/aDltgYGBsx3iXK09rV5LeOv/GwMDYmrES5tptVspts9YFBgbGTow8yM6Om18u6yZlO9+BgYHxcEYb+GZNgvYMxZMYGBgYoxGKtnm58mYMDAyMvJF571hYMcaBgYFxACNvBuTtz+TNs3IeBgbGaYw2dVwfsGjT2tuamhgYGM9j/ABhbUHP5+3m5AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
