@@ -151,3 +151,11 @@ axios.post('/foo', qs.stringify({ 'bar': 123 }));
 ### npm trends
 
 比较 npm 包下载量 https://www.npmtrends.com/
+### glob
+
+
+#### 获取目录下所有的index.js 路径
+![](/image/node_module/glob.png)
+
+#### **/ 的妙用
+见上面
