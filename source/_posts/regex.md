@@ -76,8 +76,23 @@ m: multiple lines  多行搜索
 ![](/image/regex/group2.jpg)
 #### 忽略分组 (?:)
 ![](/image/regex/group3.jpg)
+更多知识参考 《关于 忽略分组 (?:)》
+
 #### 或与分组 
 ![](/image/regex/group1.jpg)
+
+### 关于 忽略分组 (?:)
+#### 分组的妙用一
+```js
+var str = 'ppp; %24CC_test_session=AC_yyyy999;tianruoyouqing'
+//  /(?:^|; )%24CC_test_session=([^;]*)/
+var reg = new RegExp(`(?:^|; )${escape(String('$CC_test_session'))}=([^;]*)`)
+
+reg.exec(str) // ['; %24CC_test_session=AC_yyyy999', 'AC_yyyy999', index: 3, input: 'ppp; %24CC_test_session=AC_yyyy999;tianruoyouqing', groups: undefined]
+
+```
+上面正则中 `(?:^|; )` 我必须要用到或，而这个或只用于判断 ^ 与 ; 两种情况，此时就用小括号分组一下
+但是，我又希望这个分组不要用于分割返回结果，此时用 忽略分组 (?:)，
 
 ### 前瞻
 #### 概述
