@@ -147,3 +147,92 @@ polyfill 污染全局环境
 
 这个逻辑是在 @babel/plugin-transform-runtime 包里实现的。它可以把直接注入全局的方式改成模块化引入。
 [参考](https://juejin.cn/book/6946117847848321055/section/6947175741821812768)
+
+## 待研究
+
+### 随笔
+目前发现 无论是work还是xd，都不能在ie浏览器下访问，非ie内核的都可以正常访问；
+包括淘宝 首页 的某些链接， 比如 内衣 等等，用ie就不能打开，其他浏览器可以正常访问；
+
+目前自己测试的几个项目 包含 webpack-demo 都不能在ie下正常访问，其他浏览器都可以正常访问；
+
+### 观察到的现象一
+
+#### create-react-app 创建的项目
+在开发模式 npm start 的时候，无法通过ie访问，会报错，其他浏览器正常， 
+通过 npm run build 打包出来的文件，使用http-server 启动服务器访问时，又可以在ie上访问了，
+观察到的原因可能是 create-react-app 创建项目的 package.json 中有这个：
+```json
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+```
+
+#### webpack-demo
+使用 该项目 `dev-此为完整版本要以此存档` 分支，
+安装上面的配置试过了，开发和生产的情况下，在ie下不能访问，
+可能没有配置正确。
+
+待模仿测试。 todo
+
+### 另外观察到的现象：
+
+### 业务代码 只有 commonjs 代码
+#### node 
+可运行，(遇到低版本node时，需要注入 profill， --缺测试 todo)
+#### 编译后 node
+为什么 commonjs 的代码，如果业务用于 cli命令，
+为什么需要对业务代码打包：
+因为不想别人看到业务代码，需要混淆；
+因为想兼容低版本的node环境；
+
+待测试！ todo
+#### 编译后 浏览器
+待测试！ todo
+
+### 业务代码 只有 esm 代码
+#### node 
+不能运行， node环境只能用于 commonjs
+#### 编译后 node
+
+#### 编译后 浏览器
+
+### 业务代码 混合 commonjs esm代码
+#### node 
+
+#### 编译后 node
+
+#### 编译后 浏览器
+
+
+### 测试demo
+可以使用这个：
+```
+C:\Users\YeWills\Desktop\webpack
+```
+里面有 webpack 4； webpack 5； 还有create-react-app
+
+测试的时候，也可以注意下 webpack 4 与 5 的区别。
+
+另外也思索下 以下 npm包 的编译区别：
+react npm包
+非react 的工具npm包，如request
+cli npm包
+
+单纯的cdn包
+单纯的npm包
+混合 cdn 与 npm 的包；
+
+
+
+
+
