@@ -196,6 +196,75 @@ polyfill 污染全局环境
 因为想兼容低版本的node环境；
 
 待测试！ todo
+```js
+//giturl.js
+const initPackageJson = async () => {
+  console.log('init.....');
+};
+
+module.exports = initPackageJson;
+
+```
+```js
+// index.js
+const giturl = require('./common/giturl');
+```
+
+编译后 node运行编辑后的代码 会报错,
+```
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  plugins: [new CleanWebpackPlugin(['dist'])]
+};
+
+
+
+module.exports = {
+  "presets": [
+    ["@babel/preset-env", { 
+      "targets": {
+        "node":"10",
+      },
+      "useBuiltIns": "usage",// or "entry" or "false"
+      "corejs": 3 // 引入 polyfill transform-runtime 比如 await api
+  }],
+  ],
+  "plugins": [
+   
+  ],
+};
+```
+
+
+把 giturl.js 中的 async 去掉就好了：
+```js
+//giturl.js  去掉 async
+const initPackageJson =  () => {
+  console.log('init.....');
+};
+
+module.exports = initPackageJson;
+
+```
+但去掉显然不能满足需求， 所以这块待测试 todo。
+目前的解决方法是 不编译这块代码。
+因为是cli命令，react项目也不会使用，不用担心webpack打包的问题，是纯node运行命令，最新的node 都集成了最新的es6.
+
 #### 编译后 浏览器
 待测试！ todo
 
