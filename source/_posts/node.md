@@ -258,3 +258,17 @@ node后端工程，包括后端工程的编译以及后端工程的接口业务�
 
 ## node调试
 参考另外一篇博客《vscode笔记 - vscode调试》
+
+### 解决npm unlink问题
+调试的时候，如果使用了npm link，
+最后真正要全局 npm i -g npm包 时，可能报错，
+解决方法如下：
+```shell
+470  which npm
+471  cd /c/Program Files/nodejs
+472  cd '/c/Program Files/nodejs'
+473  start .
+474  ls | grep ol
+475  rm -rf olg.cmd olg.ps1* olg*
+476  npm i -g npm包名
+```
