@@ -94,7 +94,41 @@ console.log('treeDatas..',treeDatas)
 ```
 
 
+## 方法二
 
+```js
+  var data = [
+  {id: 1, pid: 0},
+  {id: 2, pid: 0},
+  {id: 3, pid: 0},
+  {id: 4, pid: 1},
+  {id: 5, pid: 1},
+  {id: 6, pid: 2},
+  {id: 7, pid: 3},
+  {id: 8, pid: 3},
+  {id: 9, pid: 4},
+  {id: 10, pid: 1}
+]
+var isSuperPid = (id)=> id === 0
+var flat2tree = flatLs => {
+  flatLs.forEach(item => {
+    if (!isSuperPid(item.pid)) {
+      var index = flatLs.findIndex(item1 => item1.id === item.pid)
+      if (index !== -1) {
+        flatLs[index].children = flatLs[index].children || []
+        flatLs[index].children.push(item)
+      }
+    }
+  })
+  return flatLs.filter(item => isSuperPid(item.pid))
+}
+
+
+flat2tree(data)
+
+
+
+```
 
 
 
