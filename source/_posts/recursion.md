@@ -131,6 +131,37 @@ flat2tree(data)
 ```
 
 
+## 方法三 树形数据转key字段
+
+```js
+
+// treeData是否保留原来的数据
+// maps是否保留原来的数据
+// isOrigin是否保留原来的数据
+[['label', 'name'],['value', 'id'],['key', 'id'], 'empNo]
+
+formatTreeData({data, childrenName:'children', maps:[['label','deptName'], ['value','deptNo'], ['id','deptNo']]})
+function formatTreeData({data, childrenName='children', maps, isOrigin}) {
+  return data.map((item) => {
+    let children = item[childrenName];
+    if (children && children.length) {
+      children = formatTreeData(children, maps, isOrigin);
+    }
+    const newItem = maps.reduce((acc, keys)=>{
+      if(Array.isArray(keys)){
+        acc[keys[0]] = item[keys[1]]
+        return acc;
+      }
+      acc[keys] = item[keys]
+      return acc
+    }, {})
+    if(isOrigin){
+      return { ...rest, ...newItem, children };
+    }
+    return { ...newItem, children};
+  });
+}
+```
 
 
 
