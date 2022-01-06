@@ -95,36 +95,34 @@ console.log('treeDatas..',treeDatas)
 
 
 ## 方法二
-
+扁平数据 转为 树形数据， **需要知道顶级节点 isSuperPid**
 ```js
-  var data = [
-  {id: 1, pid: 0},
-  {id: 2, pid: 0},
-  {id: 3, pid: 0},
-  {id: 4, pid: 1},
-  {id: 5, pid: 1},
-  {id: 6, pid: 2},
-  {id: 7, pid: 3},
-  {id: 8, pid: 3},
-  {id: 9, pid: 4},
-  {id: 10, pid: 1}
-]
-var isSuperPid = (id)=> id === 0
-var flat2tree = flatLs => {
-  flatLs.forEach(item => {
-    if (!isSuperPid(item.pid)) {
-      var index = flatLs.findIndex(item1 => item1.id === item.pid)
-      if (index !== -1) {
-        flatLs[index].children = flatLs[index].children || []
-        flatLs[index].children.push(item)
+      function getData(data){
+      var isSuperPid = (id)=> id === "129371"
+      var tree = []
+      var flat2tree = flatLs => {
+        flatLs.forEach(item => {
+          if (isSuperPid(item.deptNo)) {
+            tree.push(item)
+          } else {
+            var index = flatLs.findIndex(item1 => item1.deptNo === item.parentDeptNo)
+            if (index !== -1) {
+              flatLs[index].children = flatLs[index].children || []
+              flatLs[index].children.push(item)
+            }
+          }
+        })
       }
+
+      flat2tree(data)
+      return tree;
+
     }
-  })
-  return flatLs.filter(item => isSuperPid(item.pid))
-}
 
 
-flat2tree(data)
+var list = [{"deptName":"运维一组","parentDeptNo":"129371","deptNo":"101921"},{"deptName":"运维二组","parentDeptNo":"129371","deptNo":"101931"},{"deptName":"运维","parentDeptNo":"06041","deptNo":"129371"}]
+
+getData(list)
 
 
 
@@ -132,7 +130,7 @@ flat2tree(data)
 
 
 ## 方法三 树形数据转key字段
-
+树形数据的key值转换
 ```js
 
 // treeData是否保留原来的数据
