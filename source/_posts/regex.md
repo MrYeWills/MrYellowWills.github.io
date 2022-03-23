@@ -81,8 +81,11 @@ m: multiple lines  多行搜索
 #### 或与分组 
 ![](/image/regex/group1.jpg)
 
+#### 或的边界值理解
+参考下面的 《|或的使用》
+
 ### 关于 忽略分组 (?:)
-#### 分组的妙用一
+#### 分组与忽略的妙用一
 ```js
 var str = 'ppp; %24CC_test_session=AC_yyyy999;tianruoyouqing'
 //  /(?:^|; )%24CC_test_session=([^;]*)/
@@ -256,6 +259,19 @@ str.match(reg4) //["1az2", "a", "z", index: 1, input: "$1az2bb3cy4dd5ee", groups
 ```
 
 #### |或的使用
+通过本篇的几个有关或的示例看出，
+要理解或，最关键的是要理解 或的边界如何确定，
+只要理解了或的边界了，那么问题就很好分析了，
+或的边界 
+- 应该是 下一个|，
+- 如果没有 就是最近的一个 分组符合`(`，
+- 如果没有就是所有字符，
+比如：
+```js
+/rr|123|abc/  //边界下一个|
+/rr(123|abc)/  //边界 最近的一个 分组符合`(`
+/123111|abcttt/ //边界 如果没有就是所有字符
+```
 参考《多个正则合并使用》
 
 示例二：
@@ -308,6 +324,8 @@ url.slice(url.split("/")[0].length + 1).replace(/\/|\?|\=|\*/g,"_")
 function thousandth(str) {
   return str.replace(/\d(?=(?:\d{3})+(?:\.\d+|$))/g, '$&,');
 }
+// 上面的正则表达式，经过改良，应该为, 这样就可以匹配 thousandth('12345.') 的情况：
+ str.replace(/\d(?=(?:\d{3})+(?:\.\d*|$))/g, '$&,');
 ```
 千分位的思路应该是，不管小数点后面的东西，只管小数点左侧的，或者完全没有小数点,只关注整数：
 比如：
@@ -331,6 +349,9 @@ function thousandth(str) {
 附：
 关于$&的解释
 参考https://stackoverflow.com/questions/34510746/difference-between-1-and-in-regular-expressions
+```
+The $& is a backreference to the whole match, while $1 is a backreference to the submatch captured with capturing group 1.
+```
 
 (?:x)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions] ： 
 匹配 'x' 但是不记住匹配项。这种括号叫作非捕获括号，使得你能够定义与正则表达式运算符一起使用的子表达式。

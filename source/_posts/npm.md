@@ -484,3 +484,22 @@ ybdt1201
 执行npm login时报错 ` email already registered`，一般是把 上面的 账号 写成了 上面图片中的 name了，或者登录密码错了，
 就会导致这个错误。
 
+
+## yarn add 相关的问题
+
+### yarn add npmbao@latest
+
+今天用  yarn add npmbao 是正常的， 
+用 yarn add npmbao@latest 报以下问题：
+```
+error An unexpected error occurred: "expected manifest".
+```
+但是直接使用 yarn 又是正常的；
+
+后面发现是项目中存在 yarn.lock 文件，
+将这个文件删除后就好了。
+
+
+
+
+
