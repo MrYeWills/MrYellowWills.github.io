@@ -94,7 +94,10 @@ webpack 源码学习资料确实太匮乏，无太多经验可借鉴
 
 后期看下 loaderRunner 的实现？
 
+要做的就是 对最近的webpack 做一轮复盘总结
 
+#### 2022-3-29
+一个js文件，是在哪里被 fs 读取的；
 ## demo
 
 ### 官方 webpack github demo
@@ -155,7 +158,9 @@ compiler.run((err, stats)=>{
 
 ## 一个js的加载过程
 
-本例以传统的webpack 配置模式进行。
+本例以传统的webpack 配置模式进行, webpack-dev-server 启动。
+
+webpack-dev-server 启动与 webpack 的区别
 
 传统模式 
 启动入口
@@ -762,7 +767,567 @@ You may need an appropriate loader to handle this file type, currently no loader
 
 
  ## parser
-
- webpack 与 babel-loader 各有一套 解析器。
  
+ ## You may need an appropriate loader 引发的问题
+ ### 可能有两种原因：
+ 出现以上问题 可能有两种原因:
+ - 确实没有处理js或css的loader
+ 不过如果未定义js的loader，webpack 自身的 parse也不会报问题， 当js报下面错的时候，
+ 大概率是由于 最新的es标准没有被解析，导致报错，而非loader问题，大概率是js的loader的配置问题。
+ 如下是由于 babel-loader 没有配置解析最新的 可选链 语法。
+ ```js
+ ERROR in ./src/srctest.js 3:5
+Module parse failed: Unexpected token (3:5)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| export default () => {
+|   const dd = 1299;
+>   dd?.u;
+|   console.log('chengduzhaolei------------------');
+| };
+ @ ./src/index.js 7:0-27 16:0-2
+ ```
+ 又比如：
+ ```js
+ ERROR in ./src/style.scss 1:11
+Module parse failed: Unexpected token (1:11)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> body, html {
+|   width: 100%;
+|   height: 100%;
+ @ ./src/index.js 9:0-22
+ ```
+- 第二种原因 就是上面说的 loader 的配置问题
+
+### 被误解的报错来源
+起初，我们看到这个报错，比如上面的的 ` ERROR in ./src/srctest.js 3:5` 的报错，
+我们以为是 babel-loader 报出来的，
+其实不然，其报错是 webpack 自身的解析器抛出。
+
+#### webpack的parse js过程
+所有的js会被 fs 解析成字符串;
+webpack 将解析好的字符串 传递给 babel loader ；
+babel loader 中利用 babel-core 里面的 babel-parse ，加上配置；
+将字符串解析(es6+转es5)为 ast 或 字符串；
+webpack 拿到上述 ast或字符串，利用自己的 webpack parse () 解析一遍这个ast或字符串；
+```js
+// node_modules\webpack\lib\Parser.js
+const acorn = require("acorn");
+const acornParser = acorn.Parser;
+try {
+			ast = acornParser.parse(code, parserOptions);
+		} catch (e) {
+			// js字符串 包含了高级语法 未被 babel loader 转为 es5，可能就会报错，
+			error = e;
+			threw = true;
+		}
+
+		if (threw && type === "auto") {
+			parserOptions.sourceType = "script";
+			parserOptions.allowReturnOutsideFunction = true;
+			if (Array.isArray(parserOptions.onComment)) {
+				parserOptions.onComment.length = 0;
+			}
+			try {
+				ast = acornParser.parse(code, parserOptions);
+				threw = false;
+			} catch (e) {
+				threw = true;
+			}
+		}
+```
+js字符串 包含了高级语法 未被 babel loader 转为 es5，可能就会报错，
+
+所有的报错都会在这里被捕获：
+```js
+// node_modules\webpack\lib\ModuleParseError.js
+constructor(module, source, err, loaders) {
+		let message = "Module parse failed: " + err.message;
+		let loc = undefined;
+		if (loaders.length >= 1) {
+			message += `\nFile was processed with these loaders:${loaders
+				.map(loader => `\n * ${loader}`)
+				.join("")}`;
+			message +=
+				"\nYou may need an additional loader to handle the result of these loaders.";
+		} else {
+			message +=
+				"\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders";
+		}
+```
+
+### babel-loader和webpack的parse
+
+#### 二者区别与关系
+babel-loader 使用的是 @babel/parser 
+webpack 使用的是 acorn
+
+二者的parse 一脉相承 以及扩展的关系。
+[更多参考](https://zhuanlan.zhihu.com/p/358518402)
+
+#### webpack会自己再次parse一次
+我们以为 webpack的parse是外部loader实现的，其实不然，
+loader会自己parse一次，让后将parse后的字符串返回给 webpack，
+由上面的《webpack的parse js过程》可知，
+webpack 拿到这个字符串后，会再次解析一次，
+这感觉解析重复了，不过好处是 webpack会检验解析的结果，如果不符合 js规范，就提前报错，
+真正做到了js运行前 就把错误跑出来。
+
+
+### js的世界是字符串
+JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。
+但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
+[参考](https://www.runoob.com/nodejs/nodejs-buffer.html)
+
+
+## exclude 的调用分析
+
+### 原理分析
+webpack 编译js时，执行 exclude 的判断时机和逻辑 **不在loader上**，
+而是在 `webpack\lib\RuleSet.js`上，
+webpack为每个文件 生成一个编译对象时，通过上面的 RuleSet.js 进行判断exclude, 设置此文件所有需要的loader，
+如果满足了exclude，编译对象将不会有此loader，
+没有此loader参与文件编译，那么该文件的编译，就根本不会去到loader里面。
+```js
+{
+	test: /\.js$/,
+	exclude: /src.{0,3}srctest/,
+	use: {
+		loader: 'babel-loader?cacheDirectory=true',
+		// ...
+	},
+}
+```
+
+### RuleSet.js的执行分析
+
+其原理
+```js
+// node_modules\webpack\lib\RuleSet.js
+static normalizeCondition(condition) {
+		if (!condition) throw new Error("Expected condition but got falsy value");
+		if (typeof condition === "string") {
+			return str => str.indexOf(condition) === 0;
+		}
+		if (typeof condition === "function") {
+			return condition;
+		}
+		if (condition instanceof RegExp) {
+			// 这里 合成 exclude 的判断函数  condition 为 /src.{0,3}srctest/
+			return condition.test.bind(condition);
+		}
+		if (Array.isArray(condition)) {
+			const items = condition.map(c => RuleSet.normalizeCondition(c));
+			return orMatcher(items);
+		}
+
+
+const andMatcher = items => {
+	return str => {
+		for (let i = 0; i < items.length; i++) {
+			// /src.{0,3}srctest/.test('')
+			if (!items[i](str)) return false;
+		}
+		return true;
+	};
+};
+
+```
+
+node_modules\webpack\lib\RuleSet.js的执行：
+```js
+_run(data, rule, result) {
+		// test conditions
+		if (rule.resource && !data.resource) return false;
+		if (rule.realResource && !data.realResource) return false;
+		if (rule.resourceQuery && !data.resourceQuery) return false;
+		if (rule.compiler && !data.compiler) return false;
+		if (rule.issuer && !data.issuer) return false;
+		// rule.resource(data.resource) 调用上面的 // /src.{0,3}srctest/.test('') if (!items[i](str)) return false;
+		// return false 后 此loader 将不会被加入到 文件的loader上
+		if (rule.resource && !rule.resource(data.resource)) return false;
+```
+
+### 调用过程
+
+流程如下：
+#### webpack\lib\Compilation.js
+```js
+// node_modules\webpack\lib\Compilation.js
+this.semaphore.acquire(() => {
+	// 这里create
+			moduleFactory.create(
+				{
+					contextInfo: {
+						issuer: "",
+						compiler: this.compiler.name
+					},
+					context: context,
+					dependencies: [dependency]
+				},
+
+```
+#### webpack\lib\NormalModuleFactory.js
+```js
+// node_modules\webpack\lib\NormalModuleFactory.js
+create(data, callback) {
+	// 执行这个方法
+		this.hooks.beforeResolve.callAsync(
+			{
+				contextInfo,
+				resolveOptions,
+				context,
+				request,
+				dependencies
+			},
+			(err, result) => {
+				// 执行这里
+				const factory = this.hooks.factory.call(null);
+				factory(result, (err, module) => {
+					callback(null, module);
+				});
+			}
+		);
+	}
+
+// node_modules\webpack\lib\NormalModuleFactory.js
+create(data, callback) {
+	// 执行这个方法
+		this.hooks.beforeResolve.callAsync(
+			{
+				contextInfo,
+				resolveOptions,
+				context,
+				request,
+				dependencies
+			},
+			(err, result) => {
+				// 执行这里
+				const factory = this.hooks.factory.call(null);
+				factory(result, (err, module) => {
+					callback(null, module);
+				});
+			}
+		);
+	}
+
+// 同样这个js文件
+	this.hooks.factory.tap("NormalModuleFactory", () => (result, callback) => {
+
+		// 执行这里
+			let resolver = this.hooks.resolver.call(null);
+
+			// Ignored
+			if (!resolver) return callback();
+
+			resolver(result, (err, data) => {
+				this.hooks.afterResolve.callAsync(data, (err, result) => {
+					// ...
+					return callback(null, createdModule);
+				});
+			});
+		});
+
+// 同样在这个页面
+	this.hooks.resolver.tap("NormalModuleFactory", () => (data, callback) => {
+			const contextInfo = data.contextInfo;
+			const context = data.context;
+			const request = data.request;
+
+// ....
+
+			asyncLib.parallel(
+				[
+				// ...
+				],
+				(err, results) => {
+					if (err) return callback(err);
+				
+// ...
+// 重点， exclude 的逻辑 是在这里处理的 ，这部分逻辑放到 《RuleSet.js的执行分析》
+					const result = this.ruleSet.exec({
+						resource: resourcePath,
+						realResource:
+							matchResource !== undefined
+								? resource.replace(/\?.*/, "")
+								: resourcePath,
+						resourceQuery,
+						issuer: contextInfo.issuer,
+						compiler: contextInfo.compiler
+					});
+					const useLoaders = [];
+					for (const r of result) {
+						if (r.type === "use") {
+							// ...
+								// 这里
+								useLoaders.push(r.value);
+							}
+						}
+					}
+					asyncLib.parallel(
+						[
+						// ...
+							this.resolveRequestArray.bind(
+								this,
+								contextInfo,
+								this.context,
+								useLoaders,
+								loaderResolver
+							),
+						// ...
+						],
+						(err, results) => {
+							
+						    loaders = results[0].concat(loaders, results[1], results[2]);
+							
+							process.nextTick(() => {
+								const type = settings.type;
+								const resolveOptions = settings.resolve;
+								callback(null, {
+									context: context,
+									// ...
+									// 这里的loader 这里如果没有loader，说明后期这个文件处理的时候，就不会被loader处理
+									loaders,
+									resource,
+									matchResource,
+									resourceResolveData,
+									settings,
+									type,
+									parser: this.getParser(type, settings.parser),
+									// 。。。
+								});
+							});
+						}
+					);
+				}
+			);
+		});
+
+```
+
+### 小结
+exclude 其实就是 loader 一个配置的一个侧面。
+webpack的设计思想 应该是所有的 loader不处理webpack的配置逻辑；
+因为这个配置逻辑属于webpack的业务逻辑；
+babel-loader 本身只处理 纯粹的功能逻辑；
+所以所有与配置相关的处理应该是 生成的一个js编译对象:
+```js
+// node_modules\webpack\lib\NormalModuleFactory.js
+	process.nextTick(() => {
+								const type = settings.type;
+								const resolveOptions = settings.resolve;
+								callback(null, {
+									context: context,
+									request: loaders
+										.map(loaderToIdent)
+										.concat([resource])
+										.join("!"),
+									dependencies: data.dependencies,
+									userRequest,
+									rawRequest: request,
+									loaders,
+									resource,
+									matchResource,
+									resourceResolveData,
+									settings,
+									type,
+									parser: this.getParser(type, settings.parser),
+									generator: this.getGenerator(type, settings.generator),
+									resolveOptions
+								});
+							});
+```
+
+exclude 只是一个点，以此类推，
+以后配置相关的东西，只需要debug webpack的代码，而不用去debug loader 或 plugin 代码。
+## 两种设置babel配置的区别
+### 两种方式的差异
+babel的配置有两种方式：
+方式一 就是 babelrc
+方式二 就是 option模式， 在 webpack.config.js 上：
+```js
+  {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader?cacheDirectory=true',
+		//   配置在这里
+          options: {
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  corejs: 3,
+                },
+              ],
+              '@babel/preset-react',
+            ],
+          },
+        },
+      },
+```
+**这两种配置方式 在 webpack 4 的版本上具有差异：**
+如果是 babelrc 的方式， 那么需要编译 node_modules 的包时， 无法结合 babelrc 的配置进行编译。
+非 node_modules 目录的，也就是业务目录下的，不存在这个问题， webpack options 或 babelrc 两种方式都可 没有区别。
+
+目前此问题 存在与 webpack 4， webpack 5 貌似不存在此问题。
+
+### 读取Babel option的过程
+以下 皆以 webpack 4.6.3 为版本
+#### webpack\lib\NormalModule.js
+```js
+// node_modules\webpack\lib\NormalModule.js
+	doBuild(options, compilation, resolver, fs, callback) {
+		const loaderContext = this.createLoaderContext(
+			resolver,
+			options,
+			compilation,
+			fs
+		);
+    // 这里
+		runLoaders(
+			{
+				resource: this.resource,
+				loaders: this.loaders,
+				context: loaderContext,
+				readResource: fs.readFile.bind(fs)
+			},
+			(err, result) => {
+
+			})
+	}
+```
+
+#### loader-runner\lib\LoaderRunner.js
+```js
+exports.runLoaders = function runLoaders(options, callback) {
+
+// 经过系列动作 跑到babel-loader\lib\index.js
+}
+
+```
+#### babel-loader\lib\index.js
+```js
+// node_modules\babel-loader\lib\index.js
+    const {
+		// node_modules\@babel\core\lib\config\partial.js  的loadPartialConfig
+      loadPartialConfigAsync = babel.loadPartialConfig
+    } = babel;
+    const config = yield loadPartialConfigAsync(injectCaller(programmaticOptions, this.target));
+
+```
+
+#### @babel\core\lib\config\partial.js
+```js
+// node_modules\@babel\core\lib\config\partial.js
+  
+const loadPartialConfig = _gensync()(function* (opts) {
+ 
+  const result = yield* loadPrivatePartialConfig(opts);
+  if (!result) return null;
+  const {
+    options,
+    babelrc,
+    ignore,
+    config,
+    fileHandling,
+    files
+  } = result;
+
+ 
+  return new PartialConfig(options, babelrc ? babelrc.filepath : undefined, ignore ? ignore.filepath : undefined, config ? config.filepath : undefined, fileHandling, files);
+});
+
+
+// node_modules\@babel\core\lib\config\partial.js
+  
+function* loadPrivatePartialConfig(inputOpts) {
+//   ....
+// _configChain.buildRootChain 是 node_modules\@babel\core\lib\config\config-chain.js
+  const configChain = yield* (0, _configChain.buildRootChain)(args, context);
+  if (!configChain) return null;
+  const merged = {
+    assumptions: {}
+  };
+  configChain.options.forEach(opts => {
+    (0, _util.mergeOptions)(merged, opts);
+  });
+  const options = Object.assign({}, merged, {
+	//   ...
+    plugins: configChain.plugins.map(descriptor => (0, _item.createItemFromDescriptor)(descriptor)),
+    presets: configChain.presets.map(descriptor => (0, _item.createItemFromDescriptor)(descriptor))
+  });
+  return {
+    options,
+    context,
+    fileHandling: configChain.fileHandling,
+    ignore: configChain.ignore,
+    babelrc: configChain.babelrc,
+    config: configChain.config,
+    files: configChain.files
+  };
+}
+```
+
+#### @babel\core\lib\config\config-chain.js
+```js
+// node_modules\@babel\core\lib\config\config-chain.js
+function* buildRootChain(opts, context) {
+	// ...
+  if ((babelrc === true || babelrc === undefined) && typeof context.filename === "string") {
+ // ...
+// 这一步决定了 babelrc 文件对 此要编译的js 文件 起作用 ，这是关键一步
+    if (pkgData && babelrcLoadEnabled(context, pkgData, babelrcRoots, babelrcRootsDirectory)) {
+    
+	// ...
+    }
+  }
+
+
+  const chain = mergeChain(mergeChain(mergeChain(emptyChain(), configFileChain), fileChain), programmaticChain);
+  return {
+    plugins: isIgnored ? [] : dedupDescriptors(chain.plugins),
+    presets: isIgnored ? [] : dedupDescriptors(chain.presets),
+//   ...
+    babelrc: babelrcFile || undefined,
+  };
+}
+
+
+function babelrcLoadEnabled(context, pkgData, babelrcRoots, babelrcRootsDirectory) {
+
+  if (babelrcRoots === undefined) {
+	// pkgData.directories ：  ['D:\workplace\tstnpm\webpack-4.6\src', 'D:\workplace\tstnpm\webpack-4.6']
+	// absoluteRoot ：  'D:\workplace\tstnpm\webpack-4.6'
+	// 结果是true 所以业务代码是可以的
+
+	// 如果是 node_modules:
+	// pkgData.directories ：  ['D:\workplace\tstnpm\webpack-4.6\node_modules\hz-npm-test\lib', 'D:\workplace\tstnpm\webpack-4.6\node_modules\hz-npm-test']
+	// absoluteRoot ：  'D:\workplace\tstnpm\webpack-4.6'
+	// 结果是false
+    return pkgData.directories.indexOf(absoluteRoot) !== -1;
+  }
+
+}
+```
+
+### 小结
+由 《exclude 的调用分析  -  小结》 可知，所有的webpack 配置 是 webpack 自己处理的；
+而 babel 的两种配置方式（webpack option 和 babelrc） , 除了下面的 关键字 option 对象是webpack的公共行为，
+至于 webpack option 与 babelrc 的优先级 以及 node_modules  与 src/ 业务代码目录下 文件的babel 编译options 如何结合，
+则不是webpack的事情，全部交给 babel自己处理 ，主要集中在 @babel\core 自身完成。
+```js
+
+// @babel\core\lib\config\partial.js //partial 顾名思义 就是 优先的配置的意思
+// @babel\core\lib\config\config-chain.js 
+```
+这两个都是典型的例子 ：
+《exclude 的调用分析》 用于分析 webpack 自身的options 行为；
+《两种设置babel配置的区别》 用于分析 loader 自身的options 处理行为；
+
+
+
+
+
+
+
+
  
