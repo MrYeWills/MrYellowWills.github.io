@@ -1,5 +1,5 @@
 ---
-title: webpack攀登之旅(往)
+title: webpack再出发(往)
 date: 2022/3/23
 tags: webpack
 categories: 
@@ -78,12 +78,20 @@ webpack 一切都是module 的理解；
 ### 学习历程
 
 #### 2022-3-28
+教程视频
+https://www.bilibili.com/video/BV12L411t7Pr?spm_id_from=333.999.0.0
+
+compiler 与 compilation 区别和联系
+手写简易版本的打包器 (ast 抽象语法树， dom树)
+loader(ast)
+plugin
+#### 2022-3-28
 
 今晚要做的是，做笔记；
 看视频做笔记；
 然后将最近这几天的内容 整理笔记；
 包括之前源码调试；
-和今天的parse；
+----和今天的parse；----
 
 做完之后，收集一波webpack 资料
 然后再制定一个三天计划。
@@ -98,40 +106,48 @@ webpack 源码学习资料确实太匮乏，无太多经验可借鉴
 
 #### 2022-3-29
 一个js文件，是在哪里被 fs 读取的；
+
+#### 2022-3-31
+然后看视频 看手写一个打包器；
+或者看手写一个plugin；
+看手写也好，还是什么也好，
+通过这些示例或者视频，你至少知道怎么用了，它们就是一个源码的 活生生的说明书，然后再去看源码是不是事半功倍！
 ## demo
 
-### 官方 webpack github demo
-可以使用此 [demo 分支 version-debug-5.69.1 ](https://github.com/YeWills/webpack/tree/version-debug-5.69.1) 进行webpack源码调试，此demo是fork webpack官方github的。
-里面有 [webpack5 的视频](https://www.bilibili.com/video/av462922583?from=search&seid=14121423744670771391&spm_id_from=333.337.0.0)调试经验分享。
+目前两个demo库用于webpack学习
+### webpack源码库
 
-目前用 /d/workplace/qiqiaonpm/webpack-4.6 demo 来测试一些问题，比如 babelrc nodem module 不编译的问题； html 编译出问题 md5 编译出问题；
+[webpack](https://github.com/YeWills/webpack/tree/version-debug-5.69.1)  fork自webpack官网，主要用于阅读webpack源码，或者直接用源码进行编译调试。
+此库可以用于同步最新的webpack修改，并同时查看各个版本的webapck源码。
 
-后期基于 之前写的webpack-demo 新创建一个 webpack 调试demo；也可以直接基于 官网的 github demo 调试；
-留一个公司的webpack-demo以做区别；
+#### version-debug-5.69.1 分支
+其中分支可以使用此库 [分支 version-debug-5.69.1 ](https://github.com/YeWills/webpack/tree/version-debug-5.69.1) 进行webpack源码调试
+里面包含了如何改造webpack官库 用于直接编译调试的经验，
+
+关于此分支的更多讲解，参考下面的 《参考 -  webpack5调试经验分享视频》
+
+#### 参考
+-  [webpack5调试经验分享视频](https://www.bilibili.com/video/av462922583?from=search&seid=14121423744670771391&spm_id_from=333.337.0.0)
+
+
+### webpack调试库
+
+[webpack调试库](https://github.com/YeWills/webpack-travel) ,此库展示webpack用于各种场景下调试练手。
 
 
 
-<!-- 测试以 D:\workplace\xxxxnpm\webpack-4.6 -->
-<!-- webpack 有一个源码启动的 D:\git\webpack-->
+## 三种webpack配置模式
+
+- 1. compiler 模式；
+- 2. webpack config 模式；
+- 3. webpack-dev-server config 模式；
+
+本质上 2 最终还是用 1 实现；
+3 最终变成 2，最终依然还是基于 1 实现；
+本质上 他们最终都是用 compiler模式实现
 
 
-## webpack源码调试
-
-### 概述
-
-webpack 命令
-bin/webpack.cmd
-webpack.js
-
-### 教程
-https://www.bilibili.com/video/BV12L411t7Pr?spm_id_from=333.999.0.0
-
-compiler 与 compilation 区别和联系
-手写简易版本的打包器 (ast 抽象语法树， dom树)
-loader(ast)
-plugin
-
-#### webpack入口
+### webpack入口
 
 - 执行npm run build  最终找到 bin/webpack.js
 上述的文件里其实就是判断 webpack-cli 是否安装，如果安装了则执行 runCli 方法
@@ -156,25 +172,16 @@ compiler.run((err, stats)=>{
 })
 ```
 
-## 一个js的加载过程
+### webpack-dev-server 调试 (待进一步整理)
 
 本例以传统的webpack 配置模式进行, webpack-dev-server 启动。
 
 webpack-dev-server 启动与 webpack 的区别
 
-传统模式 
-启动入口
-fs 读写
-ast 生成
-loader 加载 [exclude 的规则]
-babel 加载 babelrc 时机
-编译出来的文件
-
-node_modules\webpack-dev-server\bin\webpack-dev-server.js
-
-compiler = webpack(config);
 
 ![](/image/webpack_one/entry.jpg)
+
+#### lib\webpack.js
 
 ```js
 node_modules\webpack\lib\webpack.js
@@ -203,6 +210,7 @@ const webpack = (options, callback) => {
     compiler.options = new WebpackOptionsApply().process(options, compiler);
 ```
 
+#### webpack\lib\WebpackOptionsApply.js
 
 ```js
 // 接上面 compiler.options = new WebpackOptionsApply().process(options, compiler);
@@ -214,6 +222,8 @@ new EntryOptionPlugin().apply(compiler);
 // 后续讲 ，目前先讲解上面的 EntryOptionPlugin().apply(compiler);
 compiler.hooks.entryOption.call(options.context, options.entry);
 ```
+
+#### webpack\lib\EntryOptionPlugin.js
 
 ```js
 // 接上面 new EntryOptionPlugin().apply(compiler);
@@ -236,6 +246,10 @@ apply(compiler) {
 		});
 	}
 
+```
+
+#### webpack\lib\SingleEntryPlugin.js
+```js
 itemToPlugin -》 SingleEntryPlugin
 // =》js
 // node_modules\webpack\lib\SingleEntryPlugin.js
@@ -288,9 +302,7 @@ compiler.hooks.entryOption.call(options.context, options.entry);
 new LoaderPlugin().apply(compiler);
 ```
 
-
-
-<!-- node_modules\webpack\lib\WebpackOptionsApply.js -->
+`node_modules\webpack\lib\WebpackOptionsApply.js`
 这个文件主要用于 订阅 各种事件，比如你设置了一个配置，
 这个配置最终转换为一个plugin，
 然后再plugin的apply中 tap 一个事件，
@@ -304,21 +316,22 @@ compiler.hooks.afterResolvers.call(compiler);
 
 
 
-疑问 
-	compiler.options = new WebpackOptionsApply().process(options, compiler);
-    之后 如何触发 系列 监听事件的
 
 
-如果是 webpack-server 触发 就通过 Server.js
+webpack-dev-server 通过 Server.js 触发 最终的webpack config？
  
- 中的 compiler.hooks.entryOption.call(config.context, config.entry);
- 执行
+例如 ` compiler.hooks.entryOption.call(config.context, config.entry);`执行
 
- node_modules\webpack-dev-middleware\index.js
+#### webpack-dev-middleware\index.js
+
+```js
+//  node_modules\webpack-dev-middleware\index.js
 
  compiler.watch
 
-
+```
+#### webpack\lib\Compiler.js
+```js
 node_modules\webpack\lib\Compiler.js
  	watch(watchOptions, handler) {
 		if (this.running) return handler(new ConcurrentCompilationError());
@@ -331,7 +344,9 @@ node_modules\webpack\lib\Compiler.js
 		return new Watching(this, watchOptions, handler);
 	}
 
-
+```
+#### webpack\lib\Watching.js
+```js
 node_modules\webpack\lib\Watching.js
     	this.compiler.readRecords(err => {
 			if (err) return this._done(err);
@@ -340,7 +355,9 @@ node_modules\webpack\lib\Watching.js
 		});
 
 
-
+```
+#### webpack\lib\Compiler.js
+```js
         node_modules\webpack\lib\Compiler.js
 
         	readRecords(callback) {
@@ -459,9 +476,11 @@ node_modules\webpack\lib\Compiler.js
 			});
 		});
 	}
+```
+#### webpack\lib\SingleEntryPlugin.js
+```js
 
-
-this.hooks.make.callAsync 触发
+// this.hooks.make.callAsync 触发
 node_modules\webpack\lib\SingleEntryPlugin.js
 	compiler.hooks.make.tapAsync(
 			"SingleEntryPlugin",
@@ -472,7 +491,9 @@ node_modules\webpack\lib\SingleEntryPlugin.js
 				compilation.addEntry(context, dep, name, callback);
 			}
 		);
-
+```
+#### webpack\lib\Compilation.js
+```js
 node_modules\webpack\lib\Compilation.js
 addEntry(context, entry, name, callback) {
 		this.hooks.addEntry.call(entry, name);
@@ -522,7 +543,9 @@ addEntry(context, entry, name, callback) {
 		);
 	}
 
-
+```
+#### webpack\lib\NormalModule.js
+```js
 
     最终 走到 
     node_modules\webpack\lib\NormalModule.js
@@ -550,7 +573,9 @@ addEntry(context, entry, name, callback) {
         }
     }
 
-
+```
+#### webpack\lib\NormalModuleFactory.js
+```js
     在这个地方 设置 parser
     node_modules\webpack\lib\NormalModuleFactory.js
     	process.nextTick(() => {
@@ -578,10 +603,12 @@ addEntry(context, entry, name, callback) {
 							});
 
 
-
+```
+#### webpack\lib\Compilation.js(递归 builder?)
+```js
    node_modules\webpack\lib\Compilation.js
 
-<!-- 这个地方进行递归 builder -->
+// <!-- 这个地方进行递归 builder -->
    rebuildModule(module, thisCallback) {
 		let callbackList = this._rebuildingModules.get(module);
 		if (callbackList) {
@@ -621,7 +648,9 @@ addEntry(context, entry, name, callback) {
 		});
 	}
 
-
+```
+#### webpack\lib\NormalModule.js
+```js
 
 node_modules\webpack\lib\NormalModule.js
 <!-- 所有的loader 都是在这里加载的 -->
@@ -641,133 +670,16 @@ runLoaders(
 						result.contextDependencies
 					);
 				}
+```
 
-
-
-https://www.runoob.com/nodejs/nodejs-buffer.html
-
-JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。
-
-但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
-
-js 都是通过 fs 读写 字符串 然后通过 evel 或 new function  或 ast 语法树，编译成 js文件
-
-
-
-明天重点围绕
-
-看他们的loader是如何匹配的，比如那个正则表达式；
-
-
-node_modules\webpack\lib\NormalModule.js
-在这里进行 js 的babel loader
-babel 的babelrc 文件是如何读取的？
-哪些文件会被 loader 的rule 匹配 ？
-parser 是怎么设置的？
-fs 读写成 字符串 是在哪里设置的？
-runLoaders(
-
-感觉重点就这么几个文件
-
-先以问题点 去看源码
-
-先 大致原理 从视频了解下；
-然后以小问题点 去看源码；
-最后再精看一下。
-
-
- 在这个地方 设置 parser
-    node_modules\webpack\lib\NormalModuleFactory.js
-    	process.nextTick(() => {
-								const type = settings.type;
-								const resolveOptions = settings.resolve;
-								callback(null, {
-									context: context,
-									request: loaders
-										.map(loaderToIdent)
-										.concat([resource])
-										.join("!"),
-									dependencies: data.dependencies,
-									userRequest,
-									rawRequest: request,
-									loaders,
-									resource,
-									matchResource,
-									resourceResolveData,
-									settings,
-									type,
-									parser: this.getParser(type, settings.parser),
-									generator: this.getGenerator(type, settings.generator),
-									resolveOptions
-								});
-							});
-
-
-runloader
 ## 待研究
-commander 这个npm包的研究
 
-
-
-
-
-等下 研究下 loader 的 exclude 怎么来的；
-然后看视频 看手写一个打包器；
-或者看手写一个plugin；
-
-看手写也好，还是什么也好，
-你至少知道怎么用了，并且就是一个源码的 活生生的说明书；
-
-然后再结合源码 排错。
-
-这次的目的不是自己手写webpack 源码
-
-抑或全部了解 webpack ，
-
-而是先了解webpack 使用，逐步了解webpack 的细节；
-
-后期要对babel 做更多了解。
-
-
-全程做好笔记
-
-包括刚才的视频
-
-
-const { getContext, runLoaders } = require("loader-runner");
-
-loader-runner
-
-
-babel-loader
-
-exclude
-
-
-首先在 node_modules\webpack\lib\RuleSet.js  if (rule.test || rule.include || rule.exclude) {  得到信息
-
-
-
-明天 弄清楚 
-
-ERROR in ./src/srctest.js 3:5
-Module parse failed: Unexpected token (3:5)
-You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
-| export default () => {
-|   const dd = 1299;
->   dd?.u;
-|   console.log('chengduzhaolei------------------');
-| };
- @ ./src/index.js 7:0-27 15:0-2
-
- 这个标红是为什么？
-
-
- 有空学习下 yield
+- commander 这个npm包的研究
+- 后期要对babel 做更多了解。
+- 有空学习下 yield
 
 
  ## parser
- 
  ## You may need an appropriate loader 引发的问题
  ### 可能有两种原因：
  出现以上问题 可能有两种原因:
@@ -876,6 +788,7 @@ webpack 拿到这个字符串后，会再次解析一次，
 ### js的世界是字符串
 JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。
 但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
+js 都是通过 fs 读写 字符串 然后通过 evel 或 new function  或 ast 语法树，编译成 js文件
 [参考](https://www.runoob.com/nodejs/nodejs-buffer.html)
 
 

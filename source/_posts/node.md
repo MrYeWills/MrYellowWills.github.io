@@ -272,3 +272,70 @@ node后端工程，包括后端工程的编译以及后端工程的接口业务�
 475  rm -rf olg.cmd olg.ps1* olg*
 476  npm i -g npm包名
 ```
+
+### 调试npm link问题想到的npm调试经验
+
+#### 过程描述
+
+npm link river-compass 时报错，但报错信息比较简单难以定位问题。
+```s
+$  npm link river-compass
+// 报错......
+error Cannot read properties of null (reading 'package')
+verbose exit 1
+
+npm ERR! A complete log of this run can be found in:
+// 这个日志文件有详细解释
+npm ERR!     C:\Users\YeWills\AppData\Local\npm-cache\_logs\2022-03-30T09_34_26_992Z-debug.log
+```
+
+于是查看详细日志信息：
+```s
+$ cat 'C:\Users\YeWills\AppData\Local\npm-cache\_logs\2022-03-30T09_34_26_992Z-debug.log'
+0 verbose cli [
+0 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+0 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+0 verbose cli   'link',
+0 verbose cli   'river-compass'
+0 verbose cli ]
+// ......
+28 timing command:link Completed in 31608ms
+29 verbose stack TypeError: Cannot read properties of null (reading 'package')
+# 知道错误在 这里报出来的
+# 我用的是vscode，执行命令都是在此项目的vscode下打开的 终端，
+# 在此终端执行 cat 命令，显示这些内容，
+# window电脑下，按住 ctrl + click下面的文件路径，【其实你也可以直接将文件放在此vscode打开】
+# 此文件将在当前vscode被打开
+# 打开debug模式下的终端，在此文件上断点，
+# 再次运行npm link river-compass 命令，调试发现，报错时出现了一个无用的xnbzvdev npm 包，把这个包删除后发先npm link 成功了
+# 问题完美解决
+29 verbose stack     at Link.set root [as root] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:709:35)
+29 verbose stack     at Node.set root [as root] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:775:20)
+29 verbose stack     at Link.set root [as root] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:783:19)
+29 verbose stack     at Node.set root [as root] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:775:20)
+29 verbose stack     at Node.set root [as root] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:775:20)
+29 verbose stack     at Node.set root [as root] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:775:20)
+29 verbose stack     at Node.set parent [as parent] (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:1176:19)
+29 verbose stack     at Link.missingArgsFromTree (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\lib\link.js:201:19)      
+29 verbose stack     at Link.missingArgsFromTree (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\lib\link.js:177:19)      
+29 verbose stack     at Link.linkInstall (C:\Users\YeWills\AppData\Roaming\nvm\v16.13.2\node_modules\npm\lib\link.js:103:26)
+29 verbose stack     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+30 verbose cwd D:\workplace\webpack\webpack-modify-demo
+31 verbose Windows_NT 10.0.19044
+32 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "link" "river-compass"
+33 verbose node v16.13.2
+34 verbose npm  v8.1.2
+35 error Cannot read properties of null (reading 'package')
+36 verbose exit 1
+```
+
+以后npm命令使用时，出现任何问题，可以通过这种方式调试。
+npm其实就是一个全局安装的npm包，其他任何全局安装的npm包，都可通过此方式调试。
+
+#### 重视npm log文件
+参考如上
+
+
+
+### 调试npm全局包的方法
+参考《调试npm link问题想到的npm调试经验》
