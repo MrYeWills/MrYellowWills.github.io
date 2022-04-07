@@ -1,5 +1,5 @@
 ---
-title: webpack再出发(来)
+title: webpack巅峰(来)
 date: 2022/4/5
 tags: webpack
 categories: 
@@ -233,7 +233,7 @@ npx webpack --profile  --json > stats.json
           "index2": 0,
           "size": 65,
           "cacheable": true,
-          "built": true, //是否经过loader编译
+          "built": true, //是否经过loader编译 (存疑， 经过试验，未经loader的js 编译后，此built也为true)
           "optional": false,
           "prefetched": false, //是否要预取，编译好后，告诉浏览器 有空的时候 加载资源
           "chunks": [
@@ -338,6 +338,103 @@ npx webpack --profile  --json > stats.json
 
 ```
 
+### 关于module对象
+
+```js
+{
+  // dependencies 说明参考 
+      dependencies: [
+        [HarmonyCompatibilityDependency], //对应模板 `HarmonyExportDependencyTemplate` 会在源码里最前面添加如：`__webpack_require__.r(__webpack_exports__);` 的代码，用于定义 exports:__esModule
+        [HarmonyInitDependency],
+        [ConstDependency],
+        [HarmonyImportSideEffectDependency],
+        [ConstDependency],
+        [HarmonyImportSideEffectDependency],
+        [HarmonyImportSpecifierDependency],
+        [HarmonyImportSpecifierDependency]
+      ],
+      blocks: [],
+      variables: [],
+      type: 'javascript/auto',
+      context: 'D:\\workplace\\webpack\\webpack-travel\\src',
+      debugId: 1000,
+      hash: '27a8caa7dfc3e630b3401c5bf4817949',
+      renderedHash: '27a8caa7dfc3e630b340',
+      resolveOptions: {},
+      factoryMeta: {},
+      warnings: [],
+      errors: [],
+      buildMeta: { exportsType: 'namespace', providedExports: [] },
+      buildInfo: {
+        cacheable: true,
+        fileDependencies: [Set],
+        contextDependencies: Set(0) {},
+        assets: undefined,
+        assetsInfo: undefined,
+        strict: true,
+        exportsArgument: '__webpack_exports__',
+        temporaryProvidedExports: false
+      },
+      reasons: [ [ModuleReason] ],
+      _chunks: SortableSet(1) [Set] {
+        [Chunk],
+        _sortFn: [Function: sortById],
+        _lastActiveSortFn: null,
+        _cache: undefined,
+        _cacheOrderIndependent: undefined
+      },
+      id: './src/index.js',
+      index: 0,
+      index2: 2,
+      depth: 0,
+      issuer: null,
+      profile: undefined,
+      prefetched: false,
+      built: true,
+      used: null,
+      usedExports: null,
+      optimizationBailout: [],
+      _rewriteChunkInReasons: undefined,
+      useSourceMap: false,
+      _source: OriginalSource {
+        _value: "import srctFn from './srctest';\n" +
+          "import srcpage from './page/srcpage';\n" +
+          "srctFn('ffffffffffffd');\n" +
+          "srcpage('ffffffffffffd');\n" +
+          "console.log('--index-page------009883njoddsrg543ghjsdg112111111111111111');",
+        _name: 'D:\\workplace\\webpack\\webpack-travel\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\workplace\\webpack\\webpack-travel\\src\\index.js'
+      },
+      request: 'D:\\workplace\\webpack\\webpack-travel\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\workplace\\webpack\\webpack-travel\\src\\index.js',
+      userRequest: 'D:\\workplace\\webpack\\webpack-travel\\src\\index.js',
+      rawRequest: './src/index.js',
+      binary: false,
+      parser: Parser {
+        _pluginCompat: [SyncBailHook],
+        hooks: [Object],
+        options: {},
+        sourceType: 'auto',
+        scope: undefined,
+        state: undefined,
+        comments: undefined
+      },
+      generator: JavascriptGenerator {},
+      resource: 'D:\\workplace\\webpack\\webpack-travel\\src\\index.js',
+      matchResource: undefined,
+      loaders: [ [Object] ],
+      error: null,
+      _sourceSize: null,
+      _buildHash: '6e3735e813c76c2709c7d0f4f123937d',
+      buildTimestamp: 1649210983865,
+      _cachedSources: Map(1) { 'javascript' => [Object] },
+      lineToLine: false,
+      _lastSuccessfulBuildMeta: { exportsType: 'namespace', providedExports: [] },
+      _ast: null
+    }
+```
+
+####  dependencies
+ dependencies 说明 [参考](https://blog.flqin.com/378.html) 
+
 ## 关于chunk
 
 ### 生成chunk的情况
@@ -377,4 +474,17 @@ npx webpack --profile  --json > stats.json
 #### 源码调试
 明天是否可以直接先打印以下 modules 属性，看整个 modules 是一个什么对象，有什么内容，
 这样已知结果了，那么就可以大致猜测到之前各个过程做了什么。
+
+### 两个factory.create的执行顺序
+先执行 _addModuleChain 的 moduleFactory.create
+后执行 addModuleDependencies 的 factory.create
+
+factory.create 其实就是的重复：
+>NormalModuleFactory.create -> resolve流程 -> 初始化module -> module build -> afterBuild -> processModuleDependencies ...
+
+### 晚上安排
+稍微再看看两边文档 关于 create 开始到递归结束方便的文档，
+然后开始看源码 调试；
+
+
 
