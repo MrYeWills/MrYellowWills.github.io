@@ -1,5 +1,5 @@
 ---
-title: webpack巅峰(来)
+title: webpack再出发(来)
 date: 2022/4/5
 tags: webpack
 categories: 
@@ -135,6 +135,8 @@ needAdditionalPass   【类型：SyncBailHook 入参：
 ### 关于stats对象
 
 #### 概述
+
+关于 stats 对象 更多知识 参考 《webpack再出发(田)：chunk及之后的调试  -- 生成Stats 对象》
 
 在webpack的回调函数中会得到 stats 对象；
 这个对象实际来自于 `Compilation.getStats()` ，返回的是主要含有modules\chunks\assets三个属性值的对象；

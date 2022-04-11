@@ -85,6 +85,10 @@ webpack 4.46.0
 ## module编译过程
 
 ```s
+# lib\Compiler.js
+this.hooks.make
+
+
 #lib\Compilation.js
 addEntry
 _addModuleChain
@@ -115,6 +119,9 @@ factory.create - 递归
 # lib\Compilation.js
 # 执行到这里 项目所有module生成结束
 this.hooks.succeedEntry.call(entry, name, module);
+
+# 最终回到 make的回调；
+this.hooks.make - 回调
 ```
 
 ## 逻辑说明
