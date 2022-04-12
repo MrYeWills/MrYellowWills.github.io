@@ -80,6 +80,9 @@ buildChunkGraph
 # 下面是 chunk的优化阶段
 #  ！！！！这个阶段，与webpack主流程理解关系不大，可以看看不用深究！！！！
 this.hooks.afterChunks.call
+
+this.hooks.optimizeChunksAdvanced.call(this.chunks, this.chunkGroups);
+
 # 设置 module.id
 this.hooks.reviveModules.call(this.modules, this.records);
 # 设置 chunk.id
@@ -92,6 +95,10 @@ this.createHash();
 this.hooks.afterHash.call();
 ```
 
+#### SplitChunksPlugin
+`this.hooks.optimizeChunksAdvanced.call(this.chunks, this.chunkGroups);`
+会触发插件SplitChunksPlugin 优化切割 chunk
+[参考](https://blog.flqin.com/380.html)
 #### 说明
 
 chunk 编译阶段逻辑大多与 webpack主流程无关，可以大略看看。

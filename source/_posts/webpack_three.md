@@ -446,6 +446,8 @@ npx webpack --profile  --json > stats.json
 
 ![](/image/webpack_one/chunk.jpg)
 
+[这个视频讲的更清楚-《任务14：14.如何调试和阅读webpack源码》-在最后几分钟内有讲到](https://www.bilibili.com/video/BV1N5411j74S?p=14)
+[这个视频讲的更清楚-《任务15：15.webpack自定义loader》-在开始的几分钟内有讲到](https://www.bilibili.com/video/BV1N5411j74S?p=15)
 
 ## webpack 主流程
 
@@ -484,9 +486,11 @@ npx webpack --profile  --json > stats.json
 factory.create 其实就是的重复：
 >NormalModuleFactory.create -> resolve流程 -> 初始化module -> module build -> afterBuild -> processModuleDependencies ...
 
-### 晚上安排
-稍微再看看两边文档 关于 create 开始到递归结束方便的文档，
-然后开始看源码 调试；
 
+## 参考
+
+### 参考文档或视频
+[这个视频讲的更清楚-《任务14：14.如何调试和阅读webpack源码》-在最后几分钟内有讲到](https://www.bilibili.com/video/BV1N5411j74S?p=14)
+[这个视频讲的更清楚-《任务15：15.webpack自定义loader》-在开始的几分钟内有讲到](https://www.bilibili.com/video/BV1N5411j74S?p=15)
 
 
