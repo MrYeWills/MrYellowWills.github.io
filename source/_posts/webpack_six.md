@@ -21,3 +21,12 @@ bootstrap 就是 runtime；
     //...
   }
 ```
+
+bootstrap 更准确的是引导的意思，[参考官网bootstrap](https://webpack.docschina.org/guides/build-performance/#bootstrap)
+
+
+### library 库
+[library 在webpack源码中，可以指 为依赖库或第三方包的意思](https://webpack.docschina.org/guides/caching/#extracting-boilerplate)；
+[或参考官网这篇文章内涉及到的 library](https://webpack.docschina.org/guides/code-splitting/#prefetchingpreloading-modules)
+
+[实际上 library 其实就是一个 第三方库，和npm包](https://webpack.docschina.org/guides/author-libraries/)。

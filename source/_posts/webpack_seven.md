@@ -64,6 +64,137 @@ loader 被用于转换某些类型的模块，而插件则可以用于执行范�
 
 
 
+### 监听(Watching)
+[参考](https://webpack.docschina.org/api/node/#watching)
+```js
+const webpack = require('webpack');
+
+const compiler = webpack({
+  // [配置对象](/configuration/)
+});
+
+const watching = compiler.watch({
+  // [watchOptions](/configuration/watch/#watchoptions) 示例
+  aggregateTimeout: 300,
+  poll: undefined
+}, (err, stats) => { // [Stats Object](#stats-object)
+  // 这里打印 watch/build 结果...
+  console.log(stats);
+});
+```
+
+
+### 由多入口文件共享引起的问题
+[参考](https://webpack.docschina.org/api/node/#watching)
+
+主要是对象的[浅拷贝问题](https://bundlers.tooling.report/code-splitting/multi-entry/)，解决方法如下：
+[详细参考官网](https://webpack.docschina.org/guides/code-splitting/#entry-dependencies)
+```js
+  optimization: {
+    runtimeChunk: 'single',
+  }
+```
+
+###  import() and CommonJs 问题
+我们之所以需要 default，是因为 webpack 4 在导入 CommonJS 模块时，将不再解析为 module.exports 的值，
+而是为 CommonJS 模块创建一个 artificial namespace 对象，更多有关背后原因的信息，[请阅读 webpack 4: import() and CommonJs](https://medium.com/webpack/webpack-4-import-and-commonjs-d619d626b655)。
+[详细参考官网](https://webpack.docschina.org/guides/code-splitting/#dynamic-imports)
+```js
+  return import('lodash')
+    .then(({ default: _ }) => {
+      const element = document.createElement('div');
+       element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+```
+
+
+
+
+### 如何代码分离重型依赖库
+
+#### 不推荐，可拓展下视野
+虽然下面是多entry，重复依赖提取，但也给了一种思路，如何将重型第三方包提取到一个单独的 chunk中的思路。
+[参考官网](https://webpack.docschina.org/guides/code-splitting/#prevent-duplication)
+```js
+ module.exports = {
+   mode: 'development',
+   entry: {
+    index: {
+      import: './src/index.js',
+      dependOn: 'shared',
+    },
+    another: {
+      import: './src/another-module.js',
+      dependOn: 'shared',
+    },
+    shared: 'lodash',
+    // 也可以使用数组
+    // shared: ['lodash','react'],
+   },
+   output: {
+     filename: '[name].bundle.js',
+     path: path.resolve(__dirname, 'dist'),
+   },
+ };
+```
+
+#### 推荐SplitChunksPlugin
+
+[当然最好的方法，推荐用官网的](https://webpack.docschina.org/guides/caching/#extracting-boilerplate)
+```js
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+  module.exports = {
+    entry: './src/index.js',
+    plugins: [
+      new HtmlWebpackPlugin({
+      title: 'Caching',
+      }),
+    ],
+    output: {
+      filename: '[name].[contenthash].js',
+      path: path.resolve(__dirname, 'dist'),
+      clean: true,
+    },
+    optimization: {
+      runtimeChunk: 'single',
+     splitChunks: {
+       cacheGroups: {
+         vendor: {
+           test: /[\\/]node_modules[\\/]/,
+           name: 'vendors',
+           chunks: 'all',
+         },
+       },
+     },
+    },
+  };
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -151,3 +282,90 @@ import(
   ReactDOM.render(<App />, root);
 });
 ```
+
+### 好用的cli
+注意版本号要在 webpack 5.x
+```s
+npx webpack info --output markdown  #打印webpack loader信息，以及电脑、浏览器信息，非常棒
+npx webpack configtest ./webpack.config.js
+npx webpack init ./my-app #这个用于webpack 测试非常方便，然后根据提示是否使用es、scss，不要使用--template=default
+npx webpack --progress #显示构建进度
+npx webpack --json stats.json #生成stats对象，可用于 webpack-bundle-analyzer 分析
+npx webpack --config ./first.js --config ./second.js --merge #合并配置，底层基于webpack-merge
+npx webpack --analyze #先确保 webpack-bundle-analyzer 安装
+```
+
+#### cli配置优先级高于webpack.config.js
+注意的是 cli 的配置，优先级要比 webpack.config.js 的高。
+比如：
+```s
+ npx webpack --output-path customdist
+```
+上述优先级高于webpack.config.js:
+```js
+const config = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+  },
+}
+```
+[参考 通用配置](https://webpack.docschina.org/api/cli/#common-options)
+
+### export与import的对象无法使用 现象汇集
+
+#### 懒加载的时候
+```js
+// 在懒加载的使用：
+ button.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+     const print = module.default;
+
+     print();
+   });
+
+```
+
+[参考](https://webpack.docschina.org/guides/lazy-loading/#example)
+>注意当调用 ES6 模块的 import() 方法（引入模块）时，必须指向模块的 .default 值，因为它才是 promise 被处理后返回的实际的 module 对象。
+
+#### ts
+
+>如果想在 TypeScript 中保留如import _ from 'lodash';的语法被让它作为一种默认的导入方式，需要在文件 tsconfig.json 中设置 "allowSyntheticDefaultImports" : true 和 "esModuleInterop" : true 。这个是与 TypeScript 相关的配置，在本文档中提及仅供参考。
+
+```js
+// 在ts中
+ import _ from 'lodash'; //错误
+ import * as _ from 'lodash'; //正确
+```
+[参考](https://webpack.docschina.org/guides/typescript/#basic-setup)
+
+
+#### webpack.config.ts
+
+[参考](https://webpack.docschina.org/configuration/configuration-languages/#typescript)
+
+```js
+import * as path from 'path';
+import * as webpack from 'webpack';
+```
+
+### Shimming 如何兼容(老)library打包
+
+Shimming 有点类似打补丁的意思。
+
+Shimming 有两部分意思：
+第一 polyfill 的注入；
+第二 非规范的使用一些库library，这里又有两层意思：
+- 处理 比如 将lodash 放到 全局环境中；
+- 将以前的一些老版本库或没有提供commonjs 或 esm 标准的，如何嵌入到当前主流的模块化项目中使用。
+
+Shimming 的思想不符合 webpack的推荐的闭环模块化思想，但webpack推荐的闭环模块化思想不一定能满足一个项目所有的编译需求，
+因此也是webpack 对其编译思想的一个延申。
+
+[详细参考 官网](https://webpack.docschina.org/guides/shimming/)
+
+>webpack 背后的整个理念是使前端开发更加模块化。也就是说，需要编写具有良好的封闭性(well contained)、不依赖于隐含依赖（例如，全局变量）的彼此隔离的模块
+
+### webpack-dev-server 调试
+
+> [参考 官网](https://webpack.docschina.org/configuration/dev-server/#devserver)
+如果你碰到了问题，请将路由导航至 /webpack-dev-server 将会为你展示服务文件的位置。例如： http://localhost:9000/webpack-dev-server。

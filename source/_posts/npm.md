@@ -500,6 +500,8 @@ error An unexpected error occurred: "expected manifest".
 将这个文件删除后就好了。
 
 
+### @latest以及@beta和@next 
 
+[参考](https://www.jianshu.com/p/c45f4eca98de)
 
 

@@ -438,4 +438,7 @@ Compiler 实例在一开始也会初始化输入输出，分别是 inputFileSyst
 
 ## 待研究问题
 
-开发模式下，webpack-dev-server模式下，webpack 如何 写入 内存的 fs 是如何实现的
+开发模式下，webpack-dev-server模式下，webpack 如何 写入 内存的 fs 是如何实现的, 可以不用直接看源码，
+而是直接去看相关的文档介绍，了解即可
+这部分大概率是  webpack-dev-middleware 实现的，
+[参考官网-自定义文件系统(Custom File Systems)](https://webpack.docschina.org/api/node/#custom-file-systems)
