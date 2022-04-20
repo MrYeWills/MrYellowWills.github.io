@@ -369,3 +369,47 @@ Shimming 的思想不符合 webpack的推荐的闭环模块化思想，但webpac
 
 > [参考 官网](https://webpack.docschina.org/configuration/dev-server/#devserver)
 如果你碰到了问题，请将路由导航至 /webpack-dev-server 将会为你展示服务文件的位置。例如： http://localhost:9000/webpack-dev-server。
+
+
+### 正则与 glob 模式区别：
+webpack中的正则与 glob 模式区别：
+
+关于glob-to-regexp：
+[参考-glob-to-regexp](https://github.com/fitzgen/glob-to-regexp)
+[参考 - webpack官网](https://webpack.docschina.org/configuration/watch/#watchoptionsignored)
+>当使用 glob 模式时，我们使用 glob-to-regexp 将其转为正则表达式，因此，在使用 watchOptions.ignored 的 glob 模式之前，请确保自己熟悉它。
+
+```js
+module.exports = {
+  //...
+  watchOptions: {
+    ignored: '**/node_modules',
+  },
+};
+```
+
+关于正则：
+[参考 - webpack官网](https://webpack.docschina.org/configuration/watch/#watchoptionsignored)
+>当使用 glob 模式时，我们使用 glob-to-regexp 将其转为正则表达式，因此，在使用 watchOptions.ignored 的 glob 模式之前，请确保自己熟悉它。
+
+```js
+module.exports = {
+  //...
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+};
+```
+
+### ProvidePlugin DefinePlugin
+
+前者用于 全局引入 第三方包，省去每次 import 的麻烦；
+后者用于 定义变量值，相当于一个传送门，将编译态的数据传送给业务代码使用；
+
+## 待研究
+
+### 如何在线上使用sourcemap
+
+[更多描述 - 参考官网](https://webpack.docschina.org/configuration/devtool/#production)
+
+
