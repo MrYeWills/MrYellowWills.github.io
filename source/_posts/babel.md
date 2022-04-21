@@ -52,6 +52,16 @@ babel 自己的 @babel 开头的包，会自动添加 plugin，比如 @babel/aa 
 ### 插件分类
 babel 的 plugin，就 @babel/plugin-syntax-xxx, @babel/plugin-transform-xxx、@babel/plugin-proposal-xxx 3种。*语出 [Babel 插件通关秘籍 - Babel 的内置功能（上）](https://juejin.cn/book/6946117847848321055/section/6954550974698651680)*
 
+### babel runtime
+[参考 Babel 插件通关秘籍 - Babel 的内置功能（上）](https://juejin.cn/book/6946117847848321055/section/6954550974698651680)
+>babel runtime 里面放运行时加载的模块，会被打包工具打包到产物中，下面放着各种需要在 runtime 使用的函数，包括三部分：regenerator、corejs、helper。
+corejs 这就是新的 api 的 polyfill，分为 2 和 3 两个版本，3 才实现了实例方法的polyfill
+regenerator 是 facebook 实现的 aync 的 runtime 库，babel 使用 regenerator-runtime来支持实现 async await 的支持。
+helper 是 babel 做语法转换时用到的函数，比如 _typeof、_extends 等
+babel 做语法转换和 api 的 polyfill，需要自己实现一部分 runtime 的函数，就是 helper 部分，有的也没有自己实现，用的第三方的，比如 regenerator 是用的 facebook 的。api 的 polyfill 也是用的 core-js 的，babel 对它们做了整合。
+
+>babel runtime，这个包下的代码会被打包到产物中，运行时加载，包括 helper、regenerator、core-js 3部分。
+
 ### babel 是微内核架构
 babel 是微内核架构，就是因为核心只实现了编译流程，具体的转换功能都是通过插件来实现的
 详细参考 [手写 Babel： core篇](https://juejin.cn/book/6946117847848321055/section/6994379397591466017) 

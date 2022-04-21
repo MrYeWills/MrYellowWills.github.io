@@ -413,3 +413,46 @@ module.exports = {
 [更多描述 - 参考官网](https://webpack.docschina.org/configuration/devtool/#production)
 
 
+## webpack源码学习经验
+
+
+阶段一：了解webpack的事件机制 tapable，如果有一定了解了，就不用看了：
+[找webpack-tapable 系列的视频快速刷一遍，对 tapable有个印象即可](https://space.bilibili.com/32277451?spm_id_from=333.788.b_765f7570696e666f.2)
+
+
+阶段二：先大量刷视频，目的 了解webpack调试入门，以及loader与plugin的大致使用：
+
+手摸手带你实现打包器 仅需 80 行代码理解 webpack 的核心  https://www.bilibili.com/video/BV1oL411V7BQ?spm_id_from=333.999.0.0
+实现 loader视频： https://www.bilibili.com/video/BV1d5411d7kH?spm_id_from=333.999.0.0
+实现 plugins视频： https://www.bilibili.com/video/BV1d5411d7kH?spm_id_from=333.999.0.0
+
+webpack5 源码分析 视频： https://www.bilibili.com/video/BV12L411t7Pr?spm_id_from=333.999.0.0
+
+任务14：webpack调试和阅读 https://www.bilibili.com/video/BV1N5411j74S?p=14
+任务15：webpack自定义loader https://www.bilibili.com/video/BV1N5411j74S?p=14
+
+
+阶段三：大量刷webpack源码相关的系列文档
+[[万字总结] 一文吃透 Webpack 核心原理](https://xie.infoq.cn/article/ddca4caa394241447fa0aa3c0)
+这个系列最经典，后期自己独自看源码时跟着这个教程走 --- [webpack4 源码分析系列  -里面去找webpack源码系列](https://blog.flqin.com/archives/)
+[webpack3 源码分析系列： 玩转webpack（一）上篇：webpack的基本架构和构建流程](https://cloud.tencent.com/developer/article/1006353)
+[webpack3 源码分析系列： 玩转webpack（一）下篇：webpack的基本架构和构建流程](https://cloud.tencent.com/developer/article/1006354)
+[webpack3 源码分析系列： 玩转webpack（二）：webpack的核心对象](https://cloud.tencent.com/developer/article/1030740?from=article.detail.1006354)
+[webpack3 源码分析系列： 玩转webpack 备用地址](https://lxzjj.github.io/2017/11/02/%E7%8E%A9%E8%BD%ACwebpack%EF%BC%88%E4%B8%80%EF%BC%89/)
+
+阶段四：自己调试webpack源码
+跟着这个教程走 --- [webpack4 源码分析系列  -里面去找webpack源码系列](https://blog.flqin.com/archives/)，
+debug webpack源码。
+
+阶段五：刷一遍webpack官网：
+这里要注意刷中文官网顺序：
+概念
+api
+指南
+配置
+loader
+plugin
+概念、api、指南、配置 要细看；
+loader、plugin 扫了一眼，主要讲各个loader plugin的使用方法，看的价值不高，用的时候再看比较好，这两个只花了两个小时看完。
+
+
