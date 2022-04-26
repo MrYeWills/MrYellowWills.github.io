@@ -365,6 +365,18 @@ Shimming 的思想不符合 webpack的推荐的闭环模块化思想，但webpac
 
 >webpack 背后的整个理念是使前端开发更加模块化。也就是说，需要编写具有良好的封闭性(well contained)、不依赖于隐含依赖（例如，全局变量）的彼此隔离的模块
 
+### webpack的target配置
+
+直接定义的方式，参考官网，
+[官网还写了配合使用](https://webpack.js.org/configuration/target/#browserslist)
+其实是这样理解的，任何 browserslist 的定义方式，都会被webpack target 读取。
+因此webpack target 定义 browserslist 时，并非给target赋值，
+而是按照 browserslist 规范，定义成 .browserslistrc 或 package.json内，等等。
+
+### webpack-dev-server 与 IE 兼容问题
+
+参考《babel笔记 -- webpack-dev-server 与 IE 兼容问题》
+
 ### webpack-dev-server 调试
 
 > [参考 官网](https://webpack.docschina.org/configuration/dev-server/#devserver)

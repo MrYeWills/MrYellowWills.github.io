@@ -315,6 +315,147 @@ compile(options.cliOptions.filenames);
 
 ```
 
+## 基础知识二
+
+### @babel/preset-env 的 useBuiltIns: "entry"
+
+#### 概述
+```js
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "edge": "17",
+        },
+        "useBuiltIns": "entry"
+      }
+    ]
+  ]
+}
+```
+
+[这样配置时，需要你在 比如单页面app项目，比如webpack的entry文件中](https://www.babeljs.cn/docs/usage#polyfill)，
+引入profill：
+```js
+// 其实就是 import "core-js";
+ import "core-js/stable";
+ import "regenerator-runtime/runtime";
+```
+
+如果配置 `"useBuiltIns": "usage"`;
+需要指定corejs，因为这个依赖 corejs ，因此要额外 npm install core-js@^3.0.0 :
+```js
+ {
+            "targets": {
+              "edge": "17",
+              "firefox": "60",
+              "chrome": "67",
+              "safari": "11.1"
+            },
+            "useBuiltIns": "usage",
+            // 需要指定 corejs 版本
+            "corejs": "3"
+          }
+```
+此时不需要自己在额外添加代码，babel 编译时会自动引入。
+
+目前还没有找到官网直接说明 要额外 npm install core-js@^3.0.0 ，后期再到官网看看，感觉如果没有直接说明，
+然后去到 @babel/preset-env 包看，也没有依赖 core-js ，这样会不会看起来设计有所欠缺。
+待考证。
+
+#### entry与usage的区别
+ "useBuiltIns": "entry", 时，需要在entry页面 import "core-js";
+ 此时会全局引入 profill，而且全量引入，你会看到entry页面有非常多个全量的require profill引入；
+ 除entry页面外，其他页面不再引入，共用entry页面 profill，因此entry页面的引入时全局性的，也具有污染性的弊端。
+
+
+### profill
+
+使用profill，主要是指在 @babel/preset-env 使用，以下步骤缺一不可：
+- 指定需要哪些profill，通过targets配置分析而来；
+- 指定profill使用方式；
+- 指定profill版本(即corejs)版本；
+
+除此之外，要单独 `npm install core-js@^3.0.0`, 感觉这是 babel设计的不足，
+至少要在 @babel/preset-env 指定依赖 core-js。
+```js
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "edge": "17",
+        },
+        "useBuiltIns": "entry",
+        "corejs": "3"
+      }
+    ]
+  ]
+}
+```
+
+
+## 黑知识
+
+### babel是给工具而非浏览器使用
+
+#### babel输出为commonjs
+babel是给工具 比如webapck vite rollup 等等使用，
+并非直接面对浏览器，
+所以babel编译出来的代码，是commonjs，
+这无法给浏览器直接使用。
+这有点大大出乎一直以来的认识。
+因为babel编译出来代码为 commonjs，天生适合node环境。
+
+#### commonjs与传统js异同
+另外一方面，commonjs的风格是模块化，
+因此commonjs与浏览器直接使用的方式其实没有很大区别，
+二者主要区别是 import、export、require、module，
+以及模块化方式编译带来的 作用域相互独立的好处。
+
+#### webpack结合babel给浏览器使用
+所以babel编译出来的 commonjs风格代码，要想转换为浏览器所用，
+只需配合webpack 等，
+将每个文件代码的 头部 import require，底部export module 进行编译即可。
+
+一份最终编译的代码，其内容由 webpack编译esmodule模块化部分，主体内容部分由babel编译。
+
+了解这个很重要，很多编译的奇怪问题都源于此分析，但可惜的是，如何不看webpack源码，很难理解这层意思。
+
+
+#### webpack定义target转换箭头函数
+webpack默认编译上面说的【 webpack编译esmodule模块化部分】为箭头函数，
+如果要兼容ie，那么必须要结合browserslist，webpack默认读取项目下的 browserslist 配置，然后将箭头函数转换为function，
+这些都是 webpack target 的配置，[参考官网](https://webpack.js.org/configuration/target/#browserslist)
+```js
+// package.json
+ "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ]
+```
+
+#### webpack-dev-server 与 IE 兼容问题
+高版本的 webpack-dev-server 使用了比较高的api (可能是用于ws协议的url api)，不兼容ie，
+因此使用此server时，不能运行于ie，编译后的代码 用http-server 可以；
+
+用webpack-dev-server启动后，在ie浏览，会看到报错，然后看报错的源代码为:
+```js
+ eval("ddddddjjjjjjjdd/ webpack-dev-server/xxxUrl.js")
+```
+定位到是 webpack-dev-server 问题。
+
+因此这里也提供了一种 eval 定位问题的思路。
+
+
+#### demo
+[babel-webpack/babel-test](https://github.com/YeWills/babel-plugin-exercize/tree/babel-webpack/babel-test)
+
+
 ## 待研究
 
 ### 随笔
@@ -441,5 +582,12 @@ module.exports = initPackageJson;
 [用 VSCode 调试网页的 JS 代码有多香](https://juejin.cn/post/7010768454458277924)
 [让你 nodejs 水平暴增的 debugger 技巧](https://juejin.cn/post/6981820158046109703)
 
+
+## 待研究
+
+因为babel 的代码最终是要结合系列 编译工具 比如 webpack、vite;
+从来没有直面 浏览器的。
+
+以及 corejs 为什么要单独安装。
 
 
