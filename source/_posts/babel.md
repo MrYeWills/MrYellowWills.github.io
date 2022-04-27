@@ -60,7 +60,6 @@ regenerator 是 facebook 实现的 aync 的 runtime 库，babel 使用 regenerat
 helper 是 babel 做语法转换时用到的函数，比如 _typeof、_extends 等
 babel 做语法转换和 api 的 polyfill，需要自己实现一部分 runtime 的函数，就是 helper 部分，有的也没有自己实现，用的第三方的，比如 regenerator 是用的 facebook 的。api 的 polyfill 也是用的 core-js 的，babel 对它们做了整合。
 
->babel runtime，这个包下的代码会被打包到产物中，运行时加载，包括 helper、regenerator、core-js 3部分。
 
 ### babel 是微内核架构
 babel 是微内核架构，就是因为核心只实现了编译流程，具体的转换功能都是通过插件来实现的
@@ -129,6 +128,10 @@ new Array(5).fill('1243')
 ```
 [更多参考](https://juejin.cn/book/6946117847848321055/section/6947175741821812768)
 
+#### 需要同时设置 useBuiltIns 与 corejs
+
+参考《不讲规矩的babel包的依赖》
+
 ### @babel/preset-env 调试
 
 ```js
@@ -140,6 +143,23 @@ new Array(5).fill('1243')
 ```
 debug 模式下，会打印所有的插件以及polyfill。
 
+会打印 
+@babel/preset-env: `DEBUG` option
+- Using targets 如 browserslist
+- Using plugins
+
+corejs3: `DEBUG` option
+- Using targets
+
+regenerator: `DEBUG` option
+- Using targets
+
+以及每个文件的
+The corejs3 polyfill
+the regenerator polyfill
+信息
+
+非常之好用。
 
 ### 同时定义 @babel/transform-runtime 与 @babel/preset-env
 
@@ -259,7 +279,7 @@ https://juejin.cn/book/6946117847848321055/section/6951617082454704162
 
 ### chork commader
 
-这里有一个 [commander + chokidar+glob 使用demo](),运行方式按照 仓库的readme来。
+这里有一个 [commander + chokidar+glob 使用demo](https://github.com/YeWills/babel-plugin-exercize/tree/cli-modify/exercize-babel),运行方式按照 仓库的readme来。
 这个综合例子可以看看。关于watch chark commander 综合的例子。
 
 主要代码：
@@ -314,8 +334,6 @@ function compile(fileNames) {
 compile(options.cliOptions.filenames);
 
 ```
-
-## 基础知识二
 
 ### @babel/preset-env 的 useBuiltIns: "entry"
 
@@ -397,10 +415,14 @@ compile(options.cliOptions.filenames);
 }
 ```
 
-
 ## 黑知识
 
 ### babel是给工具而非浏览器使用
+
+#### 官网相关说明
+[参考 ](https://www.babeljs.cn/docs/babel-standalone#when-not-to-use-babelstandalone)
+>If you're using Babel in production, you should normally not use @babel/standalone. Instead, you should use a build system running on Node.js, such as Webpack, Rollup, or Parcel, to transpile your JS ahead of time.
+
 
 #### babel输出为commonjs
 babel是给工具 比如webapck vite rollup 等等使用，
@@ -450,144 +472,204 @@ webpack默认编译上面说的【 webpack编译esmodule模块化部分】为箭
 定位到是 webpack-dev-server 问题。
 
 因此这里也提供了一种 eval 定位问题的思路。
+就是 eval 写入的代码，在ie浏览器上 比如上面的代码，在控制台的source中，可能会被分离成 js字符串后面独立的 js文件 `xxxUrl.js`
+
+比如create-react-app 创建的项目
+在开发模式 npm start 的时候，无法通过ie访问，会报错，其他浏览器正常， 
+通过 npm run build 打包出来的文件，使用http-server 启动服务器访问时，又可以在ie上访问了，
+
+原因参考《webpack-dev-server 与 IE 兼容问题》
+
+目前以上问题可能在高版本的 webpack-dev-server 存在，低版本可能不存在，是因为高版本server用了比较高的 js api，
+这部分 js api，没有经过编译为低版本，ie不支持。
+
 
 
 #### demo
 [babel-webpack/babel-test](https://github.com/YeWills/babel-plugin-exercize/tree/babel-webpack/babel-test)
 
 
+### webpack-dev-server 与 IE 兼容问题
+
+参考上面《babel是给工具而非浏览器使用 - webpack-dev-server 与 IE 兼容问题》
+
+### eval 调试经验
+使用eval的场景一般是 经过编译工具编译之后的源码，使用eval将字符串转化为 js 执行。
+eval 调试经验 对调试编译后的代码，或者线上代码有一定启发意义。
+参考上面《babel是给工具而非浏览器使用 - webpack-dev-server 与 IE 兼容问题》
+
+
+
+### 不讲规矩的babel包的依赖
+
+在eslint中，你要使用一个 eslint preset 包，
+可以npm install 安装此包，然后安装其 peerDependencies 类似包，
+那么此 eslint preset包就能正常运行。
+
+但在babel中，没有此规矩，
+
+比如你 @babel/preset-env , 你如果配置了 corejs, 
+你必须 安装 core-js,
+一个参数的配置就要安装一个工具包，并且在 package.json 中没有表明，
+这完全只能从官网里面看，
+比如其 useBuiltIns 配置中说明，如果定义此配置为`"usage" | "entry"` 那么就需要安装 core-js；
+而且建议同时定义 corejs 的版本号；
+我想了一圈，为什么要通过corejs 定义版本号，
+最后只能猜测：大概是通过配置文件 写明 corejs版本号，让人们在初始化项目时，去安装指定的 core-js 版本吧：
+
+[官网](https://www.babeljs.cn/docs/babel-preset-env#usebuiltins)
+>When either the usage or entry options are used, @babel/preset-env will add direct references to core-js modules as bare imports (or requires). This means core-js will be resolved relative to the file itself and needs to be accessible.
+
+
+这一点在这里也体现了[@babel/plugin-transform-runtime - corejs](https://www.babeljs.cn/docs/babel-plugin-transform-runtime#corejs)
+
+
+### babel打包项目与打包library的区别
+
+[参考babel-plugin-transform-runtime#why](https://www.babeljs.cn/docs/babel-plugin-transform-runtime#why)
+> it becomes a problem if your code is a library which you intend to publish for others to use or if you can't exactly control the environment in which your code will run.
+
+
+### 吐槽
+
+同样是配置化，babel与eslint，
+就可读性而言 eslint要比babel高，
+无论是从 babel包设计上 eslint可能要更好点，还是配置的可读性；
+虽然二者理解起来确实需都要比较深的 基建知识。
+
+另外 babel 裹脚布一样的插件和预设的简洁别名写法，简直劝退了很多初学或进阶babel学习者，
+非常不友好，直接使用全名不香么。
+简洁不是王道，可读性才是。
+
+## demo 以及资料
+
+[commander + chokidar+glob 使用demo](https://github.com/YeWills/babel-plugin-exercize/tree/cli-modify/exercize-babel)
+[包含webpack结合babel以及babel单独编译的例子 - babel-webpack/babel-test](https://github.com/YeWills/babel-plugin-exercize/tree/babel-webpack/babel-test)
+
+
+有空可以看[掘金 - 原理篇：编译 ts 代码用 tsc 还是 babel？](https://juejin.cn/book/7047524421182947366/section/7048282320230416395)
+
+
+
 ## 待研究
 
-### 随笔
-目前发现 现在用的两个框架 test_worsk test_xsd，都不能在ie浏览器下访问，非ie内核的都可以正常访问；
-包括淘宝 首页 的某些链接， 比如 内衣 等等，用ie就不能打开，其他浏览器可以正常访问；
+以下可以在遇到问题或感兴趣时研究，因为不影响babel主流程理解，自己在看官网时没有细究的
 
-目前自己测试的几个项目 包含 webpack-demo 都不能在ie下正常访问，其他浏览器都可以正常访问；
+### debug调试技巧
 
-### 观察到的现象一
-
-#### create-react-app 创建的项目
-在开发模式 npm start 的时候，无法通过ie访问，会报错，其他浏览器正常， 
-通过 npm run build 打包出来的文件，使用http-server 启动服务器访问时，又可以在ie上访问了，
-观察到的原因可能是 create-react-app 创建项目的 package.json 中有这个：
-```json
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-```
-
-#### webpack-demo
-使用 该项目 `dev-此为完整版本要以此存档` 分支，
-安装上面的配置试过了，开发和生产的情况下，在ie下不能访问，
-可能没有配置正确。
-
-待模仿测试。 todo
-
-### 另外观察到的现象：
-
-### 业务代码 只有 commonjs 代码
-#### node 
-可运行，(遇到低版本node时，需要注入 profill， --缺测试 todo)
-#### 编译后 node
-为什么 commonjs 的代码，如果业务用于 cli命令，
-为什么需要对业务代码打包：
-因为不想别人看到业务代码，需要混淆；
-因为想兼容低版本的node环境；
-
-待测试！ todo
-```js
-//giturl.js
-const initPackageJson = async () => {
-  console.log('init.....');
-};
-
-module.exports = initPackageJson;
-
-```
-```js
-// index.js
-const giturl = require('./common/giturl');
-```
-
-编译后 node运行编辑后的代码 会报错,
-```
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-module.exports = {
-  entry: './src/index.js',
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
-  plugins: [new CleanWebpackPlugin(['dist'])]
-};
-
-
-
-module.exports = {
-  "presets": [
-    ["@babel/preset-env", { 
-      "targets": {
-        "node":"10",
-      },
-      "useBuiltIns": "usage",// or "entry" or "false"
-      "corejs": 3 // 引入 polyfill transform-runtime 比如 await api
-  }],
-  ],
-  "plugins": [
-   
-  ],
-};
-```
-
-
-把 giturl.js 中的 async 去掉就好了：
-```js
-//giturl.js  去掉 async
-const initPackageJson =  () => {
-  console.log('init.....');
-};
-
-module.exports = initPackageJson;
-
-```
-但去掉显然不能满足需求， 所以这块待测试 todo。
-目前的解决方法是 不编译这块代码。
-因为是cli命令，react项目也不会使用，不用担心webpack打包的问题，是纯node运行命令，最新的node 都集成了最新的es6.
-
-
-
-## debug调试
-
-[关于debug的一些原理](https://juejin.cn/book/6946117847848321055/section/6978397048307466252)
+[关于debug的一些原理 -工具介绍：VSCode Debugger 的使用](https://juejin.cn/book/6946117847848321055/section/6978397048307466252)
 
 [用 VSCode 调试网页的 JS 代码有多香](https://juejin.cn/post/7010768454458277924)
 [让你 nodejs 水平暴增的 debugger 技巧](https://juejin.cn/post/6981820158046109703)
 
 
-## 待研究
-
-因为babel 的代码最终是要结合系列 编译工具 比如 webpack、vite;
-从来没有直面 浏览器的。
-
-以及 corejs 为什么要单独安装。
 
 
+### 几个容易混淆的概念：
+@babel/polyfill
+@babel/runtime
+@babel/plugin-transform-runtime
+regenerator 是 facebook 实现的 aync 的 runtime 库，babel 使用 regenerator-runtime 来支持实现 async await 的支持。
+
+```s
+├─┬ @babel/preset-env@7.16.11
+│ ├─┬ @babel/plugin-transform-regenerator@7.16.7
+│ │ ├── @babel/core@7.17.9 deduped
+│ │ └─┬ regenerator-transform@0.14.5
+│ │   └─┬ @babel/runtime@7.17.8
+│ │     └── regenerator-runtime@0.13.9
+
+因此 @babel/preset-env 默认安装 @babel/runtime 以及 regenerator-runtime；
+而 @babel/runtime 又写了helper，
+因此 @babel/preset-env 默认安装了 helper 和 regenerator-runtime,
+但是要额外安装 core-js
+
+regenerator-runtime
+```
+
+
+#### @babel/polyfill 被弃用
+
+
+#### @babel/preset-env 要npm install core-js
+
+[参考这里](https://www.babeljs.cn/docs/babel-preset-env#usebuiltins)
+
+
+
+### babel 如何配置支持 proposals；
+shippedProposals
+babel 的prosupose 标准 如何支持配置，待研究；
+[参考这里](https://www.babeljs.cn/docs/babel-preset-env#shippedproposals)
+
+
+
+
+## 其他
+
+### 看官网经验
+一条经验： 看官网一定要全部一起看，
+不能只看一篇，
+往往官网具有系统性，
+比如webpack 这一特点非常突出；
+
+官网的文档有点循序渐进，
+如果不从头开始，一步步来看，
+会难以理解，
+所以建议官网要系统看，一点一点的过。
+
+### 学习过程笔记
+
+
+#### 之前的学习策略
+大概知道babel；
+知道如何单独使用babel；
+学会babel官网；这个估计要四五天；
+学会如何利用babel的官网工具，以及babel用代码工具；
+以及分析babel实际解析出来的源码。
+
+看之前的笔记；
+然后看神说有光的 babel 视频；
+
+
+
+然后 掘金教程干一遍；
+接着开干官网；
+不懂，
+再回头看 之前找的教程；
+
+
+-----
+
+
+思考，babel 如何在没有webpack 的entry 机制下，解析一个库， 结合 work源码中 如何用babel解析的实战一起看。
+因为babel没有entry，只能一个文件一个文件地解析 babel，这样它的 runtime 如何配置，为每个文件都配置一个 runtime吗，
+这样不是浪费吗。
+所以策略是先看 之前的笔记，神光的 视频，掘金教程。
+然后上面的实战；
+然后就是官网
+不懂，
+再回头看 之前找的教程；
+
+
+2022-4-21
+掘金 babel 看完了，
+也可以看 这篇课程： 其中这一节是免费的[掘金 - 原理篇：编译 ts 代码用 tsc 还是 babel？](https://juejin.cn/book/7047524421182947366/section/7048282320230416395)
+看完这节，看其他章节是否有免费的可以薅一薅
+
+
+#### 时间过程
+4.21 - 4.24 小册 3.5天
+4.24 - 4.27 官网 3.5天
+
+合计 7天时间
+
+#### 再来过
+
+以上学习策略其实浪费了一些时间花在找教程上，其实不值得，
+再次来过，
+直接掘金babel教程看一遍；
+官网看一遍；
+基本上就好了。
+
+当然了 多找找教程也可以，增加一下视野挺好。
