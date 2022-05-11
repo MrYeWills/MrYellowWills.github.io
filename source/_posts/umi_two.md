@@ -96,6 +96,222 @@ import Config from '../../compiled/webpack-5-chain';
   
 ```
 
+### babel配置如何集成
+```js
+// packages\bundler-webpack\src\dev.ts
+// getConfig 为 packages\bundler-webpack\src\config\config.ts
+  const webpackConfig = await getConfig({
+    cwd: opts.cwd,
+    rootDir: opts.rootDir,
+    env: Env.development,
+    entry: opts.entry,
+    userConfig: opts.config,
+    babelPreset: opts.babelPreset,
+    extraBabelPlugins: [
+      ...(opts.beforeBabelPlugins || []),
+      ...(mfsu?.getBabelPlugins() || []),
+      ...(opts.extraBabelPlugins || []),
+    ],
+    extraBabelPresets: [
+      ...(opts.beforeBabelPresets || []),
+      ...(opts.extraBabelPresets || []),
+    ],
+    extraBabelIncludes: opts.config.extraBabelIncludes,
+    extraEsbuildLoaderHandler: mfsu?.getEsbuildLoaderHandler() || [],
+    chainWebpack: opts.chainWebpack,
+    modifyWebpackConfig: opts.modifyWebpackConfig,
+    hmr: true,
+    analyze: process.env.ANALYZE,
+    cache: opts.cache,
+  });
+```
+
+```js
+// packages\bundler-webpack\src\config\config.ts
+// getConfig 函数中包含 addJavaScriptRules ，
+// 此函数为 packages\bundler-webpack\src\config\javaScriptRules.ts：
+  // rules
+  await addJavaScriptRules(applyOpts);
+```
+
+
+```js
+// packages\bundler-webpack\src\config\javaScriptRules.ts
+// addJavaScriptRules:
+ rule
+        .use('babel-loader')
+        .loader(require.resolve('../../compiled/babel-loader'))
+        .options({
+          // Tell babel to guess the type, instead assuming all files are modules
+          // https://github.com/webpack/webpack/issues/4039#issuecomment-419284940
+          sourceType: 'unambiguous',
+          babelrc: false,
+          cacheDirectory: false,
+          targets: userConfig.targets,
+          presets: [
+            opts.babelPreset || [
+              require.resolve('@umijs/babel-preset-umi'),
+              ...
+          ],
+          plugins: [
+            ...
+          ]
+        });
+```
+
+### .umirc 配置的读取和使用
+
+#### 概述
+```js
+// packages\core\src\service\service.ts
+async run(opts: { name: string; args?: any }) {
+ 
+    const configManager = new Config({
+      cwd: this.cwd,
+      env: this.env,
+      // defaultConfigFiles这个值终将被设置到 this.mainConfigFile 中
+      // this.opts.defaultConfigFiles 
+      defaultConfigFiles: this.opts.defaultConfigFiles,
+      specifiedEnv: process.env[`${prefix}_ENV`.toUpperCase()],
+    });
+
+// 这里读取 .umirc 的配置
+    this.userConfig = configManager.getUserConfig().config;
+    }
+
+```
+```js
+// configManager.getUserConfig 出自：
+// packages\core\src\config\config.ts
+ getUserConfig() {
+    const configFiles = Config.getConfigFiles({
+      // this.mainConfigFile 就是 .umirc 文件
+      mainConfigFile: this.mainConfigFile,
+      env: this.opts.env,
+      specifiedEnv: this.opts.specifiedEnv,
+    });
+    return Config.getUserConfig({
+      configFiles: getAbsFiles({
+        files: configFiles,
+        cwd: this.opts.cwd,
+      }),
+    });
+  }
+
+```
+
+#### 关于 this.opts.defaultConfigFiles
+```js
+
+// packages\umi\src\service\service.ts
+// 上面的 this.opts.defaultConfigFiles 来源于 这个ts的：
+import { DEFAULT_CONFIG_FILES } from '../constants';
+
+  constructor(opts?: any) {
+    process.env.UMI_DIR = dirname(require.resolve('../../package'));
+    const cwd = getCwd();
+    super({
+      ...
+      defaultConfigFiles: DEFAULT_CONFIG_FILES,
+      ...
+    });
+  }
+```
+```js
+// packages\umi\src\constants.ts
+export const DEFAULT_CONFIG_FILES = [
+  '.umirc.ts',
+  '.umirc.js',
+  'config/config.ts',
+  'config/config.js',
+];
+```
+
+### 如何生成.umi
+
+#### packages\preset-umi\src\commands\dev\dev.ts
+```js
+// packages\preset-umi\src\commands\dev\dev.ts
+ async fn() {
+      // generate files
+      async function generate(opts: { isFirstTime?: boolean; files?: any }) {
+        await api.applyPlugins({
+          key: 'onGenerateFiles',
+          args: {
+            files: opts.files || null,
+            isFirstTime: opts.isFirstTime,
+          },
+        });
+      }
+      await generate({
+        isFirstTime: true,
+      });
+   
+
+      // watch plugin change
+      const pluginFiles: string[] = [
+        join(api.cwd, 'plugin.ts'),
+        join(api.cwd, 'plugin.js'),
+      ];
+      pluginFiles.forEach((filePath: string) => {
+        watch({
+          path: filePath,
+          addToUnWatches: true,
+          onChange() {
+            logger.event(`${basename(filePath)} changed, restart server...`);
+            api.restartServer();
+          },
+        });
+      });
+
+   
+      if (enableVite) {
+        await bundlerVite.dev(opts);
+      } else {
+        await bundlerWebpack.dev(opts);
+      }
+    },
+```
+
+#### preset-umi\src\features\tmpFiles\tmpFiles.ts
+```js
+// packages\preset-umi\src\features\tmpFiles\tmpFiles.ts
+api.onGenerateFiles(async (opts) => {
+  ....
+   // 例如生成 history.ts
+    api.writeTmpFile({
+      noPluginDir: true,
+      path: 'core/history.ts',
+      tplPath: join(TEMPLATES_DIR, 'history.tpl'),
+      context: {
+        rendererPath,
+      },
+    });
+  });
+
+   api.register({
+    key: 'onGenerateFiles',
+    fn: async () => {
+      ...
+      api.writeTmpFile({
+        noPluginDir: true,
+        path: 'exports.ts',
+        content: exports.join('\n'),
+      });
+    },
+    stage: Infinity,
+  });
+```
+
+
+#### tpl
+各种tpl模板位置如： `packages\preset-umi\templates\history.tpl`
+
+#### 关键的`commands\dev\dev.ts`
+
+从这个例子看出，整个项目的初始化，以及各种文件生成 等等 事情，都可以在 `packages\preset-umi\src\commands\dev\dev.ts` 找到答案。
+
+
 
 
 ## umi dev 过程源码分析
@@ -298,890 +514,8 @@ Service {
 见附录
 
 
-### 待研究
-
-配置 .umirc 在哪里读取？
 
 
-
-## 附录
-
-### webpack.config
-
-```js
-const webpackconfig = [
-  {
-    mode: 'development',
-    stats: 'none',
-    devtool: 'cheap-module-source-map',
-    target: ['web', 'es5'],
-    experiments: {
-      topLevelAwait: true,
-      outputModule: false,
-    },
-    cache: {
-      type: 'filesystem',
-      version: '4.0.0-rc.15',
-      buildDependencies: {
-        config: ['D:\\git\\umi\\travel-um\\package.json', 'D:\\git\\umi\\travel-um\\.umirc.ts'],
-      },
-      cacheDirectory: 'D:\\git\\umi\\travel-um\\node_modules\\.cache\\bundler-webpack',
-    },
-    infrastructureLogging: {
-      level: 'error',
-    },
-    output: {
-      path: 'D:\\git\\umi\\travel-um\\dist',
-      filename: '[name].js',
-      chunkFilename: '[name].js',
-      publicPath: '/',
-      pathinfo: true,
-    },
-    resolve: {
-      symlinks: true,
-      alias: {
-        umi: '@@/exports',
-        react: 'D:\\git\\umi\\travel-um\\node_modules\\react',
-        'react-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-dom',
-        'react-router': 'D:\\git\\umi\\travel-um\\node_modules\\react-router',
-        'react-router-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-router-dom',
-        '@': 'D:/git/umi/travel-um/src',
-        '@@': 'D:/git/umi/travel-um/src/.umi',
-        'regenerator-runtime': 'D:\\git\\umi\\travel-um\\node_modules\\regenerator-runtime',
-        '@umijs/utils/compiled/strip-ansi':
-          'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\utils\\compiled\\strip-ansi\\index.js',
-        'react-error-overlay': 'D:\\git\\umi\\travel-um\\node_modules\\react-error-overlay\\lib\\index.js',
-      },
-      extensions: ['.wasm', '.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
-      modules: ['node_modules'],
-      fallback: {
-        assert: 'D:\\git\\umi\\travel-um\\node_modules\\assert\\assert.js',
-        buffer: 'D:\\git\\umi\\travel-um\\node_modules\\buffer\\index.js',
-        child_process: false,
-        cluster: false,
-        console: 'D:\\git\\umi\\travel-um\\node_modules\\console-browserify\\index.js',
-        constants: 'D:\\git\\umi\\travel-um\\node_modules\\constants-browserify\\constants.json',
-        crypto: 'D:\\git\\umi\\travel-um\\node_modules\\crypto-browserify\\index.js',
-        dgram: false,
-        dns: false,
-        domain: 'D:\\git\\umi\\travel-um\\node_modules\\domain-browser\\source\\index.js',
-        events: 'D:\\git\\umi\\travel-um\\node_modules\\events\\events.js',
-        fs: false,
-        http: false,
-        https: false,
-        module: false,
-        net: false,
-        os: 'D:\\git\\umi\\travel-um\\node_modules\\os-browserify\\browser.js',
-        path: 'D:\\git\\umi\\travel-um\\node_modules\\path-browserify\\index.js',
-        punycode: 'D:\\git\\umi\\travel-um\\node_modules\\punycode\\punycode.js',
-        process: 'D:\\git\\umi\\travel-um\\node_modules\\process\\browser.js',
-        querystring: 'D:\\git\\umi\\travel-um\\node_modules\\querystring-es3\\index.js',
-        readline: false,
-        repl: false,
-        stream: 'D:\\git\\umi\\travel-um\\node_modules\\stream-browserify\\index.js',
-        _stream_duplex: 'D:\\git\\umi\\travel-um\\node_modules\\readable-stream\\duplex.js',
-        _stream_passthrough: 'D:\\git\\umi\\travel-um\\node_modules\\readable-stream\\passthrough.js',
-        _stream_readable: 'D:\\git\\umi\\travel-um\\node_modules\\readable-stream\\readable.js',
-        _stream_transform: 'D:\\git\\umi\\travel-um\\node_modules\\readable-stream\\transform.js',
-        _stream_writable: 'D:\\git\\umi\\travel-um\\node_modules\\readable-stream\\writable.js',
-        string_decoder: 'D:\\git\\umi\\travel-um\\node_modules\\string_decoder\\lib\\string_decoder.js',
-        sys: 'D:\\git\\umi\\travel-um\\node_modules\\util\\util.js',
-        timers: 'D:\\git\\umi\\travel-um\\node_modules\\timers-browserify\\main.js',
-        tls: false,
-        tty: 'D:\\git\\umi\\travel-um\\node_modules\\tty-browserify\\index.js',
-        url: 'D:\\git\\umi\\travel-um\\node_modules\\url\\url.js',
-        util: 'D:\\git\\umi\\travel-um\\node_modules\\util\\util.js',
-        vm: 'D:\\git\\umi\\travel-um\\node_modules\\vm-browserify\\index.js',
-        zlib: 'D:\\git\\umi\\travel-um\\node_modules\\browserify-zlib\\lib\\index.js',
-      },
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(js|mjs)$/,
-          include: [['D:\\git\\umi\\travel-um']],
-          exclude: [{}],
-          use: [
-            {
-              loader:
-                'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\babel-loader\\index.js',
-              options: {
-                sourceType: 'unambiguous',
-                babelrc: false,
-                cacheDirectory: false,
-                targets: {
-                  chrome: 80,
-                },
-                presets: [
-                  [
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\babel-preset-umi\\dist\\index.js',
-                    {
-                      presetEnv: {},
-                      presetReact: {
-                        runtime: 'automatic',
-                      },
-                      presetTypeScript: {},
-                      pluginTransformRuntime: {},
-                      pluginLockCoreJS: {},
-                      pluginDynamicImportNode: false,
-                      pluginAutoCSSModules: true,
-                    },
-                  ],
-                  {
-                    plugins: [
-                      [
-                        null,
-                        {
-                          cwd: 'D:\\git\\umi\\travel-um',
-                          absTmpPath: 'D:/git/umi/travel-um/src/.umi',
-                        },
-                      ],
-                    ],
-                  },
-                ],
-                plugins: [
-                  'D:\\git\\umi\\travel-um\\node_modules\\react-refresh\\babel.js',
-                  [
-                    null,
-                    {
-                      remoteName: 'mf',
-                      alias: {
-                        umi: '@@/exports',
-                        react: 'D:\\git\\umi\\travel-um\\node_modules\\react',
-                        'react-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-dom',
-                        'react-router': 'D:\\git\\umi\\travel-um\\node_modules\\react-router',
-                        'react-router-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-router-dom',
-                        '@': 'D:/git/umi/travel-um/src',
-                        '@@': 'D:/git/umi/travel-um/src/.umi',
-                        'regenerator-runtime': 'D:\\git\\umi\\travel-um\\node_modules\\regenerator-runtime',
-                        '@umijs/utils/compiled/strip-ansi':
-                          'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\utils\\compiled\\strip-ansi\\index.js',
-                        'react-error-overlay':
-                          'D:\\git\\umi\\travel-um\\node_modules\\react-error-overlay\\lib\\index.js',
-                      },
-                      externals: [],
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(jsx|ts|tsx)$/,
-          use: [
-            {
-              loader:
-                'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\babel-loader\\index.js',
-              options: {
-                sourceType: 'unambiguous',
-                babelrc: false,
-                cacheDirectory: false,
-                targets: {
-                  chrome: 80,
-                },
-                presets: [
-                  [
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\babel-preset-umi\\dist\\index.js',
-                    {
-                      presetEnv: {},
-                      presetReact: {
-                        runtime: 'automatic',
-                      },
-                      presetTypeScript: {},
-                      pluginTransformRuntime: {},
-                      pluginLockCoreJS: {},
-                      pluginDynamicImportNode: false,
-                      pluginAutoCSSModules: true,
-                    },
-                  ],
-                  {
-                    plugins: [
-                      [
-                        null,
-                        {
-                          cwd: 'D:\\git\\umi\\travel-um',
-                          absTmpPath: 'D:/git/umi/travel-um/src/.umi',
-                        },
-                      ],
-                    ],
-                  },
-                ],
-                plugins: [
-                  'D:\\git\\umi\\travel-um\\node_modules\\react-refresh\\babel.js',
-                  [
-                    null,
-                    {
-                      remoteName: 'mf',
-                      alias: {
-                        umi: '@@/exports',
-                        react: 'D:\\git\\umi\\travel-um\\node_modules\\react',
-                        'react-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-dom',
-                        'react-router': 'D:\\git\\umi\\travel-um\\node_modules\\react-router',
-                        'react-router-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-router-dom',
-                        '@': 'D:/git/umi/travel-um/src',
-                        '@@': 'D:/git/umi/travel-um/src/.umi',
-                        'regenerator-runtime': 'D:\\git\\umi\\travel-um\\node_modules\\regenerator-runtime',
-                        '@umijs/utils/compiled/strip-ansi':
-                          'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\utils\\compiled\\strip-ansi\\index.js',
-                        'react-error-overlay':
-                          'D:\\git\\umi\\travel-um\\node_modules\\react-error-overlay\\lib\\index.js',
-                      },
-                      externals: [],
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(js|mjs)$/,
-          include: [[null]],
-          use: [
-            {
-              loader:
-                'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\babel-loader\\index.js',
-              options: {
-                sourceType: 'unambiguous',
-                babelrc: false,
-                cacheDirectory: false,
-                targets: {
-                  chrome: 80,
-                },
-                presets: [
-                  [
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\babel-preset-umi\\dist\\index.js',
-                    {
-                      presetEnv: {},
-                      presetReact: {
-                        runtime: 'automatic',
-                      },
-                      presetTypeScript: {},
-                      pluginTransformRuntime: {},
-                      pluginLockCoreJS: {},
-                      pluginDynamicImportNode: false,
-                      pluginAutoCSSModules: true,
-                    },
-                  ],
-                  {
-                    plugins: [
-                      [
-                        null,
-                        {
-                          cwd: 'D:\\git\\umi\\travel-um',
-                          absTmpPath: 'D:/git/umi/travel-um/src/.umi',
-                        },
-                      ],
-                    ],
-                  },
-                ],
-                plugins: [
-                  'D:\\git\\umi\\travel-um\\node_modules\\react-refresh\\babel.js',
-                  [
-                    null,
-                    {
-                      remoteName: 'mf',
-                      alias: {
-                        umi: '@@/exports',
-                        react: 'D:\\git\\umi\\travel-um\\node_modules\\react',
-                        'react-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-dom',
-                        'react-router': 'D:\\git\\umi\\travel-um\\node_modules\\react-router',
-                        'react-router-dom': 'D:\\git\\umi\\travel-um\\node_modules\\react-router-dom',
-                        '@': 'D:/git/umi/travel-um/src',
-                        '@@': 'D:/git/umi/travel-um/src/.umi',
-                        'regenerator-runtime': 'D:\\git\\umi\\travel-um\\node_modules\\regenerator-runtime',
-                        '@umijs/utils/compiled/strip-ansi':
-                          'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\utils\\compiled\\strip-ansi\\index.js',
-                        'react-error-overlay':
-                          'D:\\git\\umi\\travel-um\\node_modules\\react-error-overlay\\lib\\index.js',
-                      },
-                      externals: [],
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(js|mjs)$/,
-          include: [{}],
-          exclude: [null],
-        },
-        {
-          test: /\.css(\?.*)?$/,
-          oneOf: [
-            {x``
-              resourceQuery: {},
-              use: [
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\mini-css-extract-plugin\\loader.js',
-                  options: {
-                    publicPath: './',
-                    emit: true,
-                    esModule: true,
-                  },
-                },
-                {
-                  loader: 'D:\\git\\umi\\travel-um\\node_modules\\css-loader\\dist\\cjs.js',
-                  options: {
-                    importLoaders: 1,
-                    esModule: true,
-                    url: true,
-                    import: true,
-                    modules: {
-                      localIdentName: '[local]___[hash:base64:5]',
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\postcss-loader\\index.js',
-                  options: {
-                    postcssOptions: {
-                      ident: 'postcss',
-                      plugins: [
-                        null,
-                        {
-                          postcssPlugin: 'postcss-preset-env',
-                          plugins: [
-                            {
-                              postcssPlugin: 'postcss-media-minmax',
-                              AtRule: {},
-                            },
-                            {
-                              postcssPlugin: 'postcss-page-break',
-                            },
-                            {
-                              postcssPlugin: 'postcss-font-variant',
-                            },
-                            {
-                              postcssPlugin: 'autoprefixer',
-                              options: {
-                                overrideBrowserslist: ['chrome >= 80'],
-                                flexbox: 'no-2009',
-                              },
-                              browsers: ['chrome >= 80'],
-                            },
-                            {
-                              postcssPlugin: 'postcss-progressive-custom-properties',
-                            },
-                            {
-                              postcssPlugin: 'postcss-preset-env',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  },
-                },
-              ],
-            },
-            {
-              sideEffects: true,
-              use: [
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\mini-css-extract-plugin\\loader.js',
-                  options: {
-                    publicPath: './',
-                    emit: true,
-                    esModule: true,
-                  },
-                },
-                {
-                  loader: 'D:\\git\\umi\\travel-um\\node_modules\\css-loader\\dist\\cjs.js',
-                  options: {
-                    importLoaders: 1,
-                    esModule: true,
-                    url: true,
-                    import: true,
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\postcss-loader\\index.js',
-                  options: {
-                    postcssOptions: {
-                      ident: 'postcss',
-                      plugins: [
-                        null,
-                        {
-                          postcssPlugin: 'postcss-preset-env',
-                          plugins: [
-                            {
-                              postcssPlugin: 'postcss-media-minmax',
-                              AtRule: {},
-                            },
-                            {
-                              postcssPlugin: 'postcss-page-break',
-                            },
-                            {
-                              postcssPlugin: 'postcss-font-variant',
-                            },
-                            {
-                              postcssPlugin: 'autoprefixer',
-                              options: {
-                                overrideBrowserslist: ['chrome >= 80'],
-                                flexbox: 'no-2009',
-                              },
-                              browsers: ['chrome >= 80'],
-                            },
-                            {
-                              postcssPlugin: 'postcss-progressive-custom-properties',
-                            },
-                            {
-                              postcssPlugin: 'postcss-preset-env',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          test: {},
-          oneOf: [
-            {
-              resourceQuery: {},
-              use: [
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\mini-css-extract-plugin\\loader.js',
-                  options: {
-                    publicPath: './',
-                    emit: true,
-                    esModule: true,
-                  },
-                },
-                {
-                  loader: 'D:\\git\\umi\\travel-um\\node_modules\\css-loader\\dist\\cjs.js',
-                  options: {
-                    importLoaders: 1,
-                    esModule: true,
-                    url: true,
-                    import: true,
-                    modules: {
-                      localIdentName: '[local]___[hash:base64:5]',
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\postcss-loader\\index.js',
-                  options: {
-                    postcssOptions: {
-                      ident: 'postcss',
-                      plugins: [
-                        null,
-                        {
-                          postcssPlugin: 'postcss-preset-env',
-                          plugins: [
-                            {
-                              postcssPlugin: 'postcss-media-minmax',
-                              AtRule: {},
-                            },
-                            {
-                              postcssPlugin: 'postcss-page-break',
-                            },
-                            {
-                              postcssPlugin: 'postcss-font-variant',
-                            },
-                            {
-                              postcssPlugin: 'autoprefixer',
-                              options: {
-                                overrideBrowserslist: ['chrome >= 80'],
-                                flexbox: 'no-2009',
-                              },
-                              browsers: ['chrome >= 80'],
-                            },
-                            {
-                              postcssPlugin: 'postcss-progressive-custom-properties',
-                            },
-                            {
-                              postcssPlugin: 'postcss-preset-env',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\less-loader\\index.js',
-                  options: {
-                    implementation:
-                      'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-utils\\compiled\\less\\index.js',
-                    lessOptions: {
-                      javascriptEnabled: true,
-                    },
-                  },
-                },
-              ],
-            },
-            {
-              sideEffects: true,
-              use: [
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\mini-css-extract-plugin\\loader.js',
-                  options: {
-                    publicPath: './',
-                    emit: true,
-                    esModule: true,
-                  },
-                },
-                {
-                  loader: 'D:\\git\\umi\\travel-um\\node_modules\\css-loader\\dist\\cjs.js',
-                  options: {
-                    importLoaders: 1,
-                    esModule: true,
-                    url: true,
-                    import: true,
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\postcss-loader\\index.js',
-                  options: {
-                    postcssOptions: {
-                      ident: 'postcss',
-                      plugins: [
-                        null,
-                        {
-                          postcssPlugin: 'postcss-preset-env',
-                          plugins: [
-                            {
-                              postcssPlugin: 'postcss-media-minmax',
-                              AtRule: {},
-                            },
-                            {
-                              postcssPlugin: 'postcss-page-break',
-                            },
-                            {
-                              postcssPlugin: 'postcss-font-variant',
-                            },
-                            {
-                              postcssPlugin: 'autoprefixer',
-                              options: {
-                                overrideBrowserslist: ['chrome >= 80'],
-                                flexbox: 'no-2009',
-                              },
-                              browsers: ['chrome >= 80'],
-                            },
-                            {
-                              postcssPlugin: 'postcss-progressive-custom-properties',
-                            },
-                            {
-                              postcssPlugin: 'postcss-preset-env',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\less-loader\\index.js',
-                  options: {
-                    implementation:
-                      'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-utils\\compiled\\less\\index.js',
-                    lessOptions: {
-                      javascriptEnabled: true,
-                    },
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          test: {},
-          oneOf: [
-            {
-              resourceQuery: {},
-              use: [
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\mini-css-extract-plugin\\loader.js',
-                  options: {
-                    publicPath: './',
-                    emit: true,
-                    esModule: true,
-                  },
-                },
-                {
-                  loader: 'D:\\git\\umi\\travel-um\\node_modules\\css-loader\\dist\\cjs.js',
-                  options: {
-                    importLoaders: 1,
-                    esModule: true,
-                    url: true,
-                    import: true,
-                    modules: {
-                      localIdentName: '[local]___[hash:base64:5]',
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\postcss-loader\\index.js',
-                  options: {
-                    postcssOptions: {
-                      ident: 'postcss',
-                      plugins: [
-                        null,
-                        {
-                          postcssPlugin: 'postcss-preset-env',
-                          plugins: [
-                            {
-                              postcssPlugin: 'postcss-media-minmax',
-                              AtRule: {},
-                            },
-                            {
-                              postcssPlugin: 'postcss-page-break',
-                            },
-                            {
-                              postcssPlugin: 'postcss-font-variant',
-                            },
-                            {
-                              postcssPlugin: 'autoprefixer',
-                              options: {
-                                overrideBrowserslist: ['chrome >= 80'],
-                                flexbox: 'no-2009',
-                              },
-                              browsers: ['chrome >= 80'],
-                            },
-                            {
-                              postcssPlugin: 'postcss-progressive-custom-properties',
-                            },
-                            {
-                              postcssPlugin: 'postcss-preset-env',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\sass-loader\\index.js',
-                },
-              ],
-            },
-            {
-              sideEffects: true,
-              use: [
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\mini-css-extract-plugin\\loader.js',
-                  options: {
-                    publicPath: './',
-                    emit: true,
-                    esModule: true,
-                  },
-                },
-                {
-                  loader: 'D:\\git\\umi\\travel-um\\node_modules\\css-loader\\dist\\cjs.js',
-                  options: {
-                    importLoaders: 1,
-                    esModule: true,
-                    url: true,
-                    import: true,
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\postcss-loader\\index.js',
-                  options: {
-                    postcssOptions: {
-                      ident: 'postcss',
-                      plugins: [
-                        null,
-                        {
-                          postcssPlugin: 'postcss-preset-env',
-                          plugins: [
-                            {
-                              postcssPlugin: 'postcss-media-minmax',
-                              AtRule: {},
-                            },
-                            {
-                              postcssPlugin: 'postcss-page-break',
-                            },
-                            {
-                              postcssPlugin: 'postcss-font-variant',
-                            },
-                            {
-                              postcssPlugin: 'autoprefixer',
-                              options: {
-                                overrideBrowserslist: ['chrome >= 80'],
-                                flexbox: 'no-2009',
-                              },
-                              browsers: ['chrome >= 80'],
-                            },
-                            {
-                              postcssPlugin: 'postcss-progressive-custom-properties',
-                            },
-                            {
-                              postcssPlugin: 'postcss-preset-env',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  },
-                },
-                {
-                  loader:
-                    'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\sass-loader\\index.js',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          oneOf: [
-            {
-              test: {},
-              type: 'asset',
-              mimetype: 'image/avif',
-              parser: {
-                dataUrlCondition: {
-                  maxSize: 10000,
-                },
-              },
-              generator: {
-                filename: 'static/[name].[hash:8].[ext]',
-              },
-            },
-            {
-              test: {},
-              type: 'asset',
-              parser: {
-                dataUrlCondition: {
-                  maxSize: 10000,
-                },
-              },
-              generator: {
-                filename: 'static/[name].[hash:8].[ext]',
-              },
-            },
-            {
-              type: 'asset/resource',
-              generator: {
-                filename: 'static/[name].[hash:8].[ext]',
-              },
-              exclude: [{}, {}, {}, {}, {}],
-            },
-          ],
-        },
-        {
-          test: {},
-          use: [
-            {
-              loader: 'D:\\git\\umi\\travel-um\\node_modules\\@umijs\\bundler-webpack\\compiled\\svgo-loader\\index.js',
-              options: {
-                configFile: false,
-              },
-            },
-          ],
-        },
-      ],
-    },
-    optimization: {
-      minimize: false,
-    },
-    plugins: [
-      {
-        definitions: {
-          Buffer: ['buffer', 'Buffer'],
-          process: 'D:\\git\\umi\\travel-um\\node_modules\\process\\browser.js',
-        },
-      },
-      {
-        _sortedModulesCache: {},
-        options: {
-          filename: '[name].css',
-          ignoreOrder: true,
-          runtime: true,
-          chunkFilename: '[name].chunk.css',
-        },
-        runtimeOptions: {
-          linkType: 'text/css',
-        },
-      },
-      {
-        definitions: {
-          'process.env': {
-            NODE_ENV: '"development"',
-          },
-        },
-      },
-      {
-        profile: false,
-        modulesCount: 5000,
-        dependenciesCount: 10000,
-        showEntries: true,
-        showModules: true,
-        showDependencies: true,
-        showActiveModules: true,
-        options: {},
-      },
-      {
-        options: {},
-      },
-      {
-        options: {
-          overlay: false,
-          exclude: {},
-          include: {},
-        },
-      },
-      {},
-      {
-        _compiler: null,
-        _watcher: null,
-        _staticModules: {
-          './mfsu-virtual-entry/umi.js':
-            "await import('D:/git/umi/travel-um/node_modules/@umijs/bundler-webpack/client/client/client.js');\nawait import('D:/git/umi/travel-um/src/.umi/umi.ts');\nexport default 1;",
-        },
-      },
-      {
-        _options: {
-          name: '__',
-          remotes: {
-            mf: 'mf@/mf-va_remoteEntry.js',
-          },
-        },
-      },
-      {
-        opts: {},
-      },
-      {
-        profile: false,
-        modulesCount: 5000,
-        dependenciesCount: 10000,
-        showEntries: true,
-        showModules: true,
-        showDependencies: true,
-        showActiveModules: false,
-      },
-    ],
-    entry: {
-      umi: './mfsu-virtual-entry/umi.js',
-    },
-  },
-];
-
-```
 
 
 
