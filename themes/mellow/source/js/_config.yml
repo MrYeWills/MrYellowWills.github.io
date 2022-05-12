@@ -55,7 +55,7 @@ email: 601661706@qq.com
 ## 新连接规则[name]: url | icon
 ## 使用fontawesome图标，只需要写图标名。github -> icon-github | fa-github
 ## http://http://fontawesome.dashgame.com/
-menu_link: 
+menu_link:
   github: https://github.com/codefine | github
 
 # 添加新菜单项遵循以下规则
@@ -239,7 +239,7 @@ leancloud_visitors:
 # 数学公式
 mathjax:
   enable: true
-  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+  # cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
 # 是否使用按钮waves插件
 waves: true
