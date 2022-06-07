@@ -1,5 +1,5 @@
 ---
-title: umi系列(七) 文档插件
+title: umi系列(八) 文档插件
 date: 2022/5/24
 tags: umi
 categories: 
@@ -23,7 +23,9 @@ umi的文档其实就是一个典型的umi项目；
 
 参考 《api.register api.registerMethod》
 
-疑问 是否要全局执行build ，因为其他依赖 执行build
+参考 《#### pnpm doc:deps》
+
+
 
 ## 文档的使用和开发
 
@@ -104,7 +106,12 @@ $ cat package.json
 ```
 
 此命令按理说应该是 因为使用到了 `--filter` 过滤，按理说只会安装 @umijs/plugin-docs ，
-但不知为何，会给项目下所有的 packages 下面的包都进行build，然后所有packages下的包都会生成dist，具体情况如下：
+todo
+但不知为何，会给项目下所有的 packages 下面的包都进行build，然后所有packages下的包都会生成dist，具体情况如下所示。
+从下面的代码执行过程可以看出，
+执行 doc:deps-ts 时一共对 16 packages 进行了编译；
+执行 doc:deps-extra 时，由于packages只有plugin-docs有这个编译命令，因此只对这一个包进行了编译；
+这也解释了一部分 turbo 执行的逻辑。
 
 ```s
 $ pnpm doc:deps
@@ -259,3 +266,170 @@ Cached:    0 cached, 1 total
 经过以上安装后，所有的准备工作就完成了，执行 `pnpm doc:dev`
 就会顺利启动文档了。
 
+### 开发调试
+
+#### 介绍
+
+`pnpm doc:dev` 启动文档项目后，
+
+修改以下文件，会自动执行编译命令，实时重载，渲染最新的效果，调试开发非常方便：
+
+- /d/git/umi/umi-next-copy1/docs 目录下任何文件
+- /d/git/umi/umi-next-copy1/packages/plugin-docs/client  目录下任何文件
+
+因为前者的md文件相当于普通项目中的js，同时被下面引用：
+```js
+// D:\git\umi\umi-next\.umi\core\route.tsx
+export { FeatureItem, Features, Hero, Message } from 'D:/git/umi/umi-next/packages/plugin-docs/client/theme-doc/index.ts';
+```
+
+后者(`plugin-docs/client`)的文件是jsx，同时被下面引用：
+```js
+// D:\git\umi\umi-next\.umi\plugin-docs\index.ts
+export { FeatureItem, Features, Hero, Message } from 'D:/git/umi/umi-next/packages/plugin-docs/client/theme-doc/index.ts';
+```
+
+由上可知，上面两个目录下的文件，其实都处于 webpack 编译的树依赖下，会被实时监听。
+
+#### 调试技巧
+```js
+// .umirc.ts
+export default {
+  // 定义 writeToDisk 为true，可以看编译后生成的文件
+  writeToDisk: true,
+  mfsu: false,
+  plugins: ['@umijs/plugin-docs'],
+};
+
+```
+
+
+## 文档项目的基础框架
+
+### .umi目录的生成
+umi官网仓库的根目录执行 `pnpm doc:dev`，就可以启动umi的文档。
+说明了umi仓库的根目录下，就是一个umi的文档项目，这有别于umi的 plugin-docs 插件。
+
+现在我们分析下 umi的文档项目 架构。
+
+```
+<!-- 主要文件或目录 -->
+- docs
+- .umirc.ts
+```
+
+```js
+// .umirc.ts
+export default {
+  mfsu: false,
+  plugins: ['@umijs/plugin-docs'],
+};
+
+```
+
+```js
+"doc:deps": "pnpm doc:deps-ts && pnpm doc:deps-extra",
+"doc:deps-extra": "umi-scripts turbo --cmd build:extra --filter @umijs/plugin-docs...",
+"doc:deps-ts": "umi-scripts turbo --cmd build --filter @umijs/plugin-docs...",
+"doc:dev": "umi dev",
+```
+
+当启动 `pnpm doc:deps` 进行编译生成 umi所有包的dist，以便能正常运行 `pnpm doc:dev`。具体原因参考《文档的使用和开发》
+
+执行 `pnpm doc:dev` 命令后会生成 .umi 目录。
+
+
+### .umi 的项目结构
+由于这部分涉及篇幅比较多，单独开一篇进行展示《umi系列(九) 文档插件》
+
+## 以 mdx 的方式来写文档
+允许 用react 组件以及md的方式来写 文档，
+太棒了；
+核心代码：
+`packages\plugin-docs\src\compiler.ts`
+
+核心组件
+`import { createProcessor } from '../compiled/@mdx-js/mdx';`
+
+在我们这个文档项目中，
+通过 plugin-docs 会改变webpack 配置:
+```js
+{
+    "test": "/\\.mdx?$/",
+    "use": [{
+      "loader": "D:\\git\\umi\\umi-next\\packages\\plugin-docs\\dist\\loader.js"
+    }],
+  }
+```
+```js
+{
+    "test": "/\\.mdx?$/",
+    "use": [{
+      "loader": "D:\\git\\umi\\umi-next\\packages\\bundler-webpack\\compiled\\babel-loader\\index.js",
+      "options": {
+        "sourceType": "unambiguous",
+        "babelrc": false,
+        "cacheDirectory": false,
+        "targets": {
+          "chrome": 80
+        },
+        "presets": [
+          ["D:\\git\\umi\\umi-next\\packages\\babel-preset-umi\\dist\\index.js", {
+            "presetEnv": {},
+            "presetReact": {
+              "runtime": "automatic"
+            },
+            "presetTypeScript": {},
+            "pluginTransformRuntime": {},
+            "pluginLockCoreJS": {},
+            "pluginDynamicImportNode": false,
+            "pluginAutoCSSModules": true
+          }], {
+            "plugins": [
+              [null, {
+                "cwd": "D:\\git\\umi\\umi-next",
+                "absTmpPath": "D:/git/umi/umi-next/.umi"
+              }]
+            ]
+          }
+        ],
+        "plugins": ["D:\\git\\umi\\umi-next\\node_modules\\.pnpm\\react-refresh@0.12.0\\node_modules\\react-refresh\\babel.js"]
+      }
+    }],
+  }
+```
+
+由上可知，一个 mdx 文件，经过  `plugin-docs\\dist\\loader.js` 后，变成一个react的jsx或js文件，但文件名和后缀依然是 mdx，
+但这已经不重要，重要的是 文件内容和语法全部是 react的jsx或js。
+这就好比linux系统，文件本无后缀名，后缀名只是为了阅读方便，一眼能知道这是什么类型的文件。
+
+此时的 mdx 其实就是 js或jsx，然后再交给后面的 babel-loader 来处理。
+
+
+## webpack.config.js
+可以去这里看《umi系列(附录) 文档插件  -- 文档项目的webpack配置》
+
+## 如何集成 react-router-dom 6.x
+```js
+// .umi\core\history.ts
+import { createHashHistory, createMemoryHistory, createBrowserHistory, History } from 'D:/git/umi/umi-next/packages/renderer-react';
+```
+
+## 主路由layout
+```js
+// .umi\core\route.tsx
+
+// 主路由： layout :
+"docs-layout": {
+    "id": "docs-layout",
+    "path": "/",
+    "file": "D:\\\\git\\\\umi\\\\umi-next\\\\.umi\\\\plugin-docs\\\\Layout.tsx"
+  },
+
+// 其他路由 根据 
+"id": "docs/introduce/upgrade-to-umi-4",
+"parentId": "docs-layout",
+
+// 来确定层级关系；
+// 其实就是将一个树壮路由 扁平化了；
+```
