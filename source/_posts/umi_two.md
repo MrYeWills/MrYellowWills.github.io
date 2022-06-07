@@ -409,12 +409,13 @@ import { Service as CoreService } from '@umijs/core';
 ```js
   packages\core\src\service\service.ts
   async run(opts: { name: string; args?: any }) {
+    // 这里的 command 包含了 dev 命令
     let ret = await command.fn({ args });
   }
 
 ```
 ### packages\preset-umi\src\commands\dev\dev.ts
-此命令 在这里注册：
+此 dev命令 在这里注册：
 ```js
   // packages\preset-umi\src\commands\dev\dev.ts
   const bundlerWebpack = lazyImportFromCurrentPkg('@umijs/bundler-webpack');
@@ -445,24 +446,12 @@ dev 会执行 createServer 方法，
 ### packages\bundler-webpack\src\server\server.ts
 createServer 的逻辑在 `packages\bundler-webpack\src\server\server.ts`
 createServer 主要做 webpack 编译 以及 然后通过 express 创建 dev server，
+这里可以打印相关的 webpack 配置等等。
 ```js
 // packages\bundler-webpack\src\server\server.ts
 const compiler = webpack(configs);
 ```
-
-### 过程概要
-
-#### umi\bin\umi.js
-#### umi\src\cli\cli.ts
-#### umi\src\cli\dev.ts
-#### umi\src\cli\fork.ts
-#### umi\bin\forkedDev.js
-#### umi\src\cli\forkedDev.ts
-#### umi\src\service\service.ts
-#### @umijs/core\service\service.ts
-#### @umijs/preset-umi\commands\dev\dev.ts
-#### @umijs/bundler-webpack\dev.ts
-#### @umijs/bundler-webpack\server\server.ts
+至此整个 umi dev 的流程走完了。
 
 
 ### 要点对象

@@ -406,8 +406,6 @@ export default {
 此时的 mdx 其实就是 js或jsx，然后再交给后面的 babel-loader 来处理。
 
 
-## webpack.config.js
-可以去这里看《umi系列(附录) 文档插件  -- 文档项目的webpack配置》
 
 ## 如何集成 react-router-dom 6.x
 ```js
@@ -433,3 +431,14 @@ import { createHashHistory, createMemoryHistory, createBrowserHistory, History }
 // 来确定层级关系；
 // 其实就是将一个树壮路由 扁平化了；
 ```
+
+## webpack配置与原理
+### webpack.config.js
+这里打印了完整的 文档webpack.config.js 配置文件。
+可以去这里看《umi系列(end)  -- 文档项目的webpack配置》
+
+### 如何打印查看webpack配置
+参考 《umi系列(二)  -- umi dev 过程源码分析  --   packages\bundler-webpack\src\server\server.ts 》
+
+### 如何项目启动的整个原理流程
+参考 《umi系列(二)  -- umi dev 过程源码分析 》
