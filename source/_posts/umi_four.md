@@ -1,5 +1,5 @@
 ---
-title: umi系列(四)
+title: umi系列(四)：npm script命令
 date: 2022/5/18
 tags: umi
 categories: 
@@ -168,7 +168,7 @@ export function assert(v: unknown, message: string) {
   await $`npm run check:packageFiles`;
 ```
 
-
+```js
   // check package.json
   logger.event('check package.json info');
 
@@ -331,3 +331,124 @@ function setDepsVersion(opts: {
   return pkg;
 }
 
+```
+
+### 删除package下的dist
+```js
+  eachPkg(pkgs, ({ dir, name }) => {
+    logger.info(`clean dist of ${name}`);
+    rimraf.sync(join(dir, 'dist'));
+  });
+```
+
+### 给每个包进行build生产dist
+```js
+// build packages
+  logger.event('build packages');
+  await $`npm run build:release`;
+  await $`npm run build:extra`;
+  await $`npm run build:client`;
+```
+### 再次检查是否有未git add 文件
+因为上面的 build命令，有些包会改变 client 目录
+```js
+  logger.event('check client code change');
+  const isGitCleanAfterClientBuild = (
+    await $`git status --porcelain`
+  ).stdout.trim().length;
+  assert(!isGitCleanAfterClientBuild, 'client code is updated');
+```
+### lerna 批量更新版本号
+```js
+  // bump version
+  logger.event('bump version');
+  await $`lerna version --exact --no-commit-hooks --no-git-tag-version --no-push --loglevel error`;
+  const version = require(PATHS.LERNA_CONFIG).version;
+  let tag = 'latest';
+  if (
+    version.includes('-alpha.') ||
+    version.includes('-beta.') ||
+    version.includes('-rc.')
+  ) {
+    tag = 'next';
+  }
+  if (version.includes('-canary.')) tag = 'canary';
+```
+### 更新 example versions
+```js
+logger.event('update example versions');
+...
+```
+### 更新 lockfile 文件
+```js
+  // update pnpm lockfile
+  logger.event('update pnpm lockfile');
+  $.verbose = false;
+  await $`pnpm i`;
+  $.verbose = true;
+```
+### commit提交
+```js
+  // commit
+  logger.event('commit');
+  await $`git commit --all --message "release: ${version}"`;
+
+```
+### 设置tag，并提高分支以及tag
+```js
+// git tag
+  if (tag !== 'canary') {
+    logger.event('git tag');
+    await $`git tag v${version}`;
+  }
+
+  // git push
+  logger.event('git push');
+  await $`git push origin ${branch} --tags`;
+
+```
+
+
+### pnpm publish发布前检测密码(可忽略)
+```js
+  // check 2fa config
+  let otpArg: string[] = [];
+  if (
+    (await $`npm profile get "two-factor auth"`).toString().includes('writes')
+  ) {
+    let code = '';
+    do {
+      // get otp from user
+      code = await question('This operation requires a one-time password: ');
+      // generate arg for zx command
+      // why use array? https://github.com/google/zx/blob/main/docs/quotes.md
+      otpArg = ['--otp', code];
+    } while (code.length !== 6);
+  }
+
+```
+### pnpm publish
+```js
+// npm publish
+  logger.event('pnpm publish');
+  $.verbose = false;
+  const innerPkgs = pkgs.filter(
+    // do not publish father
+    (pkg) => !['magicbird', 'max', 'father'].includes(pkg),
+  );
+
+
+  // 这里有上面的步骤 pnpm publish发布前检测密码(可忽略)，可以不用管
+
+  await Promise.all(
+    innerPkgs.map(async (pkg) => {
+      await $`cd packages/${pkg} && npm publish --tag ${tag} ${otpArg}`;
+      logger.info(`+ ${pkg}`);
+    }),
+  );
+  await $`cd packages/magicbird && npm publish --tag ${tag} ${otpArg}`;
+  logger.info(`+ magicbird`);
+  await $`cd packages/max && npm publish --tag ${tag} ${otpArg}`;
+  logger.info(`+ @magicbirdjs/max`);
+
+```

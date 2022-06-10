@@ -1,5 +1,5 @@
 ---
-title: umi系列(三)
+title: umi系列(三)：pnpm与umi-scripts
 date: 2022/5/13
 tags: umi
 categories: 
@@ -25,24 +25,24 @@ series: 基建
 创建文件`pnpm-workspace.yaml`：
 ```yaml
 packages:
-  - 'ddd'
+  - 'scripts'
 
 ```
 
 ```js
 // package.json
  "devDependencies": {
-    "ddd-scripts": "workspace:*"
+    "umi-scripts": "workspace:*"
   },
 ```
-然后在 ddd 目录下，新建 ddd-scripts 包，
+然后在 scripts 目录下，新建 umi-scripts 包，
 
 执行 pnpm install,
 执行完后，会生成 pnpm-lock.yaml ，
-并且为 ddd 下的  ddd-scripts 包源码目录 创建一个软链接，
+并且为 scripts 下的  umi-scripts 包源码目录 创建一个软链接，
 将此目录映射到 node_modules 下，
-如果 ddd-scripts 有bin命令，pnpm 也会为它生成一个.bin 目录的相关命令配置。
-一切做好后， 你在项目中就可以愉快的使用 ddd-scripts包了，
+如果 umi-scripts 有bin命令，pnpm 也会为它生成一个.bin 目录的相关命令配置。
+一切做好后， 你在项目中就可以愉快的使用 umi-scripts包了，
 因为其本质是将源码目录全部放置到 node modules 下，与真正的npm install 无异，用起来一样。
 更妙的是，它还可以创建了软链接，一旦修改，node modules 也会是最新的修改。
 

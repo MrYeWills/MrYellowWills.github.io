@@ -1,5 +1,5 @@
 ---
-title: umi系列(二)
+title: umi系列(二)：基础知识，如umi dev过程分析
 date: 2022/5/6
 tags: umi
 categories: 
@@ -500,7 +500,7 @@ Service {
 ```
 #### webpack.config
 
-见附录
+见《umi系列(end) -- webpack.config》
 
 
 
