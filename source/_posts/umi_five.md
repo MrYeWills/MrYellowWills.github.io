@@ -1,5 +1,5 @@
 ---
-title: umi系列(五)
+title: umi系列(五)：pnpm install
 date: 2022/5/18
 tags: umi
 categories: 
@@ -28,7 +28,6 @@ pnpm dev -- --vite
 
 ## 前置知识
 
-### $ 怎么来的
 
 ## pnpm install
 

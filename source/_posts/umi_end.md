@@ -1,5 +1,5 @@
 ---
-title: umi系列(end)
+title: umi系列(end) 附录、参考
 date: 2022/5/11
 tags: umi
 categories: 
@@ -10,6 +10,38 @@ series: 前端
 
 
 *源码 umi 版本为 version-4.0.0-rc.15*
+
+
+## 参考
+
+- umi
+[umi 源码 知乎](https://zhuanlan.zhihu.com/c_1269578954706702336)
+[umi next 官网文档](https://next.umijs.org/zh-CN/docs/tutorials/getting-started)
+[SEE Conf 《Umi 4 设计思路 - 云谦》视频 & 文字版](https://www.yuque.com/seeconf/2022/ibm88n)
+[云谦 - 蚂蚁金服前端框架探索之路](https://www.bilibili.com/video/BV1Xt411s7d6?spm_id_from=333.337.search-card.all.click)
+[SEE Conf 语雀 官网](https://www.yuque.com/seeconf)
+[SEE Conf 官网](https://seeconf.antfin.com/)
+[干货分享：蚂蚁金服前端框架和工程化实践](https://www.infoq.cn/article/caxvurfin*dqvw4ieh1h)
+[从零实现Umi3微内核框架](https://www.bilibili.com/video/BV1d54y147wx?spm_id_from=333.337.search-card.all.click)
+[sorrycc](https://sorrycc.com/)
+[umi3源码探究简析](https://blog.csdn.net/weixin_40017641/article/details/114298201)
+[umi3 源码学习](https://segmentfault.com/a/1190000041382987)
+[如何定制企业级前端研发框架？（基于 UmiJS）](https://zhuanlan.zhihu.com/p/318727202)
+[基于Umi的开发方案](https://segmentfault.com/a/1190000019719722)
+[基于Umi的蚂蚁前端最佳实践](https://www.bilibili.com/video/BV1Dh41127N3/?spm_id_from=333.788.recommend_more_video.0)
+[从131开始看 React全家桶+完整商城后台项目#UmiJS#Antd Pro#全程实录](https://www.bilibili.com/video/BV1Uo4y1R7VH?p=131)
+
+
+- pnpm
+[pnpm](https://pnpm.io/zh/installation)
+
+- turborepo monorepos Lerna
+[turborepo v1.2.0版本升级指南（--filter过滤范围）](https://blog.csdn.net/qq_21567385/article/details/124049534)
+[如何评价turborepo这个Monorepos解决方案？](https://www.zhihu.com/question/505956571)
+[Lerna 中文教程详解](https://segmentfault.com/a/1190000019350611)
+
+- 其他
+[前端框架 逐年 统计排名](https://2021.stateofjs.com/zh-Hans/libraries/front-end-frameworks/)
 
 
 
