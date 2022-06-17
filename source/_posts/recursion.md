@@ -162,6 +162,74 @@ function formatTreeData({data, childrenName='children', maps, isOrigin}) {
 ```
 
 
+## 二元一次方程计算 Fibonacci 数列的初始值
+
+```ts
+// 1、1、2、3、5、8、13、21、34
+
+type FibonacciLoop<
+    PrevArr extends unknown[],
+    CurrentArr extends unknown[],
+    IndexArr extends unknown[] = [],
+    Num extends number = 1
+> = IndexArr['length'] extends Num
+    ? CurrentArr['length']
+    : FibonacciLoop<CurrentArr, [...PrevArr, ...CurrentArr], [...IndexArr, unknown], Num>
+
+type Fibonacci<Num extends number> = FibonacciLoop<[1], [], [], Num>;
+```
+
+```js
+function acc(pre, current, index = 0, num) {
+  if (index === num) {
+    return current;
+  }
+  if (index < num) {
+    return acc(current, pre + current, index + 1, num);
+  }
+}
+// 要求：
+acc(preValue, preCurrent, 0, 1);
+acc(preValue, preCurrent, 0, 2);
+// 问preValue 、 preCurrent 的值为多少？
+
+// //解：
+// 根据上面的函数逻辑，得出两个公式(二元一次方程)：
+// preValue + preCurrent = 1 ；
+// preValue + 2*preCurrent = 1 ；
+
+// //求得：
+// 用第二个等式 减去 第一个等式 得：
+// preValue + 2*preCurrent - preValue + preCurrent = 1-1
+// 等式经过计算后得：
+// preCurrent = 0 ；
+// 由于 preCurrent 为 0 ，
+// 由上面等式 得出
+// preValue=1 ；
+
+// 测试：
+acc(1, 0, 0, 1); // 1
+acc(1, 0, 0, 2); // 1
+acc(1, 0, 0, 3); // 2
+acc(1, 0, 0, 4); // 3
+acc(1, 0, 0, 5); // 5
+
+```
+
+延申下，函数求出指定长度的 Fibonacci 数列：
+
+```js
+function acc(pre, current, arr=[], num) {
+    if (arr.length === num) {
+      return arr;
+    }
+    if (arr.length < num) {
+      return acc(current, pre + current, [...arr, pre + current], num);
+    }
+  }
+
+  acc(1, 0, [], 10);//[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+```
 
 
 
