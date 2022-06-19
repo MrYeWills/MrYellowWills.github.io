@@ -8,10 +8,8 @@ series: typescript
 ---
 
 ## 待研究
-《in 与 in keyof 区别》
-《ts类型运算与js执行的差异》
-《联合类型转交叉》
-
+《`extends Record<string, any>`的疑问》
+《 declare 示例》 其实是对declare了解不充分
 ## 基本知识
 
 ### unknown 与 any 区别示例
@@ -42,6 +40,25 @@ type UppercaseKey<Obj extends Record<string, any>> = {
 }
 ```
 也就是约束类型参数 Obj 为 key 为 string，值为任意类型的索引类型。
+
+
+另外一个例子：
+[参考](https://juejin.cn/book/7047524421182947366/section/7048281553822023712)
+```ts
+type Pick<T, K extends keyof T> = {
+    [P in K]: T[P];
+};
+
+
+type PickRes = Pick<{name: 'dong', age: 18, sex: 1}, 'name' | 'age'>;
+// 打印如下：
+type PickRes = {
+    name: 'dong';
+    age: 18;
+}
+```
+
+这里看出， in 用于 联合类型，比如 `'name' | 'age'`, `in keyof` 用于 对象(即索引类型)
 
 ### as
 在映射类型里的 as 叫重映射，是用于对索引做过滤和修改的。
@@ -132,7 +149,9 @@ type DeepPromiseResult = DeepPromiseValueType<Promise<Promise<Record<string, any
 而在ts的类型运算中，貌似不这样，如果把DeepPromiseValueType比作一个js的函数的话，它却没有先执行DeepPromiseValueType函数的入参`（Promise<Promise<Record<string, any>>>）`，
 而是先执行 DeepPromiseValueType 的运算逻辑，然后再利用其递归逻辑，一层层获取最终的 `Record<string, any> `；
 
-请问有以上现象解释的相关资料吗
+
+上述认识是不对的，其实ts的类型运算与js是一样的执行：
+[ 参考 TypeScript 内置的高级类型有哪些？ - Awaited](https://juejin.cn/book/7047524421182947366/section/7048281553822023712)
 
 
 ### 联合类型的自动循环调用
@@ -199,7 +218,7 @@ type IsTupleResult = IsTuple<[1, 2, 3]>;
 type IsTupleResult2 = IsTuple<number[]>;
 ```
 
-### 联合类型转交叉
+### 特殊的 联合类型转交叉
 
 [详细参考 套路六：特殊特性要记清](https://juejin.cn/book/7047524421182947366/section/7048282437238915110)
 
@@ -229,6 +248,13 @@ type UnionToIntersectionResult = {
 }
 ```
 
+为什么最后就是交叉类型，因为 ` extends (x: infer R) => unknown` ,当联合类型循环单独运算时，如果类型被提取到 入参时(这里的`(x: infer R)`),
+将会被逆变为 交叉类型，
+>[参考- 类型编程综合实战二 ](https://juejin.cn/book/7047524421182947366/section/7061543892180533283)
+这里简单讲一下：U extends U 是触发分布式条件类型，构造一个函数类型，通过模式匹配提取参数的类型，利用函数参数的逆变的性质，就能实现联合转交叉。
+因为函数参数的类型要能接收多个类型，那肯定要定义成这些类型的交集，所以会发生逆变，转成交叉类型。
+
+
 
 ### 接口与type的区别
 ```js
@@ -252,4 +278,159 @@ type testResult2 = test<Person2>;
 
 ```
 最后发现 testResult1 与 testResult2 是一样的, 得出的结论 接口与type 其实一样，但type更加灵活
-[可以在这里试试](https://www.typescriptlang.org/play?ssl=48&ssc=34&pln=33&pc=1#code/C4TwDgpgBAYglgG2BATgIRANQIYIK4QAq4EAPAPIBGAVlBAB7IB2AJgM5QBKEAxgPYoWpNsBRwmAcwA0UbExAA+GTnxESCqAF4oAbwBQUQ1ADaAaQggo4qAGsLfAGZQqtA0ffYOAIiZyIXgF03d0MALmcaMwsggF89PVBIWERkdCxcAmJIACYKGjpGCFYObn5BYVFxaVl5JSgVTPUtXWCTc0trOxBHCNcQo09eqJAAguZ2eoy1JIB+KHaocKYIADdUIP6wofbY+MToeCRUDAbpiABGPNoGcZLeASERMUkZOUVlKayIDW19d2GrExbPYnC4oK0PBxTl8xkUJi5hqM5gslqt1hCjOEETs9HF4vFxKkHNgeNAAAqoNh8IF-Iy+AC2EHCTyqAG5WtgJEyoEw8PTKKh2e4ABZ8SiUEDMyqSYwBdl4hIkZJHFDcNh4JDNQ6pE6fEikCkoKlMGQsyRQAA+PL5ApQCnZ+P2UENxvOzVphgZ3LNEnlBKYRJJ5Mp1OyLXcXqlz19uL2SuQIiuP3DRgBnRBvXBm1k3gTwC9gQxW2x0VjiqSebVGuAbu0eYNIaY53t5eglYg6qQYbrHeADaNoZbeiAA)
+[可以在这里试试](https://www.typescriptlang.org/play?#code/CZA)
+
+
+### 关于 new 的类型
+
+#### abstract
+类型参数 T 是待处理的类型，通过 extends 约束为构造器类型，加个 abstract 代表不能直接被实例化（其实不加也行）。
+```ts
+interface Person {
+    name: string;
+}
+
+interface PersonConstructor {
+    new(name: string): Person;
+}
+
+type ConstructorParametersRes = ConstructorParameters<PersonConstructor>;
+//type ConstructorParametersRes = [name: string]
+
+```
+
+### 关于this
+[参考 12: TypeScript 内置的高级类型有哪些？ - ThisParameterType](https://juejin.cn/book/7047524421182947366/section/7048281553822023712)
+```ts
+type Person = {
+    name: 'guang'
+};
+
+type ThisParameterType1<T> = 
+    T extends (this: infer U, ...args: any[]) => any 
+        ? U 
+        : unknown;
+
+
+function hello(this: Person) {
+    console.log(this.name);
+}
+
+// hello.call({});
+
+type cc = typeof hello //打印结果： (this: Person) => void
+
+type ThisParameterTypeRes = ThisParameterType1<typeof hello>;
+
+```
+
+### 可选索引的特性
+[参考 套路六：特殊特性要记清 - GetOptional](https://juejin.cn/book/7047524421182947366/section/7048282437238915110)
+可选索引的特性：可选索引的值为 undefined 和值类型的联合类型。
+
+
+### 索引类型
+#### 普通索引类型
+```ts
+type RecordRes = {
+    a: number;
+    b: number;
+}
+```
+
+#### 可索引签名的索引类型
+```ts
+type RecordRes21 = {
+    [x: string]: number;
+}
+```
+
+### keyof any
+
+>[参考](https://juejin.cn/book/7047524421182947366/section/7048281553822023712)
+这里很巧妙的用到了 keyof any，它的结果是 string | number | symbol
+但如果你开启了 keyOfStringsOnly 的编译选项，它就只是 stirng 了
+
+
+
+### 调试类型
+
+
+#### 如何打印ts自动推导出的类型
+[可以在这里试试](https://www.typescriptlang.org/play?#code/CZA)
+如何知道ts会自动推导的类型，可通过下面方法：
+```ts
+const obj = {
+    a: 1
+}
+type objType = typeof obj;
+
+// 打印如下：
+type objType = {
+    a: number;
+}
+```
+
+### 特殊情况示例
+
+as const 与 `unknown[] | []` 都会被约束为常量，具有readonly属性
+#### as const
+[参考](https://juejin.cn/book/7047524421182947366/section/7061381240481382435)
+#### 约束为 unknown[] | []
+[参考](https://juejin.cn/book/7047524421182947366/section/7061381240481382435)
+
+
+### declare 示例
+
+#### join
+[15 类型编程综合实战二  join](https://juejin.cn/book/7047524421182947366/section/7061381240481382435)
+
+
+
+
+
+### `extends Record<string, any>`的疑问
+这里有个疑问：
+```ts
+type DeepCamelize<Obj extends Record<string, any>> = 
+    Obj extends unknown[]
+        ? CamelizeArr<Obj>
+        : { 
+            [Key in keyof Obj 
+                as Key extends `${infer First}_${infer Rest}`
+                    ? `${First}${Capitalize<Rest>}`
+                    : Key
+                // DeepCamelize 的类型参数要求  type DeepCamelize<Obj extends Record<string, any>>
+                // 也就是DeepCamelize 的类型参数要求为一个 索引类型，
+                // 上面 当Key为  aaa_bbb: string; 时，
+                // 这个 Obj[Key] 就是 string，并非索引类型
+                // DeepCamelize<Obj[Key]>  为什么不报错
+            ] : DeepCamelize<Obj[Key]> 
+        };
+
+```
+
+### (索引类型的)交叉类型 是索引类型
+[以下参考 类型编程综合实战二 - Defaultize](https://juejin.cn/book/7047524421182947366/section/7061543892180533283)
+#### 为什么不显示(计算)
+示例见下面的《使用Copy显示》
+
+因为 ts 只有在类型被用到的时候才会去做类型计算，根据这个特点，我们可以用映射类型的语法构造一个一摸一样的索引类型来触发类型计算。
+
+#### 使用Copy显示
+```ts
+type Copy<Obj extends Record<string, any>> = {
+    [Key in keyof Obj]: Obj[Key]
+}
+
+type eee6 = {
+    aaa: 111;
+}
+type eee5 = {
+    aaa: 111;
+}
+
+type ff = Copy<eee6 & eee5>
+```
+
+
