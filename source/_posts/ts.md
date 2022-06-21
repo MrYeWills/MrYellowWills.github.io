@@ -245,49 +245,6 @@ const adder = new Adder<number>();
 #### 扩展-泛型函数
 既然有普通类和泛型类，那么就有普通函数和泛型函数，用法可以类推泛型类。
 
-### 泛型约束
-#### 为什么要有泛型约束
-[参考ts入门教程-泛型约束](https://ts.xcatliu.com/advanced/generics.html#%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F)
-在函数内部使用泛型变量的时候，由于事先不知道它是哪种类型，所以不能随意的操作它的属性或方法：
-```ts
-function loggingIdentity<T>(arg: T): T {
-    console.log(arg.length);
-    return arg;
-}
-// index.ts(2,19): error TS2339: Property 'length' does not exist on type 'T'.
-```
-#### 泛型的特性导致了必然需要泛型约束
-参考上面。
-#### 使用普通接口做泛型约束
-注意的是，泛型约束使用**普通接口**而非什么泛型接口来约束泛型。
-```ts
-interface Lengthwise {
-    length: number;
-}
-function loggingIdentity<T extends Lengthwise>(arg: T): T {
-    console.log(arg.length);
-    return arg;
-}
-```
-#### extends
-用于约束泛型的关键字，参考上面。
-
-#### 进阶 - keyof
-使用keyof进行泛型约束，
-```ts
-function getProp<T, K>(obj:T,key:K){
-    return obj[key]//ts error,obj内不一定有key
-}
-```
-此时可通过 keyof来约束 K，改造如下：
-```ts
-function getProp<T, K extends keyof T>(obj:T,key:K){
-    return obj[key]
-}
-getProp({name:1}, 'name')
-```
-keyof主要表示 k是T内的属性。
-[参考](https://www.imooc.com/video/21306/0)
 
 ## tsconfig.json
 ### strictNullChecks

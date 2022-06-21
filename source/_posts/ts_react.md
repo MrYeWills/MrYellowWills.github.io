@@ -115,6 +115,8 @@ export const ProductImage = withRouter(ProductImageComponent);
 
 ```
 
+
+
 ### redux
 #### redux
 原生的 redux 结合 react 使用的ts定义例子：
