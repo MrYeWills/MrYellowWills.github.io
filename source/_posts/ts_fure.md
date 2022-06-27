@@ -48,4 +48,11 @@ ts的学习留到后期真正用到或面试的时候，边面边学；
 
 我面试的重点是否要放到高层建设这块，而不是普通的知识上，比如上层建设，如组件库、脚手架、npm私库搭建 等等。
 
+### 2022-6-22
+使用 GitHub Actions 自动执行开发任务  有空可以关注下；
+微软教程：https://docs.microsoft.com/zh-cn/learn/modules/github-actions-automate-tasks/
+微软教程：https://docs.microsoft.com/zh-cn/learn/modules/github-actions-automate-tasks/2-github-actions-automate-development-tasks
+
+有空了 对项目的细节 进行复盘，比如ajax，如果我重新设计 ajax的二次业务封装，我将如何搞，还是先借鉴一波社区的方案。
+
 
