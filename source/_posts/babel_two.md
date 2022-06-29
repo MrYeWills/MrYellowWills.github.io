@@ -81,6 +81,25 @@ const parametersInsertPlugin = ({ types, template }, options, dirname) => {
 module.exports = parametersInsertPlugin;
 
 ```
+又如：
+```js
+// 此babel 插件用于 将所有的 import 语句中 有关 less 结尾的，转成 css 结尾的；
+function transformImportLess2Css() {
+  return {
+      name: 'transform-import-less-to-css',
+      visitor: {
+        // ImportDeclaration 与 ExportNamedDeclaration 属于ast的api，只有遇到 import 关键字时触发；
+          ImportDeclaration(path, source) {
+              const re = /\.less$/;
+              if(re.test(path.node.source.value)){
+                path.node.source.value = path.node.source.value.replace(re, '.css');
+              }
+          }
+      }
+  }
+}
+
+```
 
 综合以上的示例，就可以知道，visitor 下的属性方法，何时触发，完全取决于，属性方法代表的含义，
 而这些属性方法时 ast语法的api，
