@@ -3,7 +3,7 @@ title: umi系列(三)：pnpm与umi-scripts
 date: 2022/5/13
 tags: umi
 categories: 
-- 前端工具
+- umi系列
 series: 基建
 ---
 

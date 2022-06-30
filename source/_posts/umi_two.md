@@ -3,7 +3,7 @@ title: umi系列(二)：基础知识，如umi dev过程分析
 date: 2022/5/6
 tags: umi
 categories: 
-- 前端工具
+- umi系列
 series: 前端
 ---
 

@@ -88,7 +88,8 @@ series: ui组件库
     });
 ```
 
-
+### 发布不上去与publishConfig
+发布不上去，可能是 packageJson.publishConfig有关，改下值，重发一次。
 
 
 ## ui项目架构

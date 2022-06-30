@@ -3,7 +3,7 @@ title: umi系列(九) 文档插件
 date: 2022/5/24
 tags: umi
 categories: 
-- 前端工具
+- umi系列
 series: 基建
 ---
 

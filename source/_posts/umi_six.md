@@ -3,7 +3,7 @@ title: umi系列(六) 配置源码位置
 date: 2022/5/24
 tags: umi
 categories: 
-- 前端工具
+- umi系列
 series: 基建
 ---
 

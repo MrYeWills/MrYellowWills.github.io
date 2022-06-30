@@ -3,7 +3,7 @@ title: umi系列(五)：pnpm install
 date: 2022/5/18
 tags: umi
 categories: 
-- 前端工具
+- umi系列
 series: 基建
 ---
 
