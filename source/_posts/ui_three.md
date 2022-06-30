@@ -3,7 +3,7 @@ title:  ui组件库系列(三):本地编译、启动与调试
 date: 2022/6/29
 tags: [ui组件库]
 categories: 
-- 前端
+- ui组件库
 series: ui组件库
 ---
 
@@ -94,6 +94,7 @@ function getPluginsOrPresets(type: PluginType, opts: IOpts): string[] {
 
 
 ### 本地调试套路分析(文档、demo)
+
 
 以一个md为例子说明：
 ```md
@@ -238,7 +239,7 @@ export default (source: string, fileAbsPath: string, type: 'jsx' | 'html') => {
 umi4 的文档用的是 `@mdx-js/mdx` 实现的转jsx，与dumi选择的remark功能目标是一致的。
 
 
-#### 把md看出jsx
+### 把md看出jsx
 知道一般的文档套路后，我们就可知道，md最终被转义成一个jsx，
 >如何转的细节，可以看 umi4的这个文件`packages\plugin-docs\src\compiler.ts`，以此类推 dumi的文档编译。
 
