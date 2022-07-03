@@ -278,6 +278,53 @@ tsc test.ts
 ```
 
 ## 其他
+### 奇怪的用法举例
+#### 组件接收类型参数
+```js
+
+
+export interface TestFuzzyInputProps<T = unknown> extends Omit<AutoCompleteProps, 'onChange' | 'itemRender'> {
+  getList: (keyword?: string) => Promise<T[]>;
+  debounceInterval?: number;
+  onPressEnter?: () => void;
+  onChange?: (value: any, actionType: string, item: T) => void;
+  itemRender?: (item: T) => { label: React.ReactNode, value: any } | React.ReactNode
+}
+
+
+const TestFuzzyInput = <T extends any>(props: TestFuzzyInputProps<T>) => {
+  return (<div>test</div>);
+}
+
+// 调用：
+
+export interface Employee {
+  deptName?: string;
+  employeeName?: string;
+  employeeNo?: string;
+  position?: string;
+}
+
+ <TestFuzzyInput<Employee>
+        style={{ width: 360 }}
+        getList={onSearchEmployee}
+        onPressEnter={() => {
+          console.log('搜索');
+        }}
+        // itemRender={item => item.employeeName}
+        itemRender={item => ({
+          label: <EmployeeItem dataSource={item} />,
+          value: item.employeeName,
+        })}
+      />
+```
+初看，很难理解，`TestFuzzyInput<Employee>` 怎么变成一个js的函数了，其实其原理参考上面的《包含泛型类型的普通类》 《泛型类》的例子是一样的原理。
+
+至于为什么可以这样，我想，这肯定是tsc的编译原理，
+tsc匹配到函数定义时，如果有接收 类型参数，那么调用此函数时，
+函数接收一个类型参数，返回此函数的类型声明；
+同时此函数亦可被用作普通的js函数来调用。
+
 ### d.ts文件
 详见《ts中使用commonjs规范与es6规范的不同》
 

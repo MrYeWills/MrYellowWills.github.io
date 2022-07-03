@@ -79,6 +79,7 @@ console.log(arguments.callee.toString())
 ```
 
 #### demo 与参考
+todo
 [本示例 - js-standard-demo]()通过 rollup 打包 esm cjs umd amd 三种规范的代码， 对 这几个规范有一个直观了解。
 
 [参考](https://www.bbsmax.com/A/n2d9y6k4dD/)
