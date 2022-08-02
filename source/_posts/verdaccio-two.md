@@ -848,3 +848,61 @@ const CopyPlugin = require('copy-webpack-plugin')
 ### Dockerfile 的生成
 参考 `/Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-file/Dockerfile`
 本例可生成 Dockerfile ，上传到docker.hub 后，在线上直接使用镜像。
+
+## 项目启动
+
+- nginx
+```s
+# xnbz-verdaccio/nginx 目录下
+node index.js
+docker-compose up
+```
+执行 node index.js  获取电脑的ip，生产 nginx 配置文件；
+启动 nginx容器；
+
+- verdaccio
+```s
+# xnbz-verdaccio/packages/docker-compose 目录下
+docker-compose -f ./test.yml up
+```
+启动 verdaccio 容器 redis容器；
+
+页面访问 http://xn.magichznpm.com 
+
+- 启动login 页面
+这是单独写的统一登陆页面。
+```s
+# koa-demo 仓库
+npm start
+```
+
+### 发布
+
+#### 登录 
+```s
+# xnbz-verdaccio/packages/verdaccio-login 目录下
+node ./bin/xnbzt
+```
+
+#### 登录不成功
+
+如果有缓存影响，导致登录不成功，可以删除缓存。
+
+npm logout --registry http://xn.magichznpm.com 
+
+然后 redis 删除所有登录数据，
+重新执行 node ./bin/xnbzt
+
+
+### FAQ
+#### 504 
+页面访问 http://xn.magichznpm.com 访问504，是因为 没有执行 nginx 中的 node index.js 获取最新的电脑ip 进行转发；
+
+
+#### 不在白名单中
+本项目在插件中做了限制，私库中的 pkg name一律以scope xnbz 为前缀，
+这一点非常好，可以在项目中一眼就知道哪些是公司的私库。
+npm publish 不成功时， 请设置好符合要求的包名。
+
+
+
