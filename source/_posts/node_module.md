@@ -9,6 +9,18 @@ series: node
 
 ## node好用模块
 
+### semver
+很好用的，用于测试 npm 版本是否匹配
+https://github.com/npm/node-semver
+```js
+const semver = require('semver')
+
+semver.valid('1.2.3') // '1.2.3'
+semver.valid('a.b.c') // null
+semver.clean('  =v1.2.3   ') // '1.2.3'
+semver.satisfies('1.2.3', '1.x || >=2.5.0 || 5.0.0 - 7.2.3') // true
+```
+
 ### nodemon
 一款用于 使用node启动的项目，监听当项目文件变动时，自动启动类似npm start命令的模块。
 [demo示例](https://github.com/YeWills/koa-demo/tree/master)
@@ -127,6 +139,16 @@ parcel又build功能，build后生成的文件，可用于生产。
   npm view react time  #可显示react 所有版本 及其 发布时间
   npm view react repository #显示npm地址
   npm view react #可显示react当前稳定版本，及其其他简略信息
+```
+
+#### 可以查看哪些字段
+要看npm view 可以查看哪些 属性字段，可以使用 --json ，
+这样打印出来的 json，里面所有的key，就是可以查看的属性字段，
+其中可以看到里面的 time 就是所有的版本号和时间。
+还有很多其他字段，可以自己尝试看看，
+```sh
+npm view redux --json > data.txt
+npm view yui3@'>0.5.4' --json > data.txt
 ```
 
 ### concurrently

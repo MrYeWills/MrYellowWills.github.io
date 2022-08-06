@@ -395,11 +395,6 @@ tag版本要自己手动在package.json 中设置好，
 4.0.0-rc.1  用于 next 意义的版本名
 4.0.0-rc.2
 
-### 好用的npm cli
-npm login
-npm whoami  查看登陆名；
-npm config list 可以查看当前的配置信息，包括登陆的token信息；
-
 
 ### 关于npm登陆、token、publish 关系
 我们可以通过下面登陆，
@@ -452,38 +447,20 @@ npm 终端登陆的方式，是一个经典的终端登陆方案；
 
 
 
-## 好用的npm cli
-npm help adduser --viewer=browser   浏览器中打开 npm adduser 的说明文档；
-npm find-dupes --dry-run  找出被重复引用的包；
-npm why react 查看npm包被哪些包或项目引用，why 是 explain 的别名；
-npm bin --global  找出global npm 命令bin所在目录；
-npm help-search x  如果你对某一个npm 命令 或其他 有困惑，可以用这个命令，比如 x 是 npm exec 的别名，它就会列出相关的，其中exec就会列出来
-npx npm-packlist 查看npm publish 会包含要上传的文件；
-npm repo eslint  打开eslint的github
-npm docs eslint  打开eslint的官网文档
-
-意想不到的 别名
-
-npm adduser 别名为 npm login
 
 
-高级：
-npm deprecate my-thing@"< 0.2.3" "critical bug fixed in v0.2.3"  
->This command will update the npm registry entry for a package, providing a deprecation warning to all who attempt to install it.
-
-
-可以通过这个例子来看出 npm 中 -- 的使用技巧 [官网](https://docs.npmjs.com/cli/v8/commands/npm-exec)
-```s
-npm exec -- <pkg>[@<version>] [args...]
-npm exec --package=<pkg>[@<version>] -- <cmd> [args...]
-npm exec -c '<cmd> [args...]'
-npm exec --package=foo -c '<cmd> [args...]'
-
-alias: x
+### monorepo的npm包查看github仓库的小技巧
+[详细查看](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#repository)
+```js
+// monorepo的npm包 的 package.json ,那么其仓库在 下面的url上，目录层级在 directory上
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/facebook/react.git",
+    "directory": "packages/react-dom"
+  }
+}
 ```
-
-
-
 
 
 
