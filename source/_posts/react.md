@@ -736,3 +736,26 @@ setState 本身并非异步，但对state的处理机制给人一种异步的假
 - useEffect 清理操作改为异步操作 ，以前是同步操作
 - jsx不可返回 undefined
 - 删除部分私有api ，是react native 的api ，pc端不用关心
+
+
+## 调试
+
+### 断点正常，运行不正常
+```js
+ showDlgStatus(true);
+ setDlgData({...item});
+```
+ 此时去console.log() Dlg 组件的 constructor 生命周期，你会发现 DlgData 没有值，导致运行异常；
+ 但是如果控制台打开，断点调试，控制台又能打印 DlgData 的值，然后一切变得正常；
+
+解放思路，先设Dlg模态框的 数据，然后再设置show值，简言之 调换下位置：
+```js
+ setDlgData({...item});
+ showDlgStatus(true);
+```
+
+
+
+
+
+     
