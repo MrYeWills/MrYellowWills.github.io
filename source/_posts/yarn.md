@@ -44,6 +44,12 @@ series: 前端工具
 这与我们日常调试的有出入，可以以后再测试场景。
 
 
+### .yarnrc.yml中的${NAME} 
+${NAME}  ${NAME-fallback} ${NAME:-fallback}  是取环境变量的值， fallback是默认值。 
+>[参考](https://yarnpkg.com/configuration/yarnrc)
+Environment variables can be accessed from setting definitions by using the ${NAME} syntax when defining the values. 
+
+
 ### build:foo 与 $INIT_CWD
 带冒号的script 的name，可以用于 workplace。
 [参考](https://yarnpkg.com/getting-started/qa#how-to-share-scripts-between-workspaces)
@@ -102,7 +108,90 @@ nodeLinker: node-modules
 ```
 
 
+## 好用的cli
 
+yarn config  查看所有配置
+yarn info 查看包的相关信息，不带参数，可以查看项目依赖
+yarn why  比如 yarn why lodash  ： Display the reason why a package is needed.
+
+
+## 重点的配置
+
+### 重点配置
+nmHoistingLimits  默认为 none ，也就是默认yarn install 的时候，使用 hoisted 模式。
+
+packageExtensions  可用于解决第三方依赖依赖了错误的依赖的解决方案：[参考 packageExtensions](https://yarnpkg.com/configuration/yarnrc#packageExtensions)
+注意的是，packageExtensions 与 resolutions 有点类似，注意二者区别使用
+Note: This field is made to add dependencies; if you need to rewrite existing ones, prefer the resolutions field.
+
+
+### 配置名 取名有讲究，
+众所周知，package.json 是node的专利，而npm是node的默认包管理器，
+而 yarn的配置，是同时可以通过 pakcage.json 和 yarn.yml 设置的，
+pakcage.json中的配置，对应到 yarn.yml 中的名字就是，比如：
+package.json中 publishConfig.registry 就是 yarn.yml 中的 npmPublishRegistry，
+在yarn.yml中多了一个npm，少了一个config。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## npm 与 yarn 的区别
+以 https://github.com/YeWills/react-redux-hooks-demo/tree/router-test 为例子， router-test 分支，
+ **安装前，删除 yarn.lock 或 package.json.lock**
+使用npm 安装：
+npm 8.1.2
+node v16.13.2
+报错 
+```s
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR! 
+npm ERR! While resolving: reduxhooks@0.1.0
+npm ERR! Found: react-redux@7.2.8
+npm ERR! node_modules/react-redux
+npm ERR!   react-redux@"^7.2.0" from the root project
+npm ERR! 
+npm ERR! Could not resolve dependency:
+npm ERR! peer react-redux@"^4.4.8 || ^5.0.7" from connected-react-router@4.5.0
+npm ERR! node_modules/connected-react-router
+npm ERR!   connected-react-router@"^4.3.0" from the root project
+npm ERR! 
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR! 
+npm ERR! See /Users/js/.npm/eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/js/.npm/_logs/2022-08-26T06_07_37_610Z-debug.log
+```
+原因是 react-redux peer依赖与顶层依赖 版本冲突，
+上面已经提示了解决方案，要么就是修改第三方依赖，要么就是忽略版本冲突，npm install --force 或者 npm install --legacy-peer-deps安装。
+本项目使用 npm install --force 时会报 npm ERR! gyp ERR! cwd  node-sass 的错，
+使用 npm install --legacy-peer-deps 就可以正常安装完毕，不报上面的 node-sass。
+
+
+使用yarn安装
+yarn 1.22.19
+node v16.13.2
+使用yarn 的话，会忽略这种冲突，直接安装成功。
+感觉这是 yarn 的缺陷，至少应该提示这种冲突的。
+所以这个yarn 类似 npm install --force 或 npm install --legacy-peer-deps 。
+除此之外，用 yarn 安装还不会报 npm ERR! gyp ERR! cwd  node-sass 的错误。 
+
+yarn 好比 git 的merge，容错性比较好。
+npm好比 git 的 rebase，将错误暴露出来。
 
 
 

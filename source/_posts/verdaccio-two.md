@@ -47,7 +47,7 @@ docker-compose ps 列举运行的 compose；
 `启动登录页面、接口`
 此登录页面为自定义的npm 登录页面，用于npm pubulish。
 启动这个后， 执行 xnbz-login 命令。就会触发此页面。
-todo 仓库在这里
+[仓库在这里 - 分支 verdaccio-login](https://github.com/YeWills/koa-demo/tree/verdaccio-login)
 npm start 即可启动。
 此项目也是一个比较好的值得借鉴的后端接口开发工程化小模版。
 
