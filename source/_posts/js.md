@@ -611,6 +611,15 @@ decodeURIComponent("%E9%AA%91%E6%89%8B%E7%AE%A1%E7%90%86") //"骑手管理"
 const isFalsy = value => value === 0 ? false : !value 
 ```
 
+### 国际化
+这是一个简单的国际化demo：
+https://github.com/moT01/react-i18next-demo/tree/solution 
+与
+git://github.com/verdaccio/ui 
+
+用的技术栈一样：
+i18next + react-i18next ；
+
 
 
 

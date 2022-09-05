@@ -1,10 +1,12 @@
 ---
-title: 工具篇
+title: 浏览器系列(一)：浏览器基础知识
 date: 2022/8/28
-tags: 工具
+tags: 浏览器
 categories: 
 - 工具
+series: 浏览器
 ---
+
 
 ## 浏览器原理
 
@@ -157,4 +159,4 @@ C是生成布局树；
 ![](/image/ntool/b18.jpg)
 
 
-## 浏览器插件
+
