@@ -16,6 +16,20 @@ popup，options，background，content_scripts
 background 是后台，相当于进程，没有dom，不具备浏览器特性，所以很多浏览器api用不了，类似于 node 进程；
 content_scripts 相当于页面上的js，可以直接操作页面；
 
+popup ： 插件启用时，固定在 地址栏右侧时，点击插件，就会弹出一个插件弹出页面，
+前提是要配置，否则不会出现，**开发模式下查看需要右键插件**，点击【审查弹出页面】：
+```json
+  "action": {
+    "default_title": "Default Title",
+    "default_popup": "popups/popup.html",
+    "default_icon": {
+      "32": "icons/32.png",
+      "72": "icons/72.png",
+      "128": "icons/128.png",
+      "512": "icons/512.png"
+    }
+  },
+```
 ## 插件调试
 
 ### 以百度翻译demo说明
@@ -89,6 +103,12 @@ source 子目录下，找到 Content scripts 就可以找到 content了。
 因为background是一个后台进程，类似node，没有dom，因此不能使用jquery。
 当然也不能使用ajax，因为只有浏览器 ajax XMLHttpRequest 是 浏览器属性。
 
+
+
+## 参考与demo
+[【干货】Chrome插件(扩展)开发全攻略](http://blog.haoji.me/chrome-plugin-develop.html)
+[chrome extension 开发入门指南](https://juejin.cn/post/7106758827520819236)
+[官网示例 Chrome Extensions samples](https://github.com/GoogleChrome/chrome-extensions-samples)
 
 
 

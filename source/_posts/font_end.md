@@ -507,3 +507,20 @@ hybrid的js页面的ajax需要调去原生提供的请求API，才能向后端�
 ## FAQ
 ### 获取并使用字体图标
 [可以通过阿里的开源字体库](https://www.iconfont.cn/)使用
+
+
+## 方案
+### 滚动到指定的节点
+一个弹框 container--tree， 里面有很多节点；
+目标：滚动到 指定的 .next-tree-node-label 节点上；
+```js
+    const treeEle = document.querySelector('.container--tree');
+    const treePos = treeEle.getBoundingClientRect();
+    const highlightNodes = document.querySelector('.container--tree .next-tree-node.next-filtered > .next-tree-node-inner .next-tree-node-label');
+    const pos = highlightNodes ? highlightNodes.getBoundingClientRect() : null;
+    if (pos) {
+      treeEle.scrollTop += pos.top - treePos.top - treeEle.clientHeight / 2 + 35;
+    }
+```
+这里用到了双 getBoundingClientRect 来确定相对位置。
+实际的业务需求有，当一个div中有非常多的列表节点，希望滚动到第一个高亮的节点。
