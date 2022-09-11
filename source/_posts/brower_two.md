@@ -32,6 +32,13 @@ popup ： 插件启用时，固定在 地址栏右侧时，点击插件，就会
 ```
 ## 插件调试
 
+### 好用的调试工具
+[参考chromium的npm 工具调试 demo](https://github.com/mmktomato/chrome-extension-manifest-v3-declarativeNetRequest-sample/tree/master/static)
+[参考web-ext](https://github.com/mozilla/web-ext)
+```s
+web-ext run -s src --target chromium --start-url 'https://www.baidu.com/'
+```
+
 ### 以百度翻译demo说明
 #### demo地址
 [demo地址](todo)
@@ -104,11 +111,39 @@ source 子目录下，找到 Content scripts 就可以找到 content了。
 当然也不能使用ajax，因为只有浏览器 ajax XMLHttpRequest 是 浏览器属性。
 
 
+## 插件能力
+打印、网络请求（cookie、header 等）、标签页、处理页面内容、浏览器右键、浏览器下载、浏览器代理、vpn、获取电脑系统、电池信息、电脑桌面截屏、操作电脑文件；
+
 
 ## 参考与demo
-[【干货】Chrome插件(扩展)开发全攻略](http://blog.haoji.me/chrome-plugin-develop.html)
+
+### 自己开发的谷歌插件
+[跨域Cookie转发 v3](https://github.com/YeWills/chrome-extensions)
+可结合koa写的一个后台来测试cookie：
+配合[后台demo - koa-demo 的 verdaccio-login 分支](https://github.com/YeWills/koa-demo.git)
+
+### 其他
+[官网](https://developer.chrome.com/docs/extensions/reference/)
+[非常好【干货】Chrome插件(扩展)开发全攻略](http://blog.haoji.me/chrome-plugin-develop.html)
 [chrome extension 开发入门指南](https://juejin.cn/post/7106758827520819236)
 [官网示例 Chrome Extensions samples](https://github.com/GoogleChrome/chrome-extensions-samples)
+
+[chrome浏览器插件开发视频教程](https://www.bilibili.com/video/BV1a64y187QR?spm_id_from=333.337.search-card.all.click)
+
+[插件示例 - chrome-cookie-extence cookie携带 v2](https://github.com/chirpmonster/chrome-cookie-extence)
+
+[插件示例 - chrome-extension-cookie cookie转发 v3](https://github.com/aMiing/chrome-extension-cookie)
+
+
+[chrome-extension-cookie 一键搞定 cookie 跨域访问](https://www.jianshu.com/p/1b9639506728?u_atoken=05a3fe03-43e6-49f5-980a-0f27260a2914&u_asession=01SgGo7R_-nx3-sFM42Lr6v_DK_w82fkkvT935DecQjlkOzzSv6yRGEGtKjxsszuCZX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-PYd16O80yZLgUpuQXbm51p5RU6UlCZRD0CDVEtyq5OmBkFo3NEHBv0PZUm6pbxQU&u_asig=05bUYiDdyLnVZo90Knh5nAHMzwczUZhl586FMLh_Nggm3jfLp7h5u9z5cZZeDscVikUHF94E5R3jEggXgL9tgfMPp9K012d0NkNi2oANeRPsiWNdzalJYBylm9SCbAphlQRxmInA2niE1p5UKuLGJeTYvqNPWRRPHXtlAGOVWBXJH9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzVoJN2_YxVmpIh_TonA5n1xg6qhtPFV9-9xBkcNspRflO21gpjNe9akLVIO763CEMe3h9VXwMyh6PgyDIVSG1W-ma2sDGtl-YIWcpGzGsr3oyks0NmwmEEqbQaAo11Q_aeE1r4sWaf6bfYOh5XU1BzaN9q0bGxRapmSuxiYnwW6zmWspDxyAEEo4kbsryBKb9Q&u_aref=ClvQgIkmwIYYuyz9oNevRHlBeAw%3D)
+
+
+[百度翻译开放平台](https://api.fanyi.baidu.com/doc/21)
+[chrome extension 开发入门指南](https://juejin.cn/post/7106758827520819236)
+
+[参考chromium的npm 工具调试 demo](https://github.com/mmktomato/chrome-extension-manifest-v3-declarativeNetRequest-sample/tree/master/static)
+[参考web-ext](https://github.com/mozilla/web-ext)
+
 
 
 
