@@ -145,6 +145,24 @@ source 子目录下，找到 Content scripts 就可以找到 content了。
 [参考web-ext](https://github.com/mozilla/web-ext)
 
 
+## 油猴
+
+先领略下油猴的魅力：
+[油猴插件怎么用？最全使用教程（可能），推荐几个小众的脚本](https://www.bilibili.com/video/BV1Wy4y1b76T?spm_id_from=333.337.search-card.all.click&vd_source=49cfdfde4ef881bfb8dd4fd5921f4b42)
+
+再看下油猴的开发入门，里面的 github 与 greasyfork 同步讲的还是不错的
+[油猴脚本开发从入门到精通 P0 开发环境配置与脚本分发](https://www.bilibili.com/video/BV1Da411Z7s7?spm_id_from=333.337.search-card.all.click&vd_source=49cfdfde4ef881bfb8dd4fd5921f4b42)
+
+过一遍文档：
+[爬猴从入门到实战！](https://segmentfault.com/a/1190000038328999)
+[油猴脚本编写教程](https://segmentfault.com/a/1190000021654926)
+
+看下官网：
+[油猴官网（开发）文档](https://www.tampermonkey.net/documentation.php)
+
+
+[插件下载](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=zh-CN)
+[Greasy Fork - 脚本资源](https://greasyfork.org/zh-CN)
 
 
 
