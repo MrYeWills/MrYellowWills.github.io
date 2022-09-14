@@ -144,6 +144,8 @@ source 子目录下，找到 Content scripts 就可以找到 content了。
 [参考chromium的npm 工具调试 demo](https://github.com/mmktomato/chrome-extension-manifest-v3-declarativeNetRequest-sample/tree/master/static)
 [参考web-ext](https://github.com/mozilla/web-ext)
 
+[谷歌官网的中文翻译](https://doc.yilijishu.info/chrome/)
+
 
 ## 油猴
 
