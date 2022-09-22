@@ -396,8 +396,53 @@ D E 类地址有特殊用途
 目前运用广泛的也是 CIDR 这种。
 
 
+### 网络地址转换NAT技术
+ ![](/image/bw/53.png)
+ ![](/image/bw/54.png)
+ ![](/image/bw/55.png)
+
+网络地址转换NAT技术 用于多个主机通过一个公有ip访问互联网的私有网络中。
+NAT减缓了ip地址的消耗，但增加了网络通信的复杂度
+
+### ICMP协议
+ICMP协议是配合IP协议一起工作的，会对IP报文进行组装
+ ![](/image/bw/56.png)
 
 
+#### ping 与 ICMP协议
+ping应用运用的就是ICMP协议，检查自己的网络问题：
+ping 回环地址127.0.0.1 检查自己的网络驱动器是否正常；
+ping 网关地址，这里的网关指路由器， 检查电脑与路由器连接是否正常；
+>网关就是路由器
 
+ping 远端地址，比如百度，检查是否能上网；
 
+#### Traceroute 与 ICMP协议
+Traceroute应用运用的就是ICMP协议,检查到达目的ip地址，经过了哪几跳。可查看本文的《逐跳》
+或者说是探测ip数据报在网络中走过的路径。
+ ![](/image/bw/57.png)
 
+Traceroute的工作原理，
+Traceroute 为了探测ip路径。
+首先它会封装一个 TTL为1的报文，
+到达n1后，因为 TTL 的特性是每经过一跳，就减1，所以 TTL 变成0，
+TTL变成0后，中型网络 n1 就会向源机器A发出一个 ICMP 终点不可达报文，
+机器A 收到报文后， Traceroute 会再发一个 TTL 为2的报文；
+经过n1 到达 n2 的时候，TTL 变成 0， n2向机器A发送一个 ICMP 终点不可达报文，
+如此往复
+当到达机器B时，机器B将发送一个回应的报文，说明你发的数据我收到了。
+此时 Traceroute 就知道了整个ip路径。
+![](/image/bw/58.png)
+
+```s
+tracert github.com
+```
+![](/image/bw/59.png)
+
+### RIP协议
+![](/image/bw/60.png)
+![](/image/bw/61.png)
+![](/image/bw/62.png)
+
+### OSPF协议
+![](/image/bw/63.png)
