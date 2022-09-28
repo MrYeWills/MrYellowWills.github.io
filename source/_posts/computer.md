@@ -446,3 +446,8 @@ tracert github.com
 
 ### OSPF协议
 ![](/image/bw/63.png)
+
+### 外部网关路由协议之BGP协议
+解决两个内部网络使用不同协议，比如一个用RIP协议，一个用OSPF协议
+![](/image/bw/64.png)
+![](/image/bw/65.png)
