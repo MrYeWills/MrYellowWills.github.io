@@ -446,6 +446,27 @@ promise 大致的思路；
 还有就是 整理 一套工具库，比如 浏览器插件的 monorope 的库。】
 
 
+- 9.27
+
+
+一套ui
+一套umi
+一套 生成的 脚手架模版tpl库  【一套umi， 与编译、模版相关的放在脚手架】
+一套 monorepo库 【上面就是】
+
+是要基于 umi ，还是直接自己手写；
+
+如何将 monorepo 应用与 eslint demo、谷歌插件，
+
+先做这个：
+当自己想使用 react demo 时，有各种模版，
+例如 router，sass，less，ts，等模版；
+一套monorepo eslint、谷歌插件 可以以之前抄的插件为篮板【一套react monorepo脚手架】
+【一套umi， 与编译、模版相关的放在脚手架】
+
+【一套ui，ajax ，与业务相关的全部放到ui组件库中】
+
+以这个为例  https://github.com/myWsq/simple-header-modifier
 
 
 

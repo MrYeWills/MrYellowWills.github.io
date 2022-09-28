@@ -134,6 +134,8 @@ source 子目录下，找到 Content scripts 就可以找到 content了。
 
 [插件示例 - chrome-extension-cookie cookie转发 v3](https://github.com/aMiing/chrome-extension-cookie)
 
+[插件示例 - Header Modifier monorepo方案挺好 cookie转发 v3](https://github.com/myWsq/simple-header-modifier)
+
 
 [chrome-extension-cookie 一键搞定 cookie 跨域访问](https://www.jianshu.com/p/1b9639506728?u_atoken=05a3fe03-43e6-49f5-980a-0f27260a2914&u_asession=01SgGo7R_-nx3-sFM42Lr6v_DK_w82fkkvT935DecQjlkOzzSv6yRGEGtKjxsszuCZX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-PYd16O80yZLgUpuQXbm51p5RU6UlCZRD0CDVEtyq5OmBkFo3NEHBv0PZUm6pbxQU&u_asig=05bUYiDdyLnVZo90Knh5nAHMzwczUZhl586FMLh_Nggm3jfLp7h5u9z5cZZeDscVikUHF94E5R3jEggXgL9tgfMPp9K012d0NkNi2oANeRPsiWNdzalJYBylm9SCbAphlQRxmInA2niE1p5UKuLGJeTYvqNPWRRPHXtlAGOVWBXJH9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzVoJN2_YxVmpIh_TonA5n1xg6qhtPFV9-9xBkcNspRflO21gpjNe9akLVIO763CEMe3h9VXwMyh6PgyDIVSG1W-ma2sDGtl-YIWcpGzGsr3oyks0NmwmEEqbQaAo11Q_aeE1r4sWaf6bfYOh5XU1BzaN9q0bGxRapmSuxiYnwW6zmWspDxyAEEo4kbsryBKb9Q&u_aref=ClvQgIkmwIYYuyz9oNevRHlBeAw%3D)
 
