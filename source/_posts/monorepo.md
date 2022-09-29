@@ -8,12 +8,6 @@ series: monorepo
 ---
 
 
-## 待做
-有空了解下现有项目的浏览器登陆机制，cookie 与token，印象中接口交流没有使用cookie，而是tokken，
-但为什么二级域名设置cookie呢？
-其实这些可能已经做了笔记，有空把之前的笔记拿出来看看
-
-
 
 ## lerna笔记
 
