@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>umi系列(十) umi项目脚手架、改造umi | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="umi">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>umi系列(十) umi项目脚手架、改造umi</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">umi系列(十) umi项目脚手架、改造umi</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-06-12T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-06-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/umi系列/">umi系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-umi_ten"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">umi系列(十) umi项目脚手架、改造umi</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-06-12 00:00:00" datetime="2022-06-12T00:00:00.000Z"  itemprop="datePublished">2022-06-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/umi系列/">umi系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>本篇对 umi 项目的脚手架讲解：</p>
+<p>开发时：</p>
+<ul>
+<li>修改代码后，如何编译</li>
+<li>修改代码后，如何实时测试效果</li>
+</ul>
+<p>发布时，</p>
+<ul>
+<li>修改代码后，如何编译，并发布；</li>
+<li>如何管理版本；</li>
+</ul>
+<p>示例 example；<br>文档；</p>
+<h2 id="待研究"><a href="#待研究" class="headerlink" title="待研究"></a>待研究</h2><p>为什么会利用pnpm的workplace功能，因为pnpm的workplace功能是根目录下设置的，如何影响<code>examples\with-react-17</code> 目录下，有兴趣可看看，到这个问题不大, 参考下面的《example示例》</p>
+<h2 id="开发时"><a href="#开发时" class="headerlink" title="开发时"></a>开发时</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>以packages 为例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\preset-umi\package.json</span></span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"pnpm tsc"</span>,</span><br><span class="line">    <span class="string">"build:deps"</span>: <span class="string">"magicbird-scripts bundleDeps"</span>,</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"pnpm build -- --watch"</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者</span></span><br><span class="line">  <span class="comment">// packages\plugin-docs\package.json</span></span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"pnpm tsc"</span>,</span><br><span class="line">    <span class="string">"build:css"</span>: <span class="string">"tailwindcss -i ./client/theme-doc/tailwind.css -o ./client/theme-doc/tailwind.out.css"</span>,</span><br><span class="line">    <span class="string">"build:deps"</span>: <span class="string">"magicbird-scripts bundleDeps"</span>,</span><br><span class="line">    <span class="string">"build:extra"</span>: <span class="string">"pnpm build:css"</span>,</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"pnpm build -- --watch"</span>,</span><br><span class="line">    <span class="string">"dev:css"</span>: <span class="string">"pnpm build:css -- --watch"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\preset-umi\tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"extends"</span>: <span class="string">"../../tsconfig.base.json"</span>,</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"outDir"</span>: <span class="string">"./dist"</span>,</span><br><span class="line">    <span class="string">"rootDir"</span>: <span class="string">"./src"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"include"</span>: [<span class="string">"src"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsconfig.base.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"declaration"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"declarationMap"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"esModuleInterop"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"module"</span>: <span class="string">"commonjs"</span>,</span><br><span class="line">    <span class="string">"moduleResolution"</span>: <span class="string">"node"</span>,</span><br><span class="line">    <span class="string">"noUnusedLocals"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"noUnusedParameters"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"strict"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"skipLibCheck"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"target"</span>: <span class="string">"es2019"</span>,</span><br><span class="line">    <span class="string">"jsx"</span>: <span class="string">"react"</span>,</span><br><span class="line">    <span class="string">"paths"</span>: &#123;</span><br><span class="line">      <span class="string">"umi"</span>: [<span class="string">"./packages/umi"</span>],</span><br><span class="line">      <span class="string">"@umijs/utils"</span>: [<span class="string">"./packages/utils"</span>],</span><br><span class="line">      <span class="string">"@umijs/renderer-react"</span>: [<span class="string">"./packages/renderer-react"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"exclude"</span>: [</span><br><span class="line">    <span class="string">"**/node_modules"</span>,</span><br><span class="line">    <span class="string">"**/examples"</span>,</span><br><span class="line">    <span class="string">"**/dist"</span>,</span><br><span class="line">    <span class="string">"**/fixtures"</span>,</span><br><span class="line">    <span class="string">"**/*.test.ts"</span>,</span><br><span class="line">    <span class="string">"**/*.e2e.ts"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由上可知，其编译全部依赖 tsc ，没有用到所谓的webpack rollup 等。</p>
+<p>开发时，除了编译外，还外加了一个–watch 。</p>
+<h3 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h3><p>如上。</p>
+<h3 id="如何-实时-测试效果"><a href="#如何-实时-测试效果" class="headerlink" title="如何(实时)测试效果"></a>如何(实时)测试效果</h3><p>由上可知，可通过watch实时监听编译，<br>编译后生成最新的dist，<br>而umi项目，都是用的软链接，<br>使用到的 example 或文档项目， 都会实时通过软链接，使用最新的代码版本。</p>
+<h2 id="发布时"><a href="#发布时" class="headerlink" title="发布时"></a>发布时</h2><p>修改 packages 或 example 代码后，<br>及时git add commit。</p>
+<p>然后运行 pnpm release 命令，<br>此命令的过程可参考《umi系列(四)：npm script命令  – pnpm release》。<br>此 release 命令会运行：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// build packages</span></span><br><span class="line">logger.event(<span class="string">'build packages'</span>);</span><br><span class="line"><span class="keyword">await</span> $<span class="string">`npm run build:release`</span>;</span><br><span class="line"><span class="keyword">await</span> $<span class="string">`npm run build:extra`</span>;</span><br><span class="line"><span class="keyword">await</span> $<span class="string">`npm run build:client`</span>;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"> <span class="string">"build:release"</span>: <span class="string">"magicbird-scripts turbo --cmd build --no-cache -- --declarationMap false"</span>,</span><br><span class="line"> <span class="string">"build:extra"</span>: <span class="string">"magicbird-scripts turbo --cmd build:extra"</span>,</span><br><span class="line"><span class="string">"build:client"</span>: <span class="string">"magicbird-scripts turbo --cmd build:client"</span>,</span><br></pre></td></tr></table></figure>
+<p>其实就是给所有的 package包 统一先删除dist，然后再统一给每个package包执行 build，其实就是tsc编译。</p>
+<p>然后通过learn 统一进行版本管理，修改各个包的package.json 的version，然后 git tag 、push 等 以及 npm publish。</p>
+<p>上述过程中还有其他的 比如比较远程版本、发布鉴权、npm源检测 等等，这里就不细述了。</p>
+<h2 id="example示例"><a href="#example示例" class="headerlink" title="example示例"></a>example示例</h2><p>这个比较简单，利用pnpm的workplace功能，example下的每个示例都是通过软链接引用的package包。<br>进入 example后，比如 <code>examples\with-react-17</code> 执行 pnpm install，<br>则会自动 利用pnpm的workplace功能，建立软链接。<br>然后 npm start 即可正常启动了。</p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p>可参考《umi系列(八) 文档插件》《umi系列(九) 文档插件》</p>
+<h2 id="改造umi"><a href="#改造umi" class="headerlink" title="改造umi"></a>改造umi</h2><h3 id="策略选择"><a href="#策略选择" class="headerlink" title="策略选择"></a>策略选择</h3><p>umi源码看完后，有两个遗憾：如何进一步了解umi；如何自己写一套类似框架。<br>经过试错与选择后，决定直接套用umi项目源码，修改成一套自己的源码。<br>当时考虑点：</p>
+<ul>
+<li>如果能直接将umi改成任意其他名字，也是非常棒的第一步；</li>
+<li>用删除法来复制粘贴umi项目，重写项目最稳妥；</li>
+<li>去掉不必要的一些编译，做一个精简版本的umi;</li>
+<li><p>能精简umi，其实也是对umi了解非常深厚了</p>
+</li>
+<li><p>直接 copy 然后换名字，发布的原因在于：</p>
+</li>
+<li>过程中读 umi 认识一步加深；</li>
+<li>熟悉了 它整个 脚手架 发包、包管理、lint 功能</li>
+</ul>
+<p>没有对umi深入的了解，直接copy 替换名字 发布版本是很难的，<br>必须要对umi有深入的了解后，才可以做这件事情。<br>所以这个顺序要注意，也可以指导以后阅读其他大型组件库。</p>
+<p>其实选择上述最重要的是：<br>性价比最高，就是时间成本最低；<br>最容易成功，其实就是典型的温州模式；<br>凡事先用起来，需求有了，自然就过程中反哺更加了解umi原理了，这比单纯读umi框架更有趣味性；<br>兴趣是最好的老师；</p>
+<h3 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a>具体实施</h3><p>直接从umi官网，clone下来项目，<br>全局搜索umi关键字进行替换，<br>由于工程量非常大，为避免出错，分三阶段替换：</p>
+<ul>
+<li>只替换根目录下关键字（umi项目本身脚手架）</li>
+<li>逐个替换 package下umi；</li>
+<li>逐个替换 example下umi；</li>
+</ul>
+<p>替换的技巧：<br>文件搜索 umi 关键字，然后一口气对所有相关的内容进行替换，<br>在文件下，直接对 <code>@mumijs/</code>  —》 <code>@magicbirdjs/</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">magicbird</span><br><span class="line">magicbirdjs</span><br><span class="line">@magicbirdjs/</span><br><span class="line">node_modules,*.md,*.test.ts</span><br></pre></td></tr></table></figure></p>
+<p>因为涉及到很多原理的了解，非常考验umi了解程度。<br>基于此，umi的改造，一定要在对umi有了深厚了解后，再进行，否则将替换错误，或各种无法启动。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/06/12/umi_ten/" target="_blank" rel="external">https://yewills.github.io/2022/06/12/umi_ten/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/umi/">umi</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/06/12/umi_ten/&title=《umi系列(十) umi项目脚手架、改造umi》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/06/12/umi_ten/&title=《umi系列(十) umi项目脚手架、改造umi》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/06/14/ts_five/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ts把玩系列(二):类型体操通关秘籍</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/05/24/umi_eight/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">umi系列(八) 文档插件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待研究"><span class="post-toc-number">1.</span> <span class="post-toc-text">待研究</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发时"><span class="post-toc-number">2.</span> <span class="post-toc-text">开发时</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#监听"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">监听</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何-实时-测试效果"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">如何(实时)测试效果</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#发布时"><span class="post-toc-number">3.</span> <span class="post-toc-text">发布时</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#example示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">example示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文档"><span class="post-toc-number">5.</span> <span class="post-toc-text">文档</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#改造umi"><span class="post-toc-number">6.</span> <span class="post-toc-text">改造umi</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#策略选择"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">策略选择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体实施"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">具体实施</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/06/12/umi_ten/&title=《umi系列(十) umi项目脚手架、改造umi》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/06/12/umi_ten/&title=《umi系列(十) umi项目脚手架、改造umi》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aQW7EIAwF0N7/0tNtF53wbWdGCrysRhECXiq52ObnJ35el8/fMe/GX8/57s3NDwYGxmMZ+Rbn2+r9vt4bBgbGOYx320rGJOz8E+TrYmBgYPSCYBJwrzeKgYGBcRfj3qCMgYGBkTDyUlo1HCeb+GoujoGB8UBGXnX//u+P9DcwMDAexXgVnyRo5iWzXnr8zyoYGBhbM/IA1yvx50E8eb9YBQMDY1NGXsTPE8jqyOQTLN5gYGBszai2FSdXIqrNzrwMh4GBcQKjt/XkE+Rz5sF3cXzEwMDYmjEpmeWXLXqtiOpVDAwMjP0Y1RL8pCWQBOjkzaiRiYGB8XBG3k/otSrztLZ89MTAwNiU0Sv0z8NrtSWwmAcDA2NrRlJ8v+uSxPzaWaElgIGBsSljnrJWL5DNPxwGBsYJjPkRrTpbL5VdFOYwMDCOYSRT52PyI2C5y4qBgXEwoxDgWtQPFuAwMDC2ZuTHu/wiV14mu16rmlpjYGDszcitvZGTmyD5vwQMDIzTGNUGZ7KtKrgaoDEwME5g3NVQzC9PFE6syeoYGBibMnoF/XvbAHlBbfF3wMDA2JSRP/NJqwlw9TCKgYGxNyMPsr1SWhLiy03K6n8PDAyMLRjz5Da/qFFNjMu5OAYGxvGMvKxWbV722pwYGBgY+eYm20paCItjJQYGxgGMSTNgtHyrzYmBgXEao5o63hs6ewXBZlMTAwPjeYxfowX6CCQbjEkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

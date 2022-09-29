@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>verdaccio搭建npm私服(二)：示例 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="verdaccio">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>verdaccio搭建npm私服(二)：示例</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">verdaccio搭建npm私服(二)：示例</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-07-03T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-07-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-verdaccio-two"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">verdaccio搭建npm私服(二)：示例</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-07-03 00:00:00" datetime="2022-07-03T00:00:00.000Z"  itemprop="datePublished">2022-07-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p>这里以开发环境启动使用为例说明。</p>
+<p>/Users/js/Desktop/work/workplace/verdaccio<br><code>根目录下执行 yarn 安装所有依赖，</code><br>因为是lerna项目，packages下所有的包都会安装。</p>
+<p>/Users/js/Desktop/work/workplace/verdaccio/packages/docker-file<br><code>目录下执行 npm run plugin:image</code><br>打包生成 插件编译包，后面的 vadaccio 启动需要编译后的插件包：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./storage:/verdaccio/storage</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/verdaccio/conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">../docker-image/build:/verdaccio/plugins</span></span><br></pre></td></tr></table></figure></p>
+<p>/Users/js/Desktop/work/workplace/verdaccio/packages/docker-compose<br><code>目录下执行</code><br>启动：<br>docker-compose -f test.yml up<br>停止：<br>docker-compose down<br>查看列举：<br>docker-compose ps 列举运行的 compose；</p>
+<p><code>设置host</code></p>
+<p>127.0.0.1 xn.magichznpm.com</p>
+<p><code>启动登录页面、接口</code><br>此登录页面为自定义的npm 登录页面，用于npm pubulish。<br>启动这个后， 执行 xnbz-login 命令。就会触发此页面。<br><a href="https://github.com/YeWills/koa-demo/tree/verdaccio-login" target="_blank" rel="noopener">仓库在这里 - 分支 verdaccio-login</a><br>npm start 即可启动。<br>此项目也是一个比较好的值得借鉴的后端接口开发工程化小模版。</p>
+<p>如果要登出，可以执行 npm logout –registry <a href="http://xn.magichznpm.com/" target="_blank" rel="noopener">http://xn.magichznpm.com/</a></p>
+<p>/Users/js/Documents/nginx-config<br><code>目录下执行：</code><br>node index.js  生成 多个域名的server 配置 nginx文件；<br>docker-compose up</p>
+<p>浏览器上访问：<br><a href="http://xn.magichznpm.com/" target="_blank" rel="noopener">http://xn.magichznpm.com/</a></p>
+<p>浏览器上能访问后，首先第一步要做的就是登录，我们要用 自制的登录工具 @xnbz/verdaccio-tools 。<br>通过此工具登录后，redis就会手机登录名，等等，形成一个user用户列表。<br>这样的好吃就是 可以给后面的 对包进行赋权发布权限的操作。</p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>安装 npm i -g @xnbz/verdaccio-tools</p>
+<p>然后使用 xnbz-login 进行登录。<br>此命令会在浏览器上打开一个登录窗口；<br>登录成功后，可以通过 redis-cli 查看登录信息</p>
+<h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><p>先安装 <code>npm i -g redis-cli</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">localhost:test xhkj$ rdcli</span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) @npm:@cache:allUser</span><br><span class="line">2) @npm:@pkg:@xnbz/test </span><br><span class="line">3) @npm:@user:123aaa</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 删除</span><br><span class="line">del key @npm:@cache:allUser</span><br></pre></td></tr></table></figure>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>在任意一个npm pkg 内，注意名字要定义为 @xnbz/ 开头， 执行 npm publish 即可发布成功。<br>并且要注意要发布的pkg包内加上这个<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"publishConfig"</span>: &#123;</span><br><span class="line">  <span class="string">"registry"</span>: <span class="string">"http://xn.magichznpm.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h3><h4 id="未使用https"><a href="#未使用https" class="headerlink" title="未使用https"></a>未使用https</h4><p>当前示例 未实现https，先以http来实现全部功能。</p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><h4 id="值得注意的是-证书需要配置"><a href="#值得注意的是-证书需要配置" class="headerlink" title="值得注意的是 证书需要配置"></a>值得注意的是 证书需要配置</h4><p>值得注意的是 证书需要配置，否则报错，也可以去除这个证书配置，如果证书内容错误，启动nginx 也会报错，<br>证书配置目录： <code>/Users/js/Desktop/work/git/xnbz-verdaccio/nginx/.localssl</code></p>
+<h4 id="nginx-config-启动403问题"><a href="#nginx-config-启动403问题" class="headerlink" title="nginx-config 启动403问题"></a>nginx-config 启动403问题</h4><p>这是因为没有创建文件：<br><code>/Users/js/Documents/nginx-config/html/index.html</code></p>
+<h2 id="nginx-config讲解"><a href="#nginx-config讲解" class="headerlink" title="nginx-config讲解"></a>nginx-config讲解</h2><h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.7'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx:alpine</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="comment">#将宿主机的80端口映射到docker创建的容器80端口</span></span><br><span class="line">    <span class="comment">#这样，就可以在宿主机 通过80端口直接访问docker容器80端口</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">443</span><span class="string">:443</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./aaa/:/www/aaa</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./bbb/:/www/bbb</span></span><br><span class="line">      <span class="comment"># 的配置文件重定向， ro 是只读的意思</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./nginx/nginx.conf:/etc/nginx/nginx.conf:ro</span></span><br><span class="line">      <span class="comment"># ngnix 其他的配置文件重定向，如server配置文件，被上面的配置文件所引用</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./nginx/vhost/:/etc/nginx/conf.d/</span></span><br><span class="line">       <span class="comment"># ngnix 的访问html重定向</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./html/:/etc/nginx/html/</span></span><br><span class="line">       <span class="comment"># ngnix 证书文件重定向，本例子使用http，因此可以忽略这个证书</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./.localssl/:/root/.localssl/</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./build.sh:/root/.sh</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+<h3 id="volumes的运用"><a href="#volumes的运用" class="headerlink" title="volumes的运用"></a>volumes的运用</h3><p>我们都知道ngnix 的每个目录都有特定的功能，通过映射的方式，一个达到修改影响nginx的作用，第二个达到数据存储到宿主机，数据持久缓存的作用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">  # ngnix 其他的配置文件重定向，如server配置文件，被上面的配置文件所引用</span><br><span class="line">  - ./nginx/vhost/:/etc/nginx/conf.d/</span><br></pre></td></tr></table></figure></p>
+<h3 id="nginx-配置文件"><a href="#nginx-配置文件" class="headerlink" title="nginx 配置文件"></a>nginx 配置文件</h3><p><code>/Users/js/Documents/nginx-config/nginx/nginx.conf</code> 通过   <code>include ./conf.d/*.conf;</code>  集成了 <code>nginx/vhost/</code> 所有的 conf<br>主要做了以下事情：<br>监听了 域名 ：<br>localhost<br>xn.magichznpm.com ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name xn.magichznpm.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">      proxy_pass http://192.168.0.1:4873;</span><br><span class="line">      # 下面这些配置是为了转发所有的请求信息，包括cookie 等等</span><br><span class="line">      proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      proxy_set_header Host $host;</span><br><span class="line">      proxy_set_header X-NginX-Proxy true;</span><br><span class="line">      proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>等等；</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>nginx 127.0.0.1的服务，监听 xn.magichznpm.com 域名，前提是host配置好 127.0.0.1 xn.magichznpm.com ，<br>将所有此域名下的请求转发至宿主机ip的 4873 端口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">listen 80;</span><br><span class="line">   server_name xn.magichznpm.com;</span><br><span class="line">   location / &#123;</span><br><span class="line">     proxy_pass http://192.168.0.1:4873;</span><br><span class="line">     ...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>而4873端口，被 verdaccio 监听。</p>
+<h2 id="docker-compose-配置"><a href="#docker-compose-配置" class="headerlink" title="docker-compose 配置"></a>docker-compose 配置</h2><p>verdaccio 的配置在 <code>/Users/js/Desktop/work/workplace/verdaccio/packages/docker-compose/test.yml</code> 中。</p>
+<h3 id="这里的-node-network-是干嘛的？"><a href="#这里的-node-network-是干嘛的？" class="headerlink" title="这里的 node-network 是干嘛的？"></a>这里的 node-network 是干嘛的？</h3><p>为什么需要设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">networks:</span><br><span class="line">    node-network:</span><br><span class="line">      ipv4_address: 192.2.0.3</span><br></pre></td></tr></table></figure></p>
+<p>这是因为 docker-compose 同时启动了两个镜像 verdaccio 与 redis， 这二者需要通信，就需要在同一个局域子网内，<br>同一个局域网，一般是ipv4的地址，前三位相同。<br>所以指定了二者相同的局域网地址：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># /Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-compose/test.yml</span><br><span class="line">services:</span><br><span class="line">  verdaccio:</span><br><span class="line">    image: verdaccio/verdaccio:5.1.6</span><br><span class="line">    container_name: verdaccio</span><br><span class="line">    user: root</span><br><span class="line">    networks:</span><br><span class="line">      node-network:</span><br><span class="line">        ipv4_address: 172.2.0.2</span><br><span class="line">    ports:</span><br><span class="line">      - 4873:4873</span><br><span class="line">    expose:</span><br><span class="line">      - 4873</span><br><span class="line">  redis:</span><br><span class="line">    image: redis:6.2.5</span><br><span class="line">    container_name: redis</span><br><span class="line">    networks:</span><br><span class="line">      node-network:</span><br><span class="line">        ipv4_address: 172.2.0.3</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 6379:6379</span><br><span class="line">    expose:</span><br><span class="line">      - 6379</span><br></pre></td></tr></table></figure></p>
+<p>然后在 verdaccio 的插件在node环境中跟redis通信，一般是这样通信的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const IORedis = require(&quot;ioredis&quot;)</span><br><span class="line">this.redis = new IORedis(config)</span><br></pre></td></tr></table></figure></p>
+<p>其中的 config 就是 docker启动的redis容器的相关信息，从而让 <code>new IORedis(config)</code> 找到我们启动的redis。<br>verdaccio 容器中，通过配置redis相关信息，传给各个插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># /Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-compose/test.yml</span><br><span class="line">aliases:</span><br><span class="line">  # redis config</span><br><span class="line">  - &amp;redisConfig</span><br><span class="line">      host: 172.2.0.3</span><br><span class="line">      port: 6379</span><br><span class="line">      globalNAME: NPM_OWNER_REDIS</span><br><span class="line">      keyPrefix: &apos;@npm:&apos;</span><br><span class="line"></span><br><span class="line">  xnbz-api:</span><br><span class="line">    redisConfig: *redisConfig</span><br><span class="line">    # dubbo 配置</span><br><span class="line">    dubbo: *dubboConfig</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动verdaccio、redis"><a href="#启动verdaccio、redis" class="headerlink" title="启动verdaccio、redis"></a>启动verdaccio、redis</h3><p>verdaccio 通过 docker 启动 verdaccio、redis；<br>docker 启动 verdaccio 镜像时，<br>默认启动 verdaccio 命令,因为docker启动verdaccio镜像时，会执行其指定的bash文件；<br>同时映射 4873 到 verdaccio 容器 4873中。</p>
+<p>verdaccio 配置<br>/Users/js/Desktop/work/workplace/verdaccio/packages/docker-compose/test.yml<br>中配置了<br>    volumes:</p>
+<pre><code>- ./storage:/verdaccio/storage
+- ./config:/verdaccio/conf
+- ../docker-image/build:/verdaccio/plugins
+</code></pre><p>说明了 verdaccio 容器 的配置文件重映射到了 ./config 目录下，<br>因此找到 配置文件为：<br>/Users/js/Desktop/work/workplace/verdaccio/packages/docker-compose/config/config.yaml</p>
+<blockquote>
+<p>扩展：我们为什么知道上述目录的目的是什么，是因为在docker的配置文件中，注意不是docker-compose配置文件，我们设置了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># /Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-compose/config/config.yaml</span><br><span class="line"># path to a directory with all packages</span><br><span class="line">storage: /verdaccio/storage</span><br><span class="line"># path to a directory with plugins to include</span><br><span class="line">plugins: /verdaccio/plugins</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="关于钉钉的配置："><a href="#关于钉钉的配置：" class="headerlink" title="关于钉钉的配置："></a>关于钉钉的配置：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">notify:</span><br><span class="line">  dingtalk:</span><br><span class="line">    method: POST</span><br><span class="line">    headers: [&#123;&apos;Content-Type&apos;: &apos;application/json&apos;&#125;]</span><br><span class="line">    # package更新钉钉通知地址</span><br><span class="line">    endpoint: https://oapend?access_token=0d9eec11119b1111111111d</span><br><span class="line">    content: &apos;&#123;&quot;msgtype&quot;: &quot;link&quot;, &quot;link&quot;: &#123;&quot;title&quot;: &quot;&#123;&#123;name&#125;&#125;&quot;,&quot;text&quot;: &quot;&#123;&#123; publisher.name &#125;&#125;刚刚发布了&#123;&#123;name&#125;&#125; 去看看吧&quot;, &quot;messageUrl&quot;: &quot;http://xn.magichznpm.com/-/web/detail/&#123;&#123;name&#125;&#125;&quot;&#125;&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>关于 notify 相关知识，其中的content 是endpoint 定义的接口的入参，更多可以在其官网上查询。</p>
+<p>verdaccio 的设计与 react vue umi webpack babel 等等 主流框架设计方式一样，都是通过hooks方式，<br>以上的 notify 其实就是一个hooks。</p>
+<p>钉钉接口的巧妙之处就是，你按照它给的入参数类型和内容时，就会产生什么内容和效果的钉钉通知，<br>比如上述 你要求发送一个 link 类型的钉钉通知，此通知相当于a连接，点击会打开一个页面，<br>然后传入的text入参将作为提示信息，messageUrl将作为上述打开页面的url地址。</p>
+<h3 id="钉钉调试与curl"><a href="#钉钉调试与curl" class="headerlink" title="钉钉调试与curl"></a>钉钉调试与curl</h3><p><code>-d</code> 是 post 请求的请求如参。<br>messageUrl 是钉钉机器人在群里发的消息，点击的时候，会跳转到这个url上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &quot;Content-Type: application/json&quot; -X POST -d &apos;&#123;&quot;msgtype&quot;: &quot;link&quot;, &quot;link&quot;: &#123;&quot;title&quot;: &quot;一百万&quot;,&quot;text&quot;: &quot;发钱了，你的工资到账一百万 &quot;, &quot;messageUrl&quot;: &quot;http://xn.magichznpm.com/-/web/detail/@xnbz/test&quot;&#125;&#125;&apos; &quot;https://oa111k.com/robot/send?access_to1en=6ec79e7aae3c8bc111c5936dd533531750f098e9&quot;</span><br></pre></td></tr></table></figure></p>
+<p>一定要注意，返回数据的text，必须包含 钉钉机器人设计的安全验证的字，否则发送不成功，用curl 测试如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"errcode"</span>:<span class="number">310000</span>,<span class="string">"errmsg"</span>:<span class="string">"description:关键词不匹配;solution:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过中间件生成后台接口"><a href="#通过中间件生成后台接口" class="headerlink" title="通过中间件生成后台接口"></a>通过中间件生成后台接口</h3><p>通过中间件的方式，让vadaccio启动时，同时生成后台接口，关于 middlewares 中间件可以查看官网。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">middlewares:</span></span><br><span class="line">  <span class="attr">audit:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># xnbz-api配置</span></span><br><span class="line">  <span class="attr">xnbz-api:</span></span><br><span class="line">    <span class="attr">redisConfig:</span> <span class="meta">*redisConfig</span></span><br><span class="line">    <span class="attr">apiConfig:</span> <span class="meta">*apiConfig</span></span><br><span class="line">    <span class="attr">admin:</span> <span class="meta">*adminGroup</span></span><br><span class="line">    <span class="comment"># 登录地址(需要替换)</span></span><br><span class="line">    <span class="attr">loginUrl:</span> <span class="meta">*loginUrl</span></span><br><span class="line">    <span class="comment"># dubbo 配置</span></span><br><span class="line">    <span class="attr">dubbo:</span> <span class="meta">*dubboConfig</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-file/plugins/xnbz-api/index.js</span></span><br><span class="line"> <span class="keyword">const</span> router = Router()</span><br><span class="line">    router.get( <span class="comment">// 登录跳转获取临时登录验证码</span></span><br><span class="line">      <span class="string">'/code'</span>,</span><br><span class="line">      <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">      </span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">    router.post( <span class="comment">// 通过临时验证码获取信息</span></span><br><span class="line">      <span class="string">'/verify'</span>,</span><br><span class="line">      jsonParser,</span><br><span class="line">      <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">     </span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">    router.post( <span class="comment">// 初始化owner，发布成功后初始化</span></span><br><span class="line">      <span class="string">'/initPublish'</span>,</span><br><span class="line">      jsonParser,</span><br><span class="line">      <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">      </span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h3 id="关于如何写-middlewares-中间件"><a href="#关于如何写-middlewares-中间件" class="headerlink" title="关于如何写 middlewares 中间件"></a>关于如何写 middlewares 中间件</h3><p>可以参考官网，下面有一些 社区已经实现的中间件，以及 verdaccio 官网github仓库下的 中间件，<br>或者直接将 官网中间件 或社区实现的中间件拷贝下来，修改。</p>
+<h3 id="扩展：统一验证登录的设计模式非常好，"><a href="#扩展：统一验证登录的设计模式非常好，" class="headerlink" title="扩展：统一验证登录的设计模式非常好，"></a>扩展：统一验证登录的设计模式非常好，</h3><p>任意一个接口或页面url请求，<br>如果没有页面token【接口的话，通过get 在浏览器上地址栏发送】，<br>就用统一登陆页面域名加上一个redict以及原来的接口或url，<br>然后登录后，登录页面设置二级域名下的cookie，<br>跳转到原来的接口或url，<br>此时无论是node、还是window 环境下都有能力获取到浏览器上的cookie。</p>
+<h3 id="登录工具"><a href="#登录工具" class="headerlink" title="登录工具"></a>登录工具</h3><h4 id="客户端启动逻辑"><a href="#客户端启动逻辑" class="headerlink" title="客户端启动逻辑"></a>客户端启动逻辑</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">forkChild.send(&#123;</span><br><span class="line">         port,</span><br><span class="line">         type: <span class="string">'start'</span></span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure>
+<p>start 会启一个客户端电脑的 接口：<br> <code>app.get(&#39;/verify/:code&#39;</code></p>
+<p>并触发事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process.send(&#123;</span><br><span class="line">    type: <span class="string">'server'</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>server 事件会打开浏览器打开接口 <a href="http://xn.magichznpm.com/-/verdaccio/xnbz-api/code?port=50322" target="_blank" rel="noopener">http://xn.magichznpm.com/-/verdaccio/xnbz-api/code?port=50322</a> ，<br>其实就是请求 code 接口。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">forkChild.on(<span class="string">'message'</span>, <span class="keyword">async</span> m =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (m.type === <span class="string">'server'</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (!openBrowsers(loginUrl)) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(chalk.redBright(<span class="string">`请使用浏览器访问: <span class="subst">$&#123;loginUrl&#125;</span>`</span>))</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="verdaccio插件服务端"><a href="#verdaccio插件服务端" class="headerlink" title="verdaccio插件服务端"></a>verdaccio插件服务端</h4><p>xnbz-api 插件开发了 code 接口，在code接口中，做了cookie查询，如果没有cookie，则重定向到统一登陆页面，<br>统一登陆成功后，继续请求此code接口，此时就会有登陆的cookie了，<br>code接口中，<br>如果有cookie，则根据cookie值作为参数，发起dobbo接口请求，获取用户的用户信息，<br>然后将 cookie  用户信息 二者关联，产生一个关联的 uuid，<br>然后将此uuid作为入参code，重定向请求客户端启动的verify:code 接口： res.redirect(<code>http://127.0.0.1:${port}/verify/${code}</code>)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/Users/js/Desktop/work/workplace/verdaccio/packages/docker-image/plugins/xnbz-api/index.js</span><br><span class="line"> router.get( <span class="comment">// 登录跳转获取临时登录验证码</span></span><br><span class="line">      <span class="string">'/code'</span>,</span><br><span class="line">      <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> acToken = req.cookies[<span class="string">'ac-session-id'</span>]</span><br><span class="line">        <span class="keyword">if</span> (!acToken) &#123;</span><br><span class="line">          <span class="keyword">this</span>._redirect(req, res)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> acTokenCache = <span class="keyword">this</span>._acIdCache.get(acToken)</span><br><span class="line">          <span class="keyword">const</span> userToken = <span class="keyword">this</span>._userInfoCache.get(acTokenCache)</span><br><span class="line">          <span class="keyword">if</span> (userToken) &#123;</span><br><span class="line">            <span class="keyword">this</span>._redirectCode(acTokenCache, req, res)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> userEmpNo = <span class="keyword">await</span> <span class="keyword">this</span>.nzd.getUserEmpNo(acToken).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">this</span>.logger.error(&#123;<span class="attr">err</span>: err?.message ?? err?.stack ?? err&#125;, <span class="string">'xnbz-api.code.getUserEmpNo: @&#123;err&#125;'</span>)</span><br><span class="line">              <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(<span class="literal">null</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span> (!userEmpNo) &#123;</span><br><span class="line">              <span class="keyword">this</span>.logger.error(&#123;acToken&#125;,<span class="string">"xnbz-api.code.getUserEmpNo.empNo: token =&gt; @&#123;acToken&#125;"</span>)</span><br><span class="line">              <span class="keyword">this</span>._redirect(req, res)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">this</span>._removeEmpNo(userEmpNo)</span><br><span class="line">              <span class="keyword">const</span> currentID = nanoid()</span><br><span class="line">              <span class="keyword">this</span>._acIdCache.set(acToken, currentID)</span><br><span class="line">              <span class="keyword">this</span>._userInfoCache.set(currentID, &#123;</span><br><span class="line">                empNo: userEmpNo</span><br><span class="line">              &#125;)</span><br><span class="line">              <span class="keyword">this</span>._redirectCode(currentID, req, res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://login.magichznpm.com/?redirectUrl=http://xn.magichznpm.com/-/verdaccio/xnbz-api/code?port=50322" target="_blank" rel="noopener">https://login.magichznpm.com/?redirectUrl=http://xn.magichznpm.com/-/verdaccio/xnbz-api/code?port=50322</a></p>
+<h4 id="客户端-verify-code-接口"><a href="#客户端-verify-code-接口" class="headerlink" title="客户端 /verify/:code 接口"></a>客户端 /verify/:code 接口</h4><p>因为上面到接口是 res.redirect，因此浏览器现在的浏览地址变为 <a href="http://127.0.0.1:${port}/verify/${code}" target="_blank" rel="noopener">http://127.0.0.1:${port}/verify/${code}</a> 。<br>客户端/verify/:code 接口接收到uuid后，<br>然后触发 code 事件。code事件会进行系列的验证以及同步、操作npm，等等工作，就放到下面讲。<br>等code事件处理完毕，将此uuid作为接口返回数据，显示在浏览器上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/verify/:code'</span> ,<span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> code = req.params.code</span><br><span class="line">  <span class="keyword">if</span> (code) &#123;</span><br><span class="line">    process.send(&#123;</span><br><span class="line">      type: <span class="string">'code'</span>,</span><br><span class="line">      code</span><br><span class="line">    &#125;)</span><br><span class="line">    res.send(<span class="string">`</span></span><br><span class="line"><span class="string">      &lt;p&gt;验证码发送成功, 此窗口可关闭！&lt;/p&gt;</span></span><br><span class="line"><span class="string">      &lt;script&gt;</span></span><br><span class="line"><span class="string">        setTimeout(window.close, 0);</span></span><br><span class="line"><span class="string">      &lt;/script&gt;</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.status(<span class="number">401</span>).send(&#123;</span><br><span class="line">      success: <span class="literal">false</span>,</span><br><span class="line">      message: <span class="string">'code为空'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="uuid密码设计以及npm登录"><a href="#uuid密码设计以及npm登录" class="headerlink" title="uuid密码设计以及npm登录"></a>uuid密码设计以及npm登录</h4><p>在code事件中，使用上面的uuid， 发送给 verify 接口，<br>根据uuid，读取到以前缓存的用户信息，<br>根据用户信息，请求dobbo接口，验证是否有这个员工，<br>验证成功后，将用户信息存储到redis上，并更新redis上的用户列表<br>然后操作npm原生的npm登陆命令，登陆密码使用md5进行混淆；<br>至此 整个登录过程完成。你可以通过 npm whoami 能获取登录信息了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /Users/js/Desktop/work/workplace/verdaccio/packages/verdaccio-tools/lib/login.js</span></span><br><span class="line">   <span class="keyword">if</span> (m.type === <span class="string">'code'</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> resp = <span class="keyword">await</span> checkCode(&#123; <span class="attr">code</span>: m.code&#125;, &#123;</span><br><span class="line">        registryConfig</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">if</span> (resp.data &amp;&amp; resp.data.key &amp;&amp; resp.data.token) &#123;</span><br><span class="line">        forkChild.kill()</span><br><span class="line">        <span class="keyword">await</span> execPromise(<span class="string">`npm set <span class="subst">$&#123;resp.data.key&#125;</span> <span class="subst">$&#123;resp.data.token&#125;</span>`</span>)</span><br><span class="line">        <span class="keyword">const</span> newLoginStatus = <span class="keyword">await</span> getLoginStatus(&#123;</span><br><span class="line">          registryConfig</span><br><span class="line">        &#125;)</span><br><span class="line">        loginTip(newLoginStatus)</span><br><span class="line">        resolve(newLoginStatus)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!openBrowsers(loginUrl)) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(chalk.redBright(<span class="string">`请使用浏览器访问: <span class="subst">$&#123;loginUrl&#125;</span>`</span>))</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// /Users/js/Desktop/work/workplace/verdaccio/packages/verdaccio-tools/lib/utils.js</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">checkCode</span>(<span class="params">data, props = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> registryConfig = props.registryConfig || getConfig()</span><br><span class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> axios(&#123;</span><br><span class="line">    url: registryConfig.verify,</span><br><span class="line">    data,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(chalk.redBright(err))</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">      isError: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> resp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// /Users/js/Desktop/work/workplace/verdaccio/packages/docker-image/plugins/xnbz-api/index.js</span></span><br><span class="line">profile.loginCouch(userData.empNo, realCode, &#123;</span><br><span class="line">            registry: <span class="string">`http://127.0.0.1:<span class="subst">$&#123;process.env.VERDACCIO_PORT ?? process.env.PORT&#125;</span>`</span></span><br><span class="line">          &#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="关于npm登陆密码：uuid"><a href="#关于npm登陆密码：uuid" class="headerlink" title="关于npm登陆密码：uuid"></a>关于npm登陆密码：uuid</h4><p>从上面可知，统一登陆后，生成一个uuid，这个uuid经过系列混淆后就变成了 npm 的登陆密码，<br>npm的登陆直接是 profile.loginCouch 实现的，<br>所以只要你是员工，那么你就能登陆到npm，<br>如果没有权限限制，你就有可以发布npm。<br>这是一个很棒的设计。<br>因为常规的，我们以为npm登录的密码就是我们浏览器登录页面的密码，实际上不是，而是自己生成的密码，<br>我们的密码其实与原始的页面登录密码毫无关系，只与你的用户名有关。<br>而原来的登录只是为了校验你是否为真正的员工。<br>这样可以做到了 逻辑分离， 统一登陆只管校验员工的事情，而真正的npm登陆，只用我们自己设计的npm登陆设计的密码。</p>
+<h4 id="妙哉：uuid"><a href="#妙哉：uuid" class="headerlink" title="妙哉：uuid"></a>妙哉：uuid</h4><p>参考《关于npm登陆密码：uuid》</p>
+<h2 id="关于publish"><a href="#关于publish" class="headerlink" title="关于publish"></a>关于publish</h2><h3 id="如何publish权限限制"><a href="#如何publish权限限制" class="headerlink" title="如何publish权限限制"></a>如何publish权限限制</h3><p>在publish前，先查询钩子函数 allow_publish ，这个函数可以去官网查询，是否允许发布，<br>主要是查询你是不是超级用户，或者是不是可以发布的用户，或者要发布的包是否为白名单，<br>这些查询都是通过redis查询。<br>检测通过后，就publish，<br>成功后，执行成功后的事件，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /Users/js/Desktop/work/workplace/verdaccio/packages/docker-image/plugins/xnbz-htpasswd/htpasswd.js</span></span><br><span class="line"><span class="keyword">async</span> allow_publish(user, pkg, cb) &#123;</span><br><span class="line">    <span class="keyword">const</span> userName = user.name</span><br><span class="line">    <span class="keyword">const</span> packageName = pkg.name</span><br><span class="line">    <span class="keyword">const</span> isAdmin = checkIsAdmin(userName, <span class="keyword">this</span>.config.admin)</span><br><span class="line">    <span class="keyword">const</span> isWhite = checkWhitePackages(packageName, <span class="keyword">this</span>.config.whitePackages)</span><br><span class="line">    <span class="keyword">let</span> canPublish = isAdmin</span><br><span class="line">   ...</span><br><span class="line">    <span class="keyword">if</span> (canPublish) &#123;</span><br><span class="line">      <span class="keyword">this</span>.logger.debug(&#123;<span class="attr">name</span>: userName&#125;, <span class="string">'@&#123;name&#125; has been granted to publish'</span>)</span><br><span class="line">      <span class="keyword">await</span> <span class="keyword">this</span>._owner.setCacheData(packageName, &#123;</span><br><span class="line">        user: userName,</span><br><span class="line">        version: pkg.version,</span><br><span class="line">        date: <span class="built_in">Date</span>.now()</span><br><span class="line">      &#125;)</span><br><span class="line">      cb(<span class="literal">null</span>, <span class="literal">true</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.logger.error(&#123;<span class="attr">name</span>: userName&#125;, <span class="string">'@&#123;name&#125; is not allowed to publish this package'</span>);</span><br><span class="line">      <span class="keyword">const</span> err = <span class="built_in">Error</span>(<span class="string">`你没有发布权限，请联系管理员: <span class="subst">$&#123;(<span class="keyword">this</span>.config.admin || []).join(<span class="string">'/'</span>)&#125;</span>`</span>)</span><br><span class="line">      err.status = <span class="number">403</span></span><br><span class="line">      cb(err, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>成功后的事件 除了发布钉钉通知外，将发布的包名作为入参，还请求了自己定义的接口 <code>/verdaccio/xnbz-api/initPublish</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># /Users/js/Desktop/work/workplace/verdaccio/packages/docker-compose/config/config.yaml</span><br><span class="line">notify:</span><br><span class="line">  dingtalk:</span><br><span class="line">    ....</span><br><span class="line">  self:</span><br><span class="line">    method: POST</span><br><span class="line">    headers: [&#123;&apos;Content-Type&apos;: &apos;application/json&apos;&#125;]</span><br><span class="line">    endpoint: http://127.0.0.1:4873/-/verdaccio/xnbz-api/initPublish</span><br><span class="line">    content: &apos;&#123;&quot;package&quot;: &quot;&#123;&#123;name&#125;&#125;&quot;&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>在initPublish接口中，主要是通过redis更新了 npm包的版本号，以及npm包的owner作者等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># /Users/js/Desktop/work/workplace/verdaccio/packages/docker-image/plugins/xnbz-api/index.js</span><br><span class="line"></span><br><span class="line"> router.post( // 初始化owner</span><br><span class="line">      &apos;/initPublish&apos;,</span><br><span class="line">      jsonParser,</span><br><span class="line">      async (req, res, next) =&gt; &#123;</span><br><span class="line">        const _pkg = req.body.package</span><br><span class="line">        if (_pkg) &#123;</span><br><span class="line">          const result = await this._owner.getCache(_pkg)</span><br><span class="line">          const &#123; user, version &#125; = result</span><br><span class="line">          const allPkgs = await this._owner.getAllKeysByType(0)</span><br><span class="line">          if (user &amp;&amp; !allPkgs.includes(_pkg)) &#123;</span><br><span class="line">            await this._owner.setPkgData(_pkg, &#123;</span><br><span class="line">              owners: [user],</span><br><span class="line">              versions: &#123;</span><br><span class="line">                [version]: user</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            this.logger.info(&#123;</span><br><span class="line">              pkg: _pkg,</span><br><span class="line">              owner: user</span><br><span class="line">            &#125;, &apos;newOwner init success: @&#123;owner&#125; 成为@&#123;pkg&#125;的owner!&apos;)</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            await this._owner.addVersionRecord(_pkg, &#123;</span><br><span class="line">              [version]: user</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">          this.logger.info(&#123;</span><br><span class="line">            pkg: _pkg,</span><br><span class="line">            publiser: user</span><br><span class="line">          &#125;, &apos;publish success: @&#123;publiser&#125; 发布@&#123;pkg&#125;!&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        res.send(&apos;ok&apos;)</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h2 id="业务逻辑设计"><a href="#业务逻辑设计" class="headerlink" title="业务逻辑设计"></a>业务逻辑设计</h2><h3 id="自定义登录"><a href="#自定义登录" class="headerlink" title="自定义登录"></a>自定义登录</h3><p>为什么要自定义登录，<br>因为每个公司都有自定义登录；<br>套用公司的那一套登录，非常方便，非常容易推广；<br>如果要用公司那套登录，就要设置 权限管理的ui 等等，<br>好在verdaccio的ui主题页面，非常简单，其实就是一个首页，然后加上一个包的想起页面；</p>
+<p>另外在自定义登录的时候，你可以在登录时，收集各种登录的信息，如用户信息，存入redis中，<br>这些用户信息，可以用作包发布权限管理。</p>
+<p>因为包权限管理需要获取注册的所有用户信息。</p>
+<p>另外一个 自定义登录时，用户不需要自己设置密码，如果公司有现有的登录，那么只需要对接公司的登录系统即可，登录成功通过cookie，node端自己生成密码。<br>此时就不用怕遗忘密码了。</p>
+<h3 id="包的权限管理"><a href="#包的权限管理" class="headerlink" title="包的权限管理"></a>包的权限管理</h3><p>根据自定义登录 在redis写入的已登录（说明就是注册的）用户列表，<br>然后给某个包进行赋权，<br>赋权的数据存入 redis，<br>在 verdaccio 的 npm publish 前的钩子函数中，读取redis权限判断是否有发布权限。</p>
+<h2 id="FAQ-1"><a href="#FAQ-1" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="为什么可以通过redis-node终端，能查到数据库的数据；"><a href="#为什么可以通过redis-node终端，能查到数据库的数据；" class="headerlink" title="为什么可以通过redis node终端，能查到数据库的数据；"></a>为什么可以通过redis node终端，能查到数据库的数据；</h3><p>redis数据库不是 docker 启动的吗，为什么能查到呢，<br>因为在宿主机的node端，执行 rdcli 命令，其实就是查询 宿主机的 docker 启动的 redis 接口。<br>其实也是与docker的redis通信获取数据库，并操作容器数据库。</p>
+<h3 id="这两个命令有什么区别"><a href="#这两个命令有什么区别" class="headerlink" title="这两个命令有什么区别"></a>这两个命令有什么区别</h3><p>   “plugin:image”: “cross-env VERDACCIO_IMAGE=true webpack”,<br>    “plugin:dev”: “cross-env VERDACCIO_DEVELOPMENT=true webpack”,</p>
+<p>如果要用 watch功能，就用plugin:dev，不用的话，用plugin:image 即可；</p>
+<h2 id="本次verdaccio改动或特色点"><a href="#本次verdaccio改动或特色点" class="headerlink" title="本次verdaccio改动或特色点"></a>本次verdaccio改动或特色点</h2><p>ui 主题【含权限改造】<br>dobbo接口<br>xnbz-login 代替 npm 命令行登陆和注册<br>redis作为数据库<br>storage 改为云盘，避免linux机器硬盘不够用，如果机器硬盘有80G，就不用担心此问题。<br>npm 上传、下载的插件改造</p>
+<h2 id="一些亮点"><a href="#一些亮点" class="headerlink" title="一些亮点"></a>一些亮点</h2><h3 id="node端npm的登录实现以及相关"><a href="#node端npm的登录实现以及相关" class="headerlink" title="node端npm的登录实现以及相关"></a>node端npm的登录实现以及相关</h3><h4 id="登录-1"><a href="#登录-1" class="headerlink" title="登录"></a>登录</h4><p>我们可以使用命令行 npm adduser 或 npm login 进行登录。</p>
+<p>nodejs中，我们可以使用 <code>profile.loginCouch</code> 进行登录。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">profile.loginCouch(userData.empNo, realCode, &#123;</span><br><span class="line">            registry: <span class="string">`http://127.0.0.1:<span class="subst">$&#123;process.env.VERDACCIO_PORT ?? process.env.PORT&#125;</span>`</span></span><br><span class="line">          &#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何判断是否登录"><a href="#如何判断是否登录" class="headerlink" title="如何判断是否登录"></a>如何判断是否登录</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">execPromise(<span class="string">`npm whoami --registry <span class="subst">$&#123;registryConfig.registry&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; exec, execSync &#125; = <span class="built_in">require</span>(<span class="string">'child_process'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">execPromise</span>(<span class="params">command, options = &#123;encoding: <span class="string">'utf8'</span>&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    exec(command, options, (err, res) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        resolve(res)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果要登出，可以执行 npm logout –registry <a href="http://xn.magichznpm.com/" target="_blank" rel="noopener">http://xn.magichznpm.com/</a></p>
+<h3 id="获取本机的ip"><a href="#获取本机的ip" class="headerlink" title="获取本机的ip"></a>获取本机的ip</h3><p>获取本机的ip，因为连的路由器，其路由地址可能随时变化；</p>
+<h3 id="127-0-0-1的运用给自己发请求"><a href="#127-0-0-1的运用给自己发请求" class="headerlink" title="127.0.0.1的运用给自己发请求"></a>127.0.0.1的运用给自己发请求</h3><p> 值得注意的是，下面是部署时的情况 127的接口是部署上去后，给自己用。<br> 下面是npm publish之后，触发的钩子事件。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">self:</span></span><br><span class="line">   <span class="attr">method:</span> <span class="string">POST</span></span><br><span class="line">   <span class="attr">headers:</span> <span class="string">[&#123;'Content-Type':</span> <span class="string">'application/json'</span><span class="string">&#125;]</span></span><br><span class="line">   <span class="attr">endpoint:</span> <span class="string">http://127.0.0.1:4873/-/verdaccio/xnbz-api/initPublish</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="dobbo接口请求"><a href="#dobbo接口请求" class="headerlink" title="dobbo接口请求"></a>dobbo接口请求</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Dubbo = <span class="built_in">require</span>(<span class="string">'node-zookeeper-dubbo-plus'</span>)</span><br><span class="line"><span class="keyword">const</span> java = <span class="built_in">require</span>(<span class="string">'js-to-java'</span>)</span><br><span class="line"> <span class="keyword">this</span>.dubbo = <span class="keyword">new</span> Dubbo(<span class="keyword">this</span>.options)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.dubbo.GetUserData.getuseinfo(java.String(session)).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (res?.data?.no) &#123;</span><br><span class="line">             resolve(res?.data)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`getuseinfo: 获取信息失败`</span>))</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dubbo配置</span></span><br><span class="line"><span class="bullet">-</span> <span class="meta">&amp;dubboConfig</span></span><br><span class="line">    <span class="attr">application:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">'node-dubbo'</span></span><br><span class="line">    <span class="attr">registry:</span> <span class="string">'uu123.clddd.xnbzzz.net:2222'</span></span><br><span class="line">    <span class="attr">dubboVer:</span> <span class="string">'2.7.6'</span></span><br><span class="line">    <span class="attr">root:</span> <span class="string">'dubbo'</span></span><br><span class="line">    <span class="attr">timeout:</span> <span class="number">20000</span></span><br><span class="line">    <span class="attr">dependencies:</span></span><br><span class="line">      <span class="attr">GetUserData:</span></span><br><span class="line">        <span class="attr">interface:</span> <span class="string">'com.nmagicbd.testcenter.testaaa.xxxx.user.GetUserDataService'</span></span><br><span class="line">        <span class="attr">version:</span> <span class="string">'1.0.0'</span></span><br><span class="line">        <span class="attr">timeout:</span> <span class="number">6000</span></span><br></pre></td></tr></table></figure>
+<h3 id="redis的运用"><a href="#redis的运用" class="headerlink" title="redis的运用"></a>redis的运用</h3><p>参考上面《这里的 node-network 是干嘛的？》</p>
+<h3 id="nginx的妙用"><a href="#nginx的妙用" class="headerlink" title="nginx的妙用"></a>nginx的妙用</h3><p>使用nginx 代理的域名后，可直接转发到对应的 服务器上，省去了要带接口名，而且配置可以转发cookie等。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">'npm'</span>: <span class="string">`server &#123;</span></span><br><span class="line"><span class="string">    listen 80;</span></span><br><span class="line"><span class="string">    server_name xn.magichznpm.com;</span></span><br><span class="line"><span class="string">    location / &#123;</span></span><br><span class="line"><span class="string">      proxy_pass http://<span class="subst">$&#123;LOCAL_IP&#125;</span>:4873;</span></span><br><span class="line"><span class="string">      proxy_set_header X-Real-IP $remote_addr;</span></span><br><span class="line"><span class="string">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span><br><span class="line"><span class="string">      proxy_set_header Host $host;</span></span><br><span class="line"><span class="string">      proxy_set_header X-NginX-Proxy true;</span></span><br><span class="line"><span class="string">      proxy_redirect off;</span></span><br><span class="line"><span class="string">    &#125;`</span>,</span><br><span class="line"></span><br><span class="line">  <span class="string">'login'</span>: <span class="string">`server &#123;</span></span><br><span class="line"><span class="string">    listen 80;</span></span><br><span class="line"><span class="string">    server_name login.magichznpm.com;</span></span><br><span class="line"><span class="string">    location / &#123;</span></span><br><span class="line"><span class="string">      proxy_pass http://<span class="subst">$&#123;LOCAL_IP&#125;</span>:3090;</span></span><br><span class="line"><span class="string">      proxy_set_header X-Real-IP $remote_addr;</span></span><br><span class="line"><span class="string">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span><br><span class="line"><span class="string">      proxy_set_header Host $host;</span></span><br><span class="line"><span class="string">      proxy_set_header X-NginX-Proxy true;</span></span><br><span class="line"><span class="string">      proxy_redirect off;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其实本例也提供了 https 证书的使用模式，只是注释了，以及缺乏一个证书，有兴趣可以通过node生成一个证书 配置成https模式。</p>
+<h3 id="密码加密的方式"><a href="#密码加密的方式" class="headerlink" title="密码加密的方式"></a>密码加密的方式</h3><p>这是verdaccio 官方网站插件 htpasswd 的一种密码加密方式，使用了node的内置模块 crypto 。<br>有兴趣 可直接看 verdaccio 官网 htpasswd 插件源码。</p>
+<h3 id="storage放到云盘"><a href="#storage放到云盘" class="headerlink" title="storage放到云盘"></a>storage放到云盘</h3><p>默认的storage放在磁盘上，如果部署的机器磁盘容量少就会有问题，可通过使用存入云盘来解决这个问题。<br>在verdaccio官网的 storage 插件示例中，提供了社区实现的插件，可以模仿着写。</p>
+<h3 id="compressing-获取-tgz-包"><a href="#compressing-获取-tgz-包" class="headerlink" title="compressing 获取 tgz 包"></a>compressing 获取 tgz 包</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-file/scripts/tgz.js</span></span><br><span class="line"><span class="keyword">const</span> compressing = <span class="built_in">require</span>(<span class="string">'compressing'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dirPath = path.resolve(__dirname, <span class="string">'..'</span>, <span class="string">'lib'</span>)</span><br><span class="line"><span class="keyword">const</span> outputDir = path.resolve(__dirname, <span class="string">'..'</span>, <span class="string">'output'</span>)</span><br><span class="line"><span class="keyword">const</span> outputFile = path.resolve(outputDir, <span class="string">'lib.tgz'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">compressing.tgz.compressDir(</span><br><span class="line">  dirPath,</span><br><span class="line">  outputFile</span><br><span class="line">).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`压成功:<span class="subst">$&#123;outputFile&#125;</span>`</span>)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="webpack-copy-第三方包到指定目录"><a href="#webpack-copy-第三方包到指定目录" class="headerlink" title="webpack copy 第三方包到指定目录"></a>webpack copy 第三方包到指定目录</h3><p>参考 const verdaccioUI = require(‘verdaccio-theme-ui-hz’) 的复制。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-file/webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> CopyPlugin = <span class="built_in">require</span>(<span class="string">'copy-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CopyPlugin(&#123;</span><br><span class="line">      patterns: [</span><br><span class="line">        &#123; </span><br><span class="line">          <span class="keyword">from</span>: selfDir,</span><br><span class="line">          to: resolvePath(outPutConfig.dir, outPutConfig.themeDir)</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Dockerfile-的生成"><a href="#Dockerfile-的生成" class="headerlink" title="Dockerfile 的生成"></a>Dockerfile 的生成</h3><p>参考 <code>/Users/js/Desktop/work/git/xnbz-verdaccio/packages/docker-file/Dockerfile</code><br>本例可生成 Dockerfile ，上传到docker.hub 后，在线上直接使用镜像。</p>
+<h2 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h2><ul>
+<li>nginx<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># xnbz-verdaccio/nginx 目录下</span><br><span class="line">node index.js</span><br><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行 node index.js  获取电脑的ip，生产 nginx 配置文件；<br>启动 nginx容器；</p>
+<ul>
+<li>verdaccio<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># xnbz-verdaccio/packages/docker-compose 目录下</span><br><span class="line">docker-compose -f ./test.yml up</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>启动 verdaccio 容器 redis容器；</p>
+<p>页面访问 <a href="http://xn.magichznpm.com" target="_blank" rel="noopener">http://xn.magichznpm.com</a> </p>
+<ul>
+<li>启动login 页面<br>这是单独写的统一登陆页面。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># koa-demo 仓库</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="发布-1"><a href="#发布-1" class="headerlink" title="发布"></a>发布</h3><h4 id="登录-2"><a href="#登录-2" class="headerlink" title="登录"></a>登录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># xnbz-verdaccio/packages/verdaccio-login 目录下</span><br><span class="line">node ./bin/xnbzt</span><br></pre></td></tr></table></figure>
+<h4 id="登录不成功"><a href="#登录不成功" class="headerlink" title="登录不成功"></a>登录不成功</h4><p>如果有缓存影响，导致登录不成功，可以删除缓存。</p>
+<p>npm logout –registry <a href="http://xn.magichznpm.com" target="_blank" rel="noopener">http://xn.magichznpm.com</a> </p>
+<p>然后 redis 删除所有登录数据，<br>重新执行 node ./bin/xnbzt</p>
+<h3 id="FAQ-2"><a href="#FAQ-2" class="headerlink" title="FAQ"></a>FAQ</h3><h4 id="504"><a href="#504" class="headerlink" title="504"></a>504</h4><p>页面访问 <a href="http://xn.magichznpm.com" target="_blank" rel="noopener">http://xn.magichznpm.com</a> 访问504，是因为 没有执行 nginx 中的 node index.js 获取最新的电脑ip 进行转发；</p>
+<h4 id="不在白名单中"><a href="#不在白名单中" class="headerlink" title="不在白名单中"></a>不在白名单中</h4><p>本项目在插件中做了限制，私库中的 pkg name一律以scope xnbz 为前缀，<br>这一点非常好，可以在项目中一眼就知道哪些是公司的私库。<br>npm publish 不成功时， 请设置好符合要求的包名。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/07/03/verdaccio-two/" target="_blank" rel="external">https://yewills.github.io/2022/07/03/verdaccio-two/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/verdaccio/">verdaccio</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/07/03/verdaccio-two/&title=《verdaccio搭建npm私服(二)：示例》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/07/03/verdaccio-two/&title=《verdaccio搭建npm私服(二)：示例》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/07/03/verdaccio-one/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">verdaccio搭建npm私服(一)：基础知识</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/07/01/blog/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">技术箴言</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动项目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">启动项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#登录"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">redis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">发布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些说明"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">一些说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#未使用https"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">未使用https</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#值得注意的是-证书需要配置"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">值得注意的是 证书需要配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-config-启动403问题"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">nginx-config 启动403问题</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx-config讲解"><span class="post-toc-number">2.</span> <span class="post-toc-text">nginx-config讲解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker-compose"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">docker-compose</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#volumes的运用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">volumes的运用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx-配置文件"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">nginx 配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker-compose-配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">docker-compose 配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#这里的-node-network-是干嘛的？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">这里的 node-network 是干嘛的？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动verdaccio、redis"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">启动verdaccio、redis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于钉钉的配置："><span class="post-toc-number">3.3.</span> <span class="post-toc-text">关于钉钉的配置：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#钉钉调试与curl"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">钉钉调试与curl</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过中间件生成后台接口"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">通过中间件生成后台接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于如何写-middlewares-中间件"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">关于如何写 middlewares 中间件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#扩展：统一验证登录的设计模式非常好，"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">扩展：统一验证登录的设计模式非常好，</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#登录工具"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">登录工具</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户端启动逻辑"><span class="post-toc-number">3.8.1.</span> <span class="post-toc-text">客户端启动逻辑</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#verdaccio插件服务端"><span class="post-toc-number">3.8.2.</span> <span class="post-toc-text">verdaccio插件服务端</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户端-verify-code-接口"><span class="post-toc-number">3.8.3.</span> <span class="post-toc-text">客户端 /verify/:code 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#uuid密码设计以及npm登录"><span class="post-toc-number">3.8.4.</span> <span class="post-toc-text">uuid密码设计以及npm登录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于npm登陆密码：uuid"><span class="post-toc-number">3.8.5.</span> <span class="post-toc-text">关于npm登陆密码：uuid</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#妙哉：uuid"><span class="post-toc-number">3.8.6.</span> <span class="post-toc-text">妙哉：uuid</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于publish"><span class="post-toc-number">4.</span> <span class="post-toc-text">关于publish</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何publish权限限制"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">如何publish权限限制</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#业务逻辑设计"><span class="post-toc-number">5.</span> <span class="post-toc-text">业务逻辑设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义登录"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">自定义登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包的权限管理"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">包的权限管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FAQ-1"><span class="post-toc-number">6.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么可以通过redis-node终端，能查到数据库的数据；"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">为什么可以通过redis node终端，能查到数据库的数据；</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#这两个命令有什么区别"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">这两个命令有什么区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本次verdaccio改动或特色点"><span class="post-toc-number">7.</span> <span class="post-toc-text">本次verdaccio改动或特色点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一些亮点"><span class="post-toc-number">8.</span> <span class="post-toc-text">一些亮点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node端npm的登录实现以及相关"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">node端npm的登录实现以及相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登录-1"><span class="post-toc-number">8.1.1.</span> <span class="post-toc-text">登录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何判断是否登录"><span class="post-toc-number">8.1.2.</span> <span class="post-toc-text">如何判断是否登录</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取本机的ip"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">获取本机的ip</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#127-0-0-1的运用给自己发请求"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">127.0.0.1的运用给自己发请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dobbo接口请求"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">dobbo接口请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redis的运用"><span class="post-toc-number">8.5.</span> <span class="post-toc-text">redis的运用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx的妙用"><span class="post-toc-number">8.6.</span> <span class="post-toc-text">nginx的妙用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密码加密的方式"><span class="post-toc-number">8.7.</span> <span class="post-toc-text">密码加密的方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#storage放到云盘"><span class="post-toc-number">8.8.</span> <span class="post-toc-text">storage放到云盘</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#compressing-获取-tgz-包"><span class="post-toc-number">8.9.</span> <span class="post-toc-text">compressing 获取 tgz 包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-copy-第三方包到指定目录"><span class="post-toc-number">8.10.</span> <span class="post-toc-text">webpack copy 第三方包到指定目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dockerfile-的生成"><span class="post-toc-number">8.11.</span> <span class="post-toc-text">Dockerfile 的生成</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#项目启动"><span class="post-toc-number">9.</span> <span class="post-toc-text">项目启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布-1"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">发布</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登录-2"><span class="post-toc-number">9.1.1.</span> <span class="post-toc-text">登录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登录不成功"><span class="post-toc-number">9.1.2.</span> <span class="post-toc-text">登录不成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FAQ-2"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#504"><span class="post-toc-number">9.2.1.</span> <span class="post-toc-text">504</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不在白名单中"><span class="post-toc-number">9.2.2.</span> <span class="post-toc-text">不在白名单中</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/07/03/verdaccio-two/&title=《verdaccio搭建npm私服(二)：示例》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/07/03/verdaccio-two/&title=《verdaccio搭建npm私服(二)：示例》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQW7DMAwEwPz/0+m5aK0uSaeApdEpSFxb48OWkvh6xeN9MX7+enX9+p5X39w8MDAwHst4L0f+yPybBJPPDQMD4xzGVYKtb72+Pnr8MqCTuWFgYGCsgzKZRK9kxMDAwJgHbvWRd5WSGBgYJzOSRex6p6sXqTn1trU4BgbGAxn5rvv/f/7I+QYGBsajGO/i6EVtHtbNWWFgYGzNyAMu5+Wl2yRwMTAwzmHkLQ69toxJ1CZXFs5aMTAwHsvIH1A9YszbL3qHBFGsY2BgbMGYRGqvyKtGaiFYMTAwtmbkk6uWevnLqt7t22cMDIxjGNUE6zV1JQVffn1djIGB8TxGMrl8Y24eu5PjBAwMjL0ZScFX3TgrL0SL+Vk+icXAwNiO8YlNsWrU5sGNgYGxN+Ou0OwVfNWyspnKGBgYWzCS76sHmXkLRS+Cf2m2wMDA2JQxD9B3a+QL5tGVGBgYWzDyxq+krKwG7qSBDAMD4xxGb1O+d9NqgVhlY2Bg7M2YhF1eMuZNG9WmMQwMjHMYvSPGfCrVk9Xy/woMDIwjGZOH5ccG1Yr18uViYGBsyphv6E9aNJJXFlExMDC2ZuSj12wxOZ686zVhYGDswci3z6pL0PlKc3SOgYGBsR1jEnzV7bZJ2fdHnYuBgYFR7G2YLDubBwMYGBgY8SbdZFrJEcLlIhYDA2NrRt7m1fur6mZc0iKGgYFxDqO6dJwsOCfRfEPpiYGB8TzGF/C7aph/eeB3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

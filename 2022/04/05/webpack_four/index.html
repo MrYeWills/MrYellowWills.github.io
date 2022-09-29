@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>webpack源码系列(誉)：module调试 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="webpack">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>webpack源码系列(誉)：module调试</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">webpack源码系列(誉)：module调试</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-04-05T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-04-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-webpack_four"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">webpack源码系列(誉)：module调试</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-04-05 00:00:00" datetime="2022-04-05T00:00:00.000Z"  itemprop="datePublished">2022-04-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="webpack阅读经验"><a href="#webpack阅读经验" class="headerlink" title="webpack阅读经验"></a>webpack阅读经验</h2><h3 id="阅读历程回顾"><a href="#阅读历程回顾" class="headerlink" title="阅读历程回顾"></a>阅读历程回顾</h3><p>对于webpack源码阅读，<br>刚开始我从 手写一个webpack源码 的视频开始，收益还是挺大的；<br>后期看了一个webpack 5 调试视频 说明，收益也不错；<br>最后以打游击战的方式，解决 Babel options 加载的问题、 module rule exclude 问题，了解了webpack ，并以实战的方式初次阅读源码解决问题，效率低了点，但收获不错。<br>接着是毫无目标的，比如看一个js reloader 的过程，等等，这些效率是极差的，受益也很少；<br>接着自己再稍微看了下源码debug调试，收益和效率继续很差；<br>这其中几次想过放弃阅读webpack源码，<br>后面转换思想，<br>在网络上大量搜索相关教程与视频，<br>大量阅读各种视频教程和文档教程；<br>按照之前的经验，偏好于视频教程，<br>奈何视频教程中 关于源码调试的部分太少，而且效果不高，<br>在文档教程上，关于webpack源码解读的教程还蛮多，<br>遇到高质量的文档教程后，阅读完 对整个调试 大有裨益，<br>【因此觉得 遇到复杂的 源码解读这类的 学习，可能文档教程是一个不错的选择。<br>虽然文档教程没有视频教程生动直观，但是它以文字记录，你copy笔记进行查询等等 非常方便】<br>另外也遇到一个蛮不错的视频调试经验教程，收获也蛮大；</p>
+<p>有了自己之前一些webpack 调试经验，以及大量的文档、视频教程阅读后。</p>
+<p>再次调试 webpack 就轻车熟路了。</p>
+<p>知道抓住重点，放掉之前非常在意的小点。</p>
+<p>然后遇到详细的 文档教程，对着文档教程一点点调试，也是很有收获的。</p>
+<h3 id="关于webpack版本的选择"><a href="#关于webpack版本的选择" class="headerlink" title="关于webpack版本的选择"></a>关于webpack版本的选择</h3><p>webpack5相比 4，代码有了很大的增加，核心文件中的代码 增加 有30-40% 之多，<br>而且增加了大量的注释或编译代码，淹没了核心流程代码；<br>读起来成本更大；<br>由于核心流程基本一致，故而选择webpack4。<br>先快速或更容易将自己引进 webpack 源码之门，<br>以后有需求 再考虑 webpack 5 的阅读。</p>
+<h3 id="如果再次-webpack-源码阅读我会这样做："><a href="#如果再次-webpack-源码阅读我会这样做：" class="headerlink" title="如果再次 webpack 源码阅读我会这样做："></a>如果再次 webpack 源码阅读我会这样做：</h3><ul>
+<li>学习手写一个webpack</li>
+<li>阅读 webpack 调试视频的经验；</li>
+<li>然后以打游击战的方式，解决 Babel options 加载的问题、 module rule exclude 问题，了解了webpack ，并以实战的方式初次阅读源码解决问题，<br>以此熟悉webpack 大致过程；</li>
+<li>阅读大量的 babel、loader、plugin 的使用教程或视频， 比如手写plugin、loader 等等，知道这些怎么用 对webpack概念更加熟悉；</li>
+<li>再次阅读大量的 源码解读或调试经验视频 、文档， 这一步做到，就算不看webpack源码，也能对webpack源码做的事情了然于心，<br>这样的好处是，到最终自己阅读源码调试时，看到代码 就知道这个代码是用来做什么的，因为之前的视频和文档攻略。</li>
+<li>跟着一个好的教程，比如这次我是跟着一个 文档教程，分模块进行阅读调试，<br>比如我先调试module，后调试chunk，然后分别做笔记</li>
+</ul>
+<h2 id="调试与前言"><a href="#调试与前言" class="headerlink" title="调试与前言"></a>调试与前言</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本篇主要介绍 调试module的技巧与注意点或要点。<br>关于webpack源码中 module 部分的知识，请熟读文末的《参考文档或视频》。</p>
+<h3 id="webpack版本"><a href="#webpack版本" class="headerlink" title="webpack版本"></a>webpack版本</h3><p>webpack 4.46.0</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>本次调试 以单entry SingleEntryPlugin.js 展开。</p>
+<p>要在一无所知的情况下调试 module 其实是比较困难的，只有对整个 业务逻辑比较清楚的情况下，<br>再去调试会比较轻松。</p>
+<p>另外，在调试前，先打印出最终创建的<a href>module的数据(对象)</a> 以及 <a href>stats 对象</a>,对此有大致了解。<br>有助于 了解 module；</p>
+<h3 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h3><p>调试的时候，在 <code>lib\Compilation.js</code> 和 <code>lib\Compiler.js</code> 中对各个钩子打断点的技巧</p>
+<p>以及同时开两个 demo，一主一辅进行调试，<br>以 <a href>webpack直接源码 demo</a> 调试为主<br>以 <a href>同样配置的 使用webpack的demo</a> 为辅助，上面调试遇到问题时，在不中断上面调试的情况下，使用此demo断点测试猜想。</p>
+<h2 id="module编译过程"><a href="#module编译过程" class="headerlink" title="module编译过程"></a>module编译过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># lib\Compiler.js</span><br><span class="line">this.hooks.make</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#lib\Compilation.js</span><br><span class="line">addEntry</span><br><span class="line">_addModuleChain</span><br><span class="line"></span><br><span class="line">#入口module编译</span><br><span class="line">moduleFactory.create</span><br><span class="line">this.addModule</span><br><span class="line">buildModule</span><br><span class="line">module.build</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#lib\NormalModule.js</span><br><span class="line">build</span><br><span class="line">doBuild</span><br><span class="line">runLoaders</span><br><span class="line">createSource</span><br><span class="line">this.parser.parse -回调</span><br><span class="line"></span><br><span class="line">#module.build- 回调</span><br><span class="line"></span><br><span class="line">#lib\Compilation.js</span><br><span class="line">afterBuild - this.buildModule -回调</span><br><span class="line">processModuleDependencies</span><br><span class="line">addModuleDependencies</span><br><span class="line">factory.create - 递归</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># lib\Compilation.js</span><br><span class="line"># 执行到这里 项目所有module生成结束</span><br><span class="line">this.hooks.succeedEntry.call(entry, name, module);</span><br><span class="line"></span><br><span class="line"># 最终回到 make的回调；</span><br><span class="line">this.hooks.make - 回调</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑说明"><a href="#逻辑说明" class="headerlink" title="逻辑说明"></a>逻辑说明</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">addEntry(context, entry, name, callback) &#123;</span><br><span class="line">	<span class="keyword">this</span>._addModuleChain(</span><br><span class="line">			context,</span><br><span class="line">			entry,</span><br><span class="line">			<span class="built_in">module</span> =&gt; &#123;</span><br><span class="line">				<span class="keyword">this</span>.entries.push(<span class="built_in">module</span>);</span><br><span class="line">			&#125;,</span><br><span class="line">			(err, <span class="built_in">module</span>) =&gt; &#123;</span><br><span class="line">        <span class="comment">// 这个module为 entry module；</span></span><br><span class="line">			</span><br><span class="line">			&#125;</span><br><span class="line">		);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="所有create共用一个factory"><a href="#所有create共用一个factory" class="headerlink" title="所有create共用一个factory"></a>所有create共用一个factory</h3><p>无论是入口的 <code>moduleFactory.create()</code> 还是 <code>factory.create</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">_addModuleChain(context, dependency, onModule, callback) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">const</span> Dep = <span class="comment">/** @type &#123;DepConstructor&#125; */</span> (dependency.constructor);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">const</span> moduleFactory = <span class="keyword">this</span>.dependencyFactories.get(Dep);</span><br><span class="line"></span><br><span class="line">    moduleFactory.create()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addModuleDependencies()&#123;</span><br><span class="line">  <span class="keyword">const</span> factory = item.factory;</span><br><span class="line">					factory.create()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// addModuleDependencies factory 来自于 这里</span></span><br><span class="line">	processModuleDependencies(<span class="built_in">module</span>, callback) &#123;</span><br><span class="line">		<span class="keyword">const</span> addDependency = <span class="function"><span class="params">dep</span> =&gt;</span> &#123;</span><br><span class="line">				<span class="keyword">const</span> factory = <span class="keyword">this</span>.dependencyFactories.get(dep.constructor);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>其factory都来自于 下面：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib\Compiler.js</span></span><br><span class="line">	createNormalModuleFactory() &#123;</span><br><span class="line">		<span class="keyword">const</span> normalModuleFactory = <span class="keyword">new</span> NormalModuleFactory(</span><br><span class="line">			<span class="keyword">this</span>.options.context,</span><br><span class="line">			<span class="keyword">this</span>.resolverFactory,</span><br><span class="line">			<span class="keyword">this</span>.options.module || &#123;&#125;</span><br><span class="line">		);</span><br><span class="line">		<span class="keyword">return</span> normalModuleFactory;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib\SingleEntryPlugin.js</span></span><br><span class="line">		compiler.hooks.compilation.tap(</span><br><span class="line">			<span class="string">"SingleEntryPlugin"</span>,</span><br><span class="line">			(compilation, &#123; normalModuleFactory &#125;) =&gt; &#123;</span><br><span class="line">				compilation.dependencyFactories.set(</span><br><span class="line">					SingleEntryDependency,</span><br><span class="line">					normalModuleFactory</span><br><span class="line">				);</span><br><span class="line">			&#125;</span><br><span class="line">		);</span><br></pre></td></tr></table></figure>
+<p>为什么所有的factory 都至于一个， 或者说factory只初始化一次，然后被用于所有的 module 创建。<br>其实奥妙在于 lib\NormalModuleFactory.js 的 create 方法。<br>不同的module创建前，都执行了 create 方法，而且入参不一样，所以有了只用同一个factory的可能。<br>应该是 factory -》 NormalModuleFactory 将所有共有的逻辑抽象到一起。<br>比如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.hooks = &#123;</span><br><span class="line">		resolver: <span class="keyword">new</span> SyncWaterfallHook([<span class="string">"resolver"</span>]),</span><br><span class="line">		factory: <span class="keyword">new</span> SyncWaterfallHook([<span class="string">"factory"</span>]),</span><br><span class="line">		beforeResolve: <span class="keyword">new</span> AsyncSeriesWaterfallHook([<span class="string">"data"</span>]),</span><br><span class="line">		afterResolve: <span class="keyword">new</span> AsyncSeriesWaterfallHook([<span class="string">"data"</span>]),</span><br><span class="line">		createModule: <span class="keyword">new</span> SyncBailHook([<span class="string">"data"</span>]),</span><br><span class="line">		<span class="built_in">module</span>: <span class="keyword">new</span> SyncWaterfallHook([<span class="string">"module"</span>, <span class="string">"data"</span>]),</span><br><span class="line">		createParser: <span class="keyword">new</span> HookMap(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> SyncBailHook([<span class="string">"parserOptions"</span>])),</span><br><span class="line">		parser: <span class="keyword">new</span> HookMap(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> SyncHook([<span class="string">"parser"</span>, <span class="string">"parserOptions"</span>])),</span><br><span class="line">		createGenerator: <span class="keyword">new</span> HookMap(</span><br><span class="line">			() =&gt; <span class="keyword">new</span> SyncBailHook([<span class="string">"generatorOptions"</span>])</span><br><span class="line">		),</span><br><span class="line">		generator: <span class="keyword">new</span> HookMap(</span><br><span class="line">			() =&gt; <span class="keyword">new</span> SyncHook([<span class="string">"generator"</span>, <span class="string">"generatorOptions"</span>])</span><br><span class="line">		)</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="create-module-的入参"><a href="#create-module-的入参" class="headerlink" title="create module 的入参"></a>create module 的入参</h3><h4 id="moduleFactory-create"><a href="#moduleFactory-create" class="headerlink" title="moduleFactory.create"></a>moduleFactory.create</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">		moduleFactory.create(</span><br><span class="line">				&#123;</span><br><span class="line">					contextInfo: &#123;</span><br><span class="line">						issuer: <span class="string">""</span>,</span><br><span class="line">						compiler: <span class="keyword">this</span>.compiler.name</span><br><span class="line">					&#125;,</span><br><span class="line">					context: context,</span><br><span class="line">					dependencies: [dependency]</span><br><span class="line">				&#125;,</span><br><span class="line">				(err, <span class="built_in">module</span>) =&gt; &#123;</span><br><span class="line">				&#125;</span><br><span class="line">			);</span><br><span class="line">      <span class="comment">// moduleFactory.create 第一个入参打印如下：</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   contextInfo: &#123;</span></span><br><span class="line"><span class="comment">//     // 这个是调用者的路径，也就是调用下面的dependencies request文件的文件</span></span><br><span class="line"><span class="comment">//     // entry 的调用者 为空</span></span><br><span class="line"><span class="comment">//     issuer: '',</span></span><br><span class="line"><span class="comment">//   &#125;,</span></span><br><span class="line"><span class="comment">//   context: 'D:\\workplace\\webpack\\webpack-official\\debug',</span></span><br><span class="line"><span class="comment">//   dependencies: [</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//       module: null,</span></span><br><span class="line"><span class="comment">//       weak: false,</span></span><br><span class="line"><span class="comment">//       optional: false,</span></span><br><span class="line"><span class="comment">//       loc: &#123;</span></span><br><span class="line"><span class="comment">//         name: 'main',</span></span><br><span class="line"><span class="comment">//       &#125;,</span></span><br><span class="line"><span class="comment">//       // 这个是要被编译的文件路径, 被用于创建 module 的文件 ，最关键的信息</span></span><br><span class="line"><span class="comment">// //可以理解为该文件创造的module</span></span><br><span class="line"><span class="comment">//       request: './src/index.js',</span></span><br><span class="line"><span class="comment">//       userRequest: './src/index.js',</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//   ],</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br></pre></td></tr></table></figure>
+<h4 id="factory-create"><a href="#factory-create" class="headerlink" title="factory.create"></a>factory.create</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">		<span class="keyword">const</span> factory = item.factory;</span><br><span class="line">      factory.create(</span><br><span class="line">        &#123;</span><br><span class="line">          contextInfo: &#123;</span><br><span class="line">            issuer: <span class="built_in">module</span>.nameForCondition &amp;&amp; <span class="built_in">module</span>.nameForCondition(),</span><br><span class="line">            compiler: <span class="keyword">this</span>.compiler.name</span><br><span class="line">          &#125;,</span><br><span class="line">          resolveOptions: <span class="built_in">module</span>.resolveOptions,</span><br><span class="line">          context: <span class="built_in">module</span>.context,</span><br><span class="line">          dependencies: dependencies</span><br><span class="line">        &#125;)</span><br><span class="line"><span class="comment">// factory.create 第一个入参打印如下：</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   contextInfo: &#123;</span></span><br><span class="line">                   <span class="comment">// // utils/mtest被 \\src\\index.js 调用</span></span><br><span class="line"><span class="comment">//     issuer: 'D:\\workplace\\webpack\\webpack-official\\debug\\src\\index.js',</span></span><br><span class="line"><span class="comment">//   &#125;,</span></span><br><span class="line"><span class="comment">//   resolveOptions: &#123;&#125;,</span></span><br><span class="line"><span class="comment">//   context: 'D:\\workplace\\webpack\\webpack-official\\debug\\src',</span></span><br><span class="line"><span class="comment">//   dependencies: [</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//       module: null,</span></span><br><span class="line"><span class="comment">//       weak: false,</span></span><br><span class="line"><span class="comment">//       optional: false,</span></span><br><span class="line"><span class="comment">//       loc: &#123;</span></span><br><span class="line"><span class="comment">//         start: &#123;</span></span><br><span class="line"><span class="comment">//           line: 4,</span></span><br><span class="line"><span class="comment">//           column: 4,</span></span><br><span class="line"><span class="comment">//         &#125;,</span></span><br><span class="line"><span class="comment">//         end: &#123;</span></span><br><span class="line"><span class="comment">//           line: 4,</span></span><br><span class="line"><span class="comment">//           column: 28,</span></span><br><span class="line"><span class="comment">//         &#125;,</span></span><br><span class="line"><span class="comment">//       &#125;,</span></span><br><span class="line"> <span class="comment">// 这个是要被编译的文件路径, 被用于创建 module 的文件 ，最关键的信息</span></span><br><span class="line"><span class="comment">//       request: './utils/mtest',</span></span><br><span class="line"><span class="comment">//       userRequest: './utils/mtest',</span></span><br><span class="line"><span class="comment">//       range: [65, 80],</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//   ],</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="如何看某个文件创造的module"><a href="#如何看某个文件创造的module" class="headerlink" title="如何看某个文件创造的module"></a>如何看某个文件创造的module</h4><p>参考上面</p>
+<h4 id="待研究"><a href="#待研究" class="headerlink" title="待研究"></a>待研究</h4><p>被用于 factory.create 的dependencies 通过以上梳理 貌似只有一个元素，<br>后期可以尝试下如何出现多个元素。</p>
+<p>还有resolve的过程；</p>
+<h3 id="哪里算结束"><a href="#哪里算结束" class="headerlink" title="哪里算结束"></a>哪里算结束</h3><p>this.hooks.succeedEntry.call(entry, name, module);</p>
+<p>webpack 解析module的过程：<br>以入口entry为入口，通过create解析成module；<br>解析完后，再看下此 module 是否有 import 或 require 即依赖 【processModuleDependencies】,<br>如果有 则遍历此依赖，<br>对每个依赖文件，进行 create 操作，解析成module 递归，<br>以上过程重复一次；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">addEntry(context, entry, name, callback) &#123;</span><br><span class="line">		<span class="keyword">this</span>.hooks.addEntry.call(entry, name);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>._addModuleChain(</span><br><span class="line">			context,</span><br><span class="line">			entry,</span><br><span class="line">			<span class="built_in">module</span> =&gt; &#123;</span><br><span class="line">				<span class="keyword">this</span>.entries.push(<span class="built_in">module</span>);</span><br><span class="line">			&#125;,</span><br><span class="line">			(err, <span class="built_in">module</span>) =&gt; &#123;</span><br><span class="line">			</span><br><span class="line">      <span class="comment">// 全部module解析完后，会执行这里</span></span><br><span class="line">      <span class="comment">// 可以在这里 console.log(this.modules) 打印所有编译出来的 modules</span></span><br><span class="line">				<span class="keyword">this</span>.hooks.succeedEntry.call(entry, name, <span class="built_in">module</span>);</span><br><span class="line">				<span class="keyword">return</span> callback(<span class="literal">null</span>, <span class="built_in">module</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>当然也可以在这里打印所有编译出来的modules：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Compilation.js 的 constructor 中</span></span><br><span class="line">	<span class="built_in">Object</span>.keys(<span class="keyword">this</span>.hooks).forEach(<span class="function"><span class="params">hookName</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">const</span> hook = <span class="keyword">this</span>.hooks[hookName];</span><br><span class="line">			<span class="keyword">if</span> (hook.tap) &#123;</span><br><span class="line">				hook.tap(<span class="string">"show"</span>, () =&gt; &#123;</span><br><span class="line">					<span class="keyword">const</span> hooktype = <span class="built_in">Object</span>.getPrototypeOf(hook).constructor.name;</span><br><span class="line">					<span class="built_in">console</span>.log(</span><br><span class="line">						<span class="string">`Compilation  <span class="subst">$&#123;hookName&#125;</span>   【类型：<span class="subst">$&#123;hooktype&#125;</span> 入参：<span class="subst">$&#123;hook._args&#125;</span>   `</span></span><br><span class="line">					);</span><br><span class="line">					<span class="comment">// console.log(this.modules)</span></span><br><span class="line">					<span class="keyword">if</span> (hookName === <span class="string">"needAdditionalPass"</span>) &#123;</span><br><span class="line">            <span class="comment">// needAdditionalPass 执行时，webpack 的编译完成</span></span><br><span class="line">            <span class="comment">// 可以在这里 console.log(this.modules) 打印所有编译出来的 modules</span></span><br><span class="line">						<span class="built_in">console</span>.log(<span class="keyword">this</span>.modules);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="如何确认module标识"><a href="#如何确认module标识" class="headerlink" title="如何确认module标识"></a>如何确认module标识</h2><p>入口文件会经历一次 <code>moduleFactory.create</code>；<br>之后的每个文件都会经历 一次 <code>factory.create</code>；<br>每个文件都会创建一个module；<br>无论时入口文件还是其依赖的文件，创建的module 全部保存在 <code>Compilation.js  this.modules</code> 上；</p>
+<p>可以从这里看出是哪个文件的module<br>每个文件创建module之前，经历create，此文件信息在这里：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">          contextInfo: &#123;</span><br><span class="line">            issuer: <span class="built_in">module</span>.nameForCondition &amp;&amp; <span class="built_in">module</span>.nameForCondition(),</span><br><span class="line">            compiler: <span class="keyword">this</span>.compiler.name</span><br><span class="line">          &#125;,</span><br><span class="line">          resolveOptions: <span class="built_in">module</span>.resolveOptions,</span><br><span class="line">          context: <span class="built_in">module</span>.context,</span><br><span class="line">		<span class="comment">//   此文件信息在这里</span></span><br><span class="line">		<span class="comment">//   dependencies[0].request</span></span><br><span class="line">          dependencies: dependencies</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建好的module，<a href>参考 - 关于module对象</a> ,其文件标识在 resource 中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource: <span class="string">'D:\\workplace\\webpack\\webpack-travel\\src\\index.js'</span>,</span><br></pre></td></tr></table></figure></p>
+<h2 id="延申"><a href="#延申" class="headerlink" title="延申"></a>延申</h2><h3 id="限制一次操作的次数"><a href="#限制一次操作的次数" class="headerlink" title="限制一次操作的次数"></a>限制一次操作的次数</h3><p> 在创建module时,使用 lib\util\Semaphore.js 进行次数控制，超过100个时 等待处理完后再处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib\Compilation.js</span></span><br><span class="line">	<span class="keyword">const</span> semaphore = <span class="keyword">this</span>.semaphore;</span><br><span class="line">				semaphore.acquire(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">					<span class="keyword">const</span> factory = item.factory;</span><br><span class="line">					factory.create(</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="参考文档或视频"><a href="#参考文档或视频" class="headerlink" title="参考文档或视频"></a>参考文档或视频</h3><p><a href="https://blog.flqin.com/377.html" target="_blank" rel="noopener">webpack4 源码分析系列</a><br><a href="https://www.bilibili.com/video/av462922583?from=search&amp;seid=14121423744670771391&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener">webpack5 源码分析</a><br><a href="https://www.bilibili.com/video/BV1N5411j74S?p=14" target="_blank" rel="noopener">webpack4 如何调试和阅读webpack源码 视频</a><br><a href="https://cloud.tencent.com/developer/article/1006353" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack</a><br><a href="https://cloud.tencent.com/developer/article/1030740?from=article.detail.1006354" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack</a><br><a href="https://lxzjj.github.io/2017/11/02/%E7%8E%A9%E8%BD%ACwebpack%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack 备用地址</a><br><a href="https://www.bilibili.com/video/BV1oL411V7BQ?spm_id_from=333.999.0.0" target="_blank" rel="noopener">手摸手带你实现打包器 仅需 80 行代码理解 webpack 的核心</a><br><a href="https://xie.infoq.cn/article/ddca4caa394241447fa0aa3c0" target="_blank" rel="noopener">[万字总结] 一文吃透 Webpack 核心原理</a></p>
+<h3 id="调试demo地址"><a href="#调试demo地址" class="headerlink" title="调试demo地址"></a>调试demo地址</h3><p><a href="https://github.com/YeWills/webpack/tree/version-4.46.0-module" target="_blank" rel="noopener">用于主调试的 webpack源码仓库： version-4.46.0-module</a><br><a href="https://github.com/YeWills/webpack-travel/tree/webpack-4.46.0-module" target="_blank" rel="noopener">用于辅助的： webpack-4.46.0-module</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/04/05/webpack_four/" target="_blank" rel="external">https://yewills.github.io/2022/04/05/webpack_four/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/05/webpack_four/&title=《webpack源码系列(誉)：module调试》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/05/webpack_four/&title=《webpack源码系列(誉)：module调试》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/04/05/webpack_five/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack源码系列(田)：chunk及之后的调试</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/04/05/webpack_three/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack源码系列(来)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack阅读经验"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack阅读经验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#阅读历程回顾"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">阅读历程回顾</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于webpack版本的选择"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">关于webpack版本的选择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果再次-webpack-源码阅读我会这样做："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">如果再次 webpack 源码阅读我会这样做：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试与前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">调试与前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack版本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">webpack版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#说明"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调试技巧"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">调试技巧</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#module编译过程"><span class="post-toc-number">3.</span> <span class="post-toc-text">module编译过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逻辑说明"><span class="post-toc-number">4.</span> <span class="post-toc-text">逻辑说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#所有create共用一个factory"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">所有create共用一个factory</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-module-的入参"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">create module 的入参</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#moduleFactory-create"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">moduleFactory.create</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#factory-create"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">factory.create</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何看某个文件创造的module"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">如何看某个文件创造的module</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#待研究"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">待研究</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#哪里算结束"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">哪里算结束</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何确认module标识"><span class="post-toc-number">5.</span> <span class="post-toc-text">如何确认module标识</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#延申"><span class="post-toc-number">6.</span> <span class="post-toc-text">延申</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#限制一次操作的次数"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">限制一次操作的次数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文档或视频"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">参考文档或视频</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调试demo地址"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">调试demo地址</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/05/webpack_four/&title=《webpack源码系列(誉)：module调试》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/05/webpack_four/&title=《webpack源码系列(誉)：module调试》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aQZKDMAxEUe5/aVKVLcF0t2BqkL5XFHGCHwtFkr1t8ti/4+z6OI4zj/PXv7Y9MWDAgPFaxr4c9TnrF5G9ph9UGDBgDGAoQXa9dOXOGqCAT+/DgAEDxnJOZYluaIYBAwYMPV1bl50XaZyQmMKAAQNGVsTWH++mj4/U4jBgwHgho74x8Nz1n+5vwIAB418ydnPoQTMrd7MBAwaM3gy97VUJvlIJGkVX6T3BgAGjNeOu9n22namUrFLAhQEDxssZ2Y9mjbD6/NP7MGDAGMBwD4S5YVFK7OTnwoABYxpDObyVbVhmW5tK0nlRxMKAAaMdw653zTTRLVD1ayPDhQEDxssZWUitH57IUknljwEGDBgTGHpz331w5RCGPh8GDBj9GHqzTF+6O8fdHP3xKQwYMFoz3LTMLV+zReslMQwYMKYx3ODrtufcxtxt7TYYMGA0ZbjLqrTysw1RGDBgTGPoKWDWXHOL5LCchgEDxgBGlszdUCvLL+XizwAGDBhNGZVmWZZEuu9Y2jaAAQPGMIbd3jI3O/XvGsEXBgwYrRmVx7iFqBusn3hNMGDAeCNjN0f9SIT7LamFBwMGjNaMetJWKWKNMjU6FAIDBoxODDfIukci9BBcKl9hwIAxgJEVpdkSKxX2RcCFAQPGeIa+eeCmgC4JBgwYMLKjEvq13tozUk8YMGAMYGSbATqystkpHf6AAQNGa0blmIV+/KJyvEMPyjBgwGjH+ADb4zMIQC2kZAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

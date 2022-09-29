@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>ui组件库系列(二):打包 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="ui组件库">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>ui组件库系列(二):打包</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">ui组件库系列(二):打包</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-06-28T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-06-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ui组件库/">ui组件库</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-ui_two"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">ui组件库系列(二):打包</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-06-28 00:00:00" datetime="2022-06-28T00:00:00.000Z"  itemprop="datePublished">2022-06-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ui组件库/">ui组件库</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>以<code>@mgbd</code>项目为例，介绍以下两方面：<br>因为father-build 本身就是一个项目，fork自github，为了彻底理解 <code>@mgbd</code>项目打包，于是把 father-build的源码直接放入 <code>@mgbd</code>项目中。</p>
+<ul>
+<li>因此本文第一部分讲解 father-build源码从ts打包为js的过程；</li>
+<li>第二部分讲解 father-build 打包 <code>@mgbd</code>项目的原理；</li>
+</ul>
+<h2 id="father-build项目打包"><a href="#father-build项目打包" class="headerlink" title="father-build项目打包"></a>father-build项目打包</h2><p>father-build 打包的目的在于将ts转为cmj规范的js，<br>tsc配置比较简单：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"target"</span>: <span class="string">"esnext"</span>,</span><br><span class="line">    <span class="comment">// 转为cmj规范的js</span></span><br><span class="line">    <span class="string">"module"</span>: <span class="string">"commonjs"</span>,</span><br><span class="line">    <span class="string">"moduleResolution"</span>: <span class="string">"node"</span>,</span><br><span class="line">    <span class="string">"esModuleInterop"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"outDir"</span>: <span class="string">"./dist"</span>,</span><br><span class="line">    <span class="string">"rootDir"</span>: <span class="string">"./src"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"include"</span>: [<span class="string">"./src"</span>]</span><br><span class="line">&#125;ts</span><br></pre></td></tr></table></figure></p>
+<p>然后根目录执行 <code>tsc --project scripts/father-build/</code>  即可；</p>
+<p>tsc 会打包指定目录下所有的ts，然后按目录原封不动打包到新目录，类似 babel 命令。</p>
+<h2 id="father-build打包原理"><a href="#father-build打包原理" class="headerlink" title="father-build打包原理"></a>father-build打包原理</h2><p><code>@mgbd</code> 要分别打包es、cjs 规范的包, 分别打包到 es、lib目录，<br>然后package.json中通过 这个关联， package.json module 代表最新的es规范，如果没有，打包工具就会去找 main 字段代表的cjs：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"@mgbd/fusion"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.6.20"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"next增强组件"</span>,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">"hz"</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"lib/index.js"</span>,</span><br><span class="line">  <span class="comment">// 这个关联 es目录</span></span><br><span class="line">  <span class="string">"module"</span>: <span class="string">"es/index.js"</span>,</span><br><span class="line">  <span class="string">"types"</span>: <span class="string">"es/index.d.ts"</span>,</span><br><span class="line">  <span class="string">"files"</span>: [</span><br><span class="line">    <span class="string">"lib"</span>,</span><br><span class="line">    <span class="string">"es"</span>,</span><br><span class="line">    <span class="string">"CHANGELOG.md"</span></span><br><span class="line">  ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动打包"><a href="#启动打包" class="headerlink" title="启动打包"></a>启动打包</h3><p>原来是 <code>cross-env BUILD_TYPE=lib father-build</code> 改造后，为 <code>cross-env BUILD_TYPE=es node ./scripts/father-build/bin/father-build.js</code>;</p>
+<h3 id="打包过程要点分析"><a href="#打包过程要点分析" class="headerlink" title="打包过程要点分析"></a>打包过程要点分析</h3><h4 id="babel-register的妙用"><a href="#babel-register的妙用" class="headerlink" title="@babel/register的妙用"></a>@babel/register的妙用</h4><p>启动打包后，会执行 buildForLerna ， 函数内执行：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> registerBabel(&#123;</span><br><span class="line">    cwd,</span><br><span class="line">    only: CONFIG_FILES,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//   其实就是：</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'@babel/register'</span>)(&#123;</span><br><span class="line">    ...babelConfig,</span><br><span class="line">    extensions: [<span class="string">'.es6'</span>, <span class="string">'.es'</span>, <span class="string">'.jsx'</span>, <span class="string">'.js'</span>, <span class="string">'.mjs'</span>, <span class="string">'.ts'</span>, <span class="string">'.tsx'</span>],</span><br><span class="line">    only: only.map(<span class="function"><span class="params">file</span> =&gt;</span> slash(join(cwd, file))),</span><br><span class="line">    babelrc: <span class="literal">false</span>,</span><br><span class="line">    cache: <span class="literal">false</span>,</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>@babel/register 非常有用，它将babel的编译过程集成到 node 的require函数内，<br>执行 @babel/register 后， 后期所有的 require 会自动编译，<br>本项目中使用@babel/register的目的在于 在node环境内，要require(‘.fatherrc.ts’)，<br>经过@babel/register给require集成hoook后，<br>即可在node cjs的规范环境内 正常执行ts文件。<br>更多 @babel/register 说明<a href="https://www.ucloud.cn/yun/91786.html" target="_blank" rel="noopener">参考</a></p>
+<h4 id="根据packages遍历执行build"><a href="#根据packages遍历执行build" class="headerlink" title="根据packages遍历执行build"></a>根据packages遍历执行build</h4><p>buildForLerna 收集到足够的配置后，然后根据有多少个 packages, 遍历执行 build。</p>
+<p>这里有个技巧 process.chdir(pkgPath); 可以将运行目录切换到指定目录，然后执行遍历build。</p>
+<h4 id="都是babel打包，没有rollup"><a href="#都是babel打包，没有rollup" class="headerlink" title="都是babel打包，没有rollup"></a>都是babel打包，没有rollup</h4><p>如果是es，就执行 await babel({ cwd, rootPath, watch, dispose, type: ‘esm’, importLibToEs, log, bundleOpts });<br>如果是cjs，就执行  await babel({ cwd, rootPath, watch, dispose, type: ‘cjs’, log, bundleOpts });</p>
+<p>所以 都是通过babel来编译</p>
+<h4 id="gulp与babel"><a href="#gulp与babel" class="headerlink" title="gulp与babel"></a>gulp与babel</h4><p>这里用了gulp的流来处理；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> vfs <span class="keyword">from</span> <span class="string">"vinyl-fs"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vfs</span><br><span class="line"><span class="comment">// vfs将const srcPath = join(cwd, "src");目录下所有的文件放到管道流中</span></span><br><span class="line">    .src(src, &#123;</span><br><span class="line">    allowEmpty: <span class="literal">true</span>,</span><br><span class="line">    base: srcPath</span><br><span class="line">    &#125;)</span><br><span class="line">    .pipe(watch ? gulpPlumber() : through.obj())</span><br><span class="line">    <span class="comment">// ts转jsx： 将所有的ts tsx 文件转换为 jsx，并且生成d.ts文件， 后面详细讲解</span></span><br><span class="line">    .pipe(</span><br><span class="line">    gulpIf(<span class="function"><span class="params">f</span> =&gt;</span> !disableTypeCheck &amp;&amp; isTsFile(f.path), gulpTs(tsConfig))</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// 通过 gulpLess将 less 转为 css</span></span><br><span class="line">    .pipe(</span><br><span class="line">    gulpIf(</span><br><span class="line">        f =&gt; lessInBabelMode &amp;&amp; <span class="regexp">/\.less$/</span>.test(f.path),</span><br><span class="line">        gulpLess(lessInBabelMode || &#123;&#125;)</span><br><span class="line">    )</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// jsx转js：这里匹配到上个步骤【ts转jsx】生成的jsx文件，将jsx转为js</span></span><br><span class="line">    .pipe(</span><br><span class="line">    gulpIf(</span><br><span class="line">        f =&gt; isTransform(f.path),</span><br><span class="line">        through.obj(<span class="function">(<span class="params">file, env, cb</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            file.contents = Buffer.from(</span><br><span class="line">            transform(&#123;</span><br><span class="line">                file,</span><br><span class="line">                type</span><br><span class="line">            &#125;)</span><br><span class="line">            );</span><br><span class="line">            <span class="comment">// .jsx -&gt; .js</span></span><br><span class="line">            file.path = file.path.replace(extname(file.path), <span class="string">".js"</span>);</span><br><span class="line">            cb(<span class="literal">null</span>, file);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            signale.error(<span class="string">`Compiled faild: <span class="subst">$&#123;file.path&#125;</span>`</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(e);</span><br><span class="line">            cb(<span class="literal">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    )</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// 将文件吐出，放到指定目录</span></span><br><span class="line">    <span class="comment">// const targetDir = type === "esm" ? "es" : "lib";</span></span><br><span class="line">    <span class="comment">// const targetPath = join(cwd, targetDir);</span></span><br><span class="line">    .pipe(vfs.dest(targetPath));</span><br></pre></td></tr></table></figure></p>
+<p>这个管道非常像 webpack的 loader 或者说像 rollup 的 resolve hooks ，上个loader处理通过return 交给下一个loader处理。</p>
+<h4 id="【ts转jsx】与”jsx”-“preserve”"><a href="#【ts转jsx】与”jsx”-“preserve”" class="headerlink" title="【ts转jsx】与”jsx”: “preserve”"></a>【ts转jsx】与”jsx”: “preserve”</h4><p>关于上面的【ts转jsx】</p>
+<p>gulp的ts组件处理时，要加上下面这个配置，如此之后，将会将ts转为jsx文件，然后通过管道传给下面的 babel处理。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"compilerOptions": &#123;</span><br><span class="line">    "jsx": "preserve",</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>这里非常精彩的地方有两个：<br>通过gulp流，使用 import gulpTs from “gulp-typescript”; 将ts转为 jsx；<br>然后使用babel api 生成 js：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">transform</span>(<span class="params">opts: ITransformOpts</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; file, type &#125; = opts;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">opts</span>: babelOpts, isBrowser &#125; = getBabelConfig(&#123;</span><br><span class="line">    target,</span><br><span class="line">    type,</span><br><span class="line">    typescript: <span class="literal">true</span>,</span><br><span class="line">    runtimeHelpers,</span><br><span class="line">    filePath: slash(relative(cwd, file.path)),</span><br><span class="line">    browserFiles,</span><br><span class="line">    nodeFiles,</span><br><span class="line">    nodeVersion,</span><br><span class="line">    lazy: cjs &amp;&amp; cjs.lazy,</span><br><span class="line">    lessInBabelMode</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">if</span> (importLibToEs &amp;&amp; type === <span class="string">"esm"</span>) &#123;</span><br><span class="line">    babelOpts.plugins.push(<span class="built_in">require</span>.resolve(<span class="string">"../lib/importLibToEs"</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  babelOpts.presets.push(...extraBabelPresets);</span><br><span class="line">  babelOpts.plugins.push(...extraBabelPlugins);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> relFile = slash(file.path).replace(<span class="string">`<span class="subst">$&#123;cwd&#125;</span>/`</span>, <span class="string">""</span>);</span><br><span class="line">  log(</span><br><span class="line">    <span class="string">`Transform to <span class="subst">$&#123;type&#125;</span> for <span class="subst">$&#123;chalk[isBrowser ? <span class="string">"yellow"</span> : <span class="string">"blue"</span>](</span></span></span><br><span class="line"><span class="string"><span class="subst">      relFile</span></span></span><br><span class="line"><span class="string"><span class="subst">    )&#125;</span>`</span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> babel.transform(file.contents, &#123;</span><br><span class="line">    ...babelOpts,</span><br><span class="line">    filename: file.path,</span><br><span class="line">    <span class="comment">// 不读取外部的babel.config.js配置文件，全采用babelOpts中的babel配置来构建</span></span><br><span class="line">    configFile: <span class="literal">false</span>,</span><br><span class="line">  &#125;).code;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="手写babel插件将less转为css路径"><a href="#手写babel插件将less转为css路径" class="headerlink" title="手写babel插件将less转为css路径"></a>手写babel插件将less转为css路径</h4><p>第二个精彩的部分在于 手写babel插件，修改 import代码，将import的less路径要改成 css文件路径<br>在管道流中，利用gulp的less插件转义less文件；<br>由于gulp对less进行了转义css，<br>那么原来tsx文件import的less路径要改成 css文件路径，<br>可以手写一个babel插件来完成,<a href>关于这个插件解释参考 - babel笔记(二)：插件开发</a>：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">transformImportLess2Css</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">      name: <span class="string">'transform-import-less-to-css'</span>,</span><br><span class="line">      visitor: &#123;</span><br><span class="line">          ImportDeclaration(path, source) &#123;</span><br><span class="line">              <span class="keyword">const</span> re = <span class="regexp">/\.less$/</span>;</span><br><span class="line">              <span class="keyword">if</span>(re.test(path.node.source.value))&#123;</span><br><span class="line">                path.node.source.value = path.node.source.value.replace(re, <span class="string">'.css'</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="其他文件-图片-保持原样不解析"><a href="#其他文件-图片-保持原样不解析" class="headerlink" title="其他文件(图片)保持原样不解析"></a>其他文件(图片)保持原样不解析</h4><p>出了 js、ts、less 文件需要处理， png文件不需要处理，直接原样被打包，这些交给业务项目的编译去打包<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bigimage <span class="keyword">from</span> <span class="string">"./assert/icon.png"</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="利用gulp管道-pipe-流自动拷贝文件"><a href="#利用gulp管道-pipe-流自动拷贝文件" class="headerlink" title="利用gulp管道(pipe)流自动拷贝文件"></a>利用gulp管道(pipe)流自动拷贝文件</h4><p>第三个精彩的部分在于 利用gulp管道(pipe)流 将目录下所有的文件进行了自动拷贝。</p>
+<p>关于这点 参考《打包的策略与方式》</p>
+<h3 id="其他细节"><a href="#其他细节" class="headerlink" title="其他细节"></a>其他细节</h3><h4 id="打包概述"><a href="#打包概述" class="headerlink" title="打包概述"></a>打包概述</h4><p>项目由 ts、less、文件(含图片)组成，那么打包也是针对这三类进行，<br>因为是ui框架，因为打包后我们要求原目录结构要保持不变，只是转成es规范，以及对es+的转义；<br>因此选择gulp，<br>利用gulp的文件流，来复制整个目录结构以及文件，保持原路径结构不变；<br>利用gulp的less插件转义less文件；<br>利用gulp的ts插件 将ts转义jsx，并生成 d.ts、sourcemap(sourcemap可配置，当前没有配置)<br>当然了这里做了 disableTypeCheck 配置，disableTypeCheck 顾名思义就是 是否禁止类型检测，类型检测一般指ts，<br>因为babel无法做类型检测，因此无法生成d.ts，也因为ts的特殊性，babel也无法对ts生成sourcemap，<br>d.ts sourcemap 都是交给tsc去生成的，<br>然后因为babel强大的最新的es语言插件能力，将高版本的es打包成低版本的js，一般交给babel完成。<br>如果 disableTypeCheck 了，意思就是不需要 d.ts与sourcemap，那么此时就不需要tsc参与了，<br>其实也就是不需要gulp的ts插件参与，<br>只需要babel进行ts转义即可：<br>关于disableTypeCheck的源码细节：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> babelTransformRegexp = disableTypeCheck ? <span class="regexp">/\.(t|j)sx?$/</span> : <span class="regexp">/\.jsx?$/</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  .pipe(</span><br><span class="line">     gulpIf(<span class="function"><span class="params">f</span> =&gt;</span> !disableTypeCheck &amp;&amp; isTsFile(f.path), gulpTs(tsConfig))</span><br><span class="line">   )</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isTransform</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> babelTransformRegexp.test(path) &amp;&amp; !path.endsWith(<span class="string">".d.ts"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">     .pipe(</span><br><span class="line">     gulpIf(</span><br><span class="line">       f =&gt; isTransform(f.path),</span><br><span class="line">       through.obj(<span class="function">(<span class="params">file, env, cb</span>) =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">           file.contents = Buffer.from(</span><br><span class="line">             transform(&#123;</span><br><span class="line">               file,</span><br><span class="line">               type</span><br><span class="line">             &#125;)</span><br><span class="line">           );</span><br><span class="line">           <span class="comment">// .jsx -&gt; .js</span></span><br><span class="line">           file.path = file.path.replace(extname(file.path), <span class="string">".js"</span>);</span><br><span class="line">           cb(<span class="literal">null</span>, file);</span><br><span class="line">         &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">           signale.error(<span class="string">`Compiled faild: <span class="subst">$&#123;file.path&#125;</span>`</span>);</span><br><span class="line">           <span class="built_in">console</span>.log(e);</span><br><span class="line">           cb(<span class="literal">null</span>);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">     )</span><br><span class="line">   )</span><br></pre></td></tr></table></figure></p>
+<p>利用babel来转义tsc(当disableTypeCheck为true，不需要类型检测时)或jsx(当disableTypeCheck为false，需要类型检测，由tsc将ts转jsx)为js。</p>
+<p>除了ts与less要特殊处理外，其他文件(含图片)原地复制过去即可，不用做处理。<br>这些其他文件(含图片)可由业务项目进行loader处理即可。</p>
+<p>当然了，如果嫌麻烦，ts、less 也都不用处理，可以交给外部的业务项目去处理，<br>但这样的话业务项目的编译量就大了，编译速度会减速非常明显。</p>
+<h4 id="disableTypeCheck"><a href="#disableTypeCheck" class="headerlink" title="disableTypeCheck"></a>disableTypeCheck</h4><p>disableTypeCheck 类型检查，参考上面的《打包概述》</p>
+<!-- disableTypeCheck -->
+<p>我们不是业务项目打包，所有不用打包成单页面文件</p>
+<h4 id="打包的套路："><a href="#打包的套路：" class="headerlink" title="打包的套路："></a>打包的套路：</h4><p>ts 生成 d.ts、sourcemap, babel用来打包代码；<br><a href="https://juejin.cn/book/7047524421182947366/section/7048282320230416395" target="_blank" rel="noopener">参考</a></p>
+<h4 id="rimraf-sync"><a href="#rimraf-sync" class="headerlink" title="rimraf.sync"></a>rimraf.sync</h4><p>用来删除 <code>rimraf.sync(join(cwd, &#39;dist&#39;));</code></p>
+<h4 id="ts-readConfigFile-读取ts配置"><a href="#ts-readConfigFile-读取ts配置" class="headerlink" title="ts.readConfigFile 读取ts配置"></a>ts.readConfigFile 读取ts配置</h4><p>ts.readConfigFile 读取ts配置</p>
+<h3 id="lerna"><a href="#lerna" class="headerlink" title="lerna"></a>lerna</h3><p>只需要 lerna.json 空的即可，使用这个，是为了触发判断，走buildForLerna, 实际上 father-build 内部没有使用 lerna.json 逻辑：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> useLerna = existsSync(join(opts.cwd, <span class="string">'lerna.json'</span>));</span><br><span class="line"><span class="keyword">const</span> dispose = isLerna ? <span class="keyword">await</span> buildForLerna(opts) : <span class="keyword">await</span> build(opts);</span><br></pre></td></tr></table></figure></p>
+<p>只是在打包的时候，引用了一个<code>import { getPackages } from &#39;@lerna/project&#39;;</code>，用这个其实也就是简单用来获取 各个package下的package.json, 应该是可以取代的。</p>
+<p>因此本ui项目打包实际上几乎没有用到 lerna。</p>
+<h3 id="rollup"><a href="#rollup" class="headerlink" title="rollup"></a>rollup</h3><p>虽然 father-build 有很多rollup的代码，但本ui项目没有使用，rollup，<br>不过 rollup确实发挥了大道至简的原理，其配置相比webpack可能要简单点，<br>可以尝试用用rollup，其编译原理、插件模式 与webpack都有共通之处，<br>如果你会了webpack，并且阅读过webpack源码，那么学习rollup就会非常快，<br>好比学了react，学vue一样。</p>
+<h4 id="rollup-demo"><a href="#rollup-demo" class="headerlink" title="rollup demo"></a>rollup demo</h4><p><a href>rollup的demo仓库</a>，以后自己玩rollup，可以用这个</p>
+<h2 id="打包的策略与方式"><a href="#打包的策略与方式" class="headerlink" title="打包的策略与方式"></a>打包的策略与方式</h2><h3 id="几种不同类型项目"><a href="#几种不同类型项目" class="headerlink" title="几种不同类型项目"></a>几种不同类型项目</h3><p>业务项目打包<br>ui组件库打包 如ant-design<br>ui工具库打包 如ajax业务封装等等<br>脚手架打包 如umi</p>
+<h3 id="不同类型项目打包目标不同"><a href="#不同类型项目打包目标不同" class="headerlink" title="不同类型项目打包目标不同"></a>不同类型项目打包目标不同</h3><h4 id="业务项目打包"><a href="#业务项目打包" class="headerlink" title="业务项目打包"></a>业务项目打包</h4><p>以上业务项目打包，是单页面打包，大多使用webpack、rollup 将所有的源码打包成一个单独的js【不考虑代码分割插件】，我们接触最多，这里不多说;</p>
+<h4 id="ui组件库、ui工具库"><a href="#ui组件库、ui工具库" class="headerlink" title="ui组件库、ui工具库"></a>ui组件库、ui工具库</h4><p>ui组件库、ui工具库 这类相似，属于浏览器端使用的组件或工具，为了方便调试代码，也为了进行treeshaking，<br>打包的时候要求保持源码目录结构一致。</p>
+<p>为了提高被引用时 业务项目的编译速度，或者避免由于高版本的es+，导致业务项目的webpack ast解析报错:</p>
+<blockquote>
+<p>注意不是 业务项目的babel ast解析报错，<br>因为业务项目使用webpack转义代码时，会进行两次的ast解析，第一次是babel ast解析，然后将ast源码交给webpack，webpack再做第二次ast解析，<br>如果忽略了第三方包的babel-loader，那么就不会babel ast解析，直接交给webpack ast解析，不经过babel解析时，高版本的es+ 可能会让webpack ast报错，</p>
+</blockquote>
+<p>为了达到以上目的，我们需要对此类库，要保持源码目录结构，进行ts转js，且进行高版本es+转低版本的js，以及对预编译样式文件（scss\less）的转义为css；</p>
+<p>另外，有些ui工具库打包如一些sdk，要求以命名空间方式使用，这些可以使用各个编译工具的umd模式即可。</p>
+<h4 id="脚手架打包"><a href="#脚手架打包" class="headerlink" title="脚手架打包"></a>脚手架打包</h4><p>脚手架打包，这个比较简单，因为脚手架都是运行在 node环境上，<br>如果脚手架是js写的，可不用打包，直接发布即可；<br>简单的脚手架直接使用js也是一个好选择，方便调试【当然了，ts也可以生成sourcemap调试】；<br>如果是ts写的，那么用tsc或者上面的babel进行转js【因为node无法直接运行ts文件，虽然可以用esno包，单那是个盲盒，万一出问题不好排查】<br>有些脚手架涉及到 tsx或jsx，比如 umi，不过umi以及通过传送门将这些文件动态复制到.umi目录下，<br>直接交给业务项目的打包实现，不需要脚手架打包处理。</p>
+<p>说起来 ui组件库打包 要注意更多，所以单独讲讲 ui组件库打包。</p>
+<h3 id="ui组件库打包更多说明"><a href="#ui组件库打包更多说明" class="headerlink" title="ui组件库打包更多说明"></a>ui组件库打包更多说明</h3><p>基于 ui组件库打包 的目标，我们可以使用本文讨论的 gulp+gulp的less\scss插件+tsc+babel 的方式；</p>
+<p>也可以 直接使用babel命令(+tsc命令) + 手写一个复制脚本，将所有非js、ts文件复制到新的目录中。<br>这种方式中，如果不考虑 样式文件less、scss的转换，d.ts生成，那么更简单了，<br>直接使用 babel 命令进行转义，然后手写一个复制脚本，即可解决。</p>
+<p>因为一旦涉及到 less、scss的转换，就需要改动源码，将原来的less、scss文件路径改成 css文件路径，需要手写一个babel插件来转换路径；<br>一旦涉及到 d.ts 就要使用 tsc 进行编译。</p>
+<p>以上是生产打包，下一篇接着讲本ui库的本地打包与启动。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/06/28/ui_two/" target="_blank" rel="external">https://yewills.github.io/2022/06/28/ui_two/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ui组件库/">ui组件库</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/06/28/ui_two/&title=《ui组件库系列(二):打包》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/06/28/ui_two/&title=《ui组件库系列(二):打包》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/06/28/babel_two/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">babel笔记(二)：插件开发</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/06/21/ts_six/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ts把玩系列(三):温故知新</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#father-build项目打包"><span class="post-toc-number">1.</span> <span class="post-toc-text">father-build项目打包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#father-build打包原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">father-build打包原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动打包"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">启动打包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打包过程要点分析"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">打包过程要点分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#babel-register的妙用"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">@babel/register的妙用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据packages遍历执行build"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">根据packages遍历执行build</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#都是babel打包，没有rollup"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">都是babel打包，没有rollup</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#gulp与babel"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">gulp与babel</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#【ts转jsx】与”jsx”-“preserve”"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">【ts转jsx】与”jsx”: “preserve”</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#手写babel插件将less转为css路径"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">手写babel插件将less转为css路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他文件-图片-保持原样不解析"><span class="post-toc-number">2.2.7.</span> <span class="post-toc-text">其他文件(图片)保持原样不解析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#利用gulp管道-pipe-流自动拷贝文件"><span class="post-toc-number">2.2.8.</span> <span class="post-toc-text">利用gulp管道(pipe)流自动拷贝文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他细节"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">其他细节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打包概述"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">打包概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#disableTypeCheck"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">disableTypeCheck</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打包的套路："><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">打包的套路：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#rimraf-sync"><span class="post-toc-number">2.3.4.</span> <span class="post-toc-text">rimraf.sync</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ts-readConfigFile-读取ts配置"><span class="post-toc-number">2.3.5.</span> <span class="post-toc-text">ts.readConfigFile 读取ts配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lerna"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">lerna</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rollup"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">rollup</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#rollup-demo"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">rollup demo</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打包的策略与方式"><span class="post-toc-number">3.</span> <span class="post-toc-text">打包的策略与方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#几种不同类型项目"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">几种不同类型项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不同类型项目打包目标不同"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">不同类型项目打包目标不同</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#业务项目打包"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">业务项目打包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ui组件库、ui工具库"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">ui组件库、ui工具库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#脚手架打包"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">脚手架打包</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ui组件库打包更多说明"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">ui组件库打包更多说明</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/06/28/ui_two/&title=《ui组件库系列(二):打包》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/06/28/ui_two/&title=《ui组件库系列(二):打包》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3awW7DIBAE0Pz/T7vXSm3cGbCjGh6nqIlsXg+rHZbXK17Ht3XV73/+pn1LvTAwMB7LOE7X+SuTJydPOP98vjcMDIx9GMkmzvHnfx/bYrI3DAwMjLYgJj1bW6YxMDAwxgruWChtiywGBgbGVY/OwW1RviWLY2BgPJCRn7p//vMt8w0MDIxHMY5ynZfOtjVsD+De7goDA2NpxkxATdrEy47Skv1gYGAszWiL5sxI8jP/LAwMjLUZY4G2vUzWPuH8vRgYGPsw8rjYDgyuisRRwcXAwFiaMTOAbNvKmSgbjRAwMDC2YbRt39QBWXn94sbuFQMD458x7mjU8oYybxn/aEYxMDCWZowVu5mgm5f7fCcYGBhrM9qDs7FmLi/KeYh9e1sEAwNjOUaSAfP2sY2sec4u8jcGBsZyjJlmrh1Mzh/eXdAaYmBgPJyRN4VtuI22MhR3MTAwdmMkL2gHADORtWhYMTAwlmbMNG3tuDF/1wVXLjAwMJZm5Fcc8mteSVRur2j8gsHAwNiSMfbipLy2z0++xcDA2IHRdllJSc0bx5mrYxgYGGszjnKNbTofTNbBFQMDYwNGvnJkW46TMWfUGmJgYCzNGCuyyYgxv0A2VqwvSMwYGBiPYowVymS7SUm9JYtjYGBszGgP42a2W4wiMDAwMOJDscEB5PygAgMDYwNGEmLHwufMBbJbjtswMDAeyGij49jgM28T86YQAwNjA8YXcAXbGfOMkQwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

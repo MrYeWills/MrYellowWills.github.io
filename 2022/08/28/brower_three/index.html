@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>浏览器系列(三)：浏览器插件 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="浏览器,浏览器插件">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>浏览器系列(三)：浏览器插件</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">浏览器系列(三)：浏览器插件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-08-28T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-08-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-brower_three"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">浏览器系列(三)：浏览器插件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-08-28 00:00:00" datetime="2022-08-28T00:00:00.000Z"  itemprop="datePublished">2022-08-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>浏览器插件是一个单独进程，拥有很多电脑操作底层的能力，这是渲染进程所不能有的底层操作能力，这是插件的一切魅力源泉！<br>因此浏览器插件能做到很多页面业务js所无法做到的能力。</p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>popup，options，background，content_scripts</p>
+<p>background 是后台，相当于进程，没有dom，不具备浏览器特性，所以很多浏览器api用不了，类似于 node 进程；<br>content_scripts 相当于页面上的js，可以直接操作页面；</p>
+<p>popup ： 插件启用时，固定在 地址栏右侧时，点击插件，就会弹出一个插件弹出页面，<br>前提是要配置，否则不会出现，<strong>开发模式下查看需要右键插件</strong>，点击【审查弹出页面】：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"action": &#123;</span><br><span class="line">  "default_title": "Default Title",</span><br><span class="line">  "default_popup": "popups/popup.html",</span><br><span class="line">  "default_icon": &#123;</span><br><span class="line">    "32": "icons/32.png",</span><br><span class="line">    "72": "icons/72.png",</span><br><span class="line">    "128": "icons/128.png",</span><br><span class="line">    "512": "icons/512.png"</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h2 id="插件调试"><a href="#插件调试" class="headerlink" title="插件调试"></a>插件调试</h2><h3 id="好用的调试工具"><a href="#好用的调试工具" class="headerlink" title="好用的调试工具"></a>好用的调试工具</h3><p><a href="https://github.com/mmktomato/chrome-extension-manifest-v3-declarativeNetRequest-sample/tree/master/static" target="_blank" rel="noopener">参考chromium的npm 工具调试 demo</a><br><a href="https://github.com/mozilla/web-ext" target="_blank" rel="noopener">参考web-ext</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web-ext run -s src --target chromium --start-url &apos;https://www.baidu.com/&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="以百度翻译demo说明"><a href="#以百度翻译demo说明" class="headerlink" title="以百度翻译demo说明"></a>以百度翻译demo说明</h3><h4 id="demo地址"><a href="#demo地址" class="headerlink" title="demo地址"></a>demo地址</h4><p><a href="todo">demo地址</a></p>
+<h4 id="调试background"><a href="#调试background" class="headerlink" title="调试background"></a>调试background</h4><p>插件popup，options，background，content_scripts4个内容的不同调试方法</p>
+<p>打开谷歌扩张程序界面，找到该浏览器插件，点击浏览器插件 中间的 server workder 等等字样，<br>此时浏览器会跳出一个控制台，此控制台可以调试 ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"background"</span>:&#123;</span><br><span class="line">      <span class="string">"service_worker"</span>:<span class="string">"js/bg-wrapper.js"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.bilibili.com/video/BV1ML4y1z7ba?spm_id_from=333.999.0.0" target="_blank" rel="noopener">更多参考</a></p>
+<h4 id="调试content"><a href="#调试content" class="headerlink" title="调试content"></a>调试content</h4><p>打开要翻译的页面控制台，找到 source，<br>source 子目录下，找到 Content scripts 就可以找到 content了。</p>
+<h4 id="调试小技巧"><a href="#调试小技巧" class="headerlink" title="调试小技巧"></a>调试小技巧</h4><p>如果你不知道如何找到调试入口，可以在js中，写入 console.log 代码，当控制台出现此log后，<br>点击此log，就可以找到 js 在 source 中的位置。</p>
+<h4 id="此demo调试要点"><a href="#此demo调试要点" class="headerlink" title="此demo调试要点"></a>此demo调试要点</h4><p>此插件断点后，程序走完后，一定要再回到当初要翻译句子的页面，才会弹出alert；</p>
+<p>插件刚加载到浏览器上时，可能不报错，后面用着用着，可能就报错了，有些报错并不影响使用，你可以清除旧的报错，重新查看新的报错。</p>
+<p>移除、重新加载插件时，在旧的页面翻译时，在以前就打开的页面翻译时，或在以前就翻译过的页面时，可能会出现问题，重新打开一个新的页面进行翻译即可。</p>
+<h4 id="demo讲解"><a href="#demo讲解" class="headerlink" title="demo讲解"></a>demo讲解</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"manifest_version"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"bdtranslate"</span>,</span><br><span class="line">    <span class="string">"version"</span>: <span class="string">"1.0"</span>,</span><br><span class="line">    <span class="string">"description"</span>: <span class="string">"百度翻译插件"</span>,</span><br><span class="line">    <span class="string">"icons"</span>:&#123;</span><br><span class="line">        <span class="string">"128"</span>:<span class="string">"img/icon.png"</span>,</span><br><span class="line">        <span class="string">"48"</span>:<span class="string">"img/icon.png"</span>,</span><br><span class="line">        <span class="string">"16"</span>:<span class="string">"img/icon.png"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"background"</span>:&#123;</span><br><span class="line">        <span class="string">"service_worker"</span>:<span class="string">"js/bg-wrapper.js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"permissions"</span>:[</span><br><span class="line">        <span class="string">"contextMenus"</span>,</span><br><span class="line">        <span class="string">"tabs"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 百度翻译时需要请求 百度翻译网关，跨域发送请求,解除限制</span></span><br><span class="line">    <span class="string">"host_permissions"</span>: [</span><br><span class="line">        <span class="string">"http://api.fanyi.baidu.com/"</span></span><br><span class="line">      ],</span><br><span class="line">    <span class="string">"content_scripts"</span>:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"matches"</span>:[<span class="string">"&lt;all_urls&gt;"</span>],</span><br><span class="line">            <span class="comment">// 相当于作用于目标页面的js</span></span><br><span class="line">            <span class="string">"js"</span>:[<span class="string">"js/content.js"</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="background-无法使用jquery"><a href="#background-无法使用jquery" class="headerlink" title="background 无法使用jquery"></a>background 无法使用jquery</h3><p>因为background是一个后台进程，类似node，没有dom，因此不能使用jquery。<br>当然也不能使用ajax，因为只有浏览器 ajax XMLHttpRequest 是 浏览器属性。</p>
+<h2 id="插件能力"><a href="#插件能力" class="headerlink" title="插件能力"></a>插件能力</h2><p>打印、网络请求（cookie、header 等）、标签页、处理页面内容、浏览器右键、浏览器下载、浏览器代理、vpn、获取电脑系统、电池信息、电脑桌面截屏、操作电脑文件；</p>
+<h2 id="参考与demo"><a href="#参考与demo" class="headerlink" title="参考与demo"></a>参考与demo</h2><h3 id="自己开发的谷歌插件"><a href="#自己开发的谷歌插件" class="headerlink" title="自己开发的谷歌插件"></a>自己开发的谷歌插件</h3><p><a href="https://github.com/YeWills/chrome-extensions" target="_blank" rel="noopener">跨域Cookie转发 v3</a><br>可结合koa写的一个后台来测试cookie：<br>配合<a href="https://github.com/YeWills/koa-demo.git" target="_blank" rel="noopener">后台demo - koa-demo 的 verdaccio-login 分支</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><a href="https://developer.chrome.com/docs/extensions/reference/" target="_blank" rel="noopener">官网</a><br><a href="http://blog.haoji.me/chrome-plugin-develop.html" target="_blank" rel="noopener">非常好【干货】Chrome插件(扩展)开发全攻略</a><br><a href="https://juejin.cn/post/7106758827520819236" target="_blank" rel="noopener">chrome extension 开发入门指南</a><br><a href="https://github.com/GoogleChrome/chrome-extensions-samples" target="_blank" rel="noopener">官网示例 Chrome Extensions samples</a></p>
+<p><a href="https://www.bilibili.com/video/BV1a64y187QR?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener">chrome浏览器插件开发视频教程</a></p>
+<p><a href="https://github.com/chirpmonster/chrome-cookie-extence" target="_blank" rel="noopener">插件示例 - chrome-cookie-extence cookie携带 v2</a></p>
+<p><a href="https://github.com/aMiing/chrome-extension-cookie" target="_blank" rel="noopener">插件示例 - chrome-extension-cookie cookie转发 v3</a></p>
+<p><a href="https://github.com/myWsq/simple-header-modifier" target="_blank" rel="noopener">插件示例 - Header Modifier monorepo方案挺好 cookie转发 v3</a></p>
+<p><a href="https://www.jianshu.com/p/1b9639506728?u_atoken=05a3fe03-43e6-49f5-980a-0f27260a2914&amp;u_asession=01SgGo7R_-nx3-sFM42Lr6v_DK_w82fkkvT935DecQjlkOzzSv6yRGEGtKjxsszuCZX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-PYd16O80yZLgUpuQXbm51p5RU6UlCZRD0CDVEtyq5OmBkFo3NEHBv0PZUm6pbxQU&amp;u_asig=05bUYiDdyLnVZo90Knh5nAHMzwczUZhl586FMLh_Nggm3jfLp7h5u9z5cZZeDscVikUHF94E5R3jEggXgL9tgfMPp9K012d0NkNi2oANeRPsiWNdzalJYBylm9SCbAphlQRxmInA2niE1p5UKuLGJeTYvqNPWRRPHXtlAGOVWBXJH9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzVoJN2_YxVmpIh_TonA5n1xg6qhtPFV9-9xBkcNspRflO21gpjNe9akLVIO763CEMe3h9VXwMyh6PgyDIVSG1W-ma2sDGtl-YIWcpGzGsr3oyks0NmwmEEqbQaAo11Q_aeE1r4sWaf6bfYOh5XU1BzaN9q0bGxRapmSuxiYnwW6zmWspDxyAEEo4kbsryBKb9Q&amp;u_aref=ClvQgIkmwIYYuyz9oNevRHlBeAw%3D" target="_blank" rel="noopener">chrome-extension-cookie 一键搞定 cookie 跨域访问</a></p>
+<p><a href="https://api.fanyi.baidu.com/doc/21" target="_blank" rel="noopener">百度翻译开放平台</a><br><a href="https://juejin.cn/post/7106758827520819236" target="_blank" rel="noopener">chrome extension 开发入门指南</a></p>
+<p><a href="https://github.com/mmktomato/chrome-extension-manifest-v3-declarativeNetRequest-sample/tree/master/static" target="_blank" rel="noopener">参考chromium的npm 工具调试 demo</a><br><a href="https://github.com/mozilla/web-ext" target="_blank" rel="noopener">参考web-ext</a></p>
+<p><a href="https://doc.yilijishu.info/chrome/" target="_blank" rel="noopener">谷歌官网的中文翻译</a></p>
+<h2 id="油猴"><a href="#油猴" class="headerlink" title="油猴"></a>油猴</h2><p>先领略下油猴的魅力：<br><a href="https://www.bilibili.com/video/BV1Wy4y1b76T?spm_id_from=333.337.search-card.all.click&amp;vd_source=49cfdfde4ef881bfb8dd4fd5921f4b42" target="_blank" rel="noopener">油猴插件怎么用？最全使用教程（可能），推荐几个小众的脚本</a></p>
+<p>再看下油猴的开发入门，里面的 github 与 greasyfork 同步讲的还是不错的<br><a href="https://www.bilibili.com/video/BV1Da411Z7s7?spm_id_from=333.337.search-card.all.click&amp;vd_source=49cfdfde4ef881bfb8dd4fd5921f4b42" target="_blank" rel="noopener">油猴脚本开发从入门到精通 P0 开发环境配置与脚本分发</a></p>
+<p>过一遍文档：<br><a href="https://segmentfault.com/a/1190000038328999" target="_blank" rel="noopener">爬猴从入门到实战！</a><br><a href="https://segmentfault.com/a/1190000021654926" target="_blank" rel="noopener">油猴脚本编写教程</a></p>
+<p>看下官网：<br><a href="https://www.tampermonkey.net/documentation.php" target="_blank" rel="noopener">油猴官网（开发）文档</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=zh-CN" target="_blank" rel="noopener">插件下载</a><br><a href="https://greasyfork.org/zh-CN" target="_blank" rel="noopener">Greasy Fork - 脚本资源</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.619Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/08/28/brower_three/" target="_blank" rel="external">https://yewills.github.io/2022/08/28/brower_three/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器/">浏览器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器插件/">浏览器插件</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/28/brower_three/&title=《浏览器系列(三)：浏览器插件》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/28/brower_three/&title=《浏览器系列(三)：浏览器插件》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/08/28/brower_one/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">浏览器系列(一)：浏览器基础知识1</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/08/28/brower_two/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">浏览器系列(二)：浏览器基础知识2</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#核心概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">核心概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插件调试"><span class="post-toc-number">2.</span> <span class="post-toc-text">插件调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#好用的调试工具"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">好用的调试工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#以百度翻译demo说明"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">以百度翻译demo说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo地址"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">demo地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调试background"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">调试background</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调试content"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">调试content</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调试小技巧"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">调试小技巧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#此demo调试要点"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">此demo调试要点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#demo讲解"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">demo讲解</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">3.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#background-无法使用jquery"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">background 无法使用jquery</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插件能力"><span class="post-toc-number">4.</span> <span class="post-toc-text">插件能力</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考与demo"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考与demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自己开发的谷歌插件"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">自己开发的谷歌插件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#油猴"><span class="post-toc-number">6.</span> <span class="post-toc-text">油猴</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/28/brower_three/&title=《浏览器系列(三)：浏览器插件》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/28/brower_three/&title=《浏览器系列(三)：浏览器插件》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aQXLDMAgF0Nz/0u4B0sQfUDtj6WnVSWqF5wWDBK9XvK639f75p/9Pdq4+1VwYGBiPZVxfV8KYh/hpzyQ2DAyMcxi9rfPU/Om3ktf3PTYMDAyMJLEm+yQhYmBgYKxl5EEkpR4GBgZGwshLtOTbtUl58VkcAwPjgYz81v3///6T/gYGBsajGFdxVa/+q8Xf1VoYGBh7M6pXaZNLtzyxNuPBwMDYlDG5aKsmyiTcauNzwX0hBgbGoxhJopzw5q/g4z4YGBhbM/ICLnksH/matxkwMDDOZPQCrSbcvASsPouBgbErIy/4qsfO6msaDYphYGAcwEhS6v+0KptjHxgYGIcxkoPr5FDaWze/goGBcQxjbemWH1DztmU0LYKBgbEpIw8xbxv0xsiag2IYGBgHMHolXXXw64pXOVoMDIzjGfn4V7VJmSfcmwIRAwPjGMY8iIQ0v6T7ZQcMDIytGZMkmB9lq8fm/JrvNc/lGBgYWzDml2LfRy7ycG8wGBgYhzGqybEa3KQ5Wki4GBgY2zFWNR3zdDy/aLsZucDAwNiCcRVXNVFWG5Plg2u1O4qBgfFARr6qmElirRadGBgYJzDyFuPkiFtNweX3jYGBcQBjVaKslpW9QywGBgZGtSzrDWfkbYmoqsXAwMBY1IDsDW1EJAwMjAMYyaG0+nlv5CJP6xgYGOcwqkfHybVa7yptWVMTAwPjeYwfw9TbGfHrvxkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

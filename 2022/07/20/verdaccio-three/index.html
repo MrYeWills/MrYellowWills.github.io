@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>verdaccio(三)：要点与学习 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="verdaccio">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>verdaccio(三)：要点与学习</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">verdaccio(三)：要点与学习</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-07-20T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-07-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-verdaccio-three"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">verdaccio(三)：要点与学习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-07-20 00:00:00" datetime="2022-07-20T00:00:00.000Z"  itemprop="datePublished">2022-07-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="verdaccio的学习"><a href="#verdaccio的学习" class="headerlink" title="verdaccio的学习"></a>verdaccio的学习</h2><h3 id="如何学习verdaccio"><a href="#如何学习verdaccio" class="headerlink" title="如何学习verdaccio"></a>如何学习verdaccio</h3><p>如果学习的话，<br>首先快速略读一遍官网，<br>可以先跑下verdaccio的demo；<br>然后往上找一些视频、文档教程看看，<br>然后再较为仔细读一遍官网，<br>然后将verdaccio的github clone下来运行起来，主要是主题插件的运行。<br>如果有时间，可以学一下docker nginx 知识，了解下redis，<br>然后试着写一些插件；<br>上述的四大块，verdaccio内部其实也是通过插件实现的，<br>如果不知道如何写插件，直接把verdaccio的github官网git clone 下来，<br>然后安装依赖，将项目起气来，<br>其中的主题插件是能启动的，这点还是蛮有意思。<br>另外要将verdaccio玩起来，<br>最好结合docker、nginx，<br>或者再加上redis。</p>
+<h3 id="verdaccio知识框架要点"><a href="#verdaccio知识框架要点" class="headerlink" title="verdaccio知识框架要点"></a>verdaccio知识框架要点</h3><p>verdaccio主要学习<br>verdaccio的主要功能，<br>其实功能点不多，<br>无非就是 包的publish、下载的配置；<br>publish权限的配置；<br>publish成功后的通知处理；<br>ui主题配置 ；<br>然后就是四大块插件的开发:<br>认证 用于publish权限等控制<br>存储 用于缓存处理，可以存本地，可以存云盘<br>主题 使用官网ui主题源码改改<br>中间件 这里可以写一些接口等等，能做的事情很多；</p>
+<p>以上这些官网都有讲，可以多读读官网。</p>
+<h3 id="verdaccio的官网"><a href="#verdaccio的官网" class="headerlink" title="verdaccio的官网"></a>verdaccio的官网</h3><p>官网的内容不多，可以全量多读几次。<br>除了文档本身，还要关注官网给的示例，<br>然后要结合verdaccio自己的github中内置的插件源码。<br>这里提一笔，就是ui主题要修改的话，直接将内置的ui主题下载下来改改即可。<br>很多verdaccio的插件其实就是抄抄现在的社区例子或verdaccio内置的源码插件</p>
+<h3 id="如何学习写插件"><a href="#如何学习写插件" class="headerlink" title="如何学习写插件"></a>如何学习写插件</h3><p>官网在各个插件开发篇的结尾有社区贡献的插件，<br>可以直接将这些插件git clone 下来，看看其思路改改；<br>比如存储插件，示例中就提供了如何将存储放在云盘以及本地的两种方案示例；</p>
+<h3 id="如何调试学习verdaccio"><a href="#如何调试学习verdaccio" class="headerlink" title="如何调试学习verdaccio"></a>如何调试学习verdaccio</h3><h4 id="调试-开发-verdaccio-ui-theme"><a href="#调试-开发-verdaccio-ui-theme" class="headerlink" title="调试/开发 @verdaccio/ui-theme"></a>调试/开发 @verdaccio/ui-theme</h4><p>要注意的是 verdaccio 版本的不同，对应的 @verdaccio/ui-theme 版本也是不同的。</p>
+<p>如何判断 verdaccio 对应的 theme 版本，可以npm i verdaccio@version ，然后查找 package.json 对应的 theme 版本号。</p>
+<p>verdaccio 5.x 版本对应 @verdaccio/ui-theme 3.4.x 版本， 此时的 @verdaccio/ui-theme 包 是独立的库。</p>
+<p>verdaccio 6.x 开始，所有的相关的插件都放在了一个github目录。</p>
+<p>无论是 5.x 6.x @verdaccio/ui-theme 都可以down下来，然后本地启动起来。</p>
+<p>为什么要不同的版本对应不同的ui-theme，因为里面有一些接口有变化，<br>目前注意到 @verdaccio/ui-theme 请求的接口，有些接口是在 <code>verdaccio/build/api/web/endpoint/package.js</code> 中定义。</p>
+<p>注意的是 @verdaccio/ui-theme 3.4.x 的yarn install 安装要求 yarn 2.x，且安装时间差不多有20分钟。<br>如果机器快，可能七八分钟。</p>
+<h2 id="verdaccio与npm的联系"><a href="#verdaccio与npm的联系" class="headerlink" title="verdaccio与npm的联系"></a>verdaccio与npm的联系</h2><p>以npm publish来展现verdaccio与npm之间联系。</p>
+<p>执行 npm publish，<br>在node端，<br>npm cli 会获取用户目录下的npmrc配置，获取npmrc里面的token，此token相当于有映射关系的用户名和密码，<br>然后，npm cli 中的 publish.js 会发送一个类似于 registry + api/publish 的请求，入参就包含了刚才的token。—这些都是npm核心源码层面做的事情。</p>
+<p>在verdaccio端，<br>verdaccio 手写了一个上面的 api/publish的接口，接收到npm源码通过node端发送端请求后，<br>verdaccio校验入场，然后verdaccio也会定义pre publish的一些事件，是否允许publish，<br>校验通过后，包就发布到了 verdaccio 的缓存目录上。</p>
+<p>上面的联系看出， verdaccio可以是按照 npm API 约束和规则，进行定制化开发了相关接口 等等系列行为。<br>也就是npm源码中要发送的接口， verdaccio应该定义了一套一模一样的接口，<br>npm 因为发送请求的host都是 registry，因此也让npm的扩展性定制化私库有了可能。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/07/20/verdaccio-three/" target="_blank" rel="external">https://yewills.github.io/2022/07/20/verdaccio-three/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/verdaccio/">verdaccio</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/07/20/verdaccio-three/&title=《verdaccio(三)：要点与学习》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/07/20/verdaccio-three/&title=《verdaccio(三)：要点与学习》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/07/27/monorepo/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">monorepo笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/07/03/verdaccio-one/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">verdaccio搭建npm私服(一)：基础知识</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#verdaccio的学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">verdaccio的学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何学习verdaccio"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">如何学习verdaccio</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#verdaccio知识框架要点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">verdaccio知识框架要点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#verdaccio的官网"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">verdaccio的官网</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何学习写插件"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">如何学习写插件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何调试学习verdaccio"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">如何调试学习verdaccio</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调试-开发-verdaccio-ui-theme"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">调试/开发 @verdaccio/ui-theme</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#verdaccio与npm的联系"><span class="post-toc-number">2.</span> <span class="post-toc-text">verdaccio与npm的联系</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/07/20/verdaccio-three/&title=《verdaccio(三)：要点与学习》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/07/20/verdaccio-three/&title=《verdaccio(三)：要点与学习》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aS24CMRAFQO5/abKNFDG854ZIY9esokCwi0Wnf49H/Dx/PX9/c/3q2mc+vvFgYGDclvG8fK6PTK51fcX8r17dDQMD4xzGqwjWXqg+/sX787thYGBgJIw2TCckDAwMjDnjOr27/vxJAoqBgXEyIylik6CZvNqmhh+uxTEwMG7IyLvu///zV+YbGBgYt2I8yycvbtu0cnQrDAyMrRl5gGsbZJPCePE+GBgYBzDWmmhrrf+2bRcVwxgYGJsy2nIxD6z5+kUy7HxzOgYGxtaMPIB+tmRtS9lR6w0DA2MjRpJlTda8JsthSRmMgYGxNyNfnmhDZN44+8BnYmBgbM1ow1wdxeOwO2djYGDsylhr3+eDycnKV96ew8DA2JuRp2h5iz+5UJKSJoEbAwPjBMZkgTW/bp4stk1ADAyMExiTVGwyEmjxxaoHBgbGRox8YaI9Pk8B1xYsMDAwzmG0YTEZNCbttiQpzL84DAyMcxhtirYWTNfWNaJyFwMD42BGHljbENxe9825GBgYBzCSsLsGa1/NxwYYGBinMdoyNWnc59fKh5TR/w0MDIyNGJOGfju8bIvbYskDAwNja8Zkz6o9Zg3WJpQYGBi7Mtau2KaGbWlaf98YGBgHMIqqNx4hJA21SRGLgYGB0Qbc4sj49IKKgYGBsRRS29FCO1R4M9/AwMDYjpEUsW25Oxkz1CsaGBgYWzPWVhzagyfjz48NNTEwMO7H+AEVtPoITBcgEAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

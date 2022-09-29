@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>webpack源码系列(蹇)：loader | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="webpack">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>webpack源码系列(蹇)：loader</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">webpack源码系列(蹇)：loader</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-03-23T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-03-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-webpack_two"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">webpack源码系列(蹇)：loader</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-03-23 00:00:00" datetime="2022-03-23T00:00:00.000Z"  itemprop="datePublished">2022-03-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="汇集"><a href="#汇集" class="headerlink" title="汇集"></a>汇集</h3><p>compiler 会拿到最后一个loader 的产出结果， 这个结果应该是string 或者 buffer。</p>
+<h3 id="loader-分类"><a href="#loader-分类" class="headerlink" title="loader 分类"></a>loader 分类</h3><blockquote>
+<p>对于loader 默认都是一样的，只不过使用的时候可以放在不同的位置或进行了不同的修饰，因此说清起来 loader 就有分类了</p>
+<ul>
+<li>普通loader 没有任何配置</li>
+<li>前置loader enforce 为 pre</li>
+<li>后置loader enforce 为post</li>
+<li>行内loader 使用!进行分割</li>
+</ul>
+</blockquote>
+<h4 id="执行顺序如下："><a href="#执行顺序如下：" class="headerlink" title="执行顺序如下："></a>执行顺序如下：</h4><p>pre &gt; normal &gt; inline &gt; post<br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/loader.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/loader.jpg" alt title class></a>
+                <p></p>
+            </figure></p>
+<p>配置跟上图一样，index.js 上import一个行内 loader :<br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/in.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/in.jpg" alt title class></a>
+                <p></p>
+            </figure></p>
+<h4 id="inline配置符号的使用"><a href="#inline配置符号的使用" class="headerlink" title="inline配置符号的使用"></a>inline配置符号的使用</h4><p>为了使用方便，可以通过一些符号设置某些的开启和关闭</p>
+<ul>
+<li>! 跳过了 normal loader<figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/in1.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/in1.jpg" alt title class></a>
+                <p></p>
+            </figure></li>
+<li>-! 跳过了 normal+pre loader</li>
+<li>!! 跳过了 normal+pre+post loader 也就是说只保留了inline自己</li>
+</ul>
+<h3 id="pitch"><a href="#pitch" class="headerlink" title="pitch"></a>pitch</h3><p>loader一般只需要 写loader本身即可，不过每个loader 其实还有一个pitch，作用见图<br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/pitch1.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/pitch1.jpg" alt title class></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/pitch2.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/pitch2.jpg" alt title class></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/pitch3.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/pitch3.jpg" alt title class></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/pitch4.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/pitch4.jpg" alt title class></a>
+                <p></p>
+            </figure></p>
+<h3 id="loader结构与要点"><a href="#loader结构与要点" class="headerlink" title="loader结构与要点"></a>loader结构与要点</h3><p>loader-utils 获取 options<br>schema-utils 获取 对options进行验证<br>吐出结果的方式：</p>
+<ul>
+<li>如果有异步需求时，使用 callback 代替 return 吐出结果，callback为 <code>this.async()</code> this为上下文；</li>
+<li>默认情况下，loader都是同步的，没有异步需求时，直接return 吐出结果即可。</li>
+</ul>
+<figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/demo.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/demo.jpg" alt title class></a>
+                <p></p>
+            </figure>
+<h3 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h3><h4 id="要做的事情"><a href="#要做的事情" class="headerlink" title="要做的事情"></a>要做的事情</h4><p>file-loader 处理图片的时候怎么做</p>
+<ul>
+<li>返回一个字符串形式的图片名称(路径)</li>
+<li>资源拷贝一份到指定目录</li>
+</ul>
+<p>webpack5 最常见的问题，默认转为 es module， 导致图片出错，解决方法如下：<br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/file1.png" title="undefined" data-fancybox="images"><img src="/image/webpack_one/file1.png" alt title class></a>
+                <p></p>
+            </figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esModule:false</span><br></pre></td></tr></table></figure></p>
+<p>现象如下：<br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/file2.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/file2.jpg" alt title class></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/file3.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/file3.jpg" alt title class></a>
+                <p></p>
+            </figure><br><figure class="image-box">
+                <a rel=webpack源码系列(蹇)：loader href="/image/webpack_one/file4.jpg" title="undefined" data-fancybox="images"><img src="/image/webpack_one/file4.jpg" alt title class></a>
+                <p></p>
+            </figure></p>
+<h4 id="返回图片名或路径"><a href="#返回图片名或路径" class="headerlink" title="返回图片名或路径"></a>返回图片名或路径</h4><p>file-loader 返回的是一个图片路径或图片名，当然也可能是一个base64 url；</p>
+<h4 id="设置raw为true处理文件流"><a href="#设置raw为true处理文件流" class="headerlink" title="设置raw为true处理文件流"></a>设置raw为true处理文件流</h4><p>loader默认处理字符串，涉及文件流处理时，设置raw为true</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.bilibili.com/video/BV1QM4y1N7TR?spm_id_from=333.999.0.0" target="_blank" rel="noopener">手写简易打包器实现之手写 loader</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.631Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/03/23/webpack_two/" target="_blank" rel="external">https://yewills.github.io/2022/03/23/webpack_two/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/03/23/webpack_two/&title=《webpack源码系列(蹇)：loader》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/03/23/webpack_two/&title=《webpack源码系列(蹇)：loader》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/04/05/webpack_three/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack源码系列(来)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/03/23/webpack_one/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack源码系列(往)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#汇集"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">汇集</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#loader-分类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">loader 分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#执行顺序如下："><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">执行顺序如下：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#inline配置符号的使用"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">inline配置符号的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pitch"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">pitch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#loader结构与要点"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">loader结构与要点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#file-loader"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">file-loader</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#要做的事情"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">要做的事情</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#返回图片名或路径"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">返回图片名或路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置raw为true处理文件流"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">设置raw为true处理文件流</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/03/23/webpack_two/&title=《webpack源码系列(蹇)：loader》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/03/23/webpack_two/&title=《webpack源码系列(蹇)：loader》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACPUlEQVR42u3awXKDMAxF0fz/T9NtOh3s+2TogHxZZWhqfFgosqTPB1/H1zW+8/ev3/fTNS++ZMiQ8VrGMbzG2yKw8ffJ5/HeZMiQsQ/jLIKdfWd8J3g8fk2TPcuQIUMGSOB4wE1XkCFDhow7Am4aTB/6uyFDhoyHMcghlm+OJIK11S44i8uQIeOFDF51///Pt/Q3ZMiQ8SrGEV7p/5Jt1Vb+9RQZMmS0ZvAAV+PxIE7uT54iQ4aMpoxaub92HK0Nn6HSngwZMjZgEAwv9/Pxi1r78zTgypAhoyljpVVZK5zxFxeHbBkyZDRlrDQg08EIPpwRj27IkCFjG8b6wEQt4K4kiLfMfciQIePBDJLk1UInz9/SQtvkd0OGDBmNGNeW1WpH1vTppy1MGTJktGPwxC4dDkvHNXgQRy9ChgwZ7RgkXePbTUcueMEu7m/IkCGjBSMdrQgOlmFvMQ3Bk/6GDBkyGjFqpbTa0TcN02nxToYMGV0Z5FC6krSlAZePaMiQIWMfBlkibXPWSHwnk5ELGTJkbMngqV46nJEG4glGhgwZGzCCJAwsygcjauvLkCFjT0atlJay0+Zl0ByVIUNGU8a1oxVpiT99HaeryZAhozWDXxzGU0CyQi3dlCFDRj9GWkojxbX0yMpTzKX5DhkyZLycsRL4yP/W2MF4hwwZMmQshNeVBDE4xMqQIUMGLrdde4glL1GGDBn7MMghttakrB1c0xExGTJk9GbUjo610Ek2QV5isakpQ4aM9zF+AG2tIuC4MPnKAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

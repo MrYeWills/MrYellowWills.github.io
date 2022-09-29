@@ -9,7 +9,7 @@
     
     <meta name="keywords" content="vscode">
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -218,6 +218,20 @@
 <h4 id="nodemon调试"><a href="#nodemon调试" class="headerlink" title="nodemon调试"></a>nodemon调试</h4><p>参考上面</p>
 <h3 id="inspertor方式"><a href="#inspertor方式" class="headerlink" title="inspertor方式"></a>inspertor方式</h3><p>另外也可以使用跟移动端调试一样的一种方式，就是inspertor 谷歌控制台方式，详细参考慕课网中的node调试入门的课程。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href>慕课 node调试入门</a><br><a href="https://coding.imooc.com/class/chapter/342.html#Anchor" target="_blank" rel="noopener">Node.js+Koa2+MySQL打造前后端分离精品项目《旧岛》 - vscode+nodemon调试配置</a></p>
+<h2 id="ts源码调试想到的"><a href="#ts源码调试想到的" class="headerlink" title="ts源码调试想到的"></a>ts源码调试想到的</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"configurations"</span>: [</span><br><span class="line">        <span class="comment">// 方式一</span></span><br><span class="line">         &#123;</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"调试 ts 命令行"</span>,</span><br><span class="line">            <span class="string">"program"</span>: <span class="string">"$&#123;workspaceFolder&#125;/built/local/tsc.js"</span>,</span><br><span class="line">            <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="string">"skipFiles"</span>: [</span><br><span class="line">                <span class="string">"&lt;node_internals&gt;/**"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">"args"</span>: [</span><br><span class="line">                <span class="string">"./input.ts"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">"stopOnEntry"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"node"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">          <span class="comment">// 方式二</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"调试 ts 源码"</span>,</span><br><span class="line">            <span class="string">"program"</span>: <span class="string">"$&#123;workspaceFolder&#125;/test.js"</span>,</span><br><span class="line">            <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="string">"skipFiles"</span>: [</span><br><span class="line">                <span class="string">"&lt;node_internals&gt;/**"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">"args"</span>: [</span><br><span class="line">                <span class="string">"./input.ts"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="string">"stopOnEntry"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"node"</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="keyword">const</span> ts = <span class="built_in">require</span>(<span class="string">"./built/local/typescript"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> filename = <span class="string">"./input.ts"</span>;</span><br><span class="line"><span class="keyword">const</span> program = ts.createProgram([filename], &#123;</span><br><span class="line">    allowJs: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> sourceFile = program.getSourceFile(filename);</span><br><span class="line"><span class="keyword">const</span> typeChecker = program.getTypeChecker();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">visitNode</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node.kind === ts.SyntaxKind.TypeReference)  &#123;</span><br><span class="line">        <span class="keyword">const</span> type = typeChecker.getTypeFromTypeNode(node);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// debugger;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node.forEachChild(<span class="function"><span class="params">child</span> =&gt;</span></span><br><span class="line">        visitNode(child)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">visitNode(sourceFile);</span><br></pre></td></tr></table></figure></p>
+<p>含义如下：</p>
+<ul>
+<li>name： 调试配置的名字</li>
+<li>program：调试的目标程序的地址</li>
+<li>request：有 launch 和 attch 两个取值，代表启动新的还是连上已有的</li>
+<li>skipFiles：调试的时候跳过一些文件，这里配置的是跳过 node 内部的那些文件，调用栈会更简洁</li>
+<li>args：命令行参数</li>
+<li>stopOnEntry：是否在首行加个断点</li>
+<li>type：调试的类型，这里是用 node 来跑</li>
+</ul>
+<p>以上调试方式相当于在 vscode 终端里面的那个调试一样的道理，<br>方式一 在vscode终端实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node ./built/local/tsc.js input.ts</span><br></pre></td></tr></table></figure></p>
+<p>方式二 在vscode终端实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node ./test.js</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -225,7 +239,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-06-18T06:40:50.705Z" itemprop="dateUpdated">2022-06-18 06:40:50</time>
+    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
 </span><br>
 
 
@@ -320,7 +334,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vscode调试"><span class="post-toc-number">1.</span> <span class="post-toc-text">vscode调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#普通调试"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">普通调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#普通文件"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">普通文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#node调试"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">node调试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nodemon调试"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">nodemon调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#inspertor方式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">inspertor方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vscode调试"><span class="post-toc-number">1.</span> <span class="post-toc-text">vscode调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#普通调试"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">普通调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#普通文件"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">普通文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#node调试"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">node调试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nodemon调试"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">nodemon调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#inspertor方式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">inspertor方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ts源码调试想到的"><span class="post-toc-number">2.</span> <span class="post-toc-text">ts源码调试想到的</span></a></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -447,12 +461,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
 
-<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
@@ -507,7 +525,7 @@
     });
 </script>
 
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src=""></script>
 
 
 

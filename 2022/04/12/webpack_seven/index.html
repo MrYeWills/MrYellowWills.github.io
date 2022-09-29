@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>你不知道的webpack(三) | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="webpack">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>你不知道的webpack(三)</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">你不知道的webpack(三)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-04-12T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-04-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-webpack_seven"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">你不知道的webpack(三)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-04-12 00:00:00" datetime="2022-04-12T00:00:00.000Z"  itemprop="datePublished">2022-04-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="待研究"><a href="#待研究" class="headerlink" title="待研究"></a>待研究</h2><h3 id="entry-多个属性对象与数组定义方法使用场景"><a href="#entry-多个属性对象与数组定义方法使用场景" class="headerlink" title="entry 多个属性对象与数组定义方法使用场景"></a>entry 多个属性对象与数组定义方法使用场景</h3><p>一种是entry 数组的定义方式：<br><a href="https://www.webpackjs.com/concepts/entry-points/#%E5%8D%95%E4%B8%AA%E5%85%A5%E5%8F%A3-%E7%AE%80%E5%86%99-%E8%AF%AD%E6%B3%95" target="_blank" rel="noopener">参考官网这里的 注解部分 【当你向 entry 传入一个数组时会发生什么？】 - 单个入口（简写）语法</a></p>
+<p>一种是多属性的定义方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span>,</span><br><span class="line">    vendors: <span class="string">'./src/vendors.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.webpackjs.com/concepts/entry-points/#%E5%88%86%E7%A6%BB-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-app-%E5%92%8C-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-vendor-%E5%85%A5%E5%8F%A3" target="_blank" rel="noopener">参考官网 - 分离 应用程序(app) 和 第三方库(vendor) 入口</a><br>下面摘录上面官网链接的章节， 这部门描述同样值得关注</p>
+<blockquote>
+<p>为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 <strong>webpack_require</strong>() 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。</p>
+</blockquote>
+<p>我觉得在对于一些 cdn 等等， 可能会以 entry 数组的方式 引入。<br>目前好奇的是，这些适合什么样的场景。<br>学会适用场景为自己项目所用。</p>
+<h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="为什么说webpack只能处理js"><a href="#为什么说webpack只能处理js" class="headerlink" title="为什么说webpack只能处理js"></a>为什么说webpack只能处理js</h3><p>webpack的Parser内核是acorn，是用于解析js的。<br>所以webpack只能编译处理js。<br>node能够处理的有两种，一个是字符串，一个是buffer流，<br>比如文件就是一个buffer流，<br>在webpack中，处理图片文件时，会通过loader，将此图片编译为一个base64 url(也是一个字符串) 或将这个图片拷贝至dist目录，<br>然后生成一个该图片的引用路径(也是一个字符串),<br>也就是说，文件流经过loader处理后，都变成了一个字符串，这个时候再传给webpack，webpack就可以识别了。</p>
+<blockquote>
+<p>下面摘录至官网<br>loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。<br>loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules\webpack\lib\Parser.js</span></span><br><span class="line"><span class="keyword">const</span> acorn = <span class="built_in">require</span>(<span class="string">"acorn"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="为什么说webpack要借助loader来处理非js"><a href="#为什么说webpack要借助loader来处理非js" class="headerlink" title="为什么说webpack要借助loader来处理非js"></a>为什么说webpack要借助loader来处理非js</h3><p>参考《为什么说webpack只能处理js》</p>
+<h3 id="插件比loader能做的事情更加广泛"><a href="#插件比loader能做的事情更加广泛" class="headerlink" title="插件比loader能做的事情更加广泛"></a>插件比loader能做的事情更加广泛</h3><p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。<br>插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。插件接口功能极其强大，可以用来处理各种各样的任务。<br><a href="https://www.webpackjs.com/concepts/#%E6%8F%92%E4%BB%B6-plugins-" target="_blank" rel="noopener">参考官网</a></p>
+<p>插件目的在于解决 loader 无法实现的其他事。<a href="https://www.webpackjs.com/concepts/plugins/" target="_blank" rel="noopener">参考官网</a></p>
+<h3 id="监听-Watching"><a href="#监听-Watching" class="headerlink" title="监听(Watching)"></a>监听(Watching)</h3><p><a href="https://webpack.docschina.org/api/node/#watching" target="_blank" rel="noopener">参考</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> compiler = webpack(&#123;</span><br><span class="line">  <span class="comment">// [配置对象](/configuration/)</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> watching = compiler.watch(&#123;</span><br><span class="line">  <span class="comment">// [watchOptions](/configuration/watch/#watchoptions) 示例</span></span><br><span class="line">  aggregateTimeout: <span class="number">300</span>,</span><br><span class="line">  poll: <span class="literal">undefined</span></span><br><span class="line">&#125;, (err, stats) =&gt; &#123; <span class="comment">// [Stats Object](#stats-object)</span></span><br><span class="line">  <span class="comment">// 这里打印 watch/build 结果...</span></span><br><span class="line">  <span class="built_in">console</span>.log(stats);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="由多入口文件共享引起的问题"><a href="#由多入口文件共享引起的问题" class="headerlink" title="由多入口文件共享引起的问题"></a>由多入口文件共享引起的问题</h3><p><a href="https://webpack.docschina.org/api/node/#watching" target="_blank" rel="noopener">参考</a></p>
+<p>主要是对象的<a href="https://bundlers.tooling.report/code-splitting/multi-entry/" target="_blank" rel="noopener">浅拷贝问题</a>，解决方法如下：<br><a href="https://webpack.docschina.org/guides/code-splitting/#entry-dependencies" target="_blank" rel="noopener">详细参考官网</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">optimization: &#123;</span><br><span class="line">  runtimeChunk: <span class="string">'single'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="import-and-CommonJs-问题"><a href="#import-and-CommonJs-问题" class="headerlink" title="import() and CommonJs 问题"></a>import() and CommonJs 问题</h3><p>我们之所以需要 default，是因为 webpack 4 在导入 CommonJS 模块时，将不再解析为 module.exports 的值，<br>而是为 CommonJS 模块创建一个 artificial namespace 对象，更多有关背后原因的信息，<a href="https://medium.com/webpack/webpack-4-import-and-commonjs-d619d626b655" target="_blank" rel="noopener">请阅读 webpack 4: import() and CommonJs</a>。<br><a href="https://webpack.docschina.org/guides/code-splitting/#dynamic-imports" target="_blank" rel="noopener">详细参考官网</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">import</span>(<span class="string">'lodash'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">&#123; <span class="keyword">default</span>: _ &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> element = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">     element.innerHTML = _.join([<span class="string">'Hello'</span>, <span class="string">'webpack'</span>], <span class="string">' '</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何代码分离重型依赖库"><a href="#如何代码分离重型依赖库" class="headerlink" title="如何代码分离重型依赖库"></a>如何代码分离重型依赖库</h3><h4 id="不推荐，可拓展下视野"><a href="#不推荐，可拓展下视野" class="headerlink" title="不推荐，可拓展下视野"></a>不推荐，可拓展下视野</h4><p>虽然下面是多entry，重复依赖提取，但也给了一种思路，如何将重型第三方包提取到一个单独的 chunk中的思路。<br><a href="https://webpack.docschina.org/guides/code-splitting/#prevent-duplication" target="_blank" rel="noopener">参考官网</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'development'</span>,</span><br><span class="line">  entry: &#123;</span><br><span class="line">   index: &#123;</span><br><span class="line">     <span class="keyword">import</span>: <span class="string">'./src/index.js'</span>,</span><br><span class="line">     dependOn: <span class="string">'shared'</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">   another: &#123;</span><br><span class="line">     <span class="keyword">import</span>: <span class="string">'./src/another-module.js'</span>,</span><br><span class="line">     dependOn: <span class="string">'shared'</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">   shared: <span class="string">'lodash'</span>,</span><br><span class="line">   <span class="comment">// 也可以使用数组</span></span><br><span class="line">   <span class="comment">// shared: ['lodash','react'],</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="推荐SplitChunksPlugin"><a href="#推荐SplitChunksPlugin" class="headerlink" title="推荐SplitChunksPlugin"></a>推荐SplitChunksPlugin</h4><p><a href="https://webpack.docschina.org/guides/caching/#extracting-boilerplate" target="_blank" rel="noopener">当然最好的方法，推荐用官网的</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">    title: <span class="string">'Caching'</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'[name].[contenthash].js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    clean: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  optimization: &#123;</span><br><span class="line">    runtimeChunk: <span class="string">'single'</span>,</span><br><span class="line">   splitChunks: &#123;</span><br><span class="line">     cacheGroups: &#123;</span><br><span class="line">       vendor: &#123;</span><br><span class="line">         test: <span class="regexp">/[\\/]node_modules[\\/]/</span>,</span><br><span class="line">         name: <span class="string">'vendors'</span>,</span><br><span class="line">         chunks: <span class="string">'all'</span>,</span><br><span class="line">       &#125;,</span><br><span class="line">     &#125;,</span><br><span class="line">   &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="resolveLoader-与-resolve"><a href="#resolveLoader-与-resolve" class="headerlink" title="resolveLoader 与 resolve"></a>resolveLoader 与 resolve</h3><p>webpack的世界有上面两套 resolve 规则.</p>
+<p>resolver 是一个库(library)，用于帮助找到模块的绝对路径。<a href="https://www.webpackjs.com/concepts/module-resolution/" target="_blank" rel="noopener">参考官网</a><br>说明webpack最后将所有的相对路径解析为 绝对路径。<br>它支持的绝对路径有这几种：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"/home/me/file"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"C:\\Users\\me\\file"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>resolveLoader 与 resolve 的配置意义规则相同，<br>秉着 单一职责原则，设计两个分别控制 module的import(用于业务代码内的import)以及 loader的import。</p>
+<p>从这个角度看出。<br>webpack的世界有上面两套 resolve 规则定义，<br>一般只需要定义 resolve 即可，除非我们要自定义loader 时，可能要用到 resolveLoader。</p>
+<h3 id="模块热替换如何运行的"><a href="#模块热替换如何运行的" class="headerlink" title="模块热替换如何运行的"></a>模块热替换如何运行的</h3><p>在应用程序中<br>通过以下步骤，可以做到在应用程序中置换(swap in and out)模块：</p>
+<ul>
+<li>应用程序要求 HMR runtime 检查更新。</li>
+<li>HMR runtime 异步地下载更新，然后通知应用程序。</li>
+<li>应用程序要求 HMR runtime 应用更新。</li>
+<li>HMR runtime 同步地应用更新。<br>等等。。<br><a href="https://webpack.docschina.org/concepts/hot-module-replacement/#how-it-works" target="_blank" rel="noopener">详细参考官网</a></li>
+</ul>
+<h3 id="webpack-是什么"><a href="#webpack-是什么" class="headerlink" title="webpack 是什么"></a>webpack 是什么</h3><p>它是一个工具，可以打包你的 JavaScript 应用程序（支持 ESM 和 CommonJS），可以扩展为支持许多不同的静态资源，例如：images, fonts 和 stylesheets。<br><a href="https://webpack.docschina.org/concepts/why-webpack/#wouldnt-it-be-nice" target="_blank" rel="noopener">详细参考官网</a></p>
+<p>以上说明了webpack的两个特色和两个主要工作内容：</p>
+<ul>
+<li>编译js(支持 ESM 和 CommonJS)</li>
+<li>同时有能力编译 文件流</li>
+</ul>
+<h3 id="chunk-有两种形式"><a href="#chunk-有两种形式" class="headerlink" title="chunk 有两种形式"></a>chunk 有两种形式</h3><p><a href="https://webpack.docschina.org/concepts/under-the-hood/#chunks" target="_blank" rel="noopener">官网关于这个讲的非常好</a></p>
+<blockquote>
+<p>initial(初始化) 是入口起点的 main chunk。此 chunk 包含为入口起点指定的所有模块及其依赖项。<br>non-initial 是可以延迟加载的块。可能会出现在使用 动态导入(dynamic imports) 或者 SplitChunksPlugin 时。</p>
+</blockquote>
+<p>这篇官网内容也介绍了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output.filename - 用于 initial chunk 文件</span><br><span class="line">output.chunkFilename - 用于 non-initial chunk 文件</span><br></pre></td></tr></table></figure></p>
+<h3 id="magic-comment-魔术注释"><a href="#magic-comment-魔术注释" class="headerlink" title="magic comment(魔术注释)"></a>magic comment(魔术注释)</h3><p><a href="https://webpack.docschina.org/concepts/under-the-hood/#chunks" target="_blank" rel="noopener">同样参考官网</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>(</span><br><span class="line">  <span class="comment">// 下面就是魔术注释，会被webpack解析，魔术注释在webpack中还有其他应用</span></span><br><span class="line">  <span class="comment">/* webpackChunkName: "app" */</span></span><br><span class="line">  <span class="string">'./app.jsx'</span></span><br><span class="line">).then(<span class="function">(<span class="params">App</span>) =&gt;</span> &#123;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, root);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="好用的cli"><a href="#好用的cli" class="headerlink" title="好用的cli"></a>好用的cli</h3><p>注意版本号要在 webpack 5.x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npx webpack info --output markdown  #打印webpack loader信息，以及电脑、浏览器信息，非常棒</span><br><span class="line">npx webpack configtest ./webpack.config.js</span><br><span class="line">npx webpack init ./my-app #这个用于webpack 测试非常方便，然后根据提示是否使用es、scss，不要使用--template=default</span><br><span class="line">npx webpack --progress #显示构建进度</span><br><span class="line">npx webpack --json stats.json #生成stats对象，可用于 webpack-bundle-analyzer 分析</span><br><span class="line">npx webpack --config ./first.js --config ./second.js --merge #合并配置，底层基于webpack-merge</span><br><span class="line">npx webpack --analyze #先确保 webpack-bundle-analyzer 安装</span><br></pre></td></tr></table></figure></p>
+<h4 id="cli配置优先级高于webpack-config-js"><a href="#cli配置优先级高于webpack-config-js" class="headerlink" title="cli配置优先级高于webpack.config.js"></a>cli配置优先级高于webpack.config.js</h4><p>注意的是 cli 的配置，优先级要比 webpack.config.js 的高。<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --output-path customdist</span><br></pre></td></tr></table></figure></p>
+<p>上述优先级高于webpack.config.js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://webpack.docschina.org/api/cli/#common-options" target="_blank" rel="noopener">参考 通用配置</a></p>
+<h3 id="export与import的对象无法使用-现象汇集"><a href="#export与import的对象无法使用-现象汇集" class="headerlink" title="export与import的对象无法使用 现象汇集"></a>export与import的对象无法使用 现象汇集</h3><h4 id="懒加载的时候"><a href="#懒加载的时候" class="headerlink" title="懒加载的时候"></a>懒加载的时候</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在懒加载的使用：</span></span><br><span class="line"> button.onclick = <span class="function"><span class="params">e</span> =&gt;</span> <span class="keyword">import</span>(<span class="comment">/* webpackChunkName: "print" */</span> <span class="string">'./print'</span>).then(<span class="function"><span class="params">module</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">const</span> print = <span class="built_in">module</span>.default;</span><br><span class="line"></span><br><span class="line">     print();</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.docschina.org/guides/lazy-loading/#example" target="_blank" rel="noopener">参考</a></p>
+<blockquote>
+<p>注意当调用 ES6 模块的 import() 方法（引入模块）时，必须指向模块的 .default 值，因为它才是 promise 被处理后返回的实际的 module 对象。</p>
+</blockquote>
+<h4 id="ts"><a href="#ts" class="headerlink" title="ts"></a>ts</h4><blockquote>
+<p>如果想在 TypeScript 中保留如import _ from ‘lodash’;的语法被让它作为一种默认的导入方式，需要在文件 tsconfig.json 中设置 “allowSyntheticDefaultImports” : true 和 “esModuleInterop” : true 。这个是与 TypeScript 相关的配置，在本文档中提及仅供参考。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在ts中</span></span><br><span class="line"> <span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span>; <span class="comment">//错误</span></span><br><span class="line"> <span class="keyword">import</span> * <span class="keyword">as</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span>; <span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.docschina.org/guides/typescript/#basic-setup" target="_blank" rel="noopener">参考</a></p>
+<h4 id="webpack-config-ts"><a href="#webpack-config-ts" class="headerlink" title="webpack.config.ts"></a>webpack.config.ts</h4><p><a href="https://webpack.docschina.org/configuration/configuration-languages/#typescript" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> path <span class="keyword">from</span> <span class="string">'path'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> webpack <span class="keyword">from</span> <span class="string">'webpack'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Shimming-如何兼容-老-library打包"><a href="#Shimming-如何兼容-老-library打包" class="headerlink" title="Shimming 如何兼容(老)library打包"></a>Shimming 如何兼容(老)library打包</h3><p>Shimming 有点类似打补丁的意思。</p>
+<p>Shimming 有两部分意思：<br>第一 polyfill 的注入；<br>第二 非规范的使用一些库library，这里又有两层意思：</p>
+<ul>
+<li>处理 比如 将lodash 放到 全局环境中；</li>
+<li>将以前的一些老版本库或没有提供commonjs 或 esm 标准的，如何嵌入到当前主流的模块化项目中使用。</li>
+</ul>
+<p>Shimming 的思想不符合 webpack的推荐的闭环模块化思想，但webpack推荐的闭环模块化思想不一定能满足一个项目所有的编译需求，<br>因此也是webpack 对其编译思想的一个延申。</p>
+<p><a href="https://webpack.docschina.org/guides/shimming/" target="_blank" rel="noopener">详细参考 官网</a></p>
+<blockquote>
+<p>webpack 背后的整个理念是使前端开发更加模块化。也就是说，需要编写具有良好的封闭性(well contained)、不依赖于隐含依赖（例如，全局变量）的彼此隔离的模块</p>
+</blockquote>
+<h3 id="webpack的target配置"><a href="#webpack的target配置" class="headerlink" title="webpack的target配置"></a>webpack的target配置</h3><p>直接定义的方式，参考官网，<br><a href="https://webpack.js.org/configuration/target/#browserslist" target="_blank" rel="noopener">官网还写了配合使用</a><br>其实是这样理解的，任何 browserslist 的定义方式，都会被webpack target 读取。<br>因此webpack target 定义 browserslist 时，并非给target赋值，<br>而是按照 browserslist 规范，定义成 .browserslistrc 或 package.json内，等等。</p>
+<h3 id="webpack-dev-server-与-IE-兼容问题"><a href="#webpack-dev-server-与-IE-兼容问题" class="headerlink" title="webpack-dev-server 与 IE 兼容问题"></a>webpack-dev-server 与 IE 兼容问题</h3><p>参考《babel笔记 – webpack-dev-server 与 IE 兼容问题》</p>
+<h3 id="webpack-dev-server-调试"><a href="#webpack-dev-server-调试" class="headerlink" title="webpack-dev-server 调试"></a>webpack-dev-server 调试</h3><blockquote>
+<p><a href="https://webpack.docschina.org/configuration/dev-server/#devserver" target="_blank" rel="noopener">参考 官网</a><br>如果你碰到了问题，请将路由导航至 /webpack-dev-server 将会为你展示服务文件的位置。例如： <a href="http://localhost:9000/webpack-dev-server。" target="_blank" rel="noopener">http://localhost:9000/webpack-dev-server。</a></p>
+</blockquote>
+<h3 id="正则与-glob-模式区别："><a href="#正则与-glob-模式区别：" class="headerlink" title="正则与 glob 模式区别："></a>正则与 glob 模式区别：</h3><p>webpack中的正则与 glob 模式区别：</p>
+<p>关于glob-to-regexp：<br><a href="https://github.com/fitzgen/glob-to-regexp" target="_blank" rel="noopener">参考-glob-to-regexp</a><br><a href="https://webpack.docschina.org/configuration/watch/#watchoptionsignored" target="_blank" rel="noopener">参考 - webpack官网</a></p>
+<blockquote>
+<p>当使用 glob 模式时，我们使用 glob-to-regexp 将其转为正则表达式，因此，在使用 watchOptions.ignored 的 glob 模式之前，请确保自己熟悉它。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  watchOptions: &#123;</span><br><span class="line">    ignored: <span class="string">'**/node_modules'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>关于正则：<br><a href="https://webpack.docschina.org/configuration/watch/#watchoptionsignored" target="_blank" rel="noopener">参考 - webpack官网</a></p>
+<blockquote>
+<p>当使用 glob 模式时，我们使用 glob-to-regexp 将其转为正则表达式，因此，在使用 watchOptions.ignored 的 glob 模式之前，请确保自己熟悉它。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  watchOptions: &#123;</span><br><span class="line">    ignored: <span class="regexp">/node_modules/</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="ProvidePlugin-DefinePlugin"><a href="#ProvidePlugin-DefinePlugin" class="headerlink" title="ProvidePlugin DefinePlugin"></a>ProvidePlugin DefinePlugin</h3><p>前者用于 全局引入 第三方包，省去每次 import 的麻烦；<br>后者用于 定义变量值，相当于一个传送门，将编译态的数据传送给业务代码使用；</p>
+<h2 id="待研究-1"><a href="#待研究-1" class="headerlink" title="待研究"></a>待研究</h2><h3 id="如何在线上使用sourcemap"><a href="#如何在线上使用sourcemap" class="headerlink" title="如何在线上使用sourcemap"></a>如何在线上使用sourcemap</h3><p><a href="https://webpack.docschina.org/configuration/devtool/#production" target="_blank" rel="noopener">更多描述 - 参考官网</a></p>
+<h2 id="webpack源码学习经验"><a href="#webpack源码学习经验" class="headerlink" title="webpack源码学习经验"></a>webpack源码学习经验</h2><p>阶段一：了解webpack的事件机制 tapable，如果有一定了解了，就不用看了：<br><a href="https://space.bilibili.com/32277451?spm_id_from=333.788.b_765f7570696e666f.2" target="_blank" rel="noopener">找webpack-tapable 系列的视频快速刷一遍，对 tapable有个印象即可</a></p>
+<p>阶段二：先大量刷视频，目的 了解webpack调试入门，以及loader与plugin的大致使用：</p>
+<p>手摸手带你实现打包器 仅需 80 行代码理解 webpack 的核心  <a href="https://www.bilibili.com/video/BV1oL411V7BQ?spm_id_from=333.999.0.0" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1oL411V7BQ?spm_id_from=333.999.0.0</a><br>实现 loader视频： <a href="https://www.bilibili.com/video/BV1d5411d7kH?spm_id_from=333.999.0.0" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1d5411d7kH?spm_id_from=333.999.0.0</a><br>实现 plugins视频： <a href="https://www.bilibili.com/video/BV1d5411d7kH?spm_id_from=333.999.0.0" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1d5411d7kH?spm_id_from=333.999.0.0</a></p>
+<p>webpack5 源码分析 视频： <a href="https://www.bilibili.com/video/BV12L411t7Pr?spm_id_from=333.999.0.0" target="_blank" rel="noopener">https://www.bilibili.com/video/BV12L411t7Pr?spm_id_from=333.999.0.0</a></p>
+<p>任务14：webpack调试和阅读 <a href="https://www.bilibili.com/video/BV1N5411j74S?p=14" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1N5411j74S?p=14</a><br>任务15：webpack自定义loader <a href="https://www.bilibili.com/video/BV1N5411j74S?p=14" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1N5411j74S?p=14</a></p>
+<p>阶段三：大量刷webpack源码相关的系列文档<br><a href="https://xie.infoq.cn/article/ddca4caa394241447fa0aa3c0" target="_blank" rel="noopener">[万字总结] 一文吃透 Webpack 核心原理</a><br>这个系列最经典，后期自己独自看源码时跟着这个教程走 — <a href="https://blog.flqin.com/archives/" target="_blank" rel="noopener">webpack4 源码分析系列  -里面去找webpack源码系列</a><br><a href="https://cloud.tencent.com/developer/article/1006353" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack（一）上篇：webpack的基本架构和构建流程</a><br><a href="https://cloud.tencent.com/developer/article/1006354" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack（一）下篇：webpack的基本架构和构建流程</a><br><a href="https://cloud.tencent.com/developer/article/1030740?from=article.detail.1006354" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack（二）：webpack的核心对象</a><br><a href="https://lxzjj.github.io/2017/11/02/%E7%8E%A9%E8%BD%ACwebpack%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">webpack3 源码分析系列： 玩转webpack 备用地址</a></p>
+<p>阶段四：自己调试webpack源码<br>跟着这个教程走 — <a href="https://blog.flqin.com/archives/" target="_blank" rel="noopener">webpack4 源码分析系列  -里面去找webpack源码系列</a>，<br>debug webpack源码。</p>
+<p>阶段五：刷一遍webpack官网：<br>这里要注意刷中文官网顺序：<br>概念<br>api<br>指南<br>配置<br>loader<br>plugin<br>概念、api、指南、配置 要细看；<br>loader、plugin 扫了一眼，主要讲各个loader plugin的使用方法，看的价值不高，用的时候再看比较好，这两个只花了两个小时看完。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2022-09-29T17:43:00.631Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2022/04/12/webpack_seven/" target="_blank" rel="external">https://yewills.github.io/2022/04/12/webpack_seven/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2022/04/12/webpack_six/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack源码系列(获)：核心概念</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2022/04/05/webpack_five/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack源码系列(田)：chunk及之后的调试</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待研究"><span class="post-toc-number">1.</span> <span class="post-toc-text">待研究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#entry-多个属性对象与数组定义方法使用场景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">entry 多个属性对象与数组定义方法使用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么说webpack只能处理js"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么说webpack只能处理js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么说webpack要借助loader来处理非js"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">为什么说webpack要借助loader来处理非js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插件比loader能做的事情更加广泛"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">插件比loader能做的事情更加广泛</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#监听-Watching"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">监听(Watching)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#由多入口文件共享引起的问题"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">由多入口文件共享引起的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#import-and-CommonJs-问题"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">import() and CommonJs 问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何代码分离重型依赖库"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">如何代码分离重型依赖库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不推荐，可拓展下视野"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">不推荐，可拓展下视野</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#推荐SplitChunksPlugin"><span class="post-toc-number">2.7.2.</span> <span class="post-toc-text">推荐SplitChunksPlugin</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#resolveLoader-与-resolve"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">resolveLoader 与 resolve</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块热替换如何运行的"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">模块热替换如何运行的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-是什么"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">webpack 是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#chunk-有两种形式"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">chunk 有两种形式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#magic-comment-魔术注释"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">magic comment(魔术注释)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#好用的cli"><span class="post-toc-number">2.13.</span> <span class="post-toc-text">好用的cli</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cli配置优先级高于webpack-config-js"><span class="post-toc-number">2.13.1.</span> <span class="post-toc-text">cli配置优先级高于webpack.config.js</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#export与import的对象无法使用-现象汇集"><span class="post-toc-number">2.14.</span> <span class="post-toc-text">export与import的对象无法使用 现象汇集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#懒加载的时候"><span class="post-toc-number">2.14.1.</span> <span class="post-toc-text">懒加载的时候</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ts"><span class="post-toc-number">2.14.2.</span> <span class="post-toc-text">ts</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#webpack-config-ts"><span class="post-toc-number">2.14.3.</span> <span class="post-toc-text">webpack.config.ts</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Shimming-如何兼容-老-library打包"><span class="post-toc-number">2.15.</span> <span class="post-toc-text">Shimming 如何兼容(老)library打包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack的target配置"><span class="post-toc-number">2.16.</span> <span class="post-toc-text">webpack的target配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-dev-server-与-IE-兼容问题"><span class="post-toc-number">2.17.</span> <span class="post-toc-text">webpack-dev-server 与 IE 兼容问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-dev-server-调试"><span class="post-toc-number">2.18.</span> <span class="post-toc-text">webpack-dev-server 调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#正则与-glob-模式区别："><span class="post-toc-number">2.19.</span> <span class="post-toc-text">正则与 glob 模式区别：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ProvidePlugin-DefinePlugin"><span class="post-toc-number">2.20.</span> <span class="post-toc-text">ProvidePlugin DefinePlugin</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待研究-1"><span class="post-toc-number">3.</span> <span class="post-toc-text">待研究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何在线上使用sourcemap"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">如何在线上使用sourcemap</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack源码学习经验"><span class="post-toc-number">4.</span> <span class="post-toc-text">webpack源码学习经验</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2022
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQYojMQwF0L7/pTMwq4Yhlf+ldDNxPa9CEar8vBCSpa+veD3+ru+/8yffn//7zuv3vHlhYGB8LONxuZ4x2g3tYS/egIGBcQNGHmSfMZJgfX18yZE9fY6BgYERJHD7sHtNwsDAwNgUrlHqFpepGBgYGJsitg2X+VeS4P62WhwDA+MDGbPGwO/8/vH+BgYGxn/PeJRr8/k2rSx2hYGBcTTjuiX5E1f819/KL+yi/gMGBsZBjNkIRV7uznK82UFjYGDcgZEPVbQXZPWGSioGBsapjOSKP28AtEfwtrIZAwPjaEaezLXhuB0XawtmDAyMezLywrXdaFvu5mwMDIw7MJIw+q70bjbMEV0FYmBgHM3IX5FvtE0B24kvDAyMuzE2m2sbn/tQi4GBcU/GbNChfZ63M2fHhIGBcTZjU7LOBiPy9meRdGJgYBzNaC/3ZyVoG3zbRgIGBsbZjP0l2qwBOWt2Pj0mDAyMoxl5DZgXnJt/rgpgDAyMQxntFVs7ADFrZyaF7uqmEAMD4wMZbQrYNh2T9meebkaNAQwMjIMYyVba523al4f46NINAwPjOMajXO0JzQJoPaCGgYFxNGPWjMwTxE0xPPsuBgbGqYxNsTprOrZvLk4aAwPjaEYeZDeDYpv1ojDGwMDACH63Dch2tKJuDGBgYNye0Rauw7HUOHnFwMC4A2M27rChto3SF4eFgYFxNGNfQM7GxTZtgCEGAwPj8xh/ABEEqHYVV64hAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
