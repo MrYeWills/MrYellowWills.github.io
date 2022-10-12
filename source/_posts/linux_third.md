@@ -3,8 +3,7 @@ title: linux笔记(震)
 date: 2021/5/30
 tags: linux
 categories: 
-- 前端工具
-series: linux
+- linux
 ---
 
 ##  管理服务器和服务

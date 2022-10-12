@@ -3,8 +3,7 @@ title: webpack笔记
 date: 2019/1/1
 tags: webpack
 categories: 
-- 前端工具
-series: 前端
+- webpack
 ---
 
 ## webpack常用知识 上

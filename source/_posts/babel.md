@@ -3,8 +3,7 @@ title: babel笔记
 date: 2021/10/23
 tags: [babel]
 categories: 
-- 前端工程
-series: babel
+- babel
 ---
 
 

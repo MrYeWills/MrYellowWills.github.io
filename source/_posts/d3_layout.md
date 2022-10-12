@@ -4,6 +4,7 @@ date: 2020/5/1
 tags: [d3.js]
 categories: 
 - 图形化
+series: d3
 ---
 ## d3图形图解
 ![](/image/d3/all/images.jpg)

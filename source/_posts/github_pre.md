@@ -1,12 +1,12 @@
 ---
-title: 前端以外笔记
+title: github笔记
 date: 2020/5/1
-tags: [前端以外]
+tags: [github]
 categories:
-- 前端以外
+- github
 ---
 
-本篇笔记用来记录前端知识以外的笔记，或者一时无法分类的笔记
+
 
 ## github直接浏览demo效果
 在网上介绍了很多关于github直接浏览demo的效果，不过有很多方法确实不太好，混淆视听，比如preview的那种方式，就不值得推荐。

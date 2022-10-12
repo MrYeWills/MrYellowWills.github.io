@@ -4,7 +4,6 @@ date: 2020/10/28
 tags: vue
 categories: 
 - vue
-- vue基础
 ---
 
 ## 基础知识

@@ -3,8 +3,7 @@ title: webpack笔记新
 date: 2020/5/9
 tags: webpack
 categories: 
-- 前端工具
-series: 前端
+- webpack
 ---
 
 ## webpack常用知识

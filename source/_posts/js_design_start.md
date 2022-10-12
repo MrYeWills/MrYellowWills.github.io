@@ -4,7 +4,7 @@ date: 2020/5/1
 tags: [js设计模式, 面向对象, 闭包, 命名空间]
 categories: 
 - js
-series: js
+series: js设计模式
 ---
 
 js设计模式分两篇来写，此为上篇。下篇为《js设计模式下》。

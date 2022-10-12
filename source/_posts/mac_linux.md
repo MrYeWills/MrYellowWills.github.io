@@ -3,7 +3,7 @@ title: mac和linux笔记
 date: 2020/5/1
 tags: mac
 categories: 
-- mac
+- 计算机知识
 series: mac
 ---
 

@@ -3,8 +3,7 @@ title: 技术箴言
 date: 2022/7/1
 tags: 其他
 categories: 
-- 其他
-series: 其他
+- 技术随笔
 ---
 
 

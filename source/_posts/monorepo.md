@@ -3,7 +3,7 @@ title: monorepo笔记
 date: 2022/07/27
 tags: [monorepo, lerna]
 categories: 
-- 前端工具
+- 前端工程
 series: monorepo
 ---
 

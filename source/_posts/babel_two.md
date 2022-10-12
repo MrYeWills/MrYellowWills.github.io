@@ -3,8 +3,7 @@ title: babel笔记(二)：插件开发
 date: 2022/6/28
 tags: [babel]
 categories: 
-- 前端工程
-series: babel
+- babel
 ---
 
 

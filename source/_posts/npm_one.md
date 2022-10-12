@@ -3,8 +3,7 @@ title: npm官网笔记
 date: 2022/8/6
 tags: npm
 categories: 
-- 前端工具
-series: 前端工具
+- 前端工程
 ---
 
 ## 黑知识

@@ -3,8 +3,7 @@ title: linux笔记(巽)
 date: 2021/6/8
 tags: linux
 categories: 
-- 前端工具
-series: linux
+- linux
 ---
 
 ## 安装 MariaDB 数据库软件(MySQL)

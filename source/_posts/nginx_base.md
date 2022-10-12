@@ -3,8 +3,7 @@ title: nginx笔记(有)
 date: 2021/6/22
 tags: nginx
 categories: 
-- 前端工具
-series: nginx
+- 工具
 ---
 
 *有孚维心，亨，行有尚。*

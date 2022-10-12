@@ -3,7 +3,7 @@ title: http协议
 date: 2019/5/21
 tags: [前端, http协议]
 categories: 
-- 前端
+- http
 ---
 
 ## html协议基础

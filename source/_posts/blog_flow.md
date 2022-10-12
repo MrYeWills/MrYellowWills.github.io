@@ -3,8 +3,7 @@ title: 博客持续集成的实现
 date: 2020/10/1
 tags: travis
 categories: 
-- 前端工具
-series: 前端工具
+- 前端工程
 ---
 
 ## 持续集成的需求

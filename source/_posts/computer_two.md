@@ -1,10 +1,10 @@
 ---
 title: 计算机基础(二)：wireshark抓包
 date: 2022/9/20
-tags: 其他
+tags: [计算机基础, wireshark]
 categories: 
-- 其他
-series: 其他
+- 计算机知识
+series: 计算机基础
 ---
 
 学习TCP的连接流程可以看看 ：wireshark 抓包

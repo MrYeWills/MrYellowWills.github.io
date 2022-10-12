@@ -3,8 +3,7 @@ title: verdaccio搭建npm私服(一)：基础知识
 date: 2022/7/3
 tags: verdaccio
 categories: 
-- 前端工具
-series: verdaccio
+- verdaccio
 ---
 
 ## 搭建npm私服选型

@@ -4,6 +4,7 @@ date: 2020/5/1
 tags: [d3.js]
 categories: 
 - 图形化
+series: d3
 ---
 
 这里讲解d3的 enter update exit三种模式，以及 append、data、selectAll。

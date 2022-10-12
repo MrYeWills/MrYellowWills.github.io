@@ -1,10 +1,9 @@
 ---
 title: npm script
 date: 2020/5/1
-tags: npm-script
+tags: [npm-script, npm]
 categories: 
-- 前端工具
-series: 前端工具
+- 前端工程
 ---
 
 

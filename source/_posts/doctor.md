@@ -3,7 +3,7 @@ title: 医药
 date: 2020/10/21 
 tags: 医药
 categories: 
-- 医药
+- 技术之外
 ---
 
 ## 骨刺

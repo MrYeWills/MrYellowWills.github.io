@@ -3,7 +3,7 @@ title: 项目笔记
 date: 2022/1/13
 tags: 项目经验
 categories: 
-- 前端之外
+- 项目经验
 series: 项目经验
 ---
 

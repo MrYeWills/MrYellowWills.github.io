@@ -3,8 +3,7 @@ title: linux笔记(离)
 date: 2021/6/19
 tags: linux
 categories: 
-- 前端工具
-series: linux
+- linux
 ---
 
 

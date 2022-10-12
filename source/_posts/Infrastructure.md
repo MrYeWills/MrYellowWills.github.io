@@ -3,7 +3,7 @@ title: 设计一个中台项目
 date: 2022/1/13
 tags: 基建
 categories: 
-- 前端
+- 前端工程
 series: 基建
 ---
 
@@ -408,10 +408,6 @@ tab 数据包含：
 而且这个effect还可以处理注意 权限控制 等等逻辑。
 
 
-## 待研究
+## 源码
+[dashboard](https://github.com/YeWills/dashboard.git)
 
-编译webpack 配置，这个放到最后去研究，跟 webpack 时一起；
-
-
-## 说明
-demo 地址 `hz-modify`

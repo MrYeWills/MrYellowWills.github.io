@@ -3,8 +3,7 @@ title: linux笔记(乾)
 date: 2021/5/1
 tags: linux
 categories: 
-- 前端工具
-series: linux
+- linux
 ---
 
 

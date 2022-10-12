@@ -3,8 +3,7 @@ title: node模块
 date: 2019/8/13
 tags: [node , nodemon]
 categories: 
-- [后端]
-series: node
+- 前端工程
 ---
 
 ## node好用模块

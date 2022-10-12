@@ -1,9 +1,9 @@
 ---
-title: 前端工具
+title: 前端工程笔记
 date: 2020/09/04
-tags: [前端工具]
+tags: [前端工程]
 categories:
-- 前端工具
+- 前端工程
 ---
 
 ## parcel

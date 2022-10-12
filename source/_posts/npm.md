@@ -3,8 +3,7 @@ title: npm包开发
 date: 2020/5/1
 tags: npm
 categories: 
-- 前端工具
-series: 前端工具
+- 前端工程
 ---
 
 ## npm包集中管理项目

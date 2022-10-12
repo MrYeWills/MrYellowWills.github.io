@@ -1,7 +1,7 @@
 ---
 title: 一路美食 一路风景
 date: 2021/11/01
-tags: [技术之外]
+tags: [美食]
 categories:
 - 技术之外
 ---

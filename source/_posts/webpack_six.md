@@ -3,8 +3,7 @@ title: webpack源码系列(获)：核心概念
 date: 2022/4/12
 tags: webpack
 categories: 
-- 前端工具
-series: 前端
+- webpack
 ---
 
 

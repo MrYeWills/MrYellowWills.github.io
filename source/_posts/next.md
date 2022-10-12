@@ -1,9 +1,9 @@
 ---
 title: next框架及项目笔记
 date: 2020/10/08
-tags: [next, 项目]
+tags: [next框架]
 categories:
-- 前端
+- 常用ui库
 ---
 
 ## 黑知识

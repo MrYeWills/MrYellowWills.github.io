@@ -3,7 +3,7 @@ title: 部署、运维及边缘
 date: 2020/5/1
 tags: [jenkens, docker, nginx]
 categories: 
-- 边缘
+- 工具
 series: 边缘
 ---
 

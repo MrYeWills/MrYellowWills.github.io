@@ -3,8 +3,7 @@ title: verdaccio(三)：要点与学习
 date: 2022/7/20
 tags: verdaccio
 categories: 
-- 前端工具
-series: verdaccio
+- verdaccio
 ---
 
 

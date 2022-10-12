@@ -3,7 +3,7 @@ title: vscode笔记
 date: 2020/8/19
 tags: [vscode]
 categories: 
-- [前端工具]
+- [工具]
 series: vscode
 ---
 

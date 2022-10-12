@@ -1,9 +1,9 @@
 ---
-title: 工具函数
+title: js工具函数
 date: 2022/2/22
 tags: 其他
 categories: 
-- 其他
+- js
 series: 其他
 ---
 

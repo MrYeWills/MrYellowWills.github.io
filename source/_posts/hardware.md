@@ -1,8 +1,9 @@
 ---
 title: 硬件
 date: 2022/10/11
+tags: 硬件
 categories: 
-- 技术之外
+- 计算机知识
 ---
 
 ## 重装win10系统
