@@ -160,7 +160,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/备份/">备份</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
 
             
         </h5>
@@ -193,7 +193,7 @@
             <time class="post-time" title="2019-05-21 00:00:00" datetime="2019-05-21T00:00:00.000Z"  itemprop="datePublished">2019-05-21</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/备份/">备份</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工程/">前端工程</a></li></ul>
 
 
 
@@ -206,7 +206,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>本篇博客针对 github 的<a href="https://github.com/YeWills/react-redux-demo" target="_blank" rel="noopener">react_redux_demo项目</a>一些知识点讲解。</p>
+            <p>本篇博客针对 github 的<a href="https://github.com/YeWills/wills-react-pro" target="_blank" rel="noopener">wills-react-pro项目</a>一些知识点讲解。<br>或者直接看原小册<a href="https://github.com/YeWills/react-boilerplate-pro-2020" target="_blank" rel="noopener">react-boilerplate-pro-2020项目</a></p>
 <h2 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h2><p>项目使用了redux-thunk来处理异步请求，redux-thunk最重要的思想，就是可以接受一个返回函数的action creator。如果这个action creator 返回的是一个函数，就执行它，如果不是，就按照原来的next(action)执行。<br>正因为这个action creator可以返回一个函数，那么就可以在这个函数中执行一些异步的操作。<br><a href="https://www.jianshu.com/p/a27ab19d3657" target="_blank" rel="noopener">参考</a><br>详细示例可参考 项目的tag login_pro_v1.0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//src/views/login/index.js</span><br><span class="line">const mapDispatchToProps = &#123;</span><br><span class="line">  loginUser: appAction.loginUser,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h2 id="ajax封装"><a href="#ajax封装" class="headerlink" title="ajax封装"></a>ajax封装</h2><h3 id="什么时候需要success提示"><a href="#什么时候需要success提示" class="headerlink" title="什么时候需要success提示"></a>什么时候需要success提示</h3><p>ajax分为两种：<br>一种是进入页面请求数据渲染页面的，此时不需要提示接口响应成功，只需loading即可。<br>一种是与后台交互，需要响应结果的，如交易、删除、编辑等，提交到后台，后台告知是否成功。<br>因此在做ajax封装时，可以不用配置success 的提示处理，需要提示的接口自行配置success提示处理。</p>
 <h3 id="什么时候需要loading"><a href="#什么时候需要loading" class="headerlink" title="什么时候需要loading"></a>什么时候需要loading</h3><p>原则上每个请求都应该有loading，但是有很多组件有自己的loading样式，例如在非刷新整个页面的情况下，组件内刷新gird，只需在grid内显示loading，不需要统一的loading格式。<br>因此ajax封装时，配置可选的 loading标识是否loading。</p>
@@ -274,7 +274,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2022-09-29T17:43:00.631Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+    Last updated: <time datetime="2022-10-13T10:01:31.849Z" itemprop="dateUpdated">2022-10-13 10:01:31</time>
 </span><br>
 
 

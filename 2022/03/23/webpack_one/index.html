@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>webpack源码系列(往) | Mr.Yellow.Wills</title>
+    <title>webpack源码系列(往)：开篇 | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="webpack">
+    <meta name="keywords" content="webpack,webpack源码系列">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>webpack源码系列(往)</span>
+            <span>webpack源码系列(往)：开篇</span>
             
         </div>
         
@@ -152,7 +152,7 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">webpack源码系列(往)</h1>
+        <h1 class="title">webpack源码系列(往)：开篇</h1>
         <h5 class="subtitle">
             
                 <time datetime="2022-03-23T00:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -160,7 +160,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/webpack源码系列/">webpack源码系列</a></li></ul>
 
             
         </h5>
@@ -188,12 +188,12 @@
     <article id="post-webpack_one"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">webpack源码系列(往)</h1>
+        <h1 class="post-card-title">webpack源码系列(往)：开篇</h1>
         <div class="post-meta">
             <time class="post-time" title="2022-03-23 00:00:00" datetime="2022-03-23T00:00:00.000Z"  itemprop="datePublished">2022-03-23</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/webpack源码系列/">webpack源码系列</a></li></ul>
 
 
 
@@ -289,7 +289,7 @@
 </ul>
 <h3 id="webpack-dev-server-调试-待进一步整理"><a href="#webpack-dev-server-调试-待进一步整理" class="headerlink" title="webpack-dev-server 调试 (待进一步整理)"></a>webpack-dev-server 调试 (待进一步整理)</h3><p>本例以传统的webpack 配置模式进行, webpack-dev-server 启动。</p>
 <p>webpack-dev-server 启动与 webpack 的区别</p>
-<p><a rel=webpack源码系列(往) href="/image/webpack_one/entry.jpg" title="" data-fancybox="images"><img src="/image/webpack_one/entry.jpg" alt></a></p>
+<p><a rel=webpack源码系列(往)：开篇 href="/image/webpack_one/entry.jpg" title="" data-fancybox="images"><img src="/image/webpack_one/entry.jpg" alt></a></p>
 <h4 id="lib-webpack-js"><a href="#lib-webpack-js" class="headerlink" title="lib\webpack.js"></a>lib\webpack.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">node_modules\webpack\lib\webpack.js</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="function">(<span class="params">options, callback</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    compiler = <span class="keyword">new</span> Compiler(options.context);</span><br><span class="line">    compiler.options = options;</span><br><span class="line">    <span class="keyword">new</span> NodeEnvironmentPlugin(&#123;</span><br><span class="line">        infrastructureLogging: options.infrastructureLogging</span><br><span class="line">    &#125;).apply(compiler);</span><br><span class="line">    <span class="keyword">if</span> (options.plugins &amp;&amp; <span class="built_in">Array</span>.isArray(options.plugins)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> plugin <span class="keyword">of</span> options.plugins) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  这里加载插件</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> plugin === <span class="string">"function"</span>) &#123;</span><br><span class="line">                plugin.call(compiler, compiler);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                plugin.apply(compiler);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compiler.hooks.environment.call();</span><br><span class="line">    compiler.hooks.afterEnvironment.call();</span><br><span class="line">    <span class="comment">// 这里执行compiler的后续操作</span></span><br><span class="line">    compiler.options = <span class="keyword">new</span> WebpackOptionsApply().process(options, compiler);</span><br></pre></td></tr></table></figure>
 <h4 id="webpack-lib-WebpackOptionsApply-js"><a href="#webpack-lib-WebpackOptionsApply-js" class="headerlink" title="webpack\lib\WebpackOptionsApply.js"></a>webpack\lib\WebpackOptionsApply.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上面 compiler.options = new WebpackOptionsApply().process(options, compiler);</span></span><br><span class="line"><span class="comment">// node_modules\webpack\lib\WebpackOptionsApply.js  process</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> EntryOptionPlugin().apply(compiler);</span><br><span class="line"></span><br><span class="line"><span class="comment">// -----WebpackOptionsApply^process^compiler.hooks.entryOption.call -- start -------</span></span><br><span class="line"><span class="comment">// 后续讲 ，目前先讲解上面的 EntryOptionPlugin().apply(compiler);</span></span><br><span class="line">compiler.hooks.entryOption.call(options.context, options.entry);</span><br></pre></td></tr></table></figure>
 <h4 id="webpack-lib-EntryOptionPlugin-js"><a href="#webpack-lib-EntryOptionPlugin-js" class="headerlink" title="webpack\lib\EntryOptionPlugin.js"></a>webpack\lib\EntryOptionPlugin.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上面 new EntryOptionPlugin().apply(compiler);</span></span><br><span class="line"><span class="comment">// node_modules\webpack\lib\EntryOptionPlugin.js  process</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> EntryOptionPlugin().apply(compiler);</span><br><span class="line"></span><br><span class="line">apply(compiler) &#123;</span><br><span class="line">		compiler.hooks.entryOption.tap(<span class="string">"EntryOptionPlugin"</span>, (context, entry) =&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">typeof</span> entry === <span class="string">"string"</span> || <span class="built_in">Array</span>.isArray(entry)) &#123;</span><br><span class="line">				itemToPlugin(context, entry, <span class="string">"main"</span>).apply(compiler);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> entry === <span class="string">"object"</span>) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">const</span> name <span class="keyword">of</span> <span class="built_in">Object</span>.keys(entry)) &#123;</span><br><span class="line">					itemToPlugin(context, entry[name], name).apply(compiler);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> entry === <span class="string">"function"</span>) &#123;</span><br><span class="line">				<span class="keyword">new</span> DynamicEntryPlugin(context, entry).apply(compiler);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -360,7 +360,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+    Last updated: <time datetime="2022-10-13T10:01:31.849Z" itemprop="dateUpdated">2022-10-13 10:01:31</time>
 </span><br>
 
 
@@ -385,7 +385,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack源码系列/">webpack源码系列</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -394,7 +394,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)：开篇》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -406,7 +406,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)：开篇》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -432,18 +432,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2022/03/23/webpack_two/" id="post-prev" class="post-nav-link">
+      <a href="/2022/04/05/webpack_three/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">webpack源码系列(蹇)：loader</h4>
+        <h4 class="title">webpack源码系列(来)：主流程</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2022/02/22/jstool/" id="post-next" class="post-nav-link">
+      <a href="/2022/03/23/webpack_two/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">工具函数</h4>
+        <h4 class="title">webpack源码系列(蹇)：loader</h4>
       </a>
     </div>
   
@@ -552,7 +552,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)：开篇》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -564,7 +564,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/03/23/webpack_one/&title=《webpack源码系列(往)：开篇》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>

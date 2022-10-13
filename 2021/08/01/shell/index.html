@@ -160,7 +160,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
 
             
         </h5>
@@ -193,7 +193,7 @@
             <time class="post-time" title="2021-08-01 00:00:00" datetime="2021-08-01T00:00:00.000Z"  itemprop="datePublished">2021-08-01</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
 
 
 
@@ -211,13 +211,19 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"sl"</span>: <span class="string">"sh test.sh"</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <h4 id="注意-REPLY-的使用"><a href="#注意-REPLY-的使用" class="headerlink" title="注意 $REPLY 的使用"></a>注意 $REPLY 的使用</h4><p>如上</p>
 <h3 id="命令行输出过多重定向到文本显示"><a href="#命令行输出过多重定向到文本显示" class="headerlink" title="命令行输出过多重定向到文本显示"></a>命令行输出过多重定向到文本显示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list &gt; test.txt</span><br></pre></td></tr></table></figure>
+<h3 id="批量读取目录下所有文件内容"><a href="#批量读取目录下所有文件内容" class="headerlink" title="批量读取目录下所有文件内容"></a>批量读取目录下所有文件内容</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 批量读取文件目录下，所有文件，拿出所有文件的指定内容</span></span><br><span class="line"><span class="comment"># 注意目录路径要加一个*</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> /Users/js/Desktop/git/YeWills.github.io/<span class="built_in">source</span>/_posts/*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$file</span>"</span> ]</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$file</span> is directory"</span></span><br><span class="line"><span class="comment"># -f 如果是文件，且文件存在，</span></span><br><span class="line"><span class="keyword">elif</span> [ -f <span class="string">"<span class="variable">$file</span>"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="comment"># 获取文件内容，写入到a.txt</span></span><br><span class="line">  cat <span class="variable">$file</span> | grep title: &gt;&gt; a.txt</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>关于 -f  <a href="https://blog.csdn.net/weixin_43025071/article/details/122337013" target="_blank" rel="noopener">参考</a></p>
+<h4 id="目录路径要加一个"><a href="#目录路径要加一个" class="headerlink" title="目录路径要加一个*"></a>目录路径要加一个*</h4><p>参考上面</p>
+<h4 id="写入内容不用-echo"><a href="#写入内容不用-echo" class="headerlink" title="写入内容不用 echo"></a>写入内容不用 echo</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接就可以写入到 a.txt;</span></span><br><span class="line">cat <span class="variable">$file</span> | grep title: &gt;&gt; a.txt</span><br></pre></td></tr></table></figure>
+<p>正常可能需要<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"1"</span> &gt;&gt; a.txt</span><br></pre></td></tr></table></figure></p>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2022-09-29T17:43:00.627Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+    Last updated: <time datetime="2022-10-13T10:01:31.845Z" itemprop="dateUpdated">2022-10-13 10:01:31</time>
 </span><br>
 
 
@@ -312,7 +318,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#demo"><span class="post-toc-number">1.</span> <span class="post-toc-text">demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动npm发布脚本"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自动npm发布脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意-REPLY-的使用"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">注意 $REPLY 的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令行输出过多重定向到文本显示"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">命令行输出过多重定向到文本显示</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#demo"><span class="post-toc-number">1.</span> <span class="post-toc-text">demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动npm发布脚本"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自动npm发布脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意-REPLY-的使用"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">注意 $REPLY 的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命令行输出过多重定向到文本显示"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">命令行输出过多重定向到文本显示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#批量读取目录下所有文件内容"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">批量读取目录下所有文件内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目录路径要加一个"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">目录路径要加一个*</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写入内容不用-echo"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">写入内容不用 echo</span></a></li></ol></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>

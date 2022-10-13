@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>你不知道的webpack(三) | Mr.Yellow.Wills</title>
+    <title>webpack源码系列(三)：你不知道的webpack[完结] | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="webpack">
+    <meta name="keywords" content="webpack,webpack源码系列">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>你不知道的webpack(三)</span>
+            <span>webpack源码系列(三)：你不知道的webpack[完结]</span>
             
         </div>
         
@@ -152,7 +152,7 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">你不知道的webpack(三)</h1>
+        <h1 class="title">webpack源码系列(三)：你不知道的webpack[完结]</h1>
         <h5 class="subtitle">
             
                 <time datetime="2022-04-12T00:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -160,7 +160,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/webpack源码系列/">webpack源码系列</a></li></ul>
 
             
         </h5>
@@ -188,12 +188,12 @@
     <article id="post-webpack_seven"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">你不知道的webpack(三)</h1>
+        <h1 class="post-card-title">webpack源码系列(三)：你不知道的webpack[完结]</h1>
         <div class="post-meta">
             <time class="post-time" title="2022-04-12 00:00:00" datetime="2022-04-12T00:00:00.000Z"  itemprop="datePublished">2022-04-12</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/webpack源码系列/">webpack源码系列</a></li></ul>
 
 
 
@@ -210,7 +210,7 @@
 <p>一种是多属性的定义方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span>,</span><br><span class="line">    vendors: <span class="string">'./src/vendors.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://www.webpackjs.com/concepts/entry-points/#%E5%88%86%E7%A6%BB-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-app-%E5%92%8C-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-vendor-%E5%85%A5%E5%8F%A3" target="_blank" rel="noopener">参考官网 - 分离 应用程序(app) 和 第三方库(vendor) 入口</a><br>下面摘录上面官网链接的章节， 这部门描述同样值得关注</p>
 <blockquote>
-<p>为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 <strong>webpack_require</strong>() 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。</p>
+<p>为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 <code>__webpack_require__()</code> 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。</p>
 </blockquote>
 <p>我觉得在对于一些 cdn 等等， 可能会以 entry 数组的方式 引入。<br>目前好奇的是，这些适合什么样的场景。<br>学会适用场景为自己项目所用。</p>
 <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="为什么说webpack只能处理js"><a href="#为什么说webpack只能处理js" class="headerlink" title="为什么说webpack只能处理js"></a>为什么说webpack只能处理js</h3><p>webpack的Parser内核是acorn，是用于解析js的。<br>所以webpack只能编译处理js。<br>node能够处理的有两种，一个是字符串，一个是buffer流，<br>比如文件就是一个buffer流，<br>在webpack中，处理图片文件时，会通过loader，将此图片编译为一个base64 url(也是一个字符串) 或将这个图片拷贝至dist目录，<br>然后生成一个该图片的引用路径(也是一个字符串),<br>也就是说，文件流经过loader处理后，都变成了一个字符串，这个时候再传给webpack，webpack就可以识别了。</p>
@@ -310,7 +310,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2022-09-29T17:43:00.631Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+    Last updated: <time datetime="2022-10-13T10:01:31.849Z" itemprop="dateUpdated">2022-10-13 10:01:31</time>
 </span><br>
 
 
@@ -335,7 +335,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack源码系列/">webpack源码系列</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -344,7 +344,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《webpack源码系列(三)：你不知道的webpack[完结]》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -356,7 +356,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《webpack源码系列(三)：你不知道的webpack[完结]》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -502,7 +502,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《webpack源码系列(三)：你不知道的webpack[完结]》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -514,7 +514,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《你不知道的webpack(三)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/12/webpack_seven/&title=《webpack源码系列(三)：你不知道的webpack[完结]》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>

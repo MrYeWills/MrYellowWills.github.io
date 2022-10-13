@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>nginx笔记(有) | Mr.Yellow.Wills</title>
+    <title>nginx笔记 | Mr.Yellow.Wills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="nginx">
@@ -139,7 +139,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>nginx笔记(有)</span>
+            <span>nginx笔记</span>
             
         </div>
         
@@ -152,7 +152,7 @@
 <header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">nginx笔记(有)</h1>
+        <h1 class="title">nginx笔记</h1>
         <h5 class="subtitle">
             
                 <time datetime="2021-06-22T00:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -160,7 +160,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
 
             
         </h5>
@@ -188,12 +188,12 @@
     <article id="post-nginx_base"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">nginx笔记(有)</h1>
+        <h1 class="post-card-title">nginx笔记</h1>
         <div class="post-meta">
             <time class="post-time" title="2021-06-22 00:00:00" datetime="2021-06-22T00:00:00.000Z"  itemprop="datePublished">2021-06-22</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端工具/">前端工具</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
 
 
 
@@ -206,10 +206,9 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p><em>有孚维心，亨，行有尚。</em></p>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h3><p>阿里云不支持但网卡多IP的配置</p>
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h3><p>阿里云不支持但网卡多IP的配置</p>
 <h3 id="静态服务器和反向代理"><a href="#静态服务器和反向代理" class="headerlink" title="静态服务器和反向代理"></a>静态服务器和反向代理</h3><p>nginx是一款静态服务器，可以自行处理客户端静态资源如js、css 等等的返回；<br>nginx并不能处理动态资源接口，所有的动态接口，如商品价格、库存量 等请求 都转发给 业务服务器，由业务服务器 返回给nginx，再由nginx返回给客户端。<br>这个过程中nginx起到一个代理的作用，上面的过程也是 nginx 反向代理的过程；<br>nginx 最重要的两个功能就是 静态服务器 和 反向代理；<br>其他的如负载均衡（当nginx作为代理时，当有多台服务器时，nginx如何将请求均衡发给多台服务器，达到负载均衡 性能优化），都是因此延伸出来。<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/busi.png" title="undefined" data-fancybox="images"><img src="/image/nginx/busi.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/busi.png" title="undefined" data-fancybox="images"><img src="/image/nginx/busi.png" alt title class></a>
                 <p></p>
             </figure><br>另外可参考《一个http请求的全流程》图片看反向代理。</p>
 <p>反向代理其实就是 转发代理。</p>
@@ -238,7 +237,7 @@
 <li>请求发送到nginx，nginx响应静态资源；</li>
 <li>动态请求，nginx作为反向代理：将请求发送给 应用服务器（就是后端人员写的服务器），再有应用服务器响应nginx，由nginx返回客户端。</li>
 <li>应用服务器 接受请求后，请求DB 数据库服务器，对数据库进行增删改查，由数据库服务器响应最新数据给应用服务器。<figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/http.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http.jpg" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/http.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http.jpg" alt title class></a>
                 <p></p>
             </figure>
 </li>
@@ -257,18 +256,18 @@
 </li>
 </ul>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http1.jpg" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/http1.jpg" title="undefined" data-fancybox="images"><img src="/image/nginx/http1.jpg" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="nginx的变量"><a href="#nginx的变量" class="headerlink" title="nginx的变量"></a>nginx的变量</h3><h4 id="变量分类"><a href="#变量分类" class="headerlink" title="变量分类"></a>变量分类</h4><p>nginx是用来处理请求的服务器，因此它的变量主要是围绕 请求处理而分类的。<br>如下，有5种分类：<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/var1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/var1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/var1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/var1.png" alt title class></a>
                 <p></p>
             </figure></p>
 <p>为什么有tcp链接分类变量：<br>其中 http 建立在tcp\ip协议上的，建立http链接，要经过tcp链接，在此之上进行http数据传输。</p>
 <p>理解 nginx内部变量：<br>nginx自身运行时，也会产生相关变量。</p>
 <h4 id="tcp连接相关变量"><a href="#tcp连接相关变量" class="headerlink" title="tcp连接相关变量"></a>tcp连接相关变量</h4><p>remote_addr 客户端IP地址<br>remote_port 客户端端口<br>server_addr 服务端IP地址<br>server_port 服务端端口<br>server_protocol 服务端协议 比如http1.0 http1.1</p>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/var2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/var2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/var2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/var2.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="http请求过程相关变量"><a href="#http请求过程相关变量" class="headerlink" title="http请求过程相关变量"></a>http请求过程相关变量</h4><p>uri 请求的url，不包含参数<br>request_uri 请求的url，包含参数<br>scheme 协议名，http或https<br>request_method 请求方法<br>request_length 全部请求的长度，包括请求行、请求头、请求体；<br>args 全部参数字符串<br>arg_参数名 获取具体参数名的参数值<br>is_args 判断url中是否有参数，如果有参数，则返回?，否则返回空；<br>query_string 与 args相同，二者可互换使用<br>remote_user 由http basic authentication协议传入的用户名<br>host 先看请求行，再看请求头，最后找server_name<br>http_user_agent 用户浏览器<br>http_referer 从那些链接过来<br>http_via 经过一层代理服务器，添加对应代理服务器信息<br>http_x_forwarded_for 获取用户真实IP<br>http_cookie 用户cookie</p>
@@ -280,7 +279,7 @@
 <h3 id="命令行本质也是信号量-管理"><a href="#命令行本质也是信号量-管理" class="headerlink" title="命令行本质也是信号量 管理"></a>命令行本质也是信号量 管理</h3><p>命令行可以操作下面操作：</p>
 <p>reload 底层利用的是HUP信号量<br>reload 底层利用的是USER1信号量<br>stop 底层利用的是TERM信号量<br>quit 底层利用的是QUIT信号量</p>
 <h3 id="认识-nginx进程"><a href="#认识-nginx进程" class="headerlink" title="认识 nginx进程"></a>认识 nginx进程</h3><p>nginx的配置文件<br>worker_processes auto; //自动识别电脑有几个cpu，下面的例子说明识别出4个进程<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/pid.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pid.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/pid.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pid.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h3 id="nginx-配置文件重载过程与原理"><a href="#nginx-配置文件重载过程与原理" class="headerlink" title="nginx 配置文件重载过程与原理"></a>nginx 配置文件重载过程与原理</h3><h4 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h4><ul>
@@ -290,37 +289,37 @@
 <li>此时就存在新的和老的子进程同时存在的情况。</li>
 <li>什么是老的子进程执行完之后完毕，</li>
 <li>比如，客户在浏览网页的时候，与老的子进程建立了连接，一直等客户关闭页面关闭连接，<br>老的子进程才退出。<figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/reload.png" title="undefined" data-fancybox="images"><img src="/image/nginx/reload.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/reload.png" title="undefined" data-fancybox="images"><img src="/image/nginx/reload.png" alt title class></a>
                 <p></p>
             </figure>
 </li>
 </ul>
 <h4 id="会同时存在新旧两种进程"><a href="#会同时存在新旧两种进程" class="headerlink" title="会同时存在新旧两种进程"></a>会同时存在新旧两种进程</h4><p>如上，此时进程数是两倍。</p>
 <p>nginx热部署升级 的过程<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/red.png" title="undefined" data-fancybox="images"><img src="/image/nginx/red.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/red.png" title="undefined" data-fancybox="images"><img src="/image/nginx/red.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h2 id="nginx-安装、使用"><a href="#nginx-安装、使用" class="headerlink" title="nginx 安装、使用"></a>nginx 安装、使用</h2><h3 id="配置文件结构"><a href="#配置文件结构" class="headerlink" title="配置文件结构"></a>配置文件结构</h3><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/in.png" title="undefined" data-fancybox="images"><img src="/image/nginx/in.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/in.png" title="undefined" data-fancybox="images"><img src="/image/nginx/in.png" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="nginx环境准备"><a href="#nginx环境准备" class="headerlink" title="nginx环境准备"></a>nginx环境准备</h3><p>确认关闭iptables规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -F #关闭规则</span><br><span class="line">iptables -t nat -L #查看规则</span><br></pre></td></tr></table></figure></p>
 <p>确认停用selinux<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc tcc-c++ autoconf pcre pcre-devel make automake</span><br><span class="line">yum -y install wget httpd-tools vim</span><br></pre></td></tr></table></figure></p>
 <h3 id="nginx两种安装方式"><a href="#nginx两种安装方式" class="headerlink" title="nginx两种安装方式"></a>nginx两种安装方式</h3><h4 id="指定源和版本-强大"><a href="#指定源和版本-强大" class="headerlink" title="指定源和版本(强大)"></a>指定源和版本(强大)</h4><p>这种方法需要自己配置下，好处是，<br>可以自己安装指定版本的nginx，<br>不用自己下载指定版本的nginx包，拷贝到centos中安装。<br>进入<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">官网</a>;<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ist1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ist1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ist1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ist1.png" alt title class></a>
                 <p></p>
             </figure><br>这里有各个环境安装介绍：<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ist2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ist2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ist2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ist2.png" alt title class></a>
                 <p></p>
             </figure><br>根据这个步骤，注意的是，我们不需要gpgkey，这个地方设置为0：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# cat /etc/yum.repos.d/nginx.repo</span><br><span class="line"></span><br><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/7/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">[root@localhost yum.repos.d]#</span><br></pre></td></tr></table></figure></p>
 <p> 执行命令 <code>yum list | grep nginx</code> 查看yum 可安装的 nginx源，<br> 图片显示，nginx安装的源就是 我们刚才配置的 nginx.repo 。<br> 如果我们用 epel-release 这个源来安装， 那么 下图中的源 就会显示 epel。<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ist3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ist3.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ist3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ist3.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="epel-release-简便"><a href="#epel-release-简便" class="headerlink" title="epel-release(简便)"></a>epel-release(简便)</h4><p>参考《linux笔记(坎) - 安装和使用nginx》</p>
 <h3 id="配置文件目录介绍"><a href="#配置文件目录介绍" class="headerlink" title="配置文件目录介绍"></a>配置文件目录介绍</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# rpm -ql nginx</span><br><span class="line">/etc/nginx/nginx.conf  #主配置文件</span><br><span class="line">/etc/nginx/conf.d/default.conf   #nginx启动的server默认读取default.conf文件,此文件一般被主配置文件 include</span><br><span class="line">/etc/nginx/fastcgi_params  fastcgi配置，#与php配合时需要用到</span><br><span class="line">/etc/nginx/mime.types  #设置http协议的content-type与扩展名对应关系</span><br><span class="line">/etc/nginx/scgi_params</span><br><span class="line">/etc/nginx/uwsgi_params</span><br><span class="line">/usr/lib/systemd/system/nginx-debug.service  #守护进程的配置</span><br><span class="line">/usr/lib/systemd/system/nginx.service  #守护进程的配置</span><br><span class="line">/usr/sbin/nginx  #终端命令</span><br><span class="line">/usr/sbin/nginx-debug  #终端调试命令</span><br></pre></td></tr></table></figure>
 <h3 id="语法介绍"><a href="#语法介绍" class="headerlink" title="语法介绍"></a>语法介绍</h3><h4 id="配置代码结构"><a href="#配置代码结构" class="headerlink" title="配置代码结构"></a>配置代码结构</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/gram.png" title="undefined" data-fancybox="images"><img src="/image/nginx/gram.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/gram.png" title="undefined" data-fancybox="images"><img src="/image/nginx/gram.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="完整配置"><a href="#完整配置" class="headerlink" title="完整配置"></a>完整配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# cat /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">user  nginx;</span><br><span class="line">worker_processes  auto;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log notice;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;   #配置 content-type</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf; #读取/etc/nginx/conf.d/default.conf</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[root@localhost yum.repos.d]# cat /etc/nginx/conf.d/default.conf</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;   在default.conf 定义 80端口</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504 404  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[root@localhost yum.repos.d]#</span><br></pre></td></tr></table></figure>
@@ -329,20 +328,20 @@
 <h2 id="curl-命令"><a href="#curl-命令" class="headerlink" title="curl 命令"></a>curl 命令</h2><h3 id="curl-v-url"><a href="#curl-v-url" class="headerlink" title="curl -v url"></a>curl -v url</h3><p>-v 可以三个信息：显示 请求、 response信息 ；<br>请求头 以 &gt; 编号标识<br>响应头 以 &lt; 编号标识<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">$ curl -v http://192.168.228.131/test</span><br><span class="line">*   Trying 192.168.228.131:80...</span><br><span class="line">* Connected to 192.168.228.131 (192.168.228.131) port 80 (#0)</span><br><span class="line">&gt; GET /test HTTP/1.1  #请求头</span><br><span class="line">&gt; Host: 192.168.228.131</span><br><span class="line">&gt; User-Agent: curl/7.75.0</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt;</span><br><span class="line">* Mark bundle as not supporting multiuse</span><br><span class="line">&lt; HTTP/1.1 404 Not Found    #响应头</span><br><span class="line">&lt; Server: nginx/1.20.1</span><br><span class="line">&lt; Date: Sun, 27 Jun 2021 04:18:03 GMT</span><br><span class="line">&lt; Content-Type: text/html</span><br><span class="line">&lt; Content-Length: 506</span><br><span class="line">&lt; Connection: keep-alive</span><br><span class="line">&lt; ETag: &quot;60d7c9e2-1fa&quot;</span><br><span class="line">&lt;</span><br><span class="line">&lt;!DOCTYPE html&gt;  # response信息</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Error&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;An error occurred.&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;Sorry, the page you are looking for is currently unavailable.&lt;br/&gt;</span><br><span class="line">P000000000000lease try again later.&lt;/p&gt;</span><br><span class="line">&lt;p&gt;If you are the system administrator of this resource then you should check</span><br><span class="line">the error log for details.&lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;em&gt;Faithfully yours, nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">* Connection #0 to host 192.168.228.131 left intact</span><br></pre></td></tr></table></figure></p>
 <h3 id="curl-url"><a href="#curl-url" class="headerlink" title="curl url"></a>curl url</h3><p>显示 response<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://192.168.228.131/test</span><br><span class="line">&lt;!DOCTYPE html&gt;   # response信息</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Error&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;An error occurred.&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;Sorry, the page you are looking for is currently unavailable.&lt;br/&gt;</span><br><span class="line">P000000000000lease try again later.&lt;/p&gt;</span><br><span class="line">&lt;p&gt;If you are the system administrator of this resource then you should check</span><br><span class="line">the error log for details.&lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;em&gt;Faithfully yours, nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="虚拟主机配置"><a href="#虚拟主机配置" class="headerlink" title="虚拟主机配置"></a>虚拟主机配置</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>虚拟主机配置： 在同一个nginx上运行多套单独服务，这些服务是相互独立的<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/vir.png" title="undefined" data-fancybox="images"><img src="/image/nginx/vir.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/vir.png" title="undefined" data-fancybox="images"><img src="/image/nginx/vir.png" alt title class></a>
                 <p></p>
             </figure> </p>
 <h3 id="多种实现方案"><a href="#多种实现方案" class="headerlink" title="多种实现方案"></a>多种实现方案</h3><h4 id="基于主机-多IP方式"><a href="#基于主机-多IP方式" class="headerlink" title="基于主机 多IP方式"></a>基于主机 多IP方式</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ip.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ip.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ip.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ip.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="基于端口的配置方式"><a href="#基于端口的配置方式" class="headerlink" title="基于端口的配置方式"></a>基于端口的配置方式</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/port.png" title="undefined" data-fancybox="images"><img src="/image/nginx/port.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/port.png" title="undefined" data-fancybox="images"><img src="/image/nginx/port.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="基于多域名方式"><a href="#基于多域名方式" class="headerlink" title="基于多域名方式"></a>基于多域名方式</h4><p>比较简单，不介绍了。</p>
 <h3 id="基于主机-多IP方式-1"><a href="#基于主机-多IP方式-1" class="headerlink" title="基于主机 多IP方式"></a>基于主机 多IP方式</h3><h4 id="两种实现方式"><a href="#两种实现方式" class="headerlink" title="两种实现方式"></a>两种实现方式</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/moreip.png" title="undefined" data-fancybox="images"><img src="/image/nginx/moreip.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/moreip.png" title="undefined" data-fancybox="images"><img src="/image/nginx/moreip.png" alt title class></a>
                 <p></p>
             </figure>
 <p>我们以 单网卡多IP讲解：</p>
@@ -363,34 +362,34 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf.d]# ifconfig</span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500  #此网卡下没有刚才新加的 192.168.228.132 等</span><br><span class="line">        inet 192.168.228.131  netmask 255.255.255.0  broadcast 192.168.228.255</span><br><span class="line">        inet6 fe80::9efd:4c59:8c9c:6f69  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:ca:0a:50  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 80651  bytes 103675871 (98.8 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 13343  bytes 2831968 (2.7 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 8  bytes 672 (672.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 8  bytes 672 (672.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
 <h2 id="nginx模块与配置demo"><a href="#nginx模块与配置demo" class="headerlink" title="nginx模块与配置demo"></a>nginx模块与配置demo</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>有nginx官方模块<br>有第三方模块</p>
 <h3 id="官方模块"><a href="#官方模块" class="headerlink" title="官方模块"></a>官方模块</h3><h4 id="stub-status-：nginx连接状态"><a href="#stub-status-：nginx连接状态" class="headerlink" title="stub_status ：nginx连接状态"></a>stub_status ：nginx连接状态</h4><p>在 server ， location 中配置：<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/sub.png" title="undefined" data-fancybox="images"><img src="/image/nginx/sub.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/sub.png" title="undefined" data-fancybox="images"><img src="/image/nginx/sub.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/sub1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/sub1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/sub1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/sub1.png" alt title class></a>
                 <p></p>
             </figure> </p>
 <h4 id="http-sub-module-替换html中的内容"><a href="#http-sub-module-替换html中的内容" class="headerlink" title="http_sub_module :替换html中的内容"></a>http_sub_module :替换html中的内容</h4><p>参数配置 sub_filter_once  on|off; 是否只匹配一次，默认是的；<br>context： http server location；<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/mo1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/mo1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/mo1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/mo1.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/mo2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/mo2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/mo2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/mo2.png" alt title class></a>
                 <p></p>
             </figure> </p>
 <h4 id="http-access-module-访问限制"><a href="#http-access-module-访问限制" class="headerlink" title="http_access_module :访问限制"></a>http_access_module :访问限制</h4><p>语法： allow address | CIDR |unix: | all;  允许IP|IP网段如192.168.1|用的不多|所有;<br>IP段的写法比如：192.168.1.0/24<br>默认： ——<br>context: http, server, location, limit_except</p>
 <p>语法： deny address | CIDR |unix: | all;<br>默认： ——<br>context: http, server, location, limit_except<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/allow.png" title="undefined" data-fancybox="images"><img src="/image/nginx/allow.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/allow.png" title="undefined" data-fancybox="images"><img src="/image/nginx/allow.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/allow1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/allow1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/allow1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/allow1.png" alt title class></a>
                 <p></p>
             </figure> </p>
 <h3 id="密码访问-auth-basic"><a href="#密码访问-auth-basic" class="headerlink" title="密码访问 auth_basic"></a>密码访问 auth_basic</h3><h4 id="auth-basic说明"><a href="#auth-basic说明" class="headerlink" title="auth_basic说明"></a>auth_basic说明</h4><p>语法： auth_basic string | off;<br>默认： off<br>context: http, server, location, limit_except</p>
 <p>语法： auth_basic_user_file file;<br>默认： __<br>context: http, server, location, limit_except</p>
 <h4 id="官网demo参考"><a href="#官网demo参考" class="headerlink" title="官网demo参考"></a>官网demo参考</h4><p><a href="https://nginx.org/en/docs/" target="_blank" rel="noopener">官网</a><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/au1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/au1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/au1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/au1.png" alt title class></a>
                 <p></p>
             </figure><br><a href="https://nginx.org/en/docs/http/ngx_http_auth_basic_module.html" target="_blank" rel="noopener">步骤</a>如下：<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/au2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/au2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/au2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/au2.png" alt title class></a>
                 <p></p>
             </figure> </p>
 <h4 id="htpasswd生成密码"><a href="#htpasswd生成密码" class="headerlink" title="htpasswd生成密码"></a>htpasswd生成密码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#htpasswd是上面官网上 推荐的生成密码的工具，配合nginx使用</span><br><span class="line">[root@localhost ~]# rpm -qf /usr/bin/htpasswd   查看htpasswd的安装包</span><br><span class="line">httpd-tools-2.4.6-97.el7.centos.x86_64</span><br><span class="line">[root@localhost ~]# yum install httpd-tools -y</span><br></pre></td></tr></table></figure>
@@ -398,16 +397,16 @@
 <h4 id="配置auth-basic"><a href="#配置auth-basic" class="headerlink" title="配置auth_basic"></a>配置auth_basic</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/nginx/conf.d/auth_test.conf</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ ^/admin.html &#123;</span><br><span class="line">        root   /opt/backup;</span><br><span class="line">        auth_basic &quot;input your password&quot;;   #配置这里</span><br><span class="line">        auth_basic_user_file /opt/backup/auth_conf; #就是上面生成的密码 /opt/backup/auth_conf</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="http://192.168.228.131/admin.html" target="_blank" rel="noopener">http://192.168.228.131/admin.html</a></p>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/auth1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/auth1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/auth1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/auth1.png" alt title class></a>
                 <p></p>
             </figure> 
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/auth2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/auth2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/auth2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/auth2.png" alt title class></a>
                 <p></p>
             </figure> 
 <h2 id="gzip-静态资源配置和demo"><a href="#gzip-静态资源配置和demo" class="headerlink" title="gzip 静态资源配置和demo"></a>gzip 静态资源配置和demo</h2><h3 id="完整配置-1"><a href="#完整配置-1" class="headerlink" title="完整配置"></a>完整配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    sendfile on;</span><br><span class="line">    access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">#访问如 http://192.168.1.159/zhy.jpg</span><br><span class="line">    location ~ .*\.(jpg|gif|png)$ &#123;</span><br><span class="line">        #gzip on;</span><br><span class="line">        #gzip_http_version 1.1;</span><br><span class="line">        #gzip_comp_level 2;</span><br><span class="line">        #gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line">        root /opt/app/code/images;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #访问如 http://192.168.1.159/aa.js</span><br><span class="line">    location ~ .*\.(txt|xml)$ &#123;</span><br><span class="line">        #gzip on;</span><br><span class="line">        #gzip_http_version 1.1;</span><br><span class="line">        #gzip_comp_level 1;</span><br><span class="line">        #gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line">        root /opt/app/code/doc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #访问如 http://192.168.1.159/download/testfile</span><br><span class="line">    #注意的是，请在  /opt/app/code 创建 download/testfile</span><br><span class="line">    location ~ ^/download &#123;</span><br><span class="line">        #gzip_static on;</span><br><span class="line">        #tcp_nopush on;</span><br><span class="line">        root /opt/app/code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="方案图"><a href="#方案图" class="headerlink" title="方案图"></a>方案图</h3><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/jia1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/jia1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/jia1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/jia1.png" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="相关模块"><a href="#相关模块" class="headerlink" title="相关模块"></a>相关模块</h3><h4 id="文件读取：-sendfile"><a href="#文件读取：-sendfile" class="headerlink" title="文件读取： sendfile"></a>文件读取： sendfile</h4><p>语法： on | off<br>默认： off<br>context: http, server, location, if in location</p>
@@ -417,7 +416,7 @@
 <p>tcp_nodelay与 tcp_nopush 相反，表示立即发送；<br>需要开启 keeplive；</p>
 <h4 id="文件压缩：-gzip"><a href="#文件压缩：-gzip" class="headerlink" title="文件压缩： gzip"></a>文件压缩： gzip</h4><p>语法： on | off<br>默认： on<br>context: http, server, location</p>
 <p>原理如下，浏览器解压gzip， nginx 压缩文件为gzip；<br>好处是 减少了 服务器带宽，文件变小传输更快；<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/gzip.png" title="undefined" data-fancybox="images"><img src="/image/nginx/gzip.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/gzip.png" title="undefined" data-fancybox="images"><img src="/image/nginx/gzip.png" alt title class></a>
                 <p></p>
             </figure> </p>
 <p>相关模块有：<br>gzip_comp_level 2; 压缩比<br>gzip_http_version 1.1 主流使用1.1压缩版本;</p>
@@ -430,48 +429,48 @@
 <h3 id="代理缓存的demo说明"><a href="#代理缓存的demo说明" class="headerlink" title="代理缓存的demo说明"></a>代理缓存的demo说明</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#配置两个服务器，会达到这样的效果： nginx为了负载均衡，让多个请求会平均的分配到每个服务器中，保证每个服务器接收到的请求数量一致；</span><br><span class="line">#本地测试的效果是 每次刷新页面，nginx都会让请求转发到不同的服务器</span><br><span class="line">upstream imooc &#123;</span><br><span class="line">   server 192.168.1.109:80;</span><br><span class="line">   server 192.168.1.159:8080;</span><br><span class="line">&#125;</span><br><span class="line">#/opt/app/cache 缓存存放位置； levels 目录存放比，可默认设置；</span><br><span class="line">#keys_zone 定义标识缓存空间的名字，以备 后面的 proxy_cache 用到，</span><br><span class="line">#10m 10兆的意思，不懂就默认这样配置吧</span><br><span class="line">#max_size=10g 磁盘最大10G，超过10G 会被 nginx的算法删除；</span><br><span class="line">#inactive=60m  inactive 表示60分钟不活跃就被删除缓存；</span><br><span class="line">#use_temp_path=off;一般默认关闭， 不懂就默认这样配置吧</span><br><span class="line">proxy_cache_path /opt/app/cache levels=1:2 keys_zone=imooc_cache:10m max_size=10g inactive=60m use_temp_path=off;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen    80;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_cache imooc_cache; #就是上面keys_zone定义的缓存空间名字</span><br><span class="line">	proxy_pass http://imooc;</span><br><span class="line">	proxy_cache_valid 200 304 12h; #表示 200 304 的请求 12小时过期；</span><br><span class="line">	proxy_cache_valid any 10m; #除上面200 304 的请求，10分钟过期</span><br><span class="line">	proxy_cache_key $host$uri$is_args$args;  #设置缓存key的唯一标识 </span><br><span class="line"></span><br><span class="line">	add_header Nginx-Cache &quot;$upstream_cache_status&quot;; #增加Nginx-Cache头信息，告诉客服端缓存是否upstream_cache_status命中</span><br><span class="line">	</span><br><span class="line">	proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;  #上面定义了两个服务器，当一个服务器出现 error timeout invalid_header http_500 http_502 http_503 http_504 时，就轮询到下一个服务器</span><br><span class="line">    include proxy_params;	# 此配置也可以不配置，使用nginx默认的</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="服务端清除代理缓存"><a href="#服务端清除代理缓存" class="headerlink" title="服务端清除代理缓存"></a>服务端清除代理缓存</h4><p><code>cd /opt/app/cache</code> 上面定义的缓存目录下，将里面的文件全部删除</p>
 <h3 id="websocket-代理"><a href="#websocket-代理" class="headerlink" title="websocket 代理"></a>websocket 代理</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ws1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ws1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws1.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ws3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws3.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ws3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws3.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ws4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws4.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ws4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws4.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p><strong>因为全程都是在服务器端，因此都是用127.0.0.1。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#如果 $http_upgrade 有值， 就给$connection_upgrade设置值； </span><br><span class="line">#$connection_upgrade默认 为 upgrade；</span><br><span class="line">#如果  $http_upgrade 为&apos;&apos;,则 $connection_upgrade 值为 close;</span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">  default upgrade;</span><br><span class="line">  &apos;&apos; close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">upstream websocket &#123;</span><br><span class="line">  server 127.0.0.1:8010;  #node 启动的服务</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen    8020;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">	proxy_pass http://websocket;</span><br><span class="line">	proxy_http_version 1.1;</span><br><span class="line">	proxy_set_header Upgrade $http_upgrade; #这是配置 ws 代理转发的关键</span><br><span class="line">	proxy_set_header Connection $connection_upgrade; #这是配置 ws 代理转发的关键</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">这是node js 文件</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">var</span> websoketServer = <span class="built_in">require</span>(<span class="string">'ws'</span>).Server;</span><br><span class="line"><span class="keyword">var</span> wss = <span class="keyword">new</span> WebSocketServer(&#123;<span class="attr">port</span>: <span class="number">8010</span>&#125;);</span><br><span class="line">wss.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws</span>)</span>&#123;</span><br><span class="line">  ws.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">    ws.send(<span class="string">'server received from client: '</span> + msg)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#在服务端中的终端执行</span><br><span class="line">wscat --connect ws://127.0.0.1:8020</span><br></pre></td></tr></table></figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ws2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ws2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ws2.png" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="uwsgi代理与djiango"><a href="#uwsgi代理与djiango" class="headerlink" title="uwsgi代理与djiango"></a>uwsgi代理与djiango</h3><p>Django 是一个开源的web的框架；<br>Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django。<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/us.png" title="undefined" data-fancybox="images"><img src="/image/nginx/us.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/us.png" title="undefined" data-fancybox="images"><img src="/image/nginx/us.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/us1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/us1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/us1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/us1.png" alt title class></a>
                 <p></p>
             </figure><br><a href="https://www.imooc.com/article/26870" target="_blank" rel="noopener">安装Python等参考</a></p>
 <h3 id="rewrite的使用和demo"><a href="#rewrite的使用和demo" class="headerlink" title="rewrite的使用和demo"></a>rewrite的使用和demo</h3><h4 id="配置语法"><a href="#配置语法" class="headerlink" title="配置语法"></a>配置语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rewrite regex replacement [flag];</span><br><span class="line">default:-</span><br><span class="line">context: server,location, if</span><br></pre></td></tr></table></figure>
 <h4 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h4><p>对<code>rewrite regex replacement [flag];</code>中flag取值说明。<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/re2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/re2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re2.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen    80;</span><br><span class="line">  </span><br><span class="line">  root /opt/app/code;</span><br><span class="line">  location ~ ^/break &#123;</span><br><span class="line">      #访问192.168.1.159/break 将是404， </span><br><span class="line">      #因为这个/test/ 是指root /opt/app/code下的目录,此目录下没有test</span><br><span class="line">      #一般break 可这样配置 rewrite ^(.*)$ /pages/maintain.html break;</span><br><span class="line">	rewrite ^/break /test/ break; </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location ~ ^/last &#123;</span><br><span class="line">      #访问192.168.1.159/last 将 正常返回 &#123;&quot;status&quot;:&quot;success&quot;&#125;， </span><br><span class="line">      #break 与 last的区别在于， break是重定向到目录， last是转接到另外一个接口请求，相当于转发，</span><br><span class="line">      #下面的/test/ 就是下面location定义的接口/test/</span><br><span class="line">	rewrite ^/last /test/ last; </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  location ~ /test/ &#123;</span><br><span class="line">    default_type application/json;</span><br><span class="line">	return 200 &apos;&#123;&quot;status&quot;:&quot;success&quot;&#125;&apos;; </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>访问 <a href="http://192.168.1.159/last/" target="_blank" rel="noopener">http://192.168.1.159/last/</a></p>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/re.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/re.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="last-break-区别"><a href="#last-break-区别" class="headerlink" title="last break 区别"></a>last break 区别</h4><p>如上的demo。注意的是last的状态码是200，不是30x.</p>
 <h4 id="break妙用"><a href="#break妙用" class="headerlink" title="break妙用"></a>break妙用</h4><p>如下服务端静态文件目录 与 break结合使用。<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/re3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re3.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/re3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re3.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/re4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re4.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/re4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/re4.png" alt title class></a>
                 <p></p>
             </figure></p>
 <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="ifconfig-与-ip-命令的不同-1"><a href="#ifconfig-与-ip-命令的不同-1" class="headerlink" title="ifconfig 与 ip 命令的不同"></a>ifconfig 与 ip 命令的不同</h3><p>参考上面《ifconfig 与 ip 命令的不同》</p>
@@ -483,19 +482,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#加了空格，正确</span><br><span class="line">if ( ) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="location匹配优先级"><a href="#location匹配优先级" class="headerlink" title="location匹配优先级"></a>location匹配优先级</h3><h4 id="几种优先级"><a href="#几种优先级" class="headerlink" title="几种优先级"></a>几种优先级</h4><p>= 进行普通字符精确匹配，也就是完全匹配； –优先级最高；<br>^~ 表示普通字符匹配，使用前缀匹配，也就是以什么开头； –优先级次之；<br>~ 或 ~*  都是正则匹配， 前者区分大小写， 后缀不区分大小写； –优先级次之；</p>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/lo3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo3.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/lo3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo3.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/lo4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo4.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/lo4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo4.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="demo说明"><a href="#demo说明" class="headerlink" title="demo说明"></a>demo说明</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/lo.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/lo.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="url结尾的反斜线"><a href="#url结尾的反斜线" class="headerlink" title="url结尾的反斜线"></a>url结尾的反斜线</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/lo5.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo5.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/lo5.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo5.png" alt title class></a>
                 <p></p>
             </figure>
 <p>不带：<br>location /test :  </p>
@@ -504,24 +503,24 @@
 <li>如果没有index.html, 就把/test 当成一个文件处理，看是否存在 test 文件，如果存在就返回text文件；<br>location /test/ : 去找 /test/目录下的 index.html, 有就返回index.html, 如果没有index.html, 就返回404；</li>
 </ul>
 <h3 id="server-name-写法-和-形式"><a href="#server-name-写法-和-形式" class="headerlink" title="server_name 写法 和 形式"></a>server_name 写法 和 形式</h3><h4 id="四种写法"><a href="#四种写法" class="headerlink" title="四种写法"></a>四种写法</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/serv.png" title="undefined" data-fancybox="images"><img src="/image/nginx/serv.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/serv.png" title="undefined" data-fancybox="images"><img src="/image/nginx/serv.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="匹配优先级"><a href="#匹配优先级" class="headerlink" title="匹配优先级"></a>匹配优先级</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/serv2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/serv2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/serv2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/serv2.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="四种结构"><a href="#四种结构" class="headerlink" title="四种结构"></a>四种结构</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/serv1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/serv1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/serv1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/serv1.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="几种优先级-1"><a href="#几种优先级-1" class="headerlink" title="几种优先级"></a>几种优先级</h4><p>= 进行普通字符精确匹配，也就是完全匹配； –优先级最高；<br>^~ 表示普通字符匹配，使用前缀匹配，也就是以什么开头； –优先级次之；<br>~ 或 ~*  都是正则匹配， 前者区分大小写， 后缀不区分大小写； –优先级次之；</p>
 <h4 id="demo说明-1"><a href="#demo说明-1" class="headerlink" title="demo说明"></a>demo说明</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/lo.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/lo.png" title="undefined" data-fancybox="images"><img src="/image/nginx/lo.png" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="服务端处理客户端请求流程"><a href="#服务端处理客户端请求流程" class="headerlink" title="服务端处理客户端请求流程"></a>服务端处理客户端请求流程</h3><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/url.png" title="undefined" data-fancybox="images"><img src="/image/nginx/url.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/url.png" title="undefined" data-fancybox="images"><img src="/image/nginx/url.png" alt title class></a>
                 <p></p>
             </figure>
 <ul>
@@ -550,23 +549,23 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">       root   /opt/app/code;</span><br><span class="line">       index  index.html index.htm;</span><br><span class="line">       </span><br><span class="line">       include proxy_params; #引入上面创建文件的文件proxy_params</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>这样做的好处就是模块化，方便引用，可读性好。</p>
 <h3 id="你不知道的-proxy-pass"><a href="#你不知道的-proxy-pass" class="headerlink" title="你不知道的 proxy_pass"></a>你不知道的 proxy_pass</h3><h4 id="不带-和-带-的区别"><a href="#不带-和-带-的区别" class="headerlink" title="不带/ 和 带/ 的区别"></a>不带/ 和 带/ 的区别</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/pa1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pa1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/pa1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pa1.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/pa2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pa2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/pa2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/pa2.png" alt title class></a>
                 <p></p>
             </figure>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="root-与-alias区别"><a href="#root-与-alias区别" class="headerlink" title="root 与 alias区别"></a>root 与 alias区别</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/root.png" title="undefined" data-fancybox="images"><img src="/image/nginx/root.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/root.png" title="undefined" data-fancybox="images"><img src="/image/nginx/root.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/root1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/root1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/root1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/root1.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="传递用户的真实IP地址"><a href="#传递用户的真实IP地址" class="headerlink" title="传递用户的真实IP地址"></a>传递用户的真实IP地址</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/ipprops.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ipprops.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/ipprops.png" title="undefined" data-fancybox="images"><img src="/image/nginx/ipprops.png" alt title class></a>
                 <p></p>
             </figure>
 <h4 id="匹配所有路径的-正则"><a href="#匹配所有路径的-正则" class="headerlink" title="匹配所有路径的 正则"></a>匹配所有路径的 正则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rewrite ^(.*)$ /pages/maintain.html break;  # ^(.*)$匹配所有路径</span><br><span class="line">rewrite ^(.*)$ /pages/$1 break;  # $1 为 ^(.*)$ 中(.*)部分，与正则表达式一样，可以有$1 $2 ...</span><br></pre></td></tr></table></figure>
@@ -574,11 +573,11 @@
 <h4 id="restart-nginx报错时处理方式"><a href="#restart-nginx报错时处理方式" class="headerlink" title="restart nginx报错时处理方式"></a>restart nginx报错时处理方式</h4><p>有时候nginx语法是正确的；<br>端口也没有被占用；<br>systemctl restart nginx 依然报错，此时可以关闭nginx，然后再重启。</p>
 <h4 id="md5加密生成下载链接的sh脚本"><a href="#md5加密生成下载链接的sh脚本" class="headerlink" title="md5加密生成下载链接的sh脚本"></a>md5加密生成下载链接的sh脚本</h4><p>$() 的妙用,$()括号内，可写sh表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@localhost test]# cat md.sh</span><br><span class="line"></span><br><span class="line">#!/bin/sh</span><br><span class="line">#</span><br><span class="line">servername=&quot;jeson.t.com&quot;</span><br><span class="line">download_file=&quot;/opt/app/&quot;</span><br><span class="line">time_num=$( date -d &quot;2021-10-18 00:00:00&quot; +%s )  #$() 的妙用</span><br><span class="line">secret_num=&quot;imooc&quot;</span><br><span class="line"></span><br><span class="line"># echo的输出相当于 openssl 需要的目录， 先进行 md5加密，后base64，再后面就是一些格式花处理</span><br><span class="line">res=$(echo -n &quot;$&#123;time_num&#125;$&#123;download_file&#125; $&#123;secret_num&#125;&quot;|openssl md5 -binary | openssl base64 | tr +/ -_ | tr -d =)</span><br><span class="line"></span><br><span class="line">echo &quot;http://$&#123;servername&#125;$&#123;download_file&#125;?md5=$&#123;res&#125;$&amp;expires=$&#123;time_num&#125;&quot;</span><br><span class="line">[root@localhost test]# sh ./md.sh</span><br><span class="line">http://jeson.t.com/opt/app/?md5=kyo5J6MRVm1l-Rvjt9rzWw$&amp;expires=1634529600</span><br><span class="line">[root@localhost test]#</span><br></pre></td></tr></table></figure></p>
 <h4 id="安装openssl指定版本的sh脚本"><a href="#安装openssl指定版本的sh脚本" class="headerlink" title="安装openssl指定版本的sh脚本"></a>安装openssl指定版本的sh脚本</h4><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/open.png" title="undefined" data-fancybox="images"><img src="/image/nginx/open.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/open.png" title="undefined" data-fancybox="images"><img src="/image/nginx/open.png" alt title class></a>
                 <p></p>
             </figure>
 <h2 id="浏览器缓存与nginx"><a href="#浏览器缓存与nginx" class="headerlink" title="浏览器缓存与nginx"></a>浏览器缓存与nginx</h2><h3 id="浏览器缓存原理"><a href="#浏览器缓存原理" class="headerlink" title="浏览器缓存原理"></a>浏览器缓存原理</h3><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/cache.png" title="undefined" data-fancybox="images"><img src="/image/nginx/cache.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/cache.png" title="undefined" data-fancybox="images"><img src="/image/nginx/cache.png" alt title class></a>
                 <p></p>
             </figure>
 <h2 id="安全相关"><a href="#安全相关" class="headerlink" title="安全相关"></a>安全相关</h2><h3 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h3><p>文件上传漏洞-利用这些可以上传的接口将恶意代码植入到服务器中，再通过url去访问以执行代码。</p>
@@ -587,33 +586,33 @@
 <p>解决之道，在于nginx内，识别url是否合规，并做相应返回：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /upload &#123;</span><br><span class="line">  root /opt/app/images;</span><br><span class="line">  if($request_filename ~* (.*)\.php)&#123;</span><br><span class="line">    return 403 #如果是php格式，就不要给显示或下载图片</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>sql注入 利用未过滤未审核用户输入的攻击方法，让应用运行本不应该运行的sql代码。</p>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql1.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql1.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql1.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql2.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql2.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql2.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql3.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql3.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql3.png" alt title class></a>
                 <p></p>
             </figure>
 <figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql4.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql4.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql4.png" alt title class></a>
                 <p></p>
             </figure>
 <p>当通过<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql5.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql5.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql5.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql5.png" alt title class></a>
                 <p></p>
             </figure><br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql51.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql51.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql51.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql51.png" alt title class></a>
                 <p></p>
             </figure><br>发现也登录成功了。<br><figure class="image-box">
-                <a rel=nginx笔记(有) href="/image/nginx/aql6.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql6.png" alt title class></a>
+                <a rel=nginx笔记 href="/image/nginx/aql6.png" title="undefined" data-fancybox="images"><img src="/image/nginx/aql6.png" alt title class></a>
                 <p></p>
             </figure></p>
 
@@ -623,7 +622,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2022-09-29T17:43:00.623Z" itemprop="dateUpdated">2022-09-29 17:43:00</time>
+    Last updated: <time datetime="2022-10-13T10:01:31.845Z" itemprop="dateUpdated">2022-10-13 10:01:31</time>
 </span><br>
 
 
@@ -657,7 +656,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记(有)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -669,7 +668,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记(有)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -815,7 +814,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记(有)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -827,7 +826,7 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记(有)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/06/22/nginx_base/&title=《nginx笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
