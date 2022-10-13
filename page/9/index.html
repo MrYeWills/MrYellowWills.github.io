@@ -248,12 +248,12 @@ css需求方案三角12345678&lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;.
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-css_vertical_align"
+                <article id="post-d3_basics"
   class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/css_vertical_align/"></a>
+    <a class="thumb-link" href="/2020/05/01/d3_basics/"></a>
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
@@ -263,73 +263,7 @@ css需求方案三角12345678&lt;div class=&quot;triangle&quot;&gt;&lt;/div&gt;.
 
   
     <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/css_vertical_align/">vertical-align、行盒子、baseline</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        本文讲解vertical-align, baseline, 行盒子, x-height, line-height, 半铅空,以及这些概念如何运用于行内元素居中、和使用line-height让元素居中，其中花了大量示例和说明介绍了如何确定父元素和行内元素的baseline。
-vertical-align为什么会这样描述如图两个定义为inline-block的div一模一样，就是一个多了555：...
-    
-    <a href="/2020/05/01/css_vertical_align/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/baseline/">baseline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/line-height/">line-height</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vertical-align/">vertical-align</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/x-height/">x-height</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/半铅空/">半铅空</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/行盒子/">行盒子</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-d3_layout"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2020/05/01/d3_layout/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/01/d3_layout/">d3图形、demo讲解、使用经验</a>
+      <a class="post-title-link" href="/2020/05/01/d3_basics/">d3的三种模式 及 append、data、selectAll</a>
     </h3>
   
 
@@ -361,13 +295,10 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        d3图形图解
-                
-                
-            
-树图树图布局APId3.layout.tree() 创建一个树图布局tree.size([]) 设置相邻节点间隔tree.separation([separation]) 设置相邻节点间隔tree.nodes(root) 根据root 计算获取节点数组tree.links(nodes)...
+        这里讲解d3的 enter update exit三种模式，以及 append、data、selectAll。
+基本代码下面代码都基于以下代码：1234var svg = d3.select(&quot;body&quot;)                .append(&apos;svg&apos;)                .attr(&apos;width&apos;, 800...
     
-    <a href="/2020/05/01/d3_layout/" class="post-more waves-effect waves-button">
+    <a href="/2020/05/01/d3_basics/" class="post-more waves-effect waves-button">
         more
     </a>
     </div>
@@ -392,7 +323,7 @@ vertical-align为什么会这样描述如图两个定义为inline-block的div一
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
     
 
 
@@ -458,7 +389,7 @@ d3小知识点或技巧gx.call(xAxis)与xAxis(gx)相等123456//生成底部轴�
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
     
 
 
@@ -508,6 +439,75 @@ d3小知识点或技巧gx.call(xAxis)与xAxis(gx)相等123456//生成底部轴�
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/egg/">egg</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-d3_layout"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2020/05/01/d3_layout/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2020/05/01/d3_layout/">d3图形、demo讲解、使用经验</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/图形化/">图形化</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        d3图形图解
+                
+                
+            
+树图树图布局APId3.layout.tree() 创建一个树图布局tree.size([]) 设置相邻节点间隔tree.separation([separation]) 设置相邻节点间隔tree.nodes(root) 根据root 计算获取节点数组tree.links(nodes)...
+    
+    <a href="/2020/05/01/d3_layout/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3-js/">d3.js</a></li></ul>
 
 </div>
 
