@@ -1,9 +1,9 @@
 ---
-title: 你不知道的webpack(三)
+title: webpack源码系列(三)：你不知道的webpack[完结]
 date: 2022/4/12
-tags: webpack
+tags: [webpack, webpack源码系列]
 categories: 
-- webpack
+- webpack源码系列
 ---
 
 
@@ -24,7 +24,7 @@ const config = {
 ```
 [参考官网 - 分离 应用程序(app) 和 第三方库(vendor) 入口](https://www.webpackjs.com/concepts/entry-points/#%E5%88%86%E7%A6%BB-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-app-%E5%92%8C-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-vendor-%E5%85%A5%E5%8F%A3)
 下面摘录上面官网链接的章节， 这部门描述同样值得关注
->为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 __webpack_require__() 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。
+>为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 `__webpack_require__()` 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。
 
 我觉得在对于一些 cdn 等等， 可能会以 entry 数组的方式 引入。
 目前好奇的是，这些适合什么样的场景。
@@ -169,52 +169,6 @@ const watching = compiler.watch({
     },
   };
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ### resolveLoader 与 resolve

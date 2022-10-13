@@ -7,7 +7,8 @@ categories:
 series: 前端工程
 ---
 
-本篇博客针对 github 的[react_redux_demo项目](https://github.com/YeWills/react-redux-demo)一些知识点讲解。
+本篇博客针对 github 的[wills-react-pro项目](https://github.com/YeWills/wills-react-pro)一些知识点讲解。
+或者直接看原小册[react-boilerplate-pro-2020项目](https://github.com/YeWills/react-boilerplate-pro-2020)
 
 ## redux-thunk
 项目使用了redux-thunk来处理异步请求，redux-thunk最重要的思想，就是可以接受一个返回函数的action creator。如果这个action creator 返回的是一个函数，就执行它，如果不是，就按照原来的next(action)执行。

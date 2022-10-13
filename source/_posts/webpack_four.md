@@ -1,9 +1,9 @@
 ---
 title: webpack源码系列(誉)：module调试
 date: 2022/4/5
-tags: webpack
+tags: [webpack, webpack源码系列]
 categories: 
-- webpack
+- webpack源码系列
 ---
 
 

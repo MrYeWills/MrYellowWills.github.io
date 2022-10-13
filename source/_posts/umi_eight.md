@@ -1,5 +1,5 @@
 ---
-title: umi系列(八) 文档插件
+title: umi系列(八)：文档插件
 date: 2022/5/24
 tags: umi
 categories: 

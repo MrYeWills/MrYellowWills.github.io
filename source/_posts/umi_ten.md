@@ -1,5 +1,5 @@
 ---
-title: umi系列(十) umi项目脚手架、改造umi
+title: umi系列(十)：umi项目脚手架、改造umi
 date: 2022/6/12
 tags: umi
 categories: 

@@ -1,9 +1,9 @@
 ---
-title: webpack源码系列(往)
+title: webpack源码系列(往)：开篇
 date: 2022/3/23
-tags: webpack
+tags: [webpack, webpack源码系列]
 categories: 
-- webpack
+- webpack源码系列
 ---
 
 *往蹇来誉 田获三狐*

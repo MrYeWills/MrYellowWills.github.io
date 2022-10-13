@@ -1,12 +1,11 @@
 ---
-title: nginx笔记(有)
+title: nginx笔记
 date: 2021/6/22
 tags: nginx
 categories: 
 - 工具
 ---
 
-*有孚维心，亨，行有尚。*
 
 ## 基础知识
 

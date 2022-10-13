@@ -1,5 +1,5 @@
 ---
-title: umi系列(end) 附录、参考
+title: umi系列(end)：附录、参考
 date: 2022/5/11
 tags: umi
 categories: 
