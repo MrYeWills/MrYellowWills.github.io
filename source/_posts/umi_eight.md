@@ -14,15 +14,12 @@ umi的文档其实就是一个典型的umi项目；
 分析umi的文档系统，可以了解惊叹于如何使用react来写一个文档系统；
 因为本质上是一个典型的umi项目，因此又可以了解到umi的整个核心原理或流程。
 
-## 参考
-
-### 文档
 
 ## 待研究
 
 参考 《api.register api.registerMethod》
 
-参考 《#### pnpm doc:deps》
+参考 《pnpm doc:deps》
 
 
 

@@ -421,7 +421,7 @@ if (targetFile.match(/\/|\\/)) {
 ### watch与outputFileSystem、 inputFileSystem 	
 Compiler 实例在一开始也会初始化输入输出，分别是 inputFileSystem 和 outputFileSystem 属性，一般情况下这两个属性都是对应的 nodejs 中拓展后的 fs 对象。
 但是有一点要注意，当 Compiler 实例以 watch模式运行时， outputFileSystem 会被重写成内存输出对象。
-也就是说，实际上在 watch 模式下，webpack 构建后的文件并不会生成真正的文件，而是保存在内存中。
+也就是说，实际上在 watch 模式下，webpack 构建后的文件并不是保存在磁盘中，而是保存在内存中，内存也是一种存储器，有别于普通的磁盘，但功能是一样的，参考[计算机基础(一)：基础知识  - 计算机存储器分类](https://yewills.github.io/2022/09/14/computer/)。
 
 
 ## 调试demo地址
