@@ -246,7 +246,7 @@
 <h2 id="打包后文件解析"><a href="#打包后文件解析" class="headerlink" title="打包后文件解析"></a>打包后文件解析</h2><p><a href="https://blog.flqin.com/384.html" target="_blank" rel="noopener">参考</a></p>
 <h2 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h2><p>有兴趣的话，可以了解，不影响了解主流程<br><a href="https://blog.flqin.com/385.html" target="_blank" rel="noopener">参考</a></p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="钩子的思想"><a href="#钩子的思想" class="headerlink" title="钩子的思想"></a>钩子的思想</h3><p>可以借鉴源码中的写法，很多比如 submit 要做的事情，都通过钩子实现，<br> 为了足够灵活，钩子会得到完整的实例instance，<br> 这种推荐在写组件或者大型脚手架 或插件使用，<br> 不建议在业务组件中使用，因为 这种滥用 instance或this的方式，<br> 太过灵活，导致问题不好定位。</p>
-<h3 id="watch与outputFileSystem、-inputFileSystem"><a href="#watch与outputFileSystem、-inputFileSystem" class="headerlink" title="watch与outputFileSystem、 inputFileSystem"></a>watch与outputFileSystem、 inputFileSystem</h3><p>Compiler 实例在一开始也会初始化输入输出，分别是 inputFileSystem 和 outputFileSystem 属性，一般情况下这两个属性都是对应的 nodejs 中拓展后的 fs 对象。<br>但是有一点要注意，当 Compiler 实例以 watch模式运行时， outputFileSystem 会被重写成内存输出对象。<br>也就是说，实际上在 watch 模式下，webpack 构建后的文件并不会生成真正的文件，而是保存在内存中。</p>
+<h3 id="watch与outputFileSystem、-inputFileSystem"><a href="#watch与outputFileSystem、-inputFileSystem" class="headerlink" title="watch与outputFileSystem、 inputFileSystem"></a>watch与outputFileSystem、 inputFileSystem</h3><p>Compiler 实例在一开始也会初始化输入输出，分别是 inputFileSystem 和 outputFileSystem 属性，一般情况下这两个属性都是对应的 nodejs 中拓展后的 fs 对象。<br>但是有一点要注意，当 Compiler 实例以 watch模式运行时， outputFileSystem 会被重写成内存输出对象。<br>也就是说，实际上在 watch 模式下，webpack 构建后的文件并不是保存在磁盘中，而是保存在内存中，内存也是一种存储器，有别于普通的磁盘，但功能是一样的，参考<a href="https://yewills.github.io/2022/09/14/computer/">计算机基础(一)：基础知识  - 计算机存储器分类</a>。</p>
 <h2 id="调试demo地址"><a href="#调试demo地址" class="headerlink" title="调试demo地址"></a>调试demo地址</h2><p><a href="https://github.com/YeWills/webpack/tree/version-4.46.0-chunk" target="_blank" rel="noopener">用于主调试的 webpack源码仓库： version-4.46.0-chunk</a></p>
 <p><a href="https://github.com/YeWills/webpack/blob/version-4.46.0-chunk/debug/eslinttest/main.js" target="_blank" rel="noopener">点击这里 查看本地demo 编译后的源码</a></p>
 <h2 id="待研究问题"><a href="#待研究问题" class="headerlink" title="待研究问题"></a>待研究问题</h2><p>开发模式下，webpack-dev-server模式下，webpack 如何 写入 内存的 fs 是如何实现的, 可以不用直接看源码，<br>而是直接去看相关的文档介绍，了解即可<br>这部分大概率是  webpack-dev-middleware 实现的，<br><a href="https://webpack.docschina.org/api/node/#custom-file-systems" target="_blank" rel="noopener">参考官网-自定义文件系统(Custom File Systems)</a></p>
@@ -257,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-10-14T12:41:03.955Z" itemprop="dateUpdated">2022-10-14 12:41:03</time>
+    Last updated: <time datetime="2022-10-17T04:12:18.416Z" itemprop="dateUpdated">2022-10-17 04:12:18</time>
 </span><br>
 
 
