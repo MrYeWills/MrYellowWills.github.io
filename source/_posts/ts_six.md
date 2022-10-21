@@ -10,14 +10,6 @@ series: typescript
 
 本篇是重温之前的ts学习笔记，记录有趣的点。
 
-## 待研究
-《如何查看keyof的值》
-有空查看 interface 与 type 区别， 可参考《如何查看keyof的值》 示例；
-《ts与react结合使用 - withRouter》的例子:
-`interface PropsType extends RouteComponentProps` 接口的继承的更多理解
-
-《ts与react结合使用 - createContext》
-如何理解 createContext 既是一个js函数，又可以接收泛型参数进行类型运算
 
 ## 基本知识
 

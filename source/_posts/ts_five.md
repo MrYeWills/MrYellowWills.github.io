@@ -7,9 +7,7 @@ categories:
 series: typescript
 ---
 
-## 待研究
-《`extends Record<string, any>`的疑问》
-《 declare 示例》 其实是对declare了解不充分
+
 ## 基本知识
 
 ### unknown 与 any 区别示例
