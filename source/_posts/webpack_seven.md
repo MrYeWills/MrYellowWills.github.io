@@ -8,28 +8,6 @@ categories:
 
 
 
-## 待研究
-### entry 多个属性对象与数组定义方法使用场景
-一种是entry 数组的定义方式：
-[参考官网这里的 注解部分 【当你向 entry 传入一个数组时会发生什么？】 - 单个入口（简写）语法](https://www.webpackjs.com/concepts/entry-points/#%E5%8D%95%E4%B8%AA%E5%85%A5%E5%8F%A3-%E7%AE%80%E5%86%99-%E8%AF%AD%E6%B3%95)
-
-一种是多属性的定义方式：
-```js
-const config = {
-  entry: {
-    app: './src/app.js',
-    vendors: './src/vendors.js'
-  }
-};
-```
-[参考官网 - 分离 应用程序(app) 和 第三方库(vendor) 入口](https://www.webpackjs.com/concepts/entry-points/#%E5%88%86%E7%A6%BB-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-app-%E5%92%8C-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-vendor-%E5%85%A5%E5%8F%A3)
-下面摘录上面官网链接的章节， 这部分描述同样值得关注
->为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 `__webpack_require__()` 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。
-
-我觉得在对于一些 cdn 等等， 可能会以 entry 数组的方式 引入。
-目前好奇的是，这些适合什么样的场景。
-学会适用场景为自己项目所用。
-
 ## 黑知识
 
 ### 为什么说webpack只能处理js
@@ -372,6 +350,18 @@ module.exports = {
 后者用于 定义变量值，相当于一个传送门，将编译态的数据传送给业务代码使用；
 
 
+## 黑知识二
+
+### 为什么所有的loader可将文件写入内存
+dev模式下，webpack-dev-server可以轻易将webpack的产物打包到内存中，
+但比如file-loader 为什么也可以轻易将产物打包进入内存，
+其原因可能有：
+webpack源码中，有一套 fs 系统，在compiler初始化的时候，初始好的，
+默认情况下，webpack使用 node 的fs库，初始化webpack的fs系统，
+但是在webpack-dev-server中，使用了能写入内存的fs来初始化了webpack的fs系统，
+所以后面所有的loader也好、plugin也好，使用的fs，其实就拥有了这个写入内存的能力。
+
+
 
 ## webpack源码学习经验
 
@@ -416,3 +406,25 @@ plugin
 loader、plugin 扫了一眼，主要讲各个loader plugin的使用方法，看的价值不高，用的时候再看比较好，这两个只花了两个小时看完。
 
 
+
+## 待研究
+### entry 多个属性对象与数组定义方法使用场景
+一种是entry 数组的定义方式：
+[参考官网这里的 注解部分 【当你向 entry 传入一个数组时会发生什么？】 - 单个入口（简写）语法](https://www.webpackjs.com/concepts/entry-points/#%E5%8D%95%E4%B8%AA%E5%85%A5%E5%8F%A3-%E7%AE%80%E5%86%99-%E8%AF%AD%E6%B3%95)
+
+一种是多属性的定义方式：
+```js
+const config = {
+  entry: {
+    app: './src/app.js',
+    vendors: './src/vendors.js'
+  }
+};
+```
+[参考官网 - 分离 应用程序(app) 和 第三方库(vendor) 入口](https://www.webpackjs.com/concepts/entry-points/#%E5%88%86%E7%A6%BB-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-app-%E5%92%8C-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-vendor-%E5%85%A5%E5%8F%A3)
+下面摘录上面官网链接的章节， 这部分描述同样值得关注
+>为什么？此设置允许你使用 CommonsChunkPlugin 从「应用程序 bundle」中提取 vendor 引用(vendor reference) 到 vendor bundle，并把引用 vendor 的部分替换为 `__webpack_require__()` 调用。如果应用程序 bundle 中没有 vendor 代码，那么你可以在 webpack 中实现被称为长效缓存的通用模式。
+
+我觉得在对于一些 cdn 等等， 可能会以 entry 数组的方式 引入。
+目前好奇的是，这些适合什么样的场景。
+学会适用场景为自己项目所用。
