@@ -209,6 +209,15 @@
             <h2 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h2><h3 id="熟练度-与-项目管理-的关系"><a href="#熟练度-与-项目管理-的关系" class="headerlink" title="熟练度 与 项目管理 的关系"></a>熟练度 与 项目管理 的关系</h3><p>当人员对项目不熟悉时，或者刚组队一起合作时，更加强调严格的 项目管理制度，<br>比如里程碑时，因为人员不熟悉，人员自己容易疏忽，这个时候应该从制度上避免这个问题，<br>需要在重要的里程碑节点上，比如提测前一周、两周 每个人确认进度，一定要通知到个人。</p>
 <p>当人员熟悉时，大家都知道项目的各个里程碑，轻重缓急，此时 就算项目管理制度差，项目也不会有太大风险。</p>
 <p>简言之： 不熟悉时，制度很重要；熟练时，制度重要性可能不会被体察，可以更加灵活？</p>
+<h2 id="假如写代码也有工序"><a href="#假如写代码也有工序" class="headerlink" title="假如写代码也有工序"></a>假如写代码也有工序</h2><p>通常在工厂流水线，比如是装搭车间，一个产品是经过一道道工序包装而成。<br>一道道先后有序的工序，必然能提高工作效率。</p>
+<p>就写一个前端页面而言，<br>假如写代码也有工序，<br>那该如何组织才更高效呢。</p>
+<p>我们要分几种情况，后端接口在前端开发前，在前端开发后。<br>是否有mock，等等。</p>
+<p>前端写代码高效的最明显的方式是，<br>减少沟通成本，<br>其次就是工序，</p>
+<p>如何减少沟通成本，<br>比如后端有一套规范，比如 一个查询列表接口， 有个状态字段，<br>后端编写返回数据可以是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一：推荐</span></span><br><span class="line">&#123;</span><br><span class="line">    status:<span class="number">1</span>,</span><br><span class="line">    statusStr: 是</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式二：不推荐</span></span><br><span class="line">&#123;</span><br><span class="line">    status:<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方式一最推荐，好处有：<br>省去了 前端找后端问枚举值的 沟通；<br>省去了 前端找后端要枚举值接口调用，或者调用不通调试的沟通；<br>一目了然，前端直接对着接口文档即可开发完毕，不需要找后端沟通。</p>
+<h3 id="工序"><a href="#工序" class="headerlink" title="工序"></a>工序</h3><p>等后端出接口文档后，<br>查询表单，一个个写好 对应的字段，以及特殊处理，一气呵成，<br>不要先写一遍 label ，然后再对照label写字段，<br>写完一遍字段，再写其中比较复杂的组件，<br>最好是一气呵成，</p>
+<p>列表的字段定义也是这样。</p>
 
         </div>
         
@@ -216,7 +225,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2022-10-21T08:41:22.921Z" itemprop="dateUpdated">2022-10-21 08:41:22</time>
+    最后更新时间：<time datetime="2023-01-14T11:35:06.178Z" itemprop="dateUpdated">2023-01-14 11:35:06</time>
 </span><br>
 
 
@@ -311,7 +320,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#项目经验"><span class="post-toc-number">1.</span> <span class="post-toc-text">项目经验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#熟练度-与-项目管理-的关系"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">熟练度 与 项目管理 的关系</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#项目经验"><span class="post-toc-number">1.</span> <span class="post-toc-text">项目经验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#熟练度-与-项目管理-的关系"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">熟练度 与 项目管理 的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#假如写代码也有工序"><span class="post-toc-number">2.</span> <span class="post-toc-text">假如写代码也有工序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工序"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">工序</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -367,7 +376,7 @@
     <div class="bottom">
         <p>
             <span>
-                Mr.Yellow &copy; 2017 - 2022
+                Mr.Yellow &copy; 2017 - 2023
             </span>
         		
            	

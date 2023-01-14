@@ -182,6 +182,209 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
+                <article id="post-ui_two"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2022/06/28/ui_two/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2022/06/28/ui_two/">ui组件库系列(二):打包</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2022-06-28 00:00:00" datetime="2022-06-28T00:00:00.000Z"  itemprop="datePublished">2022-06-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ui组件库/">ui组件库</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        以@mgbd项目为例，介绍以下两方面：因为father-build 本身就是一个项目，fork自github，为了彻底理解 @mgbd项目打包，于是把 father-build的源码直接放入 @mgbd项目中。
+
+因此本文第一部分讲解 father-build源码从ts打包为js的过程；
+第二部分讲解 father-build 打包 @mgbd项目的原理；
+
+father-build项目打包...
+    
+    <a href="/2022/06/28/ui_two/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ui组件库/">ui组件库</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-ui_one"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2022/06/23/ui_one/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2022/06/23/ui_one/">ui组件库系列(一):策略篇</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2022-06-23 00:00:00" datetime="2022-06-23T00:00:00.000Z"  itemprop="datePublished">2022-06-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ui组件库/">ui组件库</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        学习历程2022-6-23一个组件库 应该包含：文档目录结构设计如何开发调试如何mock ajax【当前项目 这个非常好，可以借鉴】打包版本管理monorepos 策略的包管理：是统一版本 还是什么；
+下一步搞一下发布搞发布的过程，必然会伴随着研究 提交流程 自动集成代码；
+2022-6-26ui组件库打包的特点是保持它的原目录层级；使用babel api 直接打包；使用less、sass ...
+    
+    <a href="/2022/06/23/ui_one/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ui组件库/">ui组件库</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
+                <article id="post-ts_six"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+        
+<div class="item-thumb">
+    <a class="thumb-link" href="/2022/06/21/ts_six/"></a>
+    <div class="thumb-hover">
+        <span class="icon icon-eye"></span>
+    </div>
+    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    
+
+
+  
+    <h3 class="post-title ab-title" itemprop="name">
+      <a class="post-title-link" href="/2022/06/21/ts_six/">ts把玩系列(三):温故知新</a>
+    </h3>
+  
+
+
+
+</div>
+
+        
+    
+    
+    
+    <div class="post-meta">
+        <time class="post-time" title="2022-06-21 00:00:00" datetime="2022-06-21T00:00:00.000Z"  itemprop="datePublished">2022-06-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        本篇是重温之前的ts学习笔记，记录有趣的点。
+基本知识函数这样使用泛型12345678910111213141516interface ILength &#123;    length: number&#125;function getLength &lt;T extends ILength &gt;(arg: T): T&#123;    return arg;&#125;getLengt...
+    
+    <a href="/2022/06/21/ts_six/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
                 <article id="post-ts_fure"
   class="article-card article-type-post" itemprop="blogPost">
   
@@ -191,7 +394,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/10.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
     
 
 
@@ -259,7 +462,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/9.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
     
 
 
@@ -297,9 +500,9 @@
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        待研究《extends Record&lt;string, any&gt;的疑问》《 declare 示例》 其实是对declare了解不充分
-基本知识unknown 与 any 区别示例套路一：模式匹配做提取 - GetReturnType
-123type GetReturnType&lt;Func extends Function&gt; =     Func extends (...a...
+        基本知识unknown 与 any 区别示例套路一：模式匹配做提取 - GetReturnType
+123type GetReturnType&lt;Func extends Function&gt; =     Func extends (...args: any[]) =&gt; infer ReturnType         ? ReturnType : never;
+Func 和模...
     
     <a href="/2022/06/14/ts_five/" class="post-more waves-effect waves-button">
         more
@@ -326,7 +529,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/8.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
     
 
 
@@ -403,7 +606,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/7.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
     
 
 
@@ -461,73 +664,6 @@
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-umi_nine"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2022/05/24/umi_nine/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/6.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2022/05/24/umi_nine/">umi系列(九)：文档插件</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2022-05-24 00:00:00" datetime="2022-05-24T00:00:00.000Z"  itemprop="datePublished">2022-05-24</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/umi系列/">umi系列</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        本篇对 doc 项目生成的.umi 进行分析。
-待研究参考 《## umi.ts》参考 《### renderClient》
-.umi 的项目结构执行 pnpm doc:dev 命令后会生成 .umi 目录 如下：12345678910111213141516$ treer -d .umi -e aa.txt.umi├─exports.ts #这个文件比较特殊 exports 是 umi 的...
-    
-    <a href="/2022/05/24/umi_nine/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/umi/">umi</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
                 <article id="post-umi_seven"
   class="article-card article-type-post" itemprop="blogPost">
   
@@ -537,7 +673,7 @@
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/5.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
     
 
 
@@ -606,7 +742,7 @@ modifyAppData hookonCheck hookonStart hook
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
-    <img src="/img/thumb/4.jpg" alt="图片路径不正确">
+    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
     
 
 
@@ -663,154 +799,12 @@ preset-umi别名 alias1234567891011// packages\preset-umi\src\features\configPlu
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-umi_five"
+                <article id="post-umi_nine"
   class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
-    <a class="thumb-link" href="/2022/05/18/umi_five/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/3.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2022/05/18/umi_five/">umi系列(五)：pnpm install</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2022-05-18 00:00:00" datetime="2022-05-18T00:00:00.000Z"  itemprop="datePublished">2022-05-18</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/umi系列/">umi系列</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        本篇主要讲述 umi 脚手架的npm script命令
-参考文档
-Node.js v16.15.0 文档  -  child_process.html
-
-待研究如下 -- --vite 的第一个多余的 – 是什么意思？1pnpm dev -- --vite
-参考《 pnpm install 》
-前置知识pnpm install一次给所有的packages、 example安装依赖在umi 根...
-    
-    <a href="/2022/05/18/umi_five/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/umi/">umi</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-umi_four"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2022/05/18/umi_four/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2022/05/18/umi_four/">umi系列(四)：npm script命令</a>
-    </h3>
-  
-
-
-
-</div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2022-05-18 00:00:00" datetime="2022-05-18T00:00:00.000Z"  itemprop="datePublished">2022-05-18</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/umi系列/">umi系列</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        本篇主要讲述 umi 脚手架的npm script命令
-参考文档
-Node.js v16.15.0 文档  -  child_process.html
-
-前置知识$ 怎么来的12// globals 函数增加了 global的$等等属性import 'zx/globals';
-模板字符串的函数调用参考
-pnpm release关于 umi-scripts 命令精妙的workspace:*pn...
-    
-    <a href="/2022/05/18/umi_four/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/umi/">umi</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-umi_three"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2022/05/13/umi_three/"></a>
+    <a class="thumb-link" href="/2022/05/24/umi_nine/"></a>
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
@@ -820,7 +814,7 @@ pnpm release关于 umi-scripts 命令精妙的workspace:*pn...
 
   
     <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2022/05/13/umi_three/">umi系列(三)：pnpm与umi-scripts</a>
+      <a class="post-title-link" href="/2022/05/24/umi_nine/">umi系列(九)：文档插件</a>
     </h3>
   
 
@@ -833,7 +827,7 @@ pnpm release关于 umi-scripts 命令精妙的workspace:*pn...
     
     
     <div class="post-meta">
-        <time class="post-time" title="2022-05-13 00:00:00" datetime="2022-05-13T00:00:00.000Z"  itemprop="datePublished">2022-05-13</time>
+        <time class="post-time" title="2022-05-24 00:00:00" datetime="2022-05-24T00:00:00.000Z"  itemprop="datePublished">2022-05-24</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/umi系列/">umi系列</a></li></ul>
@@ -852,14 +846,11 @@ pnpm release关于 umi-scripts 命令精妙的workspace:*pn...
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        参考文档
-Node.js v16.15.0 文档  -  child_process.html
-
-细节发布npm的scope包只要不发布私包，不需要钱，参考
-pnpm与workspace创建文件pnpm-workspace.yaml：12packages:  - 'scripts'
-1234// package.json "devDependencies": &#123;    "umi-s...
+        本篇对 doc 项目生成的.umi 进行分析。
+待研究参考 《## umi.ts》参考 《### renderClient》
+.umi 的项目结构执行 pnpm doc:dev 命令后会生成 .umi 目录 如下：12345678910111213141516$ treer -d .umi -e aa.txt.umi├─exports.ts #这个文件比较特殊 exports 是 umi 的...
     
-    <a href="/2022/05/13/umi_three/" class="post-more waves-effect waves-button">
+    <a href="/2022/05/24/umi_nine/" class="post-more waves-effect waves-button">
         more
     </a>
     </div>
@@ -878,7 +869,7 @@ pnpm与workspace创建文件pnpm-workspace.yaml：12packages:  - 'scripts'
         
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
     </div>
 </nav>
 
@@ -903,7 +894,7 @@ pnpm与workspace创建文件pnpm-workspace.yaml：12packages:  - 'scripts'
     <div class="bottom">
         <p>
             <span>
-                Mr.Yellow &copy; 2017 - 2022
+                Mr.Yellow &copy; 2017 - 2023
             </span>
         		
            	
