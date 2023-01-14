@@ -159,11 +159,8 @@ this.compoundValue = {
 
 
 
-关于联动与响应（监听）
 
-所见即所得
 
-组件内部只写与渲染有关的内容，不要写业务逻辑，什么是业务逻辑，比如表单提交接口的入参等等；
 
 
 ## 状态设计
@@ -437,6 +434,50 @@ const Currency = ({ defalutVals }) => {
 ### 尽量避免会被雷同的变量名
 比如使用date，form 这样搜索改变量时，能匹配到很多，追踪问题不太方便。
 参考《技术给你开一个玩笑》
+
+### 所见即所得
+开发组件时,有些人为了图方便，直接在 onChange时，把该组件值的接口入参一并写好。
+parmasMoneyType 其实就是 moneyType，但特殊的空值情况下，parmasMoneyType设置为0。
+这个 parmasMoneyType 充分体现了所见非所得，放在这里误导人。
+```js
+ <Input
+        value={moneyType}
+        onChange={(val) => {
+          setType(val);
+
+          if(!val){
+            parmasMoneyType = 0
+            return 
+          }
+           parmasMoneyType = val
+        }}
+      />
+```
+建议的写法：
+```js
+ <Input
+        value={moneyType}
+        onChange={(val) => {
+          setType(val);
+        }}
+      />
+```
+在保存的逻辑中写好表单转入参
+```js
+let parmasMoneyType = moneyType;
+if(!parmasMoneyType) parmasMoneyType = 0
+fetch(url, {
+  moneyType: parmasMoneyType
+})
+```
+这样保证了 input 组件的清爽，同时也么有冗余的逻辑：
+组件内部只写与渲染有关的内容，不要写业务逻辑，什么是业务逻辑，比如表单提交接口的入参等等；
+
+### 组件内部不要冗余业务逻辑
+参考上面的《所见即所得》
+
+### 更多细节
+关注 另外一片 项目复盘中关于表单的内容
 
 
 
