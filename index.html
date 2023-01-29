@@ -795,12 +795,12 @@ wireshark一些简介Frame：表示物理层数据帧的内容。Ethernet：以�
             </li>
         
             <li class="post-list-item fade">
-                <article id="post-brower_two"
+                <article id="post-brower_three"
   class="article-card article-type-post" itemprop="blogPost">
   
         
 <div class="item-thumb">
-    <a class="thumb-link" href="/2022/08/28/brower_two/"></a>
+    <a class="thumb-link" href="/2022/08/28/brower_three/"></a>
     <div class="thumb-hover">
         <span class="icon icon-eye"></span>
     </div>
@@ -810,7 +810,7 @@ wireshark一些简介Frame：表示物理层数据帧的内容。Ethernet：以�
 
   
     <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2022/08/28/brower_two/">浏览器系列(二)：浏览器基础知识</a>
+      <a class="post-title-link" href="/2022/08/28/brower_three/">浏览器系列(三)：浏览器插件</a>
     </h3>
   
 
@@ -842,13 +842,11 @@ wireshark一些简介Frame：表示物理层数据帧的内容。Ethernet：以�
     <div class="post-content" id="post-content" itemprop="postContent">
     
     
-        浏览器原理谷歌的多进程当前谷歌是多进程，启动谷歌浏览器后，就会启动浏览器主进程、插件进程、渲染进程， 其中每个标签页面其实就是一个渲染进程，多个页面就会有多个渲染进程。我们的html、js、v8引擎都在这个渲染进程中，这个渲染进程处于一个沙箱内，这样目的是为了不影响其他页面，保证了稳定性。
-                
-                
-            
-随着3d...
+        浏览器插件是一个单独进程，拥有很多电脑操作底层的能力，这是渲染进程所不能有的底层操作能力，这是插件的一切魅力源泉！因此浏览器插件能做到很多页面业务js所无法做到的能力。
+核心概念popup，options，background，content_scripts
+background 是后台，相当于进程，没有dom，不具备浏览器特性，所以很多浏览器api用不了，类似于 node 进程；conte...
     
-    <a href="/2022/08/28/brower_two/" class="post-more waves-effect waves-button">
+    <a href="/2022/08/28/brower_three/" class="post-more waves-effect waves-button">
         more
     </a>
     </div>
