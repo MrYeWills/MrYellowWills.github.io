@@ -3,7 +3,7 @@ title: 表单开发的自我修养
 date: 2022/1/14
 tags: 表单开发
 categories: 
-- 战术素养
+- 大话堂
 ---
 
 
@@ -39,7 +39,7 @@ categories:
 ```
 
 #### 外部需要使用组件A值
-此时一个外部组件B，需要使用该组件A的状态，于是，通过onChange将值反射出去，
+此时一个外部组件B【组件B处于组件A的父组件平级】，需要使用该组件A的状态，于是，通过onChange将值反射出去，
 ```js
 <el-select
     v-model="formVals.selectA"
@@ -57,23 +57,20 @@ categories:
   </el-select>
 
      handleSelect(item) {
-      this.ruleForm.supplierId = item
-      this.$emit('update-value-a', item)
-      this.$emit('businessdata-change', {
-        proId: item,
-        business: this.ruleForm.business,
-      })
-      this.$emit('businessdatakey-change')
+      // 反射给外部组件 设置 this.aValue 值；
+      this.$emit('update-valueA', item)
     },
 ```
 这里又出来一个问题，编辑详情的时候，不会触发onChange，于是在详情接口得写这样写：
 ```js
-//在组件的父级组件中，设置好组件A的值
-this.propsxxx.formVals = {selectA: res.selectval};
-//用于初始化 需要反射出来的 a组件的值，就是上面的 this.$emit('update-value-a', item)
+//在组件A的父级的父级组件【外部B组件与组件A组件父组件共同所在的组件中】，已知详情接口就在此组件触发
+
+//此值给到A组件父亲组件，用于设置A组件的值；
+this.formVals = {selectA: res.selectval};
+//用于初始化 需要反射出来的 a组件的值，就是上面的 this.$emit('update-valueA', item)
 this.aValue = res.selectval;
 ```
-显然 this.propsxxx.formVals 与 this.aValue 都能代表 组件A的值，完全不需要用两个，而因为使用了两个，后期维护这个组件时要分析两遍状态，
+显然 this.formVals 与 this.aValue 都能代表 组件A的值，完全不需要用两个，而因为使用了两个，后期维护这个组件时要分析两遍状态，
 既要分析 formVals.selectA 又要分析 this.aValue，后期维护成本 `x2` 。
 但由于错误的状态设置，导致不得不这样做。
 
@@ -85,7 +82,7 @@ this.aValue = res.selectval;
 又不巧的是，老板在群里发话，该需求十万火急，客户使用现有页面已经造成了资产损失。
 开发人员这下一激灵，还有啥说的，用最快的速度给我上需求，于是他也没时间去验证 this.aValue 是否能代表 A组件的值了，
 又考虑到 外部组件C 联动时要同时用到多个其他组件状态，
-按照所见即所得的标准，快速创建了一个对象，同时包含组件A等状态的变量：
+按照所见即所得的标准，快速创建了一个对象(包含组件A等状态的变量)：
 ```js
 <el-select
     v-model="formVals.selectA"
@@ -103,7 +100,7 @@ this.aValue = res.selectval;
   </el-select>
 
      handleSelect(item) {
-      this.$emit('update-value-a', item)
+      this.$emit('update-valueA', item)
       this.$emit('update-compound-value', {
         aValue: item,
         dValue: this.formVals.inputD,
@@ -113,9 +110,7 @@ this.aValue = res.selectval;
 ```
 然后在编辑详情的时候，在详情接口初始化值：
 ```js
-//在组件的父级组件中，设置好组件A的值
-this.propsxxx.formVals = {selectA: res.selectval};
-//用于初始化 需要反射出来的 a组件的值，就是上面的 this.$emit('update-value-a', item)
+this.formVals = {selectA: res.selectval};
 this.aValue = res.selectval;
 
 //初始化集成了组件A等等多个组件值的变量
@@ -125,7 +120,9 @@ this.compoundValue = {
         eValue: res.selectval.inputE,
       };
 ```
-后期维护这个组件时需要同时分析 `this.propsxxx.formVals` `formVals.selectA` `this.compoundValue.aValue` 三个变量，后期维护成本 `x3` 
+后期维护这个组件时需要同时分析 `this.formVals` `formVals.selectA` `this.compoundValue.aValue` 三个变量，后期维护成本 `x3` 
+
+这就是 一个状态使用多个雷同意义的变量表示，组件A的状态，使用了多个雷同意义的变量 `this.formVals` `formVals.selectA` `this.compoundValue.aValue` 表示。
 
 ### 维护成本并非简单的递增
 可惜的是，多一个变量分析，往往不是对维护成本的递增，不是多增加一个变量，维护成本增加一倍 这样的递增，更多的是指数增长，
@@ -138,41 +135,35 @@ this.compoundValue = {
 这里的指数增长是夸张了点，但肯定的是，组件(状态)设计不合理，后期需求开发成本(维护成本)绝对不是简单的递增。
 
 ### 二者关系
-`多源控制一个组件`表现的是，对组件的value控制，有多个形式，多个渠道；
+`多源控制一个组件`表现的是，对组件的value控制，有多个形式，多个渠道，比如常见的 state与props结合；
 `一个状态使用多个雷同意义的变量表示`表现的是，组件的value渲染出来后，使用了多个变量来存储该value值。
 
 
 ### 保存提交时获取表单状态
 经过以上设计，获取状态的方式。
-考虑到保存的按钮在外部，于是点击保存的时候，获取组件A的状态有两种方式：
+考虑到保存的按钮在外部【组件A的祖父组件】，于是点击保存的时候，获取组件A的状态有两种方式：
 - 通过ref : this.ref.A.state
 - 给组件A 传一个函数props，然后在组件A中的装载生命周期函数内，将一个获取内部状态的函数作为入参，执行该props，外部可通过执行作为入参的函数，获取状态。
 
 以上两种方式，都很不好。
 
 
-
-
-状态设计就好比做房子的打地基，地基不打牢，房子用不了几年就得重建；
-状态设计是表单开发前，必须要思考并且写好框架的，这个框架不铺好，急忙忙开发，是能满足短期的需求，
+>状态设计是表单开发前，必须要思考并且写好框架的，这个框架不铺好，急忙忙开发，是能满足短期的需求，
 但后期需求变动，如果当前状态设计不匹配需求，哪怕是一个简单的需求，都要下几倍的功夫，甚至要重构状态设计或重构组件，这就是所谓的技术债务。
-
-
-
-
-
-
 
 ## 状态设计
 ![](/image/form/ui.jpg)
 开发上面一个表单，
-简单一点，那就直接在一个页面把所有的内容写上去就行，此时因为所有内容都在一个大组件内，无所谓状态设计。
+简单一点，那就直接在一个页面把所有的内容写上去就行，所有的表单控件都处于同一个父组件内，此时因为所有内容都在一个大组件内，无所谓状态设计。
 每个输入框组件的值的来源与表现都唯一，这是最理想的状态，非常利于后期维护开发。
 不过有一个弊端是，这里数起来，输入框有二十个，有些人想把这些输入框组件，按ui的内容类别进行划分，
 写成三个组件：货币信息组件、交易配置组件、收益配置组件。
+
 此时就需要用到状态设计了，
 这里推荐进行状态提升设计，将上述三个组件的状态提升到父组件进行维护，然后通过props方式传给三个组件用于渲染ui值:
 ```js
+// 这里以react举例，react与vue实现不一样，状态设计理念应该一致
+
 const FormPage = () => {
   const [formVals, setFormVals] = useState({});
   const onFieldChange = (val, key) => {
@@ -241,46 +232,8 @@ vue而言，也进行类似的状态提升设计；
 对于要共享出去的状态，无论是react还是vue，都要使用状态提升设计模式。
 
 
-
-
-受控状态
-
-当然如果用的是antd，也可以不使用组件，直接利用组合模式进行分离，直接这样写更加方便：
-```js
-  const field = useField({ values: {} });
-
-    return (
-      <div>
-        <Form feild={field}>
-          <h3>货币配置</h3>
-          {getCurrencyField(field)}
-           <h3>交易配置</h3>
-          {getTradeField(field)}
-           <h3>收益配置</h3>
-          {getProfitField(field)}
-          <FormItem>
-            <Button>保存</Button>
-          </FormItem>
-        </Form>
-      </div>
-    );
-```
-```js
-const getCurrencyField = (field) => {
-  console.log(field.getValues);
-  return (<>
-    <FormItem label="币种">
-      <Input name="moneyType"/>
-    </FormItem>
-    <FormItem label="汇率">
-      <Input name="rate"/>
-    </FormItem>
-    </>)
-};
-```
-
 ### 技术给你开一个玩笑
-有一些人，所有内容写到一个文件，修改起来更加方便，不用跳来跳去去找其他文件，有个两三千行代码，也能忍受。
+有一些人觉得，所有内容写到一个文件，修改起来更加方便，不用跳来跳去去找其他文件，有个两三千行代码，也能忍受。
 这不能说不对，有时候，确实带来的方便，对于这点，我也不置可否，仁者见仁智者见智吧。
 >以前见过一个表单页面有三千行代码，然后一个状态使用了 data 作为名字，又有很多内部函数也使用data作为行参，
 于是想追踪data的来龙去脉时，一搜索文件，居然匹配到了一百多个data，分析起来头炸。
@@ -292,8 +245,48 @@ const getCurrencyField = (field) => {
 所以我在想，如果对react、vue 不够熟练的初学者，不写组件，未尝不是一件坏事，全部内容搞里头，
 这就是技术给你开个玩笑。
 
-## 父组件做的事情
-经过状态提升后，父组件内写的js逻辑主要有：
+
+除了状态设计，
+## 父级组件做的事情
+这里的父级组件，就是指一个表单页面的根组件、顶级组件，我们页面的所有内容或组件都放在这个组件(子孙)内部，
+下面是一个典型的父组件结构。
+ ```js
+ const MyPage() => {
+  // 表单数据
+  const [formVals, setFormVals] = useState({})
+
+  // 接口数据回填表单
+  useEffect(()=>{
+    const [{dataObj }] = useGetPageData();
+    const { originFormVals, } = responseToFormData({dataObj})
+    setFormVals(originFormVals)
+  }, [])
+
+  // 保存
+  const onSave =()=>{
+    // 请求表单接口
+    excuteSave({
+      // 验证表单
+      validateForm,
+      // 将表单数据转化为接口数据
+      getParmas,
+      // 表单数据
+      formVals,
+    })
+  }
+  return (
+    <div>
+      <Form value={formVals}>
+        <Form.Item>....</Form.Item>
+        <Form.Item>....</Form.Item>
+        <Form.Item>....</Form.Item>
+      </Form>
+      <div onClick={onSave}>保存</div>
+    </div>
+  )
+}
+ ```
+从上述父组件结构看出，其主要聚焦以下事情，这样做的好处是，保存父组件业务代码的纯粹性 简单些 易读性：
 ### 状态提升后的状态控制器
 状态提升后的状态控制器： formVals 与 setFormVals
 上述已经说了，这里不再叙述。
@@ -318,7 +311,7 @@ const getCurrencyField = (field) => {
 ## 联动的设计
 ![](/image/form/select.jpg)
 ### 通过响应实现
-通过响应 币种 的变化，来清空 交易产品 的值：
+通过响应 `币种` 的变化，来清空 `交易产品` 的值：
 ```js
 const Currency = ({ defalutVals }) => {
   const [moneyType, setType] = useState(defalutVals.moneyType);
@@ -349,8 +342,8 @@ const Currency = ({ defalutVals }) => {
 };
 ```
 但这种有一个天然的缺陷，
-当表单接口详情返回数据时，因为上面的useEffect总是响应 币种 的变化，
-详情接口数据回填时，交易产品的值总被清空。
+当表单接口详情返回数据时，因为上面的useEffect总是响应 `币种` 的变化，
+详情接口数据回填时，`交易产品`的值总被清空。
 于是解决方案来了：
 
 ```js
@@ -381,11 +374,11 @@ const CurrencyWrap = () => {
   }, [moneyType]);
 ```
 
-因为我们被误导了，以为 交易产品 的清空的必然强联系就是 币种 的值改变。
-其实不然，交易产品 的清空与否，只与动作有关。
+因为我们被误导了，以为 `交易产品` 的清空的必然强联系就是 `币种` 的值改变。
+其实不然，`交易产品` 的清空与否，只与动作有关。
 **这里说到了一个设计本质，我们在设计联动的时候，联动的触发开关是动作，而非对值的响应**。
-交易产品 的清空联动，其实只会出现在 币种 值的输入下改变的值，就会要求联动清空 交易产品 的值，
-其他情况下，例如接口详情请求导致的 币种的值的变化，不要求情况 交易产品的值。
+`交易产品` 的清空联动，其实只会出现在 `币种` 值的输入下改变的值，就会要求联动清空 `交易产品` 的值，
+其他情况下，例如接口详情请求导致的 `币种`的值的变化，不要求情况 `交易产品`的值。
 
 于是我们可以理解为，联动的开关：
 第一必须是先有动作，
@@ -405,12 +398,12 @@ const Currency = ({ defalutVals }) => {
         onChange={(val) => {
           setType(val);
           // 只需增加一行，作为联动
-          // 同样的如果交易产品是下拉框，需要联动改变枚举值，也是同样的方式，在此onChange下改变
+          // 同样的如果`交易产品`是下拉框，需要联动改变枚举值，也是同样的方式，在此onChange下改变
           setTradeProduct('')
         }}
       />
     </FormItem>
-    <FormItem label="交易产品">
+    <FormItem label="`交易产品`">
       <Input
         value={tradeProduct}
         onChange={(val) => {
@@ -423,7 +416,7 @@ const Currency = ({ defalutVals }) => {
 ```
 
 ### 设计本质
-参考《通过onChange实现》
+我们在设计联动的时候，联动的触发开关是动作，而非对值的响应，这样设计后，后期会避免很多麻烦。
 
 ### 为什么要说联动
 可能在jquery时代，没有响应hooks存在，做联动只能通过 onChange，于是不会有错误。
@@ -471,16 +464,14 @@ fetch(url, {
 })
 ```
 这样保证了 input 组件的清爽，同时也么有冗余的逻辑：
-组件内部只写与渲染有关的内容，不要写业务逻辑，什么是业务逻辑，比如表单提交接口的入参等等；
+组件内部只写与渲染有关的内容，不要写业务逻辑，什么是业务逻辑，比如表单提交接口的入参转换等等；
 
 ### 组件内部不要冗余业务逻辑
 参考上面的《所见即所得》
 
+
 ### 更多细节
-关注 另外一片 项目复盘中关于表单的内容
-
-
-
+关注 另外一篇中关于表单的内容
 
 
 
