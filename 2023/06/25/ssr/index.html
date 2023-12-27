@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>服务端渲染ssr | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="ssr">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>服务端渲染ssr</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">服务端渲染ssr</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-06-25T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2023-06-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/技术之外/">技术之外</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-ssr"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">服务端渲染ssr</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-06-25 00:00:00" datetime="2023-06-25T00:00:00.000Z"  itemprop="datePublished">2023-06-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/技术之外/">技术之外</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>这是一篇掘金小册ssr册子的阅读笔记，</p>
+<h2 id="同构："><a href="#同构：" class="headerlink" title="同构："></a>同构：</h2><p>前后端使用同一套代码；<br>这里涉及到一个技术实现细节，</p>
+<ul>
+<li>服务端使用babel，客户端使用webpack<br>后端代码通过babel实现，将es转为js；<br>前端代码通过webpack全部打包到一个index.js文件中；</li>
+<li>服务端运行依赖node_modules，客户端将node_modules打包到index.js中<br>后端代码通过babel转义js后，babel并没有能力向webpack一样实现一套 import能力，因此经过编译后，其代码最终是采用<br>common.js形势：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _react = _interopRequireDefault(<span class="built_in">require</span>(<span class="string">"react"</span>));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参考<a href="https://github.com/YeWills/koa-react-ssr/tree/better/packages/my-react-ssr" target="_blank" rel="noopener">better分支下的<code></code>koa-react-ssr/packages/my-react-ssr</a></p>
+<h2 id="服务端不实现事件绑定"><a href="#服务端不实现事件绑定" class="headerlink" title="服务端不实现事件绑定"></a>服务端不实现事件绑定</h2><p>服务端不实现事件绑定，只用于静态页面html直出；<br>事件绑定交给客户端去实现</p>
+<h2 id="对比能力，复用节点，避免一闪的问题"><a href="#对比能力，复用节点，避免一闪的问题" class="headerlink" title="对比能力，复用节点，避免一闪的问题"></a>对比能力，复用节点，避免一闪的问题</h2><p>react会读取页面当时的dom，进而计算出dom节点，计算出一套虚拟dom对象。<br>然后react根据路由，计算客户端的虚拟dom对象，根据两边的对象，做最小的 patch，而不是粗暴的直接卸载。<br>然后对虚拟dom进行事件绑定。<br>这样就不会让页面出现一闪的情况（先渲染出服务端的页面，然后客户端不做对比，全部替换为客户端页面）。</p>
+<h2 id="经典demo"><a href="#经典demo" class="headerlink" title="经典demo"></a>经典demo</h2><p>参考<a href="https://github.com/YeWills/koa-react-ssr/tree/better/packages/my-react-ssr" target="_blank" rel="noopener">ssr渲染demo</a><br>该demo够简单，运行起来后，马上可直观感受ssr。</p>
+<h2 id="客户端与服务端ajax区别和跨端ajax"><a href="#客户端与服务端ajax区别和跨端ajax" class="headerlink" title="客户端与服务端ajax区别和跨端ajax"></a>客户端与服务端ajax区别和跨端ajax</h2><ul>
+<li>客户端可以使用 fetch，但fetch是一个浏览器api，服务端不能用；<br>所以需要一个能跨两端都能用的，比如axios；</li>
+<li>服务端渲染请求，在浏览器端会自动默认带上当前的location.origin作为baseURL，在服务端则要 自己写；</li>
+</ul>
+<h2 id="为什么服务端无法执行didMount生命周期"><a href="#为什么服务端无法执行didMount生命周期" class="headerlink" title="为什么服务端无法执行didMount生命周期"></a>为什么服务端无法执行didMount生命周期</h2><p>为什么服务端渲染 didmount生命周期不执行，因为这个是dom完成的时候执行，服务端只负责html静态页面生成，不能无法操作dom节点；<br>但服务端可以执行render 这些生成 虚拟dom节点的生命周期，而didmount应该是执行 dom patch 的一些操作。</p>
+<h2 id="为什么不需要启动客户端服务器"><a href="#为什么不需要启动客户端服务器" class="headerlink" title="为什么不需要启动客户端服务器"></a>为什么不需要启动客户端服务器</h2><p>服务端渲染，为什么不需要启动客户端服务，只需要启动一个服务端接口就行，<br>这是因为，客户端代码，已经编译成静态文件，<br>服务端直出的页面，通过静态链接引入了文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">     <span class="comment">//将预取数据在这里传递过去 组内通过props.staticContext获取</span></span><br><span class="line">    <span class="keyword">const</span> context = &#123;</span><br><span class="line">        initialData: fetchResult</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">const</span> html = renderToString(<span class="xml"><span class="tag">&lt;<span class="name">StaticRouter</span> <span class="attr">location</span>=<span class="string">&#123;path&#125;</span> <span class="attr">context</span>=<span class="string">&#123;context&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">App</span> <span class="attr">routeList</span>=<span class="string">&#123;routeList&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">App</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">StaticRouter</span>&gt;</span></span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态资源 客户端编译好的代码</span></span><br><span class="line">    <span class="keyword">const</span> assetsMap = getAssets();</span><br><span class="line"></span><br><span class="line">    ctx.body = <span class="string">`&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang="en"&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset="UTF-8"&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;<span class="subst">$&#123;tdk.title&#125;</span>&lt;/title&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name="keywords" content="<span class="subst">$&#123;tdk.keywords&#125;</span>" /&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name="description" content="<span class="subst">$&#123;tdk.description&#125;</span>" /&gt;</span></span><br><span class="line"><span class="string">     <span class="subst">$&#123;assetsMap.css.join(<span class="string">''</span>)&#125;</span></span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div id="root"&gt;</span></span><br><span class="line"><span class="string">       <span class="subst">$&#123;html&#125;</span></span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;textarea id="ssrTextInitData" style="display:none;"&gt;</span></span><br><span class="line"><span class="string">    <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(fetchResult)&#125;</span></span></span><br><span class="line"><span class="string">    &lt;/textarea&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string"> <span class="subst">$&#123;assetsMap.js.join(<span class="string">''</span>)&#125;</span></span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h3><p>这样有个弊端，每次都需要将代码编译到硬盘上；<br>每次编译完后，都需要重载或刷新页面，这样才能请求到最新代码</p>
+<h2 id="客户端编译没有html"><a href="#客户端编译没有html" class="headerlink" title="客户端编译没有html"></a>客户端编译没有html</h2><p>服务端渲染有个特点 客户端编译只需编译生成js代码，不需要html，<br>Html交给了服务端；</p>
+<h2 id="为什么客户端编译-webpack-dev-server-和-webpack-要设置为http-localhost-9002"><a href="#为什么客户端编译-webpack-dev-server-和-webpack-要设置为http-localhost-9002" class="headerlink" title="为什么客户端编译 webpack-dev-server 和 webpack 要设置为http://localhost:9002/"></a>为什么客户端编译 webpack-dev-server 和 webpack 要设置为<code>http://localhost:9002/</code></h2><p> <a href="koa-react-ssr/packages/my-react-ssr-HMR">demo地址 my-react-ssr-HMR </a><br>编译客户端代码时，要保证webpack编译文件时，publicpath 设置为 <code>http://localhost:9002/</code>,<br>同时也要保证webpack-dev-server 服务器的 publicpath 设置为 <code>http://localhost:9002/</code><br>这是因为 webpack-dev-server 的websocket通讯要读取这两个配置，<br>由于我们这里奇特的服务端设计，我们页面的主域名是挂载在 <code>http://localhost:9001/</code>下，<br>而静态文件都是配置在 <code>http://localhost:9002/</code>下，所以 publicpath 不能单纯的设置为普通绝对路径，必须带上域名，以便 ws 能够正常找寻通讯，<br>如果都是配置成普通的 publicpath，比如 <code>/</code>,则正常渲染没有问题，当修改文件时，热更新ws通讯就会报错，找不到文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">log.js:<span class="number">26</span> [HMR] Update failed: <span class="built_in">Error</span>: Manifest request to /a08be0b8ecc2cf4d8f71.hot-update.json failed.</span><br><span class="line">    at request.onreadystatechange (http:<span class="comment">//localhost:9002/main.js:99:22)</span></span><br><span class="line"><span class="built_in">module</span>.exports @ log.js:<span class="number">26</span></span><br><span class="line"><span class="built_in">eval</span> @ dev-server.js:<span class="number">46</span></span><br><span class="line"><span class="built_in">Promise</span>.catch (<span class="keyword">async</span>)</span><br><span class="line">check @ dev-server.js:<span class="number">36</span></span><br><span class="line"><span class="built_in">eval</span> @ dev-server.js:<span class="number">55</span></span><br><span class="line">emit @ events.js:<span class="number">153</span></span><br><span class="line">reloadApp @ reloadApp.js:<span class="number">23</span></span><br><span class="line">ok @ client:<span class="number">119</span></span><br><span class="line"><span class="built_in">eval</span> @ socket.js:<span class="number">47</span></span><br><span class="line">sock.onmessage @ SockJSClient.js:<span class="number">67</span></span><br><span class="line">EventTarget.dispatchEvent @ sockjs.js:<span class="number">170</span></span><br><span class="line"><span class="built_in">eval</span> @ sockjs.js:<span class="number">885</span></span><br><span class="line">SockJS._transportMessage @ sockjs.js:<span class="number">883</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line">WebSocketTransport.ws.onmessage @ sockjs.js:<span class="number">2958</span></span><br><span class="line">sockjs.js:<span class="number">1681</span> WebSocket connection to <span class="string">'ws://localhost:9002/sockjs-node/063/2vnv2rby/websocket'</span> failed: </span><br><span class="line">WebSocketBrowserDriver @ sockjs.js:<span class="number">1681</span></span><br><span class="line">WebSocketTransport @ sockjs.js:<span class="number">2955</span></span><br><span class="line">SockJS._connect @ sockjs.js:<span class="number">826</span></span><br><span class="line">SockJS._receiveInfo @ sockjs.js:<span class="number">800</span></span><br><span class="line">g @ sockjs.js:<span class="number">66</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line"><span class="built_in">eval</span> @ sockjs.js:<span class="number">562</span></span><br><span class="line">g @ sockjs.js:<span class="number">66</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line"><span class="built_in">eval</span> @ sockjs.js:<span class="number">371</span></span><br><span class="line">g @ sockjs.js:<span class="number">66</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line">xhr.onreadystatechange @ sockjs.js:<span class="number">1595</span></span><br><span class="line">client:<span class="number">172</span> [WDS] Disconnected!</span><br></pre></td></tr></table></figure></p>
+<h2 id="按需加载与服务端渲染"><a href="#按需加载与服务端渲染" class="headerlink" title="按需加载与服务端渲染"></a>按需加载与服务端渲染</h2><p>以 <a href="https://juejin.cn/book/6844733810941100045/section/6844733810995642376" target="_blank" rel="noopener">「装修阶段」- 基于路由的按需渲染</a>章节和代码作为参考。<br>按照正常的按需加载配置后，<br>需要将服务端渲染的的路由全部转化为静态路由，利用的知识点是 所有的import其实就是Promise，<br>通过Promise.then.default可对组件进行替换或修改。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (checkIsAsyncRoute(item.component)) &#123;</span><br><span class="line">          staticRoutes.push(&#123;</span><br><span class="line">              ...item,</span><br><span class="line">              ...&#123;</span><br><span class="line">                  component: (<span class="keyword">await</span> item.component().props.load()).default</span><br><span class="line">              &#125;<span class="comment">//调用下load方法得到返回值即可</span></span><br><span class="line">          &#125;);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          staticRoutes.push(&#123;</span><br><span class="line">              ...item</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+<p>需要对客户端对应匹配到页面地址的组件进行预加载，同样是使用上述的 component().props.load() 方式。<br>由于考虑双端渲染比对问题，也需要将客户端组件从动态变成静态组件，方法和服务端原理一致：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//等待异步脚本加载完成</span></span><br><span class="line"> <span class="keyword">if</span> (targetRoute.component[proConfig.asyncComponentKey]) &#123;</span><br><span class="line">         targetRoute.component().props.load().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                 <span class="comment">//异步组件加载完成后再渲染页面</span></span><br><span class="line">                 <span class="built_in">console</span>.log(<span class="string">'异步组件加载我能成.....'</span>);</span><br><span class="line">                 <span class="comment">// 将动态组件 替换成静态组件，避免 服务端直出内容 与 服务端直出内容比对失败</span></span><br><span class="line">                 targetRoute.component = res.default;</span><br><span class="line"></span><br><span class="line">                 renderDom(routeList);</span><br><span class="line">         &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="import的本质"><a href="#import的本质" class="headerlink" title="import的本质"></a>import的本质</h3><p>参考上述</p>
+<h3 id="通过import进行路由组件替换"><a href="#通过import进行路由组件替换" class="headerlink" title="通过import进行路由组件替换"></a>通过import进行路由组件替换</h3><p>参考上述</p>
+<h3 id="动态组件变成静态组件的方案"><a href="#动态组件变成静态组件的方案" class="headerlink" title="动态组件变成静态组件的方案"></a>动态组件变成静态组件的方案</h3><p>参考上述</p>
+<h3 id="import与预加载"><a href="#import与预加载" class="headerlink" title="import与预加载"></a>import与预加载</h3><p>只要import了组件，才会通过异步请求组件js，就是加载了组件，达到了预加载。</p>
+<h3 id="按需加载的本质"><a href="#按需加载的本质" class="headerlink" title="按需加载的本质"></a>按需加载的本质</h3><p>按需加载的本质，其实就是写一个组件，只有当组件被渲染时，才真正异步加载对应的组件js，没有渲染的时候，不预先进行 import，达到不加载组件js：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> LoadingCompoent <span class="keyword">from</span> <span class="string">'./loading-compoent'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态加载组件一个组的容器</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class <span class="variable">Bundle</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@extends <span class="type">&#123;Component&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncBundle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            mod: <span class="literal">null</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.state.mod) &#123;</span><br><span class="line">            <span class="keyword">this</span>.loadComp(<span class="keyword">this</span>.props);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    loadComp(props) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            mod: <span class="literal">null</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//注意这里，使用Promise对象; mod.default导出默认</span></span><br><span class="line">        <span class="comment">// 只有当组件被渲染时，才真正异步加载对应的组件js</span></span><br><span class="line">        props.load().then(<span class="function">(<span class="params">mod</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                mod: mod.default ? mod.default : mod</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.state.mod ? <span class="keyword">this</span>.props.children(<span class="keyword">this</span>.state.mod) : <span class="xml"><span class="tag">&lt;<span class="name">LoadingCompoent</span>/&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>可通过<code>targetRoute.component[proConfig.asyncComponentKey]</code> 以及 动态组件(async-bundle)内 使用debugger 可以直观看到 import 的时候会如何进行异步js请求，以及渲染的情况</p>
+<h3 id="关于本章节项目的讲解补充："><a href="#关于本章节项目的讲解补充：" class="headerlink" title="关于本章节项目的讲解补充："></a>关于本章节项目的讲解补充：</h3><blockquote>
+<p>【另外客户端渲染也需要注意，需使用预加载，等异步组件加载完成再进行DOM的挂载，否则会出现客户端覆盖服务端渲染的问题。】本节最后一句描述不准确，<br>因为客户端渲染的时候，虽然使用了预加载，在客户端第一次react渲染前，加载好组件js，解决了ajax请求组件js时间，优化了体验。<br>但是服务端组件直出的是完整的组件html内容，而客户端第一次渲染的是 loading 组件，<br>双端比较失败，页面会使用 loading 来覆盖服务端内容；<br>然后组件执行 componentDidMount 生命周期，页面this.setState({mod})，<br>此时才显示完整的组件html内容。<br>以上现象可通过<code>targetRoute.component[proConfig.asyncComponentKey]</code> 以及 动态组件内 使用debugger 复现现象。<br>所以本节最后一句应该改为如下更加贴切：<br>【另外客户端渲染也需要注意，需使用预加载，等异步组件加载完成再进行DOM的挂载，否则会出现客户端先显示loading，再显示组件内容，一闪的问题】<br>虽然无法解决双端比较失败的问题，但因为服务端直出的是最终组件要渲染的内容；<br>又由于客户端使用预加载技术提前加载好了对应组件的js；<br>因此在客户端渲染时，避免了再次异步加载组件js，极大影响体验，只是纯js的dom渲染，几乎可以避免看到一闪的现象，体验尚可。<br>这里的优化点时，通过方法，在执行 componentDidmount前，让mod有值，直接去渲染组件实际内容，而不是先渲染loading，再渲染 组件实际内容,<br>楼下的@地之鸿的评论解决了这个问题：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 等待异步脚本加载完成</span></span><br><span class="line"><span class="keyword">if</span> (targetRoute.component[proConfig.asyncComponentKey]) &#123;</span><br><span class="line">targetRoute.component().props.load().then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 把异步组件变成公布组件</span></span><br><span class="line">targetRoute.component = res.default;</span><br><span class="line"><span class="comment">// 异步组件加载完成后再渲染页面</span></span><br><span class="line">renderDom();</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>完美解决了这个问题</p>
+<h2 id="关于小册需要解决问题："><a href="#关于小册需要解决问题：" class="headerlink" title="关于小册需要解决问题："></a>关于小册需要解决问题：</h2><p>启动项目后，修改代码，代码热重载后，报错 ws连接问题，从【第12：「装修阶段」- 双服务模式热更新 开始就有这个问题】，但貌似对热更新不影响<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sockjs.js:<span class="number">1681</span> WebSocket connection to <span class="string">'ws://localhost:9002/sockjs-node/445/ulq5r1xb/websocket'</span> failed: </span><br><span class="line">WebSocketBrowserDriver @ sockjs.js:<span class="number">1681</span></span><br><span class="line">WebSocketTransport @ sockjs.js:<span class="number">2955</span></span><br><span class="line">SockJS._connect @ sockjs.js:<span class="number">826</span></span><br><span class="line">SockJS._receiveInfo @ sockjs.js:<span class="number">800</span></span><br><span class="line">g @ sockjs.js:<span class="number">66</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line"><span class="built_in">eval</span> @ sockjs.js:<span class="number">562</span></span><br><span class="line">g @ sockjs.js:<span class="number">66</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line"><span class="built_in">eval</span> @ sockjs.js:<span class="number">371</span></span><br><span class="line">g @ sockjs.js:<span class="number">66</span></span><br><span class="line">EventEmitter.emit @ sockjs.js:<span class="number">86</span></span><br><span class="line">xhr.onreadystatechange @ sockjs.js:<span class="number">1595</span></span><br><span class="line">client:<span class="number">172</span> [WDS] Disconnected!</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用popstate方法处理后退路由后，数据不更新问题"><a href="#使用popstate方法处理后退路由后，数据不更新问题" class="headerlink" title="使用popstate方法处理后退路由后，数据不更新问题"></a>使用popstate方法处理后退路由后，数据不更新问题</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, ()=&gt;&#123;</span><br><span class="line">      <span class="comment">// 使用popStateFn保存函数防止addEventListener重复注册</span></span><br><span class="line">    <span class="keyword">if</span> (_this &amp;&amp; _this.getInitialProps) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'popStateFn'</span>);</span><br><span class="line">        _this.getInitialProps();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2023-12-27T13:59:49.554Z" itemprop="dateUpdated">2023-12-27 13:59:49</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/2023/06/25/ssr/" target="_blank" rel="external">https://yewills.github.io/2023/06/25/ssr/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2023/06/25/ssr/&title=《服务端渲染ssr》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2023/06/25/ssr/&title=《服务端渲染ssr》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2023/12/20/gzh/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">一个人搞定前后端和运维，上线一个跨端产品</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2023/05/29/pack/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">关于依赖和编译</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同构："><span class="post-toc-number">1.</span> <span class="post-toc-text">同构：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务端不实现事件绑定"><span class="post-toc-number">2.</span> <span class="post-toc-text">服务端不实现事件绑定</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对比能力，复用节点，避免一闪的问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">对比能力，复用节点，避免一闪的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#经典demo"><span class="post-toc-number">4.</span> <span class="post-toc-text">经典demo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#客户端与服务端ajax区别和跨端ajax"><span class="post-toc-number">5.</span> <span class="post-toc-text">客户端与服务端ajax区别和跨端ajax</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么服务端无法执行didMount生命周期"><span class="post-toc-number">6.</span> <span class="post-toc-text">为什么服务端无法执行didMount生命周期</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么不需要启动客户端服务器"><span class="post-toc-number">7.</span> <span class="post-toc-text">为什么不需要启动客户端服务器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#弊端"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">弊端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#客户端编译没有html"><span class="post-toc-number">8.</span> <span class="post-toc-text">客户端编译没有html</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么客户端编译-webpack-dev-server-和-webpack-要设置为http-localhost-9002"><span class="post-toc-number">9.</span> <span class="post-toc-text">为什么客户端编译 webpack-dev-server 和 webpack 要设置为http://localhost:9002/</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按需加载与服务端渲染"><span class="post-toc-number">10.</span> <span class="post-toc-text">按需加载与服务端渲染</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#import的本质"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">import的本质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过import进行路由组件替换"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">通过import进行路由组件替换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态组件变成静态组件的方案"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">动态组件变成静态组件的方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#import与预加载"><span class="post-toc-number">10.4.</span> <span class="post-toc-text">import与预加载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#按需加载的本质"><span class="post-toc-number">10.5.</span> <span class="post-toc-text">按需加载的本质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调试"><span class="post-toc-number">10.6.</span> <span class="post-toc-text">调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于本章节项目的讲解补充："><span class="post-toc-number">10.7.</span> <span class="post-toc-text">关于本章节项目的讲解补充：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于小册需要解决问题："><span class="post-toc-number">11.</span> <span class="post-toc-text">关于小册需要解决问题：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用popstate方法处理后退路由后，数据不更新问题"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">使用popstate方法处理后退路由后，数据不更新问题</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2023
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2023/06/25/ssr/&title=《服务端渲染ssr》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2023/06/25/ssr/&title=《服务端渲染ssr》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aQY7DIBAEwPz/09nrSllwD2OItSpOlmOHSg4tZuD1isf71xjd+bz/+en83dsGLi5um/uejiq3OktuwMXFPc8dTTC6HkXY/HvmPz55FxcX9/ncPM6SIMPFxf0f3M4CCBcX9/nctaBJEPOfvbFWw8XFbXDXEPdeb+nv4uLiLnHfxbHWYF175o+3cHFxj3DzQEkmW/uG6lu4uLhnuGttzflWSqd0KfwRuLi4G7jVRmcSRsm7+SzDFRkuLu5mbvWQRL6VkodjFJq4uLhHuHmTtPrMWlQlfxkuLu5ubvJQv2mysfjBxcXdxq22Oe49YDGPxXLxg4uL2+Z2zjZ0NmWrRFxc3PPc6oImmSw/4FVtzeDi4p7k5oub/pGspKVykbi4uLhHuNX2x1o7tXqn0MvBxcXdxq2WLmtlTOuQBy4u7pe4aw2LzvZJYXMXFxd3M7fTAO0US4vtGFxc3CPcG45ENILpov3RCUdcXNw2txperdIlXlpdHM/CxcU9ws2DJr+ubsEWajVcXNxHcjtHtVqLJ1xc3MdzqyFVfXK4lYKLi3uEmzc3kynzIioh4uLinudWo6TQwoiDbB6OuLi4B7k/Z5NSwZe4C/QAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+
+<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
