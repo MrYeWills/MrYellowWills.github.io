@@ -27,7 +27,7 @@ semver.satisfies('1.2.3', '1.x || >=2.5.0 || 5.0.0 - 7.2.3') // true
 #### Usage
 使用非常简单
 
-```
+```json
 //package.json
 {
   "name": "koa-book-pro",
@@ -52,7 +52,7 @@ semver.satisfies('1.2.3', '1.x || >=2.5.0 || 5.0.0 - 7.2.3') // true
 
 ```
 package.json 同级目录下 配置 nodemon.json
-```
+```json
 //nodemon.json
 {
   "restartable": "rs",
@@ -173,7 +173,6 @@ axios.post('/foo', qs.stringify({ 'bar': 123 }));
 
 比较 npm 包下载量 https://www.npmtrends.com/
 ### glob
-
 
 #### 获取目录下所有的index.js 路径
 ![](/image/node_module/glob.png)
