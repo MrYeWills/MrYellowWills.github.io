@@ -3,7 +3,7 @@ title: 服务端渲染ssr
 date: 2023/06/25
 tags: ssr
 categories: 
-- 技术之外
+- ssr
 ---
 
 

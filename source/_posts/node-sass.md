@@ -3,7 +3,7 @@ title: node-sass、M2芯片、Homebrew、nvm、node 问题
 date: 2023/02/11
 tags: [node-sass, node]
 categories: 
-- 基建
+- 前端工程
 ---
 
 本文主要是m芯片安装的一些问题分析，其中关于 node，其他系统安装可以借鉴。
