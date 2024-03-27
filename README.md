@@ -1,6 +1,6 @@
 部署状态 | 集成结果 | 参考值
 ---|---|---
-完成时间 | 2023-12-27 14:00:23 | yyyy-mm-dd hh:mm:ss
+完成时间 | 2024-03-27 14:11:04 | yyyy-mm-dd hh:mm:ss
 部署环境 | circleci/node:12.8.0 | window \| linux + stable
 部署类型 |  | push \| pull_request \| api \| cron
 启用Sudo |  | false \| true
