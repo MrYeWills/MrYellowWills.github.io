@@ -14,14 +14,14 @@ timezone:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://yewills.github.io/
-root: /
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 Scheme: Gemini
 # Directory
 source_dir: source
-public_dir: public
+public_dir: public/blog
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
