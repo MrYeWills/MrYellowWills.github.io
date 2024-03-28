@@ -183,11 +183,11 @@ firewall-cmd --list-ports
 
 ### 静态网站与动态网站
 静态网站的服务器和客户端的连接
-![](/image/linuxf/lamp.png)
+{% img url_for /image/linuxf/lamp.png %}
 
 动态网站
 动态网站的网页编程语言和数据库接口
-![](/image/linuxf/say.png)
+{% img url_for /image/linuxf/say.png %}
 
 ### PHP
 在服务端执行的脚本语言，是常用的网站编程语言
@@ -227,8 +227,8 @@ systemctl restart httpd
 http://192.168.1.109/info.php
 
 看到下面说明 apache与php结合成功
-![](/image/linuxf/php.png)
-![](/image/linuxf/php1.png)
+{% img url_for /image/linuxf/php.png %}
+{% img url_for /image/linuxf/php1.png %}
 
 
 至此搭建 LAMP 架构还差数据库的连接，此时，我们借用 wordpress 建站，
@@ -279,7 +279,7 @@ wp-admin         wp-cron.php           wp-mail.php
 页面访问刚才拷贝到apache web目录下的 `wp-admin/setup-config.php` 是wordpress的启动配置页面，
 此页面告诉你如何一步步安装配置wordpress
 https://192.168.1.109/wordpress/wp-admin/setup-config.php
-![](/image/linuxf/wd.png)
+{% img url_for /image/linuxf/wd.png %}
 
 #### 升级 php
 [参考这篇博客](https://blog.csdn.net/qq_34829953/article/details/78078790)，从博客中第二个开始执行：
@@ -300,7 +300,7 @@ Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
 [root@localhost wordpress]# systemctl restart httpd
 ```
 #### wordpress配置页面 访问成功
-![](/image/linuxf/wd2.png)
+{% img url_for /image/linuxf/wd2.png %}
 再次刷新页面，显示如下，说明正常了
 
 
@@ -370,11 +370,11 @@ systemctl restart httpd
 https://192.168.1.109/wordpress/wp-admin/setup-config.php
 点击下图 的安装：
 
-![](/image/linuxf/wd3.png)
+{% img url_for /image/linuxf/wd3.png %}
 
 #### 建立数据库时出错
 
-![](/image/linuxf/wd4.png)
+{% img url_for /image/linuxf/wd4.png %}
 
 
 SELinux 的安全策略问题导致的；
@@ -389,7 +389,7 @@ Enforcing  #说明 SELinux 是开启的
 刷新页面：
 https://192.168.1.109/wordpress/wp-admin/setup-config.php
 变成下图，说明安装成功了
-![](/image/linuxf/wd5.png)
+{% img url_for /image/linuxf/wd5.png %}
 
 
 #### 解决 数据库 连接的SELinux问题
@@ -420,18 +420,18 @@ https://192.168.1.109/wordpress/wp-admin/setup-config.php
 变成下图，说明安装成功了，进入了wordpress 5分钟安装程序
 
 配置网站信息，比如网站名，网站管理员，邮箱，这些都可以随便写
-![](/image/linuxf/wd6.png)
-![](/image/linuxf/wd7.png)
-![](/image/linuxf/wd8.png)
+{% img url_for /image/linuxf/wd6.png %}
+{% img url_for /image/linuxf/wd7.png %}
+{% img url_for /image/linuxf/wd8.png %}
 
 登录成功后，
 进入网站后台管理系统：
-![](/image/linuxf/wd9.png)
-![](/image/linuxf/wd10.png) 
+{% img url_for /image/linuxf/wd9.png %}
+{% img url_for /image/linuxf/wd10.png %} 
 
 进入自己的网站主站点：
-![](/image/linuxf/wd11.png)
-![](/image/linuxf/wd12.png)
+{% img url_for /image/linuxf/wd11.png %}
+{% img url_for /image/linuxf/wd12.png %}
 
 
 ### 一些说明
@@ -608,7 +608,7 @@ http://192.168.1.109:8080/
 再次访问
 http://192.168.1.109:8080/
 成功了：
-![](/image/linuxf/tom.png)
+{% img url_for /image/linuxf/tom.png %}
 
 #### 放开防火墙 8080端口
 ```s
@@ -620,7 +620,7 @@ firewall-cmd --list-ports #查看已经放行的端口
 ```
 
 #### 设置用户
-![](/image/linuxf/user.png)
+{% img url_for /image/linuxf/user.png %}
 ```s
  vim /etc/tomcat/tomcat-users.xml
 ```
@@ -634,9 +634,9 @@ systemctl restart tomcat
 
 然后点击上图按钮，登录：
 
-![](/image/linuxf/login.png)
-![](/image/linuxf/login1.png)
-![](/image/linuxf/mana.png)
+{% img url_for /image/linuxf/login.png %}
+{% img url_for /image/linuxf/login1.png %}
+{% img url_for /image/linuxf/mana.png %}
 如图上，红框内，这些应用都在目录：
 ```s
 [root@localhost ~]# ls /var/lib/tomcat/webapps/
@@ -731,7 +731,7 @@ systemctl restart tomcat
 再次访问：
 http://192.168.1.109:8080/jenkins 
 就会跳转到：
-![](/image/linuxf/jenk1.png)
+{% img url_for /image/linuxf/jenk1.png %}
 
 复制图片中的地址 
 ```s
@@ -757,35 +757,35 @@ systemctl restart tomcat
 ```
 
 http://192.168.1.109:8080/jenkins 
-![](/image/linuxf/jenk2.png)
+{% img url_for /image/linuxf/jenk2.png %}
 ```s
 cat /var/lib/jenkins/secrets/initialAdminPassword
 a3aba81d552b42238184305d6687a020
 ```
 等待一分钟，出现页面
 
-![](/image/linuxf/jenk3.png)
+{% img url_for /image/linuxf/jenk3.png %}
 
 
 #### jenkins安装成功
 
 如果顺利，就选择安装推荐插件
-![](/image/linuxf/jk1.png)
-![](/image/linuxf/jk2.png)
-![](/image/linuxf/jk3.png)
+{% img url_for /image/linuxf/jk1.png %}
+{% img url_for /image/linuxf/jk2.png %}
+{% img url_for /image/linuxf/jk3.png %}
 出现以下页面，说明Jenkins安装好：
-![](/image/linuxf/jk4.png)
+{% img url_for /image/linuxf/jk4.png %}
 
 查看已经安装好的插件
-![](/image/linuxf/jk5.png)
-![](/image/linuxf/jk6.png)
-![](/image/linuxf/jk7.png)
+{% img url_for /image/linuxf/jk5.png %}
+{% img url_for /image/linuxf/jk6.png %}
+{% img url_for /image/linuxf/jk7.png %}
 
 
 #### 出现offline(离线)问题的解决方法
 此时也可能出现offline 问题， 没有这个问题，可不用管。
 
-![](/image/linuxf/jenk4.png)
+{% img url_for /image/linuxf/jenk4.png %}
 
 这是证书问题，
 解决方法：
@@ -809,14 +809,14 @@ a3aba81d552b42238184305d6687a020
 
 #### 安装Jenkins不顺利时的解决方法
 Jenkins也有可能不顺利
-![](/image/linuxf/jenk6.png)
+{% img url_for /image/linuxf/jenk6.png %}
 
 此时就选择，不安装任何插件，把Jenkins安装好再说：
-![](/image/linuxf/jenk7.png)
+{% img url_for /image/linuxf/jenk7.png %}
 选择none，不安装任何插件
-![](/image/linuxf/jenk8.png)
+{% img url_for /image/linuxf/jenk8.png %}
 安装完成：
-![](/image/linuxf/jenk9.png)
+{% img url_for /image/linuxf/jenk9.png %}
 
 
 

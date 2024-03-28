@@ -15,7 +15,7 @@ series: css
 #### absolute的子元素换行的问题
 不过我不想让absolute子元素换行，如何实现呢。
 效果：
-![](/image/css_deep/ab.png)
+{% img url_for /image/css_deep/ab.png %}
 代码：
 ```html
   <style>
@@ -99,7 +99,7 @@ display为flex的一大特性就是让所有子元素水平排为一列，
     }
   </style>
 ```
-![](/image/css_deep/flex.png)
+{% img url_for /image/css_deep/flex.png %}
 当absolute自身又同时设置left和right时，子元素设置flex-shrink为0时，flex优先级最高，依然能保证子元素为一排，且宽度不变，这个可自行试验。
 
 #### 解决方法(flex)

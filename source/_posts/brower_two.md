@@ -12,14 +12,14 @@ categories:
 ### 谷歌的多进程
 当前谷歌是多进程，启动谷歌浏览器后，就会启动浏览器主进程、插件进程、渲染进程， 其中每个标签页面其实就是一个渲染进程，多个页面就会有多个渲染进程。
 我们的html、js、v8引擎都在这个渲染进程中，这个渲染进程处于一个沙箱内，这样目的是为了不影响其他页面，保证了稳定性。
-![](/image/ntool/b0.jpg)
+{% img url_for /image/ntool/b0.jpg %}
 
 随着3d动画的出现，后面又出现了 一些其他基础服务进程，比如 GPU进程、网络进程 等等。
-![](/image/ntool/b1.jpg)
+{% img url_for /image/ntool/b1.jpg %}
 
 开启的进程越多，越会消耗cpu 内存，谷歌会智能监测电脑的内存，如果发现内存不足，谷歌会智能的将 上述基础服务合并到浏览器主进程内。
 
-![](/image/ntool/b2.jpg)
+{% img url_for /image/ntool/b2.jpg %}
 
 [第三节浏览器工作原理：chrome架构演进](https://www.bilibili.com/video/BV18q4y1L7Wh?p=11)
 
@@ -27,16 +27,16 @@ categories:
 
 ### 浏览器的工作流程
 #### 工作过程说明
-![](/image/ntool/b.jpg)
-![](/image/ntool/b3.jpg)
+{% img url_for /image/ntool/b.jpg %}
+{% img url_for /image/ntool/b3.jpg %}
 图示
-![](/image/ntool/b4.jpg)
+{% img url_for /image/ntool/b4.jpg %}
 
 #### 一个http请求过程：
-![](/image/ntool/b5.jpg)
+{% img url_for /image/ntool/b5.jpg %}
 
 #### 完整流程
-![](/image/ntool/b6.jpg)
+{% img url_for /image/ntool/b6.jpg %}
 
 ### 进程职责
 浏览器进程职责
@@ -77,7 +77,7 @@ categories:
 ### 为什么要将html解析成dom，
 因为html无法被渲染引擎直接识别的，
 需要将html转为渲染引擎能识别的内部结构，这个结构就是 dom。
-![](/image/ntool/b7.jpg)
+{% img url_for /image/ntool/b7.jpg %}
 
 ### dom树如何生成：
 在渲染引擎内部，又一个html解析器 htmlParser 的模块，它的职责就是负责将html字节流转换为dom结构。
@@ -85,19 +85,19 @@ categories:
 ### dom树的生成过程
 网络进程通过IPC将文档字节流传输给 渲染进程 解析。
 注意的是，渲染进程不会等 html字节流完全传递完才解析，而是一边接收一边解析。
-![](/image/ntool/b8.jpg)
+{% img url_for /image/ntool/b8.jpg %}
 
 解析器将字节流解析成tokens，放入tokens栈中，然后解析成dom树
-![](/image/ntool/b9.jpg)
+{% img url_for /image/ntool/b9.jpg %}
 
 tokens栈 类似js执行上下文的压栈出栈过程。html解析器，遇到开始的标签，就放入tokens栈中，遇到结束的标签，就把这个tokens从栈中删除，直到tokens栈为空。
-![](/image/ntool/b10.jpg)
-![](/image/ntool/b11.jpg)
+{% img url_for /image/ntool/b10.jpg %}
+{% img url_for /image/ntool/b11.jpg %}
 
 
 ### 计算css与排版
 dom树生成后，就要根据dom树生成布局树，
-![](/image/ntool/b12.jpg)
+{% img url_for /image/ntool/b12.jpg %}
 如图所示，左侧阶段A，中间阶段B，右侧阶段C，
 A是生成dom树，
 B是计算css，
@@ -110,12 +110,12 @@ C是生成布局树；
 渲染引擎会将css内容变成 document.styleSheets ,可以控制台打印看看，然后再进行css的计算。
 
 ### 根据布局树生成图层树
-![](/image/ntool/b14.jpg)
+{% img url_for /image/ntool/b14.jpg %}
 
 #### 生成图层的几种特性
 以下条件下会生成图层
-![](/image/ntool/b15.jpg)
-![](/image/ntool/b16.jpg)
+{% img url_for /image/ntool/b15.jpg %}
+{% img url_for /image/ntool/b16.jpg %}
 
 ### 分层与合并
 如果将所有的内容放入一个图层中，那么不可避免就容易重排，为了性能，
@@ -125,17 +125,17 @@ C是生成布局树；
 多个图层 合并一起，成为最终显示图像，叫做合并。
 
 #### 在控制台看图层。
-![](/image/ntool/b13.jpg)
+{% img url_for /image/ntool/b13.jpg %}
 
 ### 更多细节
 生成图层绘制列表，然后对图层珊格化形成图块，按照靠近视口的优先级最高最先渲染原则。
 渲染的过程要将内容写入内存，再将内存显示在屏幕中，如果内容较大，电脑读写速度慢，那么这个过程就比较卡顿。
 谷歌浏览器为了优化这个，会将内容先以低分辨率写入内存，然后再以真实分辨率显示。
-![](/image/ntool/c1.jpg)
+{% img url_for /image/ntool/c1.jpg %}
 珊格化
-![](/image/ntool/c2.jpg)
-![](/image/ntool/c3.jpg)
-![](/image/ntool/c4.jpg)
+{% img url_for /image/ntool/c2.jpg %}
+{% img url_for /image/ntool/c3.jpg %}
+{% img url_for /image/ntool/c4.jpg %}
 
 ### 如何生成1帧的图像，
 浏览器生成一帧的图像要 经历 生产dom树、布局树、图层树，最终交由渲染引擎绘制生成图像。
@@ -154,8 +154,8 @@ C是生成布局树；
 比如 谷歌之前内核为 webkit，现在为blink。
 
 ### v8引擎的原理
-![](/image/ntool/b17.jpg)
-![](/image/ntool/b18.jpg)
+{% img url_for /image/ntool/b17.jpg %}
+{% img url_for /image/ntool/b18.jpg %}
 
 
 ## 浏览器插件

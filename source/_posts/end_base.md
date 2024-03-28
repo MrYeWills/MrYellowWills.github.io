@@ -14,7 +14,7 @@ series: node
 express封装了很多功能到req、res中，用起来更加方便。
 因此express与nodejs的关系 就好比 jquery 与 js 的关系。
 因此可以认为express就是一个nodejs框架。
-![](/image/end_base/express.jpg)
+{% img url_for /image/end_base/express.jpg %}
 ### express是对http等的封装
 参考上面《express是一个nodejs框架》
 
@@ -392,8 +392,8 @@ npx sequelize-cli init
   },
 ```
 ### 新建数据库
-![](/image/end_base/right.jpg)
-![](/image/end_base/db.jpg)
+{% img url_for /image/end_base/right.jpg %}
+{% img url_for /image/end_base/db.jpg %}
 ### sequelize-cli创建模型
 ```
 npx sequelize-cli model:generate --name User --attributes name:string
@@ -428,7 +428,7 @@ npx sequelize-cli db:migrate --env=development
 }
 ```
 将模型添加到数据库后，你就会在数据库中看到模型中添加的表(模型生产的)
-![](/image/end_base/db.jpg)
+{% img url_for /image/end_base/db.jpg %}
 至此，桥接数据库，通过sequelize在数据库中建表的工作完成，下一步就是使用express操作数据库。
 
 ### 使用express操作数据库

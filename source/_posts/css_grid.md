@@ -10,9 +10,9 @@ series: grid布局
 ## 网格项上的属性
 ### grid-area
 #### 概述
-![](/image/grid/grid-area.jpg)
+{% img url_for /image/grid/grid-area.jpg %}
 #### 等效写法
-![](/image/grid/area.jpg)
+{% img url_for /image/grid/area.jpg %}
 
 ## 黑知识
 
@@ -61,7 +61,7 @@ fit-content 给定网格项定义的宽度，但网格项按照自身的宽度�
 ```css
  grid-template-columns:100px fit-content(200px) fit-content(300px) 10% 1fr auto;
 ```
-![](/image/grid/fit.jpg)
+{% img url_for /image/grid/fit.jpg %}
 
 ### 合并写法的改名
 #### place-content

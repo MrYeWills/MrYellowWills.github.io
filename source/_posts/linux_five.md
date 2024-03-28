@@ -15,10 +15,10 @@ categories:
 摘录博客部分内容：
 反向代理：
 反向代理，"它代理的是服务端，代服务端接收请求"，主要用于服务器集群分布式部署的情况下，反向代理隐藏了服务器的信息。
-![](/image/linuxfi/ng1.png)
+{% img url_for /image/linuxfi/ng1.png %}
 正向代理：
 正向代理最大的特点是客户端非常明确要访问的服务器地址；服务器只清楚请求来自哪个代理服务器，而不清楚来自哪个具体的客户端；正向代理模式屏蔽或者隐藏了真实客户端信息。
-![](/image/linuxfi/ng2.png)
+{% img url_for /image/linuxfi/ng2.png %}
 
 #### apache、nginx、IIS 
 高性能、轻量级、功能丰富、配置简单。用c语言写的；
@@ -27,7 +27,7 @@ apache、nginx、IIS 并称 服务器三巨头
 apache 阻塞型、同步多进程。nginx 异步、非阻塞、事件驱动；
 
 下图时服务器排名：
-![](/image/linuxfi/ng3.png)
+{% img url_for /image/linuxfi/ng3.png %}
 
 ### 安装和使用nginx
 #### 安装
@@ -46,7 +46,7 @@ systemctl enable nginx
 启动后访问，这里会出现centos页面，此页面是nginx驱动的页面，
 可在`/usr/share/nginx/html/index.html`中配置
 http://192.168.1.109/
-![](/image/linuxfi/ng4.png)
+{% img url_for /image/linuxfi/ng4.png %}
 
 ```s
 [root@localhost ~]# rpm -ql nginx  查看nginx相关配置
@@ -61,7 +61,7 @@ http://192.168.1.109/
 当然了，你也可能启动nginx失败，可能的原因是，你的机器同时启动了apache，
 apache和nginx都是监听80端口，因此失败。
 
-![](/image/linuxfi/ng5.png)
+{% img url_for /image/linuxfi/ng5.png %}
 ```s
 #解决之道，可关闭 apache，再次启动nginx：
 systemctl stop httpd
@@ -365,9 +365,9 @@ success
 
 #### 访问网站
 http://192.168.1.109:7080/
-![](/image/linuxfi/apa1.png)
+{% img url_for /image/linuxfi/apa1.png %}
 https://192.168.1.109:7443/
-![](/image/linuxfi/apa2.png)
+{% img url_for /image/linuxfi/apa2.png %}
 
 #### 访问失败的解决方法
 上面设置后，也可能失败，那就把nginx关闭，再先把 防火墙 和 SElinux 都关闭，然后重新设置一次：
@@ -455,9 +455,9 @@ nginx -s reload  #成功了，不报错了
 
 现在访问如下，说明成功了：
 http://192.168.1.109/
-![](/image/linuxfi/proxy1.png)
+{% img url_for /image/linuxfi/proxy1.png %}
 http://192.168.1.109/jenkins
-![](/image/linuxfi/proxy2.png)
+{% img url_for /image/linuxfi/proxy2.png %}
 
 客户机配置好 host后，也可通过域名访问，如
 http://www.linuxcoreaqq.com/jenkins
@@ -617,7 +617,7 @@ http {
 http://www.linuxcoreaqq.com/jenkins 将被重定向到https：
 https://www.linuxcoreaqq.com/jenkins
 
-![](/image/linuxfi/https.png)
+{% img url_for /image/linuxfi/https.png %}
 
 
 ### 过程分析
@@ -742,19 +742,19 @@ http_access deny all  #httpd 的指令的结尾最好用 deny结尾，跟 switch
 #### 配置客户机centos
 先关闭客户机；
 配置网络适配器，选择桥接模式
-![](/image/linuxfi/stu1.png)
+{% img url_for /image/linuxfi/stu1.png %}
 重启客户机，
 目前客户机是可以正常上网的，我们将其设置为不能上网；
 执行命令：
 ```s
 nmtui
 ```
-![](/image/linuxfi/stu2.png)
-![](/image/linuxfi/stu3.png)
+{% img url_for /image/linuxfi/stu2.png %}
+{% img url_for /image/linuxfi/stu3.png %}
 设置一个跟 服务器一样的段的地址，192.168.1.xxx, 这里设置为192.168.1.116
 24是子网掩码为255.255.255.0 的意思；
 网关和dns不要设置，这样客户机就不能上网，达到目的；
-![](/image/linuxfi/stu4.png)
+{% img url_for /image/linuxfi/stu4.png %}
 
 ```s
 [hz@localhost ~]$ systemctl restart network
@@ -770,11 +770,11 @@ ping: baidu.com: Name or service not known
 rtt min/avg/max/mdev = 0.654/0.679/0.712/0.024 ms
 ```
 打开客户机火狐浏览器，设置如下：
-![](/image/linuxfi/stu5.png)
-![](/image/linuxfi/stu6.png)
-![](/image/linuxfi/stu7.png)
+{% img url_for /image/linuxfi/stu5.png %}
+{% img url_for /image/linuxfi/stu6.png %}
+{% img url_for /image/linuxfi/stu7.png %}
 拒绝访问，原来是服务端没有开放3128 防火墙端口
-![](/image/linuxfi/stu8.png)
+{% img url_for /image/linuxfi/stu8.png %}
 
 
 #### 开放服务器端防火墙 3128端口
@@ -800,7 +800,7 @@ squid_port_t                   udp      3401, 4827
 ERROR
 The requested URL could not be retrieved
 ```
-![](/image/linuxfi/stu9.png)
+{% img url_for /image/linuxfi/stu9.png %}
 
 原来是服务端 设置dns服务器不够的原因，
 [设置过程参考博客](https://www.365jz.com/article/24025)
@@ -813,7 +813,7 @@ nameserver 202.106.0.20  #这是新增的 北京网通的DNS服务器地址
 ```
 再次访问百度：
 可以正常访问了
-![](/image/linuxfi/stu10.png)
+{% img url_for /image/linuxfi/stu10.png %}
 
 #### 如果还遇到问题
 据到服务器端，执行
@@ -838,7 +838,7 @@ http_access deny all
 ```
 
 因为客户机 非 192.168.1.107, 因此挂掉了。
-![](/image/linuxfi/demo1.png)
+{% img url_for /image/linuxfi/demo1.png %}
 
 
 #### 禁止访问指定关键字url
@@ -847,7 +847,7 @@ http_access deny all
 acl deny_keyword url_regex -i taobao   #url_regex 类型是url， 使用正则表达式匹配规则 -i表示忽略大小写 
 http_access deny deny_keyword
 ```
-![](/image/linuxfi/tao.png)
+{% img url_for /image/linuxfi/tao.png %}
 
 #### 禁止特定网站
 ```s

@@ -10,7 +10,7 @@ series: css
 
 ## 分辨率与像素
 这是三星 GALAXY S5 手机
-![](/image/css_mobile/mobile1.jpg)
+{% img url_for /image/css_mobile/mobile1.jpg %}
 
 ### pixels单词含义
 ```
@@ -21,12 +21,12 @@ pixels //此单词含义为：像素
 ### 物理像素 与 分辨率
 #### 物理像素
 上图中1920X1080像素，其实就是1920pxX1080px；如下图：
-![](/image/css_mobile/mobile2.jpg)
+{% img url_for /image/css_mobile/mobile2.jpg %}
 没错，这个像素就是(设备)物理像素(physical pixels)，它的单位也是px。(注意，这个px 非 css中使用的px，后面有讲解)。
 上图表面，这个手机 横向的物理像素为 1080px; 竖向的物理像素为 1920px；
 物理像素是一个虚拟的单位，与现实当中的厘米，毫米是两个东西，物理像素，能大能小，随不同设备变化。
 (设备)物理像素，1px表示如下图的一个小方块：
-![](/image/css_mobile/img.jpg)
+{% img url_for /image/css_mobile/img.jpg %}
 上图中Device pixels说的就是物理像素 (物理像素英文名肯定是physical pixels，这毫无疑问，但对是否是Device pixels还存一些考证，下面章节做了一些补充《别名 -- Device pixels》)。
 
 #### 分辨率
@@ -39,7 +39,7 @@ pixels //此单词含义为：像素
 #### 定义
 dpr (devicePixelRatio)，设备像素比。
 我们在实际开发中，会发现GALAXY S5的屏幕是 360pxX640px：
-![](/image/css_mobile/dpr.jpg)
+{% img url_for /image/css_mobile/dpr.jpg %}
 
 GALAXY S5 的横向物理像素是1080px,为什么在上图中就变成360px了呢？
 原来，手机厂商在手机出厂时，为每个手机提供了一个参数，这个参数就是dpr，通过window.devicePixelRatio获取。
@@ -80,7 +80,7 @@ The Window property devicePixelRatio returns the ratio of the resolution in phys
 一个css像素为2X2px的元素。
 dpr=1下，物理像素是 2X2px；
 dpr=2下，物理像素是 4X4px；
-![](/image/css_mobile/img.jpg)
+{% img url_for /image/css_mobile/img.jpg %}
 dpr=2下，原来的1小方块变成4个方块表示，好像是放大了四倍，其实不然，
 1个方块可以写成：1X1px;
 4个方块可以写成：2X2px；
@@ -99,7 +99,7 @@ dpr=2下，原来的1小方块变成4个方块表示，好像是放大了四倍�
 ### 多倍图响应式设计
 当dpr大于1是，容易出现图片模糊的问题，以iPhone6为例:
 iPnone6参数：
-![](/image/css_mobile/flex.jpg)
+{% img url_for /image/css_mobile/flex.jpg %}
 iPnone6 的 dpr为2，对应的屏幕的css像素尺寸为：375X667px；
 由图片可知，i6的横向物理像素为750px，此时，如果在html页面定义展示一个img{width:375px}的图片，
 i6在展示时因为会将此图片拉伸两倍，导致图片失真。解决的方法是，让UI设计一个750px的图片，避免失真，
@@ -135,7 +135,7 @@ i6在展示时因为会将此图片拉伸两倍，导致图片失真。解决的
 ### ppi
 ppi:屏幕像素密度,这个概念其实与前端开发无关，可以不用过多了解。
 只是最上面的图片中提到了GALAXY S5 的像素密度，具体公式如下，[详细了解点击这里](https://www.jianshu.com/p/c3387bcc4f6e)：
-![](/image/css_mobile/ppi.jpg)
+{% img url_for /image/css_mobile/ppi.jpg %}
 
 ### 别名
 #### 注意
@@ -251,7 +251,7 @@ Device pixels应该就是物理像素的英文名称，[根据外文W3c -- CSS U
 </html>
 ```
  GALAXY S5手机端显示如下：
-![](/image/css_mobile/view-port.jpg)
+{% img url_for /image/css_mobile/view-port.jpg %}
 
 #### 默认视口 与 qq截图工具量元素尺寸
 如上图所示， 采用默认视口显示，会将原来在大约1000px显示好的页面，缩小到GALAXY S5手机宽360px的屏幕显示，

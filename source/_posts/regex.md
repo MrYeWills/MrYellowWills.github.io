@@ -12,7 +12,7 @@ series: 前端
 
 ### regexper.com
 这是一个很好的正则网址，此网不会用，可能显得不上档次？[regexper.com](https://regexper.com/)，这个网址如果受外网限制不好访问的话，也可通过npm安装到本地访问，具体谷歌或看上面的慕课教程。
-![](/image/regex/com.jpg)
+{% img url_for /image/regex/com.jpg %}
 
 ### m 多行搜索
 #### 修饰符
@@ -24,7 +24,7 @@ m: multiple lines  多行搜索
 ```
 #### demo
 使用多行修饰符后，就可以匹配每一行的^开头字符。
-![](/image/regex/mult.jpg)
+{% img url_for /image/regex/mult.jpg %}
 
 ### 元字符
 #### \t tab
@@ -57,7 +57,7 @@ m: multiple lines  多行搜索
 
 ### 预定义类
 既然[0-9]表示范围类，正则使用预定义类来预先规定好逻辑直接表示这个范围类，下面是常见预定义类：
-![](/image/regex/before.jpg)
+{% img url_for /image/regex/before.jpg %}
 
 ### 贪婪\非贪婪模式
 #### 贪婪模式(默认)
@@ -73,13 +73,13 @@ m: multiple lines  多行搜索
 
 ### 分组与或
 #### 概述
-![](/image/regex/group2.jpg)
+{% img url_for /image/regex/group2.jpg %}
 #### 忽略分组 (?:)
-![](/image/regex/group3.jpg)
+{% img url_for /image/regex/group3.jpg %}
 更多知识参考 《关于 忽略分组 (?:)》
 
 #### 或与分组 
-![](/image/regex/group1.jpg)
+{% img url_for /image/regex/group1.jpg %}
 
 #### 或的边界值理解
 参考下面的 《|或的使用》
@@ -99,7 +99,7 @@ reg.exec(str) // ['; %24CC_test_session=AC_yyyy999', 'AC_yyyy999', index: 3, in
 
 ### 前瞻
 #### 概述
-![](/image/regex/above.jpg)
+{% img url_for /image/regex/above.jpg %}
 
 ```js
 'a2*aa'.replace(/\w(?=\d)/,'H')    //正向前瞻 "H2*aa"单词字符后面是数字的
@@ -125,7 +125,7 @@ reg.exec(str) // ['; %24CC_test_session=AC_yyyy999', 'AC_yyyy999', index: 3, in
 - multiline：多行搜索，默认值是false
 - lastIndex：当前表达式匹配内容的最后一个字符的下一个位置
 - source：正则表达式的文本字符串
-![](/image/regex/attr.jpg)
+{% img url_for /image/regex/attr.jpg %}
 
 
 ### 子表达式
@@ -181,7 +181,7 @@ reg4.exec(str) //["3cy4", "c", "y"] //index: 7
 
 ### exec
 #### 概述
-![](/image/regex/exec.jpg)
+{% img url_for /image/regex/exec.jpg %}
 在非全局匹配模式下，此函数的作用和match()函数是一样的，只能够在字符串中匹配一次，如果没有找到匹配的字符串，那么返回null，否则将返回一个数组。
 #### 子表达式
 参考《子表达式》
@@ -306,7 +306,7 @@ url.slice(url.split("/")[0].length + 1).replace(/\/|\?|\=|\*/g,"_")
 - 字母与数字 `(?![a-zA-z\d]+$)`
 等等。
 剔除到最后，就只剩下一种情况，字母、数字、特殊字符任意三种组成。
-![](/image/regex/false.png)
+{% img url_for /image/regex/false.png %}
 [](https://www.cnblogs.com/lsyy2017/p/12229940.html)
 
 

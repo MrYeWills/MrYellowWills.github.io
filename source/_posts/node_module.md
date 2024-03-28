@@ -175,7 +175,7 @@ axios.post('/foo', qs.stringify({ 'bar': 123 }));
 ### glob
 
 #### 获取目录下所有的index.js 路径
-![](/image/node_module/glob.png)
+{% img url_for /image/node_module/glob.png %}
 
 #### **/ 的妙用
 见上面

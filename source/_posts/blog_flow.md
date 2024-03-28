@@ -17,19 +17,19 @@ blog_code作为开发分支；
 settings / Developer settings / Personal access tokens 
 ```
 任意定义一个token 的名字，如果没有特殊要求，可先全部勾选所有权限：
-![](/image/blog_flow/token.jpg)
+{% img url_for /image/blog_flow/token.jpg %}
 token类似一个秘钥，授权其他的应用来操作github的权限，比如创建、切换、提交分支的权限。
 
 ## travis-cli
 ### 选择要操作的branch
 操作地址https://travis-ci.org/account/repositories，
 选择要操作的branch，点击滑动开关
-![](/image/blog_flow/branch.jpg)
+{% img url_for /image/blog_flow/branch.jpg %}
 ### 填写github token
 点击旁边的setting，设置setting，将gitbuh token填写上就行，其他默认。
-![](/image/blog_flow/setting.jpg)
+{% img url_for /image/blog_flow/setting.jpg %}
 至此，travis-cli设置完毕，在首页将看到如下：
-![](/image/blog_flow/view.jpg)
+{% img url_for /image/blog_flow/view.jpg %}
 
 ## _travis.sh
 .sh文件是linux命令文件。

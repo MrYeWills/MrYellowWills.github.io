@@ -278,7 +278,7 @@ sourceBlock(
 ```
 [更多详细 参考](https://www.cnblogs.com/qcloud1001/p/8432070.html)
 
-![](/image/webpack_one/chunk1.png)
+{% img url_for /image/webpack_one/chunk1.png %}
 
 可以把最终build出来的源码对着看。或者直接搜索 build源码中的关键字，直接定位到对于的模板或生成的地方。
 

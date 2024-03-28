@@ -85,7 +85,7 @@ host配置如下：
 什么是xhr请求，简单理解就是凡事通过ajax请求的，都是xhr请求， 比如ajax 或 fetch 或 axios请求；
 与此相对的就是 script标签 img标签内的src 都不是xhr请求；
 通过控制台，可以看请求是否为 xhr请求：
-![](/image/proxy/xhr.png)
+{% img url_for /image/proxy/xhr.png %}
 
 更多详细参考《jsonp》
 
@@ -93,26 +93,26 @@ host配置如下：
 左侧是一个域名下的请求，右侧是另外一个域名下的客户端请求；
 左侧客户端要请求右侧服务器，产生了跨域问题：
 解决的方式有下面两种，不过都是基于中间层的处理，而不用动业务代码，保证了业务代码的纯粹性，从侧面说明了中间层的重要性。
-![](/image/proxy/controler.jpg)
+{% img url_for /image/proxy/controler.jpg %}
 
 
 #### 跨域／普通 请求头区别
 以下是8081域名下，请求8080域名下的test/get1接口，是一个跨域请求，
 当浏览器发现是跨域请求时，会在请求头上标识一个origin，如下图，普通请求头是没有origin字段的：
-![](/image/proxy/origin1.jpg)
-![](/image/proxy/origin2.jpg)
+{% img url_for /image/proxy/origin1.jpg %}
+{% img url_for /image/proxy/origin2.jpg %}
 
 如果浏览器识别出是跨域请求，当接口响应时，浏览器会去读取响应头信息，看有没有跨域信息，如果没有，就报跨域异常。
 一般跨域信息有如下：
-![](/image/proxy/origin.jpg)
+{% img url_for /image/proxy/origin.jpg %}
 如果有上面这些信息，就允许跨域正常响应客户端。
 
 #### 示例
 - 下面是正常的跨域请求，并且被浏览器正常响应：
-![](/image/proxy/origin3.jpg)
+{% img url_for /image/proxy/origin3.jpg %}
 
 - 下面是正常非跨域请求，以此与上面跨域请求做对比：
-![](/image/proxy/origin4.jpg)
+{% img url_for /image/proxy/origin4.jpg %}
 
 ### 解读跨域异常信息
 #### 概述
@@ -127,7 +127,7 @@ No 'Access-Control-Allow-Origin' header is present on the requested resource.
 - blocked by CORS policy : CORS是一个W3C标准,全称是"跨域资源共享"
 - Response to preflight request doesn't pass access control check ： 预检请求(preflight request)得到的响应没有通过权限控制审核,是不是侧面证明了 跨域请求可能会发送两次，一次预检请求，一次正式请求，如下就是发送了两次：
 关于请求发几次，会单独讲解
-![](/image/proxy/origin5.jpg)
+{% img url_for /image/proxy/origin5.jpg %}
 - No 'Access-Control-Allow-Origin' header is present on the requested resource. ： 请求的资源上(服务器上)没有设置'Access-Control-Allow-Origin'响应头， 侧面说明服务器上设置 'Access-Control-Allow-Origin'来解除跨域。
 
 有上面解读知道跨域至少具备以下几个特征：
@@ -139,7 +139,7 @@ No 'Access-Control-Allow-Origin' header is present on the requested resource.
 #### 预检请求(preflight request)
 跨域请求可能会发两次
 可能会发一次预检请求，一次正式请求
-![](/image/proxy/origin5.jpg)
+{% img url_for /image/proxy/origin5.jpg %}
 #### 请求可能会发两次
 如上。是否会发两次，下面单独说明。
 #### CORS就是跨域的代名词
@@ -220,7 +220,7 @@ res.addHeader("Access-Control-Allow-Origin", "http://localhost:8081");
 res.addHeader("Access-Control-Allow-Methods", "GET");
 ```
 控制台显示如下：
-![](/image/proxy/origin.jpg)
+{% img url_for /image/proxy/origin.jpg %}
 
 上面是针对一个域名下的请求，允许跨域，如果要针对所有域名，可设置为如下：
 ```js
@@ -303,7 +303,7 @@ js代码的内容是函数调用的形式，它的函数名是callback的值，�
 ### jquery ajax 的jsonp 原理
 #### 概述
 jquery的ajax方法支持jsonp，其jquery底层原理是 创建一个script标签，然后在url上加上callback关键字。
-![](/image/proxy/cache.jpg)
+{% img url_for /image/proxy/cache.jpg %}
 #### ajax jsonp调用
 ```js
 var result;
@@ -366,18 +366,18 @@ getDataCallbackFn({"result":0,"data":{name:123},"msg":"\u6210\u529f"}）
 #### 用jq ajax 的jsonp请求与普通请求不同
 - 请求type不同
   普通请求是xhr，jsonp 是script请求；
-![](/image/proxy/jsonp.jpg)
+{% img url_for /image/proxy/jsonp.jpg %}
 
 - 返回的content-type不一样
 普通请求是json或其他；jsonp 是 js。如上图
 
 - url上会多callback
 如上图，服务端返回时，是用callback入参名作为函数返回js，如下图：
-![](/image/proxy/jsonp2.jpg)
+{% img url_for /image/proxy/jsonp2.jpg %}
 
 #### 彩蛋：jq的jsonp避免缓存做法
 用jq 的ajax jsonp，默认url还会有一个随机数，这是为了避免请求被缓存，可不用。
-![](/image/proxy/cache.jpg)
+{% img url_for /image/proxy/cache.jpg %}
 可以设置需要缓存，如下，再次jsonp请求时，就不会有随机数了：
 ```js
 var result;
@@ -401,7 +401,7 @@ $.ajax({
 一些http的知识，暂时统计在这里
 #### Access-Control-Allow-Headers
 说明请求需要询问服务器后台是否允许这个content-type头;
-![](/image/proxy/http.jpg)
+{% img url_for /image/proxy/http.jpg %}
 
 
 

@@ -93,7 +93,7 @@ Reflect.has
 Reflect.deleteProperty
 ```
 ### proxy
-![](/image/bk/proxy.jpg)
+{% img url_for /image/bk/proxy.jpg %}
 
 ### 深拷贝
 改进前：

@@ -378,4 +378,4 @@ export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
 ## 调试经验
 
 ### 如何找到react元素的类型
-![](/image/type-react/debug.png)
+{% img url_for /image/type-react/debug.png %}

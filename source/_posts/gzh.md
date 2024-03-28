@@ -22,12 +22,12 @@ pc端和后台管理可以合二为一，因此要做的就是一个小程序和
 除了购物车功能，后续这个产品还可以叠加进来其他功能，比如好物记录、好菜记录(厨师成长记)等
 
 ### 原型
-![](/image/gzh/h5-1.jpg)
-![](/image/gzh/h5-2.jpg)
-![](/image/gzh/wx-login.jpg)
-![](/image/gzh/wx-user.jpg)
-![](/image/gzh/pc-reg.jpg)
-![](/image/gzh/pc.jpg)
+{% img url_for /image/gzh/h5-1.jpg %}
+{% img url_for /image/gzh/h5-2.jpg %}
+{% img url_for /image/gzh/wx-login.jpg %}
+{% img url_for /image/gzh/wx-user.jpg %}
+{% img url_for /image/gzh/pc-reg.jpg %}
+{% img url_for /image/gzh/pc.jpg %}
 
 
 ## 架构设计
@@ -135,8 +135,8 @@ pc端还有一个权限、菜单功能
 先做比较简单的增删改查的购物功能。
 购物功能有列表、详情、新增、修改、删除接口：
 
-![](/image/gzh/h5-1.jpg)
-![](/image/gzh/h5-2.jpg)
+{% img url_for /image/gzh/h5-1.jpg %}
+{% img url_for /image/gzh/h5-2.jpg %}
 
 - 以用户的维度，进行新增存储：
 ```js
@@ -270,8 +270,8 @@ router.post('/list', (req, res) => {
 这块因为涉及到小程序，所以复杂了点。
 先搞定pc端的用户需求，
 
-![](/image/gzh/pc-reg.jpg)
-![](/image/gzh/pc-login.jpg)
+{% img url_for /image/gzh/pc-reg.jpg %}
+{% img url_for /image/gzh/pc-login.jpg %}
 
 用户注册、登录、详情接口，其他修改密码等接口放到以后去做。
 
@@ -362,8 +362,8 @@ router.post("/login", (req, res) => {
 
 ### 用户功能小程序接口开发
 
-![](/image/gzh/wx-user.jpg)
-![](/image/gzh/wx-login.jpg)
+{% img url_for /image/gzh/wx-user.jpg %}
+{% img url_for /image/gzh/wx-login.jpg %}
 
 #### 如何跟pc端账号打通
 这里涉及到小程序账号如何跟pc端账号打通的问题，
@@ -521,22 +521,22 @@ router.get("/getOpenid", (req, res) => {
 ### h5端 
 采用vue2+nuxt+ssr，[项目地址](https://gitee.com/mayising/klm-h5)。
 
-![](/image/gzh/h5-1.jpg)
-![](/image/gzh/h5-2.jpg)
+{% img url_for /image/gzh/h5-1.jpg %}
+{% img url_for /image/gzh/h5-2.jpg %}
 
 ### 微信小程序
 采用uni-app + uview-ui，[项目地址](https://gitee.com/mayising/klm-weapp)。
 如果小程序使用uni-app，建议h5端使用vue，因为一旦uniapp需要重写h5页面的时候，直接挪过来很快就能修改好，因为二者都是vue语法。
 
-![](/image/gzh/wx-login.jpg)
-![](/image/gzh/wx-user.jpg)
+{% img url_for /image/gzh/wx-login.jpg %}
+{% img url_for /image/gzh/wx-user.jpg %}
 
 
 ### 后台pc端
 这部分简单，继续用网上找的项目，[项目地址](https://gitee.com/mayising/xnbz-web)
 
-![](/image/gzh/pc-reg.jpg)
-![](/image/gzh/pc.jpg)
+{% img url_for /image/gzh/pc-reg.jpg %}
+{% img url_for /image/gzh/pc.jpg %}
 
 ### 网站静态主页
 这部分简单，继续用网上找的项目，[项目地址](https://gitee.com/mayising/xnzb-page)
@@ -694,7 +694,7 @@ h5项目采用pm2部署
 ### 后台pc端
 后台是vue项目
 
-![](/image/gzh/pc.jpg)
+{% img url_for /image/gzh/pc.jpg %}
 
 #### nginx
 ```conf

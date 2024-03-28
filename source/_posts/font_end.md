@@ -15,7 +15,7 @@ categories:
 上面是根据页面如何利用缓存的态度来分的。
 强缓存是指，只要浏览器有这个缓存，页面就直接拿来用，也不去问这个缓存是否最新或改变；
 协商缓存是指，页面在用浏览器缓存时，会根据这个缓存的状态，决定是否使用这个缓存。
-![](/image/font_end/cache.jpg)
+{% img url_for /image/font_end/cache.jpg %}
 #### 强缓存
 解释如上
 #### 协商缓存
@@ -24,7 +24,7 @@ categories:
 - 强缓存返回状态码是200，但不往服务器发请求；
 - 协商缓存返回状态码是304，会给服务器发请求；
 - 二者的区别也在这个图片上，协商缓存会有 last-modified，if-modified-since 等，强缓存则没有，可依此来判断是否强或协商。
-![](/image/font_end/cache.jpg)
+{% img url_for /image/font_end/cache.jpg %}
 
 ### 安全类
 #### CSRF 跨站请求伪造
@@ -34,7 +34,7 @@ CSRF中文称之为 跨站请求伪造。
 之后，用户再登陆网站B，B站引诱用户访问A网站，
 由于这个访问接口与之前的cookie同域名，因此再次访问A网站时浏览器自动带上cookie，
 从而访问成功，导致非法转账或者用户数据盗取等等。
-![](/image/font_end/csrf.jpg)
+{% img url_for /image/font_end/csrf.jpg %}
 
 - 防御
  - Token 验证：浏览器不会自动给接口带上token，因此后台如果做token验证，是可以避免csrf的。
@@ -78,11 +78,11 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
         <input type="submit" >
     </form>
 ```
-![](/image/http_again/form1.jpg)
+{% img url_for /image/http_again/form1.jpg %}
 点击浏览器未解码传参前：
-![](/image/http_again/form2.jpg)
+{% img url_for /image/http_again/form2.jpg %}
 点击浏览器解码后的传参view source：
-![](/image/http_again/form3.jpg)
+{% img url_for /image/http_again/form3.jpg %}
 
 - post请求
 改为post请求：
@@ -94,9 +94,9 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
     </form>
 ```
 点击浏览器未解码传参前：
-![](/image/http_again/form-1-post.jpg)
+{% img url_for /image/http_again/form-1-post.jpg %}
 点击浏览器解码后的传参view source：
-![](/image/http_again/form-1-post1.jpg)
+{% img url_for /image/http_again/form-1-post1.jpg %}
 
 上面发现一个现象，当变成post请求时，变成了Form Data；
 原来当get请求时，是Query string parameters
@@ -113,9 +113,9 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
     </form>
 ```
 点击浏览器未解码传参前：
-![](/image/http_again/form-text1.jpg)
+{% img url_for /image/http_again/form-text1.jpg %}
 点击浏览器解码后的传参view source：
-![](/image/http_again/form-text2.jpg)
+{% img url_for /image/http_again/form-text2.jpg %}
 
 - post请求
 改为post请求：
@@ -127,7 +127,7 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
     </form>
 ```
 浏览器貌似不作任何解析：
-![](/image/http_again/form-text3.jpg)
+{% img url_for /image/http_again/form-text3.jpg %}
 
 ### multipart/form-data (原生)
 用form自带原生请求讲解：
@@ -142,9 +142,9 @@ text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控
     </form>
 ```
 点击浏览器未解码传参前：
-![](/image/http_again/form-mul1.jpg)
+{% img url_for /image/http_again/form-mul1.jpg %}
 点击浏览器解码后的传参view source：
-![](/image/http_again/form-mul2.jpg)
+{% img url_for /image/http_again/form-mul2.jpg %}
 
 ```
 boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW
@@ -164,7 +164,7 @@ boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW
     </form>
 ```
 浏览器貌似不作任何解析，目前原因位置，原生form发送的，如果带file一律不解析，因此我们用fetch来做：
-![](/image/http_again/form-mul3.jpg)
+{% img url_for /image/http_again/form-mul3.jpg %}
 
 
 ### multipart/form-data (fetch)
@@ -190,9 +190,9 @@ boundary=----WebKitFormBoundaryeRRkatgcCfoB2RDW
     </script>
 ```
 点击浏览器未解码传参前：
-![](/image/http_again/form-mul4.jpg)
+{% img url_for /image/http_again/form-mul4.jpg %}
 点击浏览器解码后的传参view source：
-![](/image/http_again/form-mul5.jpg)
+{% img url_for /image/http_again/form-mul5.jpg %}
 
 ### 文件上传
 
@@ -439,7 +439,7 @@ jsonp的原理是利用script异步加载实现。
 ```
 
 #### postMessage
-![](/image/font_end/f-postm.jpg)
+{% img url_for /image/font_end/f-postm.jpg %}
 #### Hash
 ```
 //利用hash，场景是当前页面A通过iframe嵌入来跨域的页面B
@@ -453,11 +453,11 @@ window.onhashchange = function(){
 }
 ```
 #### websocket
-![](/image/font_end/f-webs.jpg)
+{% img url_for /image/font_end/f-webs.jpg %}
 #### CORS
 cors通信必须配合fetch使用。
 cors是变种的ajax，浏览器识别到是cors时，自定增加origin参数到请求头中，达到可跨域请求
- ![](/image/font_end/f-cors.jpg)
+ {% img url_for /image/font_end/f-cors.jpg %}
 
 
 ## 页面优化
@@ -472,8 +472,8 @@ cache-control\last-modified\if-Modified-Since\etag\if-None-Match
 动态脚本加载(用js创建script标签)，defer，async。
 #### defer
 defer是在html解析完后才执行，如果是多个，按顺序依次执行；
-![](/image/font_end/async.jpg)
-![](/image/font_end/async-result.jpg)
+{% img url_for /image/font_end/async.jpg %}
+{% img url_for /image/font_end/async-result.jpg %}
 #### async
 async使用方法与defer相同。
 async是在html解析完后才执行，如果是多个，则同时执行多个文件；
@@ -501,9 +501,9 @@ hybrid的js页面的ajax需要调去原生提供的请求API，才能向后端�
 ## 算法
 ### 需要了解的算法：
 还有兴趣的话，也学习下 冒泡排序：
-![](/image/font_end/f-calc1.jpg)
-![](/image/font_end/f-calc2.jpg)
-![](/image/font_end/f-calc3.jpg)
+{% img url_for /image/font_end/f-calc1.jpg %}
+{% img url_for /image/font_end/f-calc2.jpg %}
+{% img url_for /image/font_end/f-calc3.jpg %}
 ## FAQ
 ### 获取并使用字体图标
 [可以通过阿里的开源字体库](https://www.iconfont.cn/)使用

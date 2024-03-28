@@ -10,7 +10,7 @@ series: 计算机基础
 ## 基础知识
 ### 高低电平
 计算机的存储和速度都是基于这个来表示的。
-![](/image/bw/1.png)
+{% img url_for /image/bw/1.png %}
 
 ### 计算机容量单位
 在物理层面，使用高低电平记录信息，1表示高电平，0表示低；如上面的《高低电平》
@@ -18,14 +18,14 @@ series: 计算机基础
 0/1称为bit（比特位）
 因为bit太小了，因此发展出来更大的单位
 字节 1byte=8bits
-![](/image/bw/2.png)
+{% img url_for /image/bw/2.png %}
 
 ### 网络速度
-![](/image/bw/3.png)
+{% img url_for /image/bw/3.png %}
 
 ### cpu的速度
 2G赫兹，表示cpu每秒钟高低电平的频次。
-![](/image/bw/4.png)
+{% img url_for /image/bw/4.png %}
 
 ### 字符与编码集
 #### ASC||码
@@ -36,13 +36,13 @@ series: 计算机基础
 所以7个bits就可以完全表示 ASC||码码
 
 
-![](/image/bw/5.png)
+{% img url_for /image/bw/5.png %}
 
 
 #### 扩展的ASC||码
 由于 数学符号等等需要表示，对ASC||码进行扩展，从原来7bits变成8bits表示，
 这样就从原来的2^7 变成2^8=256个可表示的字符了。
-![](/image/bw/6.png)
+{% img url_for /image/bw/6.png %}
 
 #### 中文编码集
 第一个是GB2312
@@ -59,8 +59,8 @@ UTF-8的编码中一个中文字符或符号，是用三个字节表示的，以
 ## 组成篇
 
 ### 计算机结构
-![](/image/bw/7.png)
-![](/image/bw/8.png)
+{% img url_for /image/bw/7.png %}
+{% img url_for /image/bw/8.png %}
 
 ### 计算机存储器分类
 下图中，从上往下分别为：
@@ -68,10 +68,10 @@ cpu的寄存器以及高速缓存
 计算机的内存
 外部存储设备 如磁盘 u盘 移动硬盘，
 速度从上往下由高到低。  
-![](/image/bw/9.png)
+{% img url_for /image/bw/9.png %}
 
 ### 存储器之间的通讯：
-![](/image/bw/10.png)
+{% img url_for /image/bw/10.png %}
 
 当前使用的数据存储在主存上，不使用的数据放在辅存里面。
 辅存是为了解决主存容量的不足。
@@ -81,7 +81,7 @@ cpu的寄存器以及高速缓存
 RAM通过电容存储数据，必须隔一段时间刷新一次
 如果断电，那么一段时间后将丢失所有数据
 
-![](/image/bw/11.png)
+{% img url_for /image/bw/11.png %}
 
 ### 操作系统位数与内存容量的关系
 按照地址总线的位数，操作系统分为32和64位系统，
@@ -99,7 +99,7 @@ RAM通过电容存储数据，必须隔一段时间刷新一次
 一个字块假设有B个字
 主存共M个字块
 如下图：
-![](/image/bw/12.png)
+{% img url_for /image/bw/12.png %}
 主存的总容量就是 B*M*32
 >主存 其实就是内存
 
@@ -116,9 +116,9 @@ RAM通过电容存储数据，必须隔一段时间刷新一次
 [可参考 10分钟看懂CPU构造原理](https://baijiahao.baidu.com/s?id=1666360319131085422&wfr=spider&for=pc)
 
 ### 控制器
-![](/image/bw/13.png)
+{% img url_for /image/bw/13.png %}
 ### 运算器
-![](/image/bw/14.png)
+{% img url_for /image/bw/14.png %}
 
 
 ## 计算机网络
@@ -129,26 +129,26 @@ https://www.infrapedia.com
 ### OSI七层模型与tcp/ip四层模型
 由于设计和推广的问题，OSI七层模型 并没有被广泛运用，
 反而是 tcp/ip四层模型 用的比较广泛。
-![](/image/bw/15.png)
+{% img url_for /image/bw/15.png %}
 二者之间的关系
-![](/image/bw/16.png)
+{% img url_for /image/bw/16.png %}
 
 ### 从一个计算机发出信息 到达另外一个计算机的过程
-![](/image/bw/17.png)
+{% img url_for /image/bw/17.png %}
 
 ### 网络拓扑
 家庭
-![](/image/bw/18.png)
+{% img url_for /image/bw/18.png %}
 企业
-![](/image/bw/19.png)
+{% img url_for /image/bw/19.png %}
 
 ### 两种请求模式
 - 普通的客户端发起请求到服务器
-![](/image/bw/20.png)
+{% img url_for /image/bw/20.png %}
 - 对等连接模式p2p
 比如迅雷下载等，每一个客户端安装迅雷，进行下载后，这个客户端也就变成了一个服务器端，
 当另外一个客户端发起迅雷下载请求时，就从你的客户端中获取你之前下载的迅雷资源。
-![](/image/bw/21.png)
+{% img url_for /image/bw/21.png %}
 
 
 ### MAC地址
@@ -227,8 +227,8 @@ Windows IP 配置
 ### 局域网内设备数据传输：以太网与mac地址
 局域网内的电脑A如何发送数据给同在局域网内的B电脑，
 其实路由器就是通过mac地址进行查找
-![](/image/bw/22.png)
-![](/image/bw/23.png)
+{% img url_for /image/bw/22.png %}
+{% img url_for /image/bw/23.png %}
 
 
 ### 报文为何要被一层层封装
@@ -241,11 +241,11 @@ Windows IP 配置
 例如数据链链路层，会为 ip数据报文 的头尾加上 帧首部、尾部，
 帧的首部、尾部 标记了接收端的地址信息，
 路由器通过解析 帧首尾部信息，将报文数据发送给对应的接收端：
-![](/image/bw/24.png)
-![](/image/bw/26.png)
+{% img url_for /image/bw/24.png %}
+{% img url_for /image/bw/26.png %}
 
 #### 关于数据链路层重要作用之一：封装成帧
-![](/image/bw/25.png)
+{% img url_for /image/bw/25.png %}
 
 ## 网络层
 
@@ -259,7 +259,7 @@ Windows IP 配置
 但数据链路层却无法将数据 传输到 局域网之外的设备。
 如何解决这个问题呢，
 因此就有了网络层。
-![](/image/bw/27.png)
+{% img url_for /image/bw/27.png %}
 
 ### IP协议
 #### 虚拟互连网络
@@ -267,12 +267,12 @@ Windows IP 配置
 - 物理设备通过使用ip协议，屏蔽了物理网络之间的差异
 - 当网络中的主机使用ip协议连接时，则无需关注网络细节
 如下实际上的A与B电脑之间传输的网络是非常复杂的：
-![](/image/bw/28.png)
+{% img url_for /image/bw/28.png %}
 可是由于网络层各方的硬件设备等都遵守了ip协议，
 因此我们不用去关心A和B之间复杂的网络传输拓扑，
 只需要关注ip协议本身即可，
 我们不用关心以上复杂的网络传输拓扑，我们将它简化为一个虚拟的互连网络即可：
-![](/image/bw/29.png)
+{% img url_for /image/bw/29.png %}
 
 
 于是ip协议有以下特性：
@@ -298,36 +298,36 @@ Windows IP 配置
 #### 一个五层一个三层
 首先需要了解下，路由器只有三层；
 OSI是七层模型，但计算机实际上 只有5层；
-![](/image/bw/30.png)
+{% img url_for /image/bw/30.png %}
 
 #### 逐跳
 网络层其实就是ip协议传输过程：
 
 ip协议的转发流程 有一个特点，就是逐跳(hop-by-hop):
 下面A到B的过程，就是从中间每个设备之间进行逐个转发，最终传输到B，这就是逐跳：
-![](/image/bw/31.png)
+{% img url_for /image/bw/31.png %}
 
 
 #### mac地址表
 在上面两个相邻设备之间传输的过程，知道在数据链路层有一个mac地址表，
 设备之间通过mac地址表进行寻址传输：
-![](/image/bw/32.png)
+{% img url_for /image/bw/32.png %}
 
 #### 路由表
 网络层传输是通过路由表进行寻址传输的：
-![](/image/bw/33.png)
+{% img url_for /image/bw/33.png %}
 
 计算机或路由器都拥有路由表。
 
 #### 单从网络层角度看传输过程
-![](/image/bw/35.png)
-![](/image/bw/34.png)
+{% img url_for /image/bw/35.png %}
+{% img url_for /image/bw/34.png %}
 
 #### 从数据链路层、网络层角度看传输过程
-![](/image/bw/36.png)
-![](/image/bw/37.png)
-![](/image/bw/38.png)
-![](/image/bw/39.png)
+{% img url_for /image/bw/36.png %}
+{% img url_for /image/bw/37.png %}
+{% img url_for /image/bw/38.png %}
+{% img url_for /image/bw/39.png %}
 
 #### mac地址与ip联系与区别
 在以上过程中：
@@ -342,28 +342,28 @@ mac地址与ip地址还有一个不同：
 
 ### ip地址
 #### ip地址的2进制表示：
-![](/image/bw/40.png)
-![](/image/bw/41.png)
+{% img url_for /image/bw/40.png %}
+{% img url_for /image/bw/41.png %}
 #### 子网(网络号)与主机号
 子网也称为网络号
-![](/image/bw/42.png)
+{% img url_for /image/bw/42.png %}
 #### 特殊的主机号
-![](/image/bw/43.png)
+{% img url_for /image/bw/43.png %}
 #### 特殊网络号
-![](/image/bw/44.png)
+{% img url_for /image/bw/44.png %}
 
 如此可以看到， 开头为0、127、128.0、192.0.0 都有特殊用途；
 或者后三位全为 0.0.0 或 255.255.255 也都是特殊ip；
 
 #### 本地回环地址：
- ![](/image/bw/47.png)
+ {% img url_for /image/bw/47.png %}
 
 #### 除去上述特殊ip后，实际的数量：
- ![](/image/bw/45.png)
+ {% img url_for /image/bw/45.png %}
 
 #### 特殊用途的D、E类地址
 D E 类地址有特殊用途
- ![](/image/bw/46.png)
+ {% img url_for /image/bw/46.png %}
 
 ### 子网
 #### 为什么要有子网
@@ -382,32 +382,32 @@ D E 类地址有特殊用途
 那么此时每个子网对应的主机号就只有254/2 = 127个，
 一百个人的公司按 子网去申请，就有127个ip，ip就没有浪费多少了。
 
- ![](/image/bw/52.png)
- ![](/image/bw/48.png)
+ {% img url_for /image/bw/52.png %}
+ {% img url_for /image/bw/48.png %}
 #### 子网掩码
 有了子网后，我们需要通过ip确定该ip的子网号，
 如何判断呢，
 这个时候就有了子网掩码的产生，
 我们可以通过 ip和子网掩码的 二进制ip，进行与的运算，可以得到 改ip号的对应子网号。
- ![](/image/bw/49.png)
- ![](/image/bw/50.png)
- ![](/image/bw/51.png)
+ {% img url_for /image/bw/49.png %}
+ {% img url_for /image/bw/50.png %}
+ {% img url_for /image/bw/51.png %}
 #### 无分类编址CIDR
 无分类编址CIDR 是相对 子网掩码更加灵活的一个子网划分方式，其中的子网、超网就是它的概念，
 目前运用广泛的也是 CIDR 这种。
 
 
 ### 网络地址转换NAT技术
- ![](/image/bw/53.png)
- ![](/image/bw/54.png)
- ![](/image/bw/55.png)
+ {% img url_for /image/bw/53.png %}
+ {% img url_for /image/bw/54.png %}
+ {% img url_for /image/bw/55.png %}
 
 网络地址转换NAT技术 用于多个主机通过一个公有ip访问互联网的私有网络中。
 NAT减缓了ip地址的消耗，但增加了网络通信的复杂度
 
 ### ICMP协议
 ICMP协议是配合IP协议一起工作的，会对IP报文进行组装
- ![](/image/bw/56.png)
+ {% img url_for /image/bw/56.png %}
 
 
 #### ping 与 ICMP协议
@@ -421,7 +421,7 @@ ping 远端地址，比如百度，检查是否能上网；
 #### Traceroute 与 ICMP协议
 Traceroute应用运用的就是ICMP协议,检查到达目的ip地址，经过了哪几跳。可查看本文的《逐跳》
 或者说是探测ip数据报在网络中走过的路径。
- ![](/image/bw/57.png)
+ {% img url_for /image/bw/57.png %}
 
 Traceroute的工作原理，
 Traceroute 为了探测ip路径。
@@ -433,22 +433,22 @@ TTL变成0后，中型网络 n1 就会向源机器A发出一个 ICMP 终点不�
 如此往复
 当到达机器B时，机器B将发送一个回应的报文，说明你发的数据我收到了。
 此时 Traceroute 就知道了整个ip路径。
-![](/image/bw/58.png)
+{% img url_for /image/bw/58.png %}
 
 ```s
 tracert github.com
 ```
-![](/image/bw/59.png)
+{% img url_for /image/bw/59.png %}
 
 ### RIP协议
-![](/image/bw/60.png)
-![](/image/bw/61.png)
-![](/image/bw/62.png)
+{% img url_for /image/bw/60.png %}
+{% img url_for /image/bw/61.png %}
+{% img url_for /image/bw/62.png %}
 
 ### OSPF协议
-![](/image/bw/63.png)
+{% img url_for /image/bw/63.png %}
 
 ### 外部网关路由协议之BGP协议
 解决两个内部网络使用不同协议，比如一个用RIP协议，一个用OSPF协议
-![](/image/bw/64.png)
-![](/image/bw/65.png)
+{% img url_for /image/bw/64.png %}
+{% img url_for /image/bw/65.png %}

@@ -426,9 +426,9 @@ base64压缩图片为一串DataURL的好处在于减少html页面的http请求�
 
 ### proxy
 #### 介绍
-![](/image/webpack/proxy1.jpg)
-![](/image/webpack/proxy2.jpg)
-![](/image/webpack/proxy3.jpg)
+{% img url_for /image/webpack/proxy1.jpg %}
+{% img url_for /image/webpack/proxy2.jpg %}
+{% img url_for /image/webpack/proxy3.jpg %}
 #### changeOrigin与其他注意
 代理有三种情况：
 localhost
@@ -487,7 +487,7 @@ https的其他主机名
   ]
 ```
 配置好后，执行npm start ，会自动在浏览器打开分析页面：
-![](/image/webpack/analyzer.png)
+{% img url_for /image/webpack/analyzer.png %}
 由图看出，loadsh.js的体积最大，经过分析，可以将loadsh.js做成外部依赖，从而减少打包后js的体积。
 
 ### 分离 库与业务代码
@@ -561,7 +561,7 @@ https的其他主机名
   },
 ```
 上面配置有些问题，打包后，会生成三个js：
-![](/image/webpack/verder2.png)
+{% img url_for /image/webpack/verder2.png %}
 所以修改以上配置，将cacheGroups.commons.name与cacheGroups.commons.test统一定义成entry中的lodashAndAxios这样生成的文件就正常了：
 ```
 <!-- 正确配置方法 -->
@@ -583,7 +583,7 @@ https的其他主机名
   },
 ```
 打包结果为：
-![](/image/webpack/verder2.png)
+{% img url_for /image/webpack/verder2.png %}
 #### 直接用test匹配方法
 上面的方法也可以写成如下，效果一样：
 ```
@@ -773,7 +773,7 @@ module.exports = merge(common, devConfig);
 #### 忽略监控文件范围设置；
 #### proxy的代理重写pathRewrite；
 #### publicPath的黑知识；
-![](/image/webpack/publicPath.jpg)
+{% img url_for /image/webpack/publicPath.jpg %}
 publicPath 的优先级高于 contentBase。contentBase 用于配置提供额外静态文件内容的目录，之前提到的 publicPath 是配置构建好的结果以什么样的路径去访问，而 contentBase 是配置额外的静态文件内容的访问路径，即那些不经过 webpack 构建，但是需要在 webpack-dev-server 中提供访问的静态资源（如部分图片等）
 你不懂contentBase publicPath为什么，没关系，先这样用着。
 更多配置说明可参考掘金小册的第六章节。
@@ -816,7 +816,7 @@ devServer: {
 
 ### 服务器默认读取index.html
 入口HTML若不是index.html则需补全：
-![](/image/webpack/index.jpg)
+{% img url_for /image/webpack/index.jpg %}
 
 ### resolve之默认扩展文件名
 ```
@@ -1014,7 +1014,7 @@ entry: {
   }
 ```
 打包后生成：
-![](/image/webpack/chunkfilename1.png)
+{% img url_for /image/webpack/chunkfilename1.png %}
 因为splitChunks.cacheGroups.commons没有定义name，所以输出文件，默认加 commons~....js;
 
 2.与1其他配置不变，加上name，再打包：
@@ -1031,7 +1031,7 @@ entry: {
   }
 ```
 打包后生成，我们发现，这个分离出来的代码块，用的是output.filename的配置：
-![](/image/webpack/chunkfilename2.png)
+{% img url_for /image/webpack/chunkfilename2.png %}
 
 3.与2其他配置不变，加上chunkfilename，再打包：
 ```
@@ -1041,7 +1041,7 @@ output: {
   },
 ```
 打包后生成，我们发现，这个分离出来的代码块，用的是output.chunkFilename的配置：
-![](/image/webpack/chunkfilename3.png)
+{% img url_for /image/webpack/chunkfilename3.png %}
 
 这单独分离的代码，在entry中没有入口，只通过splitChunks.cacheGroups.test进行匹配，所以chunkFilename 是用来配置没有入口的名称的，
 如果不配置chunkFilename，将会根据filename输出。不配置splitChunks.cacheGroups.name，会给输出文件名默认加commons~
@@ -1175,22 +1175,22 @@ new HtmlWebpackPlugin({
 
 ### 模板index.html的ejs写法与html-webpack-plugin配合
 模板文件index.html可以写ejs，ejs语法允许写js，然后每行用<%= %>包起来即可:
-![](/image/webpack/tpl1.png)
-![](/image/webpack/tpl2.png)
-![](/image/webpack/tpl3.png)
-![](/image/webpack/tpl4.png)
-![](/image/webpack/tpl5.png)
+{% img url_for /image/webpack/tpl1.png %}
+{% img url_for /image/webpack/tpl2.png %}
+{% img url_for /image/webpack/tpl3.png %}
+{% img url_for /image/webpack/tpl4.png %}
+{% img url_for /image/webpack/tpl5.png %}
 
 注意：1.当有需求把一个js放在html 的header上，一个在body上时，可以定义模板script引用，此时必须设置inject为fasle，表示不适用插件默认嵌入。
 2.上面ejs模板上一定要写成htmlWebpackPlugin，否则undefined，目前不知道为什么写成HtmlWebpackPlugin就可以关联到插件html-webpack-plugin
 
 ### 多页面html的配置打包
 要生成多个html，就需要在webpack.config.js中多配置几次new  html-webpack-plugin
-![](/image/webpack/mutilPage1.png)
-![](/image/webpack/mutilPage2.png)
-![](/image/webpack/mutilPage3.png)
-![](/image/webpack/mutilPage4.png)
-![](/image/webpack/mutilPage5.png)
+{% img url_for /image/webpack/mutilPage1.png %}
+{% img url_for /image/webpack/mutilPage2.png %}
+{% img url_for /image/webpack/mutilPage3.png %}
+{% img url_for /image/webpack/mutilPage4.png %}
+{% img url_for /image/webpack/mutilPage5.png %}
 
 ### autoprefixer 配置 (postcss-loader)
 ```
@@ -1220,7 +1220,7 @@ browsers: ['last 5 versions'] //兼容所有浏览器最新的五个版本
  </div>
 ```
 这是ejs模板文件：
-![](/image/webpack/htmltpl.png)
+{% img url_for /image/webpack/htmltpl.png %}
 不过在项目中，所以类型的，对图片的引用，使用绝对路径都没问题，只有使用相对路径才会有以上问题。
 不过在css中，引用图片，使用相对路径和绝对路径都没问题。
 

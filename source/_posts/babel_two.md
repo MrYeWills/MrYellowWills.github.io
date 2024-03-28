@@ -105,8 +105,8 @@ function transformImportLess2Css() {
 
 有一个最简单的方法知道 什么关键字对应ast哪些方法，可通过网站：
 
-![](/image/babel/vi1.jpg)
-![](/image/babel/vi2.jpg)
+{% img url_for /image/babel/vi1.jpg %}
+{% img url_for /image/babel/vi2.jpg %}
 
 上述相关插件demo，可以[去这里 -- babel-webpack](https://github.com/YeWills/babel-plugin-exercize/tree/babel-webpack/exercize-parameters-insert)，通过关键字查询
 关于上述插件demo更多说明 [参考](https://juejin.cn/book/6946117847848321055/section/6945997926376144899)

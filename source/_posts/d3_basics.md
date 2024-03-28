@@ -29,7 +29,7 @@ series: d3
                 .attr('fill', 'blue')
 ```
 效果：
-![](/image/d3/circle1.jpg)
+{% img url_for /image/d3/circle1.jpg %}
 
 ### 多个使用
 ```
@@ -50,7 +50,7 @@ series: d3
                 .attr('fill', 'orange')
 ```
 效果如下：
-![](/image/d3/circle4.jpg)
+{% img url_for /image/d3/circle4.jpg %}
 
 ### 小结
 由上可知append其实就是用来添加实际效果的。
@@ -65,7 +65,7 @@ series: d3
             .attr('r', 25)
 ```
 效果：
-![](/image/d3/circle2.jpg)
+{% img url_for /image/d3/circle2.jpg %}
 
 ### 示例二
 #### 在基本代码上增加如下代码
@@ -82,7 +82,7 @@ series: d3
                 .attr('fill', 'green')
 ```
 效果如下：
-![](/image/d3/circle3.jpg)
+{% img url_for /image/d3/circle3.jpg %}
 
 #### 增加selectAll后：
 ```
@@ -93,7 +93,7 @@ series: d3
                 .attr('fill', 'yellowgreen')
 ```
 效果如下：
-![](/image/d3/circle5.jpg)
+{% img url_for /image/d3/circle5.jpg %}
 
 ### 小结
 上面的例子都是单独使用selectAll，没有使用data()，此时selectAll选中所有的匹配，进行update，此时selectAll就是一个选择器，对selectAll进行链式操作，可将所有被命中的改写（可称之为update）
@@ -121,7 +121,7 @@ svg.selectAll('circle')
                 .attr('fill', 'yellowgreen')
 ```
 效果如下：
-![](/image/d3/circle5.jpg)
+{% img url_for /image/d3/circle5.jpg %}
 
 ### 修改data数组 length=1
 修改以上代码中的
@@ -129,7 +129,7 @@ svg.selectAll('circle')
 var data = [10];
 ```
 效果如下：
-![](/image/d3/circle8.jpg)
+{% img url_for /image/d3/circle8.jpg %}
 
 ### 修改data数组 length=0
 修改以上代码中的
@@ -137,7 +137,7 @@ var data = [10];
 var data = [];
 ```
 效果如下：
-![](/image/d3/circle3.jpg)
+{% img url_for /image/d3/circle3.jpg %}
 
 ### selectAll 与 data 的关系
 由上可知，selectAll 是一次性命中了所有，如果要对这所有对命中进行过滤等操作，就使用data();
@@ -187,7 +187,7 @@ svg.selectAll('circle')
             .attr('r', 25)
 ```
 效果：
-![](/image/d3/circle3.jpg)
+{% img url_for /image/d3/circle3.jpg %}
 
 ### 比较好的exitdemo
 - [demo 1](https://github.com/YeWills/nodemon-server-template/blob/d3-demo/pages/wangjingzhi/fifth.html)，此demo是一个简单散点图，其中的去掉图中散点功能非常棒。
@@ -216,7 +216,7 @@ svg.selectAll('circle')
                .attr('fill', 'orange')
 ```
 效果如下：
-![](/image/d3/circle4.jpg)
+{% img url_for /image/d3/circle4.jpg %}
 
 ### 使用exit
 在上面代码上加入以下代码
@@ -234,11 +234,11 @@ svg.selectAll('circle')
               .attr('fill', 'yellowgreen')
 ```
 效果如下：
-![](/image/d3/circle7.jpg)
+{% img url_for /image/d3/circle7.jpg %}
 
 ### exit不与append一起使用
 使用《使用exit》代码中，注释的部分解注，效果将是：
-![](/image/d3/circle4.jpg)
+{% img url_for /image/d3/circle4.jpg %}
 此时exit没有任何作用。
 
 ### exit将会改变已存在的
@@ -273,7 +273,7 @@ svg.selectAll('circle')
                 .attr('fill', 'blue')
 ```
 效果如下：
-![](/image/d3/circle9.jpg)
+{% img url_for /image/d3/circle9.jpg %}
 
 ### 示例二
 ```
@@ -290,7 +290,7 @@ d3.selectAll('p')
   .text(t=>t)
 ```
 效果如下：
-![](/image/d3/update.jpg)
+{% img url_for /image/d3/update.jpg %}
 ### update = p.data(arr)
 比如示例二可写成：
 ```

@@ -443,7 +443,7 @@ npx webpack --profile  --json > stats.json
 - 如果说某个模块里有动态引入语句import语句，就会由import单独生成一个新的代码块，这个代码块里放置这个动态引入的模块以及这个动态引入的模块依赖的模块。
 - splitchunks，实现同步的代码分割。把多个代码里共同的模块提供成一个单独的代码块。还可以把某些模块，比如说node_modules里的模块单独提出来成立一个代码块。
 
-![](/image/webpack_one/chunk.jpg)
+{% img url_for /image/webpack_one/chunk.jpg %}
 
 [这个视频讲的更清楚-《任务14：14.如何调试和阅读webpack源码》-在最后几分钟内有讲到](https://www.bilibili.com/video/BV1N5411j74S?p=14)
 [这个视频讲的更清楚-《任务15：15.webpack自定义loader》-在开始的几分钟内有讲到](https://www.bilibili.com/video/BV1N5411j74S?p=15)
@@ -452,16 +452,16 @@ npx webpack --profile  --json > stats.json
 
 ### 流程一
 
-![](/image/webpack_one/m1.jpg)
-![](/image/webpack_one/m2.jpg)
-![](/image/webpack_one/m3.png)
-![](/image/webpack_one/m4.jpg)
+{% img url_for /image/webpack_one/m1.jpg %}
+{% img url_for /image/webpack_one/m2.jpg %}
+{% img url_for /image/webpack_one/m3.png %}
+{% img url_for /image/webpack_one/m4.jpg %}
 
 ### 流程二
 
 下图也是 [webpack的一段主流程图](https://lxzjj.github.io/2017/11/02/%E7%8E%A9%E8%BD%ACwebpack%EF%BC%88%E4%B8%80%EF%BC%89/)，版本为 webpack 3.6.0
 
-![](/image/webpack_one/main1.svg)
+{% img url_for /image/webpack_one/main1.svg %}
 
 - 图中虚线表示存在循环流程
 - 上面展示的只是 webpack 构建的一部分，比如与 Module 相关的对象只画出了 NormalModuleFactory，与 Template 相关的对象也只画出了 MainTemplate等。原因在于上面的流程图已经足以说明主要的构建步骤，另外有没画出来的对象和任务点跟上述的类似，比如 ContextModuleFactory 跟 NormalModuleFactory 是十分相似的对象，也有相似的任务点。有兴趣的同学可以自行拓展探索流程图。

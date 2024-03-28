@@ -12,11 +12,11 @@ series: js
 [查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/clock.html)
 [查看demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/clock.html)
 
-![](/image/js_demo/clock.jpg)
+{% img url_for /image/js_demo/clock.jpg %}
 ### 将元素按圆弧排放的两种方法
 #### css方法 --表盘刻度
 将元素旋转后，自身坐标系改变，再对所有元素等距离等方向位移即可。
-![](/image/js_demo/clock_css.jpg)
+{% img url_for /image/js_demo/clock_css.jpg %}
 #### 计算坐标点方法  --表盘数字
 见上面《css方法》图
 ### 度与弧度制转换
@@ -36,11 +36,11 @@ series: js
 [查看demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/switch-plugin/demo.html)
 [查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/switch-plugin/demo.html)
 [demo讲解视频](https://www.imooc.com/learn/374)
-![](/image/js_demo/switch.jpg)
+{% img url_for /image/js_demo/switch.jpg %}
 ### 轮播切换设计方案
 #### 三层div设计
 如下图,代码如下，说明的是，设置overflow: hidden;起到裁剪的作用，设置外层（container）是为了在文档流中预定位置。
-![](/image/js_demo/switch_idea.jpg)
+{% img url_for /image/js_demo/switch_idea.jpg %}
 ```html
 <div id="container" data-PageSwitch>
 		<div class="sections">
@@ -133,14 +133,14 @@ offsetTop是非常棒的方法，使用方法自行网上查询。虽然上面�
 [查看demo 效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/nonDelay/index.html)
 
 [demo讲解视频](https://www.imooc.com/video/14717)
-![](/image/js_demo/delay.jpg)
+{% img url_for /image/js_demo/delay.jpg %}
 
 #### 一级菜单与二级菜单
 如上图，左侧菜单称之为一级，右侧内容显示称之为二级菜单。
 ### 需求分析
 #### 垂直运动不延时
 在一级菜单如下图做垂直运动时不延时，当测斜运动并处于三角区内时，做延时显示右侧面板，以达到选择好一级后，光标移到右侧二级时，二级不消失。
-![](/image/js_demo/delay_idea.jpg)
+{% img url_for /image/js_demo/delay_idea.jpg %}
 #### 三角区内移到二级时做延时
 分析如上《垂直运动不延时》
 ### 判断三角区内的方案
@@ -157,7 +157,7 @@ offsetTop是非常棒的方法，使用方法自行网上查询。虽然上面�
 - 二维向量叉乘公式：
 a(x1,y1)*b(x2,y2)=x1*y2-x2*y1
 - 用叉乘法判断点在三角形内
-![](/image/js_demo/delay_ang.jpg)
+{% img url_for /image/js_demo/delay_ang.jpg %}
 代码如下：
 ```js
 //判断 a b 是否全部为负数 或 正数；
@@ -207,7 +207,7 @@ isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)
 #### demo与效果
 [查看demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/animation-master/html/rabbit.html)
 [demo地址](https://github.com/YeWills/canvas-demo/tree/master/pages/multy/css-animation/animation-master/html/rabbit.html)
-![](/image/js_demo/rabbit.jpg)
+{% img url_for /image/js_demo/rabbit.jpg %}
 
 #### step是针对keyframes内定义的每个百分比的
 下面有方式一和方式二，效果是一样的，
@@ -403,7 +403,7 @@ $loading.addEventListener('animationiteration',intertation)
 ```
 ### css与html设计
 
-![](/image/js_demo/list.png)
+{% img url_for /image/js_demo/list.png %}
 
 ```html
   <div class="list-view">
@@ -463,7 +463,7 @@ $loading.addEventListener('animationiteration',intertation)
 用于计算整个列表高度。
 
 #### 如何保证滚动条正常高度
-![](/image/js_demo/scroll.png)
+{% img url_for /image/js_demo/scroll.png %}
 解决之道在于要设计一个div框拥有实际列表总长，隐藏这个div，但又让此div撑开父层，因此设计z-index  -1 。
 
 #### 要设计一个div框拥有实际列表总长
@@ -691,7 +691,7 @@ var images = [{
 具体做法是在这三个地方添加一个看不见的拖动用的dom，给这三个dom绑定mouse事件，
 在mouseMove中对矩形框持续设置宽高样式，
 同时通过css设置三个位置Dom跟随。
-![](/image/js_demo/resizable.jpg)
+{% img url_for /image/js_demo/resizable.jpg %}
 具体步骤如下：
 #### 设置左、下、左下侧 拖动dom
 ```
@@ -761,14 +761,14 @@ if(scrollHeight+screenHeight>sideHeight){
 ### 拖动导航条实时显示对应内容
 #### 概述
 如下，当touchstart 按住左侧导航条，往下拖动时，让左侧显示对应内容。
-![](/image/js_demo/touch.png)
+{% img url_for /image/js_demo/touch.png %}
 #### 实现方案
 左侧内容区是一个组件，导航条是一个组件。
 在导航条上监听三个事件 touchstart 等，三个事件，
-![](/image/js_demo/touch1.png)
+{% img url_for /image/js_demo/touch1.png %}
 通过touchmove计算鼠标当前位置坐标，已知导航条顶部A字母所在位置的坐标，已知每个字母高度，鼠标位置坐标减去导航条顶部坐标，就可计算鼠标当前位于哪个字母上面，
 然后通过touchmove实时将对应的字母传给左侧内容组件，
-![](/image/js_demo/touch2.png)
+{% img url_for /image/js_demo/touch2.png %}
 内容组件使用一个scoll插件，此插件可设置滚动到指定的位置，或滚动到指定的元素element上。
 因此要实现上面的功能，需要以下元素：
 - 获取对应字母的计算方案
@@ -785,7 +785,7 @@ touchstart 与touchend的作用就是设置一个touchStatus，标识按住开�
 [demo](https://github.com/YeWills/canvas-demo/blob/master/pages/multy/css-animation/location/location.html)
 [demo效果](https://yewills.github.io/canvas-demo/pages/multy/css-animation/location/location.html)
 
-![](/image/js_demo/location.jpg)
+{% img url_for /image/js_demo/location.jpg %}
 
 #### html的锚点做业内跳转
 如下，更多参考网上。
@@ -813,5 +813,5 @@ touchstart 与touchend的作用就是设置一个touchStatus，标识按住开�
 				padding: 0 0 3px 0;
 			}
 ```
-![](/image/js_demo/sprite.jpg)
+{% img url_for /image/js_demo/sprite.jpg %}
 

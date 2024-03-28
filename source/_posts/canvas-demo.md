@@ -114,14 +114,14 @@ function moveStroke(point){
  context.lineCap = "round"
  context.lineJoin = "round"
 ```
-![](/image/canvas/canvas_demo/font.jpg)
+{% img url_for /image/canvas/canvas_demo/font.jpg %}
 为什么会这样？我们画的线其实是有很多段矩形拼接而成，如此啊，在拼接处就会有缝隙，此时可以使用线段的帽子lineCap，再加一个lineJoin，双保险，平滑过渡：
-![](/image/canvas/canvas_demo/line.jpg)
+{% img url_for /image/canvas/canvas_demo/line.jpg %}
 
 ## 图像处理-缩放图片
 ### 放大或缩小的显示
 放大的时候，我们希望图像显示的中心点与原来图片中心点是重合的，为了保证中心点不动，就必须找准截取图片的坐标点，计算方法如下：
-![](/image/canvas/canvas_demo/scale.jpg)
+{% img url_for /image/canvas/canvas_demo/scale.jpg %}
 #### 思路一(常规思路：误区)
 常规的思想是从原来图片选择一个点，然后截取一个区域，放到画布上，进行显示，如下，下面的计算方式无法达到自动缩放要求。
 这种思路也可以达到缩放，但是需要大量的计算，非常麻烦。
@@ -175,7 +175,7 @@ slider.onmousemove = function(){
 #### 介绍
 定义一个水印的canvas，display 设置为不可见，让后将此canvas作为 drawImage 的第一个参数，绘制到画布当中。
 因为水印的canvas本身不被显示，而只将其投影显示到画布当中，因此称之为离屏canvas。
-![](/image/canvas/canvas_demo/go_canvas.jpg)
+{% img url_for /image/canvas/canvas_demo/go_canvas.jpg %}
 
 ```html
 <!-- 原来的canvas将会被cody到上一个图片画布中作为水印展示，不需要展示原来的canvas，因此隐藏原有的canvas -->
@@ -219,7 +219,7 @@ slider.onmousemove = function(){
 原屏绘制好后就不动它了，
 每次放大镜时，都使用clip剪切区显示离屏投射。
 可以参考上面代码。
-![](/image/canvas/canvas_demo/big.jpg)
+{% img url_for /image/canvas/canvas_demo/big.jpg %}
 
 #### 代码 和 demo地址
 [demo地址](http://127.0.0.1:3000/canvas-image/04-image-magnifier/index.html)
@@ -290,13 +290,13 @@ slider.onmousemove = function(){
 ```
 context.drawImage( offCanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr )
 ```
-![](/image/canvas/canvas_demo/go_canvas1.jpg)
+{% img url_for /image/canvas/canvas_demo/go_canvas1.jpg %}
 #### 计算原屏信息
 这里需要计算离屏canvas的这些信息（dx , dy , 2*mr , 2*mr），原理见下图：
 ```
 context.drawImage( offCanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr )
 ```
-![](/image/canvas/canvas_demo/go_canvas2.jpg)
+{% img url_for /image/canvas/canvas_demo/go_canvas2.jpg %}
 #### 使用剪切 clip 来做放大镜
 见上面代码。
 #### 为什么clip不隐藏原屏图片

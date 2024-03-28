@@ -79,7 +79,7 @@ node-sass ./src/styles/index.scss ./dist/index.css
 这一点，在react官网有提及。
 有两种解决方式：
 - 临时方式， 在vikingship库开发目录下， npm link 某项目下的react：
-![](/image/npm/link.png)
+{% img url_for /image/npm/link.png %}
 - 终极方式(推荐)：使用 peerDependencies
 
 ```js
@@ -169,7 +169,7 @@ prepublishOnly 只会在 npm run publish 时才运行；
 #### peerDependencies 与 devDependencies
 peerDependencies 是npm的配置，
 peerDependencies 告诉npm，被定义在这里的包，将不会被下载，直接使用现有的 node_module 下载好的，如果 node_module 中版本低于配置的，就给与warning提醒：
-![](/image/npm/warn.png)
+{% img url_for /image/npm/warn.png %}
 
 peerDependencies 通常用于 发布以后，被项目使用的时候，项目中使用的react版本 与 库中使用的 react版本不一致导致的问题。
 
@@ -271,9 +271,9 @@ deploy: #这是发布到github page 上的固定配置
 
 #### 设置github_token
 
-![](/image/npm/token0.jpg)
-![](/image/npm/token1.png)
-![](/image/npm/token2.png)
+{% img url_for /image/npm/token0.jpg %}
+{% img url_for /image/npm/token1.png %}
+{% img url_for /image/npm/token2.png %}
 ```yml
 deploy: 
   github_token: $github_token 此名字要与 travis中自己设置的github_token名字一样

@@ -246,7 +246,7 @@ hooks的重要意义一方面是增加了方便性，比如可以替代原来高
 
 就好像es6没有出现前，一个变量可能被层层污染，不知道哪里被重新设置了，
 es6的出现很好解决了这点。
-![](/image/react/hooks-read.png)
+{% img url_for /image/react/hooks-read.png %}
 [参考](https://blog.csdn.net/weixin_43606158/article/details/106715134)
 
 ### 功能是一方面，可读易维护也是重要方面

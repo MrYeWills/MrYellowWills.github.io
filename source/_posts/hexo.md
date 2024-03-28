@@ -179,8 +179,8 @@ categories:
 ```
 会定义成二级 categories
 效果如下：
-![](/image/img/cat.jpg)
-![](/image/img/cat1.jpg)
+{% img url_for /image/img/cat.jpg %}
+{% img url_for /image/img/cat1.jpg %}
 
 
 ## 附录

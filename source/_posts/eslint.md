@@ -227,7 +227,7 @@ extends: ['prettier']
 ## eslint插件与vscode
 ### 使用eslint插件
 下图的灯泡和错误红线高亮提示，都是vscode的eslint插件作用的效果。
-![](/image/eslint/vs.png)
+{% img url_for /image/eslint/vs.png %}
 
 eslint插件安装只是前提条件，
 还要求项目中的eslint的是生效的，因此需要项目配置好eslint的相关npm包，以及正确的eslint配置，
@@ -235,13 +235,13 @@ eslint插件安装只是前提条件，
 
 ### vscode的三种setting.json
 下面是打开 vscode的三种setting.json的方式, 充分认识这三种json的作用和区别是vscode使用者的必备技能，可网上查阅相关知识。
-![](/image/eslint/set1.png)
+{% img url_for /image/eslint/set1.png %}
 点击后，跳出下面的输入框，输入 setting.json 打开三种setting.json。
 分别为 用户目录下、项目目录下、defaultsetting，作用范围分别为 电脑用户下所有的项目、工程目录下、默认setting
-![](/image/eslint/set2.png)
-![](/image/eslint/set3.png)
-![](/image/eslint/set4.png)
-![](/image/eslint/set5.png)
+{% img url_for /image/eslint/set2.png %}
+{% img url_for /image/eslint/set3.png %}
+{% img url_for /image/eslint/set4.png %}
+{% img url_for /image/eslint/set5.png %}
 
 ### 设置vscode保存后自动修复
 设置工程目录下的setting.json如下,保存后，vscode会修复所有lint相关的报错，包括eslint、stylelint。
@@ -259,20 +259,20 @@ eslint插件安装只是前提条件，
 ### 提供的命令
 
 #### 以eslint.createConfig为例
-![](/image/eslint/ext2.png)
+{% img url_for /image/eslint/ext2.png %}
 vscode 快捷键 ctrl+shift+p 打开vscode的命令工具，也可通过下面方式打开：
-![](/image/eslint/ext6.png)
+{% img url_for /image/eslint/ext6.png %}
 输入 eslint.createConfig 就会出现下面：
-![](/image/eslint/ext3.png)
-![](/image/eslint/ext4.png)
-![](/image/eslint/ext5.png)
+{% img url_for /image/eslint/ext3.png %}
+{% img url_for /image/eslint/ext4.png %}
+{% img url_for /image/eslint/ext5.png %}
 
 ### 依赖 eslint 包
-![](/image/eslint/ext5.png)
+{% img url_for /image/eslint/ext5.png %}
 
 ### 注意点
 #### editor.formatOnSave 与 editor.codeActionsOnSave
-![](/image/eslint/vs-e1.png)
+{% img url_for /image/eslint/vs-e1.png %}
 若使用editor.codeActionsOnSave，请关闭 editor.formatOnSave 。
 ```
 The old eslint.autoFixOnSave setting is now deprecated and can safely be removed. Please also note that if you use ESLint as your default formatter you should turn off editor.formatOnSave when you have turned on editor.codeActionsOnSave. Otherwise you file gets fixed twice which in unnecessary.
@@ -282,12 +282,12 @@ The old eslint.autoFixOnSave setting is now deprecated and can safely be removed
 参考上面说明。
 
 #### 不需要的旧配置eslint.validate
-![](/image/eslint/vs-e2.png)
+{% img url_for /image/eslint/vs-e2.png %}
 
 #### eslint.autoFixOnSave 与 editor.codeActionsOnSave
 弃用的eslint.autoFixOnSave,请使用editor.codeActionsOnSave替代，
 下面也展示了 eslint插件保存自动修复的几种配置方式：
-![](/image/eslint/vs-e3.png)
+{% img url_for /image/eslint/vs-e3.png %}
 
 ## vscode eslint插件运行机制
 
@@ -589,29 +589,29 @@ https://code.visualstudio.com/docs/editor/debugging
 ## 彩蛋
 
 ### 找@babel/eslint-parser github仓库的方法
-![](/image/eslint/p1.png)
-![](/image/eslint/p2.png)
-![](/image/eslint/p3.png)
+{% img url_for /image/eslint/p1.png %}
+{% img url_for /image/eslint/p2.png %}
+{% img url_for /image/eslint/p3.png %}
 地址如下：
 https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser
 
 ### 找@babel/core github仓库的方法
 方法与之前一样，差异部分如下：
-![](/image/eslint/b1.png)
-![](/image/eslint/b2.png)
+{% img url_for /image/eslint/b1.png %}
+{% img url_for /image/eslint/b2.png %}
 
 
 
 ### 找eslint-config-airbnb-base github仓库的方法
 #### 步骤
-![](/image/eslint/a1.png)
-![](/image/eslint/a2.png)
-![](/image/eslint/a3.png)
+{% img url_for /image/eslint/a1.png %}
+{% img url_for /image/eslint/a2.png %}
+{% img url_for /image/eslint/a3.png %}
 
 #### 秘密都在package.json中
 为什么是在根目录的packages下，可以从package.json看出，
 所以面对一个github仓库管理多个npm包源码时，要多看package.json：
-![](/image/eslint/a4.png)
+{% img url_for /image/eslint/a4.png %}
 
 ### 查看eslint-plugin-import所有的rules
 直接去[eslint-plugin-import官网](https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules)查看，查询其他eslint包的rules，可以此类推

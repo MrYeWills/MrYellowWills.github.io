@@ -159,15 +159,15 @@ db.tanks.find()
 [参考1](https://www.cnblogs.com/chris-oil/p/9142795.html)
 [参考2](http://www.runoob.com/mongodb/mongodb-databases-documents-collections.html)
 #### mongodb 与 传统数据库 概念对比
-![](/image/mongodb/db.jpg)
+{% img url_for /image/mongodb/db.jpg %}
 
 #### mongodb 、mongoose 与 传统数据库 概念对比
 结合 《经典创建数据库、添加表格和数据 demo》一起看
-![](/image/mongodb/mongoose.jpg)
+{% img url_for /image/mongodb/mongoose.jpg %}
 
 #### mongoose核心概念 与 数据库知识 对应关系
 结合 《经典创建数据库、添加表格和数据 demo》一起看
-![](/image/mongodb/index.jpg)
+{% img url_for /image/mongodb/index.jpg %}
 
 #### 小结
 - mongodb中说的集合，其实就是tables，通过model生成；

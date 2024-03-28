@@ -101,8 +101,8 @@ app.use(async (ctx, next)=>{
 app.listen(3000)
 ```
 页面响应：
-![](/image/koa2/content-type.png)
-![](/image/koa2/content-res.png)
+{% img url_for /image/koa2/content-type.png %}
+{% img url_for /image/koa2/content-res.png %}
 
 后续操作：
 - 当切换设置不同的ctx.response.type='text';对应的Response Header 的 Content-type随之改变
@@ -179,7 +179,7 @@ app.use(async (ctx, next)=>{
 app.listen(3000)
 ```
 页面响应：
-![](/image/koa2/status.png)
+{% img url_for /image/koa2/status.png %}
 
 #### 注意点：
 koa-bodyparser的底层也是使用ctx.req.on实现的，所以不能同时使用 koa-bodyparser与ctx.req.on，否则，可能报错，
@@ -201,7 +201,7 @@ app.listen(3000)
 #### 中间件执行顺序
 中间件在 koa中执行顺序，遵循洋葱模型方式：
 ```
-![](/image/koa2/middle.jpg)
+{% img url_for /image/koa2/middle.jpg %}
 ```
 代码展示：
 ```
@@ -623,7 +623,7 @@ koa-static是静态资源请求中间件，这里写了一个[简单的demo](htt
 app.use(serve(handlePath('../pages/static')))
 ```
 通过图片可以看出项目静态文件目录结构
-![](/image/koa2/static.jpg)
+{% img url_for /image/koa2/static.jpg %}
 
 配置上面这句代码后，你讲可以在浏览器上运行可现实文件内容：
 ```

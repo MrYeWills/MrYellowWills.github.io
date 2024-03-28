@@ -7,7 +7,7 @@ categories:
 series: d3
 ---
 ## d3图形图解
-![](/image/d3/all/images.jpg)
+{% img url_for /image/d3/all/images.jpg %}
 
 ## 树图
 ### 树图布局API
@@ -49,7 +49,7 @@ series: d3
 #### 概述
 上面《树图》介绍的，在这个demo上都有体现。
 效果：
-![](/image/d3/layout/tree1.jpg)
+{% img url_for /image/d3/layout/tree1.jpg %}
 
 ```
  var nodes = tree.nodes(root),

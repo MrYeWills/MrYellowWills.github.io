@@ -46,7 +46,7 @@ macOS 默认已经安装了ssh客户端；
 
 ssh默认的端口是22,下面是putty安装：
 推出连接：exit
-![](/image/linux/put.png)
+{% img url_for /image/linux/put.png %}
 
 centos和macOS中连接是一样的：
 ```s
@@ -57,7 +57,7 @@ ssh root@172.20.10.2
 ```s
 systemctl status sshd
 ```
-![](/image/linux/run.png)
+{% img url_for /image/linux/run.png %}
 
 
 #### 配置SSH
@@ -90,8 +90,8 @@ root用户的家目录下，如果没有.ssh目录
 ssh localhost
 ```
 
-![](/image/linux/host.png)
-![](/image/linux/host1.png)
+{% img url_for /image/linux/host.png %}
+{% img url_for /image/linux/host1.png %}
 
 
 #### 客户端配置登录
@@ -201,7 +201,7 @@ vim 的多种模式 ： 交互模式(默认模式，也叫正常模式)、插入
 输入命令后，回车将执行此命令，执行命令后，将回到交互模式；
 当然了，如果直接按esc键也可以回到交互模式；
 
-![](/image/linuxm/vim.png)
+{% img url_for /image/linuxm/vim.png %}
 
 
 #### 可视模式：
@@ -221,7 +221,7 @@ ctrl + v 块可视模式；
 配合 d 和 I 可实现很方便操作：
 d键 用于删除选中的内容；
 I键 用于插入内容： 进入块可视模式，光标选中相应字符，按I进入insert模式，输入插入的字符，按esc，就会在选中的字符前都插入对应字符非常好用。
-![](/image/linuxm/vim1.png)
+{% img url_for /image/linuxm/vim1.png %}
 
 
 ### vim 基本操作（移动，写入，保存，等等）
@@ -286,7 +286,7 @@ Ctrl + r 重做
 几乎所有unix发展而来的系统都是基于sh开发出来的shell。
 
 shell 有以下几个分类：
-![](/image/linuxm/shell0.png)
+{% img url_for /image/linuxm/shell0.png %}
 
 ### 关于bash：
 其中bash是非常有名的shell，
@@ -305,7 +305,7 @@ shell是管理命令行的程序；
 定义别名
 
 如下图，shell好比用户和内核沟通的一个桥梁：
-![](/image/linuxm/shell1.png)
+{% img url_for /image/linuxm/shell1.png %}
 
 ### 切换shell
 为了切换shell，需要用到以下命令 chsh ，change shell 的缩写；
@@ -536,7 +536,7 @@ echo "c =  $c"
 c =  11
 ```
 #### shell支持的运算符：
-![](/image/linuxm/calc.png)
+{% img url_for /image/linuxm/calc.png %}
 
 
 ### 环境变量
@@ -545,7 +545,7 @@ shell中，每个脚本内的变量 不能被 其他脚本使用；
 不过shell中的环境变量可以被此种shell的任意脚本程序使用
 我们有时也把环境变量称之为 全局变量
 可以用env命令来显示你目前所有的环境变量
-![](/image/linuxm/env.png)
+{% img url_for /image/linuxm/env.png %}
 其中重要的变量有：
 - SHELL
 - PATH : PATH是一系列路径的集合，
@@ -577,7 +577,7 @@ fi
 ./test.sh 参数1 参数2 ...
 这些个参数1 参数2 ... 被称之为 "参数变量"
 
-![](/image/linuxm/var.png)
+{% img url_for /image/linuxm/var.png %}
 ```S
 [hz@localhost ~]$ cat test.sh
 #!/bin/bash
@@ -613,10 +613,10 @@ value0 value1 value2 value5
 
 #### if
 如下中括号两侧都要有空格：
-![](/image/linuxm/if.png)
+{% img url_for /image/linuxm/if.png %}
 上面图片中， fi是if的反转写法，表示 if语句结束。
 另外一种写法，中括号右侧加分号：
-![](/image/linuxm/if1.png)
+{% img url_for /image/linuxm/if1.png %}
 
 #### 等于号
 在shell中，特别是在if条件内，判断是否相等用一个等于号，当然你用两个等于号也是可以的，如下：
@@ -639,31 +639,31 @@ you diffrent name
 
 #### elif 否则 如果
 elif 是 else if 的缩写。
-![](/image/linuxm/if2.png)
+{% img url_for /image/linuxm/if2.png %}
 
 
 ### 不同的测试类型
-![](/image/linuxm/test.png)
+{% img url_for /image/linuxm/test.png %}
 
 #### 字符串判断
 在shell中，所有的变量都是字符串：
-![](/image/linuxm/test1.png)
+{% img url_for /image/linuxm/test1.png %}
 
 
 #### 数字判断
 尽管shell把所有变量都看成字符串，但我们还是可以做数字的条件测试：
 
-![](/image/linuxm/num.png)
+{% img url_for /image/linuxm/num.png %}
 
 #### 文件判断
 相比主流变成语言，
 shell的一大优势就是可以非常方便地测试文件：
-![](/image/linuxm/file.png)
-![](/image/linuxm/file1.png)
+{% img url_for /image/linuxm/file.png %}
+{% img url_for /image/linuxm/file1.png %}
 
 ### && 且的应用
 类似的还有 或|| 的应用：
-![](/image/linuxm/sum.png)
+{% img url_for /image/linuxm/sum.png %}
 
 ### case的应用
 #### 简单使用
@@ -715,9 +715,9 @@ sorry,i do not know you
 ### shell循环语句
 
 #### while
-![](/image/linuxm/while1.png)
-![](/image/linuxm/while2.png)
-![](/image/linuxm/while3.png)
+{% img url_for /image/linuxm/while1.png %}
+{% img url_for /image/linuxm/while2.png %}
+{% img url_for /image/linuxm/while3.png %}
 
 ```s
 [hz@localhost ~]$ vim test.sh
@@ -789,8 +789,8 @@ done
 ### 函数
 
 #### 两种定义方式
-![](/image/linuxm/fun.png)
-![](/image/linuxm/fun1.png)
+{% img url_for /image/linuxm/fun.png %}
+{% img url_for /image/linuxm/fun1.png %}
 ```s
 [hz@localhost ~]$ cat test.sh
 #!/bin/bash
@@ -840,8 +840,8 @@ the files bb.txt has 8 lines.
 #### 变量作用范围
 默认来说，一个变量是全局的，
 要定义一个局部变量， 需要用local关键字
-![](/image/linuxm/fun2.png)
-![](/image/linuxm/fun3.png)
+{% img url_for /image/linuxm/fun2.png %}
+{% img url_for /image/linuxm/fun3.png %}
 
 #### 重载命令
 我们可以用函数来实现命令的重载；

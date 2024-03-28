@@ -33,7 +33,7 @@ series: 基建
 - 1.项目页面中，每次与后端，都是通过上面的cookie，提取登录信息，
 组装出后端需要的请求入参；
 要非常注意的是：后端此时只校验 接口入参，并不校验或读取cookie，你是否登录，完全取决于你的接口入参，这一点可以在低代码平台的预览页面得到验证:
-![](/image/infra/cookie.jpg)
+{% img url_for /image/infra/cookie.jpg %}
 
 - 2.不过，前端与后端接口通讯的过程中；
 后端会经常校验你的包含session的入参，
@@ -321,7 +321,7 @@ iframe 支持；
 ```js
  const { path, name,  children,  relation } = item;
 ```
-![](/image/infra/tab.png)
+{% img url_for /image/infra/tab.png %}
 
 
 tab 数据包含：

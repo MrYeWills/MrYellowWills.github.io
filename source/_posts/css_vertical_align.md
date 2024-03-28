@@ -13,9 +13,9 @@ series: css
 #### 描述
 如图两个定义为inline-block的div一模一样，就是一个多了555：
 没有555时，两个div还是一起的：
-![](/image/css/question1.png)
+{% img url_for /image/css/question1.png %}
 加了555，两个div不一起了：
-![](/image/css/question2.png)
+{% img url_for /image/css/question2.png %}
 源码如下：
 ```
 <head>
@@ -56,7 +56,7 @@ a2所在的父元素，它的基线由父元素内的inline-block元素确定，
 
 ##### 为什么之后不对齐
 在a2中加555之后，它的基线(baseline)就是a2行内块中的555这串文字决定的，它的基线就是下图黄色矩形框的下黄色边框；
-![](/image/css/vertical-align/vertical1.png)
+{% img url_for /image/css/vertical-align/vertical1.png %}
 ，因为a1、a2默认的垂直对齐方式都是 vertical-align:baseline，而父基线由a1决定，就是a1的下边框；所以a2需要下降，让它的的基线与父基线位置一致。
 
 ### 如何对齐
@@ -78,10 +78,10 @@ a2也将自己的中部与父基线对齐，所以就对齐了。
   <div class="a2 qq">555</div>
 ```
 这时候，他们又对齐了：
-![](/image/css/vertical-align/vertical2.jpg)
+{% img url_for /image/css/vertical-align/vertical2.jpg %}
 
 这是因为他们的父baseline就是下图所示黄色矩形框的下边框，父级baseline其实就是a1和a2的baseline；
-![](/image/css/vertical-align/vertical3.jpg)
+{% img url_for /image/css/vertical-align/vertical3.jpg %}
 
 
 在本例的修改基础上，现在我们又将a1定义为vertical-align:middle,其他保持不变
@@ -92,7 +92,7 @@ a2也将自己的中部与父基线对齐，所以就对齐了。
 }
 ```
 效果变成如下：
-![](/image/css/vertical-align/vertical4.jpg)
+{% img url_for /image/css/vertical-align/vertical4.jpg %}
 
 vertical-align: middle 意思是：使元素的中部与父元素的基线加上父元素x-height的一半对齐。
 
@@ -128,7 +128,7 @@ div{
 </div>
 ```
 效果如下：
-![](/image/css/vertical-align/vae1.jpg)
+{% img url_for /image/css/vertical-align/vae1.jpg %}
 
 继续修改，其他不变，在a1中加555字符
 ```
@@ -136,7 +136,7 @@ div{
   <div class="a1 qq">555</div>
 ```
 效果如下：
-![](/image/css/vertical-align/ver2.jpg)
+{% img url_for /image/css/vertical-align/ver2.jpg %}
 
 
 继续修改，其他不变，修改如下
@@ -147,7 +147,7 @@ div{
 }
 ```
 效果如下：
-![](/image/css/vertical-align/ver3.jpg)
+{% img url_for /image/css/vertical-align/ver3.jpg %}
 
 ### 另外一个例子
 ```
@@ -167,7 +167,7 @@ div{
                 <div class="item"></div>
             </div>
 ```
-![](/image/css/vertical-align/more1.jpg)
+{% img url_for /image/css/vertical-align/more1.jpg %}
 
 现在修改如下：
 ```
@@ -177,7 +177,7 @@ div{
 }
 ```
 效果如下：
-![](/image/css/vertical-align/more2.jpg)
+{% img url_for /image/css/vertical-align/more2.jpg %}
 
 为什么呢，原因是，item改为vertical-align: middle时，直接将父baseline改到自身的中部位置了，
 这个例子说明，**父级内的空的inline-block元素，可以通过vertical-align: middle将父baseline改到自身的中部位置。**
@@ -201,7 +201,7 @@ div{
         <img src="./git3.png" />
     </div>
 ```
-![](/image/css/vertical-align/verialign-1.jpg)
+{% img url_for /image/css/vertical-align/verialign-1.jpg %}
 
 消除间隙的方法是，给img 一个vertical-align：middle或者其他值都可以。
 
@@ -280,7 +280,7 @@ vertical-align:middle
 ### 彩蛋
 #### 为什么有间隙
 在文首的提问中，为什么这里有缝隙呢，[原来这个默认vertical-align:baseline，而baseline的下方会给字母的一部分留出空间，因此会产生一个空隙，要产生理想的效果](https://www.cnblogs.com/starof/p/4512284.html?utm_source=tuicool&utm_medium=referral),链接上文章上说它与vertical-align有关（顺便说下，此链接上的文章有些例子有问题，注意了），至于为什么或者到底是否与vertical-align有关就不要穷究了，可能是vertical-align造成就行。
-![](/image/css/question1.png)
+{% img url_for /image/css/question1.png %}
 
 #### 利用伪类垂直居中
 ```
@@ -315,7 +315,7 @@ vertical-align:middle
 
 ```
 效果：
-![](/image/css/vertical-align/after1.jpg)
+{% img url_for /image/css/vertical-align/after1.jpg %}
 
 你看到就算你把item1和item2都做了vertical-align: middle;
 都无法让元素相对于整个wrap元素垂直居中，
@@ -335,7 +335,7 @@ vertical-align:middle
 ```
 其实这样的after伪类有些人也称为幽灵元素。
 效果：
-![](/image/css/vertical-align/after2.jpg)
+{% img url_for /image/css/vertical-align/after2.jpg %}
 
 ### 关于vertical-align你要知道的
 vertical-align 就是用来让行内元素对齐的；vertical-align这个属性就是为了行内元素而生，如果没有行内元素，vertical-align就没有任何存在的意义；
@@ -353,9 +353,9 @@ x-height；
 注意font-size 与 行盒子的关系；
 半铅空(《精通css 高级web标准解决方案》有讲到)，以下也有讲解；
 直接上图理解吧，以下三张都是行盒子介绍图：
-![](/image/css/vertical-align/column.png)
-![](/image/css/vertical-align/x-height.png)
-![](/image/css/vertical-align/inline-box.jpg)
+{% img url_for /image/css/vertical-align/column.png %}
+{% img url_for /image/css/vertical-align/x-height.png %}
+{% img url_for /image/css/vertical-align/inline-box.jpg %}
 ### 行盒子 与 行内盒子
 span、strong等等这些是行内元素，他们内容以**行内盒子**形式展示，直白的说span 元素就是一个行内盒子；
 由一行文本形成的水平盒子叫行盒子，行盒子的高度由它所包含的行内盒子决定；
@@ -386,7 +386,7 @@ line-height: 100%;
 ```
 此时wrap内的文字不居中，这个不居中与 "经典good morning, koa2!"这段文本生成的行盒子有莫大关系，
 根据line-height默认值是1.2，我们可以画出行盒子的line-height,下面是这串代码的效果图和文本行生成的行盒子：
-![](/image/css/vertical-align/line-height.jpg)
+{% img url_for /image/css/vertical-align/line-height.jpg %}
 
 其他不变，我们把line-height设置为75px:
 ```
@@ -395,13 +395,13 @@ line-height: 100%;
 }
 ```
 居中了，效果如下：
-![](/image/css/vertical-align/line-height2.jpg)
+{% img url_for /image/css/vertical-align/line-height2.jpg %}
 由图中可以看出，使用height与line-height相同值达到居中的，其实是利用了行盒子半铅空相等的特性,因为在行盒子内，文本相对于行盒子，永远是居中的，行盒子的高度取决于line-height，如何将line-height的值设成与height一致，就达到了，height高度下的文字居中了。
 
 ## 父元素与对齐相关的概念
 这里说的父元素，就是上面通篇都在讲的父元素,这个父元素一般就是一个div，div内有文字，有inline-block元素，有img；（img也是一种inline-block），
 那么这个父元素与行内元素垂直对齐相关的有哪些概念或属性呢，直接上图说明：
-![](/image/css/vertical-align/father.jpg)
+{% img url_for /image/css/vertical-align/father.jpg %}
 
 为什么这些属性与行内元素垂直对齐相关呢，这都是因为vertical-align,我们说过，vertical-align就是为了行内元素对齐而生而创造的，
 vertical-align有以下对齐方式，可参考mdn：

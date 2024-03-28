@@ -135,12 +135,12 @@ data = data.map(row=>{
 ListRow是专门为了search、左右移动而创建的数据结构，ListBuilder可以因此专心抽象这部分的公共逻辑。
 #### 注意，必须配合render时实时重新生成props
 这不是listRow的好处，但此时再次提醒，说明了创建ListRow的代价也好，使用特点也好，都render具体组件时，都需要render函数内实时重新生成props。
-![](/image/react/list_row.jpg)
+{% img url_for /image/react/list_row.jpg %}
 ### 使用特点与弊端
 参考 《ListRow的好处 --- 注意，必须配合render时实时重新生成props》，render函数内实时重新生成props是一种反模式运用。可能也是一个弊端，但当前浏览器对于同步代码执行效率太好，感觉总是谈性能的，就好像一个伪命题一样
 ## 组件的模版设计
 ### 组件模版设计图
-![](/image/react/comp.jpg)
+{% img url_for /image/react/comp.jpg %}
 ### 暴露给外层的设计
 如上图，因为ListBuilder在内部会封装左右移动，所以外层使用的时候，只需定义业务组件的grid等等这些左右两边面板。
 ### ListBuilder本身设计

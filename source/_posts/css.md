@@ -26,7 +26,7 @@ series: css
 }
 ```
 效果如下,边框的四边并非我们想象的四个矩形，而是四个三角形：
-![](/image/css/block.jpg)
+{% img url_for /image/css/block.jpg %}
 
 border-color可以接受透明色：transparent
 
@@ -34,7 +34,7 @@ border-color可以接受透明色：transparent
 ```
     border-color: transparent transparent #1b00ff transparent;
 ```
-![](/image/css/triangle.jpg)
+{% img url_for /image/css/triangle.jpg %}
 
 ### 阴影box-shadow
 #### 参数介绍
@@ -42,19 +42,19 @@ box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;
             是否需要阴影|竖直偏移 水平偏移 模糊度 扩展度 颜色|方向|基本不用|基本不用
 模糊度 其实就是对阴影的边缘进行模糊处理，让阴影与外界颜色过渡自然；
 扩展度 在阴影的基础上，对阴影进行等长度加长，如图。
-![](/image/css/shadow6.jpg)
+{% img url_for /image/css/shadow6.jpg %}
 
 方向 阴影默认向外扩散，可以设置向内；
 下面通过一组图片展示每项参数意义：
-![](/image/css/shadow1.jpg)
-![](/image/css/shadow2.jpg)
-![](/image/css/shadow3.jpg)
-![](/image/css/shadow4.jpg)
-![](/image/css/shadow5.jpg)
+{% img url_for /image/css/shadow1.jpg %}
+{% img url_for /image/css/shadow2.jpg %}
+{% img url_for /image/css/shadow3.jpg %}
+{% img url_for /image/css/shadow4.jpg %}
+{% img url_for /image/css/shadow5.jpg %}
 
 #### 竖直、水平偏移都设置为0
 二者都设置为0，可以达到outline的效果，并且还有模糊度
-![](/image/css/shadow7.jpg)
+{% img url_for /image/css/shadow7.jpg %}
 #### 多个阴影
 ```
 height: 80px;
@@ -62,7 +62,7 @@ width: 180px;
 background: gainsboro;
 box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
 ```
-![](/image/css/shadow8.jpg)
+{% img url_for /image/css/shadow8.jpg %}
 #### box-shadow脱离文档流
 box-shadow 是脱离文档流的，给元素设置box-shadow，无论数值多少，都不会让元素移动，这点很好
 
@@ -76,7 +76,7 @@ filter也可以用来写一个阴影效果。filter还有其他很多功能。
 
 ### outline 轮廊线
 #### outline能做到的效果：
-![](/image/css/outline.jpg)
+{% img url_for /image/css/outline.jpg %}
 
 #### outline 相关属性：
 outline-width/outline-style/outline-color/outline-offse;
@@ -165,13 +165,13 @@ bottom: 0;
 background-image: linear-gradient(blue, green 30%, red 50%);
 ```
 从上到下，蓝色开始，到30%的位置时是绿色开始，到50%是红色开始，以后都是红色，效果：
-![](/image/css/linear1.jpg)
+{% img url_for /image/css/linear1.jpg %}
 
 ```
 background-image: linear-gradient(blue, green 50%, red 50%);
 ```
 同位置定义了绿色和红色 50%；发现绿色和红色重合了，这个也是一个小技巧，效果：
-![](/image/css/linear2.jpg)
+{% img url_for /image/css/linear2.jpg %}
 ##### 其他值
 ```
 /* 渐变轴为45度，从蓝色渐变到红色 */
@@ -229,7 +229,7 @@ linear-gradient(to left top, blue, red);
 ```
 cursor: wait;
 ```
-![](/image/css/cursor.jpg)
+{% img url_for /image/css/cursor.jpg %}
 
 ### 跟随神器
 js 函数，自适应方向上下左右浮动
@@ -372,17 +372,17 @@ pc端一行显示的，移动端多行显示；
 ```
 #### transform-origin
 transform-origin 默认值为 center，如果直接旋转会达不到此效果，需要设置圆心，此时可达到扑克牌式样展开效果，此时设置位置如下，更多用法参考mdn，
-![](/image/css/transform-origin.jpg)
+{% img url_for /image/css/transform-origin.jpg %}
 
 另外也可以设置transform-origin: center -400px;显示相反效果。
 
 ### 折角与翻页动画
 #### 效果
-![](/image/css/page.jpg)
+{% img url_for /image/css/page.jpg %}
 #### 折角方案-两边border值为0
 如下，border两面为0两面有值，形状如下，在上图图片的div上设置一个before伪元素，
 伪元素content为0，只有两个border有width，半边白色，半边是带透明度的颜色(达到不完全遮住图片效果)：
-![](/image/css/page0.jpg)
+{% img url_for /image/css/page0.jpg %}
 ```
  <div class="image-layer" id="image-layer">
 	  </div>
@@ -424,7 +424,7 @@ transform-origin:center 150%;
 #### 绕椭圆行驶(translate)
 椭圆的路径就要结合偏移了transform:translateY(200px);如下图，
 每次行驶到上下两个顶点时候，让父节点跟着偏移：
-![](/image/css/circle-ani.jpg)
+{% img url_for /image/css/circle-ani.jpg %}
 ```
 <figure>
 	  <div class="butterfly">
@@ -774,7 +774,7 @@ background-clip: padding-box|border-box|content-box;
             </div>
 ```
 效果：
-![](/image/css/flex1.jpg)
+{% img url_for /image/css/flex1.jpg %}
 
 #### flex-shrink IE与谷歌差异
 flexbox的规范是 当空间小是，元素宽度随之减少，当减少到元素的width时，将不再减少。
@@ -1034,7 +1034,7 @@ The element will then take up the specified width, and the remaining space will 
 </body>
 ```
 效果如下：
-![](/image/css/margin1.jpg)
+{% img url_for /image/css/margin1.jpg %}
 
 这里的效果并没有达到我们的预期，我们对chilid做了margin-top，那么child理应是相对父wrap进行margin，而实际中，child却相对浏览器边缘进行了margin-top；
 这就是外边距折叠的现象之一。
@@ -1042,7 +1042,7 @@ The element will then take up the specified width, and the remaining space will 
 解决方案，就是在wrap中写一个border或者写一个padding，就可以达到预期效果了；
 
 #### 其他外边距折叠现象：
-![](/image/css/margin2.png)
+{% img url_for /image/css/margin2.png %}
 
 #### 出现外边距折叠的条件
 外边距折贴**只发生在正常文档流中的块级元素的 margin 垂直方向上；**
@@ -1101,7 +1101,7 @@ BFC有以下特征：
 ```
 #### 自适应两栏布局
 [不多写了，直接参考这里的---<2. 布局：自适应两栏布局>](https://segmentfault.com/a/1190000009545742)，效果如下：
-![](/image/css/margin3.jpg)
+{% img url_for /image/css/margin3.jpg %}
 #### 消除外边距折叠
 这里有两个例子
 [一个例子，见文中的--防止垂直margin合并](https://segmentfault.com/a/1190000009545742)
@@ -1180,11 +1180,11 @@ Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
 </body>
 </html>
 ```
-![](/image/css/line-height1.jpg)
-![](/image/css/line-height2.jpg)
+{% img url_for /image/css/line-height1.jpg %}
+{% img url_for /image/css/line-height2.jpg %}
 可以看到.test 的span的高度完全被其line-height所确定了，变成60px；
 其他实验结果有，当给.test 的span设置display: inline;span为行内元素，span没有高度，其高度变成父层高度30px,但是span依然会撑开60px的空间：
-![](/image/css/line-height3.jpg)
+{% img url_for /image/css/line-height3.jpg %}
 
 小结：对inline还是inline-block，在没有定义它对height时，line-height会被默认为元素高度；
 此时可以通过给元素定义height达到指定高度的目的，但是line-height比height高的情况下，依然会让元素占满line-height的高度。

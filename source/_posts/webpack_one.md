@@ -330,7 +330,7 @@ compiler.run((err, stats)=>{
 webpack-dev-server 启动与 webpack 的区别
 
 
-![](/image/webpack_one/entry.jpg)
+{% img url_for /image/webpack_one/entry.jpg %}
 
 #### lib\webpack.js
 

@@ -15,14 +15,14 @@ docker 是一个容器(container)引擎
 ### 容器和虚拟机的区别
 
 如下图，其中 app a 好比虚拟机centos中 yum install 各种软件 如httpd， squid
-![](/image/linuxs/vir.png)
+{% img url_for /image/linuxs/vir.png %}
 还可以参考[Docker与VM虚拟机的区别以及Docker的特点](https://blog.csdn.net/jingzhunbiancheng/article/details/80994909)
 还可以参考[docker容器与虚拟机有什么区别？](https://www.zhihu.com/question/48174633)
 
 ### 版本
 docker 企业版是收费的
 docker-ce 是社区版，免费的，一般用 docker-ce社区版。
-![](/image/linuxs/sim.png)
+{% img url_for /image/linuxs/sim.png %}
 ### centos的docker安装和使用
 
 #### 安装
@@ -35,7 +35,7 @@ docker-ce 是社区版，免费的，一般用 docker-ce社区版。
     https://download.docker.com/linux/centos/docker-ce.repo
 ```
 
-![](/image/linuxs/ins.png)
+{% img url_for /image/linuxs/ins.png %}
 ```s
 yum install docker-ce docker-ce-cli containerd.io  #docker-ce是免费版本
 ```
@@ -43,8 +43,8 @@ yum install docker-ce docker-ce-cli containerd.io  #docker-ce是免费版本
 
 #### 使用一： hello-world
 安装好后，直接看文档这里
-![](/image/linuxs/start.png)
-![](/image/linuxs/start1.png)
+{% img url_for /image/linuxs/start.png %}
+{% img url_for /image/linuxs/start1.png %}
 
 #### 使用二：安装和使用centos
 涉及到比较多，单独列出说明:《安装和使用centos》
@@ -136,16 +136,16 @@ Discuz！ 一个国内的论坛 BBS 软件系统
 
 ### 认识FastCGI
 #### 架构示意图
-![](/image/linuxs/fa1.png)
+{% img url_for /image/linuxs/fa1.png %}
 
-![](/image/linuxs/fa3.png)
+{% img url_for /image/linuxs/fa3.png %}
 
 #### FastCGI是相对于早期的 CGI说的
 下面是早期的 CGI架构，因为有某些不足，因此就有了上面的 fastCGI.
-![](/image/linuxs/fa2.png)
+{% img url_for /image/linuxs/fa2.png %}
 
 #### 延申讲解- uwsgi
-![](/image/linuxs/fa4.png)
+{% img url_for /image/linuxs/fa4.png %}
 
 ### FastCGI协议 与 php-fpm
 
@@ -225,10 +225,10 @@ vim /etc/nginx/nginx.conf
 
 #### 访问页面
 https://192.168.1.109/
-![](/image/linuxs/ok1.png)
+{% img url_for /image/linuxs/ok1.png %}
 https://192.168.1.109/index.php
 显示下面文件，说明 php与nginx通讯正常了：
-![](/image/linuxs/ok2.png)
+{% img url_for /image/linuxs/ok2.png %}
 
 
 #### 调试技巧
@@ -360,10 +360,10 @@ Linux + nginx + mysql + （mariaDB） + php 的开发架构
 安装教程参考 [Discuz官网](https://www.dismall.com/thread-77-1-1.html)
 任意电脑下下载安装包：
 进入[首页](https://www.discuz.net/)
-![](/image/linuxs/doc20.png)
-![](/image/linuxs/doc21.png)
-![](/image/linuxs/doc22.png)
-![](/image/linuxs/doc23.png)
+{% img url_for /image/linuxs/doc20.png %}
+{% img url_for /image/linuxs/doc21.png %}
+{% img url_for /image/linuxs/doc22.png %}
+{% img url_for /image/linuxs/doc23.png %}
 
 执行命令
 ```s
@@ -391,11 +391,11 @@ archiver   data             group.php    index.php  member.php  portal.php      
 
 页面访问 https://192.168.1.109/install
 
-![](/image/linuxs/doc1.png)
+{% img url_for /image/linuxs/doc1.png %}
 
 #### 不可读写的问题
 是权限的问题
-![](/image/linuxs/doc2.png)
+{% img url_for /image/linuxs/doc2.png %}
 解决方法一(不推荐，此方法可能导致开机异常)：
 ```s
  semanage fcontext -a -t httpd_sys_rw_content_t "(/.*)?"
@@ -408,22 +408,22 @@ semanage 0
 ```
 
 再次刷新页面：
-![](/image/linuxs/ok3.png)
+{% img url_for /image/linuxs/ok3.png %}
 
 点击下一步
-![](/image/linuxs/doc3.png)
+{% img url_for /image/linuxs/doc3.png %}
 
 ```s
 [root@localhost html]# mysql -u root -p  #下图中的root就是根据你自己安装在centos上的mysql来的
 ```
-![](/image/linuxs/doc4.png)
-![](/image/linuxs/doc5.png)
-![](/image/linuxs/doc6.png)
+{% img url_for /image/linuxs/doc4.png %}
+{% img url_for /image/linuxs/doc5.png %}
+{% img url_for /image/linuxs/doc6.png %}
 
 发帖
-![](/image/linuxs/doc7.png)
+{% img url_for /image/linuxs/doc7.png %}
 管理中心
-![](/image/linuxs/doc8.png)
+{% img url_for /image/linuxs/doc8.png %}
 
 以后每次只需要通过 https://192.168.1.109/ 即可访问
 
@@ -431,14 +431,14 @@ semanage 0
 ## 救援模式
 由于上面配置Discuz时 修改了上下文 `semanage fcontext -a -t httpd_sys_rw_content_t "(/.*)?"`，
 导致了开机服务器 centos时，安全验证的问题，无法开机，因此要进入救援模式，关闭 selinux，重启机器.
-![](/image/linuxs/help1.png)
-![](/image/linuxs/help2.png)
-![](/image/linuxs/help3.png)
-![](/image/linuxs/help4.png)
+{% img url_for /image/linuxs/help1.png %}
+{% img url_for /image/linuxs/help2.png %}
+{% img url_for /image/linuxs/help3.png %}
+{% img url_for /image/linuxs/help4.png %}
 通过编辑 /etc/selinux/config 目录，可以永久关闭seLinux；
 因为setenforce 0 是暂时关闭。
-![](/image/linuxs/help5.png)
-![](/image/linuxs/help6.png)
+{% img url_for /image/linuxs/help5.png %}
+{% img url_for /image/linuxs/help6.png %}
 
 然后执行命令
 exit  退出

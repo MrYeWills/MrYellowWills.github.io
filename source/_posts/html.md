@@ -87,7 +87,7 @@ name配合submit，再结合form的action使用。
 ### del 与 ins
 del标签表示一些被从文档中删除的文字内容
 ins元素定义已经被插入文档中的文本(文字下划线效果)。
-![](/image/html/del_ins.jpg)
+{% img url_for /image/html/del_ins.jpg %}
 ```
 del,
 ins {
@@ -142,11 +142,11 @@ p {
   </fieldset>
 </form>
 ```
-![](/image/html/fieldset.jpg)
+{% img url_for /image/html/fieldset.jpg %}
 
 ### hr
 可以来做分割线，也可以做双层分割线。
-![](/image/html/hr.jpg)
+{% img url_for /image/html/hr.jpg %}
 ```
 <p>
   This is the first paragraph of text.
@@ -224,12 +224,12 @@ input配合datalist 以及 option使用，可做出原生的可选值输入框�
 ```
 <progress value="70" max="100">70 %</progress>
 ```
-![](/image/html/progress.jpg)
+{% img url_for /image/html/progress.jpg %}
 
 ### meter
 **除ie外，其他都支持(包含edge)**
 可用来显示进度条。
-![](/image/html/meter.jpg)
+{% img url_for /image/html/meter.jpg %}
 ```
 <meter id="fuel" name="fuel"
        min="0" max="100"
@@ -251,7 +251,7 @@ output 必须配合form使用，以下代码要点：
   <output name="result">60</output>
 </form>
 ```
-![](/image/html/meter.jpg)
+{% img url_for /image/html/meter.jpg %}
 
 ### input range
 **所有浏览器兼容，ie支持到10**
@@ -275,7 +275,7 @@ output 必须配合form使用，以下代码要点：
 <p>Almost every developer's favorite molecule is
   C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>UU<sup>2</sup>, also known as "caffeine."</p>
 ```
-![](/image/html/sub.jpg)
+{% img url_for /image/html/sub.jpg %}
 
 ## HTML属性
 以下讲的都是全局属性：

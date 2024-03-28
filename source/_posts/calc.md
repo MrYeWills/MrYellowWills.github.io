@@ -75,7 +75,7 @@ series: 算法
 现在对上面方法进行思路和要点解析
 ### 每次只让第一个和第二个元素两两组合
 不管输入多少位数，都让前两位数字进行组合，组合的结果 再跟 第三位数字进行组合，逻辑一样，依次类推。 逻辑一样的部分，则突出了使用递归的需求。
-![](/image/calc/phone.jpg)
+{% img url_for /image/calc/phone.jpg %}
 ### 递归是重头戏
 参考上面《两两组合》
 ### return arr[0] 很需要
@@ -397,11 +397,11 @@ for (let i = 0, len = arr.length - 1; i < len; i++) {
 ### 概述
 冒泡排序大白话解释就是，将数组内的最大值，从左到右或右带左地排序，这个过程好像数组内的最大值好像冒泡一样，从水底上浮的过程。
 冒泡排序是每次比较左右两个值，每次进行比较交换位置。
-![](/image/calc/water.jpg)
+{% img url_for /image/calc/water.jpg %}
 如下图，要实现如下的一个渐进的排序过程：
-![](/image/calc/bubble.jpg)
-![](/image/calc/bubble1.jpg)
-![](/image/calc/bubble2.jpg)
+{% img url_for /image/calc/bubble.jpg %}
+{% img url_for /image/calc/bubble1.jpg %}
+{% img url_for /image/calc/bubble2.jpg %}
 
 ### 将最值移到边缘的技巧
 ```js
@@ -442,10 +442,10 @@ calc([1, 9, 5, 3, 4,0,2,999,6]) //[0, 1, 2, 3, 4, 5, 6, 9, 999]
 ## 选择排序
 ### 概述 以及 选择、冒泡区别
 
-![](/image/calc/select-dubble.jpeg)
+{% img url_for /image/calc/select-dubble.jpeg %}
 如下图，要实现如下的一个渐进的排序过程：
-![](/image/calc/select.jpg)
-![](/image/calc/select1.jpg)
+{% img url_for /image/calc/select.jpg %}
+{% img url_for /image/calc/select1.jpg %}
 
 ### 选定第1个位置放置最小值
 ```
@@ -530,7 +530,7 @@ function calc(arr) {
 如上代码，因为冒泡或选择排序是，最左或最右端值已经排序好，排序好的就可以计算差值。所以可利用这一特性，找出最大间距。
 ### 不推荐方法
 不推荐理由，利用sort进行了一次遍历，然后又用遍历求最大间距，用了两次遍历，相比上面的推荐方法的一次遍历，这种方法性能不好。
-![](/image/calc/max.jpg)
+{% img url_for /image/calc/max.jpg %}
 
 ### 遍历是核心
 最大间距的解决主要借助遍历实现。
@@ -579,7 +579,7 @@ export default (arr, k) => {
 
 ### 要点分析
 快速排序，以数组中间一个元素为基准，小于的放在左边，大于的放在右边，然后递归，排序完成。
-![](/image/calc/quick0.jpg)
+{% img url_for /image/calc/quick0.jpg %}
 ```
  function quickSort(ary){
         if(ary.length<=1){
@@ -665,7 +665,7 @@ quickSort(left).concat([pointValue],quickSort(right))
 将原来数组打散重新将所有元素一个个放置，新建一个数组，用于接收放置的元素。
 元素在新数组中，按照大小顺序插入放置。
 
-![](/image/calc/insort1.jpg)
+{% img url_for /image/calc/insort1.jpg %}
 ```js
  function insertSort(ary){
     var newAry=[];
@@ -697,7 +697,7 @@ quickSort(left).concat([pointValue],quickSort(right))
 这种方法与方案一不同的是，方案二没有单独创建新数组来存放排序元素，而是直接基于原数组进行改造，相对来说理解起来要难一点。
 其实找到窍门后，理解起来就好了，理解插入排序，只需要理解**内层遍历如何排序**，就理解了整个插入排序的思想，后面有讲到。
 
-![](/image/calc/insort2.jpg)
+{% img url_for /image/calc/insort2.jpg %}
 ```
  function insertSort(ary){
     var key,j;
@@ -824,7 +824,7 @@ ip由四个不大于256的数字排列组成；
 当第三个数字为5时， 剩下代码为25511136 不符合规则；
 依次类推--递归。
 如果你还是对分析或则上面代码不太理解，请拿出你对纸和笔，将上面代码在纸上遍历几次，就明白了。
-![](/image/calc/cur.jpg)
+{% img url_for /image/calc/cur.jpg %}
 
 ### 递归设计中 必不可少的 边界条件
 要写一个递归，必须要写终止递归条件，也就是边界条件。上面代码的边界条件就是：
@@ -838,7 +838,7 @@ ip由四个不大于256的数字排列组成；
  [力扣原题--对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
  ### 创建对称二叉树
  #### 二叉树模型图
- ![](/image/calc/tree.jpg)
+ {% img url_for /image/calc/tree.jpg %}
  #### 代码
  以下是创建二叉树代码，后面会针对代码疑问进行解答
  
@@ -981,7 +981,7 @@ const tree = {
 ## 验证二叉搜索树
 [力扣原题--验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/)
 ### 代码
- ![](/image/calc/tree1.jpg)
+ {% img url_for /image/calc/tree1.jpg %}
 ```
 class Node {
   constructor (val) {
@@ -1039,7 +1039,7 @@ class Tree {
 每个递归由一个递归体以及一个边界值组成。且必须有一个边界值。
 
 ### 阶乘
- ![](/image/calc/recursion.jpg)
+ {% img url_for /image/calc/recursion.jpg %}
 ```
 function foctorial(n){
   if(n === 1 || n === 0){
@@ -1236,7 +1236,7 @@ const newItem0 = combile(one, two);
 时间复杂度是对运行次数的描述，因为运行次数的多少决定了花多少时间。
 空间复杂度是对运行内存的描述，在排序时定义了多少变量，就会消耗多少内存。
 一般关注好时间复杂度即可。
-![](/image/calc/time.jpg)
+{% img url_for /image/calc/time.jpg %}
 ### 时间复杂度
 ```
 //时间复杂度为 O(9)

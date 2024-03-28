@@ -11,7 +11,7 @@ categories:
 有三种方式：
 - nexus
 搭建好后，样子如下：
-![](/image/verda/ne.png)
+{% img url_for /image/verda/ne.png %}
 - cnpm
 - verdaccio
 
@@ -66,12 +66,12 @@ uplinks:
 
 ```
 更多参考：
-![](/image/verda/up.png)
-![](/image/verda/up2.png)
-![](/image/verda/up3.png)
+{% img url_for /image/verda/up.png %}
+{% img url_for /image/verda/up2.png %}
+{% img url_for /image/verda/up3.png %}
 
 关于 `$all` `$authenticated` 等：
-![](/image/verda/up4.png)
+{% img url_for /image/verda/up4.png %}
 
 最后为了让外网都可以访问，注意将 listen 改为这个：
 ```yaml

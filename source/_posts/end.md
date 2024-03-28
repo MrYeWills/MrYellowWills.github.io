@@ -11,7 +11,7 @@ series: 后端demo
 ### mysql安装和使用
 #### 安装
 安装的过程可以参照网上，不过安装的过程中，mysql会给你一个初始密码，需要记住。
-![](/image/end/pd.png)
+{% img url_for /image/end/pd.png %}
 ```
 root@localhost: xxxxxxxxx   //root 超级用户， localhost 本地环境， 本地环境下的超级用户密码
 ```
@@ -23,7 +23,7 @@ ERROR 1820 (HY000): You must reset your password using ALTER USER statement befo
 修改
 ```
 解决如下：
-![](/image/end/1820.jpg)
+{% img url_for /image/end/1820.jpg %}
 [参考](https://www.youtube.com/watch?v=q1UNz5eisN8)
 
 #### 设置(新)密码相关
@@ -62,12 +62,12 @@ mysql -u root -p  //user root 使用-p密码登陆
 #### mysql的source命令
 [详细参考](https://doc.cms.talelin.com/start/koa/)
 主要使用mysql的source命令来做，后期可以了解下
-![](/image/end/db.png)
+{% img url_for /image/end/db.png %}
 
 ### navicat - mysql图形化工具
 #### 安装
 [破解版安装](https://www.macwk.com/soft/navicat-premium)
-![](/image/end/db.png)
+{% img url_for /image/end/db.png %}
 
 #### 操作mysql
 可通过这个图形化工具，对mysql进行增删改查，实时生效。
@@ -151,7 +151,7 @@ body：
         "status": "1"
     }
 ```
-![](/image/end/post.jpg)
+{% img url_for /image/end/post.jpg %}
 
 ### 权限验证方式
 #### 配置说明
@@ -190,7 +190,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTYzNTkxMzcsImlkZW50aXR5IjoxLCJ
 ```
 #### postman使用令牌请求
 如下图，postman中，带令牌的和不带令牌的区别不大，其他照旧，就增加了一个如下的token，由上面可知，lin-cms用的是bearer类型token，因此就用bearer Token
-![](/image/end/token.jpg)
+{% img url_for /image/end/token.jpg %}
 
 #### 普通用户与超级用户
 可以使用超级用户root，创建一些普通用户测试相关权限的问题，普通用户登陆后，将令牌给postman，会发现令牌权限不足，这个时候可以通过前端来管理用户权限。
@@ -220,7 +220,7 @@ contentApi.linPost(
     });
   });
 ```
-![](/image/end/log.jpg)
+{% img url_for /image/end/log.jpg %}
 
 ## 异常处理
 lin-cms框架使用了组件`NotFound`做错误处理，只要使用了这个错误码，框架层面就会给你处理好报错信息
@@ -245,8 +245,8 @@ lin-cms框架使用了组件`NotFound`做错误处理，只要使用了这个错
 ### 发起请求与最后结果
 下面两种图是发起请求的参数和最后数据库结果。
 下面一小节会讲如何处理这个请求流程。
-![](/image/end/post1.jpg)
-![](/image/end/post2.jpg)
+{% img url_for /image/end/post1.jpg %}
+{% img url_for /image/end/post2.jpg %}
 
 ### 处理请求的流程
 如下图，从左至右，
@@ -254,7 +254,7 @@ lin-cms框架使用了组件`NotFound`做错误处理，只要使用了这个错
 服务层本该转发给模型层目录，但为了后期易维护性，将模型层的业务分割层dao目录和专门写模型的模型层。
 因此服务层将请求转发给 dao目录，dao目录再转发给模型层。
 模型层连接数据库，对数据库进行增删改查的写入。
-![](/image/end/db_flow.jpg)
+{% img url_for /image/end/db_flow.jpg %}
 ### service 服务层 
 如上图
 ### model 模型
@@ -311,12 +311,12 @@ module.exports = {
 
 ## postman使用
 ### post请求
-![](/image/end/post.jpg)
+{% img url_for /image/end/post.jpg %}
 
 ## navicat使用
 ### 逆向表到模型
 可以看表的结构
-![](/image/end/navicat_dir.jpg)
+{% img url_for /image/end/navicat_dir.jpg %}
 
 ## 前端部分
 ### 跨域

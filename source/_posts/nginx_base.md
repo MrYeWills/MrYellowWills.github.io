@@ -18,7 +18,7 @@ nginx并不能处理动态资源接口，所有的动态接口，如商品价格
 这个过程中nginx起到一个代理的作用，上面的过程也是 nginx 反向代理的过程；
 nginx 最重要的两个功能就是 静态服务器 和 反向代理；
 其他的如负载均衡（当nginx作为代理时，当有多台服务器时，nginx如何将请求均衡发给多台服务器，达到负载均衡 性能优化），都是因此延伸出来。
-![](/image/nginx/busi.png)
+{% img url_for /image/nginx/busi.png %}
 另外可参考《一个http请求的全流程》图片看反向代理。
 
 反向代理其实就是 转发代理。
@@ -59,7 +59,7 @@ nginx是最新一代服务器(根据当代多核cpu设计的,这个理由只当�
 - 请求发送到nginx，nginx响应静态资源；
 - 动态请求，nginx作为反向代理：将请求发送给 应用服务器（就是后端人员写的服务器），再有应用服务器响应nginx，由nginx返回客户端。
 - 应用服务器 接受请求后，请求DB 数据库服务器，对数据库进行增删改查，由数据库服务器响应最新数据给应用服务器。
-![](/image/nginx/http.jpg)
+{% img url_for /image/nginx/http.jpg %}
 
 #### nginx处理请求过程
 对于下图说明：
@@ -71,7 +71,7 @@ nginx是最新一代服务器(根据当代多核cpu设计的,这个理由只当�
 
 - 数据库旁边的缓存服务，也是用于加速的服务器，可以不部署。
 
-![](/image/nginx/http1.jpg)
+{% img url_for /image/nginx/http1.jpg %}
 
 
 ### nginx的变量
@@ -79,7 +79,7 @@ nginx是最新一代服务器(根据当代多核cpu设计的,这个理由只当�
 #### 变量分类
 nginx是用来处理请求的服务器，因此它的变量主要是围绕 请求处理而分类的。
 如下，有5种分类：
-![](/image/nginx/var1.png)
+{% img url_for /image/nginx/var1.png %}
 
 为什么有tcp链接分类变量：
 其中 http 建立在tcp\ip协议上的，建立http链接，要经过tcp链接，在此之上进行http数据传输。
@@ -95,7 +95,7 @@ server_addr 服务端IP地址
 server_port 服务端端口
 server_protocol 服务端协议 比如http1.0 http1.1
 
-![](/image/nginx/var2.png)
+{% img url_for /image/nginx/var2.png %}
 
 #### http请求过程相关变量
 
@@ -171,7 +171,7 @@ quit 底层利用的是QUIT信号量
 ### 认识 nginx进程
 nginx的配置文件
 worker_processes auto; //自动识别电脑有几个cpu，下面的例子说明识别出4个进程
-![](/image/nginx/pid.png)
+{% img url_for /image/nginx/pid.png %}
 
 ### nginx 配置文件重载过程与原理
 
@@ -183,19 +183,19 @@ worker_processes auto; //自动识别电脑有几个cpu，下面的例子说明�
 - 什么是老的子进程执行完之后完毕，
 - 比如，客户在浏览网页的时候，与老的子进程建立了连接，一直等客户关闭页面关闭连接，
 老的子进程才退出。
-![](/image/nginx/reload.png)
+{% img url_for /image/nginx/reload.png %}
 
 #### 会同时存在新旧两种进程
 如上，此时进程数是两倍。
 
 nginx热部署升级 的过程
-![](/image/nginx/red.png)
+{% img url_for /image/nginx/red.png %}
 
 
 ## nginx 安装、使用
 
 ### 配置文件结构
-![](/image/nginx/in.png)
+{% img url_for /image/nginx/in.png %}
 
 ### nginx环境准备
 确认关闭iptables规则
@@ -216,9 +216,9 @@ yum -y install wget httpd-tools vim
 可以自己安装指定版本的nginx，
 不用自己下载指定版本的nginx包，拷贝到centos中安装。
 进入[官网](http://nginx.org/en/download.html);
-![](/image/nginx/ist1.png)
+{% img url_for /image/nginx/ist1.png %}
 这里有各个环境安装介绍：
-![](/image/nginx/ist2.png)
+{% img url_for /image/nginx/ist2.png %}
 根据这个步骤，注意的是，我们不需要gpgkey，这个地方设置为0：
 ```s
 [root@localhost yum.repos.d]# cat /etc/yum.repos.d/nginx.repo
@@ -233,7 +233,7 @@ enabled=1
  执行命令 `yum list | grep nginx` 查看yum 可安装的 nginx源，
  图片显示，nginx安装的源就是 我们刚才配置的 nginx.repo 。
  如果我们用 epel-release 这个源来安装， 那么 下图中的源 就会显示 epel。
-![](/image/nginx/ist3.png)
+{% img url_for /image/nginx/ist3.png %}
 
 #### epel-release(简便)
 参考《linux笔记(坎) - 安装和使用nginx》
@@ -258,7 +258,7 @@ enabled=1
 ### 语法介绍
 
 #### 配置代码结构
-![](/image/nginx/gram.png)
+{% img url_for /image/nginx/gram.png %}
 
 #### 完整配置
 ```s
@@ -405,18 +405,18 @@ the error log for details.</p>
 
 ### 定义
 虚拟主机配置： 在同一个nginx上运行多套单独服务，这些服务是相互独立的
-![](/image/nginx/vir.png) 
+{% img url_for /image/nginx/vir.png %} 
 
 ### 多种实现方案
 #### 基于主机 多IP方式
-![](/image/nginx/ip.png)
+{% img url_for /image/nginx/ip.png %}
 #### 基于端口的配置方式
-![](/image/nginx/port.png)
+{% img url_for /image/nginx/port.png %}
 #### 基于多域名方式
 比较简单，不介绍了。
 ### 基于主机 多IP方式
 #### 两种实现方式
-![](/image/nginx/moreip.png)
+{% img url_for /image/nginx/moreip.png %}
 
 我们以 单网卡多IP讲解：
 #### 配置步骤说明
@@ -502,15 +502,15 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 #### stub_status ：nginx连接状态
 
 在 server ， location 中配置：
-![](/image/nginx/sub.png) 
-![](/image/nginx/sub1.png) 
+{% img url_for /image/nginx/sub.png %} 
+{% img url_for /image/nginx/sub1.png %} 
 
 
 #### http_sub_module :替换html中的内容
 参数配置 sub_filter_once  on|off; 是否只匹配一次，默认是的；
 context： http server location；
-![](/image/nginx/mo1.png) 
-![](/image/nginx/mo2.png) 
+{% img url_for /image/nginx/mo1.png %} 
+{% img url_for /image/nginx/mo2.png %} 
 
 #### http_access_module :访问限制
 语法： allow address | CIDR |unix: | all;  允许IP|IP网段如192.168.1|用的不多|所有;
@@ -521,8 +521,8 @@ context: http, server, location, limit_except
 语法： deny address | CIDR |unix: | all;
 默认： ——
 context: http, server, location, limit_except
-![](/image/nginx/allow.png) 
-![](/image/nginx/allow1.png) 
+{% img url_for /image/nginx/allow.png %} 
+{% img url_for /image/nginx/allow1.png %} 
 
 
 ### 密码访问 auth_basic
@@ -538,9 +538,9 @@ context: http, server, location, limit_except
 
 #### 官网demo参考
 [官网](https://nginx.org/en/docs/)
-![](/image/nginx/au1.png) 
+{% img url_for /image/nginx/au1.png %} 
 [步骤](https://nginx.org/en/docs/http/ngx_http_auth_basic_module.html)如下：
-![](/image/nginx/au2.png) 
+{% img url_for /image/nginx/au2.png %} 
 #### htpasswd生成密码
 ```s
 #htpasswd是上面官网上 推荐的生成密码的工具，配合nginx使用
@@ -584,8 +584,8 @@ server {
 
 http://192.168.228.131/admin.html
 
-![](/image/nginx/auth1.png) 
-![](/image/nginx/auth2.png) 
+{% img url_for /image/nginx/auth1.png %} 
+{% img url_for /image/nginx/auth2.png %} 
 
 
 ## gzip 静态资源配置和demo
@@ -640,7 +640,7 @@ server {
 ```
 
 ### 方案图
-![](/image/nginx/jia1.png)
+{% img url_for /image/nginx/jia1.png %}
 
 ### 相关模块
 #### 文件读取： sendfile
@@ -675,7 +675,7 @@ context: http, server, location
 
 原理如下，浏览器解压gzip， nginx 压缩文件为gzip；
 好处是 减少了 服务器带宽，文件变小传输更快；
-![](/image/nginx/gzip.png) 
+{% img url_for /image/nginx/gzip.png %} 
 
 相关模块有：
 gzip_comp_level 2; 压缩比
@@ -770,9 +770,9 @@ server {
 ### websocket 代理
 
 #### 概念
-![](/image/nginx/ws1.png)
-![](/image/nginx/ws3.png)
-![](/image/nginx/ws4.png)
+{% img url_for /image/nginx/ws1.png %}
+{% img url_for /image/nginx/ws3.png %}
+{% img url_for /image/nginx/ws4.png %}
 
 #### 实现
 **因为全程都是在服务器端，因此都是用127.0.0.1。**
@@ -819,14 +819,14 @@ wss.on('connection', function(ws){
 #在服务端中的终端执行
 wscat --connect ws://127.0.0.1:8020
 ```
-![](/image/nginx/ws2.png)
+{% img url_for /image/nginx/ws2.png %}
 
 
 ### uwsgi代理与djiango
 Django 是一个开源的web的框架；
 Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django。
-![](/image/nginx/us.png)
-![](/image/nginx/us1.png)
+{% img url_for /image/nginx/us.png %}
+{% img url_for /image/nginx/us1.png %}
 [安装Python等参考](https://www.imooc.com/article/26870)
 
 
@@ -841,7 +841,7 @@ context: server,location, if
 
 #### flag
 对`rewrite regex replacement [flag];`中flag取值说明。
-![](/image/nginx/re2.png)
+{% img url_for /image/nginx/re2.png %}
 
 #### 代码
 ```conf
@@ -874,15 +874,15 @@ server {
 
 访问 http://192.168.1.159/last/
 
-![](/image/nginx/re.png)
+{% img url_for /image/nginx/re.png %}
 
 #### last break 区别
 如上的demo。注意的是last的状态码是200，不是30x.
 
 #### break妙用
 如下服务端静态文件目录 与 break结合使用。
-![](/image/nginx/re3.png)
-![](/image/nginx/re4.png)
+{% img url_for /image/nginx/re3.png %}
+{% img url_for /image/nginx/re4.png %}
 
 
 ## 黑知识
@@ -933,14 +933,14 @@ if ( ) {
 ^~ 表示普通字符匹配，使用前缀匹配，也就是以什么开头； --优先级次之；
 ~ 或 \~*  都是正则匹配， 前者区分大小写， 后缀不区分大小写； --优先级次之；
 
-![](/image/nginx/lo3.png)
-![](/image/nginx/lo4.png)
+{% img url_for /image/nginx/lo3.png %}
+{% img url_for /image/nginx/lo4.png %}
 #### demo说明
 
-![](/image/nginx/lo.png)
+{% img url_for /image/nginx/lo.png %}
 
 #### url结尾的反斜线
-![](/image/nginx/lo5.png)
+{% img url_for /image/nginx/lo5.png %}
 
 不带： 
 location /test :  
@@ -951,13 +951,13 @@ location /test/ : 去找 /test/目录下的 index.html, 有就返回index.html, 
 
 ### server_name 写法 和 形式
 #### 四种写法
-![](/image/nginx/serv.png)
+{% img url_for /image/nginx/serv.png %}
 
 #### 匹配优先级
-![](/image/nginx/serv2.png)
+{% img url_for /image/nginx/serv2.png %}
 
 #### 四种结构
-![](/image/nginx/serv1.png)
+{% img url_for /image/nginx/serv1.png %}
 
 
 
@@ -968,12 +968,12 @@ location /test/ : 去找 /test/目录下的 index.html, 有就返回index.html, 
 
 #### demo说明
 
-![](/image/nginx/lo.png)
+{% img url_for /image/nginx/lo.png %}
 
 
 ### 服务端处理客户端请求流程
 
-![](/image/nginx/url.png)
+{% img url_for /image/nginx/url.png %}
 
 - 用户
 发送一个tcp链接
@@ -1069,17 +1069,17 @@ proxy_read_timeout 60;
 ### 你不知道的 proxy_pass
 
 #### 不带/ 和 带/ 的区别
-![](/image/nginx/pa1.png)
-![](/image/nginx/pa2.png)
+{% img url_for /image/nginx/pa1.png %}
+{% img url_for /image/nginx/pa2.png %}
 
 ### 其他
 
 #### root 与 alias区别
-![](/image/nginx/root.png)
-![](/image/nginx/root1.png)
+{% img url_for /image/nginx/root.png %}
+{% img url_for /image/nginx/root1.png %}
 
 #### 传递用户的真实IP地址
-![](/image/nginx/ipprops.png)
+{% img url_for /image/nginx/ipprops.png %}
 
 
 #### 匹配所有路径的 正则
@@ -1130,13 +1130,13 @@ http://jeson.t.com/opt/app/?md5=kyo5J6MRVm1l-Rvjt9rzWw$&expires=1634529600
 
 #### 安装openssl指定版本的sh脚本
 
-![](/image/nginx/open.png)
+{% img url_for /image/nginx/open.png %}
 
 
 ## 浏览器缓存与nginx
 
 ### 浏览器缓存原理
-![](/image/nginx/cache.png)
+{% img url_for /image/nginx/cache.png %}
 
 ## 安全相关
 ### 文件上传漏洞
@@ -1160,17 +1160,17 @@ location ^~ /upload {
 ### sql注入
 sql注入 利用未过滤未审核用户输入的攻击方法，让应用运行本不应该运行的sql代码。
 
-![](/image/nginx/aql.png)
-![](/image/nginx/aql1.png)
-![](/image/nginx/aql2.png)
-![](/image/nginx/aql3.png)
-![](/image/nginx/aql4.png)
+{% img url_for /image/nginx/aql.png %}
+{% img url_for /image/nginx/aql1.png %}
+{% img url_for /image/nginx/aql2.png %}
+{% img url_for /image/nginx/aql3.png %}
+{% img url_for /image/nginx/aql4.png %}
 
 当通过
-![](/image/nginx/aql5.png)
-![](/image/nginx/aql51.png)
+{% img url_for /image/nginx/aql5.png %}
+{% img url_for /image/nginx/aql51.png %}
 发现也登录成功了。
-![](/image/nginx/aql6.png)
+{% img url_for /image/nginx/aql6.png %}
 
 
 

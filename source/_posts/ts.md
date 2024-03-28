@@ -378,9 +378,9 @@ ts是不认识的，此时，就需要告诉ts，这个css文件暴露出来的�
 另外一方面，如果ts中使用commonjs的语法来获取styles时，则不需要定义d.ts文件，因为commonjs规范时webpack默认的规范；
 
 css modlue 折射了 ts 通过es6 将一个文件当成一个对象引入时，需要定义dts文件；为此，其他的比如jquery，lodash都需要做声明文件d.ts.
-![](/image/ts/cssmodule.jpg)
-![](/image/ts/css.jpg)
-![](/image/ts/dts.jpg)
+{% img url_for /image/ts/cssmodule.jpg %}
+{% img url_for /image/ts/css.jpg %}
+{% img url_for /image/ts/dts.jpg %}
 
 ### ts中引入css modlue异常的问题
 详见《ts中使用commonjs规范与es6规范的不同》

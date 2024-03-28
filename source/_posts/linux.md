@@ -79,7 +79,7 @@ root       1393  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=a
 ### 虚拟机安装centos
 
 #### 注意事项
-![](/image/linux/instal.jpg)
+{% img url_for /image/linux/instal.jpg %}
 
 ### 调出终端方法
 
@@ -89,17 +89,17 @@ tty是 真正的终端，没有图形界面，只有黑底白字的全屏幕的�
 Terminal 是图形模式的终端，一般在centOS等Linux发行版下日常使用
 #### Terminal(推荐)
 Activities Overview  系统搜索工具，搜索Terminal。
-![](/image/linux/terminal1.jpg)
+{% img url_for /image/linux/terminal1.png %}
 #### tty终端
-![](/image/linux/terminal2.jpg)
+{% img url_for /image/linux/terminal2.jpg %}
 
 
 ### [oscar@oscar-laptop ~ ] $ 什么意思
 
 #### 概述
-![](/image/linux/name1.jpg)
-![](/image/linux/name2.jpg)
-![](/image/linux/name3.jpg)
+{% img url_for /image/linux/name1.jpg %}
+{% img url_for /image/linux/name2.jpg %}
+{% img url_for /image/linux/name3.jpg %}
 
 ### 命令行提示符中表示权限的字符
 `$` 表示普通用户，有权限的限制；
@@ -260,7 +260,7 @@ C:\Users\Administrator\Desktop\test
 一旦两个文件间有了硬链接，你修改任意一个文件，修改的时相同的一块内容，
 硬链接有个缺陷，只能创建文件硬链接，不能创建目录的，（当然也可以通过复杂设置，来建立目录硬链接）
 类似js中的对象引用，对象名可以不一样，但只要this指针指向同一个对象，修改任意一个引用，内容都同时改变。
-![](/image/linux/link.jpg)
+{% img url_for /image/linux/link.jpg %}
 
 软链接 可以指向文件和目录，对于目录，一般都用软链接。
 软链接才真正像我们window下的快捷方式，原理很相似；
@@ -268,7 +268,7 @@ C:\Users\Administrator\Desktop\test
 ```s
 λ ln -s abc.txt ff.txt #创建abc.txt 的 软链接 ff.txt
 ```
-![](/image/linux/link2.jpg)
+{% img url_for /image/linux/link2.jpg %}
 
 #### 用户和权限命令
 - sudo 暂时使用超级用户权限(针对此命令)
@@ -292,9 +292,9 @@ rw- 文件的所有者对文件有读r、写w权限，-没有运行权限（-说
 rw- 表面文件所在的群组的其他用户，对文件有读写权限，没有运行权限；
 r-- 表示其他用户(除去文件所在用户群组的用户)只有读此文件权限；
 ```
-![](/image/linux/ah.jpg)
-![](/image/linux/ah1.jpg)
-![](/image/linux/ah2.jpg)
+{% img url_for /image/linux/ah.jpg %}
+{% img url_for /image/linux/ah1.jpg %}
+{% img url_for /image/linux/ah2.jpg %}
 
 - chmod change mode 的缩写，改变文件权限命令。
 
@@ -307,15 +307,15 @@ linux有且只有一个根目录，就是 / 斜杠，根目录就是Linux最顶�
 
 #### window反斜杠/与linux斜杆
 - window 文件目录以反斜杠：
-![](/image/linux/unsame.jpg)
+{% img url_for /image/linux/unsame.jpg %}
 
 - linux 文件目录以斜杠：
 linux中用斜杠/来标明目录的层级与包含关系
-![](/image/linux/unsame1.jpg)
+{% img url_for /image/linux/unsame1.jpg %}
 
 #### 根目录直属子目录
 - window
-![](/image/linux/win.jpg)
+{% img url_for /image/linux/win.jpg %}
 
 - linux
 见《根目录直属子目录》
@@ -424,21 +424,21 @@ boot  etc  lib   media  opt  root  sbin  sys  usr
 ### 其他
 
 #### 启动电脑过程
-![](/image/linux/start.png)
+{% img url_for /image/linux/start.png %}
 
 #### GNU与linux
 linux的官方称谓应该是“GNU/Linux”，一般简称Linux；
 GNU项目+Linux（系统内核）= GNU/Linux 完整的操作系统
-![](/image/linux/op.jpg)
+{% img url_for /image/linux/op.jpg %}
 
 #### 三大操作系统的关系
-![](/image/linux/line.jpg)
-![](/image/linux/line1.jpg)
+{% img url_for /image/linux/line.jpg %}
+{% img url_for /image/linux/line1.jpg %}
 
 #### 不同的Linux发行版
-![](/image/linux/version.jpg)
-![](/image/linux/version1.jpg)
-![](/image/linux/version2.jpg)
+{% img url_for /image/linux/version.jpg %}
+{% img url_for /image/linux/version1.jpg %}
+{% img url_for /image/linux/version2.jpg %}
 
 ### 命令行参数赋值
 短参数赋值，通常是这样的： command -p 10
@@ -477,7 +477,7 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 ```
 #### 安装软件有三种方式：
 - 通过图形界面：
-![](/image/linux/app.jpg)
+{% img url_for /image/linux/app.jpg %}
 - 通过命令终端安装，此时用到yum安装(推荐)
 
 yum是centos中的默认包管理工具，也用于red hat 一族；
@@ -715,7 +715,7 @@ uu.txt
 ```
 
 ### 输入重定向
-![](/image/linux/cut.png)
+{% img url_for /image/linux/cut.png %}
 
 - `<` 用于指定命令的输入为文件输入；
 ```s
@@ -731,15 +731,15 @@ uu.txt
 ```
 
 #### 综合练习输入输出重定向
-![](/image/linux/red.png)
+{% img url_for /image/linux/red.png %}
 
 ### 管道
 
 管道符号 `|`，其作用是建立命令管道，也算是重定向流的一种。
-![](/image/linux/pop2.png)
+{% img url_for /image/linux/pop2.png %}
 管道原理
 将两个命令连成管道，简单说就是将一个命令的输出作为另一个命令的输入。
-![](/image/linux/pop.png)
+{% img url_for /image/linux/pop.png %}
 
 ```s
 [hz@localhost red]$ cat test.csv
@@ -770,7 +770,7 @@ mttt
 grep a -Ir /home/hz/red | cut -d : -f 1 | sort | uniq
 ```
 
-![](/image/linux/pop1.png)
+{% img url_for /image/linux/pop1.png %}
 
  ### 进程和系统监测
  
@@ -831,9 +831,9 @@ touch file.txt; sleep 14m; rm file.txt
 ```
 
 #### crontab 程序
-![](/image/linux/chk.png)
-![](/image/linux/cro1.png)
-![](/image/linux/cro2.png)
+{% img url_for /image/linux/chk.png %}
+{% img url_for /image/linux/cro1.png %}
+{% img url_for /image/linux/cro2.png %}
 
 配置linux终端默认使用 nano 编辑器：
 ```s
@@ -853,7 +853,7 @@ echo "export EDITOR=nano" >> ~/.bashrc
 
 - 首先 用tar将多个文件归档为一个总的文件，称为 archive；
 - 然后 用gzip或bzip2命令将archive压缩为更小的文件；
-![](/image/linux/tar.png)
+{% img url_for /image/linux/tar.png %}
 
 
 ### 文件解压与压缩
@@ -993,7 +993,7 @@ zip -r sorting.zip sorting/  #压缩sorting目录为 sorting.zip文件； -r用�
 
 ### 编译安装软件
 下面都是基于red hat 一族的linux发行版，包括centos；其他非红帽linux发行版大同小异。
- ![](/image/linux/stl.png)
+ {% img url_for /image/linux/stl.png %}
 
 #### alien软件
 alien 外星人的意思， 可以将deb安装包和rpm安装包互相转换
@@ -1045,7 +1045,7 @@ htop
 [root]# /usr/local/bin/htop # 因为htop是一个可执行文件，因此直接通过路径文件可直接运行命令，
         # 如果在/usr/bin/下有htop，估计可直接执行 htop
 ```
-![](/image/linux/htop.png)
+{% img url_for /image/linux/htop.png %}
 
 
 #### rar编译安装
@@ -1058,7 +1058,7 @@ htop
 [root]# tar -zxvf rarlinux-x64-6.0.1.tar.gz
 [root]# ls # 发现里面有已经有编译好的rar 和 unrar 可执行程序，因此不需要编译，直接安装即可 ； 
 ```
-![](/image/linux/rar.png)
+{% img url_for /image/linux/rar.png %}
 ```s
 [root]# make # 此命令对于上面的Makefile说明文件，执行此命令相当于安装，安装的内容为Makefile写的
 ```
@@ -1090,13 +1090,13 @@ unrar l sort.rar  # 不解开，直接看内容
 下面箭头部分是设置磁盘，点击进去，，按照默认选中下，然后点击done 即可，其他设置安装默认来：
 这个页面还可设置其他配置，不过一般默认就行了，这里列举下可以设置什么：
 
-![](/image/linux/ser.png)
-![](/image/linux/ser1.png)
+{% img url_for /image/linux/ser.png %}
+{% img url_for /image/linux/ser1.png %}
 
 因为是服务器，所有这里只需设置root即可，不需要设置其他用户。
 
 下面就是等待安装了，安装好后，使用root登录：
-![](/image/linux/ser2.png)
+{% img url_for /image/linux/ser2.png %}
 
 #### 网络设置及其相关命令
 查看ip信息的两个命令
@@ -1108,16 +1108,16 @@ ip addr 比较新的命令 iproute2中的命令
 [VirtualBox中有4中网络连接方式](https://www.cnblogs.com/jpfss/p/8616613.html)
 [enp0s3 与 ens33](https://www.jianshu.com/p/5fc492060e70)
 
-![](/image/linux/ip.png)
+{% img url_for /image/linux/ip.png %}
 
 注意的是，虚拟机链接网络时，需要设置下图 ONBOOT = yes,然后重启电脑，否则无法链接网络
-![](/image/linux/ser3.png)
+{% img url_for /image/linux/ser3.png %}
 
 如果要使用ifconfig，需要安排 net-tools，
 安装：`yum install net-tools`，然后一路yes就行；
 
 这里可以查看 net-tools iproute2 下都有哪些命令
-![](/image/linuxm/lan3.png)
+{% img url_for /image/linuxm/lan3.png %}
 
 查看 ifconfig 命令是哪个安装包：
 使用rpm -qf 来查看 安装模块。
@@ -1137,19 +1137,19 @@ net-tools-2.0-0.25.20131004git.el7.x86_64 #说明是net-tools安装模板
 
 - eth0 对应有限连接，对应你的有线网卡，一般是RJ45网线，eth是 Ethernet 的缩写，表示以太网，有些电脑可能有几条网线连着，此时会有eth1，eth2.
 - lo 本地回环 local loopback 缩写，对应虚拟网卡，对应ip 127.0.0.1,一般用于访问自己；
-![](/image/linux/lo.png)
+{% img url_for /image/linuxm/lo.png %}
 - wlan0 对应wi-fi 无线连接，对应你的无线网卡，wlan 是 wireless Local Area Network 的缩写，表示无线局域网，若你有几个无线网卡，就有wlan1 wlan2...
 
 关于下图的解析：
 红框框出的， 无线没有发包和收包， 本地回环有包的发送，这是正常的； 最多的发包数量是有线连接，所以判定有线连接。
-![](/image/linuxm/lan1.png)
+{% img url_for /image/linuxm/lan1.png %}
 
 #### 新版
 - enp0s3 en 代表以太网卡，是Ethernet的缩写， p0s3 代表PCI接口的物理地址为（0，3），
   其中横坐标代表bug总线，纵坐标代表slot 槽、插口
 
 还有一个虚拟接口，可以不用管，这里就不列出了。
-![](/image/linuxm/lan2.png)
+{% img url_for /image/linuxm/lan2.png %}
 
 
 

@@ -142,10 +142,10 @@ canvas.height = WINDOW_HEIGHT;
 #### miterLimit 折线交点距离
 miterLimit 是折线中心线交点与折线外边线交点距离
 此属于通常与lineJoin一起使用，用来设置折线的尖角的尖锐度,下面是原理图：
-![](/image/canvas/miter.jpg)
+{% img url_for /image/canvas/miter.jpg %}
 
 ### 画五角星
-![](/image/canvas/five_star.jpg)
+{% img url_for /image/canvas/five_star.jpg %}
 ```js
   var canvas = document.getElementById('canvas');
             canvas.width = 800;
@@ -172,23 +172,23 @@ miterLimit 是折线中心线交点与折线外边线交点距离
 阴影是围绕图形的一层阴影图形，这个阴影图形是固定的，当你对这个阴影图形进行向右偏移时，**阴影图形大小不变，图形将整体平移**，这样阴影图形的左侧就会被原图形给**遮挡**，导致看起来只看到图形只有右侧才有阴影。
 #### shadowOffsetX
 下面两张图片分别展示了 阴影图形平移原理，具体是 阴影图形不变，整体偏移被遮挡。
-![](/image/canvas/shadow1.jpg)
-![](/image/canvas/shadow2.jpg)
+{% img url_for /image/canvas/shadow1.jpg %}
+{% img url_for /image/canvas/shadow2.jpg %}
 #### shadowBlur 模糊程度
 一般的人说这个是模糊程度，我觉得这个说法不太准确，shadowBlur是扩散并模糊才对，因为shadowBlur会导致阴影扩散的长度，比如定义为10的时候，阴影将扩散长度10px，然后针对这10px进行模糊，会导致阴影的。
 此时，如果定义 shadowBlur 为30，然后偏移量 shadowOffsetX为10，会出现图形四周都有阴影，但左侧阴影长度为20，右侧为40，上下为30.
-![](/image/canvas/shadowblur.jpg)
+{% img url_for /image/canvas/shadowblur.jpg %}
 
 ### globalAlpha 透明度
 设置canvas的透明度
 
 ### 图形叠加的遮盖设置
 可以通过globleCompositeOperation 设置图形叠加时，如何遮盖的问题：
-![](/image/canvas/shadowblur.jpg)
+{% img url_for /image/canvas/shadowblur.jpg %}
 
 ### 剪辑区域 clip
 与路径规划函数(如arc)等等共同使用，clip先使用，使canvas绘制区域只显示在clip的路径内，其他区域只显示整个context.fillStyle。
-![](/image/canvas/clip.jpg)
+{% img url_for /image/canvas/clip.jpg %}
 ```
  context.beginPath();
 context.fillStyle='yellow'
@@ -300,7 +300,7 @@ const canvas = document.getElementById('canvas');
 区域内向外画一条线，这条线穿过N条线，指定一种方向为-1，相反方向为1，N条线加起来的值，
 若为0，说明该区域处于图形外部；
 若为非0，说明处于内部。
-![](/image/canvas/zero.jpg)
+{% img url_for /image/canvas/zero.jpg %}
 
 ### 圆圈内外圆顺\逆时针影响到的
 #### 内外两个圆不指定方向
@@ -323,7 +323,7 @@ const canvas = document.getElementById('canvas');
     context.fill();
 ```
 效果如下：
-![](/image/canvas/ring.jpg)
+{% img url_for /image/canvas/ring.jpg %}
 #### 非零环绕原则
 当指定不同方向时，利用非零环绕原则，内圆的区域相对于整个图形而言处于图形之外，此时fill方法不会填充此区域，产生镂空效果。
 #### 对阴影的影响
@@ -344,7 +344,7 @@ const canvas = document.getElementById('canvas');
     context.shadowBlur = 10;
     context.fill();
 ```
-![](/image/canvas/ring2.jpg)
+{% img url_for /image/canvas/ring2.jpg %}
 
 ### CanvasRenderingContext2D
 #### 介绍
@@ -392,7 +392,7 @@ const canvas = document.getElementById('canvas');
 - 缩放 scale( sx , sy )
 
 ### 变换矩阵
-![](/image/canvas/transform_matrix.jpg)
+{% img url_for /image/canvas/transform_matrix.jpg %}
 
 ### transform 与 变换重置
 当对context多次transform后，想丢弃、重置之前所有的transform的影响，可使用setTransform。
@@ -455,11 +455,11 @@ context.strokeText( string , x , y  , [maxlen] );
 ```
 ### 一些几何思路
 #### 带倒角的矩形
-![](/image/canvas/rect.jpg)
+{% img url_for /image/canvas/rect.jpg %}
 #### 圆的pi概念
-![](/image/canvas/arc.jpg)
+{% img url_for /image/canvas/arc.jpg %}
 #### 月亮
-![](/image/canvas/moon.jpg)
+{% img url_for /image/canvas/moon.jpg %}
 你也可以使用两段闭合的圆弧线来构建一个圆，[参考demo]()
 
 ## 图像处理API
@@ -482,7 +482,7 @@ context.drawImage( image , 300 , 100, 800, 300, 300, 300 ,200,200 )
 参数含义依次为：图片，原图片信息(0,0,100,100)，目的图片信息(0,0,200,200);
 基本含义为：截取原图片坐标点为0，0起点宽高各100的区域，绘制到画布的坐标点0，0为起点，宽高各200的区域上。
 截图的图片会按照目的区域大小缩放
-![](/image/canvas/drawImage.jpg)
+{% img url_for /image/canvas/drawImage.jpg %}
 
 ### getImageData 获取图片信息
 #### 介绍
@@ -495,7 +495,7 @@ height
 data(图片像素等信息,以多维数组的方式展示)
 ```
 下面是imageData.data的信息，更多信息参考《putImageData 插入图像》：
-![](/image/canvas/put_data.jpg)
+{% img url_for /image/canvas/put_data.jpg %}
 #### 跨域问题
 图片存储在本地时，是默认没有域名的，如果不启动服务直接打开html，用getImageData方法时，浏览器会判定为跨域而报错！解决方法是启动本地服务打开html。
 ```
@@ -505,7 +505,7 @@ at HTMLImageElement.document.getElementById.onload"
 
 ### putImageData 插入图像
 其7个参数意思依次为：getImageData获取的图片imageData对象，坐标点x(也是相对于canvas的相对位移，故写成dx)，坐标点y，脏位移x(脏是因为通过putImageData获取的图片信息，不是纯正的原图片信息，是“被污染了的”数据)，脏位移y，脏图片宽度，脏图片高度。
-![](/image/canvas/put.jpg)
+{% img url_for /image/canvas/put.jpg %}
 
 要与 getImageData 一起使用，[demo 地址](http://127.0.0.1:3000/canvas-image/05-image-copy/index.html)：
 ```js
@@ -563,7 +563,7 @@ context.arcTo(
 	x2 , y2 ,               控制点；
 	radius );               结束点；
 ```
-![](/image/canvas/arcTo.jpg)
+{% img url_for /image/canvas/arcTo.jpg %}
 
 
 ### 贝塞尔曲线 Bezier
@@ -573,13 +573,13 @@ context.arcTo(
 参考上面
 #### 二次贝塞尔曲线
 二次贝塞尔曲线API是quadraticCurveTo，二次贝塞尔曲线与三次贝塞尔曲线的区别在于，二次不能画波浪线，三次可以：
-![](/image/canvas/bezeirinfo.jpg)
+{% img url_for /image/canvas/bezeirinfo.jpg %}
 如下图所示，演示了开始点、控制点、结束点。
-![](/image/canvas/bezeir.jpg)
+{% img url_for /image/canvas/bezeir.jpg %}
 
 #### 三次贝塞尔曲线
 三次贝塞尔曲线API是 bezierCurveTo 更多信息参考《二次贝塞尔曲线 Bezier》：
-![](/image/canvas/bezeircurve.jpg)
+{% img url_for /image/canvas/bezeircurve.jpg %}
 
 ### 画线条只能用stroke
 如题，线条使用fill将无法绘制。
@@ -597,8 +597,8 @@ context.stroke();
 ## 炫丽的倒计时效果demo
 ### 数据建模--多维数组矩阵创建数字模型
 用一个只有0和1的数组，1表示有路径，0表示填充为空。
-![](/image/canvas/digit.png)
-![](/image/canvas/cell.png)
+{% img url_for /image/canvas/digit.png %}
+{% img url_for /image/canvas/cell.png %}
 
 ### 计算数字矩阵模型内的元素坐标
 如上图所示，只要我们能知道矩阵左上角的坐标值xy，就可以计算出矩阵内所有的元素坐标值；

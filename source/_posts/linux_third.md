@@ -35,13 +35,13 @@ categories:
  例如 systemd，httpd， smbd 等等；
 
  #### linux操作系统的开机过程
-![](/image/linuxt/ser.png)
+{% img url_for /image/linuxt/ser.png %}
 
 
  #### 初始化进程服务
 centos自从 centos7以来，以systemd命令来设置服务，关键字是 systemctl ：
-![](/image/linuxt/ser1.png)
-![](/image/linuxt/ser2.png)
+{% img url_for /image/linuxt/ser1.png %}
+{% img url_for /image/linuxt/ser2.png %}
 
 ### 用systemd管理系统服务
 
@@ -79,7 +79,7 @@ target名称：
 ```s
 systemctl list-units --type=target --all
 ```
-![](/image/linuxt/tar.png)
+{% img url_for /image/linuxt/tar.png %}
 
 #### 其他命令
 
@@ -116,7 +116,7 @@ systemctl is-enabled httpd #查看Apache服务是否开机启动
 ### 服务器ip在 客户机访问Apache首页
 Apache服务如果安装成功，那么可以通过服务器ip在 客户机访问，
 但因为有防火墙的缘故访问不了，因为防火墙没有开放此端口号，
-![](/image/linuxt/apa1.png)
+{% img url_for /image/linuxt/apa1.png %}
 可以通过命令来查看服务器开放的端口：
 ```s
 firewall-cmd --list-ports
@@ -132,7 +132,7 @@ systemctl stop firewalld
 
 ```
 然后在客户机上访问，出现下面页面说明成功：
-![](/image/linuxt/apa.png)
+{% img url_for /image/linuxt/apa.png %}
 
 ```s
 #方法二 推荐：
@@ -149,10 +149,10 @@ firewall-cmd --zone=public --remove-port=80/tcp --permanent
 
 ### 配置 Apache服务
 #### 下面是Apache服务的配置文件地址
-![](/image/linuxt/apac.png)
+{% img url_for /image/linuxt/apac.png %}
 
 #### 配置文件有以下类型：
-![](/image/linuxt/apac1.png)
+{% img url_for /image/linuxt/apac1.png %}
  全局配置，如下不用 `<Directory>` 包起来，比如 LogLevel warn 等等;
  区域配置，如下区域配置一般用 `<Directory>` 包起来;
 
@@ -177,7 +177,7 @@ LogLevel warn # 全局配置
 
 #### 配置文件中常用的 httpd参数,
 下面参数中，有些是全局配置，有些是区域配置参数
-![](/image/linuxt/apac2.png)
+{% img url_for /image/linuxt/apac2.png %}
 
 如上图 Directory 是配置网站数据目录的权限，如下
 
@@ -200,13 +200,13 @@ LogLevel warn # 全局配置
 #### 概述
 SELinux 是 security-enhanced linux 缩写，表示 安全增强型 linux；
 
-![](/image/linuxt/sel0.png)
+{% img url_for /image/linuxt/sel0.png %}
 
 #### 防火墙和 SELinux 的区别
 
 防火墙就像防盗门，用于抵御外部的危险；
 SELinux就像保险柜，用于保护内部的资源；
-![](/image/linuxt/sel.png)
+{% img url_for /image/linuxt/sel.png %}
 
 
 #### sestatus
@@ -268,7 +268,7 @@ DocumentRoot "/home/web"
 Permissive
 ```
 再次访问可以显示正确页面：
-![](/image/linuxt/apac3.png)
+{% img url_for /image/linuxt/apac3.png %}
 
 
 #### 配置不生效的本质原因
@@ -375,7 +375,7 @@ ifcfg-ens33  这里的ens33，就是上面ifconfig执行时 以太网接口的en
 
 注意的是，要设置为固定，必须 网络适配器设置为桥接，如下：
 
-![](/image/linuxt/card.png)
+{% img url_for /image/linuxt/card.png %}
 
 ```s
 vim /etc/sysconfig/network-scripts/ifcfg-ens33
@@ -413,7 +413,7 @@ window查看 默认网关地址，dns地址
 ```s
 ipconfig /all
 ```
-![](/image/linuxt/ip.png)
+{% img url_for /image/linuxt/ip.png %}
 
 注意的是，不要在客户机设置 ip，不然出现卡顿，最好是在服务器端设置。
 
@@ -528,8 +528,8 @@ ping 192.168.1.20
 systemctl reload httpd # 重启，让配置生效
 ```
 在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》：
-![](/image/linuxt/vi1.png)
-![](/image/linuxt/vi2.png)
+{% img url_for /image/linuxt/vi1.png %}
+{% img url_for /image/linuxt/vi2.png %}
 
 问题，为什么这次设置后，就可以不受 SELinux 安全限制呢，
 因为我们在 《配置实战 ：修改访问首页内容》已经对 /home/web 修改文件安全上下文 了，如果换其他目录，请按上面《修改文件安全上下文》修改上下文。
@@ -586,8 +586,8 @@ vi host
 ```
 在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》
 ：
-![](/image/linuxt/vi3.png)
-![](/image/linuxt/vi4.png)
+{% img url_for /image/linuxt/vi3.png %}
+{% img url_for /image/linuxt/vi4.png %}
 
 注意的是，192.168.1.10 是我们之前 《基于IP地址》创建的，如果没有，你按照此创建；
 另外，为了消除影响，可将上面《基于IP地址》中创建的 httpd配置 以及 /home/web/10 20 目录删除；
@@ -658,12 +658,12 @@ ca-bundle.trust.crt  make-dummy-cert  renew-dummy-cert
 
 #### 请使用服务器主机IP
 注意这里用来访问的IP，请使用服务器主机IP，而不要使用虚拟IP，否则可能访问不成功。
-![](/image/linuxt/https1.png)
-![](/image/linuxt/https2.png)
+{% img url_for /image/linuxt/https1.png %}
+{% img url_for /image/linuxt/https2.png %}
 
-![](/image/linuxt/ca1.png)
+{% img url_for /image/linuxt/ca1.png %}
 公钥加密方法，使用期限默认一年
-![](/image/linuxt/ca2.png)
+{% img url_for /image/linuxt/ca2.png %}
 
 
 ### 使用自签名的证书
@@ -715,13 +715,13 @@ SSLCertificateKeyFile /etc/pki/tls/private/server.key #私钥
 ```s
 systemctl restart httpd #重启 Apache服务
 ```
-![](/image/linuxt/cert1.png)
-![](/image/linuxt/cert.png)
+{% img url_for /image/linuxt/cert1.png %}
+{% img url_for /image/linuxt/cert.png %}
 
 #### 为什么可以http访问
 值得注意的是，我们依然可以http访问，因为apache服务器中，我们也放开了防火墙80端口的监听
 至于为什么我们可以用https访问，是一样的原因，在apache服务器中，我们也放开了防火墙443的监听；
-![](/image/linuxt/cert2.png)
+{% img url_for /image/linuxt/cert2.png %}
 
 #### 有些服务器能用http访问，不能用https
 我们在调试的时候，有时候用webpack启动一个服务，然后通过http，是可以访问的，但换成https不能访问，

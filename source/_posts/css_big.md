@@ -43,7 +43,7 @@ img{
 <div class="float">浮动之前</div>
 <div class="test">相邻块级元素</div>
 ```
-![](/image/css/float-before.jpg)
+{% img url_for /image/css/float-before.jpg %}
 
 浮动之后：
 ```
@@ -54,12 +54,12 @@ img{
 <div class="float">浮动之后</div>
 <div class="test">相邻块级元素相邻块级元素相邻块级元素...</div>
 ```
-![](/image/css/float-after.jpg)
+{% img url_for /image/css/float-after.jpg %}
 
 #### 与浮动元素相邻
 浮动元素与浮动元素 将并列并排；
 注意的是，如果浮动元素的高度不同，当浮动元素被挤到第二行时，将会卡住：
-![](/image/css/float-pading.jpg)
+{% img url_for /image/css/float-pading.jpg %}
 ```
  .triangle{
       float: left;

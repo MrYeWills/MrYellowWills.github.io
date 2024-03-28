@@ -9,7 +9,7 @@ categories:
 ## 基础知识
 ### 开发一个页面结构示范
 主要都是组件完成：
-![](/image/vue/demo.png)
+{% img url_for /image/vue/demo.png %}
 ### 挂载点，模版与实例
 ```js
 <div id="root"></div> //挂载点
@@ -30,13 +30,13 @@ new Vue({//实例
 #### 插值表达式相当于v-text 
 v-text 是vue框架 插值写法一种，
 另外还有 v-html。
-![](/image/vue/values.jpg)
+{% img url_for /image/vue/values.jpg %}
 
 #### v-text v-html可认为是插值表达式的延伸
 如题。
 
 #### 几种写法
-![](/image/vue/value2.png)
+{% img url_for /image/vue/value2.png %}
 ### 赋值
 参考《插值表达式》的图片。
 
@@ -47,31 +47,31 @@ v-text 是vue框架 插值写法一种，
 #### v-text v-html
 是一种插值写法，见《插值表达式》，与双花括号写法差不多。
 #### v-on:click 与 @click
-![](/image/vue/values.jpg)
+{% img url_for /image/vue/values.jpg %}
 #### v-bind: 与 ：
 后者是前者的缩写，用于html元素属性绑定。
 当被绑定后，属性等号后面的字符串是一个js表达式，js内表达式变量指向实例中的data下面的属性值：
-![](/image/vue/bind.jpg)
+{% img url_for /image/vue/bind.jpg %}
 #### v-model
 一般用于可交互的html元素，比如input，而不是单纯的div，定义v-model后，就是数据双向绑定，
 input元素可改变数据，数据改变也同样改变input的显示。
 与之相对的是单向绑定的v-bind，一般用于纯展示的html元素，如div，只用于数据获取，而不能改变数据。
 
 #### v-if v-show v-for :key
-![](/image/vue/for.jpg)
+{% img url_for /image/vue/for.jpg %}
 如上图， v-if 显示隐藏是删除dom，v-show，通过css display none， v-for用于遍历, :key用于遍历唯一值，与react一致。
 
 #### v-if v-else-if v-else
-![](/image/vue/if.jpg)
+{% img url_for /image/vue/if.jpg %}
 
 #### v-if v-else 必须连着写
-![](/image/vue/if-err.jpg)
+{% img url_for /image/vue/if-err.jpg %}
 
 ### v-for列表渲染
 #### 结合v-if
-![](/image/vue/forif.jpg)
+{% img url_for /image/vue/forif.jpg %}
 #### 结合v-show
-![](/image/vue/for-show.jpg)
+{% img url_for /image/vue/for-show.jpg %}
 #### v-if v-show 列表渲染区别
 v-if，更加灵活；
 v-show，如果是过滤效果可以使用。
@@ -98,14 +98,14 @@ components:testOk
     </div>
 ```
 #### style绑定
-![](/image/vue/style.jpg)
+{% img url_for /image/vue/style.jpg %}
 
 ### 计算属性(合成属性)computed
 #### 概述
 当某一个数据来源于多个数据计算而来时，用这个，并且类似react的hooks功能，此计算具有缓存计算性能优化能力，
 只有所依赖的数据变化时才重新计算，否则取缓存。
 computed可以说是data的升级版。
-![](/image/vue/compd.jpg)
+{% img url_for /image/vue/compd.jpg %}
 #### 使用场景：数据联动
 数据联动时，使用computed。
 
@@ -127,10 +127,10 @@ computed 性能最好，最简洁；
 watch 因为只能一次监听一个参数，需要写多个监听；
 methods 只要vue render时，无论依赖的参数是否变化，都会重新执行一次，性能最差。
 
-![](/image/vue/watch.jpg)
+{% img url_for /image/vue/watch.jpg %}
 
 #### computed的get和set
-![](/image/vue/setter.jpg)
+{% img url_for /image/vue/setter.jpg %}
 
 ### this指向与优先级
 this指向vue实例，
@@ -154,10 +154,10 @@ vue底层做了封装，优先去data找然后是 computed， 然后是 methods�
 ### ref
 #### 在dom元素中ref指向dom
 通过`this.$refs.refName`获取
-![](/image/vue/ref1.jpg)
+{% img url_for /image/vue/ref1.jpg %}
 #### 在vue组件中ref指向组件实例
 这个实例就是子组件内的this，拥有一切能力：
-![](/image/vue/ref2.jpg)
+{% img url_for /image/vue/ref2.jpg %}
 
 #### props是否带:的区别
 给组件test-ok定义props， test值是js表达式，是变量，strtest值是字符串
@@ -167,25 +167,25 @@ vue底层做了封装，优先去data找然后是 computed， 然后是 methods�
 
 ### 插槽slot
 #### slot和默认值
-![](/image/vue/slot0.jpg)
+{% img url_for /image/vue/slot0.jpg %}
 #### slot默认值可以是html元素
-![](/image/vue/slot-default.jpg)
+{% img url_for /image/vue/slot-default.jpg %}
 #### 具名slot
 如下，父层定义插槽时，可通过定义name，此时就是具名插槽，可有多个，如果不定义name，那么此插槽则代表父层整个所有插槽，此只有一个。
-![](/image/vue/slot.jpg)
+{% img url_for /image/vue/slot.jpg %}
 #### 不具名插槽只有一个，具名插槽可有多个
 参考《具名slot》
 #### 作用域插槽(render props模式)
 没有用作用域插槽前：
-![](/image/vue/slot-pre.jpg)
+{% img url_for /image/vue/slot-pre.jpg %}
 用之后：
 template 与 slot-scope 属于固定写法。这种模式向极了react的render props模式。
-![](/image/vue/slot-fn.jpg)
+{% img url_for /image/vue/slot-fn.jpg %}
 
 ### template组件与v-once
 template是vue自带标签，可替换 v-if写法，如下，v-once 用于性能优化，让vue显示隐藏组件时不用卸载，可不用。
-![](/image/vue/tep.jpg)
-![](/image/vue/slot-pre1.jpg)
+{% img url_for /image/vue/tep.jpg %}
+{% img url_for /image/vue/slot-pre1.jpg %}
 
 ### css动画原理
 #### vue自带的transition
@@ -196,18 +196,18 @@ template是vue自带标签，可替换 v-if写法，如下，v-once 用于性能
 - 显示到最后，删除class fade-enter-to fade-enter-active
 
 在以上过程中，给不同的class定义不同的css，就可以做动画。
-![](/image/vue/css1.jpg)
+{% img url_for /image/vue/css1.jpg %}
 #### 显示时的过程
 参考上面《vue自带的transition》
 #### 隐藏时的过程
-![](/image/vue/css3.jpg)
+{% img url_for /image/vue/css3.jpg %}
 #### 自定义class name
 classname可以根据 transition的name来定义，如果未定义name，默认为v，也就是v-enter。
-![](/image/vue/css2.jpg)
+{% img url_for /image/vue/css2.jpg %}
 默认class name 以及动画样式处理：
-![](/image/vue/css4.jpg)
+{% img url_for /image/vue/css4.jpg %}
 如下，定义enter-active-class props 可完全重写对应class，如下是结合animate.css库做的动画
-![](/image/vue/css5.jpg)
+{% img url_for /image/vue/css5.jpg %}
 
 #### transition标签自带的事件
 vue给transition标签绑定了一些时间，用于更好的做动画，更多可网上查阅。
@@ -222,13 +222,13 @@ transition的显示隐藏效果，主要是结合 v-if 或 v-show 来使用（�
 
 #### 列表增加、删除过渡动画(transition-group)
 transition-group 是vue用来做列表添加或删除某条数据时，过渡动画，其原理如下图：
-![](/image/vue/css6.jpg)
+{% img url_for /image/vue/css6.jpg %}
 
 #### slot来动画封装(render props模式)
 使用插槽render props模式，或类似高阶组件，同时用transition自带的绑定事件来写css：
 貌似这个动画只在v-if有效，在v-show下无效，原因待研究。
-![](/image/vue/css-fn1.jpg)
-![](/image/vue/css-fn2.jpg)
+{% img url_for /image/vue/css-fn1.jpg %}
+{% img url_for /image/vue/css-fn2.jpg %}
 
 ### keep-alive 与 activated (性能优化)
 #### 概述
@@ -241,19 +241,19 @@ activated 可用于页面的ajax是否重新请求。
 
 下面讲解keep-alive 使用步骤：
 #### 包裹父节点
-![](/image/vue/keep1.png)
+{% img url_for /image/vue/keep1.png %}
 
 #### 子组件(页面)使用
 在页面内保存一个装载组件时的key，若key不一样，就发起新请求。
-![](/image/vue/keep2.png)
+{% img url_for /image/vue/keep2.png %}
 
 ### 递归组件
 #### 概述
 如图：
-![](/image/vue/digui.jpg)
+{% img url_for /image/vue/digui.jpg %}
 #### 运用场景
 递归组件运用场景，如一级、二级列表的递归：
-![](/image/vue/digui1.jpg)
+{% img url_for /image/vue/digui1.jpg %}
 
 ## 黑知识
 ### 列表渲染
@@ -262,12 +262,12 @@ activated 可用于页面的ajax是否重新请求。
 如果通过下标改变数组，是不会触发重新渲染，估计vue底层也是通过比较两次props是否相同。
 #### 占位符
 如果列表渲染时，要同时渲染多种情况，又不想在外层加div，可用占位符template
-![](/image/vue/template-list.jpg)
+{% img url_for /image/vue/template-list.jpg %}
 #### 可通过对象渲染
 可直接通过改变属性内容，更新渲染，可能是数据劫持的运用；
 **如果要新增属性，必须改变对象引用**
 
-![](/image/vue/list-obj.jpg)
+{% img url_for /image/vue/list-obj.jpg %}
 
 #### Vue.set 与 vm.$set 设置对象或数组
 除上面说的方法外，可通过Vue.set 与 vm.$set来改变数组或对象重新渲染。
@@ -301,7 +301,7 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
         })
     </script>
 ```
-![](/image/vue/black.jpg)
+{% img url_for /image/vue/black.jpg %}
 
 #### 用is重命名解决
 其他代码不变，改变如下部分，is很类似es6 的 import as 或es6的重命名：
@@ -318,14 +318,14 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
 ### 子组件data必须是函数
 如下，在根组件上data写成对象是没有问题的，但子组件必须是函数，这是因为子组件可能会被父组件使用很多次，
 为了避免对象引用带来的问题，要求data每次都是最新的，因此通过执行函数，每次获得的是新对象，避免了同一个对象引用的问题。
-![](/image/vue/black-child.jpg)
+{% img url_for /image/vue/black-child.jpg %}
 
 ### 组件参数校验
 #### 单个用字符串
 #### 多个类型用数组
-![](/image/vue/props1.jpg)
+{% img url_for /image/vue/props1.jpg %}
 #### 定义required与defaultValue
-![](/image/vue/props2.jpg)
+{% img url_for /image/vue/props2.jpg %}
 #### 自定义验证validator规则
 如上面的图片
 
@@ -333,11 +333,11 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
 在vue中，props不会显示在子组件的dom上。非props会显示在子组件最外层的dom属性上。
 非props属性是，定义子组件时定义的属性，但在子组件内没有声明为props的属性，是为非props。
 下面content就是非props。
-![](/image/vue/noprops.jpg)
+{% img url_for /image/vue/noprops.jpg %}
 
 ### 给组件绑定原生事件
 如下，不是原生事件，如何绑定呢，使用`@click.native="handleClick"`
-![](/image/vue/event-native.jpg)
+{% img url_for /image/vue/event-native.jpg %}
 
 ### 非父子组件传值
 #### 三种方式
@@ -350,7 +350,7 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
 这种做法也叫 bus／总线 传值。
 
 这种方式与window的事件监听也类似，估计用vue自带的事件监听方式，做了很多优化。
-![](/image/vue/value-event.jpg)
+{% img url_for /image/vue/value-event.jpg %}
 #### 传统方式(简单)
 思想跟react兄弟组件传值是一样的，详细参考上面的《三种方式》，适用于简单的非父子关系，如兄弟组件传值
 #### vuex
@@ -359,36 +359,36 @@ Vue中有的方法在实例中基本也有，名字前加$， 如 Vue.set 与 vm
 
 ### 若为别名，必须加～ (style内import其他css)
 style内import其他css，若为别名，必须加～，js没有这个限定，如下css内，import一个全部变量css变量文件，styl文件：
-![](/image/vue/styl.jpg)
-![](/image/vue/styl2.jpg)
+{% img url_for /image/vue/styl.jpg %}
+{% img url_for /image/vue/styl2.jpg %}
 
 ### 图片加载的文字抖动问题
 #### 文字抖动原因
 当图片请求未完成时，文字在上面，图片加载完毕，文字跑到下面来。
-![](/image/vue/dou5.jpg)
+{% img url_for /image/vue/dou5.jpg %}
 #### 设置overflow hidden
 解决原理，已知图片的宽度是手机屏幕宽度，且高度也是固定的，宽高比为31.25%.
 预先设置一个宽高比，由于height的百分比参考的是父元素高度，因此使用padding，padding参照自身元素的width。
 推荐：
-![](/image/vue/dou1.jpg)
+{% img url_for /image/vue/dou1.jpg %}
 错误：
-![](/image/vue/dou3.jpg)
+{% img url_for /image/vue/dou3.jpg %}
 #### 预先设置宽高比
 参考《设置overflow hidden》
 #### 使用padding不用height
 参考《设置overflow hidden》
 #### 也可使用vw，不过有兼容问题
-![](/image/vue/dou2.jpg)
+{% img url_for /image/vue/dou2.jpg %}
 #### 通过Online设置3G 的技巧
-![](/image/vue/dou4.jpg)
+{% img url_for /image/vue/dou4.jpg %}
 
 ### 样式穿透
 使用 `>>>`做样式穿透，不受 scoped限制，下图表示 .wrapper下的 .swiper... 类穿透 scoped，是一个全局样式。
-![](/image/vue/port.png)
+{% img url_for /image/vue/port.png %}
 
 ### 页面路由切换，不在最顶层
 vue-router 官网给了解决方法：
-![](/image/vue/route.jpg)
+{% img url_for /image/vue/route.jpg %}
 
 ### props的属性名不能用驼峰命名
 这里说的是低版本，可能存在此问题。
@@ -397,8 +397,8 @@ vue-router 官网给了解决方法：
 ## vue-cli
 ### vue-cli的vue文件写法
 #### 示例
-![](/image/vue/use.jpg)
-![](/image/vue/template.jpg)
+{% img url_for /image/vue/use.jpg %}
+{% img url_for /image/vue/template.jpg %}
 #### data要写成函数
 在vue-cli开发中data需要定义成一个函数。
 原来非vue-cli写法是data是对象。
@@ -422,33 +422,33 @@ vue ui
 ### static目录会被放在服务器上(mock)
 vue-cli创建的工程，会将satic目录放在服务中，类似 node 的static插件。
 所有mock json可放置其中。
-![](/image/vue/static.png)
+{% img url_for /image/vue/static.png %}
 
 ### 设计ajax
 #### 业务中使用
 在后台没有接口，使用mock数据完成开发后，为了让接入真实后台api后，不用重新修改业务中api代码，
 通常做法：业务中使用标准后台API，利用vue-cli生成的config配置代理，代理到mock路径。
-![](/image/vue/ajax1.png)
+{% img url_for /image/vue/ajax1.png %}
 #### config配置代理 (webpack) 
 vue-cli的代理底层基于webpack实现。
-![](/image/vue/ajax2.png)
+{% img url_for /image/vue/ajax2.png %}
 #### 保证了业务api不用更改
 参考上面《业务中使用》
 
 ## router
 ### 简单示例
 index.html:
-![](/image/vue/router-index.jpg)
+{% img url_for /image/vue/router-index.jpg %}
 main.js:
-![](/image/vue/router-main.jpg)
+{% img url_for /image/vue/router-main.jpg %}
 app.vue:
-![](/image/vue/router.jpg)
+{% img url_for /image/vue/router.jpg %}
 router.js:
-![](/image/vue/router1.jpg)
+{% img url_for /image/vue/router1.jpg %}
 Info.vue:
-![](/image/vue/router2.jpg)
+{% img url_for /image/vue/router2.jpg %}
 页面展示：
-![](/image/vue/router3.jpg)
+{% img url_for /image/vue/router3.jpg %}
 
 ### 在vue实例中使用router能力
 ```js
@@ -531,7 +531,7 @@ export default {
 
 ## 定义组件
 ### 全局组件
-![](/image/vue/global.jpg)
+{% img url_for /image/vue/global.jpg %}
 ### 定义props
 #### 在创建组件的地方声明有哪些props
 后在创建组件的地方，通过定义props数组，声明使用了哪些prop
@@ -549,13 +549,13 @@ export default {
 ### 子组件如何改变父组件值
 #### 概述
 通过给子组件定义自定义事件，将父组件的方法传给自定义事件，方式与react相同。
-![](/image/vue/event.jpg)
+{% img url_for /image/vue/event.jpg %}
 #### $emit
 使用$emit触发事件。
 
 
 ### 局部组件
-![](/image/vue/part.jpg)
+{% img url_for /image/vue/part.jpg %}
 
 ### template、dom节点关系、vue实例、组件
 每个vue实例都有一个template，
@@ -566,13 +566,13 @@ export default {
 
 ## 其他
 ### npm script方式
-![](/image/vue/npm.jpg)
+{% img url_for /image/vue/npm.jpg %}
 
 ### vue调试
 
 #### 定义var，控制台测试
 如图，将vue实例定义成一个变量，然后在控制台拿这个变量进行一系列设置值的操作：
-![](/image/vue/debug.jpg)
+{% img url_for /image/vue/debug.jpg %}
 
 #### mounted 内定义 window.vue=this;
 如题，在控制台不用断点，就可以通过window.vue拿到vue实例。

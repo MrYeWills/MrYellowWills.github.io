@@ -278,7 +278,7 @@ Promise
 
 ### event loop (事件循环)
 #### 概述
-![](/image/js/loop.jpg)
+{% img url_for /image/js/loop.jpg %}
 #### 区分出同步、异步任务
 浏览器引擎会对所有任务进行识别，会将同步任务放置到运行栈中;
 会将其中的异步任务取出放在浏览器的线程中，等待如setTimeout任务的时间到了变成0后，再放到任务队列中；

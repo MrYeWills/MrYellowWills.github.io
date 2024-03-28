@@ -104,7 +104,7 @@ ps工具中的钢笔工具就是一个贝塞尔曲线，贝塞尔曲线由几个
 <path stroke='blue' stroke-width='.8' fill='blue' d='M 20 10 H 50 V 0 L 60 20 L 50 40 V 30 H 20 Z' />
 ```
 效果：
-![](/image/d3/all/svg1.jpg)
+{% img url_for /image/d3/all/svg1.jpg %}
 
 
 ### polygon 与 polyline
@@ -214,7 +214,7 @@ node.append("g")
 svg的机制，会让viewbox自动缩小或放大以填充整个viewport；
 放大后，viewport显示了刚才viewbox的内容。
 [demo参考](http://127.0.0.1:3000/multy/SVG/Lesson2/viewbox.html)
-![](/image/svg/viewbox.jpg)
+{% img url_for /image/svg/viewbox.jpg %}
 #### viewbox会缩小或者扩大填满viewport
 参考上面。
 #### preserveAspectRatio

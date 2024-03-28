@@ -98,7 +98,7 @@ switch (条件) {
 
 ### url中添加参数的两种模式
 #### ？与 分段路由
-![](/image/router/params.png)
+{% img url_for /image/router/params.png %}
 
 上面第一种模式，我们很熟悉了，不再举例。
 其实第二种模式，我们一直在用，只是没意识到，第二种模式 定义如下：
@@ -268,7 +268,7 @@ ReactDOM.render(
 
 react 网站使用的路由系统都是虚拟的
   
-![](/image/router/spa.png)
+{% img url_for /image/router/spa.png %}
 
 ### 为什么要有路由系统
 项目有很多页面，但react是spa框架；
@@ -297,9 +297,9 @@ spa应用的不同页面展示，完全是由前端自己渲染的；
 注意 BrowserRouter Route Switch 这三者的功能区别，
 另外记住这三者全部都是组件，因为是组件，就天生具备堆叠的特性，尤其 Router，在不加 Switch的时候，只要匹配到的，全部都被渲染出来。
 这也是为什么项目一定要用Switch的原因。
-![](/image/router/ok.png)
-![](/image/router/ok1.png)
-![](/image/router/ok2.png)
+{% img url_for /image/router/ok.png %}
+{% img url_for /image/router/ok1.png %}
+{% img url_for /image/router/ok2.png %}
 
 ### 多页面应用不存在 路由系统的概念
 多页面中，不同的url地址，会匹配到服务端不同的路径，服务端返回不同的html文件给浏览器。

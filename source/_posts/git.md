@@ -74,7 +74,7 @@ git push origin -f
 有人将上一操作过程称为变基。
 git rebase 功能类似 git merge，区别在于，git merge时，你的commit 是按先后顺序排列的，merge完成后可能一眼看不到自己的提交。
 git rebase则不同，git rebase后，你与develop不同的提交(也就是你修改的)commit将显示在第一条，(注意的是，git rebase冲突修改将不会生成commit，从上面只有git add,没有git commit得到佐证，因为只有git commit 才会生成一条commit):
-![](/image/git/git3.png)
+{% img url_for /image/git/git3.png %}
 
 以上过程是把git rebase 当git merge来用，git rebase的这种当merge的用法，用的不多，用得最多的就是上面展示的，用来处理PR后的冲突。
 
@@ -208,7 +208,7 @@ gitk -- **/ abc.js
 快照：可以理解为版本每次提交后，git会给提交拍照，用来记录版本信息。
 尤其 工作目录、index、HEAD 这三个概念是git的三驾马车，就好比 action、reducer、selector 是react-redux的三驾马车一样。
 要多刷视频和书籍《精通git》了解这仨，了解git一切只是什么指针或快照，虽然我现在也忘得差不多，但一定要了解。
-![](/image/git/git1.png)
+{% img url_for /image/git/git1.png %}
 工作目录，index（暂存区）、HEAD（master分支）、objexts（树）。
 index与HEAD都是通过指针指向文件树objects；
 
@@ -286,7 +286,7 @@ vscode内置了对git的支持，对git支持太友好，vscode自带的显示gi
 用git，不会使用GitHub的基本操作，就是耍流氓，既然你跟git感情这么好，干嘛不更好一点，娶了她呢，这不是耍流氓吗。
 主要要熟练 github的git workflow (也就是PR代码审核) 和 fork功能，以及看tag。
 理解 git workflow的最核心的两大目的:PR代码审核 以及 维护一套测试、稳定和发布分支。
-![](/image/git/git2.png)
+{% img url_for /image/git/git2.png %}
 
 ### git入门阶段不需知道的
 

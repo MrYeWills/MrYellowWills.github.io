@@ -14,10 +14,10 @@ categories:
 ### astexplorer ast可视化编译网址
 [astexplorer ast可视化编译网址](https://astexplorer.net/)
 
-![](/image/babel/ast.png)
+{% img url_for /image/babel/ast.png %}
 
 ### parser的发展
-![](/image/babel/parser.png)
+{% img url_for /image/babel/parser.png %}
 
 ### 顺序
 preset 和 plugin 从形式上差不多，但是应用顺序不同。

@@ -41,9 +41,9 @@ series: vscode
 }
 ```
 配置好后，debugge 界面会变成：
-![](/image/node/pre.jpg)
+{% img url_for /image/node/pre.jpg %}
 项目目录：
-![](/image/node/deb.jpg)
+{% img url_for /image/node/deb.jpg %}
 #### node调试
 参考上面
 #### nodemon调试

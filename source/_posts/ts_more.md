@@ -9,7 +9,7 @@ series: typescript
 
 ## 泛型的使用
 ### 定义类，要多一步
-![](/image/ts/cla.jpg)
+{% img url_for /image/ts/cla.jpg %}
 ```ts
 
 class Queue<T> {
@@ -33,7 +33,7 @@ console.log(queue2.pop().length)
 ```
 
 ### 定义接口，要多一步
-![](/image/ts/cla1.jpg)
+{% img url_for /image/ts/cla1.jpg %}
 ```ts
 interface KeyPair<T, U> {
   key: T;

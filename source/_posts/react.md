@@ -158,7 +158,7 @@ pc端 抽到 react-dom内，封装了浏览器的dom；
 react+react-native 结合用于移动端开发；
 [更多参考](https://www.imooc.com/video/21307)
 
-![](/image/react/native.jpg)
+{% img url_for /image/react/native.jpg %}
 #### react native 相当于pc的 react-dom
 参考上面《概述》
 
@@ -177,7 +177,7 @@ react+react-native 结合用于移动端开发；
 
 #### 不一样的 element diff 比较规则
 详细[参考](https://www.bilibili.com/video/BV1B7411H7fL?from=search&seid=16040033068650647202) 。
-![](/image/react/diff.jpg)
+{% img url_for /image/react/diff.jpg %}
 下面说明下为什么将最后面的组件放到最前面，最消耗性能：
 ```
 //原来顺序 A B C D
@@ -337,8 +337,8 @@ hoc包裹组件但作用显而易见，上面几个例子都是包裹了组件�
 [参考](https://www.imooc.com/video/18258)
 
 ### 代理hoc与继承hoc比较
-![](/image/react/hoc2.jpg)
-![](/image/react/hoc1.jpg)
+{% img url_for /image/react/hoc2.jpg %}
+{% img url_for /image/react/hoc1.jpg %}
 
 ### 高阶组件显示名
 ```
@@ -548,7 +548,7 @@ render props则与父组件一体，用的是父组件状态。
 
 #### render Props 比组件更灵活
 如下图，render props 获取父组件的state非常方便灵活，虽然自定义组件也可以获取，但要定义props等等，写法上要做出改变。
-![](/image/react/renderprops1.png)
+{% img url_for /image/react/renderprops1.png %}
 
 [参考](https://blog.csdn.net/qq_40962320/article/details/87043581)
 
@@ -637,7 +637,7 @@ export default LikeButton
 handleAlertClick函数执行的那一刻 this.state.like为 5 所以最终渲染的是5；
 至于直接使用 this.state.like 最终渲染成17 是因为 对象的引用导致。
 
-![](/image/react/hook.png)
+{% img url_for /image/react/hook.png %}
 
 ```js
 //错误写法
