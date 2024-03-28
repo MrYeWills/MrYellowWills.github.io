@@ -16,7 +16,7 @@ less:
     - source/css/style.less #压缩后的文件路径
 
 # 站点ico图标
-favicon: /img/favicon.ico
+favicon: /img/logo.jpg
 
 # 头部背景
 # 如/img/avatar.jpg 或 https://i.loli.net/2017/12/12/5a2fd18a74471.jpg
