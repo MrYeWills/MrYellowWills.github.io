@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="屏幕分辨率,物理像素,css像素,ppi,dpr,多倍图的响应式设计,视口">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -206,25 +206,13 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="分辨率与像素"><a href="#分辨率与像素" class="headerlink" title="分辨率与像素"></a>分辨率与像素</h2><p>这是三星 GALAXY S5 手机<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/mobile1.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/mobile1.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+            <h2 id="分辨率与像素"><a href="#分辨率与像素" class="headerlink" title="分辨率与像素"></a>分辨率与像素</h2><p>这是三星 GALAXY S5 手机<br><a rel=css之移动开发 href="/image/css_mobile/mobile1.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/mobile1.jpg" class="url_for"></a></p>
 <h3 id="pixels单词含义"><a href="#pixels单词含义" class="headerlink" title="pixels单词含义"></a>pixels单词含义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pixels //此单词含义为：像素</span><br></pre></td></tr></table></figure>
 <p>所以px，指得就是像素。</p>
-<h3 id="物理像素-与-分辨率"><a href="#物理像素-与-分辨率" class="headerlink" title="物理像素 与 分辨率"></a>物理像素 与 分辨率</h3><h4 id="物理像素"><a href="#物理像素" class="headerlink" title="物理像素"></a>物理像素</h4><p>上图中1920X1080像素，其实就是1920pxX1080px；如下图：<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/mobile2.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/mobile2.jpg" alt title class></a>
-                <p></p>
-            </figure><br>没错，这个像素就是(设备)物理像素(physical pixels)，它的单位也是px。(注意，这个px 非 css中使用的px，后面有讲解)。<br>上图表面，这个手机 横向的物理像素为 1080px; 竖向的物理像素为 1920px；<br>物理像素是一个虚拟的单位，与现实当中的厘米，毫米是两个东西，物理像素，能大能小，随不同设备变化。<br>(设备)物理像素，1px表示如下图的一个小方块：<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/img.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/img.jpg" alt title class></a>
-                <p></p>
-            </figure><br>上图中Device pixels说的就是物理像素 (物理像素英文名肯定是physical pixels，这毫无疑问，但对是否是Device pixels还存一些考证，下面章节做了一些补充《别名 – Device pixels》)。</p>
+<h3 id="物理像素-与-分辨率"><a href="#物理像素-与-分辨率" class="headerlink" title="物理像素 与 分辨率"></a>物理像素 与 分辨率</h3><h4 id="物理像素"><a href="#物理像素" class="headerlink" title="物理像素"></a>物理像素</h4><p>上图中1920X1080像素，其实就是1920pxX1080px；如下图：<br><a rel=css之移动开发 href="/image/css_mobile/mobile2.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/mobile2.jpg" class="url_for"></a><br>没错，这个像素就是(设备)物理像素(physical pixels)，它的单位也是px。(注意，这个px 非 css中使用的px，后面有讲解)。<br>上图表面，这个手机 横向的物理像素为 1080px; 竖向的物理像素为 1920px；<br>物理像素是一个虚拟的单位，与现实当中的厘米，毫米是两个东西，物理像素，能大能小，随不同设备变化。<br>(设备)物理像素，1px表示如下图的一个小方块：<br><a rel=css之移动开发 href="/image/css_mobile/img.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/img.jpg" class="url_for"></a><br>上图中Device pixels说的就是物理像素 (物理像素英文名肯定是physical pixels，这毫无疑问，但对是否是Device pixels还存一些考证，下面章节做了一些补充《别名 – Device pixels》)。</p>
 <h4 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h4><p>屏幕分辨率为：1920*1080px；屏幕分辨率其实就是横向和竖向物理像素的组合表达的。因此：<br>(屏幕)分辨率是由横向和竖向的物理像素值表示的一种屏幕参考。</p>
 <h4 id="分辨率不等同于物理像素"><a href="#分辨率不等同于物理像素" class="headerlink" title="分辨率不等同于物理像素"></a>分辨率不等同于物理像素</h4><p>由上分辨率的概念，屏幕分辨率不等同于物理像素。</p>
-<h3 id="dpr-与-css像素"><a href="#dpr-与-css像素" class="headerlink" title="dpr 与 css像素"></a>dpr 与 css像素</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>dpr (devicePixelRatio)，设备像素比。<br>我们在实际开发中，会发现GALAXY S5的屏幕是 360pxX640px：<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/dpr.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/dpr.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="dpr-与-css像素"><a href="#dpr-与-css像素" class="headerlink" title="dpr 与 css像素"></a>dpr 与 css像素</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>dpr (devicePixelRatio)，设备像素比。<br>我们在实际开发中，会发现GALAXY S5的屏幕是 360pxX640px：<br><a rel=css之移动开发 href="/image/css_mobile/dpr.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/dpr.jpg" class="url_for"></a></p>
 <p>GALAXY S5 的横向物理像素是1080px,为什么在上图中就变成360px了呢？<br>原来，手机厂商在手机出厂时，为每个手机提供了一个参数，这个参数就是dpr，通过window.devicePixelRatio获取。<br>根据MDN的解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpr = 物理像素/css像素</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="noopener">MDN的解释原文</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The Window property devicePixelRatio returns the ratio of the resolution in physical pixels (物理像素) to the resolution in CSS pixels (css像素) for the current display device.</span><br></pre></td></tr></table></figure></p>
 <p>因此，拿到一个手机的分辨率后，再通过window.devicePixelRatio 获取dpr后，就知道这个手机在前端开发时，它的css像素的 宽高。</p>
@@ -232,23 +220,14 @@
 <h4 id="css像素"><a href="#css像素" class="headerlink" title="css像素"></a>css像素</h4><p>以上什么分辨率，物理像素，通通我们都不熟悉，都与前端开发无关，因为他们不是前端技术的度量范畴，此时说到css像素，是不是倍感亲切了，<br>它就是我们日常用的px，上面部分说的css像素就是这个东西。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//这个100px就是css像素</span><br><span class="line">.wrap&#123;</span><br><span class="line">    width:100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="dpr与css像素关系"><a href="#dpr与css像素关系" class="headerlink" title="dpr与css像素关系"></a>dpr与css像素关系</h4><p>在iPhone4之前，手机的dpr一般都是1，那时候手机的物理像素就是css像素。<br>随着iPhone4及以后高清屏的出现，dpr开始大于1，目前dpr场景值为 1、1.5、2、3。</p>
 <h4 id="iPhone4是Retina屏"><a href="#iPhone4是Retina屏" class="headerlink" title="iPhone4是Retina屏"></a>iPhone4是Retina屏</h4><p>从iPhone4开始，及以后的iPhone都是Retina屏。<a href="https://baike.baidu.com/item/Retina/4616695?fr=aladdin" target="_blank" rel="noopener">参考</a></p>
-<h3 id="放大2倍还是4倍？"><a href="#放大2倍还是4倍？" class="headerlink" title="放大2倍还是4倍？"></a>放大2倍还是4倍？</h3><p>下图 左侧是dpr=1，右侧dpr=2；<br>这里的放大几倍基于物理像素(英文可以是physical pixels 或 Device pixels )而言，<br>一个css像素为2X2px的元素。<br>dpr=1下，物理像素是 2X2px；<br>dpr=2下，物理像素是 4X4px；<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/img.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/img.jpg" alt title class></a>
-                <p></p>
-            </figure><br>dpr=2下，原来的1小方块变成4个方块表示，好像是放大了四倍，其实不然，<br>1个方块可以写成：1X1px;<br>4个方块可以写成：2X2px；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//其实就是放大2倍</span><br><span class="line">(2*2px)/(1*1px) === 2</span><br><span class="line"></span><br><span class="line">//其实还是放大2倍</span><br><span class="line">(4*4px)/(2*2px) === 2</span><br></pre></td></tr></table></figure></p>
+<h3 id="放大2倍还是4倍？"><a href="#放大2倍还是4倍？" class="headerlink" title="放大2倍还是4倍？"></a>放大2倍还是4倍？</h3><p>下图 左侧是dpr=1，右侧dpr=2；<br>这里的放大几倍基于物理像素(英文可以是physical pixels 或 Device pixels )而言，<br>一个css像素为2X2px的元素。<br>dpr=1下，物理像素是 2X2px；<br>dpr=2下，物理像素是 4X4px；<br><a rel=css之移动开发 href="/image/css_mobile/img.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/img.jpg" class="url_for"></a><br>dpr=2下，原来的1小方块变成4个方块表示，好像是放大了四倍，其实不然，<br>1个方块可以写成：1X1px;<br>4个方块可以写成：2X2px；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//其实就是放大2倍</span><br><span class="line">(2*2px)/(1*1px) === 2</span><br><span class="line"></span><br><span class="line">//其实还是放大2倍</span><br><span class="line">(4*4px)/(2*2px) === 2</span><br></pre></td></tr></table></figure></p>
 <p>所以dpr=2时相比dpr=1时，只是放大了两倍。<br>下面讲到的响应式设计时，用到媒体查询，需要UI根据dpr设计不同倍率的图片，需要多少倍的图片，由上面就知道了。</p>
-<h3 id="多倍图响应式设计"><a href="#多倍图响应式设计" class="headerlink" title="多倍图响应式设计"></a>多倍图响应式设计</h3><p>当dpr大于1是，容易出现图片模糊的问题，以iPhone6为例:<br>iPnone6参数：<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/flex.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/flex.jpg" alt title class></a>
-                <p></p>
-            </figure><br>iPnone6 的 dpr为2，对应的屏幕的css像素尺寸为：375X667px；<br>由图片可知，i6的横向物理像素为750px，此时，如果在html页面定义展示一个img{width:375px}的图片，<br>i6在展示时因为会将此图片拉伸两倍，导致图片失真。解决的方法是，让UI设计一个750px的图片，避免失真，<br>这里解释失真可能有些牵强，姑且这样理解吧，也或者简单理解成，凡是dpr大于1的手机，<strong>只要提供与手机物理像素不一致的图片,显示时都会失真；</strong><br>不用太穷究为什么要失真，知道这样会失真就行。如果对失真有兴趣，去网上搜索，很多资源。</p>
+<h3 id="多倍图响应式设计"><a href="#多倍图响应式设计" class="headerlink" title="多倍图响应式设计"></a>多倍图响应式设计</h3><p>当dpr大于1是，容易出现图片模糊的问题，以iPhone6为例:<br>iPnone6参数：<br><a rel=css之移动开发 href="/image/css_mobile/flex.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/flex.jpg" class="url_for"></a><br>iPnone6 的 dpr为2，对应的屏幕的css像素尺寸为：375X667px；<br>由图片可知，i6的横向物理像素为750px，此时，如果在html页面定义展示一个img{width:375px}的图片，<br>i6在展示时因为会将此图片拉伸两倍，导致图片失真。解决的方法是，让UI设计一个750px的图片，避免失真，<br>这里解释失真可能有些牵强，姑且这样理解吧，也或者简单理解成，凡是dpr大于1的手机，<strong>只要提供与手机物理像素不一致的图片,显示时都会失真；</strong><br>不用太穷究为什么要失真，知道这样会失真就行。如果对失真有兴趣，去网上搜索，很多资源。</p>
 <p>高清时，一般也就图片这种失真的情况，其他还好，为了解决这个图片失真，一般采用媒体查询方式。</p>
 <h4 id="如何才图片不失真"><a href="#如何才图片不失真" class="headerlink" title="如何才图片不失真"></a>如何才图片不失真</h4><p>由上面推测可知，<strong>只有UI给的图片与手机的物理像素相等时才不失真</strong>，<br>比如，我在html上定义了一个100px css像素的图片；<br>手机的dpr为2；<br>此时这个100px css像素，对应的是 100*2=200px 的物理像素尺寸。<br>此时只有UI提供200px的图片放在上面的HTMl上才不失真。</p>
 <h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><p>解决方法如下，详细的可网上搜索：<br>主要思路，就是让UI提供几种不同尺寸的图片，通过媒体查询方式灵活使用。<a href="https://www.cnblogs.com/sese/p/5977486.html" target="_blank" rel="noopener">参考</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.css&#123;/* 普通显示屏(设备像素比例小于等于1.3)使用1倍的图 */ </span><br><span class="line">    background-image: url(img_1x.png);</span><br><span class="line">&#125;</span><br><span class="line">@media only screen and (-webkit-min-device-pixel-ratio:1.5),</span><br><span class="line">       (min-resolution: 1.5dppx)&#123;</span><br><span class="line">            .css&#123;/* 高清显示屏(设备像素比例大于等于1.5)使用2倍图  */</span><br><span class="line">                background-image: url(img_2x.png);</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>媒体查询设备像素比主要查询 min-resolution,而webkit-min-device-pixel-ratio是一个意思，为了兼容safari。见《精通css》P233<br>当然，解决失真的方式还有js或svg矢量图的方式。</p>
-<h3 id="ppi"><a href="#ppi" class="headerlink" title="ppi"></a>ppi</h3><p>ppi:屏幕像素密度,这个概念其实与前端开发无关，可以不用过多了解。<br>只是最上面的图片中提到了GALAXY S5 的像素密度，具体公式如下，<a href="https://www.jianshu.com/p/c3387bcc4f6e" target="_blank" rel="noopener">详细了解点击这里</a>：<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/ppi.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/ppi.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="ppi"><a href="#ppi" class="headerlink" title="ppi"></a>ppi</h3><p>ppi:屏幕像素密度,这个概念其实与前端开发无关，可以不用过多了解。<br>只是最上面的图片中提到了GALAXY S5 的像素密度，具体公式如下，<a href="https://www.jianshu.com/p/c3387bcc4f6e" target="_blank" rel="noopener">详细了解点击这里</a>：<br><a rel=css之移动开发 href="/image/css_mobile/ppi.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/ppi.jpg" class="url_for"></a></p>
 <h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>下面列举了如 设备独立像素、什么其他像素…这些统统不要管，与前端开发无关，与前端开发有关的东西，上面已经单独列出讲解。<br>在这里写一些别名，只是为了在阅读别人的文文章时，他们写出这些名词你知道是什么，避免看不懂其他人的文章。</p>
 <h4 id="设备独立像素"><a href="#设备独立像素" class="headerlink" title="设备独立像素"></a>设备独立像素</h4><p>有很多地方将 dpr = 物理像素 /设备独立像素;<br>显然这里 将设备独立像素看成是css像素了。我这里不说对不对，这里只是让大家知道<strong>设备独立像素 把它简单认为是 css像素就好，不必深究。</strong>关于dpr的定义还是以MDN网址定义为准，请看上文《dpr 与 css像素》<br><a href="https://www.jianshu.com/p/3d28f4959c5a?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">参见</a></p>
 <p>我们再看 它的定义：<br><a href="https://www.cnblogs.com/jiangzilong/p/6700023.html" target="_blank" rel="noopener">设备独立像素（Device Independent Pixel）：与设备无关的逻辑像素，代表可以通过程序控制使用的虚拟像素，是一个总体概念，包括了CSS像素</a></p>
@@ -264,10 +243,7 @@
 <h3 id="默认视口"><a href="#默认视口" class="headerlink" title="默认视口"></a>默认视口</h3><p>手机设备都有一个默认视口，且不同类型的手机设备，其默认视口都是一样的尺寸，不同类型手机设备的默认视口，宽约为1000px css像素。<br>每想到吧，默认视口居然还有一个统一的宽度：约为1000px css像素，而且不同类型的手机宽度一样。</p>
 <h3 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h3><h4 id="理想视口显示"><a href="#理想视口显示" class="headerlink" title="理想视口显示"></a>理想视口显示</h4><p>使用 理想视口显示，设置meta如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure></p>
 <h4 id="默认视口显示"><a href="#默认视口显示" class="headerlink" title="默认视口显示"></a>默认视口显示</h4><p>如果不设置meta，那么手机将采用默认视口显示，将html写的页面按照屏幕宽大约1000px排列布局好，然后把它缩小显示到手机中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;vs_test&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .wrap &#123;</span><br><span class="line">            background: rebeccapurple;</span><br><span class="line">            word-break: break-word;</span><br><span class="line">            font-size: 16px;</span><br><span class="line">        &#125;</span><br><span class="line">        .cell&#123;</span><br><span class="line">            display: inline-block;</span><br><span class="line">            height: 50px;</span><br><span class="line">            width: 100px;</span><br><span class="line">            font-size: 40px;</span><br><span class="line">        &#125;</span><br><span class="line">        .cell:nth-child(even)&#123;</span><br><span class="line">            background: #FF9800</span><br><span class="line">        &#125;</span><br><span class="line">        .cell:nth-child(odd)&#123;</span><br><span class="line">            background: #00BCD4</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;wrap&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;1&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;2&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;3&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;4&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;5&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;6&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;7&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;8&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;9&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;0&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;cell&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p> GALAXY S5手机端显示如下：<br><figure class="image-box">
-                <a rel=css之移动开发 href="/image/css_mobile/view-port.jpg" title="undefined" data-fancybox="images"><img src="/image/css_mobile/view-port.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<p> GALAXY S5手机端显示如下：<br><a rel=css之移动开发 href="/image/css_mobile/view-port.jpg" title="" data-fancybox="images"><img src="/image/css_mobile/view-port.jpg" class="url_for"></a></p>
 <h4 id="默认视口-与-qq截图工具量元素尺寸"><a href="#默认视口-与-qq截图工具量元素尺寸" class="headerlink" title="默认视口 与 qq截图工具量元素尺寸"></a>默认视口 与 qq截图工具量元素尺寸</h4><p>如上图所示， 采用默认视口显示，会将原来在大约1000px显示好的页面，缩小到GALAXY S5手机宽360px的屏幕显示，<br>这样调试的时候，我们就无法使用qq或微信的截图工具里面显示的尺寸，来量元素的尺寸。<br>以此举一反三，只有移动端采用理想视口的情况时，才可以使用qq截图工具量元素尺寸。<br>不过，pc浏览器屏幕不存在此情况，pc浏览器任何情况下可以采用qq截图工具量尺寸。</p>
 <h3 id="不要禁用缩放"><a href="#不要禁用缩放" class="headerlink" title="不要禁用缩放"></a>不要禁用缩放</h3><p>很多人喜欢用下面的方式来定义meta，下面配置了user-scalable=no，禁用了缩放，这样是不推荐的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//不推荐这种写法，因为禁用了缩放</span><br><span class="line">&lt;meta </span><br><span class="line">    name=&quot;viewport&quot; </span><br><span class="line">    content=&quot;width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no&quot;</span><br><span class="line"> /&gt;</span><br></pre></td></tr></table></figure></p>
 <p>推荐写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//推荐写法：</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure></p>
@@ -280,7 +256,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -352,18 +328,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/css_layout/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/css_big/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">css之布局</h4>
+        <h4 class="title">css知识点汇</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/css/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/css_layout/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">css笔记</h4>
+        <h4 class="title">css之布局</h4>
       </a>
     </div>
   
@@ -502,16 +478,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

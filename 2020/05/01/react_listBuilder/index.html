@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="react">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -251,15 +251,9 @@
 <h3 id="必须配合render时实时重新生成props"><a href="#必须配合render时实时重新生成props" class="headerlink" title="必须配合render时实时重新生成props"></a>必须配合render时实时重新生成props</h3><p>由上面分析可知，专门创建一个ListRow数据来做左右移动，然后在render的时候，必须同时使用function重新生成Grid或TreeList需要的数据，以传给它们。</p>
 <h3 id="ListRow的好处"><a href="#ListRow的好处" class="headerlink" title="ListRow的好处"></a>ListRow的好处</h3><h4 id="隔绝了业务逻辑影响"><a href="#隔绝了业务逻辑影响" class="headerlink" title="隔绝了业务逻辑影响"></a>隔绝了业务逻辑影响</h4><p>创建一个listRow后，ListBuilder组件不需要关心业务当中到底是Grid或TreeList。</p>
 <h4 id="ListBuilder可凭ListRow专心抽象公共逻辑"><a href="#ListBuilder可凭ListRow专心抽象公共逻辑" class="headerlink" title="ListBuilder可凭ListRow专心抽象公共逻辑"></a>ListBuilder可凭ListRow专心抽象公共逻辑</h4><p>ListRow是专门为了search、左右移动而创建的数据结构，ListBuilder可以因此专心抽象这部分的公共逻辑。</p>
-<h4 id="注意，必须配合render时实时重新生成props"><a href="#注意，必须配合render时实时重新生成props" class="headerlink" title="注意，必须配合render时实时重新生成props"></a>注意，必须配合render时实时重新生成props</h4><p>这不是listRow的好处，但此时再次提醒，说明了创建ListRow的代价也好，使用特点也好，都render具体组件时，都需要render函数内实时重新生成props。<br><figure class="image-box">
-                <a rel=ListBuilder引发的React暗黑思考 href="/image/react/list_row.jpg" title="undefined" data-fancybox="images"><img src="/image/react/list_row.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="注意，必须配合render时实时重新生成props"><a href="#注意，必须配合render时实时重新生成props" class="headerlink" title="注意，必须配合render时实时重新生成props"></a>注意，必须配合render时实时重新生成props</h4><p>这不是listRow的好处，但此时再次提醒，说明了创建ListRow的代价也好，使用特点也好，都render具体组件时，都需要render函数内实时重新生成props。<br><a rel=ListBuilder引发的React暗黑思考 href="/image/react/list_row.jpg" title="" data-fancybox="images"><img src="/image/react/list_row.jpg" class="url_for"></a></p>
 <h3 id="使用特点与弊端"><a href="#使用特点与弊端" class="headerlink" title="使用特点与弊端"></a>使用特点与弊端</h3><p>参考 《ListRow的好处 — 注意，必须配合render时实时重新生成props》，render函数内实时重新生成props是一种反模式运用。可能也是一个弊端，但当前浏览器对于同步代码执行效率太好，感觉总是谈性能的，就好像一个伪命题一样</p>
-<h2 id="组件的模版设计"><a href="#组件的模版设计" class="headerlink" title="组件的模版设计"></a>组件的模版设计</h2><h3 id="组件模版设计图"><a href="#组件模版设计图" class="headerlink" title="组件模版设计图"></a>组件模版设计图</h3><figure class="image-box">
-                <a rel=ListBuilder引发的React暗黑思考 href="/image/react/comp.jpg" title="undefined" data-fancybox="images"><img src="/image/react/comp.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h2 id="组件的模版设计"><a href="#组件的模版设计" class="headerlink" title="组件的模版设计"></a>组件的模版设计</h2><h3 id="组件模版设计图"><a href="#组件模版设计图" class="headerlink" title="组件模版设计图"></a>组件模版设计图</h3><a rel=ListBuilder引发的React暗黑思考 href="/image/react/comp.jpg" title="" data-fancybox="images"><img src="/image/react/comp.jpg" class="url_for"></a>
 <h3 id="暴露给外层的设计"><a href="#暴露给外层的设计" class="headerlink" title="暴露给外层的设计"></a>暴露给外层的设计</h3><p>如上图，因为ListBuilder在内部会封装左右移动，所以外层使用的时候，只需定义业务组件的grid等等这些左右两边面板。</p>
 <h3 id="ListBuilder本身设计"><a href="#ListBuilder本身设计" class="headerlink" title="ListBuilder本身设计"></a>ListBuilder本身设计</h3><p>此处抽象左右移动的公共逻辑</p>
 <h3 id="listPanel设计"><a href="#listPanel设计" class="headerlink" title="listPanel设计"></a>listPanel设计</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>面板的渲染统统在ListPanel组件内，不同的业务组件，如Grid、TreeList，在render函数内，在此使用一个function 生成对应的props，</p>
@@ -284,7 +278,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.291Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.580Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -356,18 +350,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/react_form_next/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/react_redux/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">next form 封装</h4>
+        <h4 class="title">react-redux笔记</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/react_hooks/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/react_router/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">React hooks 笔记</h4>
+        <h4 class="title">React Router</h4>
       </a>
     </div>
   
@@ -506,16 +500,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

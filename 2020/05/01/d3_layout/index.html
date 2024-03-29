@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="d3.js">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -206,10 +206,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="d3图形图解"><a href="#d3图形图解" class="headerlink" title="d3图形图解"></a>d3图形图解</h2><figure class="image-box">
-                <a rel=d3图形、demo讲解、使用经验 href="/image/d3/all/images.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/all/images.jpg" alt title class></a>
-                <p></p>
-            </figure>
+            <h2 id="d3图形图解"><a href="#d3图形图解" class="headerlink" title="d3图形图解"></a>d3图形图解</h2><a rel=d3图形、demo讲解、使用经验 href="/image/d3/all/images.jpg" title="" data-fancybox="images"><img src="/image/d3/all/images.jpg" class="url_for"></a>
 <h2 id="树图"><a href="#树图" class="headerlink" title="树图"></a>树图</h2><h3 id="树图布局API"><a href="#树图布局API" class="headerlink" title="树图布局API"></a>树图布局API</h3><h4 id="d3-layout-tree-创建一个树图布局"><a href="#d3-layout-tree-创建一个树图布局" class="headerlink" title="d3.layout.tree() 创建一个树图布局"></a>d3.layout.tree() 创建一个树图布局</h4><h4 id="tree-size-设置相邻节点间隔"><a href="#tree-size-设置相邻节点间隔" class="headerlink" title="tree.size([]) 设置相邻节点间隔"></a>tree.size([]) 设置相邻节点间隔</h4><h4 id="tree-separation-separation-设置相邻节点间隔"><a href="#tree-separation-separation-设置相邻节点间隔" class="headerlink" title="tree.separation([separation]) 设置相邻节点间隔"></a>tree.separation([separation]) 设置相邻节点间隔</h4><h4 id="tree-nodes-root-根据root-计算获取节点数组"><a href="#tree-nodes-root-根据root-计算获取节点数组" class="headerlink" title="tree.nodes(root) 根据root 计算获取节点数组"></a>tree.nodes(root) 根据root 计算获取节点数组</h4><h4 id="tree-links-nodes-根据nodes-计算获取连线数组"><a href="#tree-links-nodes-根据nodes-计算获取连线数组" class="headerlink" title="tree.links(nodes) 根据nodes 计算获取连线数组"></a>tree.links(nodes) 根据nodes 计算获取连线数组</h4><h3 id="节点对象-nodes"><a href="#节点对象-nodes" class="headerlink" title="节点对象(nodes)"></a>节点对象(nodes)</h3><h4 id="parent-父节点"><a href="#parent-父节点" class="headerlink" title="parent 父节点"></a>parent 父节点</h4><h4 id="children-子节点"><a href="#children-子节点" class="headerlink" title="children 子节点"></a>children 子节点</h4><h4 id="depth-节点深度"><a href="#depth-节点深度" class="headerlink" title="depth 节点深度"></a>depth 节点深度</h4><h4 id="x-节点x坐标"><a href="#x-节点x坐标" class="headerlink" title="x 节点x坐标"></a>x 节点x坐标</h4><h4 id="y-节点y坐标"><a href="#y-节点y坐标" class="headerlink" title="y 节点y坐标"></a>y 节点y坐标</h4><h3 id="连线-links"><a href="#连线-links" class="headerlink" title="连线(links)"></a>连线(links)</h3><h4 id="source-前端节点"><a href="#source-前端节点" class="headerlink" title="source 前端节点"></a>source 前端节点</h4><h4 id="target-后端节点"><a href="#target-后端节点" class="headerlink" title="target 后端节点"></a>target 后端节点</h4><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="设置svg-宽高，添加g，设置位置"><a href="#设置svg-宽高，添加g，设置位置" class="headerlink" title="设置svg 宽高，添加g，设置位置"></a>设置svg 宽高，添加g，设置位置</h4><h4 id="生成树状布局，设置尺寸"><a href="#生成树状布局，设置尺寸" class="headerlink" title="生成树状布局，设置尺寸"></a>生成树状布局，设置尺寸</h4><h4 id="对角线生成器"><a href="#对角线生成器" class="headerlink" title="对角线生成器"></a>对角线生成器</h4><h4 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h4><ul>
 <li>获取nodes节点数组和link连接线数组</li>
 <li>生成连线</li>
@@ -219,10 +216,7 @@
 </li>
 </ul>
 <p>以上是d3常用写法，下面示例皆以此为基础展开：</p>
-<h3 id="树图demo"><a href="#树图demo" class="headerlink" title="树图demo"></a>树图demo</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>上面《树图》介绍的，在这个demo上都有体现。<br>效果：<br><figure class="image-box">
-                <a rel=d3图形、demo讲解、使用经验 href="/image/d3/layout/tree1.jpg" title="undefined" data-fancybox="images"><img src="/image/d3/layout/tree1.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="树图demo"><a href="#树图demo" class="headerlink" title="树图demo"></a>树图demo</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>上面《树图》介绍的，在这个demo上都有体现。<br>效果：<br><a rel=d3图形、demo讲解、使用经验 href="/image/d3/layout/tree1.jpg" title="" data-fancybox="images"><img src="/image/d3/layout/tree1.jpg" class="url_for"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var nodes = tree.nodes(root),</span><br><span class="line">  links = tree.links(nodes);</span><br></pre></td></tr></table></figure>
 <h4 id="转换坐标"><a href="#转换坐标" class="headerlink" title="转换坐标"></a>转换坐标</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// diagonal 生成对角线</span><br><span class="line">       var diagonal = d3.svg.diagonal()</span><br><span class="line">               // 转换坐标轴方向</span><br><span class="line">               .projection(function (d) &#123;</span><br><span class="line">                       return [d.y, d.x];</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure>
 <h4 id="enter-时隐藏，-update时-显示："><a href="#enter-时隐藏，-update时-显示：" class="headerlink" title="enter 时隐藏， update时 显示："></a>enter 时隐藏， update时 显示：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// .attr(&apos;r&apos;, 0) 意为 隐藏，会在下面都 updateNodes.select(&quot;circle&quot;) 更新时，显示出来 .attr(&quot;r&quot;, 6)</span><br><span class="line">               enterNodes.append(&apos;circle&apos;)</span><br><span class="line">                       .attr(&apos;r&apos;, 0)</span><br><span class="line">                       .style(&apos;fill&apos;, (d) =&gt; d._children ? &apos;red&apos; : &apos;#fff&apos;)</span><br></pre></td></tr></table></figure>
@@ -255,7 +249,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -327,18 +321,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/css/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/egg/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">css笔记</h4>
+        <h4 class="title">egg笔记</h4>
       </a>
     </div>
   
 
   
     <div class="next">
-      <a href="/2020/05/01/d3_basics/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/d3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">d3的三种模式 及 append、data、selectAll</h4>
+        <h4 class="title">d3笔记</h4>
       </a>
     </div>
   
@@ -477,16 +471,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

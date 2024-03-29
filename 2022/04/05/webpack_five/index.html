@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="webpack,webpack源码系列">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -227,10 +227,7 @@
 <h4 id="认识dependencies-CommonJsRequireDependency-RequireHeaderDependency"><a href="#认识dependencies-CommonJsRequireDependency-RequireHeaderDependency" class="headerlink" title="认识dependencies (CommonJsRequireDependency RequireHeaderDependency)"></a>认识dependencies (CommonJsRequireDependency RequireHeaderDependency)</h4><p>参考上面。</p>
 <h3 id="source由哪些模板生成的"><a href="#source由哪些模板生成的" class="headerlink" title="source由哪些模板生成的"></a>source由哪些模板生成的</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 自己生成 __webpack_require__ 函数 其实就是所说的 runtime </span></span><br><span class="line"><span class="comment">// webpack 生成包裹代码</span></span><br><span class="line"><span class="comment">// loader 生成的业务代码</span></span><br><span class="line"><span class="comment">// webapck 的工具 将业务代码的 import export require modules 等等 如 CommonJsRequireDependency RequireHeaderDependency</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://www.cnblogs.com/qcloud1001/p/8432070.html" target="_blank" rel="noopener">更多详细 参考</a></p>
-<figure class="image-box">
-                <a rel=webpack源码系列(田)：chunk及之后的调试 href="/image/webpack_one/chunk1.png" title="undefined" data-fancybox="images"><img src="/image/webpack_one/chunk1.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=webpack源码系列(田)：chunk及之后的调试 href="/image/webpack_one/chunk1.png" title="" data-fancybox="images"><img src="/image/webpack_one/chunk1.png" class="url_for"></a>
 <p>可以把最终build出来的源码对着看。或者直接搜索 build源码中的关键字，直接定位到对于的模板或生成的地方。</p>
 <h4 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h4><ul>
 <li>mainTemplate 对应 MainTemplate 类，用来渲染入口 chunk</li>
@@ -257,7 +254,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.295Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.584Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -479,16 +476,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

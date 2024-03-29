@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content>
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -612,7 +612,7 @@ webpack源码学习策略为什么要学源码以前我鄙...
         <time class="post-time" title="2022-01-14 00:00:00" datetime="2022-01-14T00:00:00.000Z"  itemprop="datePublished">2022-01-14</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/大话堂/">大话堂</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
@@ -836,15 +836,11 @@ webpack源码学习策略为什么要学源码以前我鄙...
     
         基础知识astexplorer ast可视化编译网址astexplorer ast可视化编译网址
 
-                
-                
-            
 parser的发展
-                
-                
-            
 顺序preset 和 plugin 从形式上差不多，但是应用顺序不同。
-babel 会...
+babel 会按照如下顺序处理插件和 preset：
+先应用 plugin，再应用 presetplugin 从前到后，preset 从后到前这个顺序是 babel 的规定。
+名字以下 摘自 Babel...
     
     <a href="/2021/10/23/babel/" class="post-more waves-effect waves-button">
         more
@@ -961,16 +957,16 @@ babel 会...
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

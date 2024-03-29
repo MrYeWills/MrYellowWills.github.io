@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="前端工程,ui组件库">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -220,10 +220,7 @@
 <p>因为 npm link 引用的下面指定的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;main&quot;: &quot;dist/index.js&quot;,</span><br></pre></td></tr></table></figure></p>
 <h3 id="react版本不一致导致的问题"><a href="#react版本不一致导致的问题" class="headerlink" title="react版本不一致导致的问题"></a>react版本不一致导致的问题</h3><h4 id="npm-link-1"><a href="#npm-link-1" class="headerlink" title="npm link"></a>npm link</h4><p>调试时，npm link vikingship ，但发现vikingship使用的react 与 项目使用的react版本不一致，<br>会导致报错hook问题，或项目崩溃，<br>这一点，在react官网有提及。<br>有两种解决方式：</p>
 <ul>
-<li>临时方式， 在vikingship库开发目录下， npm link 某项目下的react：<figure class="image-box">
-                <a rel=vikingship组件库 打包、调试、使用 href="/image/npm/link.png" title="undefined" data-fancybox="images"><img src="/image/npm/link.png" alt title class></a>
-                <p></p>
-            </figure></li>
+<li>临时方式， 在vikingship库开发目录下， npm link 某项目下的react：<a rel=vikingship组件库 打包、调试、使用 href="/image/npm/link.png" title="" data-fancybox="images"><img src="/image/npm/link.png" class="url_for"></a></li>
 <li>终极方式(推荐)：使用 peerDependencies</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"peerDependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"react"</span>: <span class="string">"&gt;=16.8.0"</span>,</span><br><span class="line">  <span class="string">"react-dom"</span>: <span class="string">"&gt;=16.8.0"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"react"</span>: <span class="string">"^16.12.0"</span>,</span><br><span class="line">  <span class="string">"react-dom"</span>: <span class="string">"^16.12.0"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -233,10 +230,7 @@
 <h3 id="延申"><a href="#延申" class="headerlink" title="延申"></a>延申</h3><h4 id="奇妙的-npm-script-中的-pre-关键字"><a href="#奇妙的-npm-script-中的-pre-关键字" class="headerlink" title="奇妙的 npm script 中的 pre 关键字"></a>奇妙的 npm script 中的 pre 关键字</h4><p>这里的 prepublishOnly 与 prepublish 是一样的，<br>在命令行中，如果执行 npm run publish,<br>npm script 就会寻找 是否定义了 pre + publish = prepublish 命令，如果有定义，先执行，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">   &quot;prepublishOnly&quot;: &quot;npm run test:nowatch &amp;&amp; npm run lint &amp;&amp; npm run build&quot;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
 <h4 id="prepublishOnly-与-prepublish-区别"><a href="#prepublishOnly-与-prepublish-区别" class="headerlink" title="prepublishOnly 与 prepublish 区别"></a>prepublishOnly 与 prepublish 区别</h4><p>prepublish 会在npm install 和 npm run publish 时都会运行，有一定的bug；<br>prepublishOnly 只会在 npm run publish 时才运行；</p>
 <h4 id="devDependencies-与-dependencies"><a href="#devDependencies-与-dependencies" class="headerlink" title="devDependencies 与 dependencies"></a>devDependencies 与 dependencies</h4><p>当库被第三方使用的时候，安装依赖的时候，dependencies 内的包都将被下载到依赖， devDependencies 不会被下载过去，因此 定义好 二者 对于使用此库的人非常友好。<br>下面依赖应该都放到 devDependencies 中：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">"devDependencies": &#123;</span><br><span class="line">    "@types/classnames": "^2.2.9",</span><br><span class="line">    "@types/react": "^16.9.13",</span><br><span class="line">    "@types/react-dom": "16.9.4",</span><br><span class="line">    "node-sass": "^4.14.1",</span><br><span class="line">    "react-scripts": "3.2.0",</span><br><span class="line">    "typescript": "3.7.2"</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="peerDependencies-与-devDependencies"><a href="#peerDependencies-与-devDependencies" class="headerlink" title="peerDependencies 与 devDependencies"></a>peerDependencies 与 devDependencies</h4><p>peerDependencies 是npm的配置，<br>peerDependencies 告诉npm，被定义在这里的包，将不会被下载，直接使用现有的 node_module 下载好的，如果 node_module 中版本低于配置的，就给与warning提醒：<br><figure class="image-box">
-                <a rel=vikingship组件库 打包、调试、使用 href="/image/npm/warn.png" title="undefined" data-fancybox="images"><img src="/image/npm/warn.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="peerDependencies-与-devDependencies"><a href="#peerDependencies-与-devDependencies" class="headerlink" title="peerDependencies 与 devDependencies"></a>peerDependencies 与 devDependencies</h4><p>peerDependencies 是npm的配置，<br>peerDependencies 告诉npm，被定义在这里的包，将不会被下载，直接使用现有的 node_module 下载好的，如果 node_module 中版本低于配置的，就给与warning提醒：<br><a rel=vikingship组件库 打包、调试、使用 href="/image/npm/warn.png" title="" data-fancybox="images"><img src="/image/npm/warn.png" class="url_for"></a></p>
 <p>peerDependencies 通常用于 发布以后，被项目使用的时候，项目中使用的react版本 与 库中使用的 react版本不一致导致的问题。</p>
 <p>解决完发布后的问题， 那么库在本地开发阶段也要 使用 react， 此时可以将 react 放到 devDependencies 中，<br>因为npm 的策略， 第三方库被引用时，安装依赖的时候，只下载 dependencies 依赖，不下载 devDependencies 依赖， 这样就不会有冲突了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;peerDependencies&quot;: &#123;</span><br><span class="line">  &quot;react&quot;: &quot;&gt;=16.8.0&quot;,</span><br><span class="line">  &quot;react-dom&quot;: &quot;&gt;=16.8.0&quot;</span><br><span class="line">&#125;,</span><br><span class="line"> &quot;devDependencies&quot;: &#123;</span><br><span class="line">  &quot;react&quot;: &quot;^17.0.2&quot;,</span><br><span class="line">  &quot;react-dom&quot;: &quot;^17.0.2&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -253,18 +247,9 @@
 <h4 id="https-docs-travis-ci-com-user-tutorial"><a href="#https-docs-travis-ci-com-user-tutorial" class="headerlink" title="https://docs.travis-ci.com/user/tutorial"></a><a href="https://docs.travis-ci.com/user/tutorial" target="_blank" rel="noopener">https://docs.travis-ci.com/user/tutorial</a></h4><p>注意2018年后，travis更新为 <code>travis-ci.com</code> <a href="https://docs.travis-ci.com/user/tutorial" target="_blank" rel="noopener">网站</a>。</p>
 <h4 id="github-page-的-travis-yml-示例"><a href="#github-page-的-travis-yml-示例" class="headerlink" title="github page 的 travis.yml 示例"></a>github page 的 travis.yml 示例</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .travis.yml</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span>  <span class="comment">#使用node js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">"stable"</span>  <span class="comment">#使用node 稳定版本</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">directories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">node_modules</span>   <span class="comment">#缓存</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">CI=true</span>   <span class="comment">#设置环境变量，因为本项目用到了单元测试，要开启为true</span></span><br><span class="line"><span class="attr">script:</span>    <span class="comment">#如果不设置script， travis默认执行 npm run test</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build-storybook</span></span><br><span class="line"><span class="attr">deploy:</span> <span class="comment">#这是发布到github page 上的固定配置</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">pages</span> <span class="comment">#这是发布到github page 上的固定配置</span></span><br><span class="line">  <span class="attr">skip_cleanup:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github_token:</span> <span class="string">$github_token</span> <span class="comment">#此名字要与 travis中自己设置的github_token名字一样</span></span><br><span class="line">  <span class="attr">local_dir:</span> <span class="string">storybook-static</span>  <span class="comment">#告诉travis要上传哪个文件夹,此文件一般是build后的文档站点源码，比如 hexo的 public</span></span><br><span class="line">  <span class="attr">on:</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">blog_code</span>  <span class="comment">#监听哪个分支，分支有提交时，触发sh脚本， 待考证，有些写成 master 分支了</span></span><br></pre></td></tr></table></figure>
 <p>上面的deploy local_dir 对应的是 下面npm script 生成的文件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build-storybook": "build-storybook -s public",</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<h4 id="设置github-token"><a href="#设置github-token" class="headerlink" title="设置github_token"></a>设置github_token</h4><figure class="image-box">
-                <a rel=vikingship组件库 打包、调试、使用 href="/image/npm/token0.jpg" title="undefined" data-fancybox="images"><img src="/image/npm/token0.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=vikingship组件库 打包、调试、使用 href="/image/npm/token1.png" title="undefined" data-fancybox="images"><img src="/image/npm/token1.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=vikingship组件库 打包、调试、使用 href="/image/npm/token2.png" title="undefined" data-fancybox="images"><img src="/image/npm/token2.png" alt title class></a>
-                <p></p>
-            </figure>
+<h4 id="设置github-token"><a href="#设置github-token" class="headerlink" title="设置github_token"></a>设置github_token</h4><a rel=vikingship组件库 打包、调试、使用 href="/image/npm/token0.jpg" title="" data-fancybox="images"><img src="/image/npm/token0.jpg" class="url_for"></a>
+<a rel=vikingship组件库 打包、调试、使用 href="/image/npm/token1.png" title="" data-fancybox="images"><img src="/image/npm/token1.png" class="url_for"></a>
+<a rel=vikingship组件库 打包、调试、使用 href="/image/npm/token2.png" title="" data-fancybox="images"><img src="/image/npm/token2.png" class="url_for"></a>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">  <span class="attr">github_token:</span> <span class="string">$github_token</span> <span class="string">此名字要与</span> <span class="string">travis中自己设置的github_token名字一样</span></span><br></pre></td></tr></table></figure>
 <h4 id="yarn-lock-与-package-lock-json"><a href="#yarn-lock-与-package-lock-json" class="headerlink" title="yarn.lock 与 package-lock.json"></a>yarn.lock 与 package-lock.json</h4><p>当这两个文件同时存在时，travis.yml 会使用yarn.lock,<br>如果只有 package-lock.json 一个文件时， travis才会使用此文件安装依赖。</p>
 <h4 id="疑点"><a href="#疑点" class="headerlink" title="疑点"></a>疑点</h4><p>travis 结合 GitHub pages 貌似有一套它们沟通好的钩子函数， 以上整个流程，我们都没有看到 GitHub page 要求的两个要求：</p>
@@ -280,7 +265,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.295Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.580Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -502,16 +487,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

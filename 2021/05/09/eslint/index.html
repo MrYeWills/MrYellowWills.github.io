@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="eslint">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -250,68 +250,23 @@
 <li><p>重启vscode，这是终极解决方法，把把灵光</p>
 </li>
 </ul>
-<h2 id="eslint插件与vscode"><a href="#eslint插件与vscode" class="headerlink" title="eslint插件与vscode"></a>eslint插件与vscode</h2><h3 id="使用eslint插件"><a href="#使用eslint插件" class="headerlink" title="使用eslint插件"></a>使用eslint插件</h3><p>下图的灯泡和错误红线高亮提示，都是vscode的eslint插件作用的效果。<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/vs.png" title="undefined" data-fancybox="images"><img src="/image/eslint/vs.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h2 id="eslint插件与vscode"><a href="#eslint插件与vscode" class="headerlink" title="eslint插件与vscode"></a>eslint插件与vscode</h2><h3 id="使用eslint插件"><a href="#使用eslint插件" class="headerlink" title="使用eslint插件"></a>使用eslint插件</h3><p>下图的灯泡和错误红线高亮提示，都是vscode的eslint插件作用的效果。<br><a rel=eslint笔记 href="/image/eslint/vs.png" title="" data-fancybox="images"><img src="/image/eslint/vs.png" class="url_for"></a></p>
 <p>eslint插件安装只是前提条件，<br>还要求项目中的eslint的是生效的，因此需要项目配置好eslint的相关npm包，以及正确的eslint配置，<br>满足以上条件后才有上面图片中的效果。</p>
-<h3 id="vscode的三种setting-json"><a href="#vscode的三种setting-json" class="headerlink" title="vscode的三种setting.json"></a>vscode的三种setting.json</h3><p>下面是打开 vscode的三种setting.json的方式, 充分认识这三种json的作用和区别是vscode使用者的必备技能，可网上查阅相关知识。<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/set1.png" title="undefined" data-fancybox="images"><img src="/image/eslint/set1.png" alt title class></a>
-                <p></p>
-            </figure><br>点击后，跳出下面的输入框，输入 setting.json 打开三种setting.json。<br>分别为 用户目录下、项目目录下、defaultsetting，作用范围分别为 电脑用户下所有的项目、工程目录下、默认setting<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/set2.png" title="undefined" data-fancybox="images"><img src="/image/eslint/set2.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/set3.png" title="undefined" data-fancybox="images"><img src="/image/eslint/set3.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/set4.png" title="undefined" data-fancybox="images"><img src="/image/eslint/set4.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/set5.png" title="undefined" data-fancybox="images"><img src="/image/eslint/set5.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="vscode的三种setting-json"><a href="#vscode的三种setting-json" class="headerlink" title="vscode的三种setting.json"></a>vscode的三种setting.json</h3><p>下面是打开 vscode的三种setting.json的方式, 充分认识这三种json的作用和区别是vscode使用者的必备技能，可网上查阅相关知识。<br><a rel=eslint笔记 href="/image/eslint/set1.png" title="" data-fancybox="images"><img src="/image/eslint/set1.png" class="url_for"></a><br>点击后，跳出下面的输入框，输入 setting.json 打开三种setting.json。<br>分别为 用户目录下、项目目录下、defaultsetting，作用范围分别为 电脑用户下所有的项目、工程目录下、默认setting<br><a rel=eslint笔记 href="/image/eslint/set2.png" title="" data-fancybox="images"><img src="/image/eslint/set2.png" class="url_for"></a><br><a rel=eslint笔记 href="/image/eslint/set3.png" title="" data-fancybox="images"><img src="/image/eslint/set3.png" class="url_for"></a><br><a rel=eslint笔记 href="/image/eslint/set4.png" title="" data-fancybox="images"><img src="/image/eslint/set4.png" class="url_for"></a><br><a rel=eslint笔记 href="/image/eslint/set5.png" title="" data-fancybox="images"><img src="/image/eslint/set5.png" class="url_for"></a></p>
 <h3 id="设置vscode保存后自动修复"><a href="#设置vscode保存后自动修复" class="headerlink" title="设置vscode保存后自动修复"></a>设置vscode保存后自动修复</h3><p>设置工程目录下的setting.json如下,保存后，vscode会修复所有lint相关的报错，包括eslint、stylelint。<br>有两个前提： </p>
 <ul>
 <li>项目下的eslint是生效的 (安装好eslint相关的npm包和配置好相关配置);</li>
 <li>安装好(vscode的)eslint插件<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">        <span class="string">"source.fixAll"</span>: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="提供的命令"><a href="#提供的命令" class="headerlink" title="提供的命令"></a>提供的命令</h3><h4 id="以eslint-createConfig为例"><a href="#以eslint-createConfig为例" class="headerlink" title="以eslint.createConfig为例"></a>以eslint.createConfig为例</h4><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/ext2.png" title="undefined" data-fancybox="images"><img src="/image/eslint/ext2.png" alt title class></a>
-                <p></p>
-            </figure>
-<p>vscode 快捷键 ctrl+shift+p 打开vscode的命令工具，也可通过下面方式打开：<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/ext6.png" title="undefined" data-fancybox="images"><img src="/image/eslint/ext6.png" alt title class></a>
-                <p></p>
-            </figure><br>输入 eslint.createConfig 就会出现下面：<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/ext3.png" title="undefined" data-fancybox="images"><img src="/image/eslint/ext3.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/ext4.png" title="undefined" data-fancybox="images"><img src="/image/eslint/ext4.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/ext5.png" title="undefined" data-fancybox="images"><img src="/image/eslint/ext5.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<h3 id="依赖-eslint-包"><a href="#依赖-eslint-包" class="headerlink" title="依赖 eslint 包"></a>依赖 eslint 包</h3><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/ext5.png" title="undefined" data-fancybox="images"><img src="/image/eslint/ext5.png" alt title class></a>
-                <p></p>
-            </figure>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="editor-formatOnSave-与-editor-codeActionsOnSave"><a href="#editor-formatOnSave-与-editor-codeActionsOnSave" class="headerlink" title="editor.formatOnSave 与 editor.codeActionsOnSave"></a>editor.formatOnSave 与 editor.codeActionsOnSave</h4><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/vs-e1.png" title="undefined" data-fancybox="images"><img src="/image/eslint/vs-e1.png" alt title class></a>
-                <p></p>
-            </figure>
+<h3 id="提供的命令"><a href="#提供的命令" class="headerlink" title="提供的命令"></a>提供的命令</h3><h4 id="以eslint-createConfig为例"><a href="#以eslint-createConfig为例" class="headerlink" title="以eslint.createConfig为例"></a>以eslint.createConfig为例</h4><a rel=eslint笔记 href="/image/eslint/ext2.png" title="" data-fancybox="images"><img src="/image/eslint/ext2.png" class="url_for"></a>
+<p>vscode 快捷键 ctrl+shift+p 打开vscode的命令工具，也可通过下面方式打开：<br><a rel=eslint笔记 href="/image/eslint/ext6.png" title="" data-fancybox="images"><img src="/image/eslint/ext6.png" class="url_for"></a><br>输入 eslint.createConfig 就会出现下面：<br><a rel=eslint笔记 href="/image/eslint/ext3.png" title="" data-fancybox="images"><img src="/image/eslint/ext3.png" class="url_for"></a><br><a rel=eslint笔记 href="/image/eslint/ext4.png" title="" data-fancybox="images"><img src="/image/eslint/ext4.png" class="url_for"></a><br><a rel=eslint笔记 href="/image/eslint/ext5.png" title="" data-fancybox="images"><img src="/image/eslint/ext5.png" class="url_for"></a></p>
+<h3 id="依赖-eslint-包"><a href="#依赖-eslint-包" class="headerlink" title="依赖 eslint 包"></a>依赖 eslint 包</h3><a rel=eslint笔记 href="/image/eslint/ext5.png" title="" data-fancybox="images"><img src="/image/eslint/ext5.png" class="url_for"></a>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="editor-formatOnSave-与-editor-codeActionsOnSave"><a href="#editor-formatOnSave-与-editor-codeActionsOnSave" class="headerlink" title="editor.formatOnSave 与 editor.codeActionsOnSave"></a>editor.formatOnSave 与 editor.codeActionsOnSave</h4><a rel=eslint笔记 href="/image/eslint/vs-e1.png" title="" data-fancybox="images"><img src="/image/eslint/vs-e1.png" class="url_for"></a>
 <p>若使用editor.codeActionsOnSave，请关闭 editor.formatOnSave 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The old eslint.autoFixOnSave setting is now deprecated and can safely be removed. Please also note that if you use ESLint as your default formatter you should turn off editor.formatOnSave when you have turned on editor.codeActionsOnSave. Otherwise you file gets fixed twice which in unnecessary.</span><br></pre></td></tr></table></figure></p>
 <h4 id="关闭-editor-formatOnSave"><a href="#关闭-editor-formatOnSave" class="headerlink" title="关闭 editor.formatOnSave"></a>关闭 editor.formatOnSave</h4><p>参考上面说明。</p>
-<h4 id="不需要的旧配置eslint-validate"><a href="#不需要的旧配置eslint-validate" class="headerlink" title="不需要的旧配置eslint.validate"></a>不需要的旧配置eslint.validate</h4><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/vs-e2.png" title="undefined" data-fancybox="images"><img src="/image/eslint/vs-e2.png" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="eslint-autoFixOnSave-与-editor-codeActionsOnSave"><a href="#eslint-autoFixOnSave-与-editor-codeActionsOnSave" class="headerlink" title="eslint.autoFixOnSave 与 editor.codeActionsOnSave"></a>eslint.autoFixOnSave 与 editor.codeActionsOnSave</h4><p>弃用的eslint.autoFixOnSave,请使用editor.codeActionsOnSave替代，<br>下面也展示了 eslint插件保存自动修复的几种配置方式：<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/vs-e3.png" title="undefined" data-fancybox="images"><img src="/image/eslint/vs-e3.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="不需要的旧配置eslint-validate"><a href="#不需要的旧配置eslint-validate" class="headerlink" title="不需要的旧配置eslint.validate"></a>不需要的旧配置eslint.validate</h4><a rel=eslint笔记 href="/image/eslint/vs-e2.png" title="" data-fancybox="images"><img src="/image/eslint/vs-e2.png" class="url_for"></a>
+<h4 id="eslint-autoFixOnSave-与-editor-codeActionsOnSave"><a href="#eslint-autoFixOnSave-与-editor-codeActionsOnSave" class="headerlink" title="eslint.autoFixOnSave 与 editor.codeActionsOnSave"></a>eslint.autoFixOnSave 与 editor.codeActionsOnSave</h4><p>弃用的eslint.autoFixOnSave,请使用editor.codeActionsOnSave替代，<br>下面也展示了 eslint插件保存自动修复的几种配置方式：<br><a rel=eslint笔记 href="/image/eslint/vs-e3.png" title="" data-fancybox="images"><img src="/image/eslint/vs-e3.png" class="url_for"></a></p>
 <h2 id="vscode-eslint插件运行机制"><a href="#vscode-eslint插件运行机制" class="headerlink" title="vscode eslint插件运行机制"></a>vscode eslint插件运行机制</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>vscode 的eslint插件的运行，必须依赖 npm eslint包。<br>因为是vscode插件，因此可以读取到所有的vscode的setting.json（默认、工作区、用户 三种setting.json）,<br>(vscode的setting.json就是共享给所有插件的，相当于vscode运行的上下文，vscode将此上下文暴露给所有vscode插件)。<br>因为依赖的是npm eslint包，而.eslintrc.js是给 npm eslint包配置和使用的，<br>.eslintrc.js配置了npm eslint包，因此也影响了 vscode的eslint插件表现行为。</p>
 <h4 id="可以在-setting-json-中定义的能力举例-："><a href="#可以在-setting-json-中定义的能力举例-：" class="headerlink" title="可以在 setting.json 中定义的能力举例 ："></a>可以在 setting.json 中定义的能力举例 ：</h4><p>设置eslint与vscode的交互，比如是否开启eslint的保存自动修复<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 这是新版本eslint插件，配置方法 --&gt;</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">        &quot;source.fixAll.eslint&quot;: true</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 这是老版本eslint插件，配置方法，现已经丢弃 --&gt;</span><br><span class="line">  &quot;eslint.autoFixOnSave&quot;: true</span><br></pre></td></tr></table></figure>
@@ -384,42 +339,15 @@
 <h4 id="函数定义注释JSDoc-support"><a href="#函数定义注释JSDoc-support" class="headerlink" title="函数定义注释JSDoc support"></a>函数定义注释JSDoc support</h4><p><a href="https://code.visualstudio.com/docs/languages/javascript#_jsdoc-support" target="_blank" rel="noopener">JSDoc support</a></p>
 <h4 id="Organize-Imports"><a href="#Organize-Imports" class="headerlink" title="Organize Imports"></a>Organize Imports</h4><p>可以 清除无用import；<br>fix eslint<br>fix stylelint<br><a href="https://code.visualstudio.com/docs/languages/javascript#_organize-imports" target="_blank" rel="noopener">Organize Imports</a></p>
 <h4 id="待看"><a href="#待看" class="headerlink" title="待看"></a>待看</h4><p><a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">https://code.visualstudio.com/docs/editor/debugging</a></p>
-<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><h3 id="找-babel-eslint-parser-github仓库的方法"><a href="#找-babel-eslint-parser-github仓库的方法" class="headerlink" title="找@babel/eslint-parser github仓库的方法"></a>找@babel/eslint-parser github仓库的方法</h3><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/p1.png" title="undefined" data-fancybox="images"><img src="/image/eslint/p1.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/p2.png" title="undefined" data-fancybox="images"><img src="/image/eslint/p2.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/p3.png" title="undefined" data-fancybox="images"><img src="/image/eslint/p3.png" alt title class></a>
-                <p></p>
-            </figure>
+<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><h3 id="找-babel-eslint-parser-github仓库的方法"><a href="#找-babel-eslint-parser-github仓库的方法" class="headerlink" title="找@babel/eslint-parser github仓库的方法"></a>找@babel/eslint-parser github仓库的方法</h3><a rel=eslint笔记 href="/image/eslint/p1.png" title="" data-fancybox="images"><img src="/image/eslint/p1.png" class="url_for"></a>
+<a rel=eslint笔记 href="/image/eslint/p2.png" title="" data-fancybox="images"><img src="/image/eslint/p2.png" class="url_for"></a>
+<a rel=eslint笔记 href="/image/eslint/p3.png" title="" data-fancybox="images"><img src="/image/eslint/p3.png" class="url_for"></a>
 <p>地址如下：<br><a href="https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser" target="_blank" rel="noopener">https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser</a></p>
-<h3 id="找-babel-core-github仓库的方法"><a href="#找-babel-core-github仓库的方法" class="headerlink" title="找@babel/core github仓库的方法"></a>找@babel/core github仓库的方法</h3><p>方法与之前一样，差异部分如下：<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/b1.png" title="undefined" data-fancybox="images"><img src="/image/eslint/b1.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/b2.png" title="undefined" data-fancybox="images"><img src="/image/eslint/b2.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<h3 id="找eslint-config-airbnb-base-github仓库的方法"><a href="#找eslint-config-airbnb-base-github仓库的方法" class="headerlink" title="找eslint-config-airbnb-base github仓库的方法"></a>找eslint-config-airbnb-base github仓库的方法</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/a1.png" title="undefined" data-fancybox="images"><img src="/image/eslint/a1.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/a2.png" title="undefined" data-fancybox="images"><img src="/image/eslint/a2.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/a3.png" title="undefined" data-fancybox="images"><img src="/image/eslint/a3.png" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="秘密都在package-json中"><a href="#秘密都在package-json中" class="headerlink" title="秘密都在package.json中"></a>秘密都在package.json中</h4><p>为什么是在根目录的packages下，可以从package.json看出，<br>所以面对一个github仓库管理多个npm包源码时，要多看package.json：<br><figure class="image-box">
-                <a rel=eslint笔记 href="/image/eslint/a4.png" title="undefined" data-fancybox="images"><img src="/image/eslint/a4.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="找-babel-core-github仓库的方法"><a href="#找-babel-core-github仓库的方法" class="headerlink" title="找@babel/core github仓库的方法"></a>找@babel/core github仓库的方法</h3><p>方法与之前一样，差异部分如下：<br><a rel=eslint笔记 href="/image/eslint/b1.png" title="" data-fancybox="images"><img src="/image/eslint/b1.png" class="url_for"></a><br><a rel=eslint笔记 href="/image/eslint/b2.png" title="" data-fancybox="images"><img src="/image/eslint/b2.png" class="url_for"></a></p>
+<h3 id="找eslint-config-airbnb-base-github仓库的方法"><a href="#找eslint-config-airbnb-base-github仓库的方法" class="headerlink" title="找eslint-config-airbnb-base github仓库的方法"></a>找eslint-config-airbnb-base github仓库的方法</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><a rel=eslint笔记 href="/image/eslint/a1.png" title="" data-fancybox="images"><img src="/image/eslint/a1.png" class="url_for"></a>
+<a rel=eslint笔记 href="/image/eslint/a2.png" title="" data-fancybox="images"><img src="/image/eslint/a2.png" class="url_for"></a>
+<a rel=eslint笔记 href="/image/eslint/a3.png" title="" data-fancybox="images"><img src="/image/eslint/a3.png" class="url_for"></a>
+<h4 id="秘密都在package-json中"><a href="#秘密都在package-json中" class="headerlink" title="秘密都在package.json中"></a>秘密都在package.json中</h4><p>为什么是在根目录的packages下，可以从package.json看出，<br>所以面对一个github仓库管理多个npm包源码时，要多看package.json：<br><a rel=eslint笔记 href="/image/eslint/a4.png" title="" data-fancybox="images"><img src="/image/eslint/a4.png" class="url_for"></a></p>
 <h3 id="查看eslint-plugin-import所有的rules"><a href="#查看eslint-plugin-import所有的rules" class="headerlink" title="查看eslint-plugin-import所有的rules"></a>查看eslint-plugin-import所有的rules</h3><p>直接去<a href="https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules" target="_blank" rel="noopener">eslint-plugin-import官网</a>查看，查询其他eslint包的rules，可以此类推</p>
 <h3 id="cosmiconfig标准"><a href="#cosmiconfig标准" class="headerlink" title="cosmiconfig标准"></a>cosmiconfig标准</h3><p>prettier eslint  stylelint 都使用这种配置标准：<br><a href="https://github.com/davidtheclark/cosmiconfig" target="_blank" rel="noopener">cosmiconfig</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">By default, Cosmiconfig will start where you tell it to start and search up the directory tree for the following:</span><br><span class="line"></span><br><span class="line">a package.json property</span><br><span class="line">a JSON or YAML, extensionless &quot;rc file&quot;</span><br><span class="line">an &quot;rc file&quot; with the extensions .json, .yaml, .yml, .js, or .cjs</span><br><span class="line">a .config.js or .config.cjs CommonJS module</span><br><span class="line">For example, if your module&apos;s name is &quot;myapp&quot;, cosmiconfig will search up the directory tree for configuration in the following places:</span><br><span class="line"></span><br><span class="line">a myapp property in package.json</span><br><span class="line">a .myapprc file in JSON or YAML format</span><br><span class="line">a .myapprc.json, .myapprc.yaml, .myapprc.yml, .myapprc.js, or .myapprc.cjs file</span><br><span class="line">a myapp.config.js or myapp.config.cjs CommonJS module exporting an object</span><br><span class="line">Cosmiconfig continues to search up the directory tree, checking each of these places in each directory, until it finds some acceptable configuration (or hits the home directory).</span><br></pre></td></tr></table></figure>
@@ -430,7 +358,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -652,16 +580,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

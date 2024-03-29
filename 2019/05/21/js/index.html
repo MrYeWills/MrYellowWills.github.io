@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="自运行函数写法形式">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -251,10 +251,7 @@
 <h4 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h4><p>其实比较简单，参考<a href="https://www.jianshu.com/p/a697e9bfdaef" target="_blank" rel="noopener">这篇讲得好</a>。<br>大白话，由语言标准提供的就是微任务，比如ES6提供的promise。<br>当前用得最多微任务也就promise。<br>其他由浏览器或node运行环境提供的，比如setTimeout、ajax等是宏任务。</p>
 <h4 id="理解setTimeout-0"><a href="#理解setTimeout-0" class="headerlink" title="理解setTimeout 0"></a>理解setTimeout 0</h4><p>小于4毫秒时，浏览器认为都是0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;&#125;, 2)</span><br></pre></td></tr></table></figure></p>
 <h4 id="触发异步任务的API"><a href="#触发异步任务的API" class="headerlink" title="触发异步任务的API"></a>触发异步任务的API</h4><p>setTimeout或setInInterval<br>Dom事件<br>Promise</p>
-<h3 id="event-loop-事件循环-1"><a href="#event-loop-事件循环-1" class="headerlink" title="event loop (事件循环)"></a>event loop (事件循环)</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel=js笔记(一) href="/image/js/loop.jpg" title="undefined" data-fancybox="images"><img src="/image/js/loop.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h3 id="event-loop-事件循环-1"><a href="#event-loop-事件循环-1" class="headerlink" title="event loop (事件循环)"></a>event loop (事件循环)</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><a rel=js笔记(一) href="/image/js/loop.jpg" title="" data-fancybox="images"><img src="/image/js/loop.jpg" class="url_for"></a>
 <h4 id="区分出同步、异步任务"><a href="#区分出同步、异步任务" class="headerlink" title="区分出同步、异步任务"></a>区分出同步、异步任务</h4><p>浏览器引擎会对所有任务进行识别，会将同步任务放置到运行栈中;<br>会将其中的异步任务取出放在浏览器的线程中，等待如setTimeout任务的时间到了变成0后，再放到任务队列中；</p>
 <h4 id="异步任务时间为0后放入任务队列中"><a href="#异步任务时间为0后放入任务队列中" class="headerlink" title="异步任务时间为0后放入任务队列中"></a>异步任务时间为0后放入任务队列中</h4><p>参考上面</p>
 <h4 id="运行栈执行同步任务"><a href="#运行栈执行同步任务" class="headerlink" title="运行栈执行同步任务"></a>运行栈执行同步任务</h4><p>运行栈也成为执行栈、调用栈。<br>同步任务放在运行栈中，运行栈只会放置同步任务，运行栈执行的是同步任务；</p>
@@ -323,7 +320,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.576Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -545,16 +542,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

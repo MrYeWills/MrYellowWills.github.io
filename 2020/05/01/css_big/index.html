@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="css">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -213,19 +213,10 @@
 <h3 id="脱离文档流，但不脱离文本流"><a href="#脱离文档流，但不脱离文本流" class="headerlink" title="脱离文档流，但不脱离文本流"></a>脱离文档流，但不脱离文本流</h3><p>当一个元素变为浮动元素时，对不同类型的相邻元素影响如下：</p>
 <h4 id="与行内元素相邻"><a href="#与行内元素相邻" class="headerlink" title="与行内元素相邻"></a>与行内元素相邻</h4><p>会让行内元素紧贴浮动元素，典型的场景–图片文字环绕<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">img&#123;</span><br><span class="line">  float: left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;img src=&quot;./aa.jpg&quot; alt=&quot;aa&quot;&gt;</span><br><span class="line">&lt;span&gt;行内元素文字行内元素文字&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
 <h4 id="与块级元素相邻"><a href="#与块级元素相邻" class="headerlink" title="与块级元素相邻"></a>与块级元素相邻</h4><p>浮动元素脱离文档流，此时效果类似position：absolute，相当于浮动元素不存在，与之相邻的块级元素将占领浮动元素位置；<br><strong>但是块级元素内的行内元素，将环绕浮动元素</strong>，这是因为float不脱离文本流<br>浮动之前：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    .float &#123;</span><br><span class="line">        height: 60px;</span><br><span class="line">        background: rebeccapurple;</span><br><span class="line">    &#125;</span><br><span class="line">    .test &#123;</span><br><span class="line">        border: 45px solid #00BCD4;</span><br><span class="line">        background: blue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;float&quot;&gt;浮动之前&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;test&quot;&gt;相邻块级元素&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="image-box">
-                <a rel=css知识点汇 href="/image/css/float-before.jpg" title="undefined" data-fancybox="images"><img src="/image/css/float-before.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=css知识点汇 href="/image/css/float-before.jpg" title="" data-fancybox="images"><img src="/image/css/float-before.jpg" class="url_for"></a>
 <p>浮动之后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    .float &#123;</span><br><span class="line">      /* 其他代码省略 */</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;div class=&quot;float&quot;&gt;浮动之后&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;test&quot;&gt;相邻块级元素相邻块级元素相邻块级元素...&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="image-box">
-                <a rel=css知识点汇 href="/image/css/float-after.jpg" title="undefined" data-fancybox="images"><img src="/image/css/float-after.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="与浮动元素相邻"><a href="#与浮动元素相邻" class="headerlink" title="与浮动元素相邻"></a>与浮动元素相邻</h4><p>浮动元素与浮动元素 将并列并排；<br>注意的是，如果浮动元素的高度不同，当浮动元素被挤到第二行时，将会卡住：<br><figure class="image-box">
-                <a rel=css知识点汇 href="/image/css/float-pading.jpg" title="undefined" data-fancybox="images"><img src="/image/css/float-pading.jpg" alt title class></a>
-                <p></p>
-            </figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.triangle&#123;</span><br><span class="line">     float: left;</span><br><span class="line">     width: 150px;</span><br><span class="line">     height: 60px;</span><br><span class="line"> &#125;</span><br><span class="line"> .it1&#123;</span><br><span class="line">     height: 80px;</span><br><span class="line">     background:rebeccapurple;</span><br><span class="line"> &#125;</span><br><span class="line"> .it2&#123;</span><br><span class="line">     background:blue;</span><br><span class="line"> &#125;</span><br><span class="line"> .it3&#123;</span><br><span class="line">     background:#00BCD4;</span><br><span class="line"> &#125;</span><br><span class="line"> &lt;div class=&quot;triangle it1&quot;&gt;浮动元素&lt;/div&gt;</span><br><span class="line"> &lt;div class=&quot;triangle it2&quot;&gt;浮动元素&lt;/div&gt;</span><br><span class="line"> &lt;div class=&quot;triangle it3&quot;&gt;浮动元素&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<a rel=css知识点汇 href="/image/css/float-after.jpg" title="" data-fancybox="images"><img src="/image/css/float-after.jpg" class="url_for"></a>
+<h4 id="与浮动元素相邻"><a href="#与浮动元素相邻" class="headerlink" title="与浮动元素相邻"></a>与浮动元素相邻</h4><p>浮动元素与浮动元素 将并列并排；<br>注意的是，如果浮动元素的高度不同，当浮动元素被挤到第二行时，将会卡住：<br><a rel=css知识点汇 href="/image/css/float-pading.jpg" title="" data-fancybox="images"><img src="/image/css/float-pading.jpg" class="url_for"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.triangle&#123;</span><br><span class="line">     float: left;</span><br><span class="line">     width: 150px;</span><br><span class="line">     height: 60px;</span><br><span class="line"> &#125;</span><br><span class="line"> .it1&#123;</span><br><span class="line">     height: 80px;</span><br><span class="line">     background:rebeccapurple;</span><br><span class="line"> &#125;</span><br><span class="line"> .it2&#123;</span><br><span class="line">     background:blue;</span><br><span class="line"> &#125;</span><br><span class="line"> .it3&#123;</span><br><span class="line">     background:#00BCD4;</span><br><span class="line"> &#125;</span><br><span class="line"> &lt;div class=&quot;triangle it1&quot;&gt;浮动元素&lt;/div&gt;</span><br><span class="line"> &lt;div class=&quot;triangle it2&quot;&gt;浮动元素&lt;/div&gt;</span><br><span class="line"> &lt;div class=&quot;triangle it3&quot;&gt;浮动元素&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="消除与相邻元素的间隙"><a href="#消除与相邻元素的间隙" class="headerlink" title="消除与相邻元素的间隙"></a>消除与相邻元素的间隙</h3><p>当被定义为浮动元素时，它跟原来相邻元素可能由于系统中自带的缝隙，一旦变成浮动元素，此缝隙将没有了，参加《float清空格(间隙)的原因》；<br>消除间隙这个特性，在开发中经常被运用.</p>
 <h3 id="与绝对定位区别"><a href="#与绝对定位区别" class="headerlink" title="与绝对定位区别"></a>与绝对定位区别</h3><p>浮动定位于绝对定位都会脱离文档流，但二者表现不一样；<br>绝对定位是完全脱离文档流，相当于文档中不存在此元素了，而浮动定位脱离文档流要区别行内元素，原因如上。</p>
 <h3 id="float清空格-间隙-的原因"><a href="#float清空格-间隙-的原因" class="headerlink" title="float清空格(间隙)的原因"></a>float清空格(间隙)的原因</h3><p>根本原因是由于float会导致节点脱离文档流结构。它都不属于文档流结构了，那么它身边的什么换行、空格就都和它没关系的，它就尽量的往一边去靠拢，能靠多近就靠多近，这就是清空格的本质。</p>
@@ -257,7 +248,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -338,9 +329,9 @@
 
   
     <div class="next">
-      <a href="/2020/05/01/css_layout/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/01/css_mobile/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">css之布局</h4>
+        <h4 class="title">css之移动开发</h4>
       </a>
     </div>
   
@@ -479,16 +470,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

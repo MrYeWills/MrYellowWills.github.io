@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="verdaccio">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -208,10 +208,7 @@
             
             <h2 id="搭建npm私服选型"><a href="#搭建npm私服选型" class="headerlink" title="搭建npm私服选型"></a>搭建npm私服选型</h2><p>有三种方式：</p>
 <ul>
-<li>nexus<br>搭建好后，样子如下：<figure class="image-box">
-                <a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/ne.png" title="undefined" data-fancybox="images"><img src="/image/verda/ne.png" alt title class></a>
-                <p></p>
-            </figure></li>
+<li>nexus<br>搭建好后，样子如下：<a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/ne.png" title="" data-fancybox="images"><img src="/image/verda/ne.png" class="url_for"></a></li>
 <li>cnpm</li>
 <li>verdaccio</li>
 </ul>
@@ -221,20 +218,8 @@
 <h3 id="配置讲解"><a href="#配置讲解" class="headerlink" title="配置讲解"></a>配置讲解</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line"><span class="comment"># 这个可以定义为自己的私包，比如 '@hz/*'</span></span><br><span class="line">  <span class="string">'@*/*'</span><span class="string">:</span></span><br><span class="line">    <span class="comment"># scoped packages</span></span><br><span class="line">    <span class="attr">access:</span> <span class="string">$all</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">auth:</span></span><br><span class="line">  <span class="attr">htpasswd:</span></span><br><span class="line">    <span class="attr">file:</span> <span class="string">./htpasswd</span></span><br><span class="line">    <span class="comment"># Maximum amount of users allowed to register, defaults to "+inf".</span></span><br><span class="line">    <span class="comment"># You can set this to -1 to disable registration.</span></span><br><span class="line">    <span class="comment"># 是否开启用户注册， -1代表禁用注册用户； 大于0表示允许注册用户，改值表示注册用户的个数</span></span><br><span class="line">    <span class="comment">#  默认注册用户没有限制，即任何人都可以通过 npm adduser 命令注册用户，实际开发中，这种情况是不允许出现</span></span><br><span class="line">    <span class="attr">max_users:</span> <span class="number">1000</span></span><br><span class="line">    <span class="comment"># Hash algorithm, possible options are: "bcrypt", "md5", "sha1", "crypt".</span></span><br><span class="line">    <span class="comment"># algorithm: bcrypt # by default is crypt, but is recommended use bcrypt for new installations</span></span><br><span class="line">    <span class="comment"># Rounds number for "bcrypt", will be ignored for other algorithms.</span></span><br><span class="line">    <span class="comment"># rounds: 10</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 上游仓库列表，当node私库找不到用户要安装的包时，就会继续往上游仓库拉取</span></span><br><span class="line"><span class="attr">uplinks:</span></span><br><span class="line">  <span class="attr">npmjs:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">https://registry.npmjs.org/</span></span><br></pre></td></tr></table></figure>
-<p>更多参考：<br><figure class="image-box">
-                <a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up.png" title="undefined" data-fancybox="images"><img src="/image/verda/up.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up2.png" title="undefined" data-fancybox="images"><img src="/image/verda/up2.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up3.png" title="undefined" data-fancybox="images"><img src="/image/verda/up3.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<p>关于 <code>$all</code> <code>$authenticated</code> 等：<br><figure class="image-box">
-                <a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up4.png" title="undefined" data-fancybox="images"><img src="/image/verda/up4.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>更多参考：<br><a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up.png" title="" data-fancybox="images"><img src="/image/verda/up.png" class="url_for"></a><br><a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up2.png" title="" data-fancybox="images"><img src="/image/verda/up2.png" class="url_for"></a><br><a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up3.png" title="" data-fancybox="images"><img src="/image/verda/up3.png" class="url_for"></a></p>
+<p>关于 <code>$all</code> <code>$authenticated</code> 等：<br><a rel=verdaccio搭建npm私服(一)：基础知识 href="/image/verda/up4.png" title="" data-fancybox="images"><img src="/image/verda/up4.png" class="url_for"></a></p>
 <p>最后为了让外网都可以访问，注意将 listen 改为这个：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">listen:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">:4873</span></span><br><span class="line"><span class="comment"># - localhost:4873            # default value</span></span><br><span class="line"><span class="comment"># - http://localhost:4873     # same thing</span></span><br><span class="line"><span class="comment"># - 0.0.0.0:4873              # listen on all addresses (INADDR_ANY)</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="删除包"><a href="#删除包" class="headerlink" title="删除包"></a>删除包</h4><p>npm unpublish –force xxx 或 npm unpublish –force <a href="mailto:xxx@xx.0.0" target="_blank" rel="noopener">xxx@xx.0.0</a></p>
 <h4 id="注册用户"><a href="#注册用户" class="headerlink" title="注册用户"></a>注册用户</h4><p>npm adduser</p>
@@ -250,7 +235,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.295Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.580Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -472,16 +457,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="grid布局">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -206,14 +206,8 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="网格项上的属性"><a href="#网格项上的属性" class="headerlink" title="网格项上的属性"></a>网格项上的属性</h2><h3 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel=grid布局 href="/image/grid/grid-area.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/grid-area.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="等效写法"><a href="#等效写法" class="headerlink" title="等效写法"></a>等效写法</h4><figure class="image-box">
-                <a rel=grid布局 href="/image/grid/area.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/area.jpg" alt title class></a>
-                <p></p>
-            </figure>
+            <h2 id="网格项上的属性"><a href="#网格项上的属性" class="headerlink" title="网格项上的属性"></a>网格项上的属性</h2><h3 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><a rel=grid布局 href="/image/grid/grid-area.jpg" title="" data-fancybox="images"><img src="/image/grid/grid-area.jpg" class="url_for"></a>
+<h4 id="等效写法"><a href="#等效写法" class="headerlink" title="等效写法"></a>等效写法</h4><a rel=grid布局 href="/image/grid/area.jpg" title="" data-fancybox="images"><img src="/image/grid/area.jpg" class="url_for"></a>
 <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="justify-content的start-stretch区别"><a href="#justify-content的start-stretch区别" class="headerlink" title="justify-content的start stretch区别"></a>justify-content的start stretch区别</h3><p>在固定宽度下，没有区别：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 固定宽度下，无区别，中间元素宽度始终为150px */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:150px</span> 150<span class="selector-tag">px</span> 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:start</span>／<span class="selector-tag">stretch</span>;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中间的元素能有多窄就有多窄 */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:150px</span> <span class="selector-tag">auto</span> 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:start</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 中间的元素有多宽就有多宽 */</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:150px</span> <span class="selector-tag">auto</span> 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">justify-content</span><span class="selector-pseudo">:stretch</span>;</span><br></pre></td></tr></table></figure>
@@ -222,10 +216,7 @@
 <h4 id="auto-fill"><a href="#auto-fill" class="headerlink" title="auto-fill"></a>auto-fill</h4><p>auto-fill不能跟具体的数值一起，否则将不起效果。一般与minmax使用，如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>:<span class="built_in">repeat</span>(auto-fill, minmax(<span class="number">100px</span>, <span class="number">150px</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>auto-fit与auto-fill类似。</p>
 <h3 id="fit-content"><a href="#fit-content" class="headerlink" title="fit-content"></a>fit-content</h3><p>fit-content 给定网格项定义的宽度，但网格项按照自身的宽度展示。<br>这个属性有个作用是，在多行中，保证定义的列宽度是一致的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-columns</span><span class="selector-pseudo">:100px</span> <span class="selector-tag">fit-content</span>(200<span class="selector-tag">px</span>) <span class="selector-tag">fit-content</span>(300<span class="selector-tag">px</span>) 10% 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br></pre></td></tr></table></figure></p>
-<figure class="image-box">
-                <a rel=grid布局 href="/image/grid/fit.jpg" title="undefined" data-fancybox="images"><img src="/image/grid/fit.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=grid布局 href="/image/grid/fit.jpg" title="" data-fancybox="images"><img src="/image/grid/fit.jpg" class="url_for"></a>
 <h3 id="合并写法的改名"><a href="#合并写法的改名" class="headerlink" title="合并写法的改名"></a>合并写法的改名</h3><h4 id="place-content"><a href="#place-content" class="headerlink" title="place-content"></a>place-content</h4><p>这个是合并了 justify-content align-content 的写法。<br>隐式轨道</p>
 
         </div>
@@ -234,7 +225,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -456,16 +447,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

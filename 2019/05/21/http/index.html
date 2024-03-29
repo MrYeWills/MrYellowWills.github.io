@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="前端,http协议">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -206,10 +206,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="html协议基础"><a href="#html协议基础" class="headerlink" title="html协议基础"></a>html协议基础</h2><h3 id="5层网络模型"><a href="#5层网络模型" class="headerlink" title="5层网络模型"></a>5层网络模型</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>如图，我们只需理解应用层与传输层的作用，其他三层，知道就行。<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/compose.jpg" title="undefined" data-fancybox="images"><img src="/image/http/compose.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+            <h2 id="html协议基础"><a href="#html协议基础" class="headerlink" title="html协议基础"></a>html协议基础</h2><h3 id="5层网络模型"><a href="#5层网络模型" class="headerlink" title="5层网络模型"></a>5层网络模型</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>如图，我们只需理解应用层与传输层的作用，其他三层，知道就行。<br><a rel=http协议 href="/image/http/compose.jpg" title="" data-fancybox="images"><img src="/image/http/compose.jpg" class="url_for"></a></p>
 <h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p><a href="https://www.jianshu.com/p/e1f33cc26aca" target="_blank" rel="noopener">参考</a></p>
 <ul>
 <li>向用户提供可靠的端到端（end-to-end）服务；</li>
@@ -235,20 +232,11 @@
 <li>头信息压缩以及后端主动推送等功能<br>关于头信息压缩：<br>在http1中，头信息如 Content-Type等，都是以字符串的形式保存，这些都比较占带宽；<br>在http2中，对头信息进行压缩，从而减少对带宽的占用。<br>关于 主动推送：<br>在http1中，向后台发送一个html请求，前台获得html后，经过浏览器解析，再次向后台发起css或js的请求；<br>http2中，向后台发起一个页面请求时，后台会将html和html内的css js 主动一次性推送给浏览器，提高性能。</li>
 </ul>
 <h3 id="tcp三次握手"><a href="#tcp三次握手" class="headerlink" title="tcp三次握手"></a>tcp三次握手</h3><p>如图，tcp三次握手，<strong>主要是解决客户端与服务端相隔很多远，通过光纤传输，容易出现延时和连接中断等问题</strong>；<br>第一次握手：客户端发消息给服务端，申请建立tcp连接；<br>第二次握手：客户端接收请求后，新建端口，用于tcp连接，并且向客户端发消息，验证客户端是否能正常接收来自客户端的消息；<br>第三次握手：客户端向服务端发消息说，我能正常接收到你那边发来的消息，你就放心的建立tcp连接吧。服务端接收到此消息后，建立tcp连接成功。</p>
-<p>进一步解释下：<br>第一次握手，验证服务端能正常接收到客户端消息；<br>第二次握手，验证客服端能正常接收到服务端消息；<br>一来一往，两边都能接收到双方消息；<br>第三次握手，直接与服务端建立tcp连接。<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/tcp.jpg" title="undefined" data-fancybox="images"><img src="/image/http/tcp.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>进一步解释下：<br>第一次握手，验证服务端能正常接收到客户端消息；<br>第二次握手，验证客服端能正常接收到服务端消息；<br>一来一往，两边都能接收到双方消息；<br>第三次握手，直接与服务端建立tcp连接。<br><a rel=http协议 href="/image/http/tcp.jpg" title="" data-fancybox="images"><img src="/image/http/tcp.jpg" class="url_for"></a></p>
 <h3 id="uri-url-urn"><a href="#uri-url-urn" class="headerlink" title="uri url urn"></a>uri url urn</h3><p>uri 包含 url 和 urn；uri与url一样用来定位资源地址。</p>
 <h3 id="url上的哈希值-起到锚点作用"><a href="#url上的哈希值-起到锚点作用" class="headerlink" title="url上的哈希值 起到锚点作用"></a>url上的哈希值 起到锚点作用</h3><p><code>#</code>号后的哈希值，用来给前端渲染用，起到一个锚点作用，比如在mokedown文档博客总，通过#跳转到某个章节。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:4000/2019/05/21/koa2#chapter1</span><br></pre></td></tr></table></figure></p>
-<h3 id="http-报文"><a href="#http-报文" class="headerlink" title="http 报文"></a>http 报文</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><figure class="image-box">
-                <a rel=http协议 href="/image/http/header.jpg" title="undefined" data-fancybox="images"><img src="/image/http/header.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="首行／起始行"><a href="#首行／起始行" class="headerlink" title="首行／起始行"></a>首行／起始行</h4><p>首行里面是一些请求头以外的信息，上图中，请求的首行上定义了http的版本，method；<br>响应头包含了状态码等消息。<br>首行也是下面的矩形框内的 General<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/httpline.jpg" title="undefined" data-fancybox="images"><img src="/image/http/httpline.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="http-报文"><a href="#http-报文" class="headerlink" title="http 报文"></a>http 报文</h3><h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><a rel=http协议 href="/image/http/header.jpg" title="" data-fancybox="images"><img src="/image/http/header.jpg" class="url_for"></a>
+<h4 id="首行／起始行"><a href="#首行／起始行" class="headerlink" title="首行／起始行"></a>首行／起始行</h4><p>首行里面是一些请求头以外的信息，上图中，请求的首行上定义了http的版本，method；<br>响应头包含了状态码等消息。<br>首行也是下面的矩形框内的 General<br><a rel=http协议 href="/image/http/httpline.jpg" title="" data-fancybox="images"><img src="/image/http/httpline.jpg" class="url_for"></a></p>
 <h4 id="请求header／响应header"><a href="#请求header／响应header" class="headerlink" title="请求header／响应header"></a>请求header／响应header</h4><p>参考上图</p>
 <h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><h4 id="认识跨域"><a href="#认识跨域" class="headerlink" title="认识跨域"></a>认识跨域</h4><p>跨域纯属浏览器端做的限制，请求是否跨域不影响浏览器是否将其发送到后台，浏览器都会将请求发送到后台，无论跨域与否。<br>服务器，无论跨域与否，都会正常将响应数据发送给浏览器。<br>浏览器接收到服务器的响应数据时，不同的是，浏览器对于跨域请求，<br>会读取响应数据的参数 <code>Access-Control-Allow-Origin</code>;<br>如果没有此参数，或此参数不允许客户端页面的host，那么浏览器将不会将响应的数据显示出来，并且抛异常不允许跨域。</p>
 <h4 id="浏览器并非不发送跨域请求"><a href="#浏览器并非不发送跨域请求" class="headerlink" title="浏览器并非不发送跨域请求"></a>浏览器并非不发送跨域请求</h4><p>参考上面《认识跨域》</p>
@@ -258,19 +246,13 @@
 <h4 id="Access-Control-Allow-Origin"><a href="#Access-Control-Allow-Origin" class="headerlink" title="Access-Control-Allow-Origin"></a>Access-Control-Allow-Origin</h4><p>看请求是否跨域，主要是看后台的响应头否设置了 Access-Control-Allow-Origin；<br>Access-Control-Allow-Origin的值可以为 *,这样的话，任何域名下发的请求，响应数据都会允许获取到，是有一定危险的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;Access-Control-Allow-Origin&apos;: &apos;*&apos;</span><br></pre></td></tr></table></figure></p>
 <p>所以更可行的方法是设置一个具体值，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//允许host为http://127.0.0.1:8888的请求显示数据</span><br><span class="line">&apos;Access-Control-Allow-Origin&apos;: &apos;http://127.0.0.1:8888&apos;</span><br></pre></td></tr></table></figure></p>
 <p>如果要允许多个host，可以设置多个值，这些都是很好做的。</p>
-<p>Access-Control-Allow-xxx都可以在浏览器的响应头中看到：<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/cor0.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cor0.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>Access-Control-Allow-xxx都可以在浏览器的响应头中看到：<br><a rel=http协议 href="/image/http/cor0.jpg" title="" data-fancybox="images"><img src="/image/http/cor0.jpg" class="url_for"></a></p>
 <h4 id="跨域解决方式"><a href="#跨域解决方式" class="headerlink" title="跨域解决方式"></a>跨域解决方式</h4><ul>
 <li>设置 Access-Control-Allow-Origin；</li>
 <li>jsonp</li>
 <li>通过服务器转发请求</li>
 </ul>
-<h4 id="其他跨域解决方法"><a href="#其他跨域解决方法" class="headerlink" title="其他跨域解决方法"></a>其他跨域解决方法</h4><p>跨域时，除了要放开Access-Control-Allow-Origin，有时候，还会限制你的请求方法，请求头的设置，这个时候，<br>在后台就需要设置如下，进行approve：<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/cor5.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cor5.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="其他跨域解决方法"><a href="#其他跨域解决方法" class="headerlink" title="其他跨域解决方法"></a>其他跨域解决方法</h4><p>跨域时，除了要放开Access-Control-Allow-Origin，有时候，还会限制你的请求方法，请求头的设置，这个时候，<br>在后台就需要设置如下，进行approve：<br><a rel=http协议 href="/image/http/cor5.jpg" title="" data-fancybox="images"><img src="/image/http/cor5.jpg" class="url_for"></a></p>
 <h4 id="CORS预请求"><a href="#CORS预请求" class="headerlink" title="CORS预请求"></a>CORS预请求</h4><p>在跨域请求时，还有一些其他限制，CORS预请求就是当中的一种:<br>跨域请求中，不需要预请求的方法：</p>
 <ul>
 <li>GET </li>
@@ -280,29 +262,17 @@
 <li>multipart/form-data</li>
 <li>application/x-www-form-urlencoded<br>除了上述请求方法或content-type，当跨域时，浏览器都要进行预请求，<br>比如DELETE PUT 请求，<br>除以上设置外，如果你自定义header头，也会要求进行预请求，还有一些其他的预请求的限制，可以网上查阅。<br>下面展示一下预请求<h4 id="CORS预请求-与-OPTIONS-method"><a href="#CORS预请求-与-OPTIONS-method" class="headerlink" title="CORS预请求 与 OPTIONS method"></a>CORS预请求 与 OPTIONS method</h4>cors预请求是通过OPTIONS method请求实现，在发送实际请求前，发一次OPTIONS method请求。</li>
 <li><p>这是正常的post 跨域请求，不需要cors预请求</p>
-<figure class="image-box">
-                <a rel=http协议 href="/image/http/cor1.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cor1.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=http协议 href="/image/http/cor1.jpg" title="" data-fancybox="images"><img src="/image/http/cor1.jpg" class="url_for"></a>
 </li>
 <li><p>这是put 跨域请求，需要cors预请求<br>因此首先发一个method OPTIONS的请求，向服务器询问是否允许获取数据。<br>如果允许，则再发实际的put请求。</p>
-<figure class="image-box">
-                <a rel=http协议 href="/image/http/cor2.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cor2.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=http协议 href="/image/http/cor3.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cor3.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=http协议 href="/image/http/cor2.jpg" title="" data-fancybox="images"><img src="/image/http/cor2.jpg" class="url_for"></a>
+<a rel=http协议 href="/image/http/cor3.jpg" title="" data-fancybox="images"><img src="/image/http/cor3.jpg" class="url_for"></a>
 </li>
 <li><p>默认在一定时间内，再次发起跨域请求，不需再次发送options请求进行cors预请求<br>当上面请求正常后，立刻再次发起同样的put请求，浏览器不会再次重复需要进行预请求，当然这个时间是可以在服务器上配置的。<br>通过下面可以设置，如果不设置，就使用默认时间：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Max-Age : 1000, //多长时间内，不需要再发预请求进行验证</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="image-box">
-                <a rel=http协议 href="/image/http/cor4.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cor4.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=http协议 href="/image/http/cor4.jpg" title="" data-fancybox="images"><img src="/image/http/cor4.jpg" class="url_for"></a>
 <h4 id="CORS预请求-只-与-跨域有关"><a href="#CORS预请求-只-与-跨域有关" class="headerlink" title="CORS预请求 只 与 跨域有关"></a>CORS预请求 只 与 跨域有关</h4><p>参考上面的讲解。</p>
 <h3 id="CORS预请求-1"><a href="#CORS预请求-1" class="headerlink" title="CORS预请求"></a>CORS预请求</h3><p>参考《跨域 — CORS预请求》</p>
 <h3 id="Cache-control"><a href="#Cache-control" class="headerlink" title="Cache-control"></a>Cache-control</h3><p>Cache-control是服务端设置，告诉浏览器资源的缓存方式,可取的值：</p>
@@ -314,22 +284,13 @@
 <li>max-age 缓存过期时间<br>在<strong>koa 服务端</strong>设置如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(async (ctx, next) =&gt; &#123;</span><br><span class="line">  ctx.set(&apos;Cache-control&apos;, &apos;max-age=200, public&apos;); //可以一次设置多个值</span><br><span class="line">  ctx.set(&apos;Content-Type&apos;, &apos;text/javascript&apos;);</span><br><span class="line">  ctx.set(&apos;Access-Control-Allow-Headers&apos;, &apos;Origin, X-Requested-With, Content-Type, Accept&apos;);</span><br><span class="line">  await next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="浏览器读取缓存的过程"><a href="#浏览器读取缓存的过程" class="headerlink" title="浏览器读取缓存的过程"></a>浏览器读取缓存的过程</h3><h4 id="把本地缓存当成一个本地服务器"><a href="#把本地缓存当成一个本地服务器" class="headerlink" title="把本地缓存当成一个本地服务器"></a>把本地缓存当成一个本地服务器</h4><p>浏览器发起请求，首先读取本地缓存，然后读取代理缓存，如果都没有命中，就从服务器获取资源。<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/cache1.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cache1.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="浏览器读取缓存的过程"><a href="#浏览器读取缓存的过程" class="headerlink" title="浏览器读取缓存的过程"></a>浏览器读取缓存的过程</h3><h4 id="把本地缓存当成一个本地服务器"><a href="#把本地缓存当成一个本地服务器" class="headerlink" title="把本地缓存当成一个本地服务器"></a>把本地缓存当成一个本地服务器</h4><p>浏览器发起请求，首先读取本地缓存，然后读取代理缓存，如果都没有命中，就从服务器获取资源。<br><a rel=http协议 href="/image/http/cache1.jpg" title="" data-fancybox="images"><img src="/image/http/cache1.jpg" class="url_for"></a></p>
 <p>如上图知道，当设置缓存时，我们就好比多了一个本地服务端。<br>当再次发起请求时，请求直接发送到本地缓存服务器，而不是到后端服务器，所以，这也是为什么缓存请求，不会再次触发后端服务器程序执行的原因。<br>原来请求直接到了浏览器的缓存服务器上。</p>
 <h4 id="注意，有个代理缓存"><a href="#注意，有个代理缓存" class="headerlink" title="注意，有个代理缓存"></a>注意，有个代理缓存</h4><p>参考上图。</p>
 <h3 id="缓存验证-Last-Modified和Etag的使用"><a href="#缓存验证-Last-Modified和Etag的使用" class="headerlink" title="缓存验证 - Last-Modified和Etag的使用"></a>缓存验证 - Last-Modified和Etag的使用</h3><h4 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h4><p>上次修改时间，配合 if-modified-since或if-unmodified-since使用</p>
 <h4 id="Etag"><a href="#Etag" class="headerlink" title="Etag"></a>Etag</h4><p>数据签名，比Last-Modified更为严格的一种验证方式；<br>配合if-match或if-non-match使用；</p>
 <h4 id="后端配置（koa）"><a href="#后端配置（koa）" class="headerlink" title="后端配置（koa）"></a>后端配置（koa）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//If-Modified-Since: 对应  Last-Modified值</span><br><span class="line">//If-None-Match:  对应  etag值</span><br><span class="line"> const etag = ctx.headers[&apos;if-none-match&apos;]</span><br><span class="line">    if (etag === &apos;777&apos;) &#123;</span><br><span class="line">      ctx.status=304;</span><br><span class="line">      ctx.set(&#123;</span><br><span class="line">        //缓存有效时间为2000000，允许缓存，但需要验证</span><br><span class="line">        &apos;Cache-Control&apos;: &apos;max-age=2000000, no-cache&apos;,</span><br><span class="line">        &apos;Last-Modified&apos;: &apos;123&apos;,</span><br><span class="line">        &apos;Etag&apos;: &apos;777&apos;</span><br><span class="line">      &#125;);</span><br><span class="line">      //因为定义了 304，此时就不用给前台返回数据，前台会取缓存数据。</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      ctx.status=200;</span><br><span class="line">      ctx.set(&#123;</span><br><span class="line">        &apos;Cache-Control&apos;: &apos;max-age=2000000, no-cache&apos;,</span><br><span class="line">        &apos;Last-Modified&apos;: &apos;123&apos;,</span><br><span class="line">        &apos;Etag&apos;: &apos;777&apos;</span><br><span class="line">      &#125;);</span><br><span class="line">      ctx.body = &#123;abc: &apos;good boy&apos;&#125;;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="浏览器表现行为"><a href="#浏览器表现行为" class="headerlink" title="浏览器表现行为"></a>浏览器表现行为</h4><p>浏览器第一次请求时，没有缓存，状态吗为200，此时的请求头上是没有etag等信息的：<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/cache2.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cache2.jpg" alt title class></a>
-                <p></p>
-            </figure><br>浏览器第一次请求完后，第二次发起请求，前台不用做任何设置，浏览器会自动将第一次请求返回给前台的 etag、Last-Modified等相关验证缓存的参数，发送给后台，后台对比验证后，通知前台使用缓存304.<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/cache3.jpg" title="undefined" data-fancybox="images"><img src="/image/http/cache3.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="浏览器表现行为"><a href="#浏览器表现行为" class="headerlink" title="浏览器表现行为"></a>浏览器表现行为</h4><p>浏览器第一次请求时，没有缓存，状态吗为200，此时的请求头上是没有etag等信息的：<br><a rel=http协议 href="/image/http/cache2.jpg" title="" data-fancybox="images"><img src="/image/http/cache2.jpg" class="url_for"></a><br>浏览器第一次请求完后，第二次发起请求，前台不用做任何设置，浏览器会自动将第一次请求返回给前台的 etag、Last-Modified等相关验证缓存的参数，发送给后台，后台对比验证后，通知前台使用缓存304.<br><a rel=http协议 href="/image/http/cache3.jpg" title="" data-fancybox="images"><img src="/image/http/cache3.jpg" class="url_for"></a></p>
 <h4 id="If-Modified-Since-对应-Last-Modified"><a href="#If-Modified-Since-对应-Last-Modified" class="headerlink" title="If-Modified-Since 对应 Last-Modified"></a>If-Modified-Since 对应 Last-Modified</h4><p>当后台返回前台的响应头包含 Last-Modified时，浏览器下次请求时，请求头将包含Last-Modified信息，而这个信息换成If-Modified-Since来表示。<br>同理If-None-Match:  对应  etag值</p>
 <h4 id="If-None-Match-对应-etag"><a href="#If-None-Match-对应-etag" class="headerlink" title="If-None-Match 对应 etag"></a>If-None-Match 对应 etag</h4><p>参考《If-Modified-Since 对应 Last-Modified》</p>
 <h4 id="浏览器会自动将etag等发给后台"><a href="#浏览器会自动将etag等发给后台" class="headerlink" title="浏览器会自动将etag等发给后台"></a>浏览器会自动将etag等发给后台</h4><p>浏览器自动将etag等自动传给后台，不需要前台做任何设置，这是浏览器的http协议机制决定的。</p>
@@ -347,49 +308,31 @@
 <li><p>设置时间；<br>（1）时间到了失效，即使关闭了浏览器也不会被清除，因为cookie信息被保存在了硬盘上，浏览器再次打开的时候就会读取硬盘上的数据，而且不同的浏览器之间是可以共享的；<br>（2）手动清除Cookie；</p>
 </li>
 </ul>
-<figure class="image-box">
-                <a rel=http协议 href="/image/http/setcookie1.jpg" title="undefined" data-fancybox="images"><img src="/image/http/setcookie1.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=http协议 href="/image/http/setcookie1.jpg" title="" data-fancybox="images"><img src="/image/http/setcookie1.jpg" class="url_for"></a>
 <h4 id="cookie概述"><a href="#cookie概述" class="headerlink" title="cookie概述"></a>cookie概述</h4><p>cookie是后台传给前台，前台再利用浏览器的cookie可以随http发回给后台的特性，对发回对cookie进行验证。</p>
 <ul>
-<li>第一次向后台发起请求后，后台返回的响应头（response headers）包含了给浏览器设置cookie对功能（set-cookie）<figure class="image-box">
-                <a rel=http协议 href="/image/font_end/cookie.jpg" title="undefined" data-fancybox="images"><img src="/image/font_end/cookie.jpg" alt title class></a>
-                <p></p>
-            </figure></li>
+<li>第一次向后台发起请求后，后台返回的响应头（response headers）包含了给浏览器设置cookie对功能（set-cookie）<a rel=http协议 href="/image/font_end/cookie.jpg" title="" data-fancybox="images"><img src="/image/font_end/cookie.jpg" class="url_for"></a></li>
 <li>浏览器拿到cookie后，cookie有个特性，同域名下的cookie在发起请求时，都会发回给后台</li>
 <li>后台通过比对session的cookie，进行超时、登陆等校验</li>
 </ul>
-<p>补充一点cookie知识：<br>如下图 Expires／max-age 的值为 N／A是session永久有效的意思，另外一个每个cookie对应一个域名。<br><figure class="image-box">
-                <a rel=http协议 href="/image/font_end/cookie1.jpg" title="undefined" data-fancybox="images"><img src="/image/font_end/cookie1.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>补充一点cookie知识：<br>如下图 Expires／max-age 的值为 N／A是session永久有效的意思，另外一个每个cookie对应一个域名。<br><a rel=http协议 href="/image/font_end/cookie1.jpg" title="" data-fancybox="images"><img src="/image/font_end/cookie1.jpg" class="url_for"></a></p>
 <h4 id="关于cookie设置"><a href="#关于cookie设置" class="headerlink" title="关于cookie设置"></a>关于cookie设置</h4><p>前后端都可以设置cookie，一次设置好，下次发请求，同域名下，cookie自动带上。</p>
 <h4 id="cookie与localStorage区别"><a href="#cookie与localStorage区别" class="headerlink" title="cookie与localStorage区别"></a>cookie与localStorage区别</h4><p>cookie 主要给后端服务器用的，用于用户的验证，因为一旦后端服务器设置了cookie，比如在登陆成功后，设置好cookie，那么同域名下，再次发起请求时，cookie会自动带上，后台可以凭借这个cookie进行认证。<br>localStorage主要给前端使用。</p>
 <h4 id="cookie实现验证的原理"><a href="#cookie实现验证的原理" class="headerlink" title="cookie实现验证的原理"></a>cookie实现验证的原理</h4><p>参考上面《cookie与localStorage区别》</p>
 <h4 id="koa端设置cookie"><a href="#koa端设置cookie" class="headerlink" title="koa端设置cookie"></a>koa端设置cookie</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if(ctx.url === &apos;/getData&apos;)&#123;</span><br><span class="line">    ctx.cookies.set(&apos;abc1111&apos;,  &apos;123111&apos;)</span><br><span class="line">    ctx.cookies.set(</span><br><span class="line">      &apos;cid&apos;, </span><br><span class="line">      &apos;hello world1111&apos;,</span><br><span class="line">      &#123;</span><br><span class="line">        domain: &apos;127.0.0.1&apos;,  // 写cookie所在的域名</span><br><span class="line">        maxAge: 80000, // cookie有效时长</span><br><span class="line">        httpOnly: false,  // 是否只用于http请求中获取</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">      ctx.set(&#123;</span><br><span class="line">        &apos;Cache-Control&apos;: &apos;max-age=2000000, no-cache&apos;,</span><br><span class="line">      &#125;);</span><br><span class="line">      ctx.body = &#123;abc: &apos;good boy&apos;&#125;;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="httpOnly-与-document-cookie"><a href="#httpOnly-与-document-cookie" class="headerlink" title="httpOnly 与 document.cookie"></a>httpOnly 与 document.cookie</h4><p>设置 httpOnly 为true时， 将无法通过document.cookie获取到该cookie。</p>
-<h4 id="控制台的Application"><a href="#控制台的Application" class="headerlink" title="控制台的Application"></a>控制台的Application</h4><p>cookie可在控制台的 Application上查看，如果设置了cookie的maxAge，有效期过后，Application上将查不到此cookie。<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/setcookie2.jpg" title="undefined" data-fancybox="images"><img src="/image/http/setcookie2.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="控制台的Application"><a href="#控制台的Application" class="headerlink" title="控制台的Application"></a>控制台的Application</h4><p>cookie可在控制台的 Application上查看，如果设置了cookie的maxAge，有效期过后，Application上将查不到此cookie。<br><a rel=http协议 href="/image/http/setcookie2.jpg" title="" data-fancybox="images"><img src="/image/http/setcookie2.jpg" class="url_for"></a></p>
 <h4 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h4><p>这里是一个前后端一体的cookie demo，既实现了前端 又实现了后端 设置cookie。<br><a href="https://github.com/YeWills/learns/tree/master/node/cookie" target="_blank" rel="noopener">demo</a></p>
 <h3 id="connect与HTTP长连接"><a href="#connect与HTTP长连接" class="headerlink" title="connect与HTTP长连接"></a>connect与HTTP长连接</h3><h4 id="长连接的意义"><a href="#长连接的意义" class="headerlink" title="长连接的意义"></a>长连接的意义</h4><p>http请求是建立在tcp连接上的，一个tcp连接可发多个http连接；<br>如果每个http请求都要创建一个tcp连接，就相当影响性能，所以需要长连接，让多个http请求共用一个tcp连接。</p>
 <h4 id="后台设置长链接"><a href="#后台设置长链接" class="headerlink" title="后台设置长链接"></a>后台设置长链接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">response.writeHead(200, &#123;</span><br><span class="line">     &apos;Content-Type&apos;: &apos;image/jpg&apos;,</span><br><span class="line">     &apos;Connection&apos;: &apos;keep-alive&apos; // or close</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="控制台查看connect-id"><a href="#控制台查看connect-id" class="headerlink" title="控制台查看connect-id"></a>控制台查看connect-id</h4><p>一个tcp连接会产生一个对应的connect-id作为标识。可通过connectid来看建立了多少个tcp连接。<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/setcookie2.jpg" title="undefined" data-fancybox="images"><img src="/image/http/setcookie2.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="控制台查看connect-id"><a href="#控制台查看connect-id" class="headerlink" title="控制台查看connect-id"></a>控制台查看connect-id</h4><p>一个tcp连接会产生一个对应的connect-id作为标识。可通过connectid来看建立了多少个tcp连接。<br><a rel=http协议 href="/image/http/setcookie2.jpg" title="" data-fancybox="images"><img src="/image/http/setcookie2.jpg" class="url_for"></a></p>
 <h4 id="不同域名下的请求，connect-id不一样"><a href="#不同域名下的请求，connect-id不一样" class="headerlink" title="不同域名下的请求，connect-id不一样"></a>不同域名下的请求，connect-id不一样</h4><p>在谷歌浏览器用的是http2，一个页面只有一个tcp连接，都是长链接，所以只有一个connectid，不过不同域名的资源需要再建一个tcp连接。</p>
 <h4 id="http1-1-tcp最大http请求数为6"><a href="#http1-1-tcp最大http请求数为6" class="headerlink" title="http1.1 tcp最大http请求数为6"></a>http1.1 tcp最大http请求数为6</h4><h3 id="Content-Type-数据协商"><a href="#Content-Type-数据协商" class="headerlink" title="Content-Type (数据协商)"></a>Content-Type (数据协商)</h3><h4 id="请求头的Content-Type"><a href="#请求头的Content-Type" class="headerlink" title="请求头的Content-Type"></a>请求头的Content-Type</h4><p>这里说都是 请求头上都 Content-Type，这个的作用主要是告诉服务器，请求参数要以什么的形式进行解析；<br>比如，一个包含图片等信息的form表单提交的时候，如果不设置Content-Type，服务器就无法正确解析form表单中的图片信息；<br>此时应该设置Content-Type:multipart/form-data，让服务器用流的来解析请求参数。</p>
 <h4 id="响应头的Content-Type"><a href="#响应头的Content-Type" class="headerlink" title="响应头的Content-Type"></a>响应头的Content-Type</h4><p>响应头的Content-Type，告诉前台数据类型，让前台按正确的方式解析响应数据。</p>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>所以Content-Type其实就是前后台用来进行协商如何进行数据转换的。</p>
 <h3 id="重定向-Redirect"><a href="#重定向-Redirect" class="headerlink" title="重定向 (Redirect)"></a>重定向 (Redirect)</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>重定向一般用于一个url地址已经被废弃，但为了兼容，需要将废弃地址重定向到新的url中。<br>所以它需要在服务端设置响应码为301，这样，浏览器的http机制就会记住，下次发同样请求时，就自动跳转到重定向的url地址。</p>
 <h4 id="需要服务端设置302"><a href="#需要服务端设置302" class="headerlink" title="需要服务端设置302"></a>需要服务端设置302</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (request.url === &apos;/&apos;) &#123;</span><br><span class="line">    response.writeHead(302, &#123;  // or 301</span><br><span class="line">      &apos;Location&apos;: &apos;/new&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>服务端访问时效果如下,重定向可能会多一个location头：<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/redi1.jpg" title="undefined" data-fancybox="images"><img src="/image/http/redi1.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>服务端访问时效果如下,重定向可能会多一个location头：<br><a rel=http协议 href="/image/http/redi1.jpg" title="" data-fancybox="images"><img src="/image/http/redi1.jpg" class="url_for"></a></p>
 <h4 id="302-与-301"><a href="#302-与-301" class="headerlink" title="302 与 301"></a>302 与 301</h4><p>302是临时重定向；<br>301是永久重定向；</p>
 <h4 id="301-302的特殊特性"><a href="#301-302的特殊特性" class="headerlink" title="301 302的特殊特性"></a>301 302的特殊特性</h4><p>如上可知，301和302是 在后端设置好，同时浏览器也进行了配合，实现的一种行为。<br>浏览器读取到是302 301时，就会自动跳转到指定的重定向地址，这是浏览器自己会做的，应该也是http协议的一部分。</p>
 <h4 id="301后续请求都是读取缓存"><a href="#301后续请求都是读取缓存" class="headerlink" title="301后续请求都是读取缓存"></a>301后续请求都是读取缓存</h4><p>注意的是，301是特殊的存在，如果不是必须，不要随意设置301，因为一旦设置301，浏览器将在第一次向服务器请求后，<br>后续将不再请求服务器，直接读取浏览器缓存。除非手动清楚浏览器缓存。</p>
@@ -398,14 +341,8 @@
 <p>302每次后续请求会再次请求服务器，获取最新的跳转地址，所以服务器能够更好地控制客户端行为，获取最新跳转地址；<br>当然你也可以设置302的缓存有效期。</p>
 <h3 id="资源获取策略-Content-Security-Policy"><a href="#资源获取策略-Content-Security-Policy" class="headerlink" title="资源获取策略 Content-Security-Policy"></a>资源获取策略 Content-Security-Policy</h3><p>服务端设置Content-Security-Policy，限制接口数据获取的方式，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response.writeHead(200, &#123;</span><br><span class="line">     &apos;Content-Type&apos;: &apos;text/html&apos;,</span><br><span class="line">     //限制浏览器只能通过https来发起请求</span><br><span class="line">     &apos;Content-Security-Policy&apos;: &apos;script-src https&apos;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure></p>
 <p>前台接到服务器的返回后，读取Content-Security-Policy值，如果浏览器是通过非https发起的请求，那么改响应数据将不被显示，并且抛错提示资源获取策略异常</p>
-<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p><a href="https://coding.imooc.com/class/chapter/225.html#Anchor" target="_blank" rel="noopener">参考4-3</a><br>https主要通过公钥和私钥实现。<br><figure class="image-box">
-                <a rel=http协议 href="/image/http/https.jpg" title="undefined" data-fancybox="images"><img src="/image/http/https.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
-<h3 id="输入一个url后发生了什么"><a href="#输入一个url后发生了什么" class="headerlink" title="输入一个url后发生了什么"></a>输入一个url后发生了什么</h3><figure class="image-box">
-                <a rel=http协议 href="/image/http/page.jpg" title="undefined" data-fancybox="images"><img src="/image/http/page.jpg" alt title class></a>
-                <p></p>
-            </figure> 
+<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p><a href="https://coding.imooc.com/class/chapter/225.html#Anchor" target="_blank" rel="noopener">参考4-3</a><br>https主要通过公钥和私钥实现。<br><a rel=http协议 href="/image/http/https.jpg" title="" data-fancybox="images"><img src="/image/http/https.jpg" class="url_for"></a></p>
+<h3 id="输入一个url后发生了什么"><a href="#输入一个url后发生了什么" class="headerlink" title="输入一个url后发生了什么"></a>输入一个url后发生了什么</h3><a rel=http协议 href="/image/http/page.jpg" title="" data-fancybox="images"><img src="/image/http/page.jpg" class="url_for"></a> 
 
         </div>
         
@@ -413,7 +350,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.576Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -635,16 +572,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

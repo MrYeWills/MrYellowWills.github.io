@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="typescript">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -206,15 +206,9 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="泛型的使用"><a href="#泛型的使用" class="headerlink" title="泛型的使用"></a>泛型的使用</h2><h3 id="定义类，要多一步"><a href="#定义类，要多一步" class="headerlink" title="定义类，要多一步"></a>定义类，要多一步</h3><figure class="image-box">
-                <a rel=再读 typescript 笔记 href="/image/ts/cla.jpg" title="undefined" data-fancybox="images"><img src="/image/ts/cla.jpg" alt title class></a>
-                <p></p>
-            </figure>
+            <h2 id="泛型的使用"><a href="#泛型的使用" class="headerlink" title="泛型的使用"></a>泛型的使用</h2><h3 id="定义类，要多一步"><a href="#定义类，要多一步" class="headerlink" title="定义类，要多一步"></a>定义类，要多一步</h3><a rel=再读 typescript 笔记 href="/image/ts/cla.jpg" title="" data-fancybox="images"><img src="/image/ts/cla.jpg" class="url_for"></a>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Queue&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> data = [];</span><br><span class="line">  push(item: T) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data.push(item)</span><br><span class="line">  &#125;</span><br><span class="line">  pop(): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data.shift()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> queue = <span class="keyword">new</span> Queue&lt;<span class="built_in">number</span>&gt;()</span><br><span class="line">queue.push(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(queue.pop().toFixed())</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> queue2 = <span class="keyword">new</span> Queue&lt;<span class="built_in">string</span>&gt;()</span><br><span class="line">queue2.push(<span class="string">'str'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(queue2.pop().length)</span><br></pre></td></tr></table></figure>
-<h3 id="定义接口，要多一步"><a href="#定义接口，要多一步" class="headerlink" title="定义接口，要多一步"></a>定义接口，要多一步</h3><figure class="image-box">
-                <a rel=再读 typescript 笔记 href="/image/ts/cla1.jpg" title="undefined" data-fancybox="images"><img src="/image/ts/cla1.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h3 id="定义接口，要多一步"><a href="#定义接口，要多一步" class="headerlink" title="定义接口，要多一步"></a>定义接口，要多一步</h3><a rel=再读 typescript 笔记 href="/image/ts/cla1.jpg" title="" data-fancybox="images"><img src="/image/ts/cla1.jpg" class="url_for"></a>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> KeyPair&lt;T, U&gt; &#123;</span><br><span class="line">  key: T;</span><br><span class="line">  value: U;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> kp1: KeyPair&lt;<span class="built_in">number</span>, <span class="built_in">string</span>&gt; = &#123; key: <span class="number">123</span>, value: <span class="string">"str"</span> &#125;</span><br><span class="line"><span class="keyword">let</span> kp2: KeyPair&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt; = &#123; key: <span class="string">'test'</span>, value: <span class="number">123</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> arrTwo: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IPlus&lt;T&gt; &#123;</span><br><span class="line">  (a: T, b: T) : T</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">plus</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params">a: <span class="built_in">string</span>, b: <span class="built_in">string</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> a: IPlus&lt;<span class="built_in">number</span>&gt; = plus</span><br><span class="line"><span class="keyword">const</span> b: IPlus&lt;<span class="built_in">string</span>&gt; = connect</span><br></pre></td></tr></table></figure>
 <h2 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h2><h3 id="tsconfig-json-解决ts无法获取声明"><a href="#tsconfig-json-解决ts无法获取声明" class="headerlink" title="tsconfig.json 解决ts无法获取声明"></a>tsconfig.json 解决ts无法获取声明</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"include"</span>: [<span class="string">"**/*"</span>] <span class="comment">//告诉编译器，编译当前文件夹下所有ts文件，ts文件就会获得声明 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="DefinitelyTyped-github"><a href="#DefinitelyTyped-github" class="headerlink" title="DefinitelyTyped github"></a>DefinitelyTyped github</h3><p><a href="https://github.com/DefinitelyTyped/DefinitelyTyped" target="_blank" rel="noopener">DefinitelyTyped</a>这个库是集中管理 ts 声明库文件的，<br>任何如 antDesign 要做声明文件，就要向这个 DefinitelyTyped 中提 PR 审核。</p>
@@ -230,7 +224,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.295Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.580Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -452,16 +446,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

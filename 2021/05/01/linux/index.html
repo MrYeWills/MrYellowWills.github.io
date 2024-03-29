@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="linux">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -215,32 +215,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rpm -qf /usr/bin/htpasswd</span><br><span class="line">httpd-tools-2.4.6-97.el7.centos.x86_64</span><br><span class="line">[root@localhost ~]# yum install httpd-tools -y</span><br></pre></td></tr></table></figure>
 <h3 id="实用命令"><a href="#实用命令" class="headerlink" title="实用命令"></a>实用命令</h3><h4 id="查找占用的接口"><a href="#查找占用的接口" class="headerlink" title="查找占用的接口"></a>查找占用的接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# netstat -luntp</span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State                      PID/Program name</span><br><span class="line">tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN                     1148/master</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN                     1269/nginx: master</span><br><span class="line">tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN                     1269/nginx: master</span><br><span class="line">tcp        0      0 0.0.0.0:8082            0.0.0.0:*               LISTEN                     1269/nginx: master</span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN                     986/sshd</span><br><span class="line">tcp6       0      0 ::1:25                  :::*                    LISTEN                     1148/master</span><br><span class="line">tcp6       0      0 :::22                   :::*                    LISTEN                     986/sshd</span><br><span class="line">udp        0      0 127.0.0.1:323           0.0.0.0:*                                          663/chronyd</span><br><span class="line">udp6       0      0 ::1:323                 :::*                                               663/chronyd</span><br><span class="line">[root@localhost ~]# netstat -luntp | grep 80</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN                     1269/nginx: master</span><br><span class="line">tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN                     1269/nginx: master</span><br><span class="line">tcp        0      0 0.0.0.0:8082            0.0.0.0:*               LISTEN                     1269/nginx: master</span><br></pre></td></tr></table></figure>
 <h4 id="查看程序运行的所有pid"><a href="#查看程序运行的所有pid" class="headerlink" title="查看程序运行的所有pid"></a>查看程序运行的所有pid</h4><p>以 nginx为例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ps -aux | grep nginx</span><br><span class="line">nginx      1270  0.0  0.2  57312  2528 ?        S    Jul03   0:00 nginx: worker process</span><br><span class="line">nginx      1271  0.0  0.1  57092  1784 ?        S    Jul03   0:00 nginx: cache manager process</span><br><span class="line">root       1390  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=auto nginx</span><br><span class="line">[root@localhost ~]# kill -9 1270 1271</span><br><span class="line">[root@localhost ~]# ps -aux | grep nginx</span><br><span class="line">root       1393  0.0  0.0 112812   972 pts/0    R+   00:54   0:00 grep --color=auto nginx</span><br></pre></td></tr></table></figure></p>
-<h2 id="基础知识一"><a href="#基础知识一" class="headerlink" title="基础知识一"></a>基础知识一</h2><h3 id="虚拟机安装centos"><a href="#虚拟机安装centos" class="headerlink" title="虚拟机安装centos"></a>虚拟机安装centos</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/instal.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/instal.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h2 id="基础知识一"><a href="#基础知识一" class="headerlink" title="基础知识一"></a>基础知识一</h2><h3 id="虚拟机安装centos"><a href="#虚拟机安装centos" class="headerlink" title="虚拟机安装centos"></a>虚拟机安装centos</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><a rel=linux笔记(乾) href="/image/linux/instal.jpg" title="" data-fancybox="images"><img src="/image/linux/instal.jpg" class="url_for"></a>
 <h3 id="调出终端方法"><a href="#调出终端方法" class="headerlink" title="调出终端方法"></a>调出终端方法</h3><p>有两种终端，可以认为是一样的，一种是terminal，一种是tty。<br>tty是 真正的终端，没有图形界面，只有黑底白字的全屏幕的终端，只能通过键盘输入，也可以称为console (控制台)；</p>
 <p>Terminal 是图形模式的终端，一般在centOS等Linux发行版下日常使用</p>
-<h4 id="Terminal-推荐"><a href="#Terminal-推荐" class="headerlink" title="Terminal(推荐)"></a>Terminal(推荐)</h4><p>Activities Overview  系统搜索工具，搜索Terminal。<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/terminal1.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/terminal1.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
-<h4 id="tty终端"><a href="#tty终端" class="headerlink" title="tty终端"></a>tty终端</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/terminal2.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/terminal2.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<h3 id="oscar-oscar-laptop-什么意思"><a href="#oscar-oscar-laptop-什么意思" class="headerlink" title="[oscar@oscar-laptop ~ ] $ 什么意思"></a>[oscar@oscar-laptop ~ ] $ 什么意思</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/name1.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/name1.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/name2.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/name2.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/name3.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/name3.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h4 id="Terminal-推荐"><a href="#Terminal-推荐" class="headerlink" title="Terminal(推荐)"></a>Terminal(推荐)</h4><p>Activities Overview  系统搜索工具，搜索Terminal。<br><a rel=linux笔记(乾) href="/image/linux/terminal1.png" title="" data-fancybox="images"><img src="/image/linux/terminal1.png" class="url_for"></a></p>
+<h4 id="tty终端"><a href="#tty终端" class="headerlink" title="tty终端"></a>tty终端</h4><a rel=linux笔记(乾) href="/image/linux/terminal2.jpg" title="" data-fancybox="images"><img src="/image/linux/terminal2.jpg" class="url_for"></a>
+<h3 id="oscar-oscar-laptop-什么意思"><a href="#oscar-oscar-laptop-什么意思" class="headerlink" title="[oscar@oscar-laptop ~ ] $ 什么意思"></a>[oscar@oscar-laptop ~ ] $ 什么意思</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><a rel=linux笔记(乾) href="/image/linux/name1.jpg" title="" data-fancybox="images"><img src="/image/linux/name1.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/name2.jpg" title="" data-fancybox="images"><img src="/image/linux/name2.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/name3.jpg" title="" data-fancybox="images"><img src="/image/linux/name3.jpg" class="url_for"></a>
 <h3 id="命令行提示符中表示权限的字符"><a href="#命令行提示符中表示权限的字符" class="headerlink" title="命令行提示符中表示权限的字符"></a>命令行提示符中表示权限的字符</h3><p><code>$</code> 表示普通用户，有权限的限制；<br><code>#</code> 表示超级用户， 也就是root；<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ su</span><br><span class="line">Password: S</span><br><span class="line">[root@localhost hz]<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">[hz@localhost ~]$</span><br></pre></td></tr></table></figure></p>
 <p>执行su进入超级用户；<br>执行exit退出超级用户。</p>
 <h3 id="命令行技巧"><a href="#命令行技巧" class="headerlink" title="命令行技巧"></a>命令行技巧</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><ul>
@@ -274,15 +256,9 @@
 <li>tail 显示文件最后<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#-n 5 显示最后5行；</span><br><span class="line">$ tail -n 5 less source/_posts/linux.md</span><br><span class="line">``` </span><br><span class="line">tail另外一个强大地方是配合 -f 一起使用，实时监听文件最新修改：</span><br><span class="line">```s</span><br><span class="line">#-n 5 显示最后5行；tail默认每过1秒检查文件是否有新内容，</span><br><span class="line">$ tail -f  less source/_posts/linux.md</span><br><span class="line">#-n 5 显示最后5行；每隔4秒监听一次</span><br><span class="line">$ tail -f -s 4  less source/_posts/linux.md</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">#### 其他命令</span><br><span class="line"></span><br><span class="line">- touch 如果文件不存在就创建一个空白文件，如果存在，就不创建</span><br><span class="line">如何创建一个包含空格文件名的文件，使用 双引号：</span><br><span class="line">```s</span><br><span class="line">$ touch new_fule  #推荐</span><br><span class="line">$ touch &quot;new file&quot;  #不推荐带空格的文件名</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- mkdir 创建目录</span><br><span class="line">可使用 -p 递归创建目录结构，注意window下的linux工具，不支持-p。</span><br><span class="line">```s</span><br><span class="line">$ mkdir aa/cc -p</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- cp 拷贝文件或目录</span><br><span class="line">```s</span><br><span class="line">$ cp file file_copy #拷贝file，重命令为file_copy</span><br><span class="line">$ cp file aa/file_copy #拷贝file，到目录aa下，命令为file_copy</span><br><span class="line">$ cp -r one one_copy #拷贝目录要加 -r， 拷贝目录one，得到目录one_copy，里面所有文件都被拷贝</span><br><span class="line">``` </span><br><span class="line">配合 通配符 * 使用，大大提高拷贝效率</span><br><span class="line">```s</span><br><span class="line">$ cp *.txt one 把当前目录下所有txt文件拷贝到one目录下</span><br><span class="line">$ cp ha* one 把当前目录以ha开头的文件都拷贝到one目录中</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- mv 移动文件/目录(也可用于重命名)</span><br><span class="line">用法与cp相似，不同的是，mv操作目录时，不需要用额外的 -f参数</span><br><span class="line">```s</span><br><span class="line">$ mv newfile one 将newfile文件移动到one目录，原先的newfile将不存在于先前目录</span><br><span class="line">$ mv one twp 将one 目录 移到 twp目录下</span><br><span class="line">$ mv *.txt one 把当前目录下所有txt文件移动到one目录下</span><br><span class="line"># 得益于mv的移动机制，因此mv也可以用于重命名</span><br><span class="line">$ mv one twp 将one 目录 重命名 为 twp (前提是twp不存在，如果存在，就是移动了)</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- rm 删除文件和目录</span><br><span class="line"> - 删除文件：</span><br><span class="line">```s</span><br><span class="line">$ rm newfile 直接删除文件</span><br><span class="line">$ rm -i  newfile  删除之前会询问是否删除</span><br><span class="line">$ rm -f  newfile  强制删除</span><br><span class="line">``` </span><br><span class="line"> - 删除目录及其内的一切文件：</span><br><span class="line">```s</span><br><span class="line">$ rm -r  one  # 删除one目录，删除目录需要带-r</span><br><span class="line">``` </span><br><span class="line">危险的操作</span><br><span class="line">```s</span><br><span class="line">$ rm -rf  one   强制删除one目录</span><br><span class="line">``` </span><br><span class="line">毁灭地球的命令</span><br><span class="line">```s</span><br><span class="line">$ rm -rf  /* 或 $ rm -rf  / #直接删除你/根目录下的整个系统；</span><br><span class="line">#作为一种保护机制，一般linux系统，只有超级管理员才拥有此命令权限</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- ln命令 创建文件/目录链接</span><br><span class="line">一种是物理链接和硬链接；</span><br><span class="line">一种是符号链接或软链接(类似新建文件快捷方式)</span><br><span class="line">创建硬链接 直接用ln命令，不加任何参数</span><br><span class="line">```s</span><br><span class="line">C:\Users\Administrator\Desktop\test</span><br><span class="line">λ ln abc.txt aaa.txt</span><br><span class="line"></span><br><span class="line">C:\Users\Administrator\Desktop\test</span><br><span class="line">λ ls -i #-i可以查看文件inode码</span><br><span class="line">2533274790510393 aaa.txt  1970324837089091 cc/</span><br><span class="line">2533274790510393 abc.txt</span><br><span class="line">#2533274790510393 是inode码</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>建立硬链接时，修改两个文件任何一个文件，两个文件就会同时改变<br>一旦两个文件间有了硬链接，你修改任意一个文件，修改的时相同的一块内容，<br>硬链接有个缺陷，只能创建文件硬链接，不能创建目录的，（当然也可以通过复杂设置，来建立目录硬链接）<br>类似js中的对象引用，对象名可以不一样，但只要this指针指向同一个对象，修改任意一个引用，内容都同时改变。<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/link.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/link.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>建立硬链接时，修改两个文件任何一个文件，两个文件就会同时改变<br>一旦两个文件间有了硬链接，你修改任意一个文件，修改的时相同的一块内容，<br>硬链接有个缺陷，只能创建文件硬链接，不能创建目录的，（当然也可以通过复杂设置，来建立目录硬链接）<br>类似js中的对象引用，对象名可以不一样，但只要this指针指向同一个对象，修改任意一个引用，内容都同时改变。<br><a rel=linux笔记(乾) href="/image/linux/link.jpg" title="" data-fancybox="images"><img src="/image/linux/link.jpg" class="url_for"></a></p>
 <p>软链接 可以指向文件和目录，对于目录，一般都用软链接。<br>软链接才真正像我们window下的快捷方式，原理很相似；<br>创建硬链接时，ln不带任何参数，创建软链接时需要带上 -s 参数， s时symbolic符号的缩写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">λ ln -s abc.txt ff.txt #创建abc.txt 的 软链接 ff.txt</span><br></pre></td></tr></table></figure></p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/link2.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/link2.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/link2.jpg" title="" data-fancybox="images"><img src="/image/linux/link2.jpg" class="url_for"></a>
 <h4 id="用户和权限命令"><a href="#用户和权限命令" class="headerlink" title="用户和权限命令"></a>用户和权限命令</h4><ul>
 <li>sudo 暂时使用超级用户权限(针对此命令)</li>
 <li>sudo su 一直使用超级用户权限， 退出超级用户，使用exit命令；</li>
@@ -292,18 +268,9 @@
 <li>userdel 用于删除用户<br>userdel username –remove 或 userdel username -r  删除用户并且删除对应用户家目录；</li>
 </ul>
 <h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><p>可通过 ls -l 查看文件列表详情包含权限信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ls -l file</span><br><span class="line">-rw-rw-r--</span><br><span class="line">从左往右解释：</span><br><span class="line">-说明是文件，如果是d就是目录，如果是l就是link；</span><br><span class="line">rw- 文件的所有者对文件有读r、写w权限，-没有运行权限（-说明没有相关权限）；</span><br><span class="line">没有运行权限也好理解，普通文件，默认没有可执行属性；</span><br><span class="line">rw- 表面文件所在的群组的其他用户，对文件有读写权限，没有运行权限；</span><br><span class="line">r-- 表示其他用户(除去文件所在用户群组的用户)只有读此文件权限；</span><br></pre></td></tr></table></figure></p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ah.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/ah.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ah1.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/ah1.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ah2.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/ah2.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/ah.jpg" title="" data-fancybox="images"><img src="/image/linux/ah.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/ah1.jpg" title="" data-fancybox="images"><img src="/image/linux/ah1.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/ah2.jpg" title="" data-fancybox="images"><img src="/image/linux/ah2.jpg" class="url_for"></a>
 <ul>
 <li>chmod change mode 的缩写，改变文件权限命令。</li>
 </ul>
@@ -311,24 +278,15 @@
 <h4 id="万有之源，斜杠青年"><a href="#万有之源，斜杠青年" class="headerlink" title="万有之源，斜杠青年"></a>万有之源，斜杠青年</h4><p>linux有且只有一个根目录，就是 / 斜杠，根目录就是Linux最顶层的目录。</p>
 <h4 id="window反斜杠-与linux斜杆"><a href="#window反斜杠-与linux斜杆" class="headerlink" title="window反斜杠/与linux斜杆"></a>window反斜杠/与linux斜杆</h4><ul>
 <li><p>window 文件目录以反斜杠：</p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/unsame.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/unsame.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/unsame.jpg" title="" data-fancybox="images"><img src="/image/linux/unsame.jpg" class="url_for"></a>
 </li>
 <li><p>linux 文件目录以斜杠：<br>linux中用斜杠/来标明目录的层级与包含关系</p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/unsame1.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/unsame1.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/unsame1.jpg" title="" data-fancybox="images"><img src="/image/linux/unsame1.jpg" class="url_for"></a>
 </li>
 </ul>
 <h4 id="根目录直属子目录"><a href="#根目录直属子目录" class="headerlink" title="根目录直属子目录"></a>根目录直属子目录</h4><ul>
 <li><p>window</p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/win.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/win.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/win.jpg" title="" data-fancybox="images"><img src="/image/linux/win.jpg" class="url_for"></a>
 </li>
 <li><p>linux<br>见《根目录直属子目录》</p>
 </li>
@@ -410,34 +368,13 @@
 <li>通常包含程序的数据，比如log日志文件</li>
 </ul>
 <h4 id="类Unix操作系统是类似的"><a href="#类Unix操作系统是类似的" class="headerlink" title="类Unix操作系统是类似的"></a>类Unix操作系统是类似的</h4><p>以上目录列表形式，在类Unix操作系统是类似的，如macOS的目录结构也是从根目录/开始的。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="启动电脑过程"><a href="#启动电脑过程" class="headerlink" title="启动电脑过程"></a>启动电脑过程</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/start.png" title="undefined" data-fancybox="images"><img src="/image/linux/start.png" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="GNU与linux"><a href="#GNU与linux" class="headerlink" title="GNU与linux"></a>GNU与linux</h4><p>linux的官方称谓应该是“GNU/Linux”，一般简称Linux；<br>GNU项目+Linux（系统内核）= GNU/Linux 完整的操作系统<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/op.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/op.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
-<h4 id="三大操作系统的关系"><a href="#三大操作系统的关系" class="headerlink" title="三大操作系统的关系"></a>三大操作系统的关系</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/line.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/line.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/line1.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/line1.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="不同的Linux发行版"><a href="#不同的Linux发行版" class="headerlink" title="不同的Linux发行版"></a>不同的Linux发行版</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/version.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/version.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/version1.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/version1.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/version2.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/version2.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="启动电脑过程"><a href="#启动电脑过程" class="headerlink" title="启动电脑过程"></a>启动电脑过程</h4><a rel=linux笔记(乾) href="/image/linux/start.png" title="" data-fancybox="images"><img src="/image/linux/start.png" class="url_for"></a>
+<h4 id="GNU与linux"><a href="#GNU与linux" class="headerlink" title="GNU与linux"></a>GNU与linux</h4><p>linux的官方称谓应该是“GNU/Linux”，一般简称Linux；<br>GNU项目+Linux（系统内核）= GNU/Linux 完整的操作系统<br><a rel=linux笔记(乾) href="/image/linux/op.jpg" title="" data-fancybox="images"><img src="/image/linux/op.jpg" class="url_for"></a></p>
+<h4 id="三大操作系统的关系"><a href="#三大操作系统的关系" class="headerlink" title="三大操作系统的关系"></a>三大操作系统的关系</h4><a rel=linux笔记(乾) href="/image/linux/line.jpg" title="" data-fancybox="images"><img src="/image/linux/line.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/line1.jpg" title="" data-fancybox="images"><img src="/image/linux/line1.jpg" class="url_for"></a>
+<h4 id="不同的Linux发行版"><a href="#不同的Linux发行版" class="headerlink" title="不同的Linux发行版"></a>不同的Linux发行版</h4><a rel=linux笔记(乾) href="/image/linux/version.jpg" title="" data-fancybox="images"><img src="/image/linux/version.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/version1.jpg" title="" data-fancybox="images"><img src="/image/linux/version1.jpg" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/version2.jpg" title="" data-fancybox="images"><img src="/image/linux/version2.jpg" class="url_for"></a>
 <h3 id="命令行参数赋值"><a href="#命令行参数赋值" class="headerlink" title="命令行参数赋值"></a>命令行参数赋值</h3><p>短参数赋值，通常是这样的： command -p 10</p>
 <p>长参数赋值， 通常是这样的：  command –parameter=10</p>
 <h3 id="软件与安装"><a href="#软件与安装" class="headerlink" title="软件与安装"></a>软件与安装</h3><h4 id="软件包"><a href="#软件包" class="headerlink" title="软件包"></a>软件包</h4><p>Windows下的安装程序，在centos 下称之为 软件包， 英语 package；<br>一个软件包其实是软件的所有文件的压缩包；<br>为二进制形式，包含了安装软件的所有指令；<br>在 red hat 一族里，软件包的后缀是 .rpm;<br>rpm 是 red hat package manager 的缩写，表示红帽软件包管理器；<br>centos 作为 red hat 一族的一员，也是用 .rpm 的软件包；</p>
@@ -448,10 +385,7 @@
 <p>切换源的步骤参考这篇博客：<br><a href="https://blog.csdn.net/inslow/article/details/54177191" target="_blank" rel="noopener">详细可参考</a>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#从http://mirrors.aliyun.com/repo/Centos-5.repo下载文件，放到/etc/yum.repos.d/目录下，把该文件重命名为CentOS-Base.repo</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo</span><br></pre></td></tr></table></figure>
 <h4 id="安装软件有三种方式："><a href="#安装软件有三种方式：" class="headerlink" title="安装软件有三种方式："></a>安装软件有三种方式：</h4><ul>
-<li>通过图形界面：<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/app.jpg" title="undefined" data-fancybox="images"><img src="/image/linux/app.jpg" alt title class></a>
-                <p></p>
-            </figure></li>
+<li>通过图形界面：<a rel=linux笔记(乾) href="/image/linux/app.jpg" title="" data-fancybox="images"><img src="/image/linux/app.jpg" class="url_for"></a></li>
 <li>通过命令终端安装，此时用到yum安装(推荐)</li>
 </ul>
 <p>yum是centos中的默认包管理工具，也用于red hat 一族；<br>yum 常用命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum update 用于 更新软件包；</span><br><span class="line">yum update xxx;</span><br><span class="line">yum search xxx;</span><br><span class="line">yum install xxx </span><br><span class="line">yum remove xxx</span><br></pre></td></tr></table></figure></p>
@@ -542,10 +476,7 @@
 </ul>
 <p>上面重定向都是以cut为例子，你也可以用ls，或其他任何命令在终端有输出内容的，都可以输出到文件中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator\Desktop\linux</span><br><span class="line">λ ls &gt; uu.txt</span><br><span class="line"></span><br><span class="line">C:\Users\Administrator\Desktop\linux</span><br><span class="line">λ cat uu.txt</span><br><span class="line">abc.txt</span><br><span class="line">end.md</span><br><span class="line">eslint.md</span><br><span class="line">font_end.md</span><br><span class="line">git.md</span><br><span class="line">he.txt</span><br><span class="line">test.csv</span><br><span class="line">tt.csv</span><br><span class="line">uu.txt</span><br></pre></td></tr></table></figure></p>
 <h3 id="黑洞文件-dev-null"><a href="#黑洞文件-dev-null" class="headerlink" title="黑洞文件 /dev/null"></a>黑洞文件 /dev/null</h3><p>这是Linux系统中专有的一个黑洞文件，是特殊文件，不是一个目录，任何内容或数据写入其中，就好比被丢失，可用于执行命令时，不做任何输出，即 既不想在终端输出显示，也不想重定向到文件输出，此时可用到它。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">λ cut -d , -f 1 test.csv &gt; /dev.null #将原本显示在终端的内容，直接扔掉，不做任何显示</span><br></pre></td></tr></table></figure></p>
-<h3 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h3><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/cut.png" title="undefined" data-fancybox="images"><img src="/image/linux/cut.png" alt title class></a>
-                <p></p>
-            </figure>
+<h3 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h3><a rel=linux笔记(乾) href="/image/linux/cut.png" title="" data-fancybox="images"><img src="/image/linux/cut.png" class="url_for"></a>
 <ul>
 <li><p><code>&lt;</code> 用于指定命令的输入为文件输入；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#下面两个命令执行结果表现一样，但有区别</span><br><span class="line"> λ cat notes.csv #cat命令接受的输入是notes.csv这个文本界面； 它要先打开notes.csv文件，然后打印文件内容</span><br><span class="line"> λ cat &lt; notes.csv #cat命令接受的输入直接是notes.csv这个文件的内容； cat命令只负责将其内容打印；打开文件并将文件内容传递给cat命令的工作则交给终端完成；</span><br></pre></td></tr></table></figure>
@@ -554,23 +485,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#END下面的END你可以取任何名字都可以</span><br><span class="line"> λ sort -n &lt;&lt; END #输入这条命令后，按下回车，终端就进入键盘输入模式；输入字符串，输入完一行就按回车，编辑下一行；输入完毕，就输入 上面的END;sort就会对你刚才输入的东西进行排序；</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="综合练习输入输出重定向"><a href="#综合练习输入输出重定向" class="headerlink" title="综合练习输入输出重定向"></a>综合练习输入输出重定向</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/red.png" title="undefined" data-fancybox="images"><img src="/image/linux/red.png" alt title class></a>
-                <p></p>
-            </figure>
-<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道符号 <code>|</code>，其作用是建立命令管道，也算是重定向流的一种。<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/pop2.png" title="undefined" data-fancybox="images"><img src="/image/linux/pop2.png" alt title class></a>
-                <p></p>
-            </figure><br>管道原理<br>将两个命令连成管道，简单说就是将一个命令的输出作为另一个命令的输入。<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/pop.png" title="undefined" data-fancybox="images"><img src="/image/linux/pop.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="综合练习输入输出重定向"><a href="#综合练习输入输出重定向" class="headerlink" title="综合练习输入输出重定向"></a>综合练习输入输出重定向</h4><a rel=linux笔记(乾) href="/image/linux/red.png" title="" data-fancybox="images"><img src="/image/linux/red.png" class="url_for"></a>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道符号 <code>|</code>，其作用是建立命令管道，也算是重定向流的一种。<br><a rel=linux笔记(乾) href="/image/linux/pop2.png" title="" data-fancybox="images"><img src="/image/linux/pop2.png" class="url_for"></a><br>管道原理<br>将两个命令连成管道，简单说就是将一个命令的输出作为另一个命令的输入。<br><a rel=linux笔记(乾) href="/image/linux/pop.png" title="" data-fancybox="images"><img src="/image/linux/pop.png" class="url_for"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost red]$ cat test.csv</span><br><span class="line">mark, 95 / 100 , 很不错</span><br><span class="line">mttt, 9 / 100 , 很好</span><br><span class="line">gree, 5 / 100 , 不错</span><br><span class="line">lucy, 6 / 100 , 很不错</span><br><span class="line">jim, 5 / 100 , 错</span><br><span class="line">david, 17 / 100 , 不错</span><br><span class="line">[hz@localhost red]$ cut -d , -f 1 test.csv | sort &gt; sorted_names.txt # 从test.csv剪切内容作为sort的排序输入内容，将最终排序的内容创建为sorted_names.txt</span><br><span class="line">[hz@localhost red]$ cat sorted_names.txt</span><br><span class="line">david</span><br><span class="line">gree</span><br><span class="line">jim</span><br><span class="line">lucy</span><br><span class="line">mark</span><br><span class="line">mttt</span><br><span class="line">[hz@localhost red]$</span><br></pre></td></tr></table></figure>
 <p>综合练习<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#grep a -Ir /home/hz/red 从目录中找出所有包含 a 这个关键字的行， -I 用于排除二进制文件， -r 用于递归遍历(因为grep遍历目录必须带-r)</span><br><span class="line">#cut -d : -f 1 以分号分隔上面的输出内容，获取第一个index，其实就是文件名</span><br><span class="line">#sort 排序</span><br><span class="line">#uniq 去重</span><br><span class="line">grep a -Ir /home/hz/red | cut -d : -f 1 | sort | uniq</span><br></pre></td></tr></table></figure></p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/pop1.png" title="undefined" data-fancybox="images"><img src="/image/linux/pop1.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/pop1.png" title="" data-fancybox="images"><img src="/image/linux/pop1.png" class="url_for"></a>
 <h3 id="进程和系统监测"><a href="#进程和系统监测" class="headerlink" title="进程和系统监测"></a>进程和系统监测</h3><h4 id="ps-进程的静态列表"><a href="#ps-进程的静态列表" class="headerlink" title="ps 进程的静态列表"></a>ps 进程的静态列表</h4><p>ps 显示当前系统中的进程，只显示命令输入时的命令</p>
 <h4 id="top-进程的动态列表"><a href="#top-进程的动态列表" class="headerlink" title="top 进程的动态列表"></a>top 进程的动态列表</h4><p>top 动态显示当时的进程。</p>
 <h4 id="glances-iftop-htop软件"><a href="#glances-iftop-htop软件" class="headerlink" title="glances iftop htop软件"></a>glances iftop htop软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#-y 带上-y后，执行命令时将不再询问你是否yes，直接执行。</span><br><span class="line">yum install epel* -y</span><br></pre></td></tr></table></figure>
@@ -589,26 +508,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">at 20:10</span><br><span class="line">&gt; touch test.txt</span><br><span class="line"># ctrl + D 组合键，at会显示&lt;EOT&gt;,是结束英文的缩写</span><br></pre></td></tr></table></figure>
 <p>可以使用 atq atrm命令列出和删除正在等待执行at任务；</p>
 <h4 id="sleep-命令-休息一会"><a href="#sleep-命令-休息一会" class="headerlink" title="sleep 命令 休息一会"></a>sleep 命令 休息一会</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 创建文件，等待15分钟，然后删除文件；</span><br><span class="line">touch file.txt; sleep 14m; rm file.txt</span><br></pre></td></tr></table></figure>
-<h4 id="crontab-程序"><a href="#crontab-程序" class="headerlink" title="crontab 程序"></a>crontab 程序</h4><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/chk.png" title="undefined" data-fancybox="images"><img src="/image/linux/chk.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/cro1.png" title="undefined" data-fancybox="images"><img src="/image/linux/cro1.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/cro2.png" title="undefined" data-fancybox="images"><img src="/image/linux/cro2.png" alt title class></a>
-                <p></p>
-            </figure>
+<h4 id="crontab-程序"><a href="#crontab-程序" class="headerlink" title="crontab 程序"></a>crontab 程序</h4><a rel=linux笔记(乾) href="/image/linux/chk.png" title="" data-fancybox="images"><img src="/image/linux/chk.png" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/cro1.png" title="" data-fancybox="images"><img src="/image/linux/cro1.png" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/cro2.png" title="" data-fancybox="images"><img src="/image/linux/cro2.png" class="url_for"></a>
 <p>配置linux终端默认使用 nano 编辑器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># .bashrc 是bash shell 的配置文件</span><br><span class="line">echo &quot;export EDITOR=nano&quot; &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure></p>
 <h3 id="amp-amp-、-还有-分号"><a href="#amp-amp-、-还有-分号" class="headerlink" title="&amp;&amp; 、 || 还有 分号"></a>&amp;&amp; 、 || 还有 分号</h3><p>&amp;&amp; 前一个命令执行成功 再执行后一个程序；<br>|| 前一个命令执行失败，才执行后一个程序；<br>; 分号 不论分号前的命令执行成功与否，都执行分号后的命令</p>
 <h3 id="文件的解压与压缩"><a href="#文件的解压与压缩" class="headerlink" title="文件的解压与压缩"></a>文件的解压与压缩</h3><h4 id="tar命令，-gzip和bzip2命令的使用"><a href="#tar命令，-gzip和bzip2命令的使用" class="headerlink" title="tar命令， gzip和bzip2命令的使用"></a>tar命令， gzip和bzip2命令的使用</h4><ul>
 <li>首先 用tar将多个文件归档为一个总的文件，称为 archive；</li>
-<li>然后 用gzip或bzip2命令将archive压缩为更小的文件；<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/tar.png" title="undefined" data-fancybox="images"><img src="/image/linux/tar.png" alt title class></a>
-                <p></p>
-            </figure>
+<li>然后 用gzip或bzip2命令将archive压缩为更小的文件；<a rel=linux笔记(乾) href="/image/linux/tar.png" title="" data-fancybox="images"><img src="/image/linux/tar.png" class="url_for"></a>
 </li>
 </ul>
 <h3 id="文件解压与压缩"><a href="#文件解压与压缩" class="headerlink" title="文件解压与压缩"></a>文件解压与压缩</h3><h4 id="在虚拟机上的centos上找到共享的文件"><a href="#在虚拟机上的centos上找到共享的文件" class="headerlink" title="在虚拟机上的centos上找到共享的文件"></a>在虚拟机上的centos上找到共享的文件</h4><p>可通过命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># .bashrc 是bash shell 的配置文件</span><br><span class="line">sudo find / -name &quot;你共享文件的名字&quot;</span><br></pre></td></tr></table></figure></p>
@@ -629,10 +536,7 @@
 <h4 id="一步到位压缩与解压"><a href="#一步到位压缩与解压" class="headerlink" title="一步到位压缩与解压"></a>一步到位压缩与解压</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 在-cvf前加z，z就是gzip的意思，合并起来就是 -zcvf</span><br><span class="line">$ tar -zcvf sorting.tar.gz sorting</span><br><span class="line"># 在-xvf 前加z，z就是gzip的意思，合并起来就是 -zxvf</span><br><span class="line">$ tar -zxvf sorting.tar.gz</span><br></pre></td></tr></table></figure>
 <h4 id="zcat-bzcat-显示压缩文件"><a href="#zcat-bzcat-显示压缩文件" class="headerlink" title="zcat bzcat 显示压缩文件"></a>zcat bzcat 显示压缩文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ zcat sorting.tar.gz</span><br><span class="line">$ bzcat sorting.tar.bz2</span><br></pre></td></tr></table></figure>
 <h4 id="zip-unzip-压缩-解压-zip-文件"><a href="#zip-unzip-压缩-解压-zip-文件" class="headerlink" title="zip/unzip 压缩/解压 zip 文件"></a>zip/unzip 压缩/解压 zip 文件</h4><p>一般linux可能需要安装这个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install zip #red hat 一族的安装方式；</span><br><span class="line">sudo yum install unzip #red hat 一族的安装方式；</span><br><span class="line"></span><br><span class="line">unzip -l ab.zip  #查看ab.zip文件，但不解压</span><br><span class="line">zip -r sorting.zip sorting/  #压缩sorting目录为 sorting.zip文件； -r用于压缩目录</span><br></pre></td></tr></table></figure></p>
-<h3 id="编译安装软件"><a href="#编译安装软件" class="headerlink" title="编译安装软件"></a>编译安装软件</h3><p>下面都是基于red hat 一族的linux发行版，包括centos；其他非红帽linux发行版大同小异。<br> <figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/stl.png" title="undefined" data-fancybox="images"><img src="/image/linux/stl.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h3 id="编译安装软件"><a href="#编译安装软件" class="headerlink" title="编译安装软件"></a>编译安装软件</h3><p>下面都是基于red hat 一族的linux发行版，包括centos；其他非红帽linux发行版大同小异。<br> <a rel=linux笔记(乾) href="/image/linux/stl.png" title="" data-fancybox="images"><img src="/image/linux/stl.png" class="url_for"></a></p>
 <h4 id="alien软件"><a href="#alien软件" class="headerlink" title="alien软件"></a>alien软件</h4><p>alien 外星人的意思， 可以将deb安装包和rpm安装包互相转换</p>
 <ul>
 <li><p>安装alien软件；</p>
@@ -652,18 +556,12 @@
 <li><a href="https://hisham.hm/htop/releases/2.2.0/" target="_blank" rel="noopener">去htop下载源码</a>,选择其中的gz包；</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 下面命令请使用超级用户权限：</span><br><span class="line"></span><br><span class="line">[root]# cp /mnt/hgfs/vmshare/htop-2.2.0.tar.gz . # 将共享文件拷贝到当前目录；</span><br><span class="line">[root]# chown hz:hz htop-2.2.0.tar.gz # 修改压缩包文件权限</span><br><span class="line">[root]# tar -zxvf htop-2.2.0.tar.gz # 解压缩</span><br><span class="line">[root]# cd ./htop-2.2.0</span><br><span class="line">[root]# ls # 发现里面有 configure可执行程序，以及编译的说明文件  Makefile 此文件对下面要用的make命令进行说明； </span><br><span class="line">     # 其中configure文件用于编译前的配置工作， Makefile对应编译的配置说明；</span><br><span class="line">[root]# ./configure 执行此命令，做编译前的配置设置工作</span><br><span class="line">configure: error: You may want to use --disable-unicode or install libncursesw. </span><br><span class="line">        # 发现报错，提示我们可以用 ./configure --disable-unicode 命令 或者 安装libncursesw</span><br><span class="line"></span><br><span class="line">[root]# ./configure --disable-unicode # 还是报错，因此需要安装libncursesw </span><br><span class="line">        #  这里我们安装 libncursesw lib[ncursesw] 的开发版本 ncurses-devel</span><br><span class="line">[root]#  yum -y install ncurses-devel # -y 表示不用经过我同意直接执行命令</span><br><span class="line">[root]# ./configure # 再次执行编译前设置</span><br><span class="line">[root]# make # 此命令对于上面的Makefile说明文件，执行此命令相当于安装，安装的内容为Makefile写的</span><br><span class="line">[root]# make install # 将编译好的安装包进行安装</span><br><span class="line">[root]# ls /usr/local/bin # 因为是本地自己编译安装，所以 安装好后，</span><br><span class="line">        # 会默认将可执行文件放置于local/bin下，不过也可能在 /usr/bin，可以注意下。</span><br><span class="line">htop</span><br><span class="line">[root]# /usr/local/bin/htop # 因为htop是一个可执行文件，因此直接通过路径文件可直接运行命令，</span><br><span class="line">        # 如果在/usr/bin/下有htop，估计可直接执行 htop</span><br></pre></td></tr></table></figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/htop.png" title="undefined" data-fancybox="images"><img src="/image/linux/htop.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/htop.png" title="" data-fancybox="images"><img src="/image/linux/htop.png" class="url_for"></a>
 <h4 id="rar编译安装"><a href="#rar编译安装" class="headerlink" title="rar编译安装"></a>rar编译安装</h4><ul>
 <li>在<a href="https://www.rarlab.com/" target="_blank" rel="noopener">官网</a>下，找到 安装包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下面命令请使用超级用户权限：</span><br><span class="line"></span><br><span class="line">[root]# wget https://www.rarlab.com/rar/rarlinux-x64-6.0.1.tar.gz</span><br><span class="line">[root]# tar -zxvf rarlinux-x64-6.0.1.tar.gz</span><br><span class="line">[root]# ls # 发现里面有已经有编译好的rar 和 unrar 可执行程序，因此不需要编译，直接安装即可 ；</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/rar.png" title="undefined" data-fancybox="images"><img src="/image/linux/rar.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/rar.png" title="" data-fancybox="images"><img src="/image/linux/rar.png" class="url_for"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root]# make # 此命令对于上面的Makefile说明文件，执行此命令相当于安装，安装的内容为Makefile写的</span><br></pre></td></tr></table></figure>
 <ul>
 <li>修改环境变量<br>我们自己编译安装的程序，默认放置在  /usr/local/bin 下，需要配置环境变量 才方便使用安装的程序，</li>
@@ -675,55 +573,28 @@
 </ul>
 <h4 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h4><p>见《rar编译安装》</p>
 <h3 id="安装centos-服务器"><a href="#安装centos-服务器" class="headerlink" title="安装centos 服务器"></a>安装centos 服务器</h3><p>这里选用 CentOS-7-x86_64-Minimal-2009 版本；<br>下面箭头部分是设置磁盘，点击进去，，按照默认选中下，然后点击done 即可，其他设置安装默认来：<br>这个页面还可设置其他配置，不过一般默认就行了，这里列举下可以设置什么：</p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ser.png" title="undefined" data-fancybox="images"><img src="/image/linux/ser.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ser1.png" title="undefined" data-fancybox="images"><img src="/image/linux/ser1.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(乾) href="/image/linux/ser.png" title="" data-fancybox="images"><img src="/image/linux/ser.png" class="url_for"></a>
+<a rel=linux笔记(乾) href="/image/linux/ser1.png" title="" data-fancybox="images"><img src="/image/linux/ser1.png" class="url_for"></a>
 <p>因为是服务器，所有这里只需设置root即可，不需要设置其他用户。</p>
-<p>下面就是等待安装了，安装好后，使用root登录：<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ser2.png" title="undefined" data-fancybox="images"><img src="/image/linux/ser2.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>下面就是等待安装了，安装好后，使用root登录：<br><a rel=linux笔记(乾) href="/image/linux/ser2.png" title="" data-fancybox="images"><img src="/image/linux/ser2.png" class="url_for"></a></p>
 <h4 id="网络设置及其相关命令"><a href="#网络设置及其相关命令" class="headerlink" title="网络设置及其相关命令"></a>网络设置及其相关命令</h4><p>查看ip信息的两个命令<br>ifconfig  比较旧的命令 net-tools中命令<br>ip addr 比较新的命令 iproute2中的命令<br><a href="https://www.jianshu.com/p/6fff29bd42b3" target="_blank" rel="noopener">关于ifconfig与ip addr</a></p>
 <p>设置网络为桥接模式，方便其他虚拟机centos访问到这台虚拟机：<br><a href="https://www.cnblogs.com/jpfss/p/8616613.html" target="_blank" rel="noopener">VirtualBox中有4中网络连接方式</a><br><a href="https://www.jianshu.com/p/5fc492060e70" target="_blank" rel="noopener">enp0s3 与 ens33</a></p>
-<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ip.png" title="undefined" data-fancybox="images"><img src="/image/linux/ip.png" alt title class></a>
-                <p></p>
-            </figure>
-<p>注意的是，虚拟机链接网络时，需要设置下图 ONBOOT = yes,然后重启电脑，否则无法链接网络<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/ser3.png" title="undefined" data-fancybox="images"><img src="/image/linux/ser3.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<a rel=linux笔记(乾) href="/image/linux/ip.png" title="" data-fancybox="images"><img src="/image/linux/ip.png" class="url_for"></a>
+<p>注意的是，虚拟机链接网络时，需要设置下图 ONBOOT = yes,然后重启电脑，否则无法链接网络<br><a rel=linux笔记(乾) href="/image/linux/ser3.png" title="" data-fancybox="images"><img src="/image/linux/ser3.png" class="url_for"></a></p>
 <p>如果要使用ifconfig，需要安排 net-tools，<br>安装：<code>yum install net-tools</code>，然后一路yes就行；</p>
-<p>这里可以查看 net-tools iproute2 下都有哪些命令<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linuxm/lan3.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/lan3.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>这里可以查看 net-tools iproute2 下都有哪些命令<br><a rel=linux笔记(乾) href="/image/linuxm/lan3.png" title="" data-fancybox="images"><img src="/image/linuxm/lan3.png" class="url_for"></a></p>
 <p>查看 ifconfig 命令是哪个安装包：<br>使用rpm -qf 来查看 安装模块。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[hz@localhost ~]$ which ifconfig</span><br><span class="line">/usr/sbin/ifconfig</span><br><span class="line">[hz@localhost ~]$ rpm -qf /usr/sbin/ifconfig</span><br><span class="line">net-tools-2.0-0.25.20131004git.el7.x86_64 #说明是net-tools安装模板</span><br><span class="line">[hz@localhost ~]$</span><br></pre></td></tr></table></figure></p>
 <h3 id="解读ifconfig"><a href="#解读ifconfig" class="headerlink" title="解读ifconfig"></a>解读ifconfig</h3><h4 id="旧版"><a href="#旧版" class="headerlink" title="旧版"></a>旧版</h4><p>如下命令行执行此命令后，会显示三个接口：</p>
 <ul>
 <li>eth0 对应有限连接，对应你的有线网卡，一般是RJ45网线，eth是 Ethernet 的缩写，表示以太网，有些电脑可能有几条网线连着，此时会有eth1，eth2.</li>
-<li>lo 本地回环 local loopback 缩写，对应虚拟网卡，对应ip 127.0.0.1,一般用于访问自己；<figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linux/lo.png" title="undefined" data-fancybox="images"><img src="/image/linux/lo.png" alt title class></a>
-                <p></p>
-            </figure></li>
+<li>lo 本地回环 local loopback 缩写，对应虚拟网卡，对应ip 127.0.0.1,一般用于访问自己；<a rel=linux笔记(乾) href="/image/linuxm/lo.png" title="" data-fancybox="images"><img src="/image/linuxm/lo.png" class="url_for"></a></li>
 <li>wlan0 对应wi-fi 无线连接，对应你的无线网卡，wlan 是 wireless Local Area Network 的缩写，表示无线局域网，若你有几个无线网卡，就有wlan1 wlan2…</li>
 </ul>
-<p>关于下图的解析：<br>红框框出的， 无线没有发包和收包， 本地回环有包的发送，这是正常的； 最多的发包数量是有线连接，所以判定有线连接。<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linuxm/lan1.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/lan1.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>关于下图的解析：<br>红框框出的， 无线没有发包和收包， 本地回环有包的发送，这是正常的； 最多的发包数量是有线连接，所以判定有线连接。<br><a rel=linux笔记(乾) href="/image/linuxm/lan1.png" title="" data-fancybox="images"><img src="/image/linuxm/lan1.png" class="url_for"></a></p>
 <h4 id="新版"><a href="#新版" class="headerlink" title="新版"></a>新版</h4><ul>
 <li>enp0s3 en 代表以太网卡，是Ethernet的缩写， p0s3 代表PCI接口的物理地址为（0，3），<br>其中横坐标代表bug总线，纵坐标代表slot 槽、插口</li>
 </ul>
-<p>还有一个虚拟接口，可以不用管，这里就不列出了。<br><figure class="image-box">
-                <a rel=linux笔记(乾) href="/image/linuxm/lan2.png" title="undefined" data-fancybox="images"><img src="/image/linuxm/lan2.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>还有一个虚拟接口，可以不用管，这里就不列出了。<br><a rel=linux笔记(乾) href="/image/linuxm/lan2.png" title="" data-fancybox="images"><img src="/image/linuxm/lan2.png" class="url_for"></a></p>
 
         </div>
         
@@ -731,7 +602,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.291Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.576Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -953,16 +824,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

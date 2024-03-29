@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="react hooks">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -240,10 +240,7 @@
 <h2 id="hooks出现的意义"><a href="#hooks出现的意义" class="headerlink" title="hooks出现的意义"></a>hooks出现的意义</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>hooks 实现了state状态的复用，以前state状态的复用，只能通过高阶组件，<br>现在可以通过hooks，但hooks比高阶组件复用状态时，写法简单，方便，可读性，易维护性更强。</p>
 <p>以前必须使用高阶组件实现的state复用，现在只需要一段自定义hooks就可以马上实现非常简洁，清晰，易读易维护。<br><a href="https://blog.csdn.net/qq_40962320/article/details/87043581" target="_blank" rel="noopener">更多，参考这篇博客，讲的很好</a></p>
 <h3 id="非常重要：可读性易维护性"><a href="#非常重要：可读性易维护性" class="headerlink" title="非常重要：可读性易维护性"></a>非常重要：可读性易维护性</h3><p>hooks的重要意义一方面是增加了方便性，比如可以替代原来高阶组件所实现的功能。<br>另外一个重要的核心就是，增加了可读性，易维护性，这点非常重要。</p>
-<p>就好像es6没有出现前，一个变量可能被层层污染，不知道哪里被重新设置了，<br>es6的出现很好解决了这点。<br><figure class="image-box">
-                <a rel=React hooks 笔记 href="/image/react/hooks-read.png" title="undefined" data-fancybox="images"><img src="/image/react/hooks-read.png" alt title class></a>
-                <p></p>
-            </figure><br><a href="https://blog.csdn.net/weixin_43606158/article/details/106715134" target="_blank" rel="noopener">参考</a></p>
+<p>就好像es6没有出现前，一个变量可能被层层污染，不知道哪里被重新设置了，<br>es6的出现很好解决了这点。<br><a rel=React hooks 笔记 href="/image/react/hooks-read.png" title="" data-fancybox="images"><img src="/image/react/hooks-read.png" class="url_for"></a><br><a href="https://blog.csdn.net/weixin_43606158/article/details/106715134" target="_blank" rel="noopener">参考</a></p>
 <h3 id="功能是一方面，可读易维护也是重要方面"><a href="#功能是一方面，可读易维护也是重要方面" class="headerlink" title="功能是一方面，可读易维护也是重要方面"></a>功能是一方面，可读易维护也是重要方面</h3><p>参考上面《非常重要：可读性易维护性 》</p>
 <h3 id="hooks与高阶组件区别"><a href="#hooks与高阶组件区别" class="headerlink" title="hooks与高阶组件区别"></a>hooks与高阶组件区别</h3><p>hooks与高阶组件都可以实现代码复用，比如state复用，二者本质上无区别，<br>但使用方式上却一个繁杂沉余，且要多一层组件包裹。<br>但hooks写法灵活，简单，且可读性极强。<br><a href="https://blog.csdn.net/qq_40962320/article/details/87043581" target="_blank" rel="noopener">更多，参考这篇博客，讲的很好</a></p>
 <h2 id="FAQ之一"><a href="#FAQ之一" class="headerlink" title="FAQ之一"></a>FAQ之一</h2><h3 id="我应该使用单个还是多个-state-变量？"><a href="#我应该使用单个还是多个-state-变量？" class="headerlink" title="我应该使用单个还是多个 state 变量？"></a>我应该使用单个还是多个 state 变量？</h3><p>我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。<br>说的是，一个useState应该只改变 这个动作 改动的state；<br>比如一个是改变postion的，一个是改变宽高的，这两个应该写在不同state上，<br>当然，没有唯一的标准，靠自己平衡，分开与不分开，考虑的是后期维护性扩展和可读性，如果业务越来越复杂，应该碎片化state；<br>如果业务简单，是否分开可能作用不大，看个人的编程习惯。<br>详细<a href="https://react.docschina.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down" target="_blank" rel="noopener">查看官网 我应该使用单个还是多个 state 变量？</a></p>
@@ -278,7 +275,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.291Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.580Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -350,9 +347,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2020/05/01/react_listBuilder/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/01/react_form_next/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">ListBuilder引发的React暗黑思考</h4>
+        <h4 class="title">next form 封装</h4>
       </a>
     </div>
   
@@ -500,16 +497,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

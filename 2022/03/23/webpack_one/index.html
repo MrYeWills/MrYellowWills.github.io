@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="webpack,webpack源码系列">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -289,7 +289,7 @@
 </ul>
 <h3 id="webpack-dev-server-调试-待进一步整理"><a href="#webpack-dev-server-调试-待进一步整理" class="headerlink" title="webpack-dev-server 调试 (待进一步整理)"></a>webpack-dev-server 调试 (待进一步整理)</h3><p>本例以传统的webpack 配置模式进行, webpack-dev-server 启动。</p>
 <p>webpack-dev-server 启动与 webpack 的区别</p>
-<p><a rel=webpack源码系列(往)：开篇 href="/image/webpack_one/entry.jpg" title="" data-fancybox="images"><img src="/image/webpack_one/entry.jpg" alt></a></p>
+<a rel=webpack源码系列(往)：开篇 href="/image/webpack_one/entry.jpg" title="" data-fancybox="images"><img src="/image/webpack_one/entry.jpg" class="url_for"></a>
 <h4 id="lib-webpack-js"><a href="#lib-webpack-js" class="headerlink" title="lib\webpack.js"></a>lib\webpack.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">node_modules\webpack\lib\webpack.js</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="function">(<span class="params">options, callback</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    compiler = <span class="keyword">new</span> Compiler(options.context);</span><br><span class="line">    compiler.options = options;</span><br><span class="line">    <span class="keyword">new</span> NodeEnvironmentPlugin(&#123;</span><br><span class="line">        infrastructureLogging: options.infrastructureLogging</span><br><span class="line">    &#125;).apply(compiler);</span><br><span class="line">    <span class="keyword">if</span> (options.plugins &amp;&amp; <span class="built_in">Array</span>.isArray(options.plugins)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> plugin <span class="keyword">of</span> options.plugins) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  这里加载插件</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> plugin === <span class="string">"function"</span>) &#123;</span><br><span class="line">                plugin.call(compiler, compiler);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                plugin.apply(compiler);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compiler.hooks.environment.call();</span><br><span class="line">    compiler.hooks.afterEnvironment.call();</span><br><span class="line">    <span class="comment">// 这里执行compiler的后续操作</span></span><br><span class="line">    compiler.options = <span class="keyword">new</span> WebpackOptionsApply().process(options, compiler);</span><br></pre></td></tr></table></figure>
 <h4 id="webpack-lib-WebpackOptionsApply-js"><a href="#webpack-lib-WebpackOptionsApply-js" class="headerlink" title="webpack\lib\WebpackOptionsApply.js"></a>webpack\lib\WebpackOptionsApply.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上面 compiler.options = new WebpackOptionsApply().process(options, compiler);</span></span><br><span class="line"><span class="comment">// node_modules\webpack\lib\WebpackOptionsApply.js  process</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> EntryOptionPlugin().apply(compiler);</span><br><span class="line"></span><br><span class="line"><span class="comment">// -----WebpackOptionsApply^process^compiler.hooks.entryOption.call -- start -------</span></span><br><span class="line"><span class="comment">// 后续讲 ，目前先讲解上面的 EntryOptionPlugin().apply(compiler);</span></span><br><span class="line">compiler.hooks.entryOption.call(options.context, options.entry);</span><br></pre></td></tr></table></figure>
 <h4 id="webpack-lib-EntryOptionPlugin-js"><a href="#webpack-lib-EntryOptionPlugin-js" class="headerlink" title="webpack\lib\EntryOptionPlugin.js"></a>webpack\lib\EntryOptionPlugin.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上面 new EntryOptionPlugin().apply(compiler);</span></span><br><span class="line"><span class="comment">// node_modules\webpack\lib\EntryOptionPlugin.js  process</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> EntryOptionPlugin().apply(compiler);</span><br><span class="line"></span><br><span class="line">apply(compiler) &#123;</span><br><span class="line">		compiler.hooks.entryOption.tap(<span class="string">"EntryOptionPlugin"</span>, (context, entry) =&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">typeof</span> entry === <span class="string">"string"</span> || <span class="built_in">Array</span>.isArray(entry)) &#123;</span><br><span class="line">				itemToPlugin(context, entry, <span class="string">"main"</span>).apply(compiler);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> entry === <span class="string">"object"</span>) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">const</span> name <span class="keyword">of</span> <span class="built_in">Object</span>.keys(entry)) &#123;</span><br><span class="line">					itemToPlugin(context, entry[name], name).apply(compiler);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> entry === <span class="string">"function"</span>) &#123;</span><br><span class="line">				<span class="keyword">new</span> DynamicEntryPlugin(context, entry).apply(compiler);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -360,7 +360,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.295Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.584Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -582,16 +582,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

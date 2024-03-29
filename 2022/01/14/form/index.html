@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="表单开发">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -160,7 +160,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/大话堂/">大话堂</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
             
         </h5>
@@ -193,7 +193,7 @@
             <time class="post-time" title="2022-01-14 00:00:00" datetime="2022-01-14T00:00:00.000Z"  itemprop="datePublished">2022-01-14</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/大话堂/">大话堂</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
 
 
 
@@ -228,10 +228,7 @@
 <blockquote>
 <p>状态设计是表单开发前，必须要思考并且写好框架的，这个框架不铺好，急忙忙开发，是能满足短期的需求，<br>但后期需求变动，如果当前状态设计不匹配需求，哪怕是一个简单的需求，都要下几倍的功夫，甚至要重构状态设计或重构组件，这就是所谓的技术债务。</p>
 </blockquote>
-<h2 id="状态设计"><a href="#状态设计" class="headerlink" title="状态设计"></a>状态设计</h2><figure class="image-box">
-                <a rel=表单开发的自我修养 href="/image/form/ui.jpg" title="undefined" data-fancybox="images"><img src="/image/form/ui.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h2 id="状态设计"><a href="#状态设计" class="headerlink" title="状态设计"></a>状态设计</h2><a rel=表单开发的自我修养 href="/image/form/ui.jpg" title="" data-fancybox="images"><img src="/image/form/ui.jpg" class="url_for"></a>
 <p>开发上面一个表单，<br>简单一点，那就直接在一个页面把所有的内容写上去就行，所有的表单控件都处于同一个父组件内，此时因为所有内容都在一个大组件内，无所谓状态设计。<br>每个输入框组件的值的来源与表现都唯一，这是最理想的状态，非常利于后期维护开发。<br>不过有一个弊端是，这里数起来，输入框有二十个，有些人想把这些输入框组件，按ui的内容类别进行划分，<br>写成三个组件：货币信息组件、交易配置组件、收益配置组件。</p>
 <p>此时就需要用到状态设计了，<br>这里推荐进行状态提升设计，将上述三个组件的状态提升到父组件进行维护，然后通过props方式传给三个组件用于渲染ui值:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里以react举例，react与vue实现不一样，状态设计理念应该一致</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> FormPage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [formVals, setFormVals] = useState(&#123;&#125;);</span><br><span class="line">  <span class="keyword">const</span> onFieldChange = <span class="function">(<span class="params">val, key</span>) =&gt;</span> &#123;</span><br><span class="line">    setFormVals(&#123; ...formVals, [key]: val &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h3&gt;货币配置&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Currency value=&#123;formVals&#125; onFieldChange=&#123;onFieldChange&#125; /</span>&gt;</span><br><span class="line">      &lt;h3&gt;交易配置&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Trade value=&#123;formVals&#125; onFieldChange=&#123;onFieldChange&#125; /</span>&gt;</span><br><span class="line">      &lt;h3&gt;收益配置&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Profit value=&#123;formVals&#125; onFieldChange=&#123;onFieldChange&#125; /</span>&gt;</span><br><span class="line">      &lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">Button</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span>&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Currency = <span class="function">(<span class="params">&#123; value, onFieldChange &#125;</span>) =&gt;</span> (<span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line">  &lt;FormItem label="币种"&gt;</span><br><span class="line">    &lt;Input</span><br><span class="line">      value=&#123;value.moneyType&#125;</span><br><span class="line">      onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">        onFieldChange(val, 'moneyType');</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    /&gt;</span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">FormItem</span>&gt;</span></span></span><br><span class="line"><span class="xml">   ...</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span>);</span><br></pre></td></tr></table></figure></p>
 <p>以上设置时，input组件的渲染是完全受控的，value.moneyType 代表了input组件所见即所得，非常棒。<br>就算交易和收益配置组件需要使用货币组件内部输入框的值，都十分方便，因为所有的input值，全部来源于 formVals ，具有值的来源唯一性。<br>于是我们可以说上述写法有的好处：</p>
@@ -265,10 +262,7 @@
 <h3 id="表单校验"><a href="#表单校验" class="headerlink" title="表单校验"></a>表单校验</h3><p>这个其实可通过统一的函数工具处理</p>
 <h3 id="表单的保存逻辑"><a href="#表单的保存逻辑" class="headerlink" title="表单的保存逻辑"></a>表单的保存逻辑</h3><p>保存的接口请求</p>
 <h3 id="帮助工具函数文件"><a href="#帮助工具函数文件" class="headerlink" title="帮助工具函数文件"></a>帮助工具函数文件</h3><p>如果这部分的逻辑比较独立，可以将 详情接口回填表单 表单数据转接口入参 表单校验 三部分内容写到一个专门的helper.js中，<br>写到一个js上的好处是，一些工具函数会被同样用于这三部分，<br>而且这三部分逻辑相似，集中到一个文件，后期改动比较方便</p>
-<h2 id="联动的设计"><a href="#联动的设计" class="headerlink" title="联动的设计"></a>联动的设计</h2><figure class="image-box">
-                <a rel=表单开发的自我修养 href="/image/form/select.jpg" title="undefined" data-fancybox="images"><img src="/image/form/select.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h2 id="联动的设计"><a href="#联动的设计" class="headerlink" title="联动的设计"></a>联动的设计</h2><a rel=表单开发的自我修养 href="/image/form/select.jpg" title="" data-fancybox="images"><img src="/image/form/select.jpg" class="url_for"></a>
 <h3 id="通过响应实现"><a href="#通过响应实现" class="headerlink" title="通过响应实现"></a>通过响应实现</h3><p>通过响应 <code>币种</code> 的变化，来清空 <code>交易产品</code> 的值：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Currency = <span class="function">(<span class="params">&#123; defalutVals &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [moneyType, setType] = useState(defalutVals.moneyType);</span><br><span class="line">  <span class="keyword">const</span> [tradeProduct, setTradeProduct] = useState(defalutVals.tradeProduct);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setTradeProduct(<span class="string">''</span>);</span><br><span class="line">  &#125;, [moneyType]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;FormItem label=<span class="string">"币种"</span>&gt;</span><br><span class="line">      &lt;Input</span><br><span class="line">        value=&#123;moneyType&#125;</span><br><span class="line">        onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">          setType(val);</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;<span class="regexp">/FormItem&gt;</span></span><br><span class="line"><span class="regexp">    &lt;FormItem label="交易产品"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Input</span></span><br><span class="line"><span class="regexp">        value=&#123;tradeProduct&#125;</span></span><br><span class="line"><span class="regexp">        onChange=&#123;(val) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          setTradeProduct(val);</span></span><br><span class="line"><span class="regexp">        &#125;&#125;</span></span><br><span class="line"><span class="regexp">      /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/FormItem&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>&gt;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>但这种有一个天然的缺陷，<br>当表单接口详情返回数据时，因为上面的useEffect总是响应 <code>币种</code> 的变化，<br>详情接口数据回填时，<code>交易产品</code>的值总被清空。<br>于是解决方案来了：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CurrencyWrap = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [vals, setVals] = useState(&#123;&#125;);</span><br><span class="line">  <span class="keyword">const</span> [refreshKey, setRefreshKey] = useState(<span class="number">0</span>);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    fetch(url).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      setVals(res);</span><br><span class="line">      <span class="comment">// 必须要在setVals之后执行，这样Currency组件加载时，数据是最新的</span></span><br><span class="line">      setRefreshKey(<span class="function"><span class="params">pre</span>=&gt;</span> pre+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Currency</span> <span class="attr">key</span>=<span class="string">&#123;refreshKey&#125;</span> <span class="attr">defaultVals</span>=<span class="string">&#123;vals&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -293,7 +287,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -515,16 +509,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

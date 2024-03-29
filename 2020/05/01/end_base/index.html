@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="egg,node,koa,express">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -206,10 +206,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="express是一个nodejs框架"><a href="#express是一个nodejs框架" class="headerlink" title="express是一个nodejs框架"></a>express是一个nodejs框架</h3><p>如下图，express其实封装了原生写法的http等等nodejs的模块，<br>只是原生的http模块用来写req、res有很多要处理的功能，<br>express封装了很多功能到req、res中，用起来更加方便。<br>因此express与nodejs的关系 就好比 jquery 与 js 的关系。<br>因此可以认为express就是一个nodejs框架。<br><figure class="image-box">
-                <a rel=后端笔记 href="/image/end_base/express.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/express.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="express是一个nodejs框架"><a href="#express是一个nodejs框架" class="headerlink" title="express是一个nodejs框架"></a>express是一个nodejs框架</h3><p>如下图，express其实封装了原生写法的http等等nodejs的模块，<br>只是原生的http模块用来写req、res有很多要处理的功能，<br>express封装了很多功能到req、res中，用起来更加方便。<br>因此express与nodejs的关系 就好比 jquery 与 js 的关系。<br>因此可以认为express就是一个nodejs框架。<br><a rel=后端笔记 href="/image/end_base/express.jpg" title="" data-fancybox="images"><img src="/image/end_base/express.jpg" class="url_for"></a></p>
 <h3 id="express是对http等的封装"><a href="#express是对http等的封装" class="headerlink" title="express是对http等的封装"></a>express是对http等的封装</h3><p>参考上面《express是一个nodejs框架》</p>
 <h3 id="一个url被web渲染经历了什么"><a href="#一个url被web渲染经历了什么" class="headerlink" title="一个url被web渲染经历了什么"></a>一个url被web渲染经历了什么</h3><p>url 通过dns域名解析，<br>找到目标服务器（进入目标服务器）；<br>服务器通过服务器路由对这个url请求做出相应；</p>
 <p>服务器路由是处理请求接口如何响应的规则。</p>
@@ -250,14 +247,8 @@
 <h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p><a href="https://github.com/YeWills/learns/tree/master/sequelize-demo" target="_blank" rel="noopener">异常处理、模型表数据修改 demo</a><br>也可参考 《sequelize集成使用》 章节的demo和参考</p>
 <h2 id="sequlize集成使用"><a href="#sequlize集成使用" class="headerlink" title="sequlize集成使用"></a>sequlize集成使用</h2><h3 id="sequelize-cli初始化工程"><a href="#sequelize-cli初始化工程" class="headerlink" title="sequelize-cli初始化工程"></a>sequelize-cli初始化工程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli init</span><br></pre></td></tr></table></figure>
 <p>修改 文件如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config.json</span></span><br><span class="line"> "development": &#123;</span><br><span class="line">    "username": "root",</span><br><span class="line">    "password": "root1111",</span><br><span class="line">    "database": "sqe_db",</span><br><span class="line">    "host": "127.0.0.1",</span><br><span class="line">    "dialect": "mysql"</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<h3 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h3><figure class="image-box">
-                <a rel=后端笔记 href="/image/end_base/right.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/right.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=后端笔记 href="/image/end_base/db.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/db.jpg" alt title class></a>
-                <p></p>
-            </figure>
+<h3 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h3><a rel=后端笔记 href="/image/end_base/right.jpg" title="" data-fancybox="images"><img src="/image/end_base/right.jpg" class="url_for"></a>
+<a rel=后端笔记 href="/image/end_base/db.jpg" title="" data-fancybox="images"><img src="/image/end_base/db.jpg" class="url_for"></a>
 <h3 id="sequelize-cli创建模型"><a href="#sequelize-cli创建模型" class="headerlink" title="sequelize-cli创建模型"></a>sequelize-cli创建模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli model:generate --name User --attributes name:string</span><br></pre></td></tr></table></figure>
 <p>命令会做以下事情：</p>
 <ul>
@@ -267,10 +258,7 @@
 </ul>
 <p>一般命令后要设置env，如果不设置则默认使用development。与下面命令等效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sequelize-cli db:migrate --env=development</span><br></pre></td></tr></table></figure></p>
 <p>这里的development就是<code>sequelize-demo/config/config.json</code>的：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"development"</span>: &#123;</span><br><span class="line">    <span class="attr">"username"</span>: <span class="string">"root"</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"root1111"</span>,</span><br><span class="line">    <span class="attr">"database"</span>: <span class="string">"sqe_db"</span>,</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"dialect"</span>: <span class="string">"mysql"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"test"</span>: &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">  "production": &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>将模型添加到数据库后，你就会在数据库中看到模型中添加的表(模型生产的)<br><figure class="image-box">
-                <a rel=后端笔记 href="/image/end_base/db.jpg" title="undefined" data-fancybox="images"><img src="/image/end_base/db.jpg" alt title class></a>
-                <p></p>
-            </figure><br>至此，桥接数据库，通过sequelize在数据库中建表的工作完成，下一步就是使用express操作数据库。</p>
+<p>将模型添加到数据库后，你就会在数据库中看到模型中添加的表(模型生产的)<br><a rel=后端笔记 href="/image/end_base/db.jpg" title="" data-fancybox="images"><img src="/image/end_base/db.jpg" class="url_for"></a><br>至此，桥接数据库，通过sequelize在数据库中建表的工作完成，下一步就是使用express操作数据库。</p>
 <h3 id="使用express操作数据库"><a href="#使用express操作数据库" class="headerlink" title="使用express操作数据库"></a>使用express操作数据库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  express = <span class="built_in">require</span>(<span class="string">'express'</span>) ;</span><br><span class="line"><span class="keyword">const</span> models = <span class="built_in">require</span>(<span class="string">'../models'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line">app.get(<span class="string">'/create'</span>, <span class="keyword">async</span> (req,res, next)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;name&#125; = req.query;</span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> models.User.create(&#123;</span><br><span class="line">        name</span><br><span class="line">    &#125;)</span><br><span class="line">    res.json(&#123;</span><br><span class="line">        msg:<span class="string">'create success!'</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="mysql2"><a href="#mysql2" class="headerlink" title="mysql2"></a>mysql2</h3><p>如下，node应用通过orm来操作 mysql数据库，必须借助node环境下的mysql驱动，而这个驱动就是mysql2.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node-application -- ORM(sequelize) --&gt; 驱动(node-mysql 其实就是mysql2) --&gt; mysql db</span><br></pre></td></tr></table></figure></p>
 <h2 id="demo与参考"><a href="#demo与参考" class="headerlink" title="demo与参考"></a>demo与参考</h2><p><a href="https://github.com/YeWills/learns/tree/sequelize-demo/sequelize-demo" target="_blank" rel="noopener">demo</a><br>也可参考本文其他章节的相关demo。<br><a href="https://www.imooc.com/video/20693" target="_blank" rel="noopener">本节视频参考</a><br><a href="https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/other-topics/migrations.md" target="_blank" rel="noopener">sequelize migrations</a></p>
@@ -281,7 +269,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.287Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.572Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -503,16 +491,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

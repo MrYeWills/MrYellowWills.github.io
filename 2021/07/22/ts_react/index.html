@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="react,typescript">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -235,10 +235,7 @@
 <h3 id="定义file-和-file列表"><a href="#定义file-和-file列表" class="headerlink" title="定义file 和 file列表"></a>定义file 和 file列表</h3><p>FileList 与 File 是 ts自带的类型【待进一步考证？】。<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  FileList 定义多个 file</span></span><br><span class="line"> <span class="keyword">const</span> uploadFiles = <span class="function">(<span class="params">files: FileList</span>) =&gt;</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//  File 定义单个 file</span></span><br><span class="line">  <span class="keyword">const</span> post = <span class="function">(<span class="params">file: File</span>) =&gt;</span> &#123;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="type-的使用demo"><a href="#type-的使用demo" class="headerlink" title="type 的使用demo"></a>type 的使用demo</h3><h4 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> DataSourceObject &#123;</span><br><span class="line">  value: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">定义一个类型 DataSourceType 接收一个泛型，此泛型默认值为&#123;&#125; ，返回这个泛型 和 DataSourceObject 的并集 【是否并集待考证？】；</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> DataSourceType&lt;T = &#123;&#125;&gt; = T &amp; DataSourceObject</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> AutoCompleteProps <span class="keyword">extends</span> Omit&lt;InputProps, 'onSelect'&gt; &#123;</span><br><span class="line">  <span class="comment">// 返回一个 Promise 或 DataSourceType[]类型</span></span><br><span class="line">  fetchSuggestions: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> DataSourceType[] | <span class="built_in">Promise</span>&lt;DataSourceType[]&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h4><p>参考《<code>TransMenu.Item = MenuItem</code>类型定义》</p>
-<h2 id="调试经验"><a href="#调试经验" class="headerlink" title="调试经验"></a>调试经验</h2><h3 id="如何找到react元素的类型"><a href="#如何找到react元素的类型" class="headerlink" title="如何找到react元素的类型"></a>如何找到react元素的类型</h3><figure class="image-box">
-                <a rel=ts与react结合使用 href="/image/type-react/debug.png" title="undefined" data-fancybox="images"><img src="/image/type-react/debug.png" alt title class></a>
-                <p></p>
-            </figure>
+<h2 id="调试经验"><a href="#调试经验" class="headerlink" title="调试经验"></a>调试经验</h2><h3 id="如何找到react元素的类型"><a href="#如何找到react元素的类型" class="headerlink" title="如何找到react元素的类型"></a>如何找到react元素的类型</h3><a rel=ts与react结合使用 href="/image/type-react/debug.png" title="" data-fancybox="images"><img src="/image/type-react/debug.png" class="url_for"></a>
 
         </div>
         
@@ -246,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.295Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.580Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -468,16 +465,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

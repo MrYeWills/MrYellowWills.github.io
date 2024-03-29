@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="mongoose,mongodb">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -223,18 +223,9 @@
 <h4 id="mongodb客户端mongo检测是否生成成功"><a href="#mongodb客户端mongo检测是否生成成功" class="headerlink" title="mongodb客户端mongo检测是否生成成功"></a>mongodb客户端mongo检测是否生成成功</h4><p>将以上代码复制到js中，然后 node 该js试试，如果出现创建成功；<br>然后任意目录下 启动cmd，打开mongodb客户端，查看newdbName数据库是否生成，以下是正常生成的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Administrator@UO4SB7YL9WOZ3OK MINGW64 ~/Desktop</span><br><span class="line">$ mongo</span><br><span class="line">MongoDB shell version v4.0.6</span><br><span class="line">connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb</span><br><span class="line">Implicit session: session &#123; &quot;id&quot; : UUID(&quot;a6d3c14e-703d-44d8-851f-60dbb5ad2b9e&quot;) &#125;</span><br><span class="line">MongoDB server version: 4.0.6</span><br><span class="line">show dbs</span><br><span class="line">admin           0.000GB</span><br><span class="line">config          0.000GB</span><br><span class="line">douban-test     0.000GB</span><br><span class="line">douban-trailer  0.000GB</span><br><span class="line">local           0.000GB</span><br><span class="line">newdbName       0.000GB</span><br><span class="line">onedb           0.000GB</span><br><span class="line">test            0.000GB</span><br><span class="line">twodb           0.000GB</span><br><span class="line">yyy             0.000GB</span><br><span class="line">use newdbName</span><br><span class="line">switched to db newdbName</span><br><span class="line">show tables</span><br><span class="line">tanks</span><br><span class="line">db.tanks.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5c974d5df84c0d2b9450f43c&quot;), &quot;size&quot; : &quot;small&quot;, &quot;__v&quot; : 0 &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="mongodb、mongoose概念"><a href="#mongodb、mongoose概念" class="headerlink" title="mongodb、mongoose概念"></a>mongodb、mongoose概念</h3><p>本节内容参考如下，如有疑问点击如下连接详细了解。<br><a href="https://www.cnblogs.com/chris-oil/p/9142795.html" target="_blank" rel="noopener">参考1</a><br><a href="http://www.runoob.com/mongodb/mongodb-databases-documents-collections.html" target="_blank" rel="noopener">参考2</a></p>
-<h4 id="mongodb-与-传统数据库-概念对比"><a href="#mongodb-与-传统数据库-概念对比" class="headerlink" title="mongodb 与 传统数据库 概念对比"></a>mongodb 与 传统数据库 概念对比</h4><figure class="image-box">
-                <a rel=mongoose 与 mongodb笔记 href="/image/mongodb/db.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/db.jpg" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="mongodb-、mongoose-与-传统数据库-概念对比"><a href="#mongodb-、mongoose-与-传统数据库-概念对比" class="headerlink" title="mongodb 、mongoose 与 传统数据库 概念对比"></a>mongodb 、mongoose 与 传统数据库 概念对比</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><figure class="image-box">
-                <a rel=mongoose 与 mongodb笔记 href="/image/mongodb/mongoose.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/mongoose.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
-<h4 id="mongoose核心概念-与-数据库知识-对应关系"><a href="#mongoose核心概念-与-数据库知识-对应关系" class="headerlink" title="mongoose核心概念 与 数据库知识 对应关系"></a>mongoose核心概念 与 数据库知识 对应关系</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><figure class="image-box">
-                <a rel=mongoose 与 mongodb笔记 href="/image/mongodb/index.jpg" title="undefined" data-fancybox="images"><img src="/image/mongodb/index.jpg" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="mongodb-与-传统数据库-概念对比"><a href="#mongodb-与-传统数据库-概念对比" class="headerlink" title="mongodb 与 传统数据库 概念对比"></a>mongodb 与 传统数据库 概念对比</h4><a rel=mongoose 与 mongodb笔记 href="/image/mongodb/db.jpg" title="" data-fancybox="images"><img src="/image/mongodb/db.jpg" class="url_for"></a>
+<h4 id="mongodb-、mongoose-与-传统数据库-概念对比"><a href="#mongodb-、mongoose-与-传统数据库-概念对比" class="headerlink" title="mongodb 、mongoose 与 传统数据库 概念对比"></a>mongodb 、mongoose 与 传统数据库 概念对比</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><a rel=mongoose 与 mongodb笔记 href="/image/mongodb/mongoose.jpg" title="" data-fancybox="images"><img src="/image/mongodb/mongoose.jpg" class="url_for"></a></p>
+<h4 id="mongoose核心概念-与-数据库知识-对应关系"><a href="#mongoose核心概念-与-数据库知识-对应关系" class="headerlink" title="mongoose核心概念 与 数据库知识 对应关系"></a>mongoose核心概念 与 数据库知识 对应关系</h4><p>结合 《经典创建数据库、添加表格和数据 demo》一起看<br><a rel=mongoose 与 mongodb笔记 href="/image/mongodb/index.jpg" title="" data-fancybox="images"><img src="/image/mongodb/index.jpg" class="url_for"></a></p>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
 <li>mongodb中说的集合，其实就是tables，通过model生成；</li>
 <li>mongodb中说的文档，其实就是tables的行数据，通过model实例生成；</li>
@@ -268,7 +259,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.291Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.576Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -490,16 +481,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>

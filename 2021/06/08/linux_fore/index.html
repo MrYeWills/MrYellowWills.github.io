@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="linux">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+    <link rel="shortcut icon" href="/img/logo.jpg">
+    <link rel="stylesheet" href="/css/jquery.fancybox.min.css?v=1.3.9">
     <link rel="stylesheet" href="/css/style.css?v=1.3.9">
     
     <script type="text/javascript">
@@ -217,14 +217,8 @@
 <p>MariaDB 默认以 3306 端口进行访问</p>
 <p>在防火墙策略中，服务端统称为mysql</p>
 <p>防火墙放行数据库访问请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line">#mysql和MariaDB，对于防火墙而言都一样，在防火墙策略中，服务端统称为mysql，</span><br><span class="line">#因此这句命令既设置了 mysql，又设置了 MariaDB</span><br><span class="line">firewall-cmd --zone=public --add-service=mysql --permanent</span><br><span class="line">firewall-cmd --reload #需要重载之后，查看已经放行接口</span><br><span class="line">firewall-cmd --list-ports</span><br><span class="line">443/tcp 80/tcp 3306/tcp</span><br></pre></td></tr></table></figure></p>
-<h2 id="安装PHP，搭建-LAMP-架构"><a href="#安装PHP，搭建-LAMP-架构" class="headerlink" title="安装PHP，搭建 LAMP 架构"></a>安装PHP，搭建 LAMP 架构</h2><h3 id="静态网站与动态网站"><a href="#静态网站与动态网站" class="headerlink" title="静态网站与动态网站"></a>静态网站与动态网站</h3><p>静态网站的服务器和客户端的连接<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/lamp.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/lamp.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<p>动态网站<br>动态网站的网页编程语言和数据库接口<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/say.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/say.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h2 id="安装PHP，搭建-LAMP-架构"><a href="#安装PHP，搭建-LAMP-架构" class="headerlink" title="安装PHP，搭建 LAMP 架构"></a>安装PHP，搭建 LAMP 架构</h2><h3 id="静态网站与动态网站"><a href="#静态网站与动态网站" class="headerlink" title="静态网站与动态网站"></a>静态网站与动态网站</h3><p>静态网站的服务器和客户端的连接<br><a rel=linux笔记(巽) href="/image/linuxf/lamp.png" title="" data-fancybox="images"><img src="/image/linuxf/lamp.png" class="url_for"></a></p>
+<p>动态网站<br>动态网站的网页编程语言和数据库接口<br><a rel=linux笔记(巽) href="/image/linuxf/say.png" title="" data-fancybox="images"><img src="/image/linuxf/say.png" class="url_for"></a></p>
 <h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><p>在服务端执行的脚本语言，是常用的网站编程语言<br>php的代码可以直接嵌入html网页中，不需要编辑就可以执行</p>
 <h3 id="LAMP架构"><a href="#LAMP架构" class="headerlink" title="LAMP架构"></a>LAMP架构</h3><p>Linux + apache + mysql + （mariaDB） + php 的开发架构<br>经常被用于搭建动态网站<br>单独的apache只能搭建静态网站</p>
 <h3 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h3><p>php #主程序（包含给apache使用的模块）<br>php-mysql #使php程序能读取mysql数据库的模块</p>
@@ -232,74 +226,32 @@
 <h3 id="配置apache的web页面目录"><a href="#配置apache的web页面目录" class="headerlink" title="配置apache的web页面目录"></a>配置apache的web页面目录</h3><p>在apache服务器的web页面目录创建文件；<br>之前配置apache的时候，将其web页面目录配置在 <code>/home/web</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /home/web/info.php</span><br><span class="line">&lt;?php</span><br><span class="line"> phpinfo();  </span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">systemctl restart httpd</span><br></pre></td></tr></table></figure></p>
 <p>上面 phpinfo 是 php的函数，会显示php所有的配置信息</p>
 <h3 id="apache与php结合成功"><a href="#apache与php结合成功" class="headerlink" title="apache与php结合成功"></a>apache与php结合成功</h3><p>页面访问：<br><a href="http://192.168.1.109/info.php" target="_blank" rel="noopener">http://192.168.1.109/info.php</a></p>
-<p>看到下面说明 apache与php结合成功<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/php.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/php.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/php1.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/php1.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>看到下面说明 apache与php结合成功<br><a rel=linux笔记(巽) href="/image/linuxf/php.png" title="" data-fancybox="images"><img src="/image/linuxf/php.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/php1.png" title="" data-fancybox="images"><img src="/image/linuxf/php1.png" class="url_for"></a></p>
 <p>至此搭建 LAMP 架构还差数据库的连接，此时，我们借用 wordpress 建站，<br>wordpress 建站中要做数据库连接。</p>
 <h3 id="wordpress-建站-LAMP架构的实践"><a href="#wordpress-建站-LAMP架构的实践" class="headerlink" title="wordpress 建站(LAMP架构的实践)"></a>wordpress 建站(LAMP架构的实践)</h3><h4 id="WordPress"><a href="#WordPress" class="headerlink" title="WordPress"></a>WordPress</h4><p>wordpress 是使用php语言开发的博客平台，也是一款 CMS(内容管理系统)，<br>是全球使用最广泛的博客平台；<br>很多非博客网站也会使用wordpress 搭建</p>
 <h4 id="客户机电脑中浏览器下载-wordpress"><a href="#客户机电脑中浏览器下载-wordpress" class="headerlink" title="客户机电脑中浏览器下载 wordpress"></a>客户机电脑中浏览器下载 wordpress</h4><p>在客户机电脑中浏览器下载 wordpress 无论 win或mac版本都可以；<br>比如 <a href="http://www.pc6.com/softview/SoftView_14956.html" target="_blank" rel="noopener">这里下载</a>;</p>
 <h4 id="使用-scp-进行-ssh-远程拷贝"><a href="#使用-scp-进行-ssh-远程拷贝" class="headerlink" title="使用 scp 进行 ssh 远程拷贝"></a>使用 scp 进行 ssh 远程拷贝</h4><p>客户机使用git bash 执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ scp wordpressv5.7.zip root@192.168.1.109:/root</span><br><span class="line">root@192.168.1.109&apos;s password:</span><br><span class="line">wordpressv5.7.zip                             100%   16MB   4.9MB/s   00:03</span><br></pre></td></tr></table></figure></p>
 <h4 id="unzip-解压缩-（安装unzip）"><a href="#unzip-解压缩-（安装unzip）" class="headerlink" title="unzip 解压缩 （安装unzip）"></a>unzip 解压缩 （安装unzip）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install unzip</span><br><span class="line">unzip wordpressv5.7.zip</span><br></pre></td></tr></table></figure>
 <h4 id="将wordpress解压包拷贝到apache页面目录下"><a href="#将wordpress解压包拷贝到apache页面目录下" class="headerlink" title="将wordpress解压包拷贝到apache页面目录下"></a>将wordpress解压包拷贝到apache页面目录下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#将wordpress解压包拷贝到apache页面目录下</span><br><span class="line">[root@localhost wordpress]# cp -r wordpress /home/web</span><br><span class="line">[root@localhost wordpress]# cd /home/web/wordpress/</span><br><span class="line">[root@localhost wordpress]# ls</span><br><span class="line">#wp-admin 是配置目录 setup-config.php 是其目录下 安装的一些配置文件</span><br><span class="line">index.php        wp-blog-header.php    wp-includes        wp-settings.php</span><br><span class="line">license.txt      wp-comments-post.php  wp-links-opml.php  wp-signup.php</span><br><span class="line">readme.html      wp-config-sample.php  wp-load.php        wp-trackback.php</span><br><span class="line">wp-activate.php  wp-content            wp-login.php       xmlrpc.php</span><br><span class="line">wp-admin         wp-cron.php           wp-mail.php</span><br><span class="line">[root@localhost wordpress]#</span><br></pre></td></tr></table></figure>
-<h4 id="访问wordpress配置页面出现问题"><a href="#访问wordpress配置页面出现问题" class="headerlink" title="访问wordpress配置页面出现问题"></a>访问wordpress配置页面出现问题</h4><p>页面访问刚才拷贝到apache web目录下的 <code>wp-admin/setup-config.php</code> 是wordpress的启动配置页面，<br>此页面告诉你如何一步步安装配置wordpress<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="访问wordpress配置页面出现问题"><a href="#访问wordpress配置页面出现问题" class="headerlink" title="访问wordpress配置页面出现问题"></a>访问wordpress配置页面出现问题</h4><p>页面访问刚才拷贝到apache web目录下的 <code>wp-admin/setup-config.php</code> 是wordpress的启动配置页面，<br>此页面告诉你如何一步步安装配置wordpress<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br><a rel=linux笔记(巽) href="/image/linuxf/wd.png" title="" data-fancybox="images"><img src="/image/linuxf/wd.png" class="url_for"></a></p>
 <h4 id="升级-php"><a href="#升级-php" class="headerlink" title="升级 php"></a>升级 php</h4><p><a href="https://blog.csdn.net/qq_34829953/article/details/78078790" target="_blank" rel="noopener">参考这篇博客</a>，从博客中第二个开始执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br><span class="line">yum remove php-common -y</span><br><span class="line">yum install -y php56w php56w-opcache php56w-xml php56w-mcrypt php56w-gd php56w-devel php56w-mysql php56w-intl php56w-mbstring</span><br></pre></td></tr></table></figure>
 <p>其实你也没必要安装这么多，你只需安装 php56w 和 php56w-mysql (让php能够读取mysql数据库)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost wordpress]# php -v</span><br><span class="line">PHP 5.6.40 (cli) (built: Jan 12 2019 13:11:15)</span><br><span class="line">Copyright (c) 1997-2016 The PHP Group</span><br><span class="line">Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies</span><br><span class="line">    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies</span><br><span class="line">[root@localhost wordpress]# systemctl restart httpd</span><br></pre></td></tr></table></figure></p>
-<h4 id="wordpress配置页面-访问成功"><a href="#wordpress配置页面-访问成功" class="headerlink" title="wordpress配置页面 访问成功"></a>wordpress配置页面 访问成功</h4><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd2.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd2.png" alt title class></a>
-                <p></p>
-            </figure>
+<h4 id="wordpress配置页面-访问成功"><a href="#wordpress配置页面-访问成功" class="headerlink" title="wordpress配置页面 访问成功"></a>wordpress配置页面 访问成功</h4><a rel=linux笔记(巽) href="/image/linuxf/wd2.png" title="" data-fancybox="images"><img src="/image/linuxf/wd2.png" class="url_for"></a>
 <p>再次刷新页面，显示如下，说明正常了</p>
 <h4 id="配置mysql数据库"><a href="#配置mysql数据库" class="headerlink" title="配置mysql数据库"></a>配置mysql数据库</h4><p>上面的wordpress配置页面，其实已经告诉我们如何接下来配置了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost wordpress]# mysql -u root -p</span><br><span class="line">Enter password:</span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 3</span><br><span class="line">Server version: 5.5.68-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; create database wordpress; #创建表</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| wordpress          |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line">GRANT ALL ON wordpress.* #在 wordpress 数据库上开放所有权限 给主机用户&apos;imooc&apos;@&apos;192.168.1.109&apos; ， 密码是123456</span><br><span class="line">MariaDB [(none)]&gt; GRANT ALL ON wordpress.* TO &apos;imooc&apos;@&apos;192.168.1.109&apos; IDENTIFIED BY &apos;123456&apos;;  </span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure></p>
 <h4 id="配置wordpress相关数据库信息"><a href="#配置wordpress相关数据库信息" class="headerlink" title="配置wordpress相关数据库信息"></a>配置wordpress相关数据库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost wordpress]# pwd</span><br><span class="line">/home/web/wordpress</span><br><span class="line">#拷贝wp-config-sample.php 命名为wp-config.php</span><br><span class="line">[root@localhost wordpress]# cp wp-config-sample.php wp-config.php</span><br><span class="line">[root@localhost wordpress]# ls</span><br><span class="line">index.php        wp-blog-header.php    wp-cron.php        wp-mail.php</span><br><span class="line">license.txt      wp-comments-post.php  wp-includes        wp-settings.php</span><br><span class="line">readme.html      wp-config.php         wp-links-opml.php  wp-signup.php</span><br><span class="line">wp-activate.php  wp-config-sample.php  wp-load.php        wp-trackback.php</span><br><span class="line">wp-admin         wp-content            wp-login.php       xmlrpc.php</span><br><span class="line">[root@localhost wordpress]# vim wp-config.php</span><br><span class="line"></span><br><span class="line">#修改地方如下：</span><br><span class="line"></span><br><span class="line">define( &apos;DB_NAME&apos;, &apos;wordpress&apos; );</span><br><span class="line"></span><br><span class="line">/** MySQL database username */</span><br><span class="line">define( &apos;DB_USER&apos;, &apos;imooc&apos; );</span><br><span class="line"></span><br><span class="line">/** MySQL database password */</span><br><span class="line">define( &apos;DB_PASSWORD&apos;, &apos;123456&apos; );</span><br><span class="line"></span><br><span class="line">/** MySQL hostname */</span><br><span class="line">define( &apos;DB_HOST&apos;, &apos;192.168.1.109&apos; );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl restart httpd</span><br></pre></td></tr></table></figure>
 <p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>点击下图 的安装：</p>
-<figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd3.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd3.png" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="建立数据库时出错"><a href="#建立数据库时出错" class="headerlink" title="建立数据库时出错"></a>建立数据库时出错</h4><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd4.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd4.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(巽) href="/image/linuxf/wd3.png" title="" data-fancybox="images"><img src="/image/linuxf/wd3.png" class="url_for"></a>
+<h4 id="建立数据库时出错"><a href="#建立数据库时出错" class="headerlink" title="建立数据库时出错"></a>建立数据库时出错</h4><a rel=linux笔记(巽) href="/image/linuxf/wd4.png" title="" data-fancybox="images"><img src="/image/linuxf/wd4.png" class="url_for"></a>
 <p>SELinux 的安全策略问题导致的；</p>
 <p>验证下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost wordpress]# getenforce</span><br><span class="line">Enforcing  #说明 SELinux 是开启的</span><br><span class="line">#关闭SELinux验证下：</span><br><span class="line">[root@localhost wordpress]# setenforce 0</span><br></pre></td></tr></table></figure></p>
-<p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>变成下图，说明安装成功了<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd5.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd5.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>变成下图，说明安装成功了<br><a rel=linux笔记(巽) href="/image/linuxf/wd5.png" title="" data-fancybox="images"><img src="/image/linuxf/wd5.png" class="url_for"></a></p>
 <h4 id="解决-数据库-连接的SELinux问题"><a href="#解决-数据库-连接的SELinux问题" class="headerlink" title="解决 数据库 连接的SELinux问题"></a>解决 数据库 连接的SELinux问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost wordpress]# setenforce 1 #开启 SELinux</span><br><span class="line">[root@localhost wordpress]# getsebool -a | grep #httpd 查询 SELinux 的一些布尔值设置</span><br><span class="line">httpd_anon_write --&gt; off</span><br><span class="line">httpd_builtin_scripting --&gt; on</span><br><span class="line">httpd_can_check_spam --&gt; off</span><br><span class="line">httpd_can_connect_ftp --&gt; off</span><br><span class="line">httpd_can_connect_ldap --&gt; off</span><br><span class="line">httpd_can_connect_mythtv --&gt; off</span><br><span class="line">httpd_can_connect_zabbix --&gt; off</span><br><span class="line">httpd_can_network_connect --&gt; off  #是否允许apache网络访问数据库</span><br><span class="line">httpd_can_network_connect_cobbler --&gt; off</span><br><span class="line">httpd_can_network_connect_db --&gt; off</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">[root@localhost wordpress]# setsebool -P httpd_can_network_connect=1 #开启apache网络访问数据库</span><br><span class="line">[root@localhost wordpress]#</span><br></pre></td></tr></table></figure>
 <h4 id="配置成功"><a href="#配置成功" class="headerlink" title="配置成功"></a>配置成功</h4><p>刷新页面：<br><a href="https://192.168.1.109/wordpress/wp-admin/install.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/install.php</a> 或<br><a href="https://192.168.1.109/wordpress/wp-admin/setup-config.php" target="_blank" rel="noopener">https://192.168.1.109/wordpress/wp-admin/setup-config.php</a><br>变成下图，说明安装成功了，进入了wordpress 5分钟安装程序</p>
-<p>配置网站信息，比如网站名，网站管理员，邮箱，这些都可以随便写<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd6.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd6.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd7.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd7.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd8.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd8.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<p>登录成功后，<br>进入网站后台管理系统：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd9.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd9.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd10.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd10.png" alt title class></a>
-                <p></p>
-            </figure> </p>
-<p>进入自己的网站主站点：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd11.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd11.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/wd12.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/wd12.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>配置网站信息，比如网站名，网站管理员，邮箱，这些都可以随便写<br><a rel=linux笔记(巽) href="/image/linuxf/wd6.png" title="" data-fancybox="images"><img src="/image/linuxf/wd6.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/wd7.png" title="" data-fancybox="images"><img src="/image/linuxf/wd7.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/wd8.png" title="" data-fancybox="images"><img src="/image/linuxf/wd8.png" class="url_for"></a></p>
+<p>登录成功后，<br>进入网站后台管理系统：<br><a rel=linux笔记(巽) href="/image/linuxf/wd9.png" title="" data-fancybox="images"><img src="/image/linuxf/wd9.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/wd10.png" title="" data-fancybox="images"><img src="/image/linuxf/wd10.png" class="url_for"></a> </p>
+<p>进入自己的网站主站点：<br><a rel=linux笔记(巽) href="/image/linuxf/wd11.png" title="" data-fancybox="images"><img src="/image/linuxf/wd11.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/wd12.png" title="" data-fancybox="images"><img src="/image/linuxf/wd12.png" class="url_for"></a></p>
 <h3 id="一些说明"><a href="#一些说明" class="headerlink" title="一些说明"></a>一些说明</h3><h4 id="php的配置的说明"><a href="#php的配置的说明" class="headerlink" title="php的配置的说明"></a>php的配置的说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/php.ini PHP的主配置文件</span><br><span class="line">/etc/httpd/conf.d/php.conf php给apache使用的模块的配置</span><br><span class="line">/etc/php.d/mysql.ini  php程序读取mysql数据库的模块配置</span><br></pre></td></tr></table></figure>
 <h4 id="scp-的说明"><a href="#scp-的说明" class="headerlink" title="scp 的说明"></a>scp 的说明</h4><p>scp是 secure copy的缩写, scp是linux系统下基于ssh登陆进行安全的远程文件拷贝命令。<br><a href="https://www.cnblogs.com/pluslius/p/9893340.html" target="_blank" rel="noopener">scp命令</a></p>
 <h2 id="java-web"><a href="#java-web" class="headerlink" title="java web"></a>java web</h2><h3 id="java-web-应用的世界"><a href="#java-web-应用的世界" class="headerlink" title="java web 应用的世界"></a>java web 应用的世界</h3><p>java web 应用的世界 ：<br>servlet tomcat 和 Jenkins</p>
@@ -330,31 +282,16 @@
 <h4 id="浏览器访问tomcat异常"><a href="#浏览器访问tomcat异常" class="headerlink" title="浏览器访问tomcat异常"></a>浏览器访问tomcat异常</h4><p>至此Jenkins的配置安装好了，tomcat 默认端口 8080，因此可以访问：<br>配置上面的tomcat后，<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>发现无法访问，原来缺少了web应用程序的管理软件包</p>
 <h4 id="安装web应用程序的管理软件包"><a href="#安装web应用程序的管理软件包" class="headerlink" title="安装web应用程序的管理软件包"></a>安装web应用程序的管理软件包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install tomcat-webapps tomcat-admin-webapps</span><br><span class="line">yum install tomcat-docs-webapp tomcat-javadoc # 这是参考文档，可以不用安装</span><br><span class="line">systemctl restart tomcat</span><br></pre></td></tr></table></figure>
 <p>再次访问<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>发现还是无法访问，原来防火墙的原因，执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure></p>
-<p>再次访问<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>成功了：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/tom.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/tom.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>再次访问<br><a href="http://192.168.1.109:8080/" target="_blank" rel="noopener">http://192.168.1.109:8080/</a><br>成功了：<br><a rel=linux笔记(巽) href="/image/linuxf/tom.png" title="" data-fancybox="images"><img src="/image/linuxf/tom.png" class="url_for"></a></p>
 <h4 id="放开防火墙-8080端口"><a href="#放开防火墙-8080端口" class="headerlink" title="放开防火墙 8080端口"></a>放开防火墙 8080端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br><span class="line">firewall-cmd --list-ports</span><br><span class="line">firewall-cmd --zone=public --add-port=8080/tcp --permanent</span><br><span class="line">firewall-cmd --reload  #更新配置</span><br><span class="line">firewall-cmd --list-ports #查看已经放行的端口</span><br></pre></td></tr></table></figure>
-<h4 id="设置用户"><a href="#设置用户" class="headerlink" title="设置用户"></a>设置用户</h4><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/user.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/user.png" alt title class></a>
-                <p></p>
-            </figure>
+<h4 id="设置用户"><a href="#设置用户" class="headerlink" title="设置用户"></a>设置用户</h4><a rel=linux笔记(巽) href="/image/linuxf/user.png" title="" data-fancybox="images"><img src="/image/linuxf/user.png" class="url_for"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/tomcat/tomcat-users.xml</span><br></pre></td></tr></table></figure>
 <p>文件中下面注释的部分放开，这是系统配置好的默认测试用户，可以把密码设置简单点，比如123456<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;user name=&quot;admin&quot; password=&quot;123456&quot; roles=&quot;admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart tomcat</span><br></pre></td></tr></table></figure>
 <p>然后点击上图按钮，登录：</p>
-<figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/login.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/login.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/login1.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/login1.png" alt title class></a>
-                <p></p>
-            </figure>
-<figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/mana.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/mana.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(巽) href="/image/linuxf/login.png" title="" data-fancybox="images"><img src="/image/linuxf/login.png" class="url_for"></a>
+<a rel=linux笔记(巽) href="/image/linuxf/login1.png" title="" data-fancybox="images"><img src="/image/linuxf/login1.png" class="url_for"></a>
+<a rel=linux笔记(巽) href="/image/linuxf/mana.png" title="" data-fancybox="images"><img src="/image/linuxf/mana.png" class="url_for"></a>
 <p>如图上，红框内，这些应用都在目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /var/lib/tomcat/webapps/</span><br><span class="line">docs  examples  host-manager  manager  ROOT  sample</span><br></pre></td></tr></table></figure></p>
 <h3 id="安装Jenkins持续集成环境"><a href="#安装Jenkins持续集成环境" class="headerlink" title="安装Jenkins持续集成环境"></a>安装Jenkins持续集成环境</h3><h4 id="Jenkins-是Java写的一个应用程序；"><a href="#Jenkins-是Java写的一个应用程序；" class="headerlink" title="Jenkins 是Java写的一个应用程序；"></a>Jenkins 是Java写的一个应用程序；</h4><p>可以单独运行，也可以在servlet容器中运行；<br>这里我们在tomcat这个servlet容器里安装Jenkins；</p>
 <h4 id="Jenkins的war文件"><a href="#Jenkins的war文件" class="headerlink" title="Jenkins的war文件"></a>Jenkins的war文件</h4><p>war 是 web application archive 意思是 web 的归档文件</p>
@@ -376,67 +313,22 @@
 <p>To change the home directory, use JENKINS_HOME environment variable or set the JENKINS_HOME system property. See Container-specific documentation for more details of how to do this.</p>
 <h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><p>方法一：推荐<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/tomcat</span><br><span class="line"> mkdir .jenkins</span><br><span class="line"> chown tomcat:tomcat .jenkins</span><br><span class="line"> systemctl restart tomcat</span><br></pre></td></tr></table></figure></p>
 <p>方法一：终极解决方法：<br>如果还不能解决，就关闭安全校验：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenforce 0</span><br><span class="line">systemctl restart tomcat</span><br></pre></td></tr></table></figure></p>
-<p>再次访问：<br><a href="http://192.168.1.109:8080/jenkins" target="_blank" rel="noopener">http://192.168.1.109:8080/jenkins</a><br>就会跳转到：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk1.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk1.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<p>再次访问：<br><a href="http://192.168.1.109:8080/jenkins" target="_blank" rel="noopener">http://192.168.1.109:8080/jenkins</a><br>就会跳转到：<br><a rel=linux笔记(巽) href="/image/linuxf/jenk1.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk1.png" class="url_for"></a></p>
 <p>复制图片中的地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost tomcat]# cat /usr/share/tomcat/.jenkins/secrets/initialAdminPassword</span><br><span class="line">41d9a966b9e6470e97a534d4c69ef517</span><br></pre></td></tr></table></figure></p>
 <p>将上面的密码复制到上面页面上，点击继续：</p>
 <h4 id="修改tomcat的Jenkins-目录"><a href="#修改tomcat的Jenkins-目录" class="headerlink" title="修改tomcat的Jenkins 目录"></a>修改tomcat的Jenkins 目录</h4><p>如果你要修改 /usr/share/tomcat/.jenkins 目录，可以这样修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/jenkins</span><br><span class="line">chown tomcat:tomcat /var/lib/jenkins</span><br><span class="line">vim /etc/tomcat/context.xml</span><br><span class="line">#在 Context 内增加一行</span><br><span class="line">&lt;Context&gt;</span><br><span class="line">    &lt;Environment name=&quot;JENKINS_HOME&quot; value=&quot;/var/lib/jenkins&quot; type=&quot;java.lang.String&quot;/&gt;</span><br><span class="line">&lt;/Context&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl restart tomcat</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://192.168.1.109:8080/jenkins" target="_blank" rel="noopener">http://192.168.1.109:8080/jenkins</a><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk2.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk2.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/lib/jenkins/secrets/initialAdminPassword</span><br><span class="line">a3aba81d552b42238184305d6687a020</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://192.168.1.109:8080/jenkins" target="_blank" rel="noopener">http://192.168.1.109:8080/jenkins</a><br><a rel=linux笔记(巽) href="/image/linuxf/jenk2.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk2.png" class="url_for"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/lib/jenkins/secrets/initialAdminPassword</span><br><span class="line">a3aba81d552b42238184305d6687a020</span><br></pre></td></tr></table></figure></p>
 <p>等待一分钟，出现页面</p>
-<figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk3.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk3.png" alt title class></a>
-                <p></p>
-            </figure>
-<h4 id="jenkins安装成功"><a href="#jenkins安装成功" class="headerlink" title="jenkins安装成功"></a>jenkins安装成功</h4><p>如果顺利，就选择安装推荐插件<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk1.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk1.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk2.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk2.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk3.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk3.png" alt title class></a>
-                <p></p>
-            </figure><br>出现以下页面，说明Jenkins安装好：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk4.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk4.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<p>查看已经安装好的插件<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk5.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk5.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk6.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk6.png" alt title class></a>
-                <p></p>
-            </figure><br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jk7.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jk7.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<a rel=linux笔记(巽) href="/image/linuxf/jenk3.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk3.png" class="url_for"></a>
+<h4 id="jenkins安装成功"><a href="#jenkins安装成功" class="headerlink" title="jenkins安装成功"></a>jenkins安装成功</h4><p>如果顺利，就选择安装推荐插件<br><a rel=linux笔记(巽) href="/image/linuxf/jk1.png" title="" data-fancybox="images"><img src="/image/linuxf/jk1.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/jk2.png" title="" data-fancybox="images"><img src="/image/linuxf/jk2.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/jk3.png" title="" data-fancybox="images"><img src="/image/linuxf/jk3.png" class="url_for"></a><br>出现以下页面，说明Jenkins安装好：<br><a rel=linux笔记(巽) href="/image/linuxf/jk4.png" title="" data-fancybox="images"><img src="/image/linuxf/jk4.png" class="url_for"></a></p>
+<p>查看已经安装好的插件<br><a rel=linux笔记(巽) href="/image/linuxf/jk5.png" title="" data-fancybox="images"><img src="/image/linuxf/jk5.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/jk6.png" title="" data-fancybox="images"><img src="/image/linuxf/jk6.png" class="url_for"></a><br><a rel=linux笔记(巽) href="/image/linuxf/jk7.png" title="" data-fancybox="images"><img src="/image/linuxf/jk7.png" class="url_for"></a></p>
 <h4 id="出现offline-离线-问题的解决方法"><a href="#出现offline-离线-问题的解决方法" class="headerlink" title="出现offline(离线)问题的解决方法"></a>出现offline(离线)问题的解决方法</h4><p>此时也可能出现offline 问题， 没有这个问题，可不用管。</p>
-<figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk4.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk4.png" alt title class></a>
-                <p></p>
-            </figure>
+<a rel=linux笔记(巽) href="/image/linuxf/jenk4.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk4.png" class="url_for"></a>
 <p>这是证书问题，<br>解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim /var/lib/jenkins/hudson.model.UpdateCenter.xml</span><br><span class="line">#将其中</span><br><span class="line"># &lt;url&gt;https://updates.jenkins.io/update-center.json&lt;/url&gt;</span><br><span class="line"># 改为 http，即为：</span><br><span class="line">#  &lt;url&gt;http://updates.jenkins.io/update-center.json&lt;/url&gt;</span><br><span class="line"></span><br><span class="line">systemctl restart tomcat</span><br></pre></td></tr></table></figure></p>
 <p>再次刷新<br><a href="http://192.168.1.109:8080/jenkins" target="_blank" rel="noopener">http://192.168.1.109:8080/jenkins</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/lib/jenkins/secrets/initialAdminPassword</span><br><span class="line">a3aba81d552b42238184305d6687a020</span><br></pre></td></tr></table></figure></p>
 <p>密码登录下即可</p>
-<h4 id="安装Jenkins不顺利时的解决方法"><a href="#安装Jenkins不顺利时的解决方法" class="headerlink" title="安装Jenkins不顺利时的解决方法"></a>安装Jenkins不顺利时的解决方法</h4><p>Jenkins也有可能不顺利<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk6.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk6.png" alt title class></a>
-                <p></p>
-            </figure></p>
-<p>此时就选择，不安装任何插件，把Jenkins安装好再说：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk7.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk7.png" alt title class></a>
-                <p></p>
-            </figure><br>选择none，不安装任何插件<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk8.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk8.png" alt title class></a>
-                <p></p>
-            </figure><br>安装完成：<br><figure class="image-box">
-                <a rel=linux笔记(巽) href="/image/linuxf/jenk9.png" title="undefined" data-fancybox="images"><img src="/image/linuxf/jenk9.png" alt title class></a>
-                <p></p>
-            </figure></p>
+<h4 id="安装Jenkins不顺利时的解决方法"><a href="#安装Jenkins不顺利时的解决方法" class="headerlink" title="安装Jenkins不顺利时的解决方法"></a>安装Jenkins不顺利时的解决方法</h4><p>Jenkins也有可能不顺利<br><a rel=linux笔记(巽) href="/image/linuxf/jenk6.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk6.png" class="url_for"></a></p>
+<p>此时就选择，不安装任何插件，把Jenkins安装好再说：<br><a rel=linux笔记(巽) href="/image/linuxf/jenk7.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk7.png" class="url_for"></a><br>选择none，不安装任何插件<br><a rel=linux笔记(巽) href="/image/linuxf/jenk8.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk8.png" class="url_for"></a><br>安装完成：<br><a rel=linux笔记(巽) href="/image/linuxf/jenk9.png" title="" data-fancybox="images"><img src="/image/linuxf/jenk9.png" class="url_for"></a></p>
 <h3 id="Jenkins的运行说明"><a href="#Jenkins的运行说明" class="headerlink" title="Jenkins的运行说明"></a>Jenkins的运行说明</h3><p>可以直接运行 java -jar jenkins.war<br>也可以修改端口运行 java -jar jenkins.war –httpPort=8081<br>或者在tomcat这样的servlet容器里运行(上面演示的过程就是在tomcat容器里运行jenkins)</p>
 <h3 id="tomcat的-coyote-web-服务器"><a href="#tomcat的-coyote-web-服务器" class="headerlink" title="tomcat的 coyote web 服务器"></a>tomcat的 coyote web 服务器</h3><h4 id="tomcat的-coyote-web-服务器的局限"><a href="#tomcat的-coyote-web-服务器的局限" class="headerlink" title="tomcat的 coyote web 服务器的局限"></a>tomcat的 coyote web 服务器的局限</h4><p>coyote 是tomcat自带的轻量级web服务器；<br>coyote web 服务器不能用于直接服务客户端连接<br>它在处理静态文件时效率较低<br>并且本身不支持 https 协议</p>
 <h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>使用功能更强大的web服务器， 比如 apache 或 nginx 作为代理服务器， 将请求转发到 tomcat；<br>web服务器将管理https连接、访问限制和静态页面；<br>只有对java应用程序的请求会被转发到tomcat；</p>
@@ -451,7 +343,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2024-03-27T14:10:31.291Z" itemprop="dateUpdated">2024-03-27 14:10:31</time>
+    Last updated: <time datetime="2024-03-29T03:09:30.576Z" itemprop="dateUpdated">2024-03-29 03:09:30</time>
 </span><br>
 
 
@@ -673,16 +565,16 @@
 
     
     <!-- main-js -->
-<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/fastclick.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
-<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/plugins/MathJax.js"></script>
-<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js"></script>
-<script type="text/javascript" src="/js/plugins/MathMenu.js"></script>
-<script type="text/javascript" src="/js/plugins/MathZoom.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/js/plugins/MathZoom.js?v=1.3.9"></script>
 
-<script type="text/javascript" src="/js/plugins/waves.min.js"></script>
+<script type="text/javascript" src="/js/plugins/waves.min.js?v=1.3.9"></script>
 
 <script type="text/javascript" src="/js/method.js?v=1.3.9"></script>
 <script type="text/javascript" src="/js/blog.js?v=1.3.9"></script>
