@@ -351,9 +351,5 @@ node
 技术之外
 
     title: 一路美食 一路风景
-    title: 医药
-    title: 儿童免疫力
-    title: 决定房价的因素
-
 
 ```
