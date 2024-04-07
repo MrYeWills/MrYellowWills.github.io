@@ -1,3 +1,5 @@
+//将所有的md文件的图片路径 ![](/image/infra/tab.png) 改成 {% img url_for /image/infra/tab.png %}
+
 var fs = require('fs')
 var path=require('path');
  
