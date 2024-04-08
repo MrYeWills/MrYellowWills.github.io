@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>一个人搞定前后端和运维，上线一个跨端产品 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="项目,产品,vue">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>一个人搞定前后端和运维，上线一个跨端产品</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">一个人搞定前后端和运维，上线一个跨端产品</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-12-20T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2023-12-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/vue/">vue</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-gzh"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">一个人搞定前后端和运维，上线一个跨端产品</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-12-20 00:00:00" datetime="2023-12-20T00:00:00.000Z"  itemprop="datePublished">2023-12-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/vue/">vue</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="产品与需求"><a href="#产品与需求" class="headerlink" title="产品与需求"></a>产品与需求</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>要经常买很多东西，有些计划在双十一、618购买，有时候到时间了可能忘了，有时候太忙，需要将日常要买的陆续收集起来，统一买，这样更加优惠，也更加省时。<br>现在购买的平台有很多，比如淘宝、抖音、京东、拼夕夕，这个时候需要一个地方统一记录需要购买的东西，也可以将这些记录到手机上，可是有时候也想在电脑上操作，无法做到，手机和电脑都可以用，随时随地记录。<br>所以要做一个产品，既能手机用，又能电脑用，又能随时随地用，主打就是一个方便、简单、便捷。<br>这样的产品是给人用的时候，实现购物记录功能的同时，又要可以用户权限管理，因此也需要一个后台管理系统。<br>于是产品就是这样的：<br>小程序+pc端+后台管理。<br>pc端和后台管理可以合二为一，因此要做的就是一个小程序和后台管理系统。</p>
+<h3 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h3><p>除了购物车功能，后续这个产品还可以叠加进来其他功能，比如好物记录、好菜记录(厨师成长记)等</p>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/h5-1.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/h5-1.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/h5-2.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/h5-2.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/wx-login.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/wx-login.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/wx-user.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/wx-user.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc-reg.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc-reg.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc.jpg" class="url_for"></a>
+<h2 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h2><h3 id="跨端代码耦合分工"><a href="#跨端代码耦合分工" class="headerlink" title="跨端代码耦合分工"></a>跨端代码耦合分工</h3><p>考虑到产品后期一个人维护，为了减少维护成本，于是采用小程序与pc端共用一套业务逻辑代码，<br>业务代码，如购物列表、购物添加、编辑、详情、删除 功能采用vue+nuxt+ssr写成h5项目，以供小程序和pc端共同嵌入使用；<br>小程序端做用户的注册、登录、我的页面逻辑，业务功能代码嵌入上面的h5工程；<br>pc端维护用户的登录、注册，以及用户管理等后台管理能力，业务功能部分嵌入上面的h5工程；</p>
+<h3 id="登录态设计和request登录信息携带"><a href="#登录态设计和request登录信息携带" class="headerlink" title="登录态设计和request登录信息携带"></a>登录态设计和request登录信息携带</h3><p>这里就涉及到一个登录态设计和接口传输的问题了：<br>h5项目不做登录等相关的页面，所有的登录信息都通过页面地址上携带username 和 accessToken，在需求复杂时，h5端可以将页面地址上的登录信息存储于cookie中。<br>接口请求时，将上面的信息都放到header上；<br>后台pc端，存储username和accessToken到cookie，接口请求与h5端项目一致；<br>小程序端，存储username到store上，接口请求与h5一致；</p>
+<h3 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h3><p>技术选型 uniapp + uview-ui</p>
+<h3 id="h5端"><a href="#h5端" class="headerlink" title="h5端"></a>h5端</h3><p>技术选型 nuxt+vue+ssr</p>
+<h3 id="后台pc端"><a href="#后台pc端" class="headerlink" title="后台pc端"></a>后台pc端</h3><p>技术选型 vue</p>
+<h3 id="域名网站主页静态页面"><a href="#域名网站主页静态页面" class="headerlink" title="域名网站主页静态页面"></a>域名网站主页静态页面</h3><p>技术选型 nuxt+vue+generate</p>
+<p>上线产品要申请域名，域名首页需要注明国家审核的网站备案号以及网站入口，所以还要写一个简单的静态主页，nuxt的特长之一就是生产静态页面，于是也选择 nuxt+vue</p>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>技术选型 node+express+mongodb</p>
+<h3 id="服务器购买和系统选择"><a href="#服务器购买和系统选择" class="headerlink" title="服务器购买和系统选择"></a>服务器购买和系统选择</h3><p>因为是简单的网站，便宜简单就行，<br>操作系统选择 centos 7的系统，因为centos 7外面的文档很多，遇到问题可以很容易搜索到解决方案。<br>下面是这次买的服务器配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">云服务器ECS(包月)</span><br><span class="line">实例名称：</span><br><span class="line">iZbp1co4xxx（i-bp1coxxx）</span><br><span class="line"></span><br><span class="line">实例：2核 2Gecs.e系列 V</span><br><span class="line">I/O 优化实例：I/O 优化实例</span><br><span class="line">系统盘：ESSD Entry/dev/xvda40GB模块属性</span><br><span class="line">带宽：3Mbps按固定带宽</span><br><span class="line">CPU：2核</span><br><span class="line">可用区：随机分配</span><br><span class="line">操作系统：CentOS 7.9 64位Linux64位</span><br><span class="line">内存：2GB</span><br><span class="line">地域：华东 1</span><br><span class="line">网络类型：专有网络</span><br><span class="line">体检服务：是</span><br><span class="line">管家服务：是</span><br></pre></td></tr></table></figure></p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>选择老牌的 nginx 和 pm2</p>
+<h2 id="服务端开发"><a href="#服务端开发" class="headerlink" title="服务端开发"></a>服务端开发</h2><h3 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h3><p>node写后台，平时写的少，因此先爬服务端的坑，<br>网上搜索了下相关的node项目来写增删改查，有mysql的，有mongodb的，<br>考虑到自己的业务足够简单，以及想快速交付，于是使用mongodb，它不需要写sql表，</p>
+<p>于是网上找了一个相关的增删改查项目，启动该项目，参照原来的接口写接口，节约时间。<br>项目地址：<a href="https://gitee.com/mayising/express_mongoDB_gzh" target="_blank" rel="noopener">点击这里</a>，<br>项目采用 mongodb + express，相关的安装教程可以查阅资料。<br>该项目的启动介绍参考readme,<br>启动项目前，可手动导入一些测试数据，参考项目下的文档<code>/sql/mongoDB命令.txt</code>：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">导出(mongoexport) </span><br><span class="line">先进入MongoDB安装路径下bin目录（如 C:\Program Files\MongoDB\Server\<span class="number">4.2</span>\bin），然后执行导入导出命令</span><br><span class="line">导出数据命令：mongoexport -h dbhost -d dbname -c collectionName -o output</span><br><span class="line">列子：mongoexport -h localhost:<span class="number">27017</span> -d expressdbs -c counters -o D:<span class="regexp">/proAddress/</span>node/xxxx/sql/counters.json</span><br><span class="line"></span><br><span class="line">-h ：数据库地址，MongoDB 服务器所在的 IP 与 端口，如 localhost:<span class="number">27017</span></span><br><span class="line"></span><br><span class="line">-d ：指明使用的数据库实例，如 test</span><br><span class="line"></span><br><span class="line">-c 指明要导出的集合，如 c1</span><br><span class="line"></span><br><span class="line">-o 指明要导出的文件名，如 E:<span class="regexp">/wmx/m</span>ongoDump/c1.json，注意是文件而不是目录，目录不存在时会一同新建</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">导入(mongoimport)</span><br><span class="line">先进入MongoDB安装路径下bin目录（如 C:\Program Files\MongoDB\Server\<span class="number">4.2</span>\bin），然后执行导入导出命令</span><br><span class="line">导入数据命令：mongoimport -h dbhost -d dbname -c collectionname 文件的地址...</span><br><span class="line">例子：mongoimport -h localhost:<span class="number">27017</span> -d expressdbs -c counters D:<span class="regexp">/proAddress/</span>node/xxxx/sql/counters.json</span><br><span class="line"></span><br><span class="line">-h ： 数据库地址，MongoDB 服务器所在的 IP 与 端口，如 localhost:<span class="number">27017</span></span><br><span class="line"></span><br><span class="line">-d ：指明使用的库，指明使用的数据库实例，如 test</span><br><span class="line"></span><br><span class="line">-c ：指明要导入的集合，如 c1、c2、可以和导出时不一致，自定义即可，不存在时会直接创建。</span><br><span class="line"></span><br><span class="line">本地的文件地址：事先导出好的 mongoDB 集合文件</span><br></pre></td></tr></table></figure></p>
+<h3 id="三个功能模块"><a href="#三个功能模块" class="headerlink" title="三个功能模块"></a>三个功能模块</h3><p>一共有三个功能，<br>购物功能；<br>用户功能；<br>pc端还有一个权限、菜单功能</p>
+<h3 id="购物功能接口开发"><a href="#购物功能接口开发" class="headerlink" title="购物功能接口开发"></a>购物功能接口开发</h3><p>先做比较简单的增删改查的购物功能。<br>购物功能有列表、详情、新增、修改、删除接口：</p>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/h5-1.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/h5-1.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/h5-2.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/h5-2.jpg" class="url_for"></a>
+<ul>
+<li><p>以用户的维度，进行新增存储：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@api <span class="type">&#123;post&#125;</span> </span>/shop/add 商品添加</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiName </span>商品添加</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiGroup <span class="variable">Shop</span></span></span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>status 购买等级 1 2 3 紧急、次要、未来</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>shopname 商品名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>mark 备注</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;Number&#125;</span> </span>time 购买时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>createtime 创建时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>username 用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.post(<span class="string">'/add'</span>, (req, res) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; status, shopname, mark, time &#125; = req.body</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">username</span>: originUsername &#125; = req.headers</span><br><span class="line">  <span class="keyword">const</span> username = <span class="built_in">decodeURIComponent</span>(originUsername)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(!username)&#123;</span><br><span class="line">    res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'未登录'</span> &#125;)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(!shopname)&#123;</span><br><span class="line">    res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'商品必填'</span> &#125;)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Shop.find(&#123; shopname, username &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (data.length === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> Shop.insertMany(&#123; status, shopname, mark, time, username, <span class="attr">createtime</span>:  dayjs().format(<span class="string">'YYYY-MM-DD'</span>)&#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 商品已存在</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(e===<span class="number">-1</span>)&#123;</span><br><span class="line">        res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'商品已存在'</span> &#125;)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">msg</span>: <span class="string">'添加成功'</span> &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e)</span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'添加失败'</span> &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列表查询接口，以用户的维度查数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@api <span class="type">&#123;post&#125;</span> </span>/shop/page 商品列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiName </span>商品列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiGroup <span class="variable">Shop</span></span></span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;Number&#125;</span> </span>pageNo 页数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;Number&#125;</span> </span>pageSize 条数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;Number&#125;</span> </span>key 关键字查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.post(<span class="string">'/list'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> pageNo = <span class="built_in">Number</span>(req.body.pageNo) || <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> pageSize = <span class="built_in">Number</span>(req.body.pageSize) || <span class="number">10</span></span><br><span class="line">  <span class="keyword">const</span> shopname = req.body.shopname</span><br><span class="line">  <span class="keyword">const</span> status = req.body.status</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">username</span>: originUsername &#125; = req.headers</span><br><span class="line">  <span class="keyword">const</span> username = <span class="built_in">decodeURIComponent</span>(originUsername)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(!username)&#123;</span><br><span class="line">    res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'未登录'</span> &#125;)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(username)</span><br><span class="line">  <span class="keyword">let</span> query = &#123; <span class="attr">$or</span>: [&#123; <span class="attr">username</span>:  &#123;<span class="attr">$regex</span>: reg&#125;&#125;] &#125;</span><br><span class="line">  <span class="keyword">if</span>(shopname)&#123;</span><br><span class="line">    query[<span class="string">'$or'</span>][<span class="number">0</span>].shopname = &#123;<span class="attr">$regex</span>: <span class="keyword">new</span> <span class="built_in">RegExp</span>(shopname)&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(status)&#123;</span><br><span class="line">    query[<span class="string">'$or'</span>][<span class="number">0</span>].status = <span class="built_in">Number</span>(status)</span><br><span class="line">  &#125;</span><br><span class="line">  Shop.countDocuments(query, (err, count) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'商品列表获取失败'</span> &#125;)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    Shop.aggregate([</span><br><span class="line">        &#123;</span><br><span class="line">            $match: query</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            $skip: pageSize * (pageNo - <span class="number">1</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            $limit: pageSize</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="comment">// $project中的字段值 为1表示筛选该字段，为0表示过滤该字段</span></span><br><span class="line">          $project: &#123; <span class="attr">foodtypes</span>: &#123; <span class="attr">_id</span>: <span class="number">0</span> &#125; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ], <span class="function"><span class="keyword">function</span>(<span class="params">err, docs</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'商品列表获取失败'</span> &#125;)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        res.send(&#123;</span><br><span class="line">            code: <span class="number">200</span>,</span><br><span class="line">            data: docs,</span><br><span class="line">            total: count,</span><br><span class="line">            pageNo: pageNo,</span><br><span class="line">            pageSize: pageSize,</span><br><span class="line">            msg: <span class="string">'商品列表获取成功'</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="使用-Postman-进行接口测试"><a href="#使用-Postman-进行接口测试" class="headerlink" title="使用 Postman 进行接口测试"></a>使用 Postman 进行接口测试</h4><p>写好接口后，使用 Postman 进行接口测试。</p>
+<h3 id="用户功能pc端接口开发"><a href="#用户功能pc端接口开发" class="headerlink" title="用户功能pc端接口开发"></a>用户功能pc端接口开发</h3><p>这块因为涉及到小程序，所以复杂了点。<br>先搞定pc端的用户需求，</p>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc-reg.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc-reg.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc-login.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc-login.jpg" class="url_for"></a>
+<p>用户注册、登录、详情接口，其他修改密码等接口放到以后去做。</p>
+<ul>
+<li><p>注册接口：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@api <span class="type">&#123;post&#125;</span> </span>/user/reg 用户注册</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiName </span>用户注册</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiGroup <span class="variable">User</span></span></span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>us 用户名（邮箱）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>ps 用户密码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>openid 小程序openid</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;code&#125;</span> </span>ps 验证码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiSuccessExample <span class="variable">Success</span></span>-Response:</span></span><br><span class="line"><span class="comment"> *     HTTP/1.1 200 OK</span></span><br><span class="line"><span class="comment"> *     &#123;</span></span><br><span class="line"><span class="comment"> *       "code": "200",</span></span><br><span class="line"><span class="comment"> *       "msg": "创建成功"</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 小程序和pc web的注册，通过 us 用户名进行关联，如果用户名一样，则说明是同一用户，此用户同时保存 ps 和 openid</span></span><br><span class="line">router.post(<span class="string">"/reg"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; us, ps, openid &#125; = req.body;</span><br><span class="line">  <span class="keyword">if</span> (!us || (!ps &amp;&amp; !openid) ) <span class="keyword">return</span> res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"缺少参数"</span> &#125;);</span><br><span class="line">  User.find(&#123; us &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">      <span class="keyword">if</span> (data.length === <span class="number">0</span>) &#123;</span><br><span class="line">         User.insertMany(&#123; us, ps, openid, time &#125;);</span><br><span class="line">        res.send(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">msg</span>: <span class="string">"创建成功"</span> &#125;);</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"用户名已存在"</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(!err) <span class="keyword">return</span></span><br><span class="line">      <span class="built_in">console</span>.log(err)</span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"创建失败"</span> &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录接口：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@api <span class="type">&#123;post&#125;</span> </span>/user/login 用户登录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiName </span>用户登录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiGroup <span class="variable">User</span></span></span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>us 用户名（邮箱）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>ps 用户密码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiParam <span class="type">&#123;String&#125;</span> </span>openid 小程序openid</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@apiSuccessExample <span class="variable">Success</span></span>-Response:</span></span><br><span class="line"><span class="comment"> *     HTTP/1.1 200 OK</span></span><br><span class="line"><span class="comment"> *     &#123;</span></span><br><span class="line"><span class="comment"> *       "code": "200",</span></span><br><span class="line"><span class="comment"> *       "msg": "登录成功"</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.post(<span class="string">"/login"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; us, ps, openid &#125; = req.body;</span><br><span class="line">  <span class="keyword">if</span> (!us || (!ps &amp;&amp; !openid)) <span class="keyword">return</span> res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"缺少参数"</span> &#125;);</span><br><span class="line"></span><br><span class="line">  User.find(&#123; us &#125;)</span><br><span class="line">    .then(<span class="function">(<span class="params">datas</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(datas &amp;&amp; !datas.length) res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"账号或密码不正确"</span> &#125;);</span><br><span class="line">      <span class="keyword">const</span> data = datas.find(<span class="function"><span class="params">item</span>=&gt;</span> item.ps === ps || item.openid === openid)</span><br><span class="line">      <span class="keyword">if</span> (data) &#123;</span><br><span class="line">        <span class="comment">// if (!data.state) return res.send(&#123; code: 502, msg: "账号已被禁用" &#125;);</span></span><br><span class="line">        <span class="keyword">let</span> token = setToken(&#123; <span class="attr">login</span>: <span class="literal">true</span>, <span class="attr">name</span>: us, <span class="attr">roleId</span>: data.roleId &#125;);</span><br><span class="line">        res.send(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">msg</span>: <span class="string">"登录成功"</span>, token &#125;);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"账号或密码不正确"</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"登录失败"</span> &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>用户详情接口就不贴了。</p>
+<h4 id="postman测试"><a href="#postman测试" class="headerlink" title="postman测试"></a>postman测试</h4><p>写好后，用postman测试一遍。</p>
+<h3 id="用户功能小程序接口开发"><a href="#用户功能小程序接口开发" class="headerlink" title="用户功能小程序接口开发"></a>用户功能小程序接口开发</h3><a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/wx-user.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/wx-user.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/wx-login.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/wx-login.jpg" class="url_for"></a>
+<h4 id="如何跟pc端账号打通"><a href="#如何跟pc端账号打通" class="headerlink" title="如何跟pc端账号打通"></a>如何跟pc端账号打通</h4><p>这里涉及到小程序账号如何跟pc端账号打通的问题，</p>
+<p>经过一番调研后，由于应用场景简单，决定使用openid用来关联微信号，<br>小程序注册时，设置与pc端一致的username，凭借 username实现数据共享账号关联。</p>
+<h4 id="获取openid的方式参考这里："><a href="#获取openid的方式参考这里：" class="headerlink" title="获取openid的方式参考这里："></a>获取openid的方式参考这里：</h4><p><a href="https://developers.weixin.qq.com/community/develop/article/doc/000c80906b4210625f3bde3775bc13" target="_blank" rel="noopener">https://developers.weixin.qq.com/community/develop/article/doc/000c80906b4210625f3bde3775bc13</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> success(data) &#123;</span><br><span class="line">         <span class="keyword">if</span> (data.code) &#123;</span><br><span class="line">           <span class="keyword">const</span> openidRes = <span class="keyword">await</span> _this.$request.get(<span class="string">`/wx/getOpenid`</span>, &#123;</span><br><span class="line">             params: &#123;</span><br><span class="line">               code: data.code,</span><br><span class="line">             &#125;,</span><br><span class="line">           &#125;)</span><br><span class="line">           <span class="keyword">if</span> (openidRes.code !== <span class="number">200</span>) &#123;</span><br><span class="line">             <span class="keyword">if</span> (!openidRes.data.openid) &#123;</span><br><span class="line">               uni.showToast(&#123;</span><br><span class="line">                 title: openidRes.msg,</span><br><span class="line">                 icon: <span class="string">'none'</span>,</span><br><span class="line">               &#125;)</span><br><span class="line">               <span class="keyword">return</span></span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">// 注册</span></span><br><span class="line">           <span class="keyword">const</span> res = <span class="keyword">await</span> _this.$request.post(<span class="string">`/user/reg`</span>, &#123;</span><br><span class="line">             us: _this.username,</span><br><span class="line">             openid: openidRes.data.openid,</span><br><span class="line">           &#125;)</span><br><span class="line">           <span class="keyword">if</span> (res.code === <span class="number">200</span>) &#123;</span><br><span class="line">             _this.$store.commit(<span class="string">'user/setUserInfo'</span>, &#123; <span class="attr">username</span>: _this.username &#125;)</span><br><span class="line">             uni.$emit(<span class="string">'loginSuccess'</span>)</span><br><span class="line">             uni.showToast(&#123;</span><br><span class="line">               title: <span class="string">'登录成功'</span>,</span><br><span class="line">               duration: <span class="number">1500</span>,</span><br><span class="line">               icon: <span class="string">'success'</span>,</span><br><span class="line">               mask: <span class="literal">true</span>,</span><br><span class="line">             &#125;)</span><br><span class="line">             setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">               uni.navigateBack(&#123;</span><br><span class="line">                 delta: <span class="number">1</span>,</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;, <span class="number">1500</span>)</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             uni.showToast(&#123;</span><br><span class="line">               title: res.msg,</span><br><span class="line">               icon: <span class="string">'none'</span>,</span><br><span class="line">             &#125;)</span><br><span class="line">           &#125;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'登录失败！'</span> + data.errMsg)</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="服务端接口-getOpenid"><a href="#服务端接口-getOpenid" class="headerlink" title="服务端接口 getOpenid"></a>服务端接口 getOpenid</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">"/getOpenid"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> code = req.query.code;</span><br><span class="line">  <span class="keyword">if</span> (!code) <span class="keyword">return</span> res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"缺少参数"</span> &#125;);</span><br><span class="line"></span><br><span class="line">  axios.get(<span class="string">'https://api.weixin.qq.com/sns/jscode2session'</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      params: &#123;</span><br><span class="line">        appid: <span class="string">'你的openid'</span>,</span><br><span class="line">        secret: <span class="string">'你的secret'</span>,</span><br><span class="line">        <span class="string">'js_code'</span>: code,</span><br><span class="line">        grant_type: <span class="string">'authorization_code'</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(response)</span><br><span class="line">       </span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">data</span>: response.data &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'Error: '</span>, err.message);</span><br><span class="line">      res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"请求错误"</span> &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="注册接口做兼容："><a href="#注册接口做兼容：" class="headerlink" title="注册接口做兼容："></a>注册接口做兼容：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> existUser = data[<span class="number">0</span>]</span><br><span class="line">       <span class="comment">// 如果原来pc端已经注册，如果请求有 openid 说明是小程序注册</span></span><br><span class="line">       <span class="keyword">if</span>(openid &amp;&amp; !existUser.openid)&#123;</span><br><span class="line">         User.updateOne(&#123; us &#125;, &#123; us, <span class="attr">ps</span>: existUser.ps, openid, time &#125;)</span><br><span class="line">         .then(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">           <span class="keyword">if</span>(e.nModified === <span class="number">1</span>)&#123;</span><br><span class="line">             res.send(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">msg</span>: <span class="string">"创建成功"</span> &#125;);</span><br><span class="line">             <span class="keyword">return</span></span><br><span class="line">           &#125;</span><br><span class="line">           res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'更新用户失败'</span> &#125;)</span><br><span class="line">          </span><br><span class="line">         &#125;)</span><br><span class="line">         .catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(e)</span><br><span class="line">           res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'更新用户失败'</span> &#125;)</span><br><span class="line">         &#125;)</span><br><span class="line">         <span class="keyword">return</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 如果原来已经小程序注册过，pc端再注册</span></span><br><span class="line">       <span class="keyword">if</span>(ps &amp;&amp; !existUser.ps)&#123;</span><br><span class="line">         User.updateOne(&#123; us &#125;, &#123; us, ps, <span class="attr">openid</span>: existUser.openid, time &#125;)</span><br><span class="line">         .then(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">           <span class="keyword">if</span>(e.nModified === <span class="number">1</span>)&#123;</span><br><span class="line">             res.send(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">msg</span>: <span class="string">"创建成功"</span> &#125;);</span><br><span class="line">             <span class="keyword">return</span></span><br><span class="line">           &#125;</span><br><span class="line">           res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'更新用户失败'</span> &#125;)</span><br><span class="line">          </span><br><span class="line">         &#125;)</span><br><span class="line">         .catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(e)</span><br><span class="line">           res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'更新用户失败'</span> &#125;)</span><br><span class="line">         &#125;)</span><br><span class="line">         <span class="keyword">return</span></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line">       res.send(&#123; <span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">"用户名已存在"</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="小程序用户功能设计的优化"><a href="#小程序用户功能设计的优化" class="headerlink" title="小程序用户功能设计的优化"></a>小程序用户功能设计的优化</h4><p>微信手机号码代替上面的openid关联微信号，<br>因为openid在不同手机的同一个微信号是不一样的。<br>在第一次打开小程序使用手机号码授权，注册小程序后，将用户信息存储到小程序的store上，<br>后续请求不再重新请求用户信息，直接读取store上的用户信息。</p>
+<p>可以采用手机号关联微信，第一次注册完成存储用户详情和登录信息到store，<br>后续不再请求，直接使用store中的信息，直到主动删除小程序store后，触发再次登录。<br>这样就避免了，每次打开小程序都要进行手机号授权才能拿到手机号，查询用户信息。</p>
+<p>前端逻辑也更加简单。</p>
+<p>另外还有菜单和权限接口，这个不是最重要的，可以简单来，因为用户管理不是主功能，可以直接操作mongodb数据库进行修改。</p>
+<h4 id="使用postman测试"><a href="#使用postman测试" class="headerlink" title="使用postman测试"></a>使用postman测试</h4><p>接口做好后，用postman测试。</p>
+<p>接口搞定后，可以写前端项目了。</p>
+<h2 id="前端开发"><a href="#前端开发" class="headerlink" title="前端开发"></a>前端开发</h2><p>这部分直接上项目地址</p>
+<h3 id="h5端-1"><a href="#h5端-1" class="headerlink" title="h5端"></a>h5端</h3><p>采用vue2+nuxt+ssr，<a href="https://gitee.com/mayising/klm-h5" target="_blank" rel="noopener">项目地址</a>。</p>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/h5-1.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/h5-1.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/h5-2.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/h5-2.jpg" class="url_for"></a>
+<h3 id="微信小程序-1"><a href="#微信小程序-1" class="headerlink" title="微信小程序"></a>微信小程序</h3><p>采用uni-app + uview-ui，<a href="https://gitee.com/mayising/klm-weapp" target="_blank" rel="noopener">项目地址</a>。<br>如果小程序使用uni-app，建议h5端使用vue，因为一旦uniapp需要重写h5页面的时候，直接挪过来很快就能修改好，因为二者都是vue语法。</p>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/wx-login.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/wx-login.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/wx-user.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/wx-user.jpg" class="url_for"></a>
+<h3 id="后台pc端-1"><a href="#后台pc端-1" class="headerlink" title="后台pc端"></a>后台pc端</h3><p>这部分简单，继续用网上找的项目，<a href="https://gitee.com/mayising/xnbz-web" target="_blank" rel="noopener">项目地址</a></p>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc-reg.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc-reg.jpg" class="url_for"></a>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc.jpg" class="url_for"></a>
+<h3 id="网站静态主页"><a href="#网站静态主页" class="headerlink" title="网站静态主页"></a>网站静态主页</h3><p>这部分简单，继续用网上找的项目，<a href="https://gitee.com/mayising/xnzb-page" target="_blank" rel="noopener">项目地址</a></p>
+<h2 id="部署到服务器"><a href="#部署到服务器" class="headerlink" title="部署到服务器"></a>部署到服务器</h2><h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><p>nginx完整配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">user  root;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">#error_log  logs/error.log;</span><br><span class="line">#error_log  logs/error.log  notice;</span><br><span class="line">#error_log  logs/error.log  info;</span><br><span class="line"></span><br><span class="line">#pid        logs/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    #keepalive_timeout  0;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">         listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /klm &#123;</span><br><span class="line">            proxy_pass http://localhost:8870;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location /web &#123;</span><br><span class="line">            # add_header Access-Control-Allow-Origin *;</span><br><span class="line">           #  add_header Access-Control-Allow-Methods &apos;GET, POST, OPTIONS&apos;;</span><br><span class="line">           root /root/xnbz-web/dist;</span><br><span class="line">           index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # HTTPS server</span><br><span class="line">    #</span><br><span class="line">    server &#123;</span><br><span class="line">       listen       443 ssl;</span><br><span class="line">       server_name  localhost;</span><br><span class="line"></span><br><span class="line">        ssl_certificate   /usr/local/nginx/conf/cert/xnbz.site.pem;     #.pem采用Base64-encoded的PEM格式文本文件</span><br><span class="line">        ssl_certificate_key  /usr/local/nginx/conf/cert/xnbz.site.key;  #.key文件：证书的私钥文件</span><br><span class="line"></span><br><span class="line">       ssl_session_cache    shared:SSL:1m;</span><br><span class="line">       ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">       ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">       ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /klm &#123;</span><br><span class="line">            proxy_pass http://localhost:8870;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location /web &#123;</span><br><span class="line">            # add_header Access-Control-Allow-Origin *;</span><br><span class="line">           #  add_header Access-Control-Allow-Methods &apos;GET, POST, OPTIONS&apos;;</span><br><span class="line">           root /root/xnbz-web/dist;</span><br><span class="line">           index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">         location /api &#123;</span><br><span class="line">           add_header Access-Control-Allow-Origin *;</span><br><span class="line">           add_header Access-Control-Allow-Methods &apos;GET, POST, OPTIONS&apos;;</span><br><span class="line">           add_header &apos;Access-Control-Allow-Headers&apos; &apos;Origin, X-Requested-With, Content-Type, Accept&apos;;</span><br><span class="line">           proxy_pass http://localhost:6166;</span><br><span class="line">           proxy_set_header Host $host;</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置h5端"><a href="#配置h5端" class="headerlink" title="配置h5端"></a>配置h5端</h3><h4 id="nginx-1"><a href="#nginx-1" class="headerlink" title="nginx"></a>nginx</h4><p>h5是nuxt ssr项目，所以只要匹配到后，直接转发到项目下就行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#nginx配置</span><br><span class="line">  location /klm &#123;</span><br><span class="line">            proxy_pass http://localhost:8870;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="发布脚本与pm2"><a href="#发布脚本与pm2" class="headerlink" title="发布脚本与pm2"></a>发布脚本与pm2</h4><p>h5项目采用pm2部署<br>项目先 <code>npm run build:prod</code>，<br>然后再执行 <code>pm2 start pm2.json</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"build:prod"</span>: <span class="string">"cross-env KLM_ENV=prod nuxt build"</span>,</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  pm2.json</span></span><br><span class="line"> &#123;</span><br><span class="line">  <span class="attr">"apps"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"klm"</span>,</span><br><span class="line">      <span class="attr">"script"</span>: <span class="string">"./node_modules/nuxt/bin/nuxt.js"</span>,</span><br><span class="line">      <span class="attr">"args"</span>: <span class="string">"start"</span>,</span><br><span class="line">      <span class="attr">"error_file"</span>: <span class="string">"/root/logs/pm2/h5/node-err.log"</span>,</span><br><span class="line">      <span class="attr">"out_file"</span>: <span class="string">"/root/logs/pm2/h5/node-out.log"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="踩坑：必须要先执行-build-prod"><a href="#踩坑：必须要先执行-build-prod" class="headerlink" title="踩坑：必须要先执行 build:prod"></a>踩坑：必须要先执行 build:prod</h4><p>要注意的是，h5项目必须要先执行 npm run build:prod, 然后运行 nuxt start (pm2)才能部署成功，否则会失败。</p>
+<h3 id="后台pc端-2"><a href="#后台pc端-2" class="headerlink" title="后台pc端"></a>后台pc端</h3><p>后台是vue项目</p>
+<a rel=一个人搞定前后端和运维，上线一个跨端产品 href="/blog/image/gzh/pc.jpg" title="" data-fancybox="images"><img src="/blog/image/gzh/pc.jpg" class="url_for"></a>
+<h4 id="nginx-2"><a href="#nginx-2" class="headerlink" title="nginx"></a>nginx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#nginx配置</span><br><span class="line">   location /web &#123;</span><br><span class="line">            # add_header Access-Control-Allow-Origin *;</span><br><span class="line">           #  add_header Access-Control-Allow-Methods &apos;GET, POST, OPTIONS&apos;;</span><br><span class="line">           root /root/xnbz-web/dist;</span><br><span class="line">           index  index.html index.htm;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="项目vue-config-js配置"><a href="#项目vue-config-js配置" class="headerlink" title="项目vue.config.js配置"></a>项目vue.config.js配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VUE_APP_PUBLICPATH = &apos;/web/&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line">  <span class="comment">// 基本路径</span></span><br><span class="line">  publicPath: process.env.VUE_APP_PUBLICPATH,</span><br><span class="line">  <span class="comment">// 输出文件目录，踩坑，这里一定要设置</span></span><br><span class="line">  outputDir: <span class="string">`dist/<span class="subst">$&#123;process.env.VUE_APP_PUBLICPATH&#125;</span>`</span>,</span><br></pre></td></tr></table></figure>
+<h4 id="踩坑：必须要设置outputDir"><a href="#踩坑：必须要设置outputDir" class="headerlink" title="踩坑：必须要设置outputDir"></a>踩坑：必须要设置outputDir</h4><p>若不设置，则静态文件404，可以看生成的html中的script引用。</p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><h4 id="nginx-3"><a href="#nginx-3" class="headerlink" title="nginx"></a>nginx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#nginx</span><br><span class="line">location /api &#123;</span><br><span class="line">        add_header Access-Control-Allow-Origin *;</span><br><span class="line">        add_header Access-Control-Allow-Methods &apos;GET, POST, OPTIONS&apos;;</span><br><span class="line">        add_header &apos;Access-Control-Allow-Headers&apos; &apos;Origin, X-Requested-With, Content-Type, Accept&apos;;</span><br><span class="line">        proxy_pass http://localhost:6166;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="踩坑：nginx代理后请求报错"><a href="#踩坑：nginx代理后请求报错" class="headerlink" title="踩坑：nginx代理后请求报错"></a>踩坑：nginx代理后请求报错</h4><p>注意要加上 <code>proxy_set_header Host $host;</code> 否则会请求报错。</p>
+<h3 id="mongodb数据库遭受攻击的处理"><a href="#mongodb数据库遭受攻击的处理" class="headerlink" title="mongodb数据库遭受攻击的处理"></a>mongodb数据库遭受攻击的处理</h3><p>参考 <a href="https://blog.csdn.net/u013513053/article/details/105785980" target="_blank" rel="noopener">mongoDB 数据莫名其妙的没了</a></p>
+<h4 id="修改mongodb-conf-更改端口"><a href="#修改mongodb-conf-更改端口" class="headerlink" title="修改mongodb.conf 更改端口"></a>修改mongodb.conf 更改端口</h4><p>查询mongodb目录<br>[root@xx]# which mongod<br>/usr/local/mongodb/bin/mongod</p>
+<p>mongodb.conf改成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dbpath=/usr/local/mongodb/data/db</span><br><span class="line"># 日志文件存放目录</span><br><span class="line">logpath=/usr/local/mongodb/data/log/mongodb.log</span><br><span class="line"># 日志追加方式</span><br><span class="line">logappend=true</span><br><span class="line"># 端口</span><br><span class="line">port=11198</span><br><span class="line"># 是否认证</span><br><span class="line">auth=true</span><br><span class="line"># 以守护进程方式在后台运行</span><br><span class="line">fork=true</span><br><span class="line"># 远程连接要指定ip，否则无法连接；0.0.0.0代表不限制ip访问</span><br><span class="line">bind_ip=0.0.0.0</span><br></pre></td></tr></table></figure></p>
+<h4 id="创建账号"><a href="#创建账号" class="headerlink" title="创建账号"></a>创建账号</h4><p>切到 admin 数据库下，创建超级用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(</span><br><span class="line">    &#123;</span><br><span class="line">        user:&quot;admin&quot;,</span><br><span class="line">        pwd:&quot;xxxx&quot;,</span><br><span class="line">        roles:[</span><br><span class="line">          #赋权给数据库admin</span><br><span class="line">            &#123;role:&quot;userAdminAnyDatabase&quot;,db:&quot;admin&quot;&#125;,</span><br><span class="line">            &#123;role:&quot;readWrite&quot;,db:&quot;admin&quot;&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>重新生效后，使用 admin 数据库，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.auth(&quot;admin&quot;,&quot;admin&quot;)</span><br><span class="line"></span><br><span class="line">然后创建 业务账户，赋权给业务数据库expressdbs</span><br><span class="line">db.createUser(</span><br><span class="line">    &#123;</span><br><span class="line">        user:&quot;hz&quot;,</span><br><span class="line">        pwd:&quot;xxxxx设置密码&quot;,</span><br><span class="line">        roles:[</span><br><span class="line">          #赋权给数据库expressdbs</span><br><span class="line">          &#123;role:&quot;readWrite&quot;,db:&quot;expressdbs&quot;&#125;,</span><br><span class="line">          &#123;role:&quot;dbOwner&quot;,db:&quot;expressdbs&quot;&#125;,</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h4 id="mongodb业务操作命令修改"><a href="#mongodb业务操作命令修改" class="headerlink" title="mongodb业务操作命令修改"></a>mongodb业务操作命令修改</h4><p>经过上面更改后，后期进行mongodb 业务操作命令变成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 11198  -u hz -p xxx密码  --authenticationDatabase=expressdbs</span><br><span class="line"></span><br><span class="line"># admin数据库操作：</span><br><span class="line">mongo --port 11198  -u admin -p xxx密码  --authenticationDatabase=admin</span><br><span class="line"></span><br><span class="line"># 进行导入等操作：</span><br><span class="line">mongoimport -h localhost:11198 -d expressdbs -c counters /Users/yewills/xxx/counters.json -u hz -p xxx密码 --authenticationDatabase=expressdbs</span><br></pre></td></tr></table></figure></p>
+<p>至此，整个工程在线下功能算串好了。</p>
+<h2 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h2><p>参考 <a href="https://zhuanlan.zhihu.com/p/649186599" target="_blank" rel="noopener">阿里云域名注册和备案图文详细讲解</a><br>需要经过阿里和国家工业信息部审核，过程需要七八天审核通过。</p>
+<h3 id="写一个网站静态首页"><a href="#写一个网站静态首页" class="headerlink" title="写一个网站静态首页"></a>写一个网站静态首页</h3><p>审核通过的网站，需要在网站底下显示备案号，<br>因此需要写一个网站静态首页，项目情况可查看上面介绍 ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nuxt generate</span><br></pre></td></tr></table></figure></p>
+<p>然后写一个发布脚本,省时省力<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'zx/globals'</span>; <span class="comment">// 注意要使用 4.3.0或以下版本，此版本编译后的源码，支持commonjs，高版本是esmodule，无法被 node 14 直接支持运行</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run generate`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译好后，发送到服务器</span></span><br><span class="line">  $<span class="string">`scp -r dist/* root@47.99.xx.xx:/usr/local/nginx/html`</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<h2 id="升级https"><a href="#升级https" class="headerlink" title="升级https"></a>升级https</h2><p>由于微信的后台接口需要https，于是用nginx升级https。<br>去阿里云控制台，根据提示，完成以下操作：</p>
+<ul>
+<li>申请免费证书</li>
+<li>部署到域名内，</li>
+<li>生成证书秘钥。</li>
+</ul>
+<p>将证书部署到nginx：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_certificate   /usr/local/nginx/conf/cert/xnbz.site.pem;     #.pem采用Base64-encoded的PEM格式文本文件</span><br><span class="line">ssl_certificate_key  /usr/local/nginx/conf/cert/xnbz.site.key;  #.key文件：证书的私钥文件</span><br></pre></td></tr></table></figure></p>
+<h2 id="申请微信小程序备案"><a href="#申请微信小程序备案" class="headerlink" title="申请微信小程序备案"></a>申请微信小程序备案</h2><p>小程序备案申请大概需要两三天。</p>
+<h2 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h2><p>个人小程序无法使用webview嵌入，企业小程序可以。<br>好在h5端是vue写的，直接把h5端代码拷贝到 uni app小程序项目内，修修改改，两三个小时就改好了。</p>
+<h2 id="线上调试bug"><a href="#线上调试bug" class="headerlink" title="线上调试bug"></a>线上调试bug</h2><h3 id="查看express接口日志"><a href="#查看express接口日志" class="headerlink" title="查看express接口日志"></a>查看express接口日志</h3><p>下面是log中间件的逻辑代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根目录下serve.js</span></span><br><span class="line"><span class="comment">// logger</span></span><br><span class="line">app.all(<span class="string">"*"</span>, <span class="keyword">async</span> (req, res, next) =&gt; &#123;</span><br><span class="line">    <span class="comment">//响应开始时间</span></span><br><span class="line">    <span class="keyword">const</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="comment">//响应间隔时间</span></span><br><span class="line">    <span class="keyword">var</span> ms;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//开始进入到下一个中间件</span></span><br><span class="line">        <span class="keyword">await</span> next();</span><br><span class="line">        <span class="comment">//记录响应日志</span></span><br><span class="line">        ms = <span class="keyword">new</span> <span class="built_in">Date</span>() - start;</span><br><span class="line">        log.i(req, ms);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="comment">//记录异常日志</span></span><br><span class="line">        ms = <span class="keyword">new</span> <span class="built_in">Date</span>() - start;</span><br><span class="line">        log.e(req, error, ms);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;req.method&#125;</span> <span class="subst">$&#123;req.url&#125;</span> - <span class="subst">$&#123;ms&#125;</span>ms-<span class="subst">$&#123;res.statusCode&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>因此日志在 <code>logs/responses</code> 目录下。</p>
+<h3 id="postman-代入参数模拟"><a href="#postman-代入参数模拟" class="headerlink" title="postman 代入参数模拟"></a>postman 代入参数模拟</h3><p>在这里可以拿到请求的参数，然后用postman使用这些参数，进行模拟。</p>
+<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><h3 id="nginx出现403错误的解决方法"><a href="#nginx出现403错误的解决方法" class="headerlink" title="nginx出现403错误的解决方法"></a>nginx出现403错误的解决方法</h3><p><a href="https://blog.csdn.net/fuzekun/article/details/127433770" target="_blank" rel="noopener">参考文章</a></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">于是查看nginx日志，路径为/var/log/nginx/error.log。打开日志发现报错Permission denied，详细报错如下：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.    </span>open() "/data/www/1.txt" failed (13: Permission denied), client: 192.168.1.194, server: www.web1.com, request: "GET /1.txt HTTP/1.1", host: "www.web1.com"</span><br><span class="line">没有权限？于是找了不少资料，可以通过下面四步排查解决此问题。你可能只是其中之前配置有问题，不一定四个步骤都用上。</span><br><span class="line"></span><br><span class="line">一、由于启动用户和nginx工作用户不一致所致</span><br><span class="line"></span><br><span class="line">1.1查看nginx的启动用户，发现是nobody，而为是用root启动的</span><br><span class="line"></span><br><span class="line">命令：ps aux | grep "nginx: worker process"</span><br></pre></td></tr></table></figure>
+<p>翻看上面的nginx完整配置，就是加了句声明用户名的代码解决的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user  root;</span><br></pre></td></tr></table></figure></p>
+<p>查看 ps aux | grep “nginx: worker process” 查看nginx的登录用户</p>
+<h3 id="nginx重启等操作时异常报错"><a href="#nginx重启等操作时异常报错" class="headerlink" title="nginx重启等操作时异常报错"></a>nginx重启等操作时异常报错</h3><p>有时候nginx重启或运行报错，就是因为没有重新运行nginx，且运行时，没有指定配置文件，<br>可以先不要执行其他命令，直接运行nginx，并且一定要带上制定配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure></p>
+<h3 id="request-header携带中文username时需要转义"><a href="#request-header携带中文username时需要转义" class="headerlink" title="request header携带中文username时需要转义"></a>request header携带中文username时需要转义</h3><p>中文username 没有encode ，请求报错</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="服务器常用命令"><a href="#服务器常用命令" class="headerlink" title="服务器常用命令"></a>服务器常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 连接服务器</span><br><span class="line">ssh root@47.99.121.128</span><br><span class="line">scp root@47.99.121.128:/usr/local/nginx/conf/nginx.conf /Users/yewills/cc</span><br></pre></td></tr></table></figure>
+<h3 id="pm2常用命令"><a href="#pm2常用命令" class="headerlink" title="pm2常用命令"></a>pm2常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pm2</span><br><span class="line">pm2 list</span><br><span class="line">pm2 delete xxpid</span><br><span class="line">pm2 start pm2.json</span><br></pre></td></tr></table></figure>
+<h3 id="nginx常见命令"><a href="#nginx常见命令" class="headerlink" title="nginx常见命令"></a>nginx常见命令</h3><p>查看nginx是否运行（是否有进程）<code>ps -ef | grep nginx</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@xxx db]# ps -ef | grep nginx</span><br><span class="line">root      5215  4693  0 18:56 pts/0    00:00:00 grep --color=auto nginx  #这个不是nginx进程，不用管</span><br><span class="line">#这个是nginx进程21403，而且是master进程，可以看到进程的运行命令 nginx -c /usr/local/nginx/conf/nginx.conf  </span><br><span class="line">root     21403     1  0 Dec16 ?        00:00:00 nginx: master process nginx -c /usr/local/nginx/conf/nginx.conf  </span><br><span class="line">#这个是上面master进程21403的worker子进程</span><br><span class="line">root     21588 21403  0 Dec16 ?        00:00:03 nginx: worker process</span><br></pre></td></tr></table></figure></p>
+<p>如果要关闭进程，只需要关闭 nginx 主进程21403即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -t #查看nginx的安装目录或配置目录 该方法也是测试配置文件是否有效</span><br><span class="line">nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+<h3 id="mongodb命令和mac安装"><a href="#mongodb命令和mac安装" class="headerlink" title="mongodb命令和mac安装"></a>mongodb命令和mac安装</h3><h4 id="mongo的mac安装"><a href="#mongo的mac安装" class="headerlink" title="mongo的mac安装"></a>mongo的mac安装</h4><p>mac 安装 使用brew <a href="https://zhuanlan.zhihu.com/p/111701216" target="_blank" rel="noopener">参考</a><br>安装目录 <code>/opt/homebrew/opt/mongodb-community</code></p>
+<h4 id="mongodb相关命令"><a href="#mongodb相关命令" class="headerlink" title="mongodb相关命令"></a>mongodb相关命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@4.4</span><br><span class="line">brew services stop mongodb-community@4.4</span><br><span class="line"></span><br><span class="line">/opt/homebrew/opt/mongodb-community/bin/mongod --config /opt/homebrew/etc/mongod.conf</span><br><span class="line"></span><br><span class="line">ps aux | grep mongo</span><br><span class="line">#业务操作</span><br><span class="line">mongo --port 19917  -u hz -p xxx密码  --authenticationDatabase=expressdbs</span><br><span class="line"></span><br><span class="line">show dbs</span><br><span class="line">use xxdb</span><br><span class="line">show collections</span><br><span class="line">db.collectionNamexxx.find()</span><br></pre></td></tr></table></figure>
+<h3 id="github-加速"><a href="#github-加速" class="headerlink" title="github 加速"></a>github 加速</h3><p>页面访问github流畅，终端git操作比较慢的解决方法：<br><a href="https://juejin.cn/post/6844903862961176583" target="_blank" rel="noopener">一招 git clone 加速</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># socks5协议，1080端口修改成自己的本地代理端口</span><br><span class="line">git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</span><br><span class="line">git config --global https.https://github.com.proxy socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure></p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>叠加以下两个功能：</p>
+<ul>
+<li>好物记录</li>
+<li>好菜记录(厨师成长记)</li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.801Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2023/12/20/gzh/" target="_blank" rel="external">https://yewills.github.io/2023/12/20/gzh/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/产品/">产品</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/项目/">项目</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2023/12/20/gzh/&title=《一个人搞定前后端和运维，上线一个跨端产品》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2023/12/20/gzh/&title=《一个人搞定前后端和运维，上线一个跨端产品》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/blog/2023/06/25/ssr/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">服务端渲染ssr</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#产品与需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">产品与需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#延伸"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">延伸</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">原型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#架构设计"><span class="post-toc-number">2.</span> <span class="post-toc-text">架构设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跨端代码耦合分工"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">跨端代码耦合分工</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#登录态设计和request登录信息携带"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">登录态设计和request登录信息携带</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#微信小程序"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">微信小程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#h5端"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">h5端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后台pc端"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">后台pc端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#域名网站主页静态页面"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">域名网站主页静态页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后端"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">后端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器购买和系统选择"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">服务器购买和系统选择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部署"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">部署</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务端开发"><span class="post-toc-number">3.</span> <span class="post-toc-text">服务端开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目启动"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">项目启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三个功能模块"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">三个功能模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#购物功能接口开发"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">购物功能接口开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-Postman-进行接口测试"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">使用 Postman 进行接口测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户功能pc端接口开发"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">用户功能pc端接口开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#postman测试"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">postman测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户功能小程序接口开发"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">用户功能小程序接口开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何跟pc端账号打通"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">如何跟pc端账号打通</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取openid的方式参考这里："><span class="post-toc-number">3.5.2.</span> <span class="post-toc-text">获取openid的方式参考这里：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务端接口-getOpenid"><span class="post-toc-number">3.5.3.</span> <span class="post-toc-text">服务端接口 getOpenid</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注册接口做兼容："><span class="post-toc-number">3.5.4.</span> <span class="post-toc-text">注册接口做兼容：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#小程序用户功能设计的优化"><span class="post-toc-number">3.5.5.</span> <span class="post-toc-text">小程序用户功能设计的优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用postman测试"><span class="post-toc-number">3.5.6.</span> <span class="post-toc-text">使用postman测试</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前端开发"><span class="post-toc-number">4.</span> <span class="post-toc-text">前端开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#h5端-1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">h5端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#微信小程序-1"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">微信小程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后台pc端-1"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">后台pc端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网站静态主页"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">网站静态主页</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部署到服务器"><span class="post-toc-number">5.</span> <span class="post-toc-text">部署到服务器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置h5端"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">配置h5端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-1"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">nginx</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#发布脚本与pm2"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">发布脚本与pm2</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#踩坑：必须要先执行-build-prod"><span class="post-toc-number">5.2.3.</span> <span class="post-toc-text">踩坑：必须要先执行 build:prod</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后台pc端-2"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">后台pc端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-2"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">nginx</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目vue-config-js配置"><span class="post-toc-number">5.3.2.</span> <span class="post-toc-text">项目vue.config.js配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#踩坑：必须要设置outputDir"><span class="post-toc-number">5.3.3.</span> <span class="post-toc-text">踩坑：必须要设置outputDir</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务端"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">服务端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nginx-3"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">nginx</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#踩坑：nginx代理后请求报错"><span class="post-toc-number">5.4.2.</span> <span class="post-toc-text">踩坑：nginx代理后请求报错</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb数据库遭受攻击的处理"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">mongodb数据库遭受攻击的处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改mongodb-conf-更改端口"><span class="post-toc-number">5.5.1.</span> <span class="post-toc-text">修改mongodb.conf 更改端口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建账号"><span class="post-toc-number">5.5.2.</span> <span class="post-toc-text">创建账号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb业务操作命令修改"><span class="post-toc-number">5.5.3.</span> <span class="post-toc-text">mongodb业务操作命令修改</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#申请域名"><span class="post-toc-number">6.</span> <span class="post-toc-text">申请域名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写一个网站静态首页"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">写一个网站静态首页</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#升级https"><span class="post-toc-number">7.</span> <span class="post-toc-text">升级https</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#申请微信小程序备案"><span class="post-toc-number">8.</span> <span class="post-toc-text">申请微信小程序备案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插曲"><span class="post-toc-number">9.</span> <span class="post-toc-text">插曲</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线上调试bug"><span class="post-toc-number">10.</span> <span class="post-toc-text">线上调试bug</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看express接口日志"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">查看express接口日志</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#postman-代入参数模拟"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">postman 代入参数模拟</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#踩坑"><span class="post-toc-number">11.</span> <span class="post-toc-text">踩坑</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx出现403错误的解决方法"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">nginx出现403错误的解决方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx重启等操作时异常报错"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">nginx重启等操作时异常报错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#request-header携带中文username时需要转义"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">request header携带中文username时需要转义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他"><span class="post-toc-number">12.</span> <span class="post-toc-text">其他</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器常用命令"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">服务器常用命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pm2常用命令"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">pm2常用命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx常见命令"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">nginx常见命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mongodb命令和mac安装"><span class="post-toc-number">12.4.</span> <span class="post-toc-text">mongodb命令和mac安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongo的mac安装"><span class="post-toc-number">12.4.1.</span> <span class="post-toc-text">mongo的mac安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mongodb相关命令"><span class="post-toc-number">12.4.2.</span> <span class="post-toc-text">mongodb相关命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#github-加速"><span class="post-toc-number">12.5.</span> <span class="post-toc-text">github 加速</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后续"><span class="post-toc-number">13.</span> <span class="post-toc-text">后续</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2023/12/20/gzh/&title=《一个人搞定前后端和运维，上线一个跨端产品》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2023/12/20/gzh/&title=《一个人搞定前后端和运维，上线一个跨端产品》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABu0lEQVR42u3aQZLCMAwEQP7/6ewDsoSRFDvLVvtEQSAdDlOWrNcrXsdpnT9Nrjxf81qxcHFxx9zjcuWId798fZfcgIuLu5+b3KwXcMn7iQEXF/fvc6vRlgQZLi7ut3OroElQ4uLiPsXNg6YXXtfEJbUaLi7ugNtrcNz7ekl/FxcXt8U9iqu6JZo0SX/5Fi4u7hbuusKmut3Jv4WLi7uHe1ck3TVgUf5TcHFxb+X2BinKLc5iFH7YkeHi4i7mTo4/8wDqjXy9NeDi4m7nVkuXJIyqnc+oVsPFxV3GTS5KNjdJMN1W/ODi4i7m5gef+UBGdcAi+SPeNkdwcXGXcXu3nExHVIm4uLg7uUnBk29rkjbK9cNHxQ8uLu5ibm8jksdQNcKih8fFxX2U2zt8nR/WfvDg4uJu5ObN03kZUz2GwcXFfZY7Ca/J8UkhHHFxcRdzj+KqNjt6I1mF01dcXNwF3MlIRH6bZvtjEo64uLhjbh46+WFJlVJo2uLi4m7kzg9Zk8brJPhwcXG/i1ste5I4w8XF/R/c26Lq+npcXNyN3F5zs/d+XkTh4uI+xa1GSV7q5EGWDH/g4uJu4f4ANx6FZAzaGlIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

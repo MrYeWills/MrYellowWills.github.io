@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>umi系列(七)：插件、hooks | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="umi">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>umi系列(七)：插件、hooks</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">umi系列(七)：插件、hooks</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-05-24T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-05-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-umi_seven"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">umi系列(七)：插件、hooks</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-05-24 00:00:00" datetime="2022-05-24T00:00:00.000Z"  itemprop="datePublished">2022-05-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>记录 各个配置对应的源码位置</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><h2 id="待研究"><a href="#待研究" class="headerlink" title="待研究"></a>待研究</h2><p>参考 《api.register api.registerMethod》</p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h3><p>但是插件的代码本质其实只是调用 api 进行各种 hook 的注册，而 hook 的执行并非在此阶段执行，因此这里叫插件的注册</p>
+<p>modifyAppData hook<br>onCheck hook<br>onStart hook</p>
+<p>所以，文档中说的hook，其实就是 插件api文档上说的 扩展方法</p>
+<h3 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h3><p>与 hook 同义</p>
+<h3 id="api-上注册一个方法"><a href="#api-上注册一个方法" class="headerlink" title="api 上注册一个方法"></a>api 上注册一个方法</h3><p>register() 注册的 hooks 供 applyPlugins 使用<br>registerMethod() 接收一个 key 和 一个 fn，它会在 api 上注册一个方法<br>Umi 提供给插件的 api (PluginAPI), 绝大多数都是依靠 registerMethod() 来实现的</p>
+<h2 id="插件机制-以addLayouts为例"><a href="#插件机制-以addLayouts为例" class="headerlink" title="插件机制(以addLayouts为例)"></a>插件机制(以addLayouts为例)</h2><h3 id="addLayouts为例"><a href="#addLayouts为例" class="headerlink" title="addLayouts为例"></a>addLayouts为例</h3><p>在这里 <code>packages\preset-umi\src\registerMethods.ts</code> 注册；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">   <span class="string">'addLayouts'</span>,</span><br><span class="line"> ].forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">   api.registerMethod(&#123; name &#125;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在这里 <code>packages\preset-umi\src\features\tmpFiles\routes.ts</code> 调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> layouts = <span class="keyword">await</span> opts.api.applyPlugins(&#123;</span><br><span class="line">  key: <span class="string">'addLayouts'</span>,</span><br><span class="line">  initialValue: [</span><br><span class="line">    existsSync(absLayoutPath) &amp;&amp; &#123;</span><br><span class="line">      id: <span class="string">'@@/global-layout'</span>,</span><br><span class="line">      file: absLayoutPath,</span><br><span class="line">    &#125;,</span><br><span class="line">  ].filter(<span class="built_in">Boolean</span>),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在这里  <code>packages\plugin-docs\src\index.ts</code> 注入事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">api.addLayouts(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> [</span><br><span class="line">    &#123;</span><br><span class="line">      id: <span class="string">'docs-layout'</span>,</span><br><span class="line">      file: withTmpPath(&#123; api, <span class="attr">path</span>: <span class="string">'Layout.tsx'</span> &#125;),</span><br><span class="line">    &#125;,</span><br><span class="line">  ];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="applyPlugins-register-registerMethod-前置知识"><a href="#applyPlugins-register-registerMethod-前置知识" class="headerlink" title="applyPlugins register registerMethod 前置知识"></a>applyPlugins register registerMethod 前置知识</h3><p>register 与 applyPlugins 前置知识：<a href="https://next.umijs.org/zh-CN/docs/guides/plugins#umi-%E6%8F%92%E4%BB%B6%E7%9A%84%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%85%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" target="_blank" rel="noopener">参考 Umi 插件的机制及其生命周期 - register() 、 registerMethod() 以及 applyPlugins()</a></p>
+<h3 id="on-modify-add-事件key区别"><a href="#on-modify-add-事件key区别" class="headerlink" title="on modify add 事件key区别"></a>on modify add 事件key区别</h3><p>register 接收key，给此key标识注册 事件；</p>
+<p>applyPlugins 接收key，触发此key标识下的所有事件；</p>
+<p>并且根据 key 的写法不同分为三类:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\core\src\service\service.ts</span></span><br><span class="line"> <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">      <span class="keyword">if</span> (opts.key.startsWith(<span class="string">'on'</span>)) &#123;</span><br><span class="line">        type = ApplyPluginsType.event;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (opts.key.startsWith(<span class="string">'modify'</span>)) &#123;</span><br><span class="line">        type = ApplyPluginsType.modify;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (opts.key.startsWith(<span class="string">'add'</span>)) &#123;</span><br><span class="line">        type = ApplyPluginsType.add;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">          <span class="string">`Invalid applyPlugins arguments, type must be supplied for key <span class="subst">$&#123;opts.key&#125;</span>.`</span>,</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>applyPlugins 执行事件的结果为：</p>
+<blockquote>
+<p><a href="https://umijs.org/zh-CN/plugins/api#register-key-string-fn-function-pluginid-string-before-string-stage-number-" target="_blank" rel="noopener">然后通过 api.applyPlugins 即可拿到 [‘a’, ‘b’]</a></p>
+</blockquote>
+<h3 id="可通过三种方式注册"><a href="#可通过三种方式注册" class="headerlink" title="可通过三种方式注册"></a>可通过三种方式注册</h3><h4 id="api-register"><a href="#api-register" class="headerlink" title="api.register"></a>api.register</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">api.register(&#123;</span><br><span class="line">  key: <span class="string">'foo'</span>,</span><br><span class="line">  fn() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'a'</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="api-registerMethod-方式一"><a href="#api-registerMethod-方式一" class="headerlink" title="api.registerMethod 方式一"></a>api.registerMethod 方式一</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原理与上 api.register 相同</span></span><br><span class="line">api.registerMethod(&#123;</span><br><span class="line">  name: <span class="string">'foo'</span>,</span><br><span class="line">  fn() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'foo'</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  exitsError: <span class="literal">false</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>api.registerMethod 其源码在，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\core\src\service\pluginAPI.ts</span></span><br><span class="line">  registerMethod(opts: &#123; <span class="attr">name</span>: string; fn?: <span class="built_in">Function</span> &#125;) &#123;</span><br><span class="line">    assert(</span><br><span class="line">      !<span class="keyword">this</span>.service.pluginMethods[opts.name],</span><br><span class="line">      <span class="string">`api.registerMethod() failed, method <span class="subst">$&#123;opts.name&#125;</span> is already exist.`</span>,</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">this</span>.service.pluginMethods[opts.name] = &#123;</span><br><span class="line">      plugin: <span class="keyword">this</span>.plugin,</span><br><span class="line">      fn:</span><br><span class="line">        opts.fn ||</span><br><span class="line">        <span class="comment">// 这里不能用 arrow function，this 需指向执行此方法的 PluginAPI</span></span><br><span class="line">        <span class="comment">// 否则 pluginId 会不会，导致不能正确 skip plugin</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">fn: Function | Object</span>) </span>&#123;</span><br><span class="line">          <span class="comment">// @ts-ignore</span></span><br><span class="line">          <span class="comment">// // 原理与上 api.register 相同，因为 registerMethod 最终走到 register</span></span><br><span class="line">          <span class="keyword">this</span>.register(&#123;</span><br><span class="line">            key: opts.name,</span><br><span class="line">            ...(lodash.isPlainObject(fn) ? (fn <span class="keyword">as</span> any) : &#123; fn &#125;),</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="api-registerMethod-方式二"><a href="#api-registerMethod-方式二" class="headerlink" title="api.registerMethod 方式二"></a>api.registerMethod 方式二</h4><p>api.registerMethod 注册的时候，没有定义fn，此时可通过 <code>api[key](fn)</code> 的方式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原理与上 api.register 相同</span></span><br><span class="line">api.registerMethod(&#123;</span><br><span class="line">  name: <span class="string">'foo'</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>其原理是， <code>api[key]</code> 中的 api 就是 proxyPluginAPI 对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\core\src\service\pluginAPI.ts</span></span><br><span class="line">  <span class="keyword">static</span> proxyPluginAPI(opts: &#123;</span><br><span class="line">    pluginAPI: PluginAPI;</span><br><span class="line">    service: Service;</span><br><span class="line">    serviceProps: string[];</span><br><span class="line">    staticProps: Record&lt;string, any&gt;;</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(opts.pluginAPI, &#123;</span><br><span class="line">      <span class="keyword">get</span>: (target, prop: string) =&gt; &#123;</span><br><span class="line">        <span class="comment">// api[key] 时，最终去 opts.service.pluginMethods 寻找</span></span><br><span class="line">        <span class="keyword">if</span> (opts.service.pluginMethods[prop]) &#123;</span><br><span class="line">          <span class="keyword">return</span> opts.service.pluginMethods[prop].fn;</span><br><span class="line">        &#125;</span><br><span class="line">      ....</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>而 <code>opts.service.pluginMethods</code> 就是 第一步 registerMethod 创建的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\core\src\service\pluginAPI.ts</span></span><br><span class="line">  registerMethod(opts: &#123; <span class="attr">name</span>: string; fn?: <span class="built_in">Function</span> &#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.service.pluginMethods[opts.name] = &#123;</span><br><span class="line">      fn:</span><br><span class="line">        opts.fn ||</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">fn: Function | Object</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.register(&#123;</span><br><span class="line">            key: opts.name,</span><br><span class="line">            ...(lodash.isPlainObject(fn) ? (fn <span class="keyword">as</span> any) : &#123; fn &#125;),</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="modifyRendererPath示例"><a href="#modifyRendererPath示例" class="headerlink" title="modifyRendererPath示例"></a>modifyRendererPath示例</h3><h4 id="api-applyPlugins-key-‘modifyRendererPath’"><a href="#api-applyPlugins-key-‘modifyRendererPath’" class="headerlink" title="api.applyPlugins({key: ‘modifyRendererPath’})"></a>api.applyPlugins({key: ‘modifyRendererPath’})</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rendererPath = winPath(</span><br><span class="line">       <span class="keyword">await</span> api.applyPlugins(&#123;</span><br><span class="line">         key: <span class="string">'modifyRendererPath'</span>,</span><br><span class="line">         initialValue: dirname(</span><br><span class="line">           <span class="built_in">require</span>.resolve(<span class="string">'@umijs/renderer-react/package.json'</span>),</span><br><span class="line">         ),</span><br><span class="line">       &#125;),</span><br><span class="line">     );</span><br></pre></td></tr></table></figure>
+<p>如上，想获取 rendererPath 路径，<br>然后触发 一个hooks或plugin 【modifyRendererPath】，<br>modifyRendererPath 语义看出是 修改rendererPath路径；</p>
+<p>也就是说，umi 定义了插件的 扩展方法 modifyRendererPath ；</p>
+<h3 id="彩蛋：插件的-id-和-key"><a href="#彩蛋：插件的-id-和-key" class="headerlink" title="彩蛋：插件的 id 和 key"></a>彩蛋：插件的 id 和 key</h3><p><a href="https://next.umijs.org/zh-CN/docs/guides/plugins#%E6%8F%92%E4%BB%B6%E7%9A%84-id-%E5%92%8C-key" target="_blank" rel="noopener">参考 插件的 id 和 key</a></p>
+<h3 id="彩蛋：插件的配置"><a href="#彩蛋：插件的配置" class="headerlink" title="彩蛋：插件的配置"></a>彩蛋：插件的配置</h3><p>在配置里通过 presets 和 plugins 配置插件，比如：<br><a href="https://next.umijs.org/zh-CN/docs/guides/plugins#%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener">参考 插件的配置</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  presets: [<span class="string">'./preset/foo'</span>,<span class="string">'bar/presets'</span>],</span><br><span class="line">  plugins: [<span class="string">'./plugin'</span>, <span class="built_in">require</span>.resolve(<span class="string">'plugin_foo'</span>)]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置的内容为插件的路径。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/05/24/umi_seven/" target="_blank" rel="external">https://yewills.github.io/2022/05/24/umi_seven/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/umi/">umi</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/24/umi_seven/&title=《umi系列(七)：插件、hooks》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/24/umi_seven/&title=《umi系列(七)：插件、hooks》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/05/24/umi_six/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">umi系列(六)：配置源码位置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/05/18/umi_five/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">umi系列(五)：pnpm install</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文档"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文档</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待研究"><span class="post-toc-number">2.</span> <span class="post-toc-text">待研究</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象"><span class="post-toc-number">3.</span> <span class="post-toc-text">对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hook"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">hook</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#扩展方法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">扩展方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#api-上注册一个方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">api 上注册一个方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插件机制-以addLayouts为例"><span class="post-toc-number">4.</span> <span class="post-toc-text">插件机制(以addLayouts为例)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#addLayouts为例"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">addLayouts为例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#applyPlugins-register-registerMethod-前置知识"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">applyPlugins register registerMethod 前置知识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#on-modify-add-事件key区别"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">on modify add 事件key区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可通过三种方式注册"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">可通过三种方式注册</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#api-register"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">api.register</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#api-registerMethod-方式一"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">api.registerMethod 方式一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#api-registerMethod-方式二"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">api.registerMethod 方式二</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#modifyRendererPath示例"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">modifyRendererPath示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#api-applyPlugins-key-‘modifyRendererPath’"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">api.applyPlugins({key: ‘modifyRendererPath’})</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#彩蛋：插件的-id-和-key"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">彩蛋：插件的 id 和 key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#彩蛋：插件的配置"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">彩蛋：插件的配置</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/24/umi_seven/&title=《umi系列(七)：插件、hooks》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/24/umi_seven/&title=《umi系列(七)：插件、hooks》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3a0W6DMAwF0P7/TzNpr6hwbdNuhJMn1G4kJ5M8x/HrFY/td7x7Pv5k/579t9tuvD4xMDAwbsvYDsd+6b13HmOSbTqhYmBgPIDRC7LHC62G4Hz7MDAwMJKlJ58fPyefYGBgYPQCbjlpC37+D/5vYGBg3JCRvK4aXvMtyAP9BWdxDAyMGzLmFwOfe/7q/QYGBsa/ZGyDkZTSqqW65kowMDCWZuRLyQ+9k7Qvv+Z85X0cGBgYN2f02iCSY+q8ySwv3mFgYDyBMVlor1hW/d2TeTEwMJZm9Mr0edCspoNV0tu/CQYGxqKMXgLX4yWFturxGAMDY21GNdgl0+chdb4dGBgYazOqzV55y1e1Xax60MXAwHgOI/m62hJxbbKYbBAGBsbTGHk7RX55OUkfRydyDAyMhRjfObLmSywHWQwMjKUZOaCaJvaWnh+AMTAwnsPIG7Cqh8xegO6lnhgYGGsz8vQumTKZpXdJcBKIMTAwlmb0ily9cljynuT9zWMzBgbGzRn5ZBc0QxRTySRYY2BgPIeRv7R3wVkt+l9WbsPAwFiCMR/VLZhfJMwvTTEwMO7C6E02L7T1ksu3a8DAwFiaMQ+p89QwTwoLB1oMDIzlGHmQTXZivn/Ngh0GBsYDGPmCeonjvHx2srkYGBgYcZtFdQvyi4GT9WBgYGC02rnyFrGPnLMxMDCWY1TbT/MGsnyhIxgGBsbSjHk7RXWa3nIv6BnBwMC4H+MHytQi4OzdQSYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

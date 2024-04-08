@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>umi系列(三)：pnpm与umi-scripts | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="umi">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>umi系列(三)：pnpm与umi-scripts</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">umi系列(三)：pnpm与umi-scripts</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-05-13T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-05-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-umi_three"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">umi系列(三)：pnpm与umi-scripts</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-05-13 00:00:00" datetime="2022-05-13T00:00:00.000Z"  itemprop="datePublished">2022-05-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
+<li><a href="http://nodejs.cn/api-v16/child_process.html" target="_blank" rel="noopener">Node.js v16.15.0 文档  -  child_process.html</a></li>
+</ul>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h3 id="发布npm的scope包"><a href="#发布npm的scope包" class="headerlink" title="发布npm的scope包"></a>发布npm的scope包</h3><p>只要不发布私包，不需要钱，<a href="http://www.javashuo.com/article/p-dcxlagwa-gp.html" target="_blank" rel="noopener">参考</a></p>
+<h3 id="pnpm与workspace"><a href="#pnpm与workspace" class="headerlink" title="pnpm与workspace"></a>pnpm与workspace</h3><p>创建文件<code>pnpm-workspace.yaml</code>：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'scripts'</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"> <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"umi-scripts"</span>: <span class="string">"workspace:*"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>然后在 scripts 目录下，新建 umi-scripts 包，</p>
+<p>执行 pnpm install,<br>执行完后，会生成 pnpm-lock.yaml ，<br>并且为 scripts 下的  umi-scripts 包源码目录 创建一个软链接，<br>将此目录映射到 node_modules 下，<br>如果 umi-scripts 有bin命令，pnpm 也会为它生成一个.bin 目录的相关命令配置。<br>一切做好后， 你在项目中就可以愉快的使用 umi-scripts包了，<br>因为其本质是将源码目录全部放置到 node modules 下，与真正的npm install 无异，用起来一样。<br>更妙的是，它还可以创建了软链接，一旦修改，node modules 也会是最新的修改。</p>
+<h3 id="node-的-stdout-和-stderr"><a href="#node-的-stdout-和-stderr" class="headerlink" title="node 的 stdout 和 stderr"></a>node 的 stdout 和 stderr</h3><p>node 的 stdout和stderr 对应 node.js 标准/错误输出<br>另外一个 stdin 用于输入。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cp = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line">  <span class="comment">//spawn</span></span><br><span class="line">  <span class="keyword">var</span> ls = cp.spawn(<span class="string">'mkdir'</span><span class="comment">/*command*/</span>, [<span class="string">'dd22d12'</span>]<span class="comment">/*args*/</span>, &#123;&#125;<span class="comment">/*options, [optional]*/</span>);</span><br><span class="line">  ls.stdout.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'stdout: '</span> + data);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  ls.stderr.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'stderr: '</span> + data);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  ls.on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'child process exited with code '</span> + code);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>默认情况下， child_process.spawn， 会在父 Node.js 进程和衍生的子进程之间建立 stdin、stdout 和 stderr 的管道。<a href="http://nodejs.cn/api-v16/child_process.html#child_processspawncommand-args-options" target="_blank" rel="noopener">参考</a></p>
+<p>另外一个例子，比如 stdin 输入：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">process.stdout.write(<span class="string">'nihao'</span>)</span><br><span class="line">process.stdin.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  process.stdout.write(<span class="string">`----<span class="subst">$&#123;data&#125;</span>`</span>)</span><br><span class="line">  <span class="keyword">if</span>(data==<span class="number">1</span>)&#123;</span><br><span class="line">    process.exit(<span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">process.on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  process.stdout.write(<span class="string">`exit----<span class="subst">$&#123;data&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="bin执行文件npm命令的特殊性"><a href="#bin执行文件npm命令的特殊性" class="headerlink" title="bin执行文件npm命令的特殊性"></a>bin执行文件npm命令的特殊性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"umi-scripts"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"bin"</span>: &#123;</span><br><span class="line">    <span class="string">"umi-scripts"</span>: <span class="string">"bin/umi-scripts.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; join &#125; = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; existsSync &#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; sync &#125; = <span class="built_in">require</span>(<span class="string">'@umijs/utils/compiled/cross-spawn'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> argv = process.argv.slice(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">const</span> name = argv[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">const</span> scriptsPath = join(__dirname, <span class="string">`../<span class="subst">$&#123;name&#125;</span>.ts`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 此 esno 为 esno 包 局部安装后的npx 命令， 用于node环境执行ts文件。</span></span><br><span class="line"><span class="keyword">const</span> spawn = sync(</span><br><span class="line">  <span class="string">'esno'</span>,</span><br><span class="line">  [scriptsPath, ...argv.slice(<span class="number">1</span>)],</span><br><span class="line">  &#123;</span><br><span class="line">    env: process.env,</span><br><span class="line">    cwd: process.cwd(),</span><br><span class="line">    stdio: <span class="string">'inherit'</span>,</span><br><span class="line">    shell: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>注意的是，凡事npm包的 bin 文件，虽然也是js文件，但此为特殊js文件，<br>比如上面的 esno ， 本来需要使用 npx esno 来执行的，<br>因为它是 npx 的bin 文件，因此 只需要 esno 即可，不需要加npx esno</p>
+<p>这是观察到现象，是否正确待进一步考证。</p>
+<p>可以以 <code>D:\git\umi\umi-next\scripts\bin\umi-scripts.js</code> 为例子研究。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.809Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/05/13/umi_three/" target="_blank" rel="external">https://yewills.github.io/2022/05/13/umi_three/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/umi/">umi</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/13/umi_three/&title=《umi系列(三)：pnpm与umi-scripts》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/13/umi_three/&title=《umi系列(三)：pnpm与umi-scripts》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/05/18/umi_four/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">umi系列(四)：npm script命令</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/05/11/umi_end/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">umi系列(end)：附录、参考</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文档"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文档</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#细节"><span class="post-toc-number">2.</span> <span class="post-toc-text">细节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布npm的scope包"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">发布npm的scope包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pnpm与workspace"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pnpm与workspace</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-的-stdout-和-stderr"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">node 的 stdout 和 stderr</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bin执行文件npm命令的特殊性"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">bin执行文件npm命令的特殊性</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/13/umi_three/&title=《umi系列(三)：pnpm与umi-scripts》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/13/umi_three/&title=《umi系列(三)：pnpm与umi-scripts》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3awY7DIAxF0f7/T6fbSjNE99m0UvBlVWUmlMPCNdivFx7Xx/h8cv/Xv89XM6/m2TxkyJDxWMZ1OwiDYFZvrTB8bTJkyJjD4FPfb0H89WCe+7XJkCFDRvq5nzLKkCFDxq6AS57woNxJJWXIkDGHQQ6x6ZUZX8RPz+IyZMh4IIPfuv/+81fqGzJkyHgU4wpHOk8arIurkiFDxtEMHuA4j6dunYArQ4aMOYxaosZbxNIk735rlk9kyJAxgJGGUb44ziOAZQlBhgwZwxik6JgG305IRQdgGTJkDGPwRfArOR5k0zYLGTJkTGDw1of+JVp6ACb/H3dwyJAh44GM/nT3Twig9tY/vxsyZMg4lJEmcDw0p1TCQFsmQ4aMoxn8qitt80rrjHyeYkVUhgwZD2TUkjkeEGtpH984GTJknM3giWCnMLmXvWy2kCFDxqEMnsDV2iB4IshLmDJkyJjGSIuFvP1i1wUc+kmQIUPG0Yxas1fayFVrpCAbFMR4GTJkHMGoNUzw1LDWQhEUIWTIkDGYkQbETrtYmqoGAVeGDBlHMDqHzzShTAMrKmfKkCHjUMYVjk4A5YlmcHCVIUPGAAYftTJkvwmMJKYyZMiYwOBBtvb1nWaOYL9lyJAxgNFv0qrVEzefxWXIkCEjLDemxctamVOGDBky0gXtPcSS0qkMGTLmMNJiQPoWOZqmzbIyZMiYw2gdHcO3aldp24qaMmTIeB7jDdK0aphmJbqcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

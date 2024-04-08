@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>umi系列(八)：文档插件 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="umi">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>umi系列(八)：文档插件</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">umi系列(八)：文档插件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-05-24T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-05-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-umi_eight"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">umi系列(八)：文档插件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-05-24 00:00:00" datetime="2022-05-24T00:00:00.000Z"  itemprop="datePublished">2022-05-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>umi的源码根目录下，执行pnpm doc:dev 就可以启动文档；<br>umi的文档其实就是一个典型的umi项目；<br>而文档的生成的核心逻辑都是基于umi的文档插件 plugin-docs 实现的。</p>
+<p>分析umi的文档系统，可以了解惊叹于如何使用react来写一个文档系统；<br>因为本质上是一个典型的umi项目，因此又可以了解到umi的整个核心原理或流程。</p>
+<h2 id="待研究"><a href="#待研究" class="headerlink" title="待研究"></a>待研究</h2><p>参考 《api.register api.registerMethod》</p>
+<p>参考 《pnpm doc:deps》</p>
+<h2 id="文档的使用和开发"><a href="#文档的使用和开发" class="headerlink" title="文档的使用和开发"></a>文档的使用和开发</h2><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><p>从umi官网仓库中，git clone 下umi全量源码，进行以下步骤，即可运行起 文档了。</p>
+<h4 id="pnpm-install"><a href="#pnpm-install" class="headerlink" title="pnpm install"></a>pnpm install</h4><p><strong>umi源码 根目录下执行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm install</span><br></pre></td></tr></table></figure></p>
+<p>此命令一次做了以下事情：</p>
+<ul>
+<li>给根目录安装node module</li>
+<li>给所有的 packages、 example 下的包或项目 进行 node module 的安装。</li>
+</ul>
+<p>为什么会能一次做这么多事情：<br>目前不知道与什么有关，大概率是 pnpm-workspace.yaml 原因吧：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'packages/*'</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'examples/*'</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'scripts'</span></span><br></pre></td></tr></table></figure></p>
+<p>又因为umi项目是基于 pnpm + workspace:* 模式，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">"@umijs/bundler-esbuild"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/bundler-utils"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/bundler-vite"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/bundler-webpack"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/plugin-docs"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/plugins"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/server"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"@umijs/utils"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"umi"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line"><span class="string">"umi-scripts"</span>: <span class="string">"workspace:*"</span>,</span><br></pre></td></tr></table></figure>
+<p>经过pnpm install后，上述被安装好的 workspace 包，在node module中都是一个软连接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l &apos;D:\git\umi\umi-next-copy1\node_modules\@umijs\bundler-esbuild&apos;</span><br><span class="line">lrwxrwxrwx 1 YeWills 197121 51  5月 26 08:38 &apos;D:\git\umi\umi-next-copy1\node_modules\@umijs\bundler-esbuild&apos; -&gt; /d/git/umi/umi-next-copy1/packages/bundler-esbuild//</span><br></pre></td></tr></table></figure></p>
+<p>但由于 每个packages下的umi包 此时还没有经过build编译，没有生成 dist 目录；<br>因此此时上述被安装到 node module 上的 workspace的包是无法起作用的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">YeWills@LAPTOP-Q29GGHVL MINGW64 /d/git/umi/umi-next-copy1 (version-4.0.0-rc.15)</span><br><span class="line">$ cd &apos;D:\git\umi\umi-next-copy1\node_modules\@umijs\bundler-esbuild&apos;                                              </span><br><span class="line"></span><br><span class="line">YeWills@LAPTOP-Q29GGHVL MINGW64 /d/git/umi/umi-next-copy1/node_modules/@umijs/bundler-esbuild (version-4.0.0-rc.15)</span><br><span class="line">$ ls</span><br><span class="line"># 如下，我们未看到dist目录， 因此此包将不起作用，需要进一步生成 dist目录</span><br><span class="line">bin/  node_modules/  package.json  README.md  src/  tsconfig.json</span><br><span class="line"></span><br><span class="line">$ cat package.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;@umijs/bundler-esbuild&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;4.0.0-rc.15&quot;,</span><br><span class="line">  # 包的主文件入口 基于dist</span><br><span class="line">  &quot;main&quot;: &quot;dist/index.js&quot;,</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>没有dist目录， 因此此包将不起作用，需要进一步生成 dist目录，<br>根目录下执行 <code>pnpm doc:deps</code>可生成 dist目录。</p>
+<h4 id="pnpm-doc-deps"><a href="#pnpm-doc-deps" class="headerlink" title="pnpm doc:deps"></a>pnpm doc:deps</h4><p>根目录的npm script:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"doc:deps"</span>: <span class="string">"pnpm doc:deps-ts &amp;&amp; pnpm doc:deps-extra"</span>,</span><br><span class="line"><span class="string">"doc:deps-ts"</span>: <span class="string">"umi-scripts turbo --cmd build --filter @umijs/plugin-docs..."</span>,</span><br><span class="line"><span class="string">"doc:deps-extra"</span>: <span class="string">"umi-scripts turbo --cmd build:extra --filter @umijs/plugin-docs..."</span>,</span><br></pre></td></tr></table></figure></p>
+<p>此命令按理说应该是 因为使用到了 <code>--filter</code> 过滤，按理说只会安装 @umijs/plugin-docs ，<br>todo<br>但不知为何，会给项目下所有的 packages 下面的包都进行build，然后所有packages下的包都会生成dist，具体情况如下所示。<br>从下面的代码执行过程可以看出，<br>执行 doc:deps-ts 时一共对 16 packages 进行了编译；<br>执行 doc:deps-extra 时，由于packages只有plugin-docs有这个编译命令，因此只对这一个包进行了编译；<br>这也解释了一部分 turbo 执行的逻辑。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">$ pnpm doc:deps</span><br><span class="line"></span><br><span class="line">&gt; @ doc:deps D:\git\umi\umi-next-copy1</span><br><span class="line">&gt; pnpm doc:deps-ts &amp;&amp; pnpm doc:deps-extra</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; @ doc:deps-ts D:\git\umi\umi-next-copy1</span><br><span class="line">&gt; umi-scripts turbo --cmd build --filter @umijs/plugin-docs...</span><br><span class="line"></span><br><span class="line">umi-scripts: turbo</span><br><span class="line"></span><br><span class="line">• Packages in scope: @umijs/ast, @umijs/babel-preset-umi, @umijs/bundler-esbuild, @umijs/bundler-utils, @umijs/bundler-vite, @umijs/bundler-webpack, @umijs/core, @umijs/lint, @umijs/mfsu, @umijs/plugin-docs, @umijs/preset-umi, @umijs/renderer-react, @umijs/server, @umijs/test, @umijs/utils, </span><br><span class="line">umi</span><br><span class="line">• Running build in 16 packages</span><br><span class="line">@umijs/renderer-react:build: cache miss, executing 8bbc9794c10d5654</span><br><span class="line">@umijs/test:build: cache miss, executing f4f2e5a95f6c8906</span><br><span class="line">@umijs/utils:build: cache miss, executing 685277c07b7d9a93</span><br><span class="line">@umijs/renderer-react:build: </span><br><span class="line">@umijs/renderer-react:build: &gt; @umijs/renderer-react@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\renderer-react</span><br><span class="line">@umijs/renderer-react:build: &gt; pnpm tsc</span><br><span class="line">@umijs/renderer-react:build: </span><br><span class="line">@umijs/utils:build: </span><br><span class="line">@umijs/utils:build: &gt; @umijs/utils@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\utils</span><br><span class="line">@umijs/utils:build: &gt; pnpm tsc</span><br><span class="line">@umijs/utils:build: </span><br><span class="line">@umijs/test:build: </span><br><span class="line">@umijs/test:build: &gt; @umijs/test@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\testing</span><br><span class="line">@umijs/test:build: &gt; pnpm tsc</span><br><span class="line">@umijs/test:build: </span><br><span class="line">@umijs/bundler-utils:build: cache miss, executing a03bbd3c10f7438d</span><br><span class="line">@umijs/bundler-utils:build: </span><br><span class="line">@umijs/bundler-utils:build: &gt; @umijs/bundler-utils@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\bundler-utils</span><br><span class="line">@umijs/bundler-utils:build: &gt; pnpm tsc</span><br><span class="line">@umijs/bundler-utils:build: </span><br><span class="line">@umijs/core:build: cache miss, executing 2fea1b6c74f0df7f</span><br><span class="line">@umijs/babel-preset-umi:build: cache miss, executing 72246494b29e02ee</span><br><span class="line">@umijs/ast:build: cache miss, executing 83630f0fd5ed5587</span><br><span class="line">@umijs/bundler-esbuild:build: cache miss, executing 4952ec85342441fb</span><br><span class="line">@umijs/bundler-vite:build: cache miss, executing 088404db49de01c6</span><br><span class="line">@umijs/server:build: cache miss, executing ea44a612de420714</span><br><span class="line">@umijs/core:build:</span><br><span class="line">@umijs/core:build: &gt; @umijs/core@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\core</span><br><span class="line">@umijs/core:build: &gt; pnpm tsc</span><br><span class="line">@umijs/core:build:</span><br><span class="line">@umijs/ast:build:</span><br><span class="line">@umijs/ast:build: &gt; @umijs/ast@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\ast</span><br><span class="line">@umijs/ast:build: &gt; pnpm tsc</span><br><span class="line">@umijs/ast:build:</span><br><span class="line">@umijs/server:build:</span><br><span class="line">@umijs/server:build: &gt; @umijs/server@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\server</span><br><span class="line">@umijs/server:build: &gt; pnpm tsc</span><br><span class="line">@umijs/server:build:</span><br><span class="line">@umijs/bundler-vite:build:</span><br><span class="line">@umijs/bundler-vite:build: &gt; @umijs/bundler-vite@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\bundler-vite</span><br><span class="line">@umijs/bundler-vite:build: &gt; pnpm tsc</span><br><span class="line">@umijs/bundler-vite:build:</span><br><span class="line">@umijs/bundler-esbuild:build:</span><br><span class="line">@umijs/bundler-esbuild:build: &gt; @umijs/bundler-esbuild@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\bundler-esbuild</span><br><span class="line">@umijs/bundler-esbuild:build: &gt; pnpm tsc</span><br><span class="line">@umijs/bundler-esbuild:build:</span><br><span class="line">@umijs/babel-preset-umi:build:</span><br><span class="line">@umijs/babel-preset-umi:build: &gt; @umijs/babel-preset-umi@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\babel-preset-umi</span><br><span class="line">@umijs/babel-preset-umi:build: &gt; pnpm tsc</span><br><span class="line">@umijs/babel-preset-umi:build:</span><br><span class="line">@umijs/mfsu:build: cache miss, executing 4edbbadbb0695dc7</span><br><span class="line">@umijs/mfsu:build:</span><br><span class="line">@umijs/mfsu:build: &gt; @umijs/mfsu@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\mfsu</span><br><span class="line">@umijs/mfsu:build: &gt; pnpm tsc</span><br><span class="line">@umijs/mfsu:build:</span><br><span class="line">@umijs/lint:build: cache miss, executing 4d2df7c9507e1184</span><br><span class="line">@umijs/lint:build:</span><br><span class="line">@umijs/lint:build: &gt; @umijs/lint@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\lint</span><br><span class="line">@umijs/lint:build: &gt; pnpm tsc</span><br><span class="line">@umijs/lint:build:</span><br><span class="line">@umijs/bundler-webpack:build: cache miss, executing ff91d9b176202baf</span><br><span class="line">@umijs/bundler-webpack:build:</span><br><span class="line">@umijs/bundler-webpack:build: &gt; @umijs/bundler-webpack@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\bundler-webpack</span><br><span class="line">@umijs/bundler-webpack:build: &gt; pnpm tsc</span><br><span class="line">@umijs/bundler-webpack:build:</span><br><span class="line">@umijs/preset-umi:build: cache miss, executing c37c2011de483338</span><br><span class="line">@umijs/preset-umi:build: </span><br><span class="line">@umijs/preset-umi:build: &gt; @umijs/preset-umi@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\preset-umi</span><br><span class="line">@umijs/preset-umi:build: &gt; pnpm tsc</span><br><span class="line">@umijs/preset-umi:build: </span><br><span class="line">umi:build: cache miss, executing d07cfc390339fe45</span><br><span class="line">umi:build: </span><br><span class="line">umi:build: &gt; umi@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\umi</span><br><span class="line">umi:build: &gt; pnpm tsc</span><br><span class="line">umi:build: </span><br><span class="line">@umijs/plugin-docs:build: cache miss, executing 1c2304af44c683ae</span><br><span class="line">@umijs/plugin-docs:build: </span><br><span class="line">@umijs/plugin-docs:build: &gt; @umijs/plugin-docs@4.0.0-rc.15 build D:\git\umi\umi-next-copy1\packages\plugin-docs</span><br><span class="line">@umijs/plugin-docs:build: &gt; pnpm tsc</span><br><span class="line">@umijs/plugin-docs:build: </span><br><span class="line"></span><br><span class="line"> Tasks:    16 successful, 16 total</span><br><span class="line">Cached:    0 cached, 16 total</span><br><span class="line">  Time:    1m20.301s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; @ doc:deps-extra D:\git\umi\umi-next-copy1</span><br><span class="line">&gt; umi-scripts turbo --cmd build:extra --filter @umijs/plugin-docs...</span><br><span class="line"></span><br><span class="line">umi-scripts: turbo</span><br><span class="line"></span><br><span class="line">• Packages in scope: @umijs/ast, @umijs/babel-preset-umi, @umijs/bundler-esbuild, @umijs/bundler-utils, @umijs/bundler-vite, @umijs/bundler-webpack, @umijs/core, @umijs/lint, @umijs/mfsu, @umijs/plugin-docs, @umijs/preset-umi, @umijs/renderer-react, @umijs/server, @umijs/test, @umijs/utils, </span><br><span class="line">umi</span><br><span class="line">• Running build:extra in 16 packages</span><br><span class="line">@umijs/plugin-docs:build:extra: cache miss, executing b81726ded3e43ac6</span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: &gt; @umijs/plugin-docs@4.0.0-rc.15 build:extra D:\git\umi\umi-next-copy1\packages\plugin-docs</span><br><span class="line">@umijs/plugin-docs:build:extra: &gt; pnpm build:css &amp;&amp; pnpm build:deps</span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: &gt; @umijs/plugin-docs@4.0.0-rc.15 build:css D:\git\umi\umi-next-copy1\packages\plugin-docs</span><br><span class="line">@umijs/plugin-docs:build:extra: &gt; tailwindcss -i ./client/theme-doc/tailwind.css -o ./client/theme-doc/tailwind.out.css</span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: Done in 482ms.</span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: &gt; @umijs/plugin-docs@4.0.0-rc.15 build:deps D:\git\umi\umi-next-copy1\packages\plugin-docs</span><br><span class="line">@umijs/plugin-docs:build:extra: &gt; umi-scripts bundleDeps</span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: umi-scripts: bundleDeps</span><br><span class="line">@umijs/plugin-docs:build:extra: </span><br><span class="line">@umijs/plugin-docs:build:extra: Build dep @mdx-js/mdx</span><br><span class="line">@umijs/plugin-docs:build:extra: ncc: Version 0.33.3</span><br><span class="line">@umijs/plugin-docs:build:extra: ncc: Compiling file index.js into CJS</span><br><span class="line">@umijs/plugin-docs:build:extra: filesToCopy []</span><br><span class="line">@umijs/plugin-docs:build:extra: Do not build dts for @mdx-js/mdx</span><br><span class="line">@umijs/plugin-docs:build:extra: Build dep rehype-slug</span><br><span class="line">@umijs/plugin-docs:build:extra: ncc: Version 0.33.3</span><br><span class="line">@umijs/plugin-docs:build:extra: ncc: Compiling file index.js into CJS</span><br><span class="line">@umijs/plugin-docs:build:extra: filesToCopy []</span><br><span class="line">@umijs/plugin-docs:build:extra: Do not build dts for rehype-slug</span><br><span class="line">@umijs/plugin-docs:build:extra: Build dep remark-gfm</span><br><span class="line">@umijs/plugin-docs:build:extra: ncc: Version 0.33.3</span><br><span class="line">@umijs/plugin-docs:build:extra: ncc: Compiling file index.js into CJS</span><br><span class="line">@umijs/plugin-docs:build:extra: filesToCopy []</span><br><span class="line">@umijs/plugin-docs:build:extra: Do not build dts for remark-gfm</span><br><span class="line"></span><br><span class="line"> Tasks:    1 successful, 1 total</span><br><span class="line">Cached:    0 cached, 1 total</span><br><span class="line">  Time:    28.172s</span><br></pre></td></tr></table></figure>
+<h4 id="pnpm-doc-dev"><a href="#pnpm-doc-dev" class="headerlink" title="pnpm doc:dev"></a>pnpm doc:dev</h4><p>经过以上安装后，所有的准备工作就完成了，执行 <code>pnpm doc:dev</code><br>就会顺利启动文档了。</p>
+<h3 id="开发调试"><a href="#开发调试" class="headerlink" title="开发调试"></a>开发调试</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p><code>pnpm doc:dev</code> 启动文档项目后，</p>
+<p>修改以下文件，会自动执行编译命令，实时重载，渲染最新的效果，调试开发非常方便：</p>
+<ul>
+<li>/d/git/umi/umi-next-copy1/docs 目录下任何文件</li>
+<li>/d/git/umi/umi-next-copy1/packages/plugin-docs/client  目录下任何文件</li>
+</ul>
+<p>因为前者的md文件相当于普通项目中的js，同时被下面引用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// D:\git\umi\umi-next\.umi\core\route.tsx</span></span><br><span class="line"><span class="keyword">export</span> &#123; FeatureItem, Features, Hero, Message &#125; <span class="keyword">from</span> <span class="string">'D:/git/umi/umi-next/packages/plugin-docs/client/theme-doc/index.ts'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>后者(<code>plugin-docs/client</code>)的文件是jsx，同时被下面引用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// D:\git\umi\umi-next\.umi\plugin-docs\index.ts</span></span><br><span class="line"><span class="keyword">export</span> &#123; FeatureItem, Features, Hero, Message &#125; <span class="keyword">from</span> <span class="string">'D:/git/umi/umi-next/packages/plugin-docs/client/theme-doc/index.ts'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>由上可知，上面两个目录下的文件，其实都处于 webpack 编译的树依赖下，会被实时监听。</p>
+<h4 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .umirc.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 定义 writeToDisk 为true，可以看编译后生成的文件</span></span><br><span class="line">  writeToDisk: <span class="literal">true</span>,</span><br><span class="line">  mfsu: <span class="literal">false</span>,</span><br><span class="line">  plugins: [<span class="string">'@umijs/plugin-docs'</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="文档项目的基础框架"><a href="#文档项目的基础框架" class="headerlink" title="文档项目的基础框架"></a>文档项目的基础框架</h2><h3 id="umi目录的生成"><a href="#umi目录的生成" class="headerlink" title=".umi目录的生成"></a>.umi目录的生成</h3><p>umi官网仓库的根目录执行 <code>pnpm doc:dev</code>，就可以启动umi的文档。<br>说明了umi仓库的根目录下，就是一个umi的文档项目，这有别于umi的 plugin-docs 插件。</p>
+<p>现在我们分析下 umi的文档项目 架构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 主要文件或目录 --&gt;</span><br><span class="line">- docs</span><br><span class="line">- .umirc.ts</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .umirc.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  mfsu: <span class="literal">false</span>,</span><br><span class="line">  plugins: [<span class="string">'@umijs/plugin-docs'</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"doc:deps"</span>: <span class="string">"pnpm doc:deps-ts &amp;&amp; pnpm doc:deps-extra"</span>,</span><br><span class="line"><span class="string">"doc:deps-extra"</span>: <span class="string">"umi-scripts turbo --cmd build:extra --filter @umijs/plugin-docs..."</span>,</span><br><span class="line"><span class="string">"doc:deps-ts"</span>: <span class="string">"umi-scripts turbo --cmd build --filter @umijs/plugin-docs..."</span>,</span><br><span class="line"><span class="string">"doc:dev"</span>: <span class="string">"umi dev"</span>,</span><br></pre></td></tr></table></figure>
+<p>当启动 <code>pnpm doc:deps</code> 进行编译生成 umi所有包的dist，以便能正常运行 <code>pnpm doc:dev</code>。具体原因参考《文档的使用和开发》</p>
+<p>执行 <code>pnpm doc:dev</code> 命令后会生成 .umi 目录。</p>
+<h3 id="umi-的项目结构"><a href="#umi-的项目结构" class="headerlink" title=".umi 的项目结构"></a>.umi 的项目结构</h3><p>由于这部分涉及篇幅比较多，单独开一篇进行展示《umi系列(九) 文档插件》</p>
+<h2 id="以-mdx-的方式来写文档"><a href="#以-mdx-的方式来写文档" class="headerlink" title="以 mdx 的方式来写文档"></a>以 mdx 的方式来写文档</h2><p>允许 用react 组件以及md的方式来写 文档，<br>太棒了；<br>核心代码：<br><code>packages\plugin-docs\src\compiler.ts</code></p>
+<p>核心组件<br><code>import { createProcessor } from &#39;../compiled/@mdx-js/mdx&#39;;</code></p>
+<p>在我们这个文档项目中，<br>通过 plugin-docs 会改变webpack 配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"/\\.mdx?$/"</span>,</span><br><span class="line">    <span class="string">"use"</span>: [&#123;</span><br><span class="line">      <span class="string">"loader"</span>: <span class="string">"D:\\git\\umi\\umi-next\\packages\\plugin-docs\\dist\\loader.js"</span></span><br><span class="line">    &#125;],</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"/\\.mdx?$/"</span>,</span><br><span class="line">    <span class="string">"use"</span>: [&#123;</span><br><span class="line">      <span class="string">"loader"</span>: <span class="string">"D:\\git\\umi\\umi-next\\packages\\bundler-webpack\\compiled\\babel-loader\\index.js"</span>,</span><br><span class="line">      <span class="string">"options"</span>: &#123;</span><br><span class="line">        <span class="string">"sourceType"</span>: <span class="string">"unambiguous"</span>,</span><br><span class="line">        <span class="string">"babelrc"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">"cacheDirectory"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">"targets"</span>: &#123;</span><br><span class="line">          <span class="string">"chrome"</span>: <span class="number">80</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"presets"</span>: [</span><br><span class="line">          [<span class="string">"D:\\git\\umi\\umi-next\\packages\\babel-preset-umi\\dist\\index.js"</span>, &#123;</span><br><span class="line">            <span class="string">"presetEnv"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"presetReact"</span>: &#123;</span><br><span class="line">              <span class="string">"runtime"</span>: <span class="string">"automatic"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"presetTypeScript"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"pluginTransformRuntime"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"pluginLockCoreJS"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"pluginDynamicImportNode"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">"pluginAutoCSSModules"</span>: <span class="literal">true</span></span><br><span class="line">          &#125;], &#123;</span><br><span class="line">            <span class="string">"plugins"</span>: [</span><br><span class="line">              [<span class="literal">null</span>, &#123;</span><br><span class="line">                <span class="string">"cwd"</span>: <span class="string">"D:\\git\\umi\\umi-next"</span>,</span><br><span class="line">                <span class="string">"absTmpPath"</span>: <span class="string">"D:/git/umi/umi-next/.umi"</span></span><br><span class="line">              &#125;]</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="string">"plugins"</span>: [<span class="string">"D:\\git\\umi\\umi-next\\node_modules\\.pnpm\\react-refresh@0.12.0\\node_modules\\react-refresh\\babel.js"</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>由上可知，一个 mdx 文件，经过  <code>plugin-docs\\dist\\loader.js</code> 后，变成一个react的jsx或js文件，但文件名和后缀依然是 mdx，<br>但这已经不重要，重要的是 文件内容和语法全部是 react的jsx或js。<br>这就好比linux系统，文件本无后缀名，后缀名只是为了阅读方便，一眼能知道这是什么类型的文件。</p>
+<p>此时的 mdx 其实就是 js或jsx，然后再交给后面的 babel-loader 来处理。</p>
+<h2 id="如何集成-react-router-dom-6-x"><a href="#如何集成-react-router-dom-6-x" class="headerlink" title="如何集成 react-router-dom 6.x"></a>如何集成 react-router-dom 6.x</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .umi\core\history.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createHashHistory, createMemoryHistory, createBrowserHistory, History &#125; <span class="keyword">from</span> <span class="string">'D:/git/umi/umi-next/packages/renderer-react'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="主路由layout"><a href="#主路由layout" class="headerlink" title="主路由layout"></a>主路由layout</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .umi\core\route.tsx</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 主路由： layout :</span></span><br><span class="line"><span class="string">"docs-layout"</span>: &#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"docs-layout"</span>,</span><br><span class="line">    <span class="string">"path"</span>: <span class="string">"/"</span>,</span><br><span class="line">    <span class="string">"file"</span>: <span class="string">"D:\\\\git\\\\umi\\\\umi-next\\\\.umi\\\\plugin-docs\\\\Layout.tsx"</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他路由 根据 </span></span><br><span class="line"><span class="string">"id"</span>: <span class="string">"docs/introduce/upgrade-to-umi-4"</span>,</span><br><span class="line"><span class="string">"parentId"</span>: <span class="string">"docs-layout"</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 来确定层级关系；</span></span><br><span class="line"><span class="comment">// 其实就是将一个树壮路由 扁平化了；</span></span><br></pre></td></tr></table></figure>
+<h2 id="webpack配置与原理"><a href="#webpack配置与原理" class="headerlink" title="webpack配置与原理"></a>webpack配置与原理</h2><h3 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h3><p>这里打印了完整的 文档webpack.config.js 配置文件。<br>可以去这里看《umi系列(end)  – 文档项目的webpack配置》</p>
+<h3 id="如何打印查看webpack配置"><a href="#如何打印查看webpack配置" class="headerlink" title="如何打印查看webpack配置"></a>如何打印查看webpack配置</h3><p>参考 《umi系列(二)  – umi dev 过程源码分析  –   packages\bundler-webpack\src\server\server.ts 》</p>
+<h3 id="如何项目启动的整个原理流程"><a href="#如何项目启动的整个原理流程" class="headerlink" title="如何项目启动的整个原理流程"></a>如何项目启动的整个原理流程</h3><p>参考 《umi系列(二)  – umi dev 过程源码分析 》</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/05/24/umi_eight/" target="_blank" rel="external">https://yewills.github.io/2022/05/24/umi_eight/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/umi/">umi</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/24/umi_eight/&title=《umi系列(八)：文档插件》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/24/umi_eight/&title=《umi系列(八)：文档插件》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/06/12/umi_ten/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">umi系列(十)：umi项目脚手架、改造umi</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/05/24/umi_nine/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">umi系列(九)：文档插件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待研究"><span class="post-toc-number">1.</span> <span class="post-toc-text">待研究</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文档的使用和开发"><span class="post-toc-number">2.</span> <span class="post-toc-text">文档的使用和开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#usage"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">usage</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pnpm-install"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">pnpm install</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pnpm-doc-deps"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">pnpm doc:deps</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pnpm-doc-dev"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">pnpm doc:dev</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开发调试"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">开发调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调试技巧"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">调试技巧</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文档项目的基础框架"><span class="post-toc-number">3.</span> <span class="post-toc-text">文档项目的基础框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#umi目录的生成"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">.umi目录的生成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#umi-的项目结构"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">.umi 的项目结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#以-mdx-的方式来写文档"><span class="post-toc-number">4.</span> <span class="post-toc-text">以 mdx 的方式来写文档</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何集成-react-router-dom-6-x"><span class="post-toc-number">5.</span> <span class="post-toc-text">如何集成 react-router-dom 6.x</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主路由layout"><span class="post-toc-number">6.</span> <span class="post-toc-text">主路由layout</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack配置与原理"><span class="post-toc-number">7.</span> <span class="post-toc-text">webpack配置与原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-config-js"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">webpack.config.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何打印查看webpack配置"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">如何打印查看webpack配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何项目启动的整个原理流程"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">如何项目启动的整个原理流程</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/24/umi_eight/&title=《umi系列(八)：文档插件》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/24/umi_eight/&title=《umi系列(八)：文档插件》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aUW7DMAwE0dz/0u4BYhmzpFLA4uiraFKLzwUIUuLng9e1WN+frr7//MzVbzYvGTJkvJZxPS7C4GHxv+KxyZAhYw5jlcHI9pxde85zbDJkyJCRJsFdJaMMGTJk7E245Dn9MlGGDBkyOiVaJ6US6uZeXIYMGS9k8FP3///5J/cbMmTIeBXjChfh8WRda49vdpEhQ8bRDJ7gagf9/SRO4pEhQ8YERnqwlY5H1Go8EsMHncPJkCHj3Qw+wpUWfCmPAJbxyJAhYxiDH9NzPL9ISEtMGTJkzGHwYo4nRJ5Mg3GK1Y4yZMg4msGDS8cj+g1wXJLKkCHjUEYtuNoRGx/5StkyZMg4m1GbueLH+mnLynePLx5kyJBxHCMdBasF1Gli0f9BhgwZRzA6DSpPiGmxyEkyZMiYyeBDD6Sx5Lw0Bd8MW8iQIeNQRhpEmqY7V6RpwyxDhoxTGbVtaoXjrrGwm91lyJBxNIO3prwQ7F8b1F6ZDBkyZjJIAZcew9WaW3Q8J0OGjMGMvZcEnXEKdD0gQ4aMYYxdZRx/WXxMTYYMGXMYV7hq41+/G/WQIUPGBAZf/YfyJ9TGOGTIkHE2gyRZEjQPkR/GBS9LhgwZAxhpWOmn6WXDhl5chgwZgxmdRjctEElsMmTIkNG55uw3sfyiQoYMGRMYpIlN026amnkBKkOGjGmMXWdZaepMG9cNl5oyZMh4H+MPZa5Bz7Zg0/YAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

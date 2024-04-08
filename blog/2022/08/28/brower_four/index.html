@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>浏览器系列(四)：学习策略 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="浏览器,浏览器插件">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>浏览器系列(四)：学习策略</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">浏览器系列(四)：学习策略</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-08-28T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-08-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/浏览器/">浏览器</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-brower_four"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">浏览器系列(四)：学习策略</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-08-28 00:00:00" datetime="2022-08-28T00:00:00.000Z"  itemprop="datePublished">2022-08-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/浏览器/">浏览器</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="浏览器插件-学习策略"><a href="#浏览器插件-学习策略" class="headerlink" title="浏览器插件 学习策略"></a>浏览器插件 学习策略</h2><ul>
+<li>8.31<br>浏览器插件 api 的文档哪里去找；</li>
+</ul>
+<p>以跨域 cookie 注入 为实战；<br>可以以这个为准 <a href="https://www.jianshu.com/p/1b9639506728" target="_blank" rel="noopener">https://www.jianshu.com/p/1b9639506728</a><br>另外看看 油猴；<br>官网也要看；<br>不看官网 等于白玩；</p>
+<ul>
+<li>9.2<br>油猴<br>浏览器原理<br>浏览器插件</li>
+</ul>
+<p>原本想着直接看谷歌的插件文档，都是英文，比较难懂；<br>因为原本不打算会花这么长时间学，感觉这么急，学不了，感觉要放弃；<br>如果要把这个官网看完，估计也要花一点时间；<br>不过调整好心态，摒弃之前学东西总是急匆匆，然后根本没有学到东西，<br>因此这次改变策略，宁可花大量时间学，一定要学好，也不能急匆匆，<br>后面看视频 插件开发教程，<br>发现有感觉了，<br>然后就坚持了下来。<br>然后找了一个视频的综合示例；<br>总算搞清楚了插件的几大概念，<br>有了概念，有了快速体验示例，<br>然后又知道了如何调试，<br>感觉就来了，</p>
+<p>后期可以再找几个例子，看插件能干什么事情，<br>然后再看官网，<br>然后再把跨域给写了，<br>跨域和油猴 是本次学习的终极目标。</p>
+<p>本次的学习体会是，学东西不能急，一定要真学到东西，<br>为此不要在意学习的快不快，<br>花时间多点，也可以。<br>学习，真的是 心急吃不了热豆腐，<br>而且学习没有捷径，<br>它确实需要很多时间，<br>才能把一个东西学好。</p>
+<ul>
+<li>9.5<br>有一问题，官网是英文，且对插件的概念知道比较少，实践比较少，<br>所以看官网还是比较难，<br>今天看到一篇中文博客，感觉要理解好很多，<br>因此可以以官网博客为顺序读一读，<br>然后将官网中所说的概念不懂的，<br>去查中文博客，<br>弄清楚后，再回来看官网，<br>然后继续往下看。</li>
+</ul>
+<p>感觉这是一个挺好的方法。</p>
+<p>实践证明，<br>还是要尽早看官网，今天看官网，<br>官网已经想好给你如何从0入手插件了，<br>然后还贴心的给出了官网示例，<br>所以以后学其他的，看官网的时候，不要担心官网生涩，<br>因为一份优秀的官网，肯定会贴心的如何给你从0开始，<br>让你循序渐进。</p>
+<p>我这次学浏览器插件，也是因为出于担心官网生涩，所以迟迟没有看官网，<br>现在看来，官网还是很基础的。</p>
+<ul>
+<li>9.6<br>写一个 omnibox 直接百度搜索的插件；</li>
+</ul>
+<ul>
+<li>9月7日<br>今天把 谷歌插件官网 刷完，对这段时间 插件学习做一个小结吧：</li>
+</ul>
+<p>浏览器学习是从 8月28日开始，至今9月7日，合计11天，中间暂停了4天，<br>实际学习 7天；<br>学习的策略：<br>先看浏览器的原理；<br>再看中文博客；<br>玩一玩实际插件；<br>再看谷歌浏览器插件；<br>然后中间穿插看一点中文博客；</p>
+<p>简单的说，<br>先学浏览器原理；<br>在学浏览器插件；<br>这个顺序还是非常好的，没有对浏览器原理的理解，对插件为什么有这些能力，就不能理解。</p>
+<p>官网因为是全英文，大概花了两天时间刷完的，看起来确实一只半懂，我对官网要求是，要知道官网有哪些知识点，<br>开发的时候，知道在官网哪里查，<br>对官网所说的知识点 大致理解，<br>快速过一遍，对浏览器插件有立体理解。</p>
+<p>其实这样刷一次官网后，发现，之前很多博客中的知识点，都是从官网上copy的，<br>除尺之外，官网上的比如如何调试的文档，还是非常惊喜的。</p>
+<p>目前看，这个策略还是比较好的。</p>
+<p>下一步：</p>
+<ul>
+<li>搞跨域cookie支持插件</li>
+<li>油猴插件研究</li>
+</ul>
+<p>今天晚上 进入 搞跨域cookie支持插件 研究</p>
+<ul>
+<li>9月11日<br>今天插件 cookie 写完，<br>开始进入油猴插件研究</li>
+</ul>
+<p>油猴插件，以及油猴脚步开发，由于之前的 浏览器插件开发知识和经验，今天其实一天就看完了，也就花了6个小时全部学习完毕。<br>浏览器系列学习完成。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.797Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/08/28/brower_four/" target="_blank" rel="external">https://yewills.github.io/2022/08/28/brower_four/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/浏览器/">浏览器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/浏览器插件/">浏览器插件</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/28/brower_four/&title=《浏览器系列(四)：学习策略》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/28/brower_four/&title=《浏览器系列(四)：学习策略》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/09/14/computer/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">计算机基础(一)：基础知识</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/08/28/brower_one/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">浏览器系列(一)：浏览器基础知识</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#浏览器插件-学习策略"><span class="post-toc-number">1.</span> <span class="post-toc-text">浏览器插件 学习策略</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/28/brower_four/&title=《浏览器系列(四)：学习策略》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/28/brower_four/&title=《浏览器系列(四)：学习策略》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3a0YrDMAxE0fz/T6fQp0JqZ0aTFixfP4Vu4uR4QciSj0Me53tcf/n8/Xp9vWc+s3J/NGDAgLEs45yO0csUkgtTnhrOAAMGjA0Ybiicw2rz6zPDgAEDRjL1U2EXBgwYMJKAm2xcdSoMGDBg1DaxOsOthulL88BeHAYMGAsy3MbAP69/2N+AAQPGIozTHHp65yaaepD98hQMGDBaM+YtSbfEX0sc3QUaLhYMGDBaM5RPqR28cFubClX6n8CAAaMRwy1guY1MO1zKRzdgwICxD6P22DwsuilgcvziZhMLAwaMRozaZjU5LqYkfMpiHbXIDQMGjGUZtTK9vpXV00Q3xMOAAWMfRlIsqzU1a8W+KOzCgAFjQUbUSTA/rsaT5oEBA8Y2DDe85tfJX2HAgLEnQ0/UjLZiMJtxIAMGDBgbMJLp3C1o0rW4CbgwYMBozahtHZWjEvqBDAU2fBcMGDA2YCgB120hKGHXXazhF8KAAaM1Q0/1krCrYPIADQMGjK4M+7hVaRPrtkLtNicMGDA2YOgB12XrsFqyeNOJhQEDRguGHhbd4r574KwWjmHAgLED4zSHy3O3wbVCHgwYMHoz9PFA6ha8Sy/YwYABoytD+Qh3VfL2QFQ7hAEDRlNG0tQsRvHS9nX4CwwYMGBMw6J+f61gJ+W2MGDAgBGERXcnrS/ZAwEXBgwYSzH0Yr1bdFNIbio5DLgwYMBoysiL9W4qWSvkKcklDBgw2jFe+6DbGZ/MKZ4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

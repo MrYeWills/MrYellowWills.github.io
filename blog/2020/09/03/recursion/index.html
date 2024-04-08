@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>递归及其他 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="recursion">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>递归及其他</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">递归及其他</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-09-03T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2020-09-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-recursion"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">递归及其他</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-09-03 00:00:00" datetime="2020-09-03T00:00:00.000Z"  itemprop="datePublished">2020-09-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/js/">js</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>主要是递归专项练习笔记，另外附带其他算法练习。</p>
+<h2 id="有关tree树的数据处理"><a href="#有关tree树的数据处理" class="headerlink" title="有关tree树的数据处理"></a>有关tree树的数据处理</h2><h3 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h3><h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="number">19</span>,</span><br><span class="line">    <span class="string">"parentId"</span>: <span class="number">0</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="string">"parentId"</span>: <span class="number">16</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="number">17</span>,</span><br><span class="line">    <span class="string">"parentId"</span>: <span class="number">16</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="number">16</span>,</span><br><span class="line">    <span class="string">"parentId"</span>: <span class="number">0</span>,</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"><span class="comment">// 转化为:</span></span><br><span class="line"><span class="keyword">const</span> tree = &#123;</span><br><span class="line">  <span class="string">"id"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="string">"children"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="number">19</span>,</span><br><span class="line">      <span class="string">"parentId"</span>: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="number">16</span>,</span><br><span class="line">      <span class="string">"parentId"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"children"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"id"</span>: <span class="number">18</span>,</span><br><span class="line">          <span class="string">"parentId"</span>: <span class="number">16</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"id"</span>: <span class="number">17</span>,</span><br><span class="line">          <span class="string">"parentId"</span>: <span class="number">16</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> idInfoMap = list.reduce(<span class="function">(<span class="params">acc,item</span>)=&gt;</span>&#123;</span><br><span class="line">    acc[item[<span class="string">'id'</span>]]=item;</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'idInfoMap..'</span>, idInfoMap)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> idChildsMap = list.reduce(<span class="function">(<span class="params">acc,item</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;id, parentId&#125; = item;</span><br><span class="line">    acc[parentId] = [...(acc[parentId]??[]), id]</span><br><span class="line">    <span class="keyword">return</span> acc;</span><br><span class="line">  &#125;,&#123;&#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'idChildsMap..'</span>, idChildsMap)</span><br><span class="line"><span class="keyword">const</span> getTree = <span class="function">(<span class="params">id, parentId</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> model = &#123;</span><br><span class="line">        id,</span><br><span class="line">        parentId</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> childs = idChildsMap[id];</span><br><span class="line">    <span class="keyword">if</span>(childs)&#123;</span><br><span class="line">        model.children=childs.map(<span class="function">(<span class="params">childId</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(idChildsMap[childId])&#123;</span><br><span class="line">                <span class="keyword">return</span> getTree(idInfoMap[childId].id, idInfoMap[childId].parentId)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> idInfoMap[childId]</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> model;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> treeDatas = getTree(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'treeDatas..'</span>,treeDatas)</span><br></pre></td></tr></table></figure>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>扁平数据 转为 树形数据， <strong>需要知道顶级节点 isSuperPid</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> isSuperPid = <span class="function">(<span class="params">id</span>)=&gt;</span> id === <span class="string">"129371"</span></span><br><span class="line">      <span class="keyword">var</span> tree = []</span><br><span class="line">      <span class="keyword">var</span> flat2tree = <span class="function"><span class="params">flatLs</span> =&gt;</span> &#123;</span><br><span class="line">        flatLs.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (isSuperPid(item.deptNo)) &#123;</span><br><span class="line">            tree.push(item)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> index = flatLs.findIndex(<span class="function"><span class="params">item1</span> =&gt;</span> item1.deptNo === item.parentDeptNo)</span><br><span class="line">            <span class="keyword">if</span> (index !== <span class="number">-1</span>) &#123;</span><br><span class="line">              flatLs[index].children = flatLs[index].children || []</span><br><span class="line">              flatLs[index].children.push(item)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      flat2tree(data)</span><br><span class="line">      <span class="keyword">return</span> tree;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> list = [&#123;<span class="string">"deptName"</span>:<span class="string">"运维一组"</span>,<span class="string">"parentDeptNo"</span>:<span class="string">"129371"</span>,<span class="string">"deptNo"</span>:<span class="string">"101921"</span>&#125;,&#123;<span class="string">"deptName"</span>:<span class="string">"运维二组"</span>,<span class="string">"parentDeptNo"</span>:<span class="string">"129371"</span>,<span class="string">"deptNo"</span>:<span class="string">"101931"</span>&#125;,&#123;<span class="string">"deptName"</span>:<span class="string">"运维"</span>,<span class="string">"parentDeptNo"</span>:<span class="string">"06041"</span>,<span class="string">"deptNo"</span>:<span class="string">"129371"</span>&#125;]</span><br><span class="line"></span><br><span class="line">getData(list)</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法三-树形数据转key字段"><a href="#方法三-树形数据转key字段" class="headerlink" title="方法三 树形数据转key字段"></a>方法三 树形数据转key字段</h2><p>树形数据的key值转换<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// treeData是否保留原来的数据</span></span><br><span class="line"><span class="comment">// maps是否保留原来的数据</span></span><br><span class="line"><span class="comment">// isOrigin是否保留原来的数据</span></span><br><span class="line">[[<span class="string">'label'</span>, <span class="string">'name'</span>],[<span class="string">'value'</span>, <span class="string">'id'</span>],[<span class="string">'key'</span>, <span class="string">'id'</span>], <span class="string">'empNo]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">formatTreeData(&#123;data, childrenName:'</span>children<span class="string">', maps:[['</span>label<span class="string">','</span>deptName<span class="string">'], ['</span>value<span class="string">','</span>deptNo<span class="string">'], ['</span>id<span class="string">','</span>deptNo<span class="string">']]&#125;)</span></span><br><span class="line"><span class="string">function formatTreeData(&#123;data, childrenName='</span>children<span class="string">', maps, isOrigin&#125;) &#123;</span></span><br><span class="line"><span class="string">  return data.map((item) =&gt; &#123;</span></span><br><span class="line"><span class="string">    let children = item[childrenName];</span></span><br><span class="line"><span class="string">    if (children &amp;&amp; children.length) &#123;</span></span><br><span class="line"><span class="string">      children = formatTreeData(children, maps, isOrigin);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    const newItem = maps.reduce((acc, keys)=&gt;&#123;</span></span><br><span class="line"><span class="string">      if(Array.isArray(keys))&#123;</span></span><br><span class="line"><span class="string">        acc[keys[0]] = item[keys[1]]</span></span><br><span class="line"><span class="string">        return acc;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">      acc[keys] = item[keys]</span></span><br><span class="line"><span class="string">      return acc</span></span><br><span class="line"><span class="string">    &#125;, &#123;&#125;)</span></span><br><span class="line"><span class="string">    if(isOrigin)&#123;</span></span><br><span class="line"><span class="string">      return &#123; ...rest, ...newItem, children &#125;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    return &#123; ...newItem, children&#125;;</span></span><br><span class="line"><span class="string">  &#125;);</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="二元一次方程计算-Fibonacci-数列的初始值"><a href="#二元一次方程计算-Fibonacci-数列的初始值" class="headerlink" title="二元一次方程计算 Fibonacci 数列的初始值"></a>二元一次方程计算 Fibonacci 数列的初始值</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、1、2、3、5、8、13、21、34</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> FibonacciLoop&lt;</span><br><span class="line">    PrevArr <span class="keyword">extends</span> unknown[],</span><br><span class="line">    CurrentArr <span class="keyword">extends</span> unknown[],</span><br><span class="line">    IndexArr <span class="keyword">extends</span> unknown[] = [],</span><br><span class="line">    Num <span class="keyword">extends</span> <span class="built_in">number</span> = <span class="number">1</span></span><br><span class="line">&gt; = IndexArr[<span class="string">'length'</span>] <span class="keyword">extends</span> Num</span><br><span class="line">    ? CurrentArr[<span class="string">'length'</span>]</span><br><span class="line">    : FibonacciLoop&lt;CurrentArr, [...PrevArr, ...CurrentArr], [...IndexArr, unknown], Num&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Fibonacci&lt;Num <span class="keyword">extends</span> <span class="built_in">number</span>&gt; = FibonacciLoop&lt;[<span class="number">1</span>], [], [], Num&gt;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">acc</span>(<span class="params">pre, current, index = <span class="number">0</span>, num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (index === num) &#123;</span><br><span class="line">    <span class="keyword">return</span> current;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (index &lt; num) &#123;</span><br><span class="line">    <span class="keyword">return</span> acc(current, pre + current, index + <span class="number">1</span>, num);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 要求：</span></span><br><span class="line">acc(preValue, preCurrent, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">acc(preValue, preCurrent, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 问preValue 、 preCurrent 的值为多少？</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// //解：</span></span><br><span class="line"><span class="comment">// 根据上面的函数逻辑，得出两个公式(二元一次方程)：</span></span><br><span class="line"><span class="comment">// preValue + preCurrent = 1 ；</span></span><br><span class="line"><span class="comment">// preValue + 2*preCurrent = 1 ；</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// //求得：</span></span><br><span class="line"><span class="comment">// 用第二个等式 减去 第一个等式 得：</span></span><br><span class="line"><span class="comment">// preValue + 2*preCurrent - preValue + preCurrent = 1-1</span></span><br><span class="line"><span class="comment">// 等式经过计算后得：</span></span><br><span class="line"><span class="comment">// preCurrent = 0 ；</span></span><br><span class="line"><span class="comment">// 由于 preCurrent 为 0 ，</span></span><br><span class="line"><span class="comment">// 由上面等式 得出</span></span><br><span class="line"><span class="comment">// preValue=1 ；</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试：</span></span><br><span class="line">acc(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 1</span></span><br><span class="line">acc(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>); <span class="comment">// 1</span></span><br><span class="line">acc(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>); <span class="comment">// 2</span></span><br><span class="line">acc(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">4</span>); <span class="comment">// 3</span></span><br><span class="line">acc(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<p>延申下，函数求出指定长度的 Fibonacci 数列：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">acc</span>(<span class="params">pre, current, arr=[], num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr.length === num) &#123;</span><br><span class="line">      <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (arr.length &lt; num) &#123;</span><br><span class="line">      <span class="keyword">return</span> acc(current, pre + current, [...arr, pre + current], num);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  acc(<span class="number">1</span>, <span class="number">0</span>, [], <span class="number">10</span>);<span class="comment">//[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2020/09/03/recursion/" target="_blank" rel="external">https://yewills.github.io/2020/09/03/recursion/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/recursion/">recursion</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/09/03/recursion/&title=《递归及其他》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/09/03/recursion/&title=《递归及其他》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2020/09/04/engineer/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">前端工程笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2020/08/20/css_grid/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">grid布局</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有关tree树的数据处理"><span class="post-toc-number">1.</span> <span class="post-toc-text">有关tree树的数据处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需求："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">需求：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">方案</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方法二"><span class="post-toc-number">2.</span> <span class="post-toc-text">方法二</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方法三-树形数据转key字段"><span class="post-toc-number">3.</span> <span class="post-toc-text">方法三 树形数据转key字段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二元一次方程计算-Fibonacci-数列的初始值"><span class="post-toc-number">4.</span> <span class="post-toc-text">二元一次方程计算 Fibonacci 数列的初始值</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/09/03/recursion/&title=《递归及其他》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/09/03/recursion/&title=《递归及其他》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3azW6EMAxFYd7/panUVaWKzLk2VMU5WY1mGMjHwvJPjgOv83v9/ry+5ue6uv7qX8cTS4YMGa9lnMt1tXVy/b2wD3eQIUPGBgweQNcPXt9n/SJqwV2GDBkyOqRO2JUhQ4aMuwIuSRNrVBkyZMioFbFXQbaWCPLU8OZaXIYMGS9kdAYDT3/+o/mGDBky/jHjDFctceQDzrO0ZMiQMZvRT+/SFn/6OsgwVYYMGTsw+iMBQuWvr1Mqy5AhYx6Dt65IAsd/7ZfTMmTI2I3BR4zPFb2dUYEMGTJmM9L2GdkcCpH4AAe/mwwZMmYz+B/4g9MDHGnT7bKUlSFDxjjGE8lc7fBWbZwgQ4aMHRj8Frx9VgudaYtNhgwZezJ4y4ww1q+Gl8FBIJYhQ8YGjFoA5cVtZ1wat9tkyJAxlMFDbbqhtMVWK6plyJAxlUESuLQRRkaenRQzrsJlyJAxgpG278lW0qYb//XDCFOGDBnjGOkwoFOmppg0QMuQIWMqIw1t68KSp5U8oJN0U4YMGTswWkccQnwnvKJaXIYMGeMYaditNfFrxyx4C0+GDBmzGWe4amlirbnGB5kyZMiYzeCr1ujnhSsvg2XIkLEngwfZWuFaSyvT8aoMGTJ2YPAgy0m8kVfbJ+odypAhYzMGJ5GErzMYaAVcGTJkbMCorfRgRxz6ZciQsQGDDwPS73kQb6WVMmTIGM2oDQbubfeTZlxt8CBDhoyXM74AGgKJh7awKQUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

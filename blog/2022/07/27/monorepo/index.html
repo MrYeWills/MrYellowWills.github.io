@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>monorepo笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="monorepo,lerna">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>monorepo笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">monorepo笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-07-27T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-07-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端工程/">前端工程</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-monorepo"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">monorepo笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-07-27 00:00:00" datetime="2022-07-27T00:00:00.000Z"  itemprop="datePublished">2022-07-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端工程/">前端工程</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="lerna笔记"><a href="#lerna笔记" class="headerlink" title="lerna笔记"></a>lerna笔记</h2><h3 id="学习体会"><a href="#学习体会" class="headerlink" title="学习体会"></a>学习体会</h3><p>昨天开始把 lerna官网，全英文的刷了遍，加在一起，不超过8小时，<br>但解决了很多疑问，<br>这次本打算，先刷一波相关的视频，然后再看文档，再看官网的，<br>索性直接刷官网了，<br>因为之前有使用lerna的基础，从头刷官网，整体刷一遍，感觉收获非常大，已经不需要再刷其他教程，可以直接上手使用learn了。<br>原本打算至少要花三天或更多时间，最后只用了一天半就搞定。<br>结合之前 label、webpack、eslint、umi、verdaccio 等经验，确实，学东西，直接去官网刷，可以作为第一选择，<br>如果之前没有相关经验，那么官网也会有快速示例让你体验，都是由浅及深，<br>而且官网讲究连续性，只有从头读完，反而理解起来更加容易，如果只看某一部分，很可能看不懂。</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="关于-prod-的解释"><a href="#关于-prod-的解释" class="headerlink" title="关于^prod 的解释"></a>关于^prod 的解释</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"namedInputs"</span>: &#123;</span><br><span class="line">    <span class="string">"default"</span>: [<span class="string">"&#123;projectRoot&#125;/**/*"</span>],</span><br><span class="line">    <span class="string">"prod"</span>: [<span class="string">"!&#123;projectRoot&#125;/**/*.spec.tsx"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"targetDefaults"</span>: &#123;</span><br><span class="line">    <span class="string">"build"</span>: &#123;</span><br><span class="line">      <span class="string">"inputs"</span>: [<span class="string">"prod"</span>, <span class="string">"^prod"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"test"</span>: &#123;</span><br><span class="line">      <span class="string">"inputs"</span>: [<span class="string">"default"</span>, <span class="string">"^prod"</span>, <span class="string">"&#123;workspaceRoot&#125;/jest.config.ts"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://lerna.js.org/docs/features/cache-tasks" target="_blank" rel="noopener">参考官网</a><br>With this configuration, the build script will only consider the non-test files of remixapp, header and footer. The test script will consider all the source files for the project under test and only non-test files of its dependencies. The test script will also consider the jest config file at the root of the workspace.</p>
+</blockquote>
+<p>其实就是 ^其实是用来约束 pkg中的 dependencies pkg 的。</p>
+<h4 id="的两种用法"><a href="#的两种用法" class="headerlink" title="--的两种用法"></a><code>--</code>的两种用法</h4><h4 id="与lerna-exec一起使用"><a href="#与lerna-exec一起使用" class="headerlink" title="与lerna exec一起使用"></a>与lerna exec一起使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lerna exec --scope my-component -- ls -la</span><br></pre></td></tr></table></figure>
+<p>这个 – ls -la 中的 – 是什么意思？</p>
+<p>目前知道上面这句话 应该就是 过滤 my-component ，然后执行命令bash命令 ls -la<br><a href="https://github.com/lerna/lerna/tree/main/commands/exec#readme" target="_blank" rel="noopener">参考</a></p>
+<h4 id="与lerna-run-一起使用"><a href="#与lerna-run-一起使用" class="headerlink" title="与lerna run 一起使用"></a>与lerna run 一起使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lerna run --scope my-component test</span><br></pre></td></tr></table></figure>
+<p>这里有 – 的解释，其实就是，如果要传条件，就用这个；<br>与上面的  lerna exec –scope my-component – ls -la 中的 – ，可能意义不一样，<br>也可能一样</p>
+<blockquote>
+<p><a href="https://github.com/lerna/lerna/tree/main/commands/run#readme" target="_blank" rel="noopener">参考</a><br>Run an npm script in each package that contains that script. A double-dash (–) is necessary to pass dashed arguments to the script execution.</p>
+</blockquote>
+<h2 id="yarn笔记"><a href="#yarn笔记" class="headerlink" title="yarn笔记"></a>yarn笔记</h2><h3 id="node-modules-结构设计"><a href="#node-modules-结构设计" class="headerlink" title="node_modules 结构设计"></a>node_modules 结构设计</h3><p>参考这个<br><a href="https://pnpm.io/zh/blog/2020/05/27/flat-node-modules-is-not-the-only-way" target="_blank" rel="noopener">平铺的结构不是 node_modules 的唯一实现方式</a></p>
+<p>yarn node_modules 情况如下：<br>项目依赖 a，b， b依赖 a，c<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">项目</span><br><span class="line">  -a</span><br><span class="line">  -b</span><br><span class="line">    -a</span><br><span class="line">    -c</span><br></pre></td></tr></table></figure></p>
+<p>如果项目依赖的a与b依赖的a的版本号一样，<br>node_modules 结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">项目node_modules</span><br><span class="line">      -a</span><br><span class="line">      -c</span><br><span class="line">      -b</span><br><span class="line">        -a deduped</span><br></pre></td></tr></table></figure></p>
+<p>c会被提到根目录的node module。<br>deduped就是下面常见的类似：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">│ ├─┬ @babel/plugin-proposal-dynamic-import@7.18.6</span><br><span class="line">│ │ ├── @babel/core@7.18.6 deduped</span><br><span class="line">│ │ ├── @babel/helper-plugin-utils@7.18.6 deduped</span><br><span class="line">│ │ └── @babel/plugin-syntax-dynamic-import@7.8.3 deduped</span><br></pre></td></tr></table></figure></p>
+<p>如果项目依赖的a与b依赖的a的版本号不一样，<br>node_modules 结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">项目node_modules</span><br><span class="line">      -a</span><br><span class="line">      -c</span><br><span class="line">      -b</span><br><span class="line">        -node_modules</span><br><span class="line">           -a</span><br></pre></td></tr></table></figure></p>
+<p>根目录下的ddd下的a是一个版本，然后b的node_modules下的a又是一个版本。</p>
+<h3 id="为什么能覆盖npm版本"><a href="#为什么能覆盖npm版本" class="headerlink" title="为什么能覆盖npm版本"></a>为什么能覆盖npm版本</h3><p>首先要清楚  “eslint-config-airbnb-base”: “14.1.0”<br>其package.json 为：<br>{<br>  “name”: “eslint-config-airbnb-base”,<br>  “version”: “14.1.0”,<br>  “dependencies”: {<br>    “confusing-browser-globals”: “^1.0.9”,<br>    “object.assign”: “^4.1.0”,<br>    “object.entries”: “^1.1.1”<br>  }<br>}</p>
+<p>示例<br>{<br>  “name”: “npmd”,<br>  “version”: “1.0.0”,<br>  “description”: “”,<br>  “main”: “index.js”,<br>  “scripts”: {<br>    “test”: “echo \”Error: no test specified\” &amp;&amp; exit 1”<br>  },<br>  “author”: “”,<br>  “license”: “ISC”,<br>  “dependencies”: {<br>    “eslint-config-airbnb-base”: “14.1.0”<br>  }<br>}</p>
+<p>此时</p>
+<p>-node_modules</p>
+<ul>
+<li>eslint-config-airbnb-base</li>
+<li><a href="mailto:object.assign@4.1.0" target="_blank" rel="noopener">object.assign@4.1.0</a></li>
+</ul>
+<p>增加 object.assign后</p>
+<p>{<br>  “name”: “npmd”,<br>  “version”: “1.0.0”,<br>  “description”: “”,<br>  “main”: “index.js”,<br>  “scripts”: {<br>    “test”: “echo \”Error: no test specified\” &amp;&amp; exit 1”<br>  },<br>  “author”: “”,<br>  “license”: “ISC”,<br>  “dependencies”: {<br>    “eslint-config-airbnb-base”: “14.1.0”,<br>    “object.assign”: “^3.0.1”<br>  }<br>}</p>
+<p>此时</p>
+<p>-node_modules</p>
+<ul>
+<li>eslint-config-airbnb-base<br>  -node_modules<pre><code>- object.assign@4.1.0
+</code></pre></li>
+<li><a href="mailto:object.assign@3.0.1" target="_blank" rel="noopener">object.assign@3.0.1</a></li>
+</ul>
+<p>当把 版本改为  “object.assign”: “4.0.0”</p>
+<p>{<br>  “name”: “npmd”,<br>  “version”: “1.0.0”,<br>  “description”: “”,<br>  “main”: “index.js”,<br>  “scripts”: {<br>    “test”: “echo \”Error: no test specified\” &amp;&amp; exit 1”<br>  },<br>  “author”: “”,<br>  “license”: “ISC”,<br>  “dependencies”: {<br>    “eslint-config-airbnb-base”: “14.1.0”,<br>    “object.assign”: “4.0.0”<br>  }<br>}</p>
+<p>此时</p>
+<p>-node_modules</p>
+<ul>
+<li>eslint-config-airbnb-base<br>  -node_modules<pre><code>- object.assign@4.1.0
+</code></pre></li>
+<li><a href="mailto:object.assign@4.0.0" target="_blank" rel="noopener">object.assign@4.0.0</a></li>
+</ul>
+<p>从上述可看到其实无法做到 覆盖npm包的目的。</p>
+<p>更多参考<br><a href="https://pnpm.io/zh/motivation" target="_blank" rel="noopener">创建非扁平化的 node_modules 文件夹</a><br><a href="https://pnpm.io/zh/blog/2020/05/27/flat-node-modules-is-not-the-only-way" target="_blank" rel="noopener">平铺的结构不是 node_modules 的唯一实现方式</a><br><a href="https://lerna.js.org/docs/concepts/hoisting" target="_blank" rel="noopener">lerna Hoisting</a></p>
+<h2 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h2><p>pnpm.neverBuiltDependencies<br><a href="https://pnpm.io/zh/package_json#pnpmneverbuiltdependencies" target="_blank" rel="noopener">https://pnpm.io/zh/package_json#pnpmneverbuiltdependencies</a></p>
+<blockquote>
+<p>该字段允许忽略特定依赖项的构建。 安装期间不会执行所列包的 “preinstall”、“install” 和 “postinstall” 脚本。</p>
+</blockquote>
+<p>有空去看看npm install 时，要执行的 install文件；以及那边的文档；</p>
+<p>这三个 pnpm yarn npm lerna 看完后，做一个总结，区别分析；</p>
+<p>如何判断 文件是硬链接 还是软链接；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 正常文件，因为链接数是1，只有连接数为2或以上，才说明此文件被多个文件名指向；</span><br><span class="line">localhost:pnpmd xhkj$ ls -li package.json </span><br><span class="line">8593468697 -rw-r--r--  1 xhkj  staff  275  7 28 23:54 package.json</span><br><span class="line"></span><br><span class="line"># 软链接，首先 权限是lrwxr-xr-x ，以l开头，说明是软链接，跟着后面的文件地址指向 也说明了是软链接</span><br><span class="line">localhost:pnpmd xhkj$ ls -li node_modules/express</span><br><span class="line">8593461616 lrwxr-xr-x  1 xhkj  staff  41  7 28 23:10 node_modules/express -&gt; .pnpm/express@4.18.1/node_modules/express</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 硬链接，因为链接数为2，且权限为 -rw-r--r-- ，没有l开头</span><br><span class="line">localhost:pnpmd xhkj$ ls -li node_modules/express/Readme.md </span><br><span class="line">8593460636 -rw-r--r--  2 xhkj  staff  5404  7 31 00:34 node_modules/express/Readme.md</span><br></pre></td></tr></table></figure>
+<p>还有一个技巧，macOs下，对两个硬链接的文件，右键显示简介，只会出现一个简介弹框；<br>对软链接的文件夹和源文件，右键显示简介，会出现预期的两个简介弹框，软链接会显示 替身 ；</p>
+<p><a href="https://juejin.cn/post/7064113153776287751#heading-2" target="_blank" rel="noopener">参考</a><br><a href="https://juejin.cn/post/7013612655680159758" target="_blank" rel="noopener">参考</a></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>弄清楚 npm 发布的 beta  next latest 等；<br>反正有自己的私库，可以测试下；</p>
+<p><a href="https://docs.npmjs.com/about-packages-and-modules" target="_blank" rel="noopener">https://docs.npmjs.com/about-packages-and-modules</a><br>d) A <name>@<version> that is published on the registry with (c).<br>e) A <name>@<tag> that points to (d).<br>version 与 tag 的区别</tag></name></version></name></p>
+<p>可以用 umi 测试：</p>
+<p>3-3-x: 3.3.14<br>canary: 4.0.0-canary.20220729.2<br>latest-3: 3.5.31<br>latest: 4.0.9<br>next-3: 3.5.29-alpha.0<br>next: 4.0.0-rc.24</p>
+<p>还有一些关键字 beta alpha 分别代表什么含义；<br>从上述umi上看， latest 应该是默认的稳定版本，npm install 的时候默认安装 latest 版本；<br>next 是最新的版本，除非 npm install 时指定 next，否则不下载；<br>beta alpha canary  stable, beta, dev, canary 呢？</p>
+<p><a href="https://docs.npmjs.com/cli/v8/commands/npm-dist-tag" target="_blank" rel="noopener">摘自官网</a></p>
+<blockquote>
+<p>Tags can be used to provide an alias instead of version numbers.</p>
+</blockquote>
+<p>For example, a project might choose to have multiple streams of development and use a different tag for each stream, e.g., stable, beta, dev, canary.</p>
+<p>By default, the latest tag is used by npm to identify the current version of a package, and npm install <pkg> (without any @<version> or @<tag> specifier) installs the latest tag. Typically, projects only use the latest tag for stable release versions, and use other tags for unstable versions such as prereleases.</tag></version></pkg></p>
+<p>The next tag is used by some projects to identify the upcoming version.</p>
+<p>Other than latest, no tag has any special significance to npm itself.</p>
+<p>由上可知，latest 用于代表当前稳定版本，next 表示即将要发布的版本。<br>除了 latest 版本会默认被npm install下载外，其他任何tag，对npm没有任何意义，</p>
+<p>会分别列出 所有 tag<br>参考 <a href="https://docs.npmjs.com/cli/v8/commands/npm-dist-tag" target="_blank" rel="noopener">https://docs.npmjs.com/cli/v8/commands/npm-dist-tag</a></p>
+<p>npm view umi time 查看 所有的 版本<br>{<br>  created: ‘2022-01-26T21:25:32.564Z’,<br>  modified: ‘2022-07-29T07:05:17.251Z’,<br>  ‘4.0.0-rc.1’: ‘2022-01-29T03:15:28.085Z’,<br>  ‘4.0.0-beta.12’: ‘2021-12-09T07:59:31.668Z’,<br>  ‘4.0.0-beta.1’: ‘2021-10-29T09:59:56.288Z’,<br>  ‘3.5.20’: ‘2021-09-28T05:56:13.559Z’,<br>  ‘3.5.19’: ‘2021-09-17T05:10:35.079Z’,</p>
+<p>  ‘3.5.0-beta.20’: ‘2021-06-29T02:23:50.731Z’,<br>  ‘3.5.0-beta.1’: ‘2021-06-03T09:14:30.703Z’,</p>
+<p>  ‘3.4.3-beta.1’: ‘2021-03-15T09:08:24.537Z’,<br>  ‘3.4.2’: ‘2021-03-12T06:37:42.876Z’,<br>  ‘3.4.1’: ‘2021-03-11T10:19:50.798Z’,<br>  ‘3.4.0’: ‘2021-03-09T09:02:18.408Z’,<br>  ‘3.4.0-beta.7’: ‘2021-03-09T08:17:02.456Z’,<br>  ‘3.3.9’: ‘2021-02-23T10:23:22.806Z’,<br>  ‘3.4.0-beta.1’: ‘2021-02-23T08:11:12.394Z’,</p>
+<p>  ‘3.2.10’: ‘2020-07-15T10:15:47.316Z’,<br>  ‘3.3.0-alpha.0’: ‘2020-07-14T08:33:13.251Z’,<br>  ‘3.2.9’: ‘2020-07-08T03:58:00.384Z’,<br>  ‘3.2.0-beta.12’: ‘2020-05-18T05:33:53.154Z’,<br>  ‘3.2.0-beta.6’: ‘2020-05-13T03:59:35.454Z’,<br>  ‘3.1.4’: ‘2020-05-09T03:29:44.477Z’,<br>  ‘3.2.0-beta.5’: ‘2020-05-07T15:27:13.349Z’,<br>  ‘3.2.0-beta.4’: ‘2020-05-07T09:54:44.560Z’,<br>  ‘3.1.3’: ‘2020-05-06T05:45:06.667Z’,<br>  ‘3.2.0-beta.1’: ‘2020-04-25T09:22:14.301Z’,<br>  ‘3.1.2’: ‘2020-04-25T09:12:16.226Z’,</p>
+<p>  ‘3.0.0-beta.38’: ‘2020-03-01T14:59:28.935Z’,<br>  ‘3.0.0-beta.1’: ‘2020-02-03T06:38:53.334Z’,</p>
+<p>  ‘1.0.0-rc.23’: ‘2018-02-25T00:35:41.351Z’,</p>
+<p>  ‘1.0.0-rc.1’: ‘2018-01-30T12:36:20.134Z’,<br>  ‘1.0.0-beta.37’: ‘2018-01-19T05:54:08.278Z’,</p>
+<p>  ‘1.0.0-beta.2’: ‘2017-12-01T09:49:41.747Z’,<br>  ‘0.6.0’: ‘2014-08-19T03:16:48.038Z’,<br>  ‘4.0.0-beta.18’: ‘2022-01-26T09:38:27.912Z’,<br>  ‘4.0.0-rc.2’: ‘2022-02-20T14:45:09.819Z’,<br>  ‘4.0.0-rc.3’: ‘2022-02-24T09:03:27.809Z’,<br>  ‘3.5.21’: ‘2022-02-25T06:40:41.715Z’,<br>  ‘4.0.0-rc.4’: ‘2022-03-03T07:55:29.821Z’,<br>  ‘4.0.0-rc.5’: ‘2022-03-04T03:46:44.095Z’,<br>  ‘4.0.0-rc.6’: ‘2022-03-10T08:14:44.124Z’,<br>  ‘4.0.0-canary.20220316.1’: ‘2022-03-16T08:41:08.595Z’,</p>
+</div>
+<h3 id="tag相关的发布与调试-cli"><a href="#tag相关的发布与调试-cli" class="headerlink" title="tag相关的发布与调试 cli"></a>tag相关的发布与调试 cli</h3><p><a href="https://docs.npmjs.com/cli/v8/commands/npm-dist-tag" target="_blank" rel="noopener">参考</a><br>npm dist-tag ls @xnbz/olg 查看当前所有tag<br>npm view @xnbz/olg time<br>npm publish –tag beta 可以直接发布为tag<br>npm dist-tag add @<a href="mailto:xnbz/olg@0.0.5" target="_blank" rel="noopener">xnbz/olg@0.0.5</a> beta  只能给已有的打tag</p>
+<h3 id="打tag不会改变版本名，是为了改变install版本"><a href="#打tag不会改变版本名，是为了改变install版本" class="headerlink" title="打tag不会改变版本名，是为了改变install版本"></a>打tag不会改变版本名，是为了改变install版本</h3><p>这里需要弄清楚的是，<br>给发布的版本号，打tag，并不会改变npm包的版本号，而只是让该版本<br>是否被npm install 默认安装。<br>这是给版本号 打tag的非常重要的功能。</p>
+<p>任何不打tag 就npm publish 的版本，将会被当作latest tag，将会被 npm install 默认下载下来。</p>
+<h3 id="tag版本要手动设置好"><a href="#tag版本要手动设置好" class="headerlink" title="tag版本要手动设置好"></a>tag版本要手动设置好</h3><p>tag版本要自己手动在package.json 中设置好，<br>然后执行 <code>npm publish --tag beta</code><br>可以考虑的版本号：</p>
+<p>4.0.0-canary.20220729.2<br>4.0.0-canary.20220316.1<br>3.5.29-alpha.0 用于 next 意义的版本名<br>4.0.0-beta.1   用于 测试 意义的版本名<br>4.0.0-beta.2<br>4.0.0-rc.1  用于 next 意义的版本名<br>4.0.0-rc.2</p>
+<h3 id="关于npm登陆、token、publish-关系"><a href="#关于npm登陆、token、publish-关系" class="headerlink" title="关于npm登陆、token、publish 关系"></a>关于npm登陆、token、publish 关系</h3><p>我们可以通过下面登陆，<br> profile.loginCouch(accountNo, pwd, {<br>            registry: <code>http://127.0.0.1:${process.env.VERDACCIO_PORT ?? process.env.PORT}</code><br>          })</p>
+<p>这个登陆profile.loginCouch其实就是将账号密码，发送给npm启动的服务器，生成一串token（_authToken），</p>
+<p>我们将这串tokken,按照下面格式写入 用户目录下的 /Users/js/.npmrc</p>
+<p>//registry.npmjs.org/:_authToken=npm_B7wxxxxjTq3UuAAxxxxxxxxxxxxxxxxxxxx</p>
+<p>此token相当于浏览器中的cookie，以后浏览器每次登陆校验这个cookie，<br>在终端的话，这个token就放到磁盘中，每次 npm publish、npm tag 等等，都是发请求，<br>在npm cli源码中，都会去获取 .npmrc 的 token，去校验登陆状态和用户信息；<br>如果用户信息登陆校验通过，<br>那么就可以执行 npm publish、npm tag 等等。</p>
+<p>通过直接执行 npm login 命令，<br>登录完成后，<br>执行 npm config list 命令<br>就会看到 在 /Users/js/.npmrc 目录下，就会多出一条上述的token</p>
+<p>//registry.npmjs.org/:_authToken=npm_B7wxxxxjTq3UuAAxxxxxxxxxxxxxxxxxxxx</p>
+<p>说明了 npm login 命令也是可以自动生成一条 token的，</p>
+<blockquote>
+<p><a href="https://docs.npmjs.com/about-access-tokens" target="_blank" rel="noopener">参考官网</a><br>The npm CLI automatically generates an access token for you when you run npm login.</p>
+</blockquote>
+<p>关于这条token的作用也说了：</p>
+<blockquote>
+<p><a href="https://docs.npmjs.com/about-access-tokens" target="_blank" rel="noopener">参考官网</a><br>An access token is a hexadecimal string that you can use to authenticate, and which gives you the right to install and/or publish your modules.</p>
+</blockquote>
+<h4 id="经典的浏览器端与终端-session方式的差异"><a href="#经典的浏览器端与终端-session方式的差异" class="headerlink" title="经典的浏览器端与终端 session方式的差异"></a>经典的浏览器端与终端 session方式的差异</h4><p>npm 终端登陆的方式，是一个经典的终端登陆方案；<br>浏览器的session存储于cookie中；<br>终端的session存储于磁盘中；</p>
+<h4 id="所有的cli其实都是ajax请求"><a href="#所有的cli其实都是ajax请求" class="headerlink" title="所有的cli其实都是ajax请求"></a>所有的cli其实都是ajax请求</h4><p>通过查看npm cli 源码，以及npm profile 源码可知，<br>所有的npm cli 命令很多都是发送请求。</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://docs.npmjs.com/about-access-tokens" target="_blank" rel="noopener">npm官网-About access tokens</a><br><a href="https://github.com/npm/cli" target="_blank" rel="noopener">npm/cli 源码</a><br><a href="https://github.com/npm/npm-profile#login" target="_blank" rel="noopener">npm-profile</a></p>
+<h3 id="monorepo的npm包查看github仓库的小技巧"><a href="#monorepo的npm包查看github仓库的小技巧" class="headerlink" title="monorepo的npm包查看github仓库的小技巧"></a>monorepo的npm包查看github仓库的小技巧</h3><p><a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json#repository" target="_blank" rel="noopener">详细查看</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// monorepo的npm包 的 package.json ,那么其仓库在 下面的url上，目录层级在 directory上</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"repository"</span>: &#123;</span><br><span class="line">    <span class="string">"type"</span>: <span class="string">"git"</span>,</span><br><span class="line">    <span class="string">"url"</span>: <span class="string">"https://github.com/facebook/react.git"</span>,</span><br><span class="line">    <span class="string">"directory"</span>: <span class="string">"packages/react-dom"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.801Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/07/27/monorepo/" target="_blank" rel="external">https://yewills.github.io/2022/07/27/monorepo/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/lerna/">lerna</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/monorepo/">monorepo</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/07/27/monorepo/&title=《monorepo笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/07/27/monorepo/&title=《monorepo笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/08/06/npm_one/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">npm官网笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/07/20/verdaccio-three/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">verdaccio(三)：要点与学习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lerna笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">lerna笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#学习体会"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">学习体会</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于-prod-的解释"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">关于^prod 的解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#的两种用法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">--的两种用法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与lerna-exec一起使用"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">与lerna exec一起使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#与lerna-run-一起使用"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">与lerna run 一起使用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#yarn笔记"><span class="post-toc-number">2.</span> <span class="post-toc-text">yarn笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-modules-结构设计"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">node_modules 结构设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么能覆盖npm版本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">为什么能覆盖npm版本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pnpm"><span class="post-toc-number">3.</span> <span class="post-toc-text">pnpm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">4.</span> <span class="post-toc-text">注意</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tag相关的发布与调试-cli"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">tag相关的发布与调试 cli</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打tag不会改变版本名，是为了改变install版本"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">打tag不会改变版本名，是为了改变install版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tag版本要手动设置好"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">tag版本要手动设置好</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于npm登陆、token、publish-关系"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">关于npm登陆、token、publish 关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#经典的浏览器端与终端-session方式的差异"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">经典的浏览器端与终端 session方式的差异</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#所有的cli其实都是ajax请求"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">所有的cli其实都是ajax请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#monorepo的npm包查看github仓库的小技巧"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">monorepo的npm包查看github仓库的小技巧</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/07/27/monorepo/&title=《monorepo笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/07/27/monorepo/&title=《monorepo笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3ay66cMBAFwPn/n55I2UUR5Jw2uRJ2eYVgxlAsWv3g84nX9/e6Ov/31avz979J/rW0MDAwXsv43q4rxv0vk6st7GpPDAyMcxj3QfY+sOaPmL+I/NkwMDAwZsdtaE7ui4GBgTELuHk5mpe7GBgYGCtFbJ4azsrgH6rFMTAwXshoBwM/efwf5xsYGBgvYXzLlYTOp84UT4WBgbE14/6xZo2zHD8beV6GYwwMjE0Z90nYUwFxNtQsXjQGBsbWjFkTPxkb5HsmZXNCxcDA2JWRPFYyYmw/mGgD9D/uiIGBcQCjTeNWwu5TH5n9cYyBgXEMo03RkjCdh/Kl14GBgXEMI9+6bau1DbV6HwwMjMMY61VhMTtd4GFgYJzDaMvF2ccQbXKJgYGBkWRxT7XDognqCBaNQjEwMLZgtMlcPtqcjUVnrT0MDIxzGO0HXm0CNxsDJOcxMDDOZDybCLbhu272YWBgbM1oW2ztze5L0PXg+2mzSAwMjBcy8tvnIfV+zzYEf5KFgYFxAKMdDOQlazujqMtXDAyMAxgrhWs7I80L5ll0xcDA2JUxK1BXwnFbykZDCAwMjK0Z+VpJ79pSefaaMDAw9masBNlZCXr/Fh/oHWJgYGzKyMeZswFDW/TmQR8DAwNjVo62gTUfLURdQwwMDIxRgG7Dd7LzYwEXAwPjJYy8WT9LH/Nx5myAioGBsTejLSDzxlzejFsZgmJgYGzN+AWcNuZU0mc/lAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

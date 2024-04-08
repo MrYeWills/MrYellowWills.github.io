@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>umi系列(四)：npm script命令 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="umi">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>umi系列(四)：npm script命令</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">umi系列(四)：npm script命令</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-05-18T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-05-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-umi_four"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">umi系列(四)：npm script命令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-05-18 00:00:00" datetime="2022-05-18T00:00:00.000Z"  itemprop="datePublished">2022-05-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>本篇主要讲述 umi 脚手架的npm script命令</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
+<li><a href="http://nodejs.cn/api-v16/child_process.html" target="_blank" rel="noopener">Node.js v16.15.0 文档  -  child_process.html</a></li>
+</ul>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="怎么来的"><a href="#怎么来的" class="headerlink" title="$ 怎么来的"></a>$ 怎么来的</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// globals 函数增加了 global的$等等属性</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'zx/globals'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="模板字符串的函数调用"><a href="#模板字符串的函数调用" class="headerlink" title="模板字符串的函数调用"></a>模板字符串的函数调用</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals#%E8%AF%AD%E6%B3%95" target="_blank" rel="noopener">参考</a></p>
+<h2 id="pnpm-release"><a href="#pnpm-release" class="headerlink" title="pnpm release"></a>pnpm release</h2><h3 id="关于-umi-scripts-命令"><a href="#关于-umi-scripts-命令" class="headerlink" title="关于 umi-scripts 命令"></a>关于 umi-scripts 命令</h3><h4 id="精妙的workspace"><a href="#精妙的workspace" class="headerlink" title="精妙的workspace:*"></a>精妙的<code>workspace:*</code></h4><p>pnpm 的 workspace:* 可以轻松的将源码 以npm link的方式映射到 node_module 上，<br>极大地提高了开发和调试效率。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"release"</span>: <span class="string">"umi-scripts release"</span>,</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"umi-scripts"</span>: <span class="string">"workspace:*"</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用-esno-执行-ts文件"><a href="#使用-esno-执行-ts文件" class="headerlink" title="使用 esno 执行 ts文件"></a>使用 esno 执行 ts文件</h4><p>每个命令将最终被使用 esno 执行 ts文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scripts 就是 umi-scripts 包</span></span><br><span class="line"><span class="comment">// scripts\bin\umi-scripts.js</span></span><br><span class="line"><span class="keyword">const</span> spawn = sync(</span><br><span class="line">  <span class="string">'esno'</span>,</span><br><span class="line">  [scriptsPath, ...argv.slice(<span class="number">1</span>)],</span><br><span class="line">  &#123;</span><br><span class="line">    env: process.env,</span><br><span class="line">    cwd: process.cwd(),</span><br><span class="line">    stdio: <span class="string">'inherit'</span>,</span><br><span class="line">    shell: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过readdirSync读取-packages-下的包"><a href="#通过readdirSync读取-packages-下的包" class="headerlink" title="通过readdirSync读取 packages 下的包"></a>通过readdirSync读取 packages 下的包</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export function getPkgs(opts?: &#123; base?: string &#125;): string[] &#123;</span><br><span class="line">  <span class="keyword">const</span> base = opts?.base || PATHS.PACKAGES;</span><br><span class="line">  <span class="keyword">return</span> readdirSync(base).filter(<span class="function">(<span class="params">dir</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !dir.startsWith(<span class="string">'.'</span>) &amp;&amp; existsSync(join(base, dir, <span class="string">'package.json'</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取当前的branch"><a href="#获取当前的branch" class="headerlink" title="获取当前的branch"></a>获取当前的branch</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> getGitRepoInfo <span class="keyword">from</span> <span class="string">'git-repo-info'</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; branch &#125; = getGitRepoInfo();</span><br></pre></td></tr></table></figure>
+<h3 id="查看是否有未git-add-文件"><a href="#查看是否有未git-add-文件" class="headerlink" title="查看是否有未git add 文件"></a>查看是否有未git add 文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isGitClean = (<span class="keyword">await</span> $<span class="string">`git status --porcelain`</span>).stdout.trim().length;</span><br><span class="line">assert(!isGitClean, <span class="string">'git status is not clean'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="assert错误判断与退出程序的妙用"><a href="#assert错误判断与退出程序的妙用" class="headerlink" title="assert错误判断与退出程序的妙用"></a>assert错误判断与退出程序的妙用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关于logger.error</span></span><br><span class="line"><span class="keyword">import</span> chalk <span class="keyword">from</span> <span class="string">'../compiled/chalk'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> prefixes = &#123;</span><br><span class="line">  error: chalk.red(<span class="string">'error'</span>) + <span class="string">' -'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">...message: any[]</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.error(prefixes.error, ...message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关于assert</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">assert</span>(<span class="params">v: unknown, message: string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!v) &#123;</span><br><span class="line">    logger.error(message);</span><br><span class="line">    process.exit(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// assert 使用</span></span><br><span class="line"> <span class="keyword">const</span> isGitClean = (<span class="keyword">await</span> $<span class="string">`git status --porcelain`</span>).stdout.trim().length;</span><br><span class="line">  assert(!isGitClean, <span class="string">'git status is not clean'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="判断你没有拉取最新的远程提交"><a href="#判断你没有拉取最新的远程提交" class="headerlink" title="判断你没有拉取最新的远程提交"></a>判断你没有拉取最新的远程提交</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> $<span class="string">`git fetch`</span>;</span><br><span class="line"><span class="keyword">const</span> gitStatus = (<span class="keyword">await</span> $<span class="string">`git status --short --branch`</span>).stdout.trim();</span><br><span class="line">assert(!gitStatus.includes(<span class="string">'behind'</span>), <span class="string">`git status is behind remote`</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="判断npm源是否为要发布的源"><a href="#判断npm源是否为要发布的源" class="headerlink" title="判断npm源是否为要发布的源"></a>判断npm源是否为要发布的源</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// check npm registry</span></span><br><span class="line">logger.event(<span class="string">'check npm registry'</span>);</span><br><span class="line"><span class="keyword">const</span> registry = (<span class="keyword">await</span> $<span class="string">`npm config get registry`</span>).stdout.trim();</span><br><span class="line">assert(</span><br><span class="line">  registry === <span class="string">'https://registry.npmjs.org/'</span>,</span><br><span class="line">  <span class="string">'npm registry is not https://registry.npmjs.org/'</span>,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="待研究-lerna判断packages下是否有改动"><a href="#待研究-lerna判断packages下是否有改动" class="headerlink" title="(待研究)lerna判断packages下是否有改动"></a>(待研究)lerna判断packages下是否有改动</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// check package changed</span></span><br><span class="line">logger.event(<span class="string">'check package changed'</span>);</span><br><span class="line"><span class="keyword">const</span> changed = (<span class="keyword">await</span> $<span class="string">`lerna changed --loglevel error`</span>).stdout.trim();</span><br><span class="line">assert(changed, <span class="string">`no package is changed`</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="是否在npm包的owner上"><a href="#是否在npm包的owner上" class="headerlink" title="是否在npm包的owner上"></a>是否在npm包的owner上</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// check npm ownership</span></span><br><span class="line">logger.event(<span class="string">'check npm ownership'</span>);</span><br><span class="line"><span class="keyword">const</span> whoami = (<span class="keyword">await</span> $<span class="string">`npm whoami`</span>).stdout.trim();</span><br><span class="line"><span class="keyword">await</span> <span class="built_in">Promise</span>.all(</span><br><span class="line">  [<span class="string">'umi'</span>, <span class="string">'@umijs/core'</span>].map(<span class="keyword">async</span> (pkg) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> owners = (<span class="keyword">await</span> $<span class="string">`npm owner ls <span class="subst">$&#123;pkg&#125;</span>`</span>).stdout</span><br><span class="line">      .trim()</span><br><span class="line">      .split(<span class="string">'\n'</span>)</span><br><span class="line">      .map(<span class="function">(<span class="params">line</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> line.split(<span class="string">' '</span>)[<span class="number">0</span>];</span><br><span class="line">      &#125;);</span><br><span class="line">    assert(owners.includes(whoami), <span class="string">`<span class="subst">$&#123;pkg&#125;</span> is not owned by <span class="subst">$&#123;whoami&#125;</span>`</span>);</span><br><span class="line">  &#125;),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="检测文件-目录-是否符合发布check-packageFiles"><a href="#检测文件-目录-是否符合发布check-packageFiles" class="headerlink" title="检测文件(目录)是否符合发布check:packageFiles"></a>检测文件(目录)是否符合发布check:packageFiles</h3><p>检测 packages 和 examples 下的包或示例，其下面的每个文件或目录是否符合约定的 npm publish 标准，<br>会查看 <code>pkgJson.files</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> $<span class="string">`npm run check:packageFiles`</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// check package.json</span></span><br><span class="line">  logger.event(<span class="string">'check package.json info'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// clean</span></span><br><span class="line">  logger.event(<span class="string">'clean'</span>);</span><br><span class="line">  eachPkg(pkgs, (&#123; dir, name &#125;) =&gt; &#123;</span><br><span class="line">    logger.info(<span class="string">`clean dist of <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">    rimraf.sync(join(dir, <span class="string">'dist'</span>));</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// build packages</span></span><br><span class="line">  logger.event(<span class="string">'build packages'</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run build:release`</span>;</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run build:extra`</span>;</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run build:client`</span>;</span><br><span class="line"></span><br><span class="line">  logger.event(<span class="string">'check client code change'</span>);</span><br><span class="line">  <span class="keyword">const</span> isGitCleanAfterClientBuild = (</span><br><span class="line">    <span class="keyword">await</span> $<span class="string">`git status --porcelain`</span></span><br><span class="line">  ).stdout.trim().length;</span><br><span class="line">  assert(!isGitCleanAfterClientBuild, <span class="string">'client code is updated'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// generate changelog</span></span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">  logger.event(<span class="string">'generate changelog'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// bump version</span></span><br><span class="line">  logger.event(<span class="string">'bump version'</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`lerna version --exact --no-commit-hooks --no-git-tag-version --no-push --loglevel error`</span>;</span><br><span class="line">  <span class="keyword">const</span> version = <span class="built_in">require</span>(PATHS.LERNA_CONFIG).version;</span><br><span class="line">  <span class="keyword">let</span> tag = <span class="string">'latest'</span>;</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    version.includes(<span class="string">'-alpha.'</span>) ||</span><br><span class="line">    version.includes(<span class="string">'-beta.'</span>) ||</span><br><span class="line">    version.includes(<span class="string">'-rc.'</span>)</span><br><span class="line">  ) &#123;</span><br><span class="line">    tag = <span class="string">'next'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (version.includes(<span class="string">'-canary.'</span>)) tag = <span class="string">'canary'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// update example versions</span></span><br><span class="line">  logger.event(<span class="string">'update example versions'</span>);</span><br><span class="line">  <span class="keyword">const</span> examplesDir = PATHS.EXAMPLES;</span><br><span class="line">  <span class="keyword">const</span> examples = fs.readdirSync(examplesDir).filter(<span class="function">(<span class="params">dir</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      !dir.startsWith(<span class="string">'.'</span>) &amp;&amp; existsSync(join(examplesDir, dir, <span class="string">'package.json'</span>))</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line">  examples.forEach(<span class="function">(<span class="params">example</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> pkg = <span class="built_in">require</span>(join(examplesDir, example, <span class="string">'package.json'</span>));</span><br><span class="line">    pkg.scripts[<span class="string">'start'</span>] = <span class="string">'npm run dev'</span>;</span><br><span class="line">    <span class="comment">// change deps version</span></span><br><span class="line">    setDepsVersion(&#123;</span><br><span class="line">      pkg,</span><br><span class="line">      version,</span><br><span class="line">      deps: [</span><br><span class="line">        <span class="string">'umi'</span>,</span><br><span class="line">        <span class="string">'@umijs/max'</span>,</span><br><span class="line">        <span class="string">'@umijs/plugins'</span>,</span><br><span class="line">        <span class="string">'@umijs/bundler-vite'</span>,</span><br><span class="line">        <span class="string">'@umijs/preset-vue'</span>,</span><br><span class="line">      ],</span><br><span class="line">      <span class="comment">// for mfsu-independent example update dep version</span></span><br><span class="line">      devDeps: [<span class="string">'@umijs/mfsu'</span>],</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">delete</span> pkg.version;</span><br><span class="line">    fs.writeFileSync(</span><br><span class="line">      join(examplesDir, example, <span class="string">'package.json'</span>),</span><br><span class="line">      <span class="string">`<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(pkg, <span class="literal">null</span>, <span class="number">2</span>)&#125;</span>\n`</span>,</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// update pnpm lockfile</span></span><br><span class="line">  logger.event(<span class="string">'update pnpm lockfile'</span>);</span><br><span class="line">  $.verbose = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`pnpm i`</span>;</span><br><span class="line">  $.verbose = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// commit</span></span><br><span class="line">  logger.event(<span class="string">'commit'</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`git commit --all --message "release: <span class="subst">$&#123;version&#125;</span>"`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// git tag</span></span><br><span class="line">  <span class="keyword">if</span> (tag !== <span class="string">'canary'</span>) &#123;</span><br><span class="line">    logger.event(<span class="string">'git tag'</span>);</span><br><span class="line">    <span class="keyword">await</span> $<span class="string">`git tag v<span class="subst">$&#123;version&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// git push</span></span><br><span class="line">  logger.event(<span class="string">'git push'</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`git push origin <span class="subst">$&#123;branch&#125;</span> --tags`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// npm publish</span></span><br><span class="line">  logger.event(<span class="string">'pnpm publish'</span>);</span><br><span class="line">  $.verbose = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">const</span> innerPkgs = pkgs.filter(</span><br><span class="line">    <span class="comment">// do not publish father</span></span><br><span class="line">    (pkg) =&gt; ![<span class="string">'umi'</span>, <span class="string">'max'</span>, <span class="string">'father'</span>].includes(pkg),</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="comment">// check 2fa config</span></span><br><span class="line">  <span class="keyword">let</span> otpArg: string[] = [];</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    (<span class="keyword">await</span> $<span class="string">`npm profile get "two-factor auth"`</span>).toString().includes(<span class="string">'writes'</span>)</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="keyword">let</span> code = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">      <span class="comment">// get otp from user</span></span><br><span class="line">      code = <span class="keyword">await</span> question(<span class="string">'This operation requires a one-time password: '</span>);</span><br><span class="line">      <span class="comment">// generate arg for zx command</span></span><br><span class="line">      <span class="comment">// why use array? https://github.com/google/zx/blob/main/docs/quotes.md</span></span><br><span class="line">      otpArg = [<span class="string">'--otp'</span>, code];</span><br><span class="line">    &#125; <span class="keyword">while</span> (code.length !== <span class="number">6</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">Promise</span>.all(</span><br><span class="line">    innerPkgs.map(<span class="keyword">async</span> (pkg) =&gt; &#123;</span><br><span class="line">      <span class="keyword">await</span> $<span class="string">`cd packages/<span class="subst">$&#123;pkg&#125;</span> &amp;&amp; npm publish --tag <span class="subst">$&#123;tag&#125;</span> <span class="subst">$&#123;otpArg&#125;</span>`</span>;</span><br><span class="line">      logger.info(<span class="string">`+ <span class="subst">$&#123;pkg&#125;</span>`</span>);</span><br><span class="line">    &#125;),</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`cd packages/umi &amp;&amp; npm publish --tag <span class="subst">$&#123;tag&#125;</span> <span class="subst">$&#123;otpArg&#125;</span>`</span>;</span><br><span class="line">  logger.info(<span class="string">`+ umi`</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`cd packages/max &amp;&amp; npm publish --tag <span class="subst">$&#123;tag&#125;</span> <span class="subst">$&#123;otpArg&#125;</span>`</span>;</span><br><span class="line">  logger.info(<span class="string">`+ @umijs/max`</span>);</span><br><span class="line">  $.verbose = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// sync tnpm</span></span><br><span class="line">  logger.event(<span class="string">'sync tnpm'</span>);</span><br><span class="line">  $.verbose = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">Promise</span>.all(</span><br><span class="line">    pkgs.map(<span class="keyword">async</span> (pkg) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; name &#125; = <span class="built_in">require</span>(path.join(PATHS.PACKAGES, pkg, <span class="string">'package.json'</span>));</span><br><span class="line">      logger.info(<span class="string">`sync <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">await</span> $<span class="string">`tnpm sync <span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line">    &#125;),</span><br><span class="line">  );</span><br><span class="line">  $.verbose = <span class="literal">true</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setDepsVersion</span>(<span class="params">opts: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">  deps: string[];</span></span></span><br><span class="line"><span class="function"><span class="params">  devDeps: string[];</span></span></span><br><span class="line"><span class="function"><span class="params">  pkg: Record&lt;string, any&gt;;</span></span></span><br><span class="line"><span class="function"><span class="params">  version: string;</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; deps, devDeps, pkg, version &#125; = opts;</span><br><span class="line">  pkg.dependencies ||= &#123;&#125;;</span><br><span class="line">  deps.forEach(<span class="function">(<span class="params">dep</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (pkg.dependencies[dep]) &#123;</span><br><span class="line">      pkg.dependencies[dep] = version;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  devDeps.forEach(<span class="function">(<span class="params">dep</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (pkg?.devDependencies?.[dep]) &#123;</span><br><span class="line">      pkg.devDependencies[dep] = version;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> pkg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除package下的dist"><a href="#删除package下的dist" class="headerlink" title="删除package下的dist"></a>删除package下的dist</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">eachPkg(pkgs, (&#123; dir, name &#125;) =&gt; &#123;</span><br><span class="line">  logger.info(<span class="string">`clean dist of <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  rimraf.sync(join(dir, <span class="string">'dist'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="给每个包进行build生产dist"><a href="#给每个包进行build生产dist" class="headerlink" title="给每个包进行build生产dist"></a>给每个包进行build生产dist</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// build packages</span></span><br><span class="line">  logger.event(<span class="string">'build packages'</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run build:release`</span>;</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run build:extra`</span>;</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`npm run build:client`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="再次检查是否有未git-add-文件"><a href="#再次检查是否有未git-add-文件" class="headerlink" title="再次检查是否有未git add 文件"></a>再次检查是否有未git add 文件</h3><p>因为上面的 build命令，有些包会改变 client 目录<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logger.event(<span class="string">'check client code change'</span>);</span><br><span class="line"><span class="keyword">const</span> isGitCleanAfterClientBuild = (</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`git status --porcelain`</span></span><br><span class="line">).stdout.trim().length;</span><br><span class="line">assert(!isGitCleanAfterClientBuild, <span class="string">'client code is updated'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="lerna-批量更新版本号"><a href="#lerna-批量更新版本号" class="headerlink" title="lerna 批量更新版本号"></a>lerna 批量更新版本号</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bump version</span></span><br><span class="line">logger.event(<span class="string">'bump version'</span>);</span><br><span class="line"><span class="keyword">await</span> $<span class="string">`lerna version --exact --no-commit-hooks --no-git-tag-version --no-push --loglevel error`</span>;</span><br><span class="line"><span class="keyword">const</span> version = <span class="built_in">require</span>(PATHS.LERNA_CONFIG).version;</span><br><span class="line"><span class="keyword">let</span> tag = <span class="string">'latest'</span>;</span><br><span class="line"><span class="keyword">if</span> (</span><br><span class="line">  version.includes(<span class="string">'-alpha.'</span>) ||</span><br><span class="line">  version.includes(<span class="string">'-beta.'</span>) ||</span><br><span class="line">  version.includes(<span class="string">'-rc.'</span>)</span><br><span class="line">) &#123;</span><br><span class="line">  tag = <span class="string">'next'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (version.includes(<span class="string">'-canary.'</span>)) tag = <span class="string">'canary'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="更新-example-versions"><a href="#更新-example-versions" class="headerlink" title="更新 example versions"></a>更新 example versions</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logger.event(<span class="string">'update example versions'</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="更新-lockfile-文件"><a href="#更新-lockfile-文件" class="headerlink" title="更新 lockfile 文件"></a>更新 lockfile 文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// update pnpm lockfile</span></span><br><span class="line">logger.event(<span class="string">'update pnpm lockfile'</span>);</span><br><span class="line">$.verbose = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">await</span> $<span class="string">`pnpm i`</span>;</span><br><span class="line">$.verbose = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="commit提交"><a href="#commit提交" class="headerlink" title="commit提交"></a>commit提交</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// commit</span></span><br><span class="line">logger.event(<span class="string">'commit'</span>);</span><br><span class="line"><span class="keyword">await</span> $<span class="string">`git commit --all --message "release: <span class="subst">$&#123;version&#125;</span>"`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="设置tag，并提高分支以及tag"><a href="#设置tag，并提高分支以及tag" class="headerlink" title="设置tag，并提高分支以及tag"></a>设置tag，并提高分支以及tag</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// git tag</span></span><br><span class="line">  <span class="keyword">if</span> (tag !== <span class="string">'canary'</span>) &#123;</span><br><span class="line">    logger.event(<span class="string">'git tag'</span>);</span><br><span class="line">    <span class="keyword">await</span> $<span class="string">`git tag v<span class="subst">$&#123;version&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// git push</span></span><br><span class="line">  logger.event(<span class="string">'git push'</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`git push origin <span class="subst">$&#123;branch&#125;</span> --tags`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="pnpm-publish发布前检测密码-可忽略"><a href="#pnpm-publish发布前检测密码-可忽略" class="headerlink" title="pnpm publish发布前检测密码(可忽略)"></a>pnpm publish发布前检测密码(可忽略)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// check 2fa config</span></span><br><span class="line"><span class="keyword">let</span> otpArg: string[] = [];</span><br><span class="line"><span class="keyword">if</span> (</span><br><span class="line">  (<span class="keyword">await</span> $<span class="string">`npm profile get "two-factor auth"`</span>).toString().includes(<span class="string">'writes'</span>)</span><br><span class="line">) &#123;</span><br><span class="line">  <span class="keyword">let</span> code = <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// get otp from user</span></span><br><span class="line">    code = <span class="keyword">await</span> question(<span class="string">'This operation requires a one-time password: '</span>);</span><br><span class="line">    <span class="comment">// generate arg for zx command</span></span><br><span class="line">    <span class="comment">// why use array? https://github.com/google/zx/blob/main/docs/quotes.md</span></span><br><span class="line">    otpArg = [<span class="string">'--otp'</span>, code];</span><br><span class="line">  &#125; <span class="keyword">while</span> (code.length !== <span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="pnpm-publish"><a href="#pnpm-publish" class="headerlink" title="pnpm publish"></a>pnpm publish</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm publish</span></span><br><span class="line">  logger.event(<span class="string">'pnpm publish'</span>);</span><br><span class="line">  $.verbose = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">const</span> innerPkgs = pkgs.filter(</span><br><span class="line">    <span class="comment">// do not publish father</span></span><br><span class="line">    (pkg) =&gt; ![<span class="string">'magicbird'</span>, <span class="string">'max'</span>, <span class="string">'father'</span>].includes(pkg),</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里有上面的步骤 pnpm publish发布前检测密码(可忽略)，可以不用管</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">Promise</span>.all(</span><br><span class="line">    innerPkgs.map(<span class="keyword">async</span> (pkg) =&gt; &#123;</span><br><span class="line">      <span class="keyword">await</span> $<span class="string">`cd packages/<span class="subst">$&#123;pkg&#125;</span> &amp;&amp; npm publish --tag <span class="subst">$&#123;tag&#125;</span> <span class="subst">$&#123;otpArg&#125;</span>`</span>;</span><br><span class="line">      logger.info(<span class="string">`+ <span class="subst">$&#123;pkg&#125;</span>`</span>);</span><br><span class="line">    &#125;),</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`cd packages/magicbird &amp;&amp; npm publish --tag <span class="subst">$&#123;tag&#125;</span> <span class="subst">$&#123;otpArg&#125;</span>`</span>;</span><br><span class="line">  logger.info(<span class="string">`+ magicbird`</span>);</span><br><span class="line">  <span class="keyword">await</span> $<span class="string">`cd packages/max &amp;&amp; npm publish --tag <span class="subst">$&#123;tag&#125;</span> <span class="subst">$&#123;otpArg&#125;</span>`</span>;</span><br><span class="line">  logger.info(<span class="string">`+ @magicbirdjs/max`</span>);</span><br></pre></td></tr></table></figure>
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/05/18/umi_four/" target="_blank" rel="external">https://yewills.github.io/2022/05/18/umi_four/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/umi/">umi</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/18/umi_four/&title=《umi系列(四)：npm script命令》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/18/umi_four/&title=《umi系列(四)：npm script命令》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/05/18/umi_five/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">umi系列(五)：pnpm install</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/05/13/umi_three/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">umi系列(三)：pnpm与umi-scripts</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文档"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文档</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">前置知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#怎么来的"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">$ 怎么来的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模板字符串的函数调用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">模板字符串的函数调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pnpm-release"><span class="post-toc-number">3.</span> <span class="post-toc-text">pnpm release</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于-umi-scripts-命令"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">关于 umi-scripts 命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#精妙的workspace"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">精妙的workspace:*</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用-esno-执行-ts文件"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">使用 esno 执行 ts文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过readdirSync读取-packages-下的包"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">通过readdirSync读取 packages 下的包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取当前的branch"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">获取当前的branch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看是否有未git-add-文件"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">查看是否有未git add 文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#assert错误判断与退出程序的妙用"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">assert错误判断与退出程序的妙用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断你没有拉取最新的远程提交"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">判断你没有拉取最新的远程提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断npm源是否为要发布的源"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">判断npm源是否为要发布的源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#待研究-lerna判断packages下是否有改动"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">(待研究)lerna判断packages下是否有改动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#是否在npm包的owner上"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">是否在npm包的owner上</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检测文件-目录-是否符合发布check-packageFiles"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">检测文件(目录)是否符合发布check:packageFiles</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除package下的dist"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">删除package下的dist</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给每个包进行build生产dist"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">给每个包进行build生产dist</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再次检查是否有未git-add-文件"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">再次检查是否有未git add 文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lerna-批量更新版本号"><span class="post-toc-number">3.14.</span> <span class="post-toc-text">lerna 批量更新版本号</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新-example-versions"><span class="post-toc-number">3.15.</span> <span class="post-toc-text">更新 example versions</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新-lockfile-文件"><span class="post-toc-number">3.16.</span> <span class="post-toc-text">更新 lockfile 文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#commit提交"><span class="post-toc-number">3.17.</span> <span class="post-toc-text">commit提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置tag，并提高分支以及tag"><span class="post-toc-number">3.18.</span> <span class="post-toc-text">设置tag，并提高分支以及tag</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pnpm-publish发布前检测密码-可忽略"><span class="post-toc-number">3.19.</span> <span class="post-toc-text">pnpm publish发布前检测密码(可忽略)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pnpm-publish"><span class="post-toc-number">3.20.</span> <span class="post-toc-text">pnpm publish</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/18/umi_four/&title=《umi系列(四)：npm script命令》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/18/umi_four/&title=《umi系列(四)：npm script命令》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aMW7DMAwF0Nz/0u7aIVE+SbeApacpMFxbzwNLiny94nX9WpPrn55c/avmwsDAeCzjWq71PZMtrt+V7w0DA+McRrKJJBCvX7YOzWvSlz1jYGBgFAPleqPJJ8DAwMCYM+YbxcDAwKgy8hStl8zNg/JttTgGBsYDGfmp+////pP+BgYGxqMYV3HlT6iWqZOFgYGxNyMPcL225TxwF/aDgYGxKSN55V3BMQFXG5+FL4eBgbERoxf4JolgDvh4PwYGxtaM/Gj+rtZmNaSW2wwYGBjbMSZty95x27yUfXMPBgbG1ozqGETOyw/sesll+bQPAwNjC8a9sxu9wbIkQYx2iIGBsRGjevRfnciqfo6kDP54aoiBgXEAo9purF6vJpR5qoqBgbE3o1pGTsJuNX3MR80wMDD2ZvRGK/I2QK+FkLcE3syMYGBgHMO4iispO/PgnnxWDAyM0xjzBkDvyKw3FvbmaRgYGFszemMWvbGMPEGs3omBgXEOY5L2JWnc/PeXMI2BgXEAIz++T673RjFGJS4GBsYxjLyheG/iOBkdw8DA2JvRawAkwbc6cjFKQDEwMLZmVBsA1XZmEliT5DJJHDEwMPZmTErN/IitGoLL3xsDA+MAxl0H+nmDofcfIKrFMTAwjmf0Ss3edguFMQYGBka80bwNkDwnIWFgYJzDSIrYfPCimvzlSSQGBsaZjHvPsvJWQS9NHDU1MTAwnsf4ASmkiYcHdaMjAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

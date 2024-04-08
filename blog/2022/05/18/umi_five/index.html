@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>umi系列(五)：pnpm install | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="umi">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>umi系列(五)：pnpm install</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">umi系列(五)：pnpm install</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-05-18T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-05-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-umi_five"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">umi系列(五)：pnpm install</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-05-18 00:00:00" datetime="2022-05-18T00:00:00.000Z"  itemprop="datePublished">2022-05-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/umi系列/">umi系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>本篇主要讲述 umi 脚手架的npm script命令</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
+<li><a href="http://nodejs.cn/api-v16/child_process.html" target="_blank" rel="noopener">Node.js v16.15.0 文档  -  child_process.html</a></li>
+</ul>
+<h2 id="待研究"><a href="#待研究" class="headerlink" title="待研究"></a>待研究</h2><p>如下 <code>-- --vite</code> 的第一个多余的 – 是什么意思？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm dev -- --vite</span><br></pre></td></tr></table></figure></p>
+<p>参考《 pnpm install 》</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h2 id="pnpm-install"><a href="#pnpm-install" class="headerlink" title="pnpm install"></a>pnpm install</h2><h3 id="一次给所有的packages、-example安装依赖"><a href="#一次给所有的packages、-example安装依赖" class="headerlink" title="一次给所有的packages、 example安装依赖"></a>一次给所有的packages、 example安装依赖</h3><p>在umi 根目录下，执行 pnpm install，<br>会给所有的 packages、 example 下的包或项目 进行 node module 的安装。</p>
+<p>todo<br>目前不知道与什么有关，大概率是 pnpm-workspace.yaml 原因吧：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'packages/*'</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'examples/*'</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">'scripts'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="umi-如何与-NavLink-或-doc组件结合"><a href="#umi-如何与-NavLink-或-doc组件结合" class="headerlink" title="umi 如何与 NavLink 或 doc组件结合"></a>umi 如何与 NavLink 或 doc组件结合</h2><p>md 独立使用-mfsu</p>
+<p>经过loader编译后变成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*@jsxRuntime automatic @jsxImportSource react*/</span></span><br><span class="line"><span class="keyword">import</span> &#123;Message&#125; <span class="keyword">from</span> <span class="string">'umi'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; useEffect &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>最终打包后变成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dist\umi.js</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">/***/</span> <span class="string">"./.umi/exports.ts"</span>:</span><br><span class="line"><span class="comment">/*!*************************!*\</span></span><br><span class="line"><span class="comment">  !*** ./.umi/exports.ts ***!</span></span><br><span class="line"><span class="comment">  \*************************/</span></span><br><span class="line"><span class="comment">/***/</span> (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">__webpack_require__.r(__webpack_exports__);</span><br><span class="line"><span class="comment">/* harmony export */</span> __webpack_require__.d(__webpack_exports__, &#123;</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"ApplyPluginsType"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_umi_client_client_plugin_js__WEBPACK_IMPORTED_MODULE_6__.ApplyPluginsType; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"FeatureItem"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_umi_plugin_docs__WEBPACK_IMPORTED_MODULE_8__.FeatureItem; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"Features"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_umi_plugin_docs__WEBPACK_IMPORTED_MODULE_8__.Features; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"Hero"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_umi_plugin_docs__WEBPACK_IMPORTED_MODULE_8__.Hero; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"Link"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_1__.Link; &#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ----- 这个位子 ---------------</span></span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"Message"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_umi_plugin_docs__WEBPACK_IMPORTED_MODULE_8__.Message; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"NavLink"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_1__.NavLink; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"Navigate"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_2__.Navigate; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"Outlet"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_2__.Outlet; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"PluginManager"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_umi_client_client_plugin_js__WEBPACK_IMPORTED_MODULE_6__.PluginManager; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"createBrowserHistory"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_0__.createBrowserHistory; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"createHashHistory"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_0__.createHashHistory; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"createHistory"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> _core_history__WEBPACK_IMPORTED_MODULE_7__.createHistory; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"createMemoryHistory"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_0__.createMemoryHistory; &#125;,</span><br><span class="line"><span class="comment">/* harmony export */</span>   <span class="string">"useSearchParams"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="comment">/* reexport safe */</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_1__.useSearchParams; &#125;</span><br><span class="line"><span class="comment">/* harmony export */</span> &#125;);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./node_modules/.pnpm/history@5.3.0/node_modules/history/index.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./node_modules/.pnpm/react-router-dom@6.3.0_react-dom@18.1.0+react@18.1.0/node_modules/react-router-dom/index.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./node_modules/.pnpm/react-router@6.3.0_react@18.1.0/node_modules/react-router/index.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./packages/renderer-react/dist/appContext.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./packages/renderer-react/dist/browser.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./packages/renderer-react/dist/routeContext.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_packages_umi_client_client_plugin_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(<span class="comment">/*! ./packages/umi/client/client/plugin.js */</span> <span class="string">"./packages/umi/client/client/plugin.js"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> _core_history__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(<span class="comment">/*! ./core/history */</span> <span class="string">"./.umi/core/history.ts"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_umi_plugin_docs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(<span class="comment">/*! ./.umi/plugin-docs */</span> <span class="string">"./.umi/plugin-docs/index.ts"</span>);</span><br><span class="line"><span class="comment">/* harmony import */</span> <span class="keyword">var</span> D_git_umi_umi_next_umi_plugin_terminal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(<span class="comment">/*! ./.umi/plugin-terminal */</span> <span class="string">"./.umi/plugin-terminal/index.ts"</span>);</span><br><span class="line"><span class="comment">/* provided dependency */</span> <span class="keyword">var</span> __react_refresh_utils__ = __webpack_require__(<span class="comment">/*! ./node_modules/.pnpm/@pmmmwh+react-refresh-webpack-plugin@0.5.5_4029b931217d08c7bbf9a21bb093788b/node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */</span> <span class="string">"./node_modules/.pnpm/@pmmmwh+react-refresh-webpack-plugin@0.5.5_4029b931217d08c7bbf9a21bb093788b/node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js"</span>);</span><br><span class="line">__webpack_require__.$Refresh$.runtime = __webpack_require__(<span class="comment">/*! ./node_modules/.pnpm/react-refresh@0.12.0/node_modules/react-refresh/runtime.js */</span> <span class="string">"./node_modules/.pnpm/react-refresh@0.12.0/node_modules/react-refresh/runtime.js"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// @ts-nocheck</span></span><br><span class="line"><span class="comment">// This file is generated by Umi automatically</span></span><br><span class="line"><span class="comment">// DO NOT CHANGE IT MANUALLY!</span></span><br><span class="line"><span class="comment">// @umijs/renderer-*</span></span><br><span class="line"> <span class="comment">// umi/client/client/plugin</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// plugins</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// plugins types.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;</span><br><span class="line"><span class="keyword">var</span> $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(</span><br><span class="line">	$ReactRefreshModuleId$</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">$ReactRefreshModuleRuntime$</span>(<span class="params">exports</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">		<span class="keyword">var</span> errorOverlay;</span><br><span class="line">		<span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">			errorOverlay = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">var</span> testMode;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">typeof</span> __react_refresh_test__ !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">			testMode = __react_refresh_test__;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> __react_refresh_utils__.executeRuntime(</span><br><span class="line">			exports,</span><br><span class="line">			$ReactRefreshModuleId$,</span><br><span class="line">			<span class="built_in">module</span>.hot,</span><br><span class="line">			errorOverlay,</span><br><span class="line">			testMode</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span> &amp;&amp; $ReactRefreshCurrentExports$ <span class="keyword">instanceof</span> <span class="built_in">Promise</span>) &#123;</span><br><span class="line">	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***/</span> &#125;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同时<br>NavLink<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> D_git_umi_umi_next_packages_renderer_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(<span class="comment">/*! ./packages/renderer-react */</span> <span class="string">"./node_modules/.pnpm/react-router-dom@6.3.0_react-dom@18.1.0+react@18.1.0/node_modules/react-router-dom/index.js"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>而这与这个有关：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// packages\renderer-react\src\index.ts</span></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  createBrowserHistory,</span><br><span class="line">  createHashHistory,</span><br><span class="line">  createMemoryHistory,</span><br><span class="line">  History,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'history'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  createSearchParams,</span><br><span class="line">  Link,</span><br><span class="line">  matchPath,</span><br><span class="line">  matchRoutes,</span><br><span class="line">  Navigate,</span><br><span class="line">  NavLink,</span><br><span class="line">  Outlet,</span><br><span class="line">  useLocation,</span><br><span class="line">  useMatch,</span><br><span class="line">  useNavigate,</span><br><span class="line">  useOutlet,</span><br><span class="line">  useParams,</span><br><span class="line">  useResolvedPath,</span><br><span class="line">  useRoutes,</span><br><span class="line">  useSearchParams,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; useAppData &#125; <span class="keyword">from</span> <span class="string">'./appContext'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; renderClient &#125; <span class="keyword">from</span> <span class="string">'./browser'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; useRouteData &#125; <span class="keyword">from</span> <span class="string">'./routeContext'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>而这与 这里有关：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  packages\preset-umi\src\features\tmpFiles\tmpFiles.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意 这个 exports.ts  关键文件 -----------------------</span></span><br><span class="line"><span class="comment">// 注意 这个 exports.ts  关键文件 -----------------------</span></span><br><span class="line"><span class="comment">// 注意 这个 exports.ts  关键文件 -----------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// Generate @@/exports.ts</span></span><br><span class="line">  api.register(&#123;</span><br><span class="line">    key: <span class="string">'onGenerateFiles'</span>,</span><br><span class="line">    fn: <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> rendererPath = winPath(</span><br><span class="line">        <span class="keyword">await</span> api.applyPlugins(&#123;</span><br><span class="line">          key: <span class="string">'modifyRendererPath'</span>,</span><br><span class="line">          initialValue: dirname(</span><br><span class="line">            <span class="built_in">require</span>.resolve(<span class="string">'@umijs/renderer-react/package.json'</span>),</span><br><span class="line">          ),</span><br><span class="line">        &#125;),</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> exports = [];</span><br><span class="line">      <span class="keyword">const</span> exportMembers = [<span class="string">'default'</span>];</span><br><span class="line">      <span class="comment">// @umijs/renderer-react</span></span><br><span class="line">      exports.push(<span class="string">'// @umijs/renderer-*'</span>);</span><br><span class="line"></span><br><span class="line">      exports.push(</span><br><span class="line">        <span class="string">`export &#123; <span class="subst">$&#123;(</span></span></span><br><span class="line"><span class="string"><span class="subst">          <span class="keyword">await</span> getExportsAndCheck(&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">            path: join(rendererPath, <span class="string">'dist/index.js'</span>),</span></span></span><br><span class="line"><span class="string"><span class="subst">            exportMembers,</span></span></span><br><span class="line"><span class="string"><span class="subst">          &#125;</span>)</span></span><br><span class="line"><span class="string">        ).join(', ')&#125; &#125; from '<span class="subst">$&#123;rendererPath&#125;</span>';`</span>,</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// umi/client/client/plugin</span></span><br><span class="line">      exports.push(<span class="string">'// umi/client/client/plugin'</span>);</span><br><span class="line">      <span class="keyword">const</span> umiDir = process.env.UMI_DIR!;</span><br><span class="line">      <span class="keyword">const</span> umiPluginPath = winPath(join(umiDir, <span class="string">'client/client/plugin.js'</span>));</span><br><span class="line">      exports.push(</span><br><span class="line">        <span class="string">`export &#123; <span class="subst">$&#123;(</span></span></span><br><span class="line"><span class="string"><span class="subst">          <span class="keyword">await</span> getExportsAndCheck(&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">            path: umiPluginPath,</span></span></span><br><span class="line"><span class="string"><span class="subst">            exportMembers,</span></span></span><br><span class="line"><span class="string"><span class="subst">          &#125;</span>)</span></span><br><span class="line"><span class="string">        ).join(', ')&#125; &#125; from '<span class="subst">$&#123;umiPluginPath&#125;</span>';`</span>,</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// @@/core/history.ts</span></span><br><span class="line">      exports.push(<span class="string">`export &#123; history, createHistory &#125; from './core/history';`</span>);</span><br><span class="line">      checkMembers(&#123;</span><br><span class="line">        members: [<span class="string">'history'</span>, <span class="string">'createHistory'</span>],</span><br><span class="line">        exportMembers,</span><br><span class="line">        path: <span class="string">'@@/core/history.ts'</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">// @@/core/terminal.ts</span></span><br><span class="line">      <span class="keyword">if</span> (api.service.config.terminal !== <span class="literal">false</span>) &#123;</span><br><span class="line">        exports.push(<span class="string">`export &#123; terminal &#125; from './core/terminal';`</span>);</span><br><span class="line">        checkMembers(&#123;</span><br><span class="line">          members: [<span class="string">'terminal'</span>],</span><br><span class="line">          exportMembers,</span><br><span class="line">          path: <span class="string">'@@/core/terminal.ts'</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// plugins</span></span><br><span class="line">      exports.push(<span class="string">'// plugins'</span>);</span><br><span class="line">      <span class="keyword">const</span> plugins = readdirSync(api.paths.absTmpPath).filter(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (</span><br><span class="line">          file.startsWith(<span class="string">'plugin-'</span>) &amp;&amp;</span><br><span class="line">          (existsSync(join(api.paths.absTmpPath, file, <span class="string">'index.ts'</span>)) ||</span><br><span class="line">            existsSync(join(api.paths.absTmpPath, file, <span class="string">'index.tsx'</span>)))</span><br><span class="line">        ) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> plugin <span class="keyword">of</span> plugins) &#123;</span><br><span class="line">        <span class="keyword">let</span> file: string;</span><br><span class="line">        <span class="keyword">if</span> (existsSync(join(api.paths.absTmpPath, plugin, <span class="string">'index.ts'</span>))) &#123;</span><br><span class="line">          file = join(api.paths.absTmpPath, plugin, <span class="string">'index.ts'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (existsSync(join(api.paths.absTmpPath, plugin, <span class="string">'index.tsx'</span>))) &#123;</span><br><span class="line">          file = join(api.paths.absTmpPath, plugin, <span class="string">'index.tsx'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> pluginExports = <span class="keyword">await</span> getExportsAndCheck(&#123;</span><br><span class="line">          path: file!,</span><br><span class="line">          exportMembers,</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span> (pluginExports.length) &#123;</span><br><span class="line">          exports.push(</span><br><span class="line">            <span class="string">`export &#123; <span class="subst">$&#123;pluginExports.join(<span class="string">', '</span>)&#125;</span> &#125; from '<span class="subst">$&#123;winPath(</span></span></span><br><span class="line"><span class="string"><span class="subst">              join(api.paths.absTmpPath, plugin),</span></span></span><br><span class="line"><span class="string"><span class="subst">            )&#125;</span>';`</span>,</span><br><span class="line">          );</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// plugins types.ts</span></span><br><span class="line">      exports.push(<span class="string">'// plugins types.d.ts'</span>);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> plugin <span class="keyword">of</span> plugins) &#123;</span><br><span class="line">        <span class="keyword">const</span> file = winPath(join(api.paths.absTmpPath, plugin, <span class="string">'types.d.ts'</span>));</span><br><span class="line">        <span class="keyword">if</span> (existsSync(file)) &#123;</span><br><span class="line">          <span class="comment">// 带 .ts 后缀的声明文件 会导致声明失效</span></span><br><span class="line">          <span class="keyword">const</span> noSuffixFile = file.replace(<span class="regexp">/\.ts$/</span>, <span class="string">''</span>);</span><br><span class="line">          exports.push(<span class="string">`export * from '<span class="subst">$&#123;noSuffixFile&#125;</span>';`</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      api.writeTmpFile(&#123;</span><br><span class="line">        noPluginDir: <span class="literal">true</span>,</span><br><span class="line">        path: <span class="string">'exports.ts'</span>,</span><br><span class="line">        content: exports.join(<span class="string">'\n'</span>),</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    stage: <span class="literal">Infinity</span>,</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>所以涉及</p>
+<!-- packages\preset-umi\src\features\tmpFiles\tmpFiles.ts
+packages\renderer-react\src\index.ts -->
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/05/18/umi_five/" target="_blank" rel="external">https://yewills.github.io/2022/05/18/umi_five/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/umi/">umi</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/18/umi_five/&title=《umi系列(五)：pnpm install》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/18/umi_five/&title=《umi系列(五)：pnpm install》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/05/24/umi_seven/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">umi系列(七)：插件、hooks</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/05/18/umi_four/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">umi系列(四)：npm script命令</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文档"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文档</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待研究"><span class="post-toc-number">2.</span> <span class="post-toc-text">待研究</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前置知识"><span class="post-toc-number">3.</span> <span class="post-toc-text">前置知识</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pnpm-install"><span class="post-toc-number">4.</span> <span class="post-toc-text">pnpm install</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一次给所有的packages、-example安装依赖"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">一次给所有的packages、 example安装依赖</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#umi-如何与-NavLink-或-doc组件结合"><span class="post-toc-number">5.</span> <span class="post-toc-text">umi 如何与 NavLink 或 doc组件结合</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/05/18/umi_five/&title=《umi系列(五)：pnpm install》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/05/18/umi_five/&title=《umi系列(五)：pnpm install》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3aS47jMAwFwNz/0pltA43E71HuASyVVkbij8oBGFLU6xWP94+x8vmnO7dXDQcGBsZjGe+v4/s5d03x95n53DAwMM5hrN/607f5sz7d7fvcMDAwMGbH+RS/UzEwMDDWGe1E82CNgYGBMStiV5K/e9NQDAyM0xj5qvv/P/6T/gYGBsajGO9ytG3ONvl7jwYGBsbejDzAzdqW64G7mA8GBsbWjFlDcT1Yt5vM8peFgYGxNyMJZAksbwzM2pkX88TAwNiO0S70r7Q226cUbQYMDIytGTmmbS7Owuis2YmBgbE3Yz0U5sExIc02imFgYOzNaIvVZNlrZamuvQ8GBsbejFnC15apK43PKOnEwMA4htG2G9vPk/bALJRjYGCcw2gX91em2Bao9dYKDAyMTRltAreyPSLfhBE9HQMDY2vGrIzMG5CzNkASZDEwMM5h5OFypcU4K1mTVgEGBsYJjPaCfMxK4jaVfM3cGBgYj2XkgTVvJyTpY358EaYxMDAOYLSp2ErQnJXBxf8GBgbGpoz2OClo84Zl0pa4OBMDA2NTxqw0bRfL7rr24nfAwMDYlJGPWWqYNxtmfwA1DAMD47GMlVKz3UCWh+D6fWNgYBzAyIvbNrFLQurNtTgGBgbGQghup5skoxgYGBiz4Ju3NtsgflHEYmBgbM1Iitj88W3ylyeRGBgYZzLuXcvKwbM0campiYGB8TzGPzECapil0ROZAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>设计一个中台项目架构 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="基建">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>设计一个中台项目架构</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">设计一个中台项目架构</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-01-13T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-01-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端工程/">前端工程</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-Infrastructure"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">设计一个中台项目架构</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-01-13 00:00:00" datetime="2022-01-13T00:00:00.000Z"  itemprop="datePublished">2022-01-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端工程/">前端工程</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>本篇是对一个<a href="https://github.com/YeWills/dashboard" target="_blank" rel="noopener">中台项目</a>架构中要考虑的主要点做一个介绍，一些细节在这里不多做介绍，直接看项目即可。</p>
+<h2 id="如何快速阅读框架源码，或大组件"><a href="#如何快速阅读框架源码，或大组件" class="headerlink" title="如何快速阅读框架源码，或大组件"></a>如何快速阅读框架源码，或大组件</h2><p>喜欢哪一个功能，就可以先看哪个功能；<br>凭兴趣来；<br>刚开始先打乱仗，把各个点击破；<br>最重要是车轮战，不要急，一定要有结果，不拿到结果，不罢战，不要怕多花了时间；<br>拿出一点林帅的气魄 “我不要伤亡数字，我只要塔山”。<br>有了大体感觉了；<br>然后再系统看一遍；</p>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><h3 id="登录方案设计"><a href="#登录方案设计" class="headerlink" title="登录方案设计"></a>登录方案设计</h3><p>跳转到统一的 登录项目页面，<br>扫码登录完成后，<br>统一登录页面的后端会通过接口，设置cookie，此cookie包含各类登录信息，如session id，并设置此cookie 二级域名相同的全部共用；<br>并给此cookie设置了一个有效期，比如8小时，这样，就算页面关闭，重新打开页面，cookie依然有效和存在；<br>然后跳转到原来的项目页面；</p>
+<ul>
+<li><p>1.项目页面中，每次与后端，都是通过上面的cookie，提取登录信息，<br>组装出后端需要的请求入参；<br>要非常注意的是：后端此时只校验 接口入参，并不校验或读取cookie，你是否登录，完全取决于你的接口入参，这一点可以在低代码平台的预览页面得到验证:</p>
+<a rel=设计一个中台项目架构 href="/blog/image/infra/cookie.jpg" title="" data-fancybox="images"><img src="/blog/image/infra/cookie.jpg" class="url_for"></a>
+</li>
+<li><p>2.不过，前端与后端接口通讯的过程中；<br>后端会经常校验你的包含session的入参，<br>如果发现session 有偏离，就会以接口响应数据的方式（注意不是cookie，自登录后，后端不再设置cookie 或与cookie打交道），返回最新的session给前端，</p>
+</li>
+<li>3.此时前端的request sdk 获取到最新的 session，<br>前端sdk，自行将此 session 写入到cookie中，并设置有效期，(其实这代替了之前 登录页面的后端做的设置cookie的工作);<br>然后sdk 重新发起一次请求，<br>按照之前的逻辑，sdk会从最新的cookie中读取session，(如果还发现验签失败，sdk还是会重新发起一次，此时超过5次校验还失败，直接终止发起请求)；<br>组装出后端需要的请求入参，<br>此时接口将正常返回业务数据。</li>
+</ul>
+<p>上面的步骤 2 ，<br>后端会经常校验你的包含session的入参，如果发现session已经失效或其他原因，<br>就会返回未登录信息标识；<br>前端读取到未登录后，就会又跳转到 上面的 统一登录页面。</p>
+<p>所以在sdk设计中<br>尤其是 上面的步骤 2、3 的 验签失败后，要重新设置 cookie 以及重复发送请求 这些都是很底层方面的；<br>这些逻辑其实就是结合网关设计的，与网关的架构后端商量出来的底层逻辑；<br>所以这部分逻辑内聚到了 sdk 中。</p>
+<p>而其他的错误码，包含 未登录 等的处理，就交给 比如pc端的脚手架处理了。</p>
+<h3 id="延伸：-脚手架-的request-与-sdk-区别"><a href="#延伸：-脚手架-的request-与-sdk-区别" class="headerlink" title="延伸： 脚手架 的request 与 sdk 区别"></a>延伸： 脚手架 的request 与 sdk 区别</h3><p>脚手架 的request 与 sdk 区别</p>
+<p>脚手架 的request 定义错误的处理方式，<br>比如<br>未登录 -200  直接  window.location.href 跳转登录页面；</p>
+<p>-3xxxx 无权限 直接 跳转到 无权限页面 /noauthority ；<br>-1xxxx, “系统需要钉钉扫码登录进行访问”  直接执行一次 /authcenter/exitUrl 登出操作 并提示；<br>-13xxx, “帐号已在其他地方登录，当前系统被迫下线”  跳转登录页面；<br>等等；</p>
+<p>sdk 里面写一个更底层的 移动端、pc段通用的 网关协议；</p>
+<p>然后 关于pc段的 逻辑，则由脚手架的request实现；<br>关于移动端的逻辑，则由移动端脚手架的request实现；</p>
+<h3 id="至此，我们对整个登录设计有了清晰理解"><a href="#至此，我们对整个登录设计有了清晰理解" class="headerlink" title="至此，我们对整个登录设计有了清晰理解"></a>至此，我们对整个登录设计有了清晰理解</h3><p>统一登录项目页面 的后端，负责设置一个二级域名的cookie；</p>
+<p>业务项目的后端 不再与cookie通讯，但通过接口响应数据 经常校验和返回最新的session值；</p>
+<p>前端sdk使用最新的session值，更新cookie，(其实做了上面统一登录的后端做的事情)</p>
+<p>业务项目的前端与后端 只通过 请求入参来进行通讯， 此时的cookie更像一个localstorage 或 全局的state，用cookie，只是有一个全局且有时效性的 state。<br>如果不嫌麻烦确实也可以使用localStorage，但非常不推荐用localStorage。</p>
+<h3 id="判断是否登录"><a href="#判断是否登录" class="headerlink" title="判断是否登录"></a>判断是否登录</h3><h4 id="componentDidMount-中-检测-cookie"><a href="#componentDidMount-中-检测-cookie" class="headerlink" title="componentDidMount 中 检测 cookie"></a>componentDidMount 中 检测 cookie</h4><p>在layout的componentDidMount 中 检测, 如果未登录则跳转统一登录页面:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">checkTicket() &#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.location.href;</span><br><span class="line">  <span class="keyword">const</span> session = getCookie(<span class="string">'session'</span>);</span><br><span class="line">  <span class="keyword">if</span> (!session) &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.href = <span class="string">`<span class="subst">$&#123;<span class="built_in">window</span>.conf.loginUrl&#125;</span>/?redirectUrl=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(url)&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此外，app渲染前还要请求用户信息，此时 后端会校验包含 session的请求入参，判断是否登录，并以响应数据的方式告知前端<br>前端则直接跳转至登录页面；</p>
+<h4 id="根据session-id-检测"><a href="#根据session-id-检测" class="headerlink" title="根据session-id 检测"></a>根据session-id 检测</h4><p>判断登录与否是根据 session-id ，而不是我们通常认为的 account 账号信息，这样挺好。</p>
+<h3 id="用户信息存储设计"><a href="#用户信息存储设计" class="headerlink" title="用户信息存储设计"></a>用户信息存储设计</h3><h4 id="设计分析"><a href="#设计分析" class="headerlink" title="设计分析"></a>设计分析</h4><p>项目采用完全通过接口获取用户信息，前端不缓存任何用户账号信息，这一点非常妙；<br>而且统一登录页面后端 直接设置了一个包含有效期的 cookie ，每次根据这个cookie 组装出带有session信息的请求入参 去请求任意接口。<br>包含了请求 用户账号信息接口，<br>好比我们扔给后端一串无法语义化的session id ，<br>后端返回给我们前端一串语义化的 用户账号信息；<br>这样的 一进一出的设计，</p>
+<h4 id="优点非常明显："><a href="#优点非常明显：" class="headerlink" title="优点非常明显："></a>优点非常明显：</h4><p>既避免了 用户账号 前端缓存在 localstorage 中的明文，让信息泄露，因为被缓存到前端也仅仅是一个 一串毫无语义化可言 的session id；<br>然后所有缓存交给接口，前端的逻辑就非常简单，前端可维护性更高；<br>让后期开发同样的项目，更加便捷，更加成本低；</p>
+<h3 id="如何更新cookie"><a href="#如何更新cookie" class="headerlink" title="如何更新cookie"></a>如何更新cookie</h3><p>除了登录接口，后端直接设置了cookie之外，<br>其他接口请求时，每次请求sdk会根据cookie组装最新的 token，<br>网关或接口接收token，判断是否过期，如果过期则返回统一的code码，以及最新session信息，<br>sdk根据最新的session，设置cookie，<br>然后重新发起请求，重新发起的请求就会传入读取最新cookie而来的tooken。<br>实现了 cookie、tooken的更新。</p>
+<p>由此看出，登录接口通过后端设置cookie，其他接口由前端设置cookie。<br>其实想想，登录接口，同样也可以由前端来设置cookie。</p>
+<h2 id="改进点"><a href="#改进点" class="headerlink" title="改进点"></a>改进点</h2><h3 id="创建一个公司的util工具集"><a href="#创建一个公司的util工具集" class="headerlink" title="创建一个公司的util工具集"></a>创建一个公司的util工具集</h3><p>比如 getCookie ：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getCookie = <span class="function">(<span class="params">name = <span class="string">''</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> arr;</span><br><span class="line">  <span class="keyword">const</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">`(^| )<span class="subst">$&#123;name&#125;</span>=([^;]*)(;|$)`</span>);</span><br><span class="line">  <span class="keyword">if</span> ((arr = <span class="built_in">document</span>.cookie.match(reg))) <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(arr[<span class="number">2</span>]);</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>为什么要创建这样一个工具集，因为网关的cookie是网关后端统一设置的，每个项目具有通用性，适合将此工具提成一个工具集。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><h3 id="encodeURIComponent的加密应用"><a href="#encodeURIComponent的加密应用" class="headerlink" title="encodeURIComponent的加密应用"></a>encodeURIComponent的加密应用</h3><p>cookie 通过 decodeURIComponent encodeURIComponent 做一个简单的加密解密 也挺好的，可以让特殊字符或中文字符，变成普通的name字符。<br>也具有一定的混淆性，让信息脱敏，增加安全性。</p>
+<h2 id="noWindow"><a href="#noWindow" class="headerlink" title="noWindow"></a>noWindow</h2><h3 id="为什么要兼容noWindow，"><a href="#为什么要兼容noWindow，" class="headerlink" title="为什么要兼容noWindow，"></a>为什么要兼容noWindow，</h3><p>因为你的系统可能要嵌入到其他系统；</p>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>在设计layout时考虑：<br>左侧导航nav 可去掉<br>顶部导航nav 可去掉<br>顶部下面的 tab 可去掉<br>只有内容部分是一直可以显示的</p>
+<h2 id="keepalive"><a href="#keepalive" class="headerlink" title="keepalive"></a>keepalive</h2><p>这块比较简单，不多展开；</p>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><p>iframe 嵌入设计<br>由于iframe嵌入的http地址非常不确定性；<br>所以脚手架比较简单的 写了一个组件 Iframe组件；<br>所有的 iframe 嵌入页面 共用一个 路由： ‘/iframe?url=<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a></p>
+<p>因为特殊字符存在会让 页面地址 格式出问题， 所有的http地址 使用 decodeURIComponent 转义一下特殊字符，让http地址只由正在字符组成。</p>
+<h2 id="无权限页面、welcome、404-页面；"><a href="#无权限页面、welcome、404-页面；" class="headerlink" title="无权限页面、welcome、404 页面；"></a>无权限页面、welcome、404 页面；</h2><p>项目中在 route中定义过的页面，然后权限接口没有这个页面时，说明是无权限页面；<br>其他的页面都作为 weblcom页面或 404页面；</p>
+<p>404 页面如何处理；<br>keepalive 处理；<br>tab 能力；</p>
+<h2 id="待优化"><a href="#待优化" class="headerlink" title="待优化"></a>待优化</h2><p>不要在  this.props.history.listen 中去做权限监听，<br>应该在 页面组件中写入这一逻辑，写一个高阶函数，判断这些；<br>页面中 如何发现没有权限，直接页面都不会显示出来；</p>
+<h2 id="水印"><a href="#水印" class="headerlink" title="水印"></a>水印</h2><p>canvas 实现 可根据即时信息生成即时的图片；<br>设置图片为background<br>设置  <code>warterModel.style.pointerEvents = &#39;none&#39;;</code></p>
+<h2 id="nav、tab、topHeader-设计"><a href="#nav、tab、topHeader-设计" class="headerlink" title="nav、tab、topHeader 设计"></a>nav、tab、topHeader 设计</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><h4 id="nav数据"><a href="#nav数据" class="headerlink" title="nav数据"></a>nav数据</h4><p>左侧导航 nav 的数据由后端接口返回，结构如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'教育中心'</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'素质教育'</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            name: <span class="string">'家庭教育'</span>,</span><br><span class="line">            <span class="comment">// path 很重要，是作为id唯一标识的，既是页面访问地址，也是路由地址，其实二者是一个意思</span></span><br><span class="line">            path: <span class="string">`/tryq/beautiCenter/hometchCenter/index`</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            name: <span class="string">'学校教育'</span>,</span><br><span class="line">            path: <span class="string">`/tryq/beautiCenter/hometchCenter/List`</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'行政中心'</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'行政规则管理'</span>,</span><br><span class="line">        path: <span class="string">'/tryq/xingzCenter/RuleManage/List'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'行政规则编辑'</span>,</span><br><span class="line">        path: <span class="string">'/tryq/xingzCenter/RuleManage/Edit'</span>,</span><br><span class="line">        <span class="comment">// 用这个来解决 nav 与 tab 一对多的关系，比如 列表、新增、详情 对应一个nav；</span></span><br><span class="line">        relation: <span class="string">'/tryq/xingzCenter/RuleManage/List'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">    name: <span class="string">'实训中心'</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'搜狐2005页面'</span>,</span><br><span class="line">        <span class="comment">// 兼容上面 iframe的设计，所有iframe地址，将被组装成 /iframe?url=http://news.sohu.com/s2009/9616/s267059966/</span></span><br><span class="line">        path: <span class="string">'http://news.sohu.com/s2009/9616/s267059966/'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h4 id="relation-解决一对多"><a href="#relation-解决一对多" class="headerlink" title="relation 解决一对多"></a>relation 解决一对多</h4><p>如上</p>
+<h4 id="path为唯一值id"><a href="#path为唯一值id" class="headerlink" title="path为唯一值id"></a>path为唯一值id</h4><p>如上</p>
+<h4 id="router数据"><a href="#router数据" class="headerlink" title="router数据"></a>router数据</h4><p>对应的 router设计 不重要，就是遵循 react 就行，也不用管 父子等层级关系，反正最后都被根据path平铺就行了。</p>
+<h3 id="充分认识导航的onSelect与onOpen"><a href="#充分认识导航的onSelect与onOpen" class="headerlink" title="充分认识导航的onSelect与onOpen"></a>充分认识导航的onSelect与onOpen</h3><p>选择最终的子节点 才触发 onSelect；<br>其他动作，如点击非子节点的父级节点，都属于 onOpen；<br>要充分认识onSelect与onOpen 带来的 其他模式比如下面的 openMode selectMode；<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Nav</span></span></span><br><span class="line"><span class="tag">     <span class="attr">onSelect</span>=<span class="string">&#123;setNavSelect&#125;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">onOpen</span>=<span class="string">&#123;setNavOpen&#125;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">selectedKeys</span>=<span class="string">&#123;selectedNavKeys&#125;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">openKeys</span>=<span class="string">&#123;openNavKeys&#125;</span></span></span><br><span class="line">     &lt;!-- 是否支持多开 --&gt;</span><br><span class="line">     openMode="single"</span><br><span class="line">     <span class="comment">&lt;!-- 是否支持多选 --&gt;</span></span><br><span class="line">     selectMode="single"</span><br><span class="line">     mode="inline"</span><br><span class="line">     type="primary"</span><br><span class="line">     direction="ver"</span><br><span class="line">   &gt;</span><br><span class="line">     &#123;navContent&#125;</span><br><span class="line">   <span class="tag">&lt;/<span class="name">Nav</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="支持的功能"><a href="#支持的功能" class="headerlink" title="支持的功能"></a>支持的功能</h3><h4 id="功能概述"><a href="#功能概述" class="headerlink" title="功能概述"></a>功能概述</h4><ul>
+<li>根据url，页面刷新后，打开对应的导航,tab</li>
+<li>点击导航打开对应的导航，这个好做</li>
+<li>要点击tab也能打开对应的导航，而且 新增、详情、列表 对应一个功能导航，这个一对多的设计</li>
+<li>兼顾iframe </li>
+<li>层级为三级，最好考虑兼容 (或四级、五级)</li>
+</ul>
+<h4 id="数据设计思路"><a href="#数据设计思路" class="headerlink" title="数据设计思路"></a>数据设计思路</h4><p>为了兼顾iframe， 路由使用统一的 /iframe，以？加上 encode 后的http地址， 使用encode是为了处理特殊字符，不然地址无效；<br>为了兼顾导航与tab 是上面说的一对多的需求，需要提供一份 一对多的映射数据 (具体的实施方案是，导航数据中包含了child信息)，<br>这里有一个错误的数据设计思路：是通过约定导航与路由的命名方式来做，比如 脚手架，这种方法扩展性极差，问题排查极难，还要在代码成名做非常复杂的处理。</p>
+<h3 id="路由与nav-tab-数据设计关系"><a href="#路由与nav-tab-数据设计关系" class="headerlink" title="路由与nav tab 数据设计关系"></a>路由与nav tab 数据设计关系</h3><p>iframe 支持；<br>如果支持 iframe ，就要考虑缓存，以及 nowindow， 因为希望同系统页面引入时， 设计 nowindow 功能；</p>
+<p>路由数据设计上：<br>第一点：我们假定 导航 上的 路由都只有path，而没有search，信息<br>第二点：我们使用 tab 同时存储 不变的path信息，以及动态的新增编辑id信息 到search上；<br>当然 关于第一点，其实我们可以不用一定要 用path，也可以用 path + search， 然后一律以 path 作为 map映射计算，或者灵活改变都可以；</p>
+<h3 id="状态设计"><a href="#状态设计" class="headerlink" title="状态设计"></a>状态设计</h3><p>基于以上分析</p>
+<h4 id="数据设计如下"><a href="#数据设计如下" class="headerlink" title="数据设计如下"></a>数据设计如下</h4><p>我们希望菜单数据包含这几个关键字：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; path, name,  children,  relation &#125; = item;</span><br></pre></td></tr></table></figure></p>
+<a rel=设计一个中台项目架构 href="/blog/image/infra/tab.png" title="" data-fancybox="images"><img src="/blog/image/infra/tab.png" class="url_for"></a>
+<p>tab 数据包含：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 就是这三个关键字 const &#123; label, path, search &#125; = pane;</span></span><br><span class="line">&lt;Tab shape=<span class="string">"wrapped"</span> activeKey=&#123;currentValue&#125; onClose=&#123;onCloseTab&#125; className=<span class="string">"custom-tab"</span> animation=&#123;<span class="literal">false</span>&#125;&gt;</span><br><span class="line">      &#123;datas.map(<span class="function">(<span class="params">pane</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; label, path, search &#125; = pane;</span><br><span class="line">        <span class="comment">// search || '' 避免undefined</span></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          &lt;Tab.Item</span><br><span class="line">            title=&#123;&lt;Link to=&#123;<span class="string">`<span class="subst">$&#123;path&#125;</span><span class="subst">$&#123;search || <span class="string">''</span>&#125;</span>`</span>&#125;&gt;&#123;label&#125;&lt;<span class="regexp">/Link&gt;&#125;</span></span><br><span class="line"><span class="regexp">            key=&#123;path&#125;</span></span><br><span class="line"><span class="regexp">            closeable=&#123;datas.length &gt; 1&#125;</span></span><br><span class="line"><span class="regexp">          /</span>&gt;</span><br><span class="line">        );</span><br><span class="line">      &#125;)&#125;</span><br><span class="line">    &lt;<span class="regexp">/Tab&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="状态响应设计"><a href="#状态响应设计" class="headerlink" title="状态响应设计"></a>状态响应设计</h4><p>所有的nav 和 tab 只改变 path，也就是只改变 页面的访问路由；<br>至于 每个路由，要显示那些nav 的openkeys 还是 selectedKeys；<br>要显示哪些 tab 的 currentTab 以及 tabDatas；<br>这些全部交给 useEffect 响应 页面访问路由来处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 认为 menuDatas 就会引起tabMaps改变，因此监听tabMaps， 只有在页面初始化时才会改变，</span></span><br><span class="line"><span class="comment">// 一旦menuDatas(tabMaps)稳定下来，页面将不会改变，所有的 导航和tab逻辑都基于此</span></span><br><span class="line"><span class="comment">// 所以把页面刷新时，初始化 导航和tab 逻辑放到这里来，</span></span><br><span class="line"><span class="comment">// 此设计待进一步验证 更多复杂情况 todo</span></span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!tabMaps) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">let</span> &#123; pathname &#125; = <span class="built_in">window</span>.location;</span><br><span class="line">  <span class="keyword">const</span> &#123; search &#125; = <span class="built_in">window</span>.location;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (tabAndNavnfo) &#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; openKeys &#125; = tabAndNavnfo;</span><br><span class="line">    <span class="keyword">let</span> &#123; selectKeys &#125; = tabAndNavnfo;</span><br><span class="line">    <span class="keyword">if</span> (tabAndNavnfo.relation) &#123;</span><br><span class="line">      openKeys = tabMaps[tabAndNavnfo.relation].openKeys;</span><br><span class="line">      selectKeys = tabMaps[tabAndNavnfo.relation].selectKeys;</span><br><span class="line">    &#125;</span><br><span class="line">    setNavOpen(openKeys);</span><br><span class="line">    setNavSelect(selectKeys);</span><br><span class="line"></span><br><span class="line">    setCurrentTab(pathname);</span><br><span class="line">    setTab(<span class="function">(<span class="params">pre</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// iframe 页面没有 search 的说明，都是写死的完整 page url， 不需要考虑 search</span></span><br><span class="line">      <span class="keyword">if</span> (pre.find(<span class="function">(<span class="params">t</span>) =&gt;</span> t.path === pathname)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (isIframePage) <span class="keyword">return</span> pre;</span><br><span class="line">        <span class="keyword">return</span> pre.map(<span class="function">(<span class="params">t</span>) =&gt;</span> (&#123;</span><br><span class="line">          ...t,</span><br><span class="line">          search,</span><br><span class="line">        &#125;));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> [</span><br><span class="line">        ...pre,</span><br><span class="line">        &#123;</span><br><span class="line">          ...tabAndNavnfo,</span><br><span class="line">          search: isIframePage ? <span class="literal">undefined</span> : search,</span><br><span class="line">        &#125;,</span><br><span class="line">      ];</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, [tabMaps, <span class="built_in">window</span>.location.href]);</span><br></pre></td></tr></table></figure>
+<p>这样的设计非常妙，</p>
+<p>比如 在页面中，点击按钮进行页面路由跳转的时候， 他们只需做路由跳转的逻辑就行，<br>不用关心 什么 左侧导航的 openkeys seletedKeys 以及 tab的选中情况，tab datas。</p>
+<p>这点非常关键。</p>
+<p>让各种功能理解起来更简单，设计起来也更加简洁，扩展性非常强；</p>
+<p>而 【左侧导航的 openkeys seletedKeys 以及 tab的选中情况，tab datas】这些就交给 上面的effect进行统一处理，非常之好。</p>
+<p>而且这个effect还可以处理注意 权限控制 等等逻辑。</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://github.com/YeWills/dashboard.git" target="_blank" rel="noopener">dashboard</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.797Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/01/13/Infrastructure/" target="_blank" rel="external">https://yewills.github.io/2022/01/13/Infrastructure/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/基建/">基建</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/01/13/Infrastructure/&title=《设计一个中台项目架构》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/01/13/Infrastructure/&title=《设计一个中台项目架构》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/01/14/form/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">表单开发的自我修养</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2021/11/01/delicious/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一路美食 一路风景</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何快速阅读框架源码，或大组件"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何快速阅读框架源码，或大组件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#登录"><span class="post-toc-number">2.</span> <span class="post-toc-text">登录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#登录方案设计"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">登录方案设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#延伸：-脚手架-的request-与-sdk-区别"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">延伸： 脚手架 的request 与 sdk 区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#至此，我们对整个登录设计有了清晰理解"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">至此，我们对整个登录设计有了清晰理解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断是否登录"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">判断是否登录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#componentDidMount-中-检测-cookie"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">componentDidMount 中 检测 cookie</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据session-id-检测"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">根据session-id 检测</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户信息存储设计"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">用户信息存储设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设计分析"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">设计分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点非常明显："><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">优点非常明显：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何更新cookie"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">如何更新cookie</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#改进点"><span class="post-toc-number">3.</span> <span class="post-toc-text">改进点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建一个公司的util工具集"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">创建一个公司的util工具集</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优点"><span class="post-toc-number">4.</span> <span class="post-toc-text">优点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#encodeURIComponent的加密应用"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">encodeURIComponent的加密应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noWindow"><span class="post-toc-number">5.</span> <span class="post-toc-text">noWindow</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要兼容noWindow，"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">为什么要兼容noWindow，</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">方案</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#keepalive"><span class="post-toc-number">6.</span> <span class="post-toc-text">keepalive</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#iframe"><span class="post-toc-number">7.</span> <span class="post-toc-text">iframe</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无权限页面、welcome、404-页面；"><span class="post-toc-number">8.</span> <span class="post-toc-text">无权限页面、welcome、404 页面；</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待优化"><span class="post-toc-number">9.</span> <span class="post-toc-text">待优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#水印"><span class="post-toc-number">10.</span> <span class="post-toc-text">水印</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nav、tab、topHeader-设计"><span class="post-toc-number">11.</span> <span class="post-toc-text">nav、tab、topHeader 设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据处理"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">数据处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nav数据"><span class="post-toc-number">11.1.1.</span> <span class="post-toc-text">nav数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#relation-解决一对多"><span class="post-toc-number">11.1.2.</span> <span class="post-toc-text">relation 解决一对多</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#path为唯一值id"><span class="post-toc-number">11.1.3.</span> <span class="post-toc-text">path为唯一值id</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#router数据"><span class="post-toc-number">11.1.4.</span> <span class="post-toc-text">router数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#充分认识导航的onSelect与onOpen"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">充分认识导航的onSelect与onOpen</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#支持的功能"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">支持的功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#功能概述"><span class="post-toc-number">11.3.1.</span> <span class="post-toc-text">功能概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据设计思路"><span class="post-toc-number">11.3.2.</span> <span class="post-toc-text">数据设计思路</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路由与nav-tab-数据设计关系"><span class="post-toc-number">11.4.</span> <span class="post-toc-text">路由与nav tab 数据设计关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态设计"><span class="post-toc-number">11.5.</span> <span class="post-toc-text">状态设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据设计如下"><span class="post-toc-number">11.5.1.</span> <span class="post-toc-text">数据设计如下</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#状态响应设计"><span class="post-toc-number">11.5.2.</span> <span class="post-toc-text">状态响应设计</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">12.</span> <span class="post-toc-text">源码</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/01/13/Infrastructure/&title=《设计一个中台项目架构》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/01/13/Infrastructure/&title=《设计一个中台项目架构》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3ay4rDMBBEUf//Tyswq4FESlW1HZD6ahXIxPGZQOF+XJd8xt9Zv/v/zD41Juf93euJAwMGjG0ZY3lmX5Dd4uy18u7syjBgwOjDWIfsGpb9pRLuyr3BgAEDhhKC6wjOwh0GDBgw6gz3dt06FAYMGDDuCkE3KPXC9cFaHAYMGBsy3MHAL18/ON+AAQPGJoxhnvWgcR2F2QOidFcwYMA4muG2z7KBpUKtFLowYMDowHBjtHLT60LUHXx++U1gwIBxBCNb1coaYfVYn14HBgwYDRjZIpdS1mYjAWUw8CFwYcCA0ZLhFq7Pxau9ZgEDBoyDGJWlLvdTbjGsr1/AgAGjA8NdsNAx9aWKMHxhwIDRhlEJymxFwy2YYcCA0YGhlJR6aZqthekBPX0XBgwYzRhZaVoffLpj0S+BCwMGjEMZ7kjSHRK4z6fGoycMGDCOZtRbWm756rbnjCCGAQPGoQx3PUtpnN0V3zoSBgwYZzPcdpg+dNTjNcNIvwwMGDCOYLhNeTcEK600vT0HAwaMnowMo59KY25axMKAAeNQRvb1+hhSKXGl0vSmfx8MGDB2ZAzzuK00fZ1CL2WnyxYwYMA4lJE9zOltej2I9euXHg1hwICxLaP+wOe20twWmxSyMGDAaMBwQ7YyQririP0QuDBgwGjPqAwMlDiu3A8MGDBgjOjowe3yYMCA0ZPhFrFKo015BHSj+eZ2GwwYMDZhZItcdWplsSO8MgwYMPZjvADlPxQZgPjz0wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

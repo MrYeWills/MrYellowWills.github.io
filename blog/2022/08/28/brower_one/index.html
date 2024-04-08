@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>浏览器系列(一)：浏览器基础知识 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="浏览器">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>浏览器系列(一)：浏览器基础知识</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">浏览器系列(一)：浏览器基础知识</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-08-28T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-08-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/浏览器/">浏览器</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-brower_one"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">浏览器系列(一)：浏览器基础知识</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-08-28 00:00:00" datetime="2022-08-28T00:00:00.000Z"  itemprop="datePublished">2022-08-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/浏览器/">浏览器</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="浏览器原理"><a href="#浏览器原理" class="headerlink" title="浏览器原理"></a>浏览器原理</h2><h3 id="谷歌的多进程"><a href="#谷歌的多进程" class="headerlink" title="谷歌的多进程"></a>谷歌的多进程</h3><p>当前谷歌是多进程，启动谷歌浏览器后，就会启动浏览器主进程、插件进程、渲染进程， 其中每个标签页面其实就是一个渲染进程，多个页面就会有多个渲染进程。<br>我们的html、js、v8引擎都在这个渲染进程中，这个渲染进程处于一个沙箱内，这样目的是为了不影响其他页面，保证了稳定性。<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b0.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b0.jpg" class="url_for"></a></p>
+<p>随着3d动画的出现，后面又出现了 一些其他基础服务进程，比如 GPU进程、网络进程 等等。<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b1.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b1.jpg" class="url_for"></a></p>
+<p>开启的进程越多，越会消耗cpu 内存，谷歌会智能监测电脑的内存，如果发现内存不足，谷歌会智能的将 上述基础服务合并到浏览器主进程内。</p>
+<a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b2.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b2.jpg" class="url_for"></a>
+<p><a href="https://www.bilibili.com/video/BV18q4y1L7Wh?p=11" target="_blank" rel="noopener">第三节浏览器工作原理：chrome架构演进</a></p>
+<h3 id="浏览器的工作流程"><a href="#浏览器的工作流程" class="headerlink" title="浏览器的工作流程"></a>浏览器的工作流程</h3><h4 id="工作过程说明"><a href="#工作过程说明" class="headerlink" title="工作过程说明"></a>工作过程说明</h4><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b.jpg" class="url_for"></a>
+<a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b3.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b3.jpg" class="url_for"></a>
+<p>图示<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b4.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b4.jpg" class="url_for"></a></p>
+<h4 id="一个http请求过程："><a href="#一个http请求过程：" class="headerlink" title="一个http请求过程："></a>一个http请求过程：</h4><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b5.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b5.jpg" class="url_for"></a>
+<h4 id="完整流程"><a href="#完整流程" class="headerlink" title="完整流程"></a>完整流程</h4><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b6.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b6.jpg" class="url_for"></a>
+<h3 id="进程职责"><a href="#进程职责" class="headerlink" title="进程职责"></a>进程职责</h3><p>浏览器进程职责<br>主要负责用户交互、子进程管理和文件存储和文件储存等功能。</p>
+<p>网络进程职责<br>网络进程是面向渲染进程和浏览器进程等提供网络下载功能。</p>
+<p>渲染进程的主要职责是把从网络下载的html、js、css、图片等资源解析为可以显示和交互的页面。</p>
+<h3 id="进程通讯"><a href="#进程通讯" class="headerlink" title="进程通讯"></a>进程通讯</h3><p>进程之间是相互隔离的，类似沙箱，之间的通讯是通过 IPC 来完成。<br>进程隔离是保护操作系统中进程互不干扰的技术。</p>
+<p>内核开辟一个缓冲区，存入要通讯的数据，以便其他进程共享缓冲区数据，这种技术 就是进程通讯IPC。</p>
+<h3 id="地址栏输入一个url"><a href="#地址栏输入一个url" class="headerlink" title="地址栏输入一个url"></a>地址栏输入一个url</h3><p>我们在地址栏输入一个url，<br>浏览器进程就把这个url 发送至 网络进程；<br>网络进程接收到url后，会在这里真正发起请求：dns解析获取ip，通过ip，与服务器建立tcp连接，</p>
+<p>导航 用户发起url请求到页面开始解析到过程叫做导航。</p>
+<p>当浏览器进程接收到网络进程的响应头数据之后，便向渲染进程发起 提交文档 的消息。</p>
+<p>渲染进程接收到 提交文档 到消息后，会和网络进程建立传输数据的 管道，这个管道其实就是上面说的 IPC。</p>
+<p>等文档数据传输完成之后，渲染进程会返回 确认提交 的消息给浏览器进程。</p>
+<p>浏览器进程在收到 确认提交 的消息后，会更新浏览器界面状态，包括了安全状态、地址栏的url、前进后退的历史状态，并更新web页面。</p>
+<p>在这之后，就进入了渲染阶段。</p>
+<h3 id="为什么要将html解析成dom，"><a href="#为什么要将html解析成dom，" class="headerlink" title="为什么要将html解析成dom，"></a>为什么要将html解析成dom，</h3><p>因为html无法被渲染引擎直接识别的，<br>需要将html转为渲染引擎能识别的内部结构，这个结构就是 dom。<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b7.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b7.jpg" class="url_for"></a></p>
+<h3 id="dom树如何生成："><a href="#dom树如何生成：" class="headerlink" title="dom树如何生成："></a>dom树如何生成：</h3><p>在渲染引擎内部，又一个html解析器 htmlParser 的模块，它的职责就是负责将html字节流转换为dom结构。</p>
+<h3 id="dom树的生成过程"><a href="#dom树的生成过程" class="headerlink" title="dom树的生成过程"></a>dom树的生成过程</h3><p>网络进程通过IPC将文档字节流传输给 渲染进程 解析。<br>注意的是，渲染进程不会等 html字节流完全传递完才解析，而是一边接收一边解析。<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b8.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b8.jpg" class="url_for"></a></p>
+<p>解析器将字节流解析成tokens，放入tokens栈中，然后解析成dom树<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b9.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b9.jpg" class="url_for"></a></p>
+<p>tokens栈 类似js执行上下文的压栈出栈过程。html解析器，遇到开始的标签，就放入tokens栈中，遇到结束的标签，就把这个tokens从栈中删除，直到tokens栈为空。<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b10.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b10.jpg" class="url_for"></a><br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b11.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b11.jpg" class="url_for"></a></p>
+<h3 id="计算css与排版"><a href="#计算css与排版" class="headerlink" title="计算css与排版"></a>计算css与排版</h3><p>dom树生成后，就要根据dom树生成布局树，<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b12.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b12.jpg" class="url_for"></a><br>如图所示，左侧阶段A，中间阶段B，右侧阶段C，<br>A是生成dom树，<br>B是计算css，<br>C是生成布局树；</p>
+<p>如果是重排，那么上述三个阶段都要走一遍；<br>如果是重绘，那么只需走上述的B、C阶段，相比重排，少了生成dom树的步骤，节省性能。</p>
+<p>计算css与document.styleSheets<br>渲染引擎会将css内容变成 document.styleSheets ,可以控制台打印看看，然后再进行css的计算。</p>
+<h3 id="根据布局树生成图层树"><a href="#根据布局树生成图层树" class="headerlink" title="根据布局树生成图层树"></a>根据布局树生成图层树</h3><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b14.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b14.jpg" class="url_for"></a>
+<h4 id="生成图层的几种特性"><a href="#生成图层的几种特性" class="headerlink" title="生成图层的几种特性"></a>生成图层的几种特性</h4><p>以下条件下会生成图层<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b15.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b15.jpg" class="url_for"></a><br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b16.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b16.jpg" class="url_for"></a></p>
+<h3 id="分层与合并"><a href="#分层与合并" class="headerlink" title="分层与合并"></a>分层与合并</h3><p>如果将所有的内容放入一个图层中，那么不可避免就容易重排，为了性能，<br>浏览器渲染，引入了 图层分层的功能，跟ps软件的图层是一样的概念，<br>将内容分成多个层，多个图层的渲染互不干扰，比如将loading动画单独为一个图层，那么只需loading图层重排渲染，而其他图层不渲染，提高性能。</p>
+<p>多个图层 合并一起，成为最终显示图像，叫做合并。</p>
+<h4 id="在控制台看图层。"><a href="#在控制台看图层。" class="headerlink" title="在控制台看图层。"></a>在控制台看图层。</h4><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b13.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b13.jpg" class="url_for"></a>
+<h3 id="更多细节"><a href="#更多细节" class="headerlink" title="更多细节"></a>更多细节</h3><p>生成图层绘制列表，然后对图层珊格化形成图块，按照靠近视口的优先级最高最先渲染原则。<br>渲染的过程要将内容写入内存，再将内存显示在屏幕中，如果内容较大，电脑读写速度慢，那么这个过程就比较卡顿。<br>谷歌浏览器为了优化这个，会将内容先以低分辨率写入内存，然后再以真实分辨率显示。<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/c1.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/c1.jpg" class="url_for"></a><br>珊格化<br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/c2.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/c2.jpg" class="url_for"></a><br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/c3.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/c3.jpg" class="url_for"></a><br><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/c4.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/c4.jpg" class="url_for"></a></p>
+<h3 id="如何生成1帧的图像，"><a href="#如何生成1帧的图像，" class="headerlink" title="如何生成1帧的图像，"></a>如何生成1帧的图像，</h3><p>浏览器生成一帧的图像要 经历 生产dom树、布局树、图层树，最终交由渲染引擎绘制生成图像。<br>这个过程按照 一秒60帧的体验看，要求我们1000/60=16ms 内，生成一帧图片，才不会卡顿。<br>而上述过程中，要经历 js执行，到最终生成图像，如果写的js或css不好，生成一帧图像 可能大于16ms，就显得卡顿。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.bilibili.com/video/BV18q4y1L7Wh?p=11" target="_blank" rel="noopener">第三节浏览器工作原理：chrome架构演进</a></p>
+<h2 id="浏览器知识"><a href="#浏览器知识" class="headerlink" title="浏览器知识"></a>浏览器知识</h2><h3 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h3><p>浏览器内核指的是浏览器的排版引擎，也称为浏览器引擎、页面渲染引擎、样版引擎。<br>比如 谷歌之前内核为 webkit，现在为blink。</p>
+<h3 id="v8引擎的原理"><a href="#v8引擎的原理" class="headerlink" title="v8引擎的原理"></a>v8引擎的原理</h3><a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b17.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b17.jpg" class="url_for"></a>
+<a rel=浏览器系列(一)：浏览器基础知识 href="/blog/image/ntool/b18.jpg" title="" data-fancybox="images"><img src="/blog/image/ntool/b18.jpg" class="url_for"></a>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.797Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/08/28/brower_one/" target="_blank" rel="external">https://yewills.github.io/2022/08/28/brower_one/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/浏览器/">浏览器</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/28/brower_one/&title=《浏览器系列(一)：浏览器基础知识》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/28/brower_one/&title=《浏览器系列(一)：浏览器基础知识》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/08/28/brower_four/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">浏览器系列(四)：学习策略</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/08/28/brower_three/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">浏览器系列(三)：浏览器插件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#浏览器原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">浏览器原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#谷歌的多进程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">谷歌的多进程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浏览器的工作流程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">浏览器的工作流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#工作过程说明"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">工作过程说明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个http请求过程："><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">一个http请求过程：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#完整流程"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">完整流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程职责"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进程职责</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进程通讯"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">进程通讯</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#地址栏输入一个url"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">地址栏输入一个url</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要将html解析成dom，"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">为什么要将html解析成dom，</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dom树如何生成："><span class="post-toc-number">1.7.</span> <span class="post-toc-text">dom树如何生成：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dom树的生成过程"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">dom树的生成过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算css与排版"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">计算css与排版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据布局树生成图层树"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">根据布局树生成图层树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成图层的几种特性"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">生成图层的几种特性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分层与合并"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">分层与合并</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在控制台看图层。"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">在控制台看图层。</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更多细节"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">更多细节</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何生成1帧的图像，"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">如何生成1帧的图像，</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#浏览器知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">浏览器知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浏览器内核"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">浏览器内核</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#v8引擎的原理"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">v8引擎的原理</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/28/brower_one/&title=《浏览器系列(一)：浏览器基础知识》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/28/brower_one/&title=《浏览器系列(一)：浏览器基础知识》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQW7DMAxE0dz/0u4B2sh/RkkBi1+roHVkvSwIkuLrhdf1a/Hn+TN8/3LJkCHjsYxrufgz73ZeH5p8Ru+VIUPGAAY5xPp5EprX71pTb/aRIUOGDJwOfvaIMmTIkLETcNOEcv1dkj7KkCFDBnkBCYi8rOVB+cO1uAwZMh7I4F33///8lfsNGTJkPIpxhWsdOtPUsEs6/ziVDBkyjmakrbSdpttWK42cR4YMGYcy1mE0LSC758mPdfMXGTJkDGB0Lf60WbbfVnu7swwZMsYwSDq4U9Z215bobDJkyDia8anGWRqmyQ+RfleGDBmnMtImPknv0obdTjiWIUPGBEYXOncOxHeLrxZkyJAxmNFdOvJAnM593SSIMmTIOI7BG2dpYdldjpZnkCFDxngGf32X8HUBPfh1ZciQcQRjJwiSFhu//ux2kyFDxtkMXjruDFh07LSslSFDxqmMbjyra8alqWSwmwwZMo5mkBjMS1PedONHD5AyZMgYw+gacLxZthPEbzAyZMgYyUjDKw/WHMBJMmTImMMgKRo/Ik8cu0abDBkyJjCucKVXAl3IThtwMmTIOJvBFx+S6ArgnaJXhgwZExi81ORDWvyqMshhu9kQGTJkHMTggY//l18zpEWsDBkyZKQHTYc2+NsDsAwZMmSAS8f0GoC8NyDJkCFjAIOPRPAyuBvL+MrMiAwZMh7O6ErHzw5edHMiMmTIGMD4AbtXN/VQ7oi9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

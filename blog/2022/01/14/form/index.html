@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>表单开发的自我修养 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="表单开发">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>表单开发的自我修养</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">表单开发的自我修养</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-01-14T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-01-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-form"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">表单开发的自我修养</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-01-14 00:00:00" datetime="2022-01-14T00:00:00.000Z"  itemprop="datePublished">2022-01-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端/">前端</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="由一个问题想到的"><a href="#由一个问题想到的" class="headerlink" title="由一个问题想到的"></a>由一个问题想到的</h2><p>在表单开发中，状态设计非常重要，状态设计的好，后期可扩展性 可维护性非常之妙。<br>状态设计是否得当，对后期维护的成本将产生极大影响。<br>经常看到一些页面，因为状态设计失败，导致后期出现 多源控制一个组件，或者一个状态使用多个雷同意义的变量。</p>
+<h3 id="多源控制一个组件"><a href="#多源控制一个组件" class="headerlink" title="多源控制一个组件"></a>多源控制一个组件</h3><p>一个组件既通过内部state控制，又通过外部props控制，如果这二者设计非常好，(比如使用defaultProps+state方式，这种严格来说还是单一state形式)，组件倒是用起来稍显麻烦而已；<br>如果 state 和props设计不好，用了大量的 if else ，组件会出现很多bug，通过大量的补丁修复一个问题，导致组件难以维护，不得不重构；</p>
+<h3 id="一个状态使用多个雷同意义的变量表示"><a href="#一个状态使用多个雷同意义的变量表示" class="headerlink" title="一个状态使用多个雷同意义的变量表示"></a>一个状态使用多个雷同意义的变量表示</h3><h4 id="组件使用state控制值"><a href="#组件使用state控制值" class="headerlink" title="组件使用state控制值"></a>组件使用state控制值</h4><p>比如一个组件A，使用state来控制这个组件的值，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-select</span><br><span class="line">   v-model=<span class="string">"formVals.selectA"</span></span><br><span class="line">   filterable</span><br><span class="line">   remote</span><br><span class="line">   placeholder=<span class="string">"请输入"</span></span><br><span class="line">   <span class="class"><span class="keyword">class</span></span>=<span class="string">"w400"</span></span><br><span class="line"> &gt;</span><br><span class="line">   &lt;el-option</span><br><span class="line">     v-<span class="keyword">for</span>=<span class="string">"item in datalist"</span></span><br><span class="line">   &gt;</span><br><span class="line">   ....</span><br><span class="line">   &lt;<span class="regexp">/el-option&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>el-select&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="外部需要使用组件A值"><a href="#外部需要使用组件A值" class="headerlink" title="外部需要使用组件A值"></a>外部需要使用组件A值</h4><p>此时一个外部组件B【组件B处于组件A的父组件平级】，需要使用该组件A的状态，于是，通过onChange将值反射出去，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-select</span><br><span class="line">    v-model=<span class="string">"formVals.selectA"</span></span><br><span class="line">    filterable</span><br><span class="line">    remote</span><br><span class="line">    placeholder=<span class="string">"请输入"</span></span><br><span class="line">    @change=<span class="string">"handleSelect"</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"w400"</span></span><br><span class="line">  &gt;</span><br><span class="line">    &lt;el-option</span><br><span class="line">      v-<span class="keyword">for</span>=<span class="string">"item in datalist"</span></span><br><span class="line">    &gt;</span><br><span class="line">    ....</span><br><span class="line">    &lt;<span class="regexp">/el-option&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>el-select&gt;</span><br><span class="line"></span><br><span class="line">     handleSelect(item) &#123;</span><br><span class="line">      <span class="comment">// 反射给外部组件 设置 this.aValue 值；</span></span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">'update-valueA'</span>, item)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>这里又出来一个问题，编辑详情的时候，不会触发onChange，于是在详情接口得写这样写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件A的父级的父级组件【外部B组件与组件A组件父组件共同所在的组件中】，已知详情接口就在此组件触发</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//此值给到A组件父亲组件，用于设置A组件的值；</span></span><br><span class="line"><span class="keyword">this</span>.formVals = &#123;<span class="attr">selectA</span>: res.selectval&#125;;</span><br><span class="line"><span class="comment">//用于初始化 需要反射出来的 a组件的值，就是上面的 this.$emit('update-valueA', item)</span></span><br><span class="line"><span class="keyword">this</span>.aValue = res.selectval;</span><br></pre></td></tr></table></figure></p>
+<p>显然 this.formVals 与 this.aValue 都能代表 组件A的值，完全不需要用两个，而因为使用了两个，后期维护这个组件时要分析两遍状态，<br>既要分析 formVals.selectA 又要分析 this.aValue，后期维护成本 <code>x2</code> 。<br>但由于错误的状态设置，导致不得不这样做。</p>
+<h4 id="又来一个紧急需求"><a href="#又来一个紧急需求" class="headerlink" title="又来一个紧急需求"></a>又来一个紧急需求</h4><p>又有一个人在后期维护这个页面时，接到一个紧急的需求，要给一个外部组件C做联动，此联动需要同时用到组件A的状态，又要同时用到其他几个组件的状态。<br>虽然时间紧迫，但开发人员觉得能否使用以前反射出来的 this.aValue 作为 A组件的值。<br>可惜的是，this.aValue 这个变量写的有点混乱，要验证 this.aValue 是否时刻与 组件A的值同步，或者this.aValue 就是组件A的所见即所得的值，<br>需要时间验证一下，<br>又不巧的是，老板在群里发话，该需求十万火急，客户使用现有页面已经造成了资产损失。<br>开发人员这下一激灵，还有啥说的，用最快的速度给我上需求，于是他也没时间去验证 this.aValue 是否能代表 A组件的值了，<br>又考虑到 外部组件C 联动时要同时用到多个其他组件状态，<br>按照所见即所得的标准，快速创建了一个对象(包含组件A等状态的变量)：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-select</span><br><span class="line">    v-model=<span class="string">"formVals.selectA"</span></span><br><span class="line">    filterable</span><br><span class="line">    remote</span><br><span class="line">    placeholder=<span class="string">"请输入"</span></span><br><span class="line">    @change=<span class="string">"handleSelect"</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"w400"</span></span><br><span class="line">  &gt;</span><br><span class="line">    &lt;el-option</span><br><span class="line">      v-<span class="keyword">for</span>=<span class="string">"item in datalist"</span></span><br><span class="line">    &gt;</span><br><span class="line">    ....</span><br><span class="line">    &lt;<span class="regexp">/el-option&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>el-select&gt;</span><br><span class="line"></span><br><span class="line">     handleSelect(item) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">'update-valueA'</span>, item)</span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">'update-compound-value'</span>, &#123;</span><br><span class="line">        aValue: item,</span><br><span class="line">        dValue: <span class="keyword">this</span>.formVals.inputD,</span><br><span class="line">        eValue: <span class="keyword">this</span>.formVals.inputE,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>然后在编辑详情的时候，在详情接口初始化值：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.formVals = &#123;<span class="attr">selectA</span>: res.selectval&#125;;</span><br><span class="line"><span class="keyword">this</span>.aValue = res.selectval;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化集成了组件A等等多个组件值的变量</span></span><br><span class="line"><span class="keyword">this</span>.compoundValue = &#123;</span><br><span class="line">        aValue: res.selectval,</span><br><span class="line">        dValue: res.selectval.inputD,</span><br><span class="line">        eValue: res.selectval.inputE,</span><br><span class="line">      &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>后期维护这个组件时需要同时分析 <code>this.formVals</code> <code>formVals.selectA</code> <code>this.compoundValue.aValue</code> 三个变量，后期维护成本 <code>x3</code> </p>
+<p>这就是 一个状态使用多个雷同意义的变量表示，组件A的状态，使用了多个雷同意义的变量 <code>this.formVals</code> <code>formVals.selectA</code> <code>this.compoundValue.aValue</code> 表示。</p>
+<h3 id="维护成本并非简单的递增"><a href="#维护成本并非简单的递增" class="headerlink" title="维护成本并非简单的递增"></a>维护成本并非简单的递增</h3><p>可惜的是，多一个变量分析，往往不是对维护成本的递增，不是多增加一个变量，维护成本增加一倍 这样的递增，更多的是指数增长，<br>例如，要分析两个变量时，维护成本是 2<em>2=4倍；<br>要分析三个变量时，维护成本是 2</em>2*2=8倍；<br>因为当只有一个变量时，分析问题，可能都用不上验证，盲改就行，很快就将问题解决；<br>当出现两个变量时，为了充分考虑两个变量的用途，你得熟悉下业务，将项目启动起来，然后多种情况测试，并且断点调试，然后申请测试过来测下；<br>当出现三个变量时，除了上述工作的递增，为了保证代码的正确性，需要测试更多情况进行测试；</p>
+<p>这里的指数增长是夸张了点，但肯定的是，组件(状态)设计不合理，后期需求开发成本(维护成本)绝对不是简单的递增。</p>
+<h3 id="二者关系"><a href="#二者关系" class="headerlink" title="二者关系"></a>二者关系</h3><p><code>多源控制一个组件</code>表现的是，对组件的value控制，有多个形式，多个渠道，比如常见的 state与props结合；<br><code>一个状态使用多个雷同意义的变量表示</code>表现的是，组件的value渲染出来后，使用了多个变量来存储该value值。</p>
+<h3 id="保存提交时获取表单状态"><a href="#保存提交时获取表单状态" class="headerlink" title="保存提交时获取表单状态"></a>保存提交时获取表单状态</h3><p>经过以上设计，获取状态的方式。<br>考虑到保存的按钮在外部【组件A的祖父组件】，于是点击保存的时候，获取组件A的状态有两种方式：</p>
+<ul>
+<li>通过ref : this.ref.A.state</li>
+<li>给组件A 传一个函数props，然后在组件A中的装载生命周期函数内，将一个获取内部状态的函数作为入参，执行该props，外部可通过执行作为入参的函数，获取状态。</li>
+</ul>
+<p>以上两种方式，都很不好。</p>
+<blockquote>
+<p>状态设计是表单开发前，必须要思考并且写好框架的，这个框架不铺好，急忙忙开发，是能满足短期的需求，<br>但后期需求变动，如果当前状态设计不匹配需求，哪怕是一个简单的需求，都要下几倍的功夫，甚至要重构状态设计或重构组件，这就是所谓的技术债务。</p>
+</blockquote>
+<h2 id="状态设计"><a href="#状态设计" class="headerlink" title="状态设计"></a>状态设计</h2><a rel=表单开发的自我修养 href="/blog/image/form/ui.jpg" title="" data-fancybox="images"><img src="/blog/image/form/ui.jpg" class="url_for"></a>
+<p>开发上面一个表单，<br>简单一点，那就直接在一个页面把所有的内容写上去就行，所有的表单控件都处于同一个父组件内，此时因为所有内容都在一个大组件内，无所谓状态设计。<br>每个输入框组件的值的来源与表现都唯一，这是最理想的状态，非常利于后期维护开发。<br>不过有一个弊端是，这里数起来，输入框有二十个，有些人想把这些输入框组件，按ui的内容类别进行划分，<br>写成三个组件：货币信息组件、交易配置组件、收益配置组件。</p>
+<p>此时就需要用到状态设计了，<br>这里推荐进行状态提升设计，将上述三个组件的状态提升到父组件进行维护，然后通过props方式传给三个组件用于渲染ui值:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里以react举例，react与vue实现不一样，状态设计理念应该一致</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> FormPage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [formVals, setFormVals] = useState(&#123;&#125;);</span><br><span class="line">  <span class="keyword">const</span> onFieldChange = <span class="function">(<span class="params">val, key</span>) =&gt;</span> &#123;</span><br><span class="line">    setFormVals(&#123; ...formVals, [key]: val &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h3&gt;货币配置&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Currency value=&#123;formVals&#125; onFieldChange=&#123;onFieldChange&#125; /</span>&gt;</span><br><span class="line">      &lt;h3&gt;交易配置&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Trade value=&#123;formVals&#125; onFieldChange=&#123;onFieldChange&#125; /</span>&gt;</span><br><span class="line">      &lt;h3&gt;收益配置&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Profit value=&#123;formVals&#125; onFieldChange=&#123;onFieldChange&#125; /</span>&gt;</span><br><span class="line">      &lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">Button</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span>&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Currency = <span class="function">(<span class="params">&#123; value, onFieldChange &#125;</span>) =&gt;</span> (<span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line">  &lt;FormItem label="币种"&gt;</span><br><span class="line">    &lt;Input</span><br><span class="line">      value=&#123;value.moneyType&#125;</span><br><span class="line">      onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">        onFieldChange(val, 'moneyType');</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    /&gt;</span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">FormItem</span>&gt;</span></span></span><br><span class="line"><span class="xml">   ...</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span>);</span><br></pre></td></tr></table></figure></p>
+<p>以上设置时，input组件的渲染是完全受控的，value.moneyType 代表了input组件所见即所得，非常棒。<br>就算交易和收益配置组件需要使用货币组件内部输入框的值，都十分方便，因为所有的input值，全部来源于 formVals ，具有值的来源唯一性。<br>于是我们可以说上述写法有的好处：</p>
+<ul>
+<li>状态提升到父组件后，任何子孙组件都能非常方便的拿到其他兄弟组件值</li>
+<li>状态提升后，所有组件的值，来源具有唯一性，都是formVals</li>
+</ul>
+<p>这种状态设置后，任何需求，我们都能很方便的实现，</p>
+<ul>
+<li>因为所有的状态都能很方便从父组件拿到，</li>
+<li>同时子组件渲染的值，具备了所见即所得，又具备了唯一性，从而让逻辑非常简单性，后期维护的时候，不必考虑其他因素，直接盲改。</li>
+</ul>
+<h3 id="为什么状态提升如此重要"><a href="#为什么状态提升如此重要" class="headerlink" title="为什么状态提升如此重要"></a>为什么状态提升如此重要</h3><p>react的redux，其实就是将页面所有的状态，都提升至页面最顶层的组件，所有项目内的页面都是该组件的子组件。<br>于是所有页面都能共享到这个 redux数据。<br>所以 redux 就是一个加强版的状态提升的工具。</p>
+<p>vue中也同样有vuex，其大致思路，也同样是将状态存储在一个唯一的地方，所有的组件都能访问和设置这个状态。<br>所以 vuex 也是一个加强版的状态提升工具。</p>
+<h3 id="状态提升与redux、vuex的关系"><a href="#状态提升与redux、vuex的关系" class="headerlink" title="状态提升与redux、vuex的关系"></a>状态提升与redux、vuex的关系</h3><p>参考《为什么状态提升如此重要》</p>
+<h3 id="状态提升与数据存储唯一性"><a href="#状态提升与数据存储唯一性" class="headerlink" title="状态提升与数据存储唯一性"></a>状态提升与数据存储唯一性</h3><p>状态提升后，其天然就会让数据的存储具备了唯一性。<br>比如上面的《由一个问题想到的》《状态设计》中举出的正反两个例子，<br>如果一个组件使用state为维护其值的时候，为了让外部能够影响到组件的值，我们通常使用 state+defaultProps 来确定组件的值。<br>假如我们将状态提升，那么大可只使用一个 props.formVals 来维护组件的值，于是值的来源具备了唯一性，纯粹性，逻辑简单性；</p>
+<h3 id="状态提升与简便性的妥协"><a href="#状态提升与简便性的妥协" class="headerlink" title="状态提升与简便性的妥协"></a>状态提升与简便性的妥协</h3><p>我们在页面开发的时候，有很大时候都是不会用到redux这种加强版的状态提升，<br>因为状态提升，越顶层，意味着增加了代码量，又要分拆到多个文件编写，确实让开发不方便，虽然扩展性非常强。<br>于是我们在写页面是，如果考虑到后期其他页面不会公用此状态，一般都是使用state 而非redux。</p>
+<h3 id="react与vue的组件设计建议"><a href="#react与vue的组件设计建议" class="headerlink" title="react与vue的组件设计建议"></a>react与vue的组件设计建议</h3><p>考虑开发成本性价比，就个人工作经验而言：<br>react而言，为了组件扩张性，推荐设计成受控组件，状态提升至父组件控制，虽然增加了代码量，带来一点麻烦，但保证了逻辑理解的简单性(可读性),可扩展性；<br>vue而言，也进行类似的状态提升设计；<br>对于要共享出去的状态，无论是react还是vue，都要使用状态提升设计模式。</p>
+<h3 id="技术给你开一个玩笑"><a href="#技术给你开一个玩笑" class="headerlink" title="技术给你开一个玩笑"></a>技术给你开一个玩笑</h3><p>有一些人觉得，所有内容写到一个文件，修改起来更加方便，不用跳来跳去去找其他文件，有个两三千行代码，也能忍受。<br>这不能说不对，有时候，确实带来的方便，对于这点，我也不置可否，仁者见仁智者见智吧。</p>
+<blockquote>
+<p>以前见过一个表单页面有三千行代码，然后一个状态使用了 data 作为名字，又有很多内部函数也使用data作为行参，<br>于是想追踪data的来龙去脉时，一搜索文件，居然匹配到了一百多个data，分析起来头炸。</p>
+</blockquote>
+<p>我习惯代码控制在600行内，逻辑确实复杂，保证一千行左右。<br>如果将所有内容写到一个文件，那么就是不分拆组件，也就不存在所谓的状态设计。<br>因此后期迭代需求的时候，其开发成本，肯定比错误的状态设计进行组件分离的情况，要小很多成本。</p>
+<p>所以我在想，如果对react、vue 不够熟练的初学者，不写组件，未尝不是一件坏事，全部内容搞里头，<br>这就是技术给你开个玩笑。</p>
+<p>除了状态设计，</p>
+<h2 id="父级组件做的事情"><a href="#父级组件做的事情" class="headerlink" title="父级组件做的事情"></a>父级组件做的事情</h2><p>这里的父级组件，就是指一个表单页面的根组件、顶级组件，我们页面的所有内容或组件都放在这个组件(子孙)内部，<br>下面是一个典型的父组件结构。<br> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> MyPage() =&gt; &#123;</span><br><span class="line">  <span class="comment">// 表单数据</span></span><br><span class="line">  <span class="keyword">const</span> [formVals, setFormVals] = useState(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 接口数据回填表单</span></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> [&#123;dataObj &#125;] = useGetPageData();</span><br><span class="line">    <span class="keyword">const</span> &#123; originFormVals, &#125; = responseToFormData(&#123;dataObj&#125;)</span><br><span class="line">    setFormVals(originFormVals)</span><br><span class="line">  &#125;, [])</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 保存</span></span><br><span class="line">  <span class="keyword">const</span> onSave =<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 请求表单接口</span></span><br><span class="line">    excuteSave(&#123;</span><br><span class="line">      <span class="comment">// 验证表单</span></span><br><span class="line">      validateForm,</span><br><span class="line">      <span class="comment">// 将表单数据转化为接口数据</span></span><br><span class="line">      getParmas,</span><br><span class="line">      <span class="comment">// 表单数据</span></span><br><span class="line">      formVals,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Form value=&#123;formVals&#125;&gt;</span><br><span class="line">        &lt;Form.Item&gt;....&lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Form.Item&gt;....&lt;/</span>Form.Item&gt;</span><br><span class="line">        &lt;Form.Item&gt;....&lt;<span class="regexp">/Form.Item&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Form&gt;</span><br><span class="line">      &lt;div onClick=&#123;onSave&#125;&gt;保存&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从上述父组件结构看出，其主要聚焦以下事情，这样做的好处是，保存父组件业务代码的纯粹性 简单些 易读性：</p>
+<h3 id="状态提升后的状态控制器"><a href="#状态提升后的状态控制器" class="headerlink" title="状态提升后的状态控制器"></a>状态提升后的状态控制器</h3><p>状态提升后的状态控制器： formVals 与 setFormVals<br>上述已经说了，这里不再叙述。</p>
+<h3 id="详情接口回填表单"><a href="#详情接口回填表单" class="headerlink" title="详情接口回填表单"></a>详情接口回填表单</h3><p>这个其实可通过统一的函数工具处理</p>
+<h3 id="表单数据转接口入参"><a href="#表单数据转接口入参" class="headerlink" title="表单数据转接口入参"></a>表单数据转接口入参</h3><p>这个其实可通过统一的函数工具处理</p>
+<h3 id="表单校验"><a href="#表单校验" class="headerlink" title="表单校验"></a>表单校验</h3><p>这个其实可通过统一的函数工具处理</p>
+<h3 id="表单的保存逻辑"><a href="#表单的保存逻辑" class="headerlink" title="表单的保存逻辑"></a>表单的保存逻辑</h3><p>保存的接口请求</p>
+<h3 id="帮助工具函数文件"><a href="#帮助工具函数文件" class="headerlink" title="帮助工具函数文件"></a>帮助工具函数文件</h3><p>如果这部分的逻辑比较独立，可以将 详情接口回填表单 表单数据转接口入参 表单校验 三部分内容写到一个专门的helper.js中，<br>写到一个js上的好处是，一些工具函数会被同样用于这三部分，<br>而且这三部分逻辑相似，集中到一个文件，后期改动比较方便</p>
+<h2 id="联动的设计"><a href="#联动的设计" class="headerlink" title="联动的设计"></a>联动的设计</h2><a rel=表单开发的自我修养 href="/blog/image/form/select.jpg" title="" data-fancybox="images"><img src="/blog/image/form/select.jpg" class="url_for"></a>
+<h3 id="通过响应实现"><a href="#通过响应实现" class="headerlink" title="通过响应实现"></a>通过响应实现</h3><p>通过响应 <code>币种</code> 的变化，来清空 <code>交易产品</code> 的值：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Currency = <span class="function">(<span class="params">&#123; defalutVals &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [moneyType, setType] = useState(defalutVals.moneyType);</span><br><span class="line">  <span class="keyword">const</span> [tradeProduct, setTradeProduct] = useState(defalutVals.tradeProduct);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setTradeProduct(<span class="string">''</span>);</span><br><span class="line">  &#125;, [moneyType]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;FormItem label=<span class="string">"币种"</span>&gt;</span><br><span class="line">      &lt;Input</span><br><span class="line">        value=&#123;moneyType&#125;</span><br><span class="line">        onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">          setType(val);</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;<span class="regexp">/FormItem&gt;</span></span><br><span class="line"><span class="regexp">    &lt;FormItem label="交易产品"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Input</span></span><br><span class="line"><span class="regexp">        value=&#123;tradeProduct&#125;</span></span><br><span class="line"><span class="regexp">        onChange=&#123;(val) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          setTradeProduct(val);</span></span><br><span class="line"><span class="regexp">        &#125;&#125;</span></span><br><span class="line"><span class="regexp">      /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/FormItem&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>&gt;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>但这种有一个天然的缺陷，<br>当表单接口详情返回数据时，因为上面的useEffect总是响应 <code>币种</code> 的变化，<br>详情接口数据回填时，<code>交易产品</code>的值总被清空。<br>于是解决方案来了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CurrencyWrap = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [vals, setVals] = useState(&#123;&#125;);</span><br><span class="line">  <span class="keyword">const</span> [refreshKey, setRefreshKey] = useState(<span class="number">0</span>);</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    fetch(url).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      setVals(res);</span><br><span class="line">      <span class="comment">// 必须要在setVals之后执行，这样Currency组件加载时，数据是最新的</span></span><br><span class="line">      setRefreshKey(<span class="function"><span class="params">pre</span>=&gt;</span> pre+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Currency</span> <span class="attr">key</span>=<span class="string">&#123;refreshKey&#125;</span> <span class="attr">defaultVals</span>=<span class="string">&#123;vals&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种解决方案利用的是key改变后，重新加载组件，一些简单的组件可以这样写，不过不太推荐这样写。</p>
+<h3 id="通过onChange实现"><a href="#通过onChange实现" class="headerlink" title="通过onChange实现"></a>通过onChange实现</h3><p>我们要做联动，首先要理解联动的本质，<br>为什么上面通过 useEffect 响应无法解决联动的问题，最后还得通过 CurrencyWrap 打一层补丁。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   setTradeProduct(<span class="string">''</span>);</span><br><span class="line"> &#125;, [moneyType]);</span><br></pre></td></tr></table></figure></p>
+<p>因为我们被误导了，以为 <code>交易产品</code> 的清空的必然强联系就是 <code>币种</code> 的值改变。<br>其实不然，<code>交易产品</code> 的清空与否，只与动作有关。<br><strong>这里说到了一个设计本质，我们在设计联动的时候，联动的触发开关是动作，而非对值的响应</strong>。<br><code>交易产品</code> 的清空联动，其实只会出现在 <code>币种</code> 值的输入下改变的值，就会要求联动清空 <code>交易产品</code> 的值，<br>其他情况下，例如接口详情请求导致的 <code>币种</code>的值的变化，不要求情况 <code>交易产品</code>的值。</p>
+<p>于是我们可以理解为，联动的开关：<br>第一必须是先有动作，<br>然后就是动作产生了影响或变化后，<br>基于影响和变化做出联动。</p>
+<p>理解了联动的本质，那么我们设计上述联动，可以这样写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Currency = <span class="function">(<span class="params">&#123; defalutVals &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [moneyType, setType] = useState(defalutVals.moneyType);</span><br><span class="line">  <span class="keyword">const</span> [tradeProduct, setTradeProduct] = useState(defalutVals.tradeProduct);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;FormItem label=<span class="string">"币种"</span>&gt;</span><br><span class="line">      &lt;Input</span><br><span class="line">        value=&#123;moneyType&#125;</span><br><span class="line">        onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">          setType(val);</span><br><span class="line">          <span class="comment">// 只需增加一行，作为联动</span></span><br><span class="line">          <span class="comment">// 同样的如果`交易产品`是下拉框，需要联动改变枚举值，也是同样的方式，在此onChange下改变</span></span><br><span class="line">          setTradeProduct(<span class="string">''</span>)</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    &lt;<span class="regexp">/FormItem&gt;</span></span><br><span class="line"><span class="regexp">    &lt;FormItem label="`交易产品`"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Input</span></span><br><span class="line"><span class="regexp">        value=&#123;tradeProduct&#125;</span></span><br><span class="line"><span class="regexp">        onChange=&#123;(val) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">          setTradeProduct(val);</span></span><br><span class="line"><span class="regexp">        &#125;&#125;</span></span><br><span class="line"><span class="regexp">      /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/FormItem&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>&gt;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设计本质"><a href="#设计本质" class="headerlink" title="设计本质"></a>设计本质</h3><p>我们在设计联动的时候，联动的触发开关是动作，而非对值的响应，这样设计后，后期会避免很多麻烦。</p>
+<h3 id="为什么要说联动"><a href="#为什么要说联动" class="headerlink" title="为什么要说联动"></a>为什么要说联动</h3><p>可能在jquery时代，没有响应hooks存在，做联动只能通过 onChange，于是不会有错误。<br>但因为 react、vue 基于数据响应的，在做联动时，有些人被联动表象所误导，会通过 数据响应去实现，这种实现方式对后期扩展非常不利。</p>
+<h2 id="其他开发细节"><a href="#其他开发细节" class="headerlink" title="其他开发细节"></a>其他开发细节</h2><h3 id="尽量避免会被雷同的变量名"><a href="#尽量避免会被雷同的变量名" class="headerlink" title="尽量避免会被雷同的变量名"></a>尽量避免会被雷同的变量名</h3><p>比如使用date，form 这样搜索改变量时，能匹配到很多，追踪问题不太方便。<br>参考《技术给你开一个玩笑》</p>
+<h3 id="所见即所得"><a href="#所见即所得" class="headerlink" title="所见即所得"></a>所见即所得</h3><p>开发组件时,有些人为了图方便，直接在 onChange时，把该组件值的接口入参一并写好。<br>parmasMoneyType 其实就是 moneyType，但特殊的空值情况下，parmasMoneyType设置为0。<br>这个 parmasMoneyType 充分体现了所见非所得，放在这里误导人。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;Input</span><br><span class="line">       value=&#123;moneyType&#125;</span><br><span class="line">       onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">         setType(val);</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(!val)&#123;</span><br><span class="line">           parmasMoneyType = <span class="number">0</span></span><br><span class="line">           <span class="keyword">return</span> </span><br><span class="line">         &#125;</span><br><span class="line">          parmasMoneyType = val</span><br><span class="line">       &#125;&#125;</span><br><span class="line">     /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>建议的写法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Input</span><br><span class="line">       value=&#123;moneyType&#125;</span><br><span class="line">       onChange=&#123;(val) =&gt; &#123;</span><br><span class="line">         setType(val);</span><br><span class="line">       &#125;&#125;</span><br><span class="line">     /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在保存的逻辑中写好表单转入参<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> parmasMoneyType = moneyType;</span><br><span class="line"><span class="keyword">if</span>(!parmasMoneyType) parmasMoneyType = <span class="number">0</span></span><br><span class="line">fetch(url, &#123;</span><br><span class="line">  moneyType: parmasMoneyType</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样保证了 input 组件的清爽，同时也么有冗余的逻辑：<br>组件内部只写与渲染有关的内容，不要写业务逻辑，什么是业务逻辑，比如表单提交接口的入参转换等等；</p>
+<h3 id="组件内部不要冗余业务逻辑"><a href="#组件内部不要冗余业务逻辑" class="headerlink" title="组件内部不要冗余业务逻辑"></a>组件内部不要冗余业务逻辑</h3><p>参考上面的《所见即所得》</p>
+<h3 id="更多细节"><a href="#更多细节" class="headerlink" title="更多细节"></a>更多细节</h3><p>关注 另外一篇中关于表单的内容</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.801Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/01/14/form/" target="_blank" rel="external">https://yewills.github.io/2022/01/14/form/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/表单开发/">表单开发</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/01/14/form/&title=《表单开发的自我修养》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/01/14/form/&title=《表单开发的自我修养》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/02/22/jstool/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">js工具函数</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/01/13/Infrastructure/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">设计一个中台项目架构</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#由一个问题想到的"><span class="post-toc-number">1.</span> <span class="post-toc-text">由一个问题想到的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多源控制一个组件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">多源控制一个组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一个状态使用多个雷同意义的变量表示"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">一个状态使用多个雷同意义的变量表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#组件使用state控制值"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">组件使用state控制值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#外部需要使用组件A值"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">外部需要使用组件A值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#又来一个紧急需求"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">又来一个紧急需求</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#维护成本并非简单的递增"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">维护成本并非简单的递增</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二者关系"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">二者关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#保存提交时获取表单状态"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">保存提交时获取表单状态</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#状态设计"><span class="post-toc-number">2.</span> <span class="post-toc-text">状态设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么状态提升如此重要"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么状态提升如此重要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态提升与redux、vuex的关系"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">状态提升与redux、vuex的关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态提升与数据存储唯一性"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">状态提升与数据存储唯一性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态提升与简便性的妥协"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">状态提升与简便性的妥协</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#react与vue的组件设计建议"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">react与vue的组件设计建议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#技术给你开一个玩笑"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">技术给你开一个玩笑</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#父级组件做的事情"><span class="post-toc-number">3.</span> <span class="post-toc-text">父级组件做的事情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态提升后的状态控制器"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">状态提升后的状态控制器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详情接口回填表单"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">详情接口回填表单</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单数据转接口入参"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">表单数据转接口入参</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单校验"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">表单校验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单的保存逻辑"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">表单的保存逻辑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#帮助工具函数文件"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">帮助工具函数文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#联动的设计"><span class="post-toc-number">4.</span> <span class="post-toc-text">联动的设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过响应实现"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">通过响应实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过onChange实现"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">通过onChange实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计本质"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">设计本质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要说联动"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">为什么要说联动</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他开发细节"><span class="post-toc-number">5.</span> <span class="post-toc-text">其他开发细节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#尽量避免会被雷同的变量名"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">尽量避免会被雷同的变量名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#所见即所得"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">所见即所得</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件内部不要冗余业务逻辑"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">组件内部不要冗余业务逻辑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更多细节"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">更多细节</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/01/14/form/&title=《表单开发的自我修养》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/01/14/form/&title=《表单开发的自我修养》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aQW7DMAwEwPz/0w7QUy4RlqLouMDoFBSpPM5hIZJ6veJ1/a3Pz59/+fad/PPhhYuL2+Zey7UmJnuun5UbcHFx7+cm4bXeOomqaqjh4uI+n5sfUNZ75rvh4uL+F+46nqohiIuL+2Ru9eBSPcrkex6r1XBxcRvcvYbp2c/j/V1cXNxDU4l89QMxegouLu4t3E6Rk4xb8hcrNF9wcXGHuQlub1xaHaskT8TFxb2H2zmaJFcuOj/H4YYpLi5uzK0eYs5+s/wyuLi4P+Umx5F+CCbEKMhwcXGPcjuXLPfaKMeKH1xc3DFu3qzMhyidxsrmEAUXF3eA2x+BnL3gVZgJ4+LiDnM7l6s6AVdol+Di4t7OrW6RFzxfq65gGBP1YHBxcY9yk6vbe8OSZLfOE3Fxcee41eIkD6Bq/B0rfnBxcdvc6uoMWtbD2mo44uLiznGv4tobyuYtlejKJi4u7jB3L8Kqo5ck+KqvgYuLO83Nw6saanuXM3BxcZ/DrYZX9X/70YmLi/t8bjX+kvZoVPzg4uI+jNsfqVYvaUVdW1xc3DFu/5JW0uBYH3eiEggXF/cWbqcUWW+610Id6e/i4uKm3DftrcmQS7cJyQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

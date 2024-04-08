@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>linux笔记(震) | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="linux">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>linux笔记(震)</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">linux笔记(震)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-05-30T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2021-05-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/linux/">linux</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-linux_third"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">linux笔记(震)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-05-30 00:00:00" datetime="2021-05-30T00:00:00.000Z"  itemprop="datePublished">2021-05-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/linux/">linux</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="管理服务器和服务"><a href="#管理服务器和服务" class="headerlink" title="管理服务器和服务"></a>管理服务器和服务</h2><h3 id="守护进程和初始化进程服务"><a href="#守护进程和初始化进程服务" class="headerlink" title="守护进程和初始化进程服务"></a>守护进程和初始化进程服务</h3><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p>一个运行起来的程序被称之为 进程</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost h2]# ps -o ppid,pid,tty,cmd # -o 是指定显示什么内容列 PPID 父进程id， pid 自己id， tt就是tty窗口 cmd 什么进程</span><br><span class="line">  PPID    PID TT       CMD</span><br><span class="line">  2697  16107 pts/0    sudo su</span><br><span class="line"> 16107  16109 pts/0    su</span><br><span class="line"> 16109  16112 pts/0    bash</span><br><span class="line"> 16112  28766 pts/0    ps -o ppid,pid,tty,cmd</span><br><span class="line">[root@localhost h2]#</span><br></pre></td></tr></table></figure>
+<h4 id="守护进程-特殊进程"><a href="#守护进程-特殊进程" class="headerlink" title="守护进程 (特殊进程)"></a>守护进程 (特殊进程)</h4><p> linux有些特殊进程 只在后台运行；<br> 这些父进程的PID为1；<br> PID为1的进程只在系统关闭时才会被销毁；<br> 我们将这类特殊进程称之为 daemon 守护进程；daemon是古希腊神话中的半神半人精灵、守护神；<br> 因此守护进程也称为 精灵进程；<br> 守护进程也被称为 service（服务）；<br> 服务器软件大多都是以守护进程的形式运行的；<br> 守护进程的名字通常会在最后有一个d，表示 daemon；<br> 例如 systemd，httpd， smbd 等等；</p>
+<h4 id="linux操作系统的开机过程"><a href="#linux操作系统的开机过程" class="headerlink" title="linux操作系统的开机过程"></a>linux操作系统的开机过程</h4><a rel=linux笔记(震) href="/blog/image/linuxt/ser.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/ser.png" class="url_for"></a>
+<h4 id="初始化进程服务"><a href="#初始化进程服务" class="headerlink" title="初始化进程服务"></a>初始化进程服务</h4><p>centos自从 centos7以来，以systemd命令来设置服务，关键字是 systemctl ：<br><a rel=linux笔记(震) href="/blog/image/linuxt/ser1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/ser1.png" class="url_for"></a><br><a rel=linux笔记(震) href="/blog/image/linuxt/ser2.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/ser2.png" class="url_for"></a></p>
+<h3 id="用systemd管理系统服务"><a href="#用systemd管理系统服务" class="headerlink" title="用systemd管理系统服务"></a>用systemd管理系统服务</h3><h4 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h4><p>systemd 是几乎所有最新的linux发行版采用的初始化系统；也可以称之为初始化进程服务；<br>systemd 的 pid 是1；<br>其他进程都是它的子进程； </p>
+<p>systemd 并不是一个命令，它包含了一组命令，涉及到系统进程管理的方方面面；<br>systemd 是基于事件的，这使得它拥有更灵活的机制；<br>systemd 可以使进程并行启动，并非常精致的管理各种依赖关系；<br>管理任务的计划，系统日志，外设 等；</p>
+<h4 id="管理进程的启动和停止"><a href="#管理进程的启动和停止" class="headerlink" title="管理进程的启动和停止"></a>管理进程的启动和停止</h4><p>systemd 提供了 systemctl 命令；<br>使得我们可管理 unit 单元；<br>对systemd来说，unit泛指它可以操作的任何对象；</p>
+<p>unit 可以有不同的类型： 服务(比如 精灵进程)， 挂载（mount）， 外设，等等；<br>守护进程就属于 service 服务 类型，是上面unit的一种；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install samba  #smb命令需要安装samba</span><br><span class="line">systemctl start smb</span><br><span class="line">ps -aux | grep smb</span><br><span class="line">systemctl status smb</span><br><span class="line">systemctl stop smb</span><br><span class="line">systemctl #不传参数相当于 systemctl list-units</span><br><span class="line">systemctl list-units --type=service #查看unit type 为 service的 进程</span><br></pre></td></tr></table></figure>
+<p>target名称：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-units --type=target --all</span><br></pre></td></tr></table></figure></p>
+<a rel=linux笔记(震) href="/blog/image/linuxt/tar.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/tar.png" class="url_for"></a>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><p>可以通过 journalctl 命令来管理系统日志；<br>可以通过 systemd-analyze 命令来查看启动耗时；</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>更多Systemd知识，参考这篇博客：<br><a href="http://ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">Systemd 入门教程</a></p>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><h3 id="httpd-与-Apache"><a href="#httpd-与-Apache" class="headerlink" title="httpd 与 Apache"></a>httpd 与 Apache</h3><p>Apache 是目前试错占有率很高的web服务程序<br>跨平台 Windows、linux、 macOS、Unix<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install httpd</span><br></pre></td></tr></table></figure></p>
+<p>在centos等 red hat 一族中， apache 程序的名字叫 httpd ，因此安装 Apache 就是 安装 httpd；<br>httpd，后面有d，说明是一个精灵进程，后台一直运行。<br>在Ubuntu 等 linux发行版中，依然叫 Apache；</p>
+<h3 id="systemctl-管理-httpd"><a href="#systemctl-管理-httpd" class="headerlink" title="systemctl 管理 httpd"></a>systemctl 管理 httpd</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd #启动Apache服务</span><br><span class="line">systemctl stop httpd #停止Apache服务</span><br><span class="line">systemctl restart httpd #重启 Apache服务</span><br><span class="line">systemctl reload httpd #重载Apache服务的配置文件，使配置生效</span><br><span class="line">systemctl status httpd #查看状态</span><br><span class="line">systemctl enable httpd #设置开机自动启动 Apache服务</span><br><span class="line">systemctl disable httpd #设置开机不启动 Apache服务</span><br><span class="line">systemctl is-enabled httpd #查看Apache服务是否开机启动</span><br></pre></td></tr></table></figure>
+<h3 id="服务器ip在-客户机访问Apache首页"><a href="#服务器ip在-客户机访问Apache首页" class="headerlink" title="服务器ip在 客户机访问Apache首页"></a>服务器ip在 客户机访问Apache首页</h3><p>Apache服务如果安装成功，那么可以通过服务器ip在 客户机访问，<br>但因为有防火墙的缘故访问不了，因为防火墙没有开放此端口号，<br><a rel=linux笔记(震) href="/blog/image/linuxt/apa1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/apa1.png" class="url_for"></a><br>可以通过命令来查看服务器开放的端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure></p>
+<h3 id="客户机如何访问服务器的Apache服务"><a href="#客户机如何访问服务器的Apache服务" class="headerlink" title="客户机如何访问服务器的Apache服务"></a>客户机如何访问服务器的Apache服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#方法一：</span><br><span class="line">#可以通过关闭服务器防火墙来访问：</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+<p>然后在客户机上访问，出现下面页面说明成功：<br><a rel=linux笔记(震) href="/blog/image/linuxt/apa.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/apa.png" class="url_for"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#方法二 推荐：</span><br><span class="line">#设置防火墙开放80端口 永久--permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">#上面设置后，使用此命令使设置立即生效，也可以不用此命令，重启电脑后生效</span><br><span class="line">firewall-cmd reload </span><br><span class="line">#设置防火墙关闭80端口 永久--permanent</span><br><span class="line">firewall-cmd --zone=public --remove-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>注意的是 每次你的虚拟机如果更换了网络或者网络断开重连后，需要用 <code>systemctl restart network</code> 重新更新虚拟机ip配置；</p>
+<h3 id="配置-Apache服务"><a href="#配置-Apache服务" class="headerlink" title="配置 Apache服务"></a>配置 Apache服务</h3><h4 id="下面是Apache服务的配置文件地址"><a href="#下面是Apache服务的配置文件地址" class="headerlink" title="下面是Apache服务的配置文件地址"></a>下面是Apache服务的配置文件地址</h4><a rel=linux笔记(震) href="/blog/image/linuxt/apac.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/apac.png" class="url_for"></a>
+<h4 id="配置文件有以下类型："><a href="#配置文件有以下类型：" class="headerlink" title="配置文件有以下类型："></a>配置文件有以下类型：</h4><a rel=linux笔记(震) href="/blog/image/linuxt/apac1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/apac1.png" class="url_for"></a>
+<p> 全局配置，如下不用 <code>&lt;Directory&gt;</code> 包起来，比如 LogLevel warn 等等;<br> 区域配置，如下区域配置一般用 <code>&lt;Directory&gt;</code> 包起来;</p>
+<h4 id="下面是配置文件部分示例"><a href="#下面是配置文件部分示例" class="headerlink" title="下面是配置文件部分示例"></a>下面是配置文件部分示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;/var/www/html&quot;  #  全局配置 </span><br><span class="line">LogLevel warn # 全局配置</span><br><span class="line"></span><br><span class="line">&lt;Directory /&gt;  # 区域配置</span><br><span class="line">    AllowOverride none</span><br><span class="line">    Require all denied</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line"># 说明针对 &quot;/var/www&quot; 的区域设置</span><br><span class="line">&lt;Directory &quot;/var/www&quot;&gt; </span><br><span class="line">    AllowOverride None</span><br><span class="line">    # Allow open access:</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="配置文件中常用的-httpd参数"><a href="#配置文件中常用的-httpd参数" class="headerlink" title="配置文件中常用的 httpd参数,"></a>配置文件中常用的 httpd参数,</h4><p>下面参数中，有些是全局配置，有些是区域配置参数<br><a rel=linux笔记(震) href="/blog/image/linuxt/apac2.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/apac2.png" class="url_for"></a></p>
+<p>如上图 Directory 是配置网站数据目录的权限，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt; #  配置根目录/</span><br><span class="line">    AllowOverride none</span><br><span class="line">    Require all denied</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line"># 配置目录/var/www</span><br><span class="line">&lt;Directory &quot;/var/www&quot;&gt; </span><br><span class="line">    AllowOverride None</span><br><span class="line">    # Allow open access:</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="SELinux-安全子系统"><a href="#SELinux-安全子系统" class="headerlink" title="SELinux 安全子系统"></a>SELinux 安全子系统</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>SELinux 是 security-enhanced linux 缩写，表示 安全增强型 linux；</p>
+<a rel=linux笔记(震) href="/blog/image/linuxt/sel0.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/sel0.png" class="url_for"></a>
+<h4 id="防火墙和-SELinux-的区别"><a href="#防火墙和-SELinux-的区别" class="headerlink" title="防火墙和 SELinux 的区别"></a>防火墙和 SELinux 的区别</h4><p>防火墙就像防盗门，用于抵御外部的危险；<br>SELinux就像保险柜，用于保护内部的资源；<br><a rel=linux笔记(震) href="/blog/image/linuxt/sel.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/sel.png" class="url_for"></a></p>
+<h4 id="sestatus"><a href="#sestatus" class="headerlink" title="sestatus"></a>sestatus</h4><p>sestatus  selinux status 缩写；此命令用于查看selinux状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sestatus  </span><br><span class="line">SELinux status:                 enabled  # 是否启动</span><br><span class="line">SELinuxfs mount:                /sys/fs/selinux</span><br><span class="line">SELinux root directory:         /etc/selinux  # SELinux 主目录</span><br><span class="line">Loaded policy name:             targeted</span><br><span class="line">Current mode:                   enforcing  #  模式</span><br><span class="line">Mode from config file:          enforcing</span><br><span class="line">Policy MLS status:              enabled</span><br><span class="line">Policy deny_unknown status:     allowed</span><br><span class="line">Max kernel policy version:      31</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置实战-：修改访问首页内容"><a href="#配置实战-：修改访问首页内容" class="headerlink" title="配置实战 ：修改访问首页内容"></a>配置实战 ：修改访问首页内容</h3><h4 id="步骤如下"><a href="#步骤如下" class="headerlink" title="步骤如下"></a>步骤如下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# cd /</span><br><span class="line">[root@localhost /]# mkdir /home</span><br><span class="line">[root@localhost /]# cd /home</span><br><span class="line">[root@localhost /]# mkdir /web</span><br><span class="line">[root@localhost /]# pwd</span><br><span class="line">/home/web</span><br><span class="line">[root@localhost /]# echo &quot;hellow world apache&quot; &gt;./index.html</span><br><span class="line">[root@localhost /]# vim /etc/httpd/conf/httpd.conf</span><br></pre></td></tr></table></figure>
+<p><code>/etc/httpd/conf/httpd.conf</code>修改部分如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;/home/web&quot;</span><br><span class="line"></span><br><span class="line">&lt;Directory &quot;/home/web&quot;&gt;</span><br><span class="line">    AllowOverride None</span><br><span class="line">    # Allow open access:</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# systemctl reload httpd  重载apache，让配置立即生效</span><br></pre></td></tr></table></figure>
+<h4 id="配置的首页不生效"><a href="#配置的首页不生效" class="headerlink" title="配置的首页不生效"></a>配置的首页不生效</h4><p>在客户机中访问服务器ip，发现还是原来的内容，没有显示自己设置的内容，<br>这是由于上面的SELinux安全限制的原因，由于 SELinux 的限制，让服务器继续显示之前的页面；</p>
+<h4 id="配置SELinux"><a href="#配置SELinux" class="headerlink" title="配置SELinux"></a>配置SELinux</h4><p>通过以下命令，可访问正确的页面；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# setenforce 0  可使用下面命令暂时停掉 SELinux 服务，</span><br><span class="line"># setenforce是暂时设置，系统重启后用原来的配置</span><br><span class="line"># setenforce 1 是暂时设置为强制安全模式</span><br><span class="line"></span><br><span class="line">[root@localhost /]# getenforce  查看 SELinux 的配置，发现是Permissive不限制的；</span><br><span class="line">Permissive</span><br></pre></td></tr></table></figure></p>
+<p>再次访问可以显示正确页面：<br><a rel=linux笔记(震) href="/blog/image/linuxt/apac3.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/apac3.png" class="url_for"></a></p>
+<h4 id="配置不生效的本质原因"><a href="#配置不生效的本质原因" class="headerlink" title="配置不生效的本质原因"></a>配置不生效的本质原因</h4><p>如下 <code>/var/www/html</code> 是 httpd 默认的原首页内容显示目录；<br><code>/home/web</code>是 httpd 目前首页内容显示目录；<br>二者的安全上下文不同，从而触发了SELinux的安全策略，因此无法正常显示 设置后的页面内容。<br>解决之法，就是设置 安全上下文 根 <code>/var/www/html</code> 一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# ls -Zd /var/www/html #-Z 是显示目录的 权限 群组 安全上下文 等等 -d是不显示目录内容，只显示目录本身</span><br><span class="line"># drwxr-xr-x. 权限 ； 用户和群组 root root ；  </span><br><span class="line">#  system_u:object_r:httpd_sys_content_t:s0 安全上下文 ；</span><br><span class="line"># 安全上下文 以冒号分隔，内容分别为 用户:角色:类型:其他信息</span><br><span class="line"># system_u 代表系统进程</span><br><span class="line"># object_r 文件目录角色</span><br><span class="line"># httpd_sys_content_t 网站服务的系统文件</span><br><span class="line">drwxr-xr-x. root root system_u:object_r:httpd_sys_content_t:s0 /var/www/html</span><br><span class="line">[root@localhost /]# ls -Zd /home/web</span><br><span class="line">drwxr-xr-x. root root unconfined_u:object_r:home_root_t:s0 /home/web</span><br></pre></td></tr></table></figure>
+<h3 id="修改文件安全上下文"><a href="#修改文件安全上下文" class="headerlink" title="修改文件安全上下文"></a>修改文件安全上下文</h3><h4 id="semanage-命令"><a href="#semanage-命令" class="headerlink" title="semanage 命令"></a>semanage 命令</h4><p>semanage 是 SELinux manage 的缩写</p>
+<p>semanage 的常用参数</p>
+<ul>
+<li>-l 查询</li>
+<li>-a 添加</li>
+<li>-m 修改</li>
+<li>-d 删除</li>
+</ul>
+<p>运行 semanage命令，发现没有安装，</p>
+<h4 id="yun-provides-semanage-命令"><a href="#yun-provides-semanage-命令" class="headerlink" title="yun provides semanage 命令"></a>yun provides semanage 命令</h4><p>可通过 yun provides semanage 找到如何安装,或找到 semanage 的安装依赖包名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# yum provides semanage</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirrors.ustc.edu.cn</span><br><span class="line"> * extras: mirrors.ustc.edu.cn</span><br><span class="line"> * updates: mirrors.ustc.edu.cn</span><br><span class="line"></span><br><span class="line">base/7/x86_64/filelists_db                               | 7.2 MB     00:01</span><br><span class="line">extras/7/x86_64/filelists_db                             | 231 kB     00:00</span><br><span class="line">updates/7/x86_64/filelists_db                            | 4.7 MB     00:00</span><br><span class="line"># SELinux policy core python utilities 说明依赖包是policycoreutils-python</span><br><span class="line">policycoreutils-python-2.5-34.el7.x86_64 : SELinux policy core python utilities </span><br><span class="line">Repo        : base</span><br><span class="line">Matched from:</span><br><span class="line">Filename    : /usr/sbin/semanage</span><br></pre></td></tr></table></figure>
+<p>进行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install policycoreutils-python</span><br></pre></td></tr></table></figure></p>
+<h4 id="semanage-修改上下文"><a href="#semanage-修改上下文" class="headerlink" title="semanage 修改上下文"></a>semanage 修改上下文</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# setenforce 1 #暂时设置SELinux为强制安全模式，以便演示</span><br><span class="line">#fcontext 上下文， 给/home/web 添加上下文 </span><br><span class="line">#httpd_sys_content_t,这个就是上面 /var/www/html 的上下文</span><br><span class="line">[root@localhost /]# semanage fcontext -a -t httpd_sys_content_t /home/web</span><br><span class="line">#加*，给目录下所有文件 加上下文</span><br><span class="line">[root@localhost /]# semanage fcontext -a -t httpd_sys_content_t /home/web/*</span><br><span class="line"># restorecon 是restore content 缩写，让/home/web 下刚才设置的上下文生效</span><br><span class="line">[root@localhost /]# restorecon -Rv /home/web</span><br><span class="line">restorecon reset /home/web context unconfined_u:object_r:home_root_t:s0-&gt;unconfined_u:object_r:httpd_sys_content_t:s0</span><br><span class="line">restorecon reset /home/web/index.html context unconfined_u:object_r:home_root_t:s0-&gt;unconfined_u:object_r:httpd_sys_content_t:s0</span><br></pre></td></tr></table></figure>
+<p>经过上面一顿操作后，重新访问，发现能正常访问新页面了</p>
+<h3 id="DHCP-动态、静态分配IP"><a href="#DHCP-动态、静态分配IP" class="headerlink" title="DHCP 动态、静态分配IP"></a>DHCP 动态、静态分配IP</h3><h4 id="DHCP-动态主机配置协议"><a href="#DHCP-动态主机配置协议" class="headerlink" title="DHCP: 动态主机配置协议"></a>DHCP: 动态主机配置协议</h4><p>dynamic host configuration protocol 的缩写；<br>表示 动态主机配置协议<br>是一种基于UDP协议且仅限于在局域网内部使用的网络协议；<br>主要用于局域网环境或者存在较多办公设备的局域网环境中；<br>主要是为局域网内部的设备或网络供应商自动分配IP地址等参数；<br>可以自动管理主机的IP地址、子网掩码、网关、DNS地址，等参数；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.1.103  netmask 255.255.255.0  broadcast 192.168.1.255</span><br><span class="line">        inet6 fe80::82b:eb85:8c19:22d1  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:70:c9:77  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 740  bytes 76328 (74.5 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 452  bytes 53516 (52.2 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure></p>
+<p>DHCP 属于网络配置，配置目录在这里 <code>/etc/sysconfig/network-scripts/ifcfg-ens33</code>:<br>ifcfg-ens33  这里的ens33，就是上面ifconfig执行时 以太网接口的ens33，可能不同机器不同</p>
+<h4 id="设置固定虚拟机的IP地址"><a href="#设置固定虚拟机的IP地址" class="headerlink" title="设置固定虚拟机的IP地址"></a>设置固定虚拟机的IP地址</h4><p>注意的是，要设置为固定，必须 网络适配器设置为桥接，如下：</p>
+<a rel=linux笔记(震) href="/blog/image/linuxt/card.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/card.png" class="url_for"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line">#以下原配置</span><br><span class="line">TYPE=Ethernet #设备模式</span><br><span class="line">PROXY_METHOD=none </span><br><span class="line">BROWSER_ONLY=no </span><br><span class="line">BOOTPROTO=dhcp #地址分配模式</span><br><span class="line">DEFROUTE=yes </span><br><span class="line">IPV4_FAILURE_FATAL=no </span><br><span class="line">IPV6INIT=yes </span><br><span class="line">IPV6_AUTOCONF=yes </span><br><span class="line">IPV6_DEFROUTE=yes </span><br><span class="line">IPV6_FAILURE_FATAL=no </span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy </span><br><span class="line">NAME=ens33 #网卡名称</span><br><span class="line">UUID=0b309202-2bc1-41e3-ba5e-f8d356fbebd8 </span><br><span class="line">DEVICE=ens33 </span><br><span class="line">ONBOOT=yes #是否启动, 这个很重要，一定是启动的，不然无法联网</span><br><span class="line"></span><br><span class="line">只需改动以下部分</span><br><span class="line">BOOTPROTO=static #修改</span><br><span class="line">IPADDR=192.168.1.109 #IP地址  #设置为静态，必须指定IP地址</span><br><span class="line">NETMASK=255.255.255.0 #子网掩码 #指定IP地址,必须指定子网掩码</span><br><span class="line">PREFIX=24 #24 是 255.255.255.0 二进制表示有24个1，跟上面一个意思；</span><br><span class="line">GATEWAY=192.168.1.1 #网关地址</span><br><span class="line">DNS1=192.168.0.1 #dns服务器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl restart network # 重启，让配置生效；</span><br></pre></td></tr></table></figure>
+<p>上面的网关地址需要虚拟机所在的 主机window上看，<br>window查看 默认网关地址，dns地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /all</span><br></pre></td></tr></table></figure></p>
+<a rel=linux笔记(震) href="/blog/image/linuxt/ip.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/ip.png" class="url_for"></a>
+<p>注意的是，不要在客户机设置 ip，不然出现卡顿，最好是在服务器端设置。</p>
+<h3 id="服务器主机的分类"><a href="#服务器主机的分类" class="headerlink" title="服务器主机的分类"></a>服务器主机的分类</h3><p>更多参考 <a href="https://www.zhihu.com/question/19856629?sort=created" target="_blank" rel="noopener">知乎</a></p>
+<h4 id="独立服务器"><a href="#独立服务器" class="headerlink" title="独立服务器"></a>独立服务器</h4><p>这台服务器仅提供给用户一个人使用；<br>用户对服务器硬件配置有完全的控制权；<br>适合大中型网站；</p>
+<h4 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h4><p>虚拟主机的英语是 virtual host<br>在一台服务器中划分一定的磁盘空间；<br>仅提供基础的网站访问、数据存放与传输功能；<br>一般比较便宜，也几乎不需要用户自行维护网站以外的服务；<br>适合小型网站；</p>
+<h4 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h4><p>virtual private server 的缩写<br>表示 虚拟专用服务器<br>在一台服务器中利用虚拟化技术模拟出多台 主机<br>每个 主机 都有独立的 IP地址、操作系统；<br>需要具备一定的维护系统能力<br>适合小型网站；</p>
+<h4 id="ECS"><a href="#ECS" class="headerlink" title="ECS"></a>ECS</h4><p>elastic compute service 缩写 弹性计算服务<br>也就是一般说的 云服务器 ，如 阿里云服务器<br>整合了计算 存储 网络 ，能够做到弹性伸缩的计算服务；<br>和VPS的差别：云服务器是建立在一组集群服务器中；<br>每个服务器都会保存一个主机的镜像（备份），安全性和稳定性更高；<br>分布式架构。适合大中小型网站</p>
+<h3 id="如何选择服务器主机"><a href="#如何选择服务器主机" class="headerlink" title="如何选择服务器主机"></a>如何选择服务器主机</h3><h4 id="适合创业阶段的小站群体的服务器类型"><a href="#适合创业阶段的小站群体的服务器类型" class="headerlink" title="适合创业阶段的小站群体的服务器类型"></a>适合创业阶段的小站群体的服务器类型</h4><p>建议选择 云服务器， 价格不贵，性能强劲；</p>
+<h4 id="适合创建小型个人网站的服务器类型"><a href="#适合创建小型个人网站的服务器类型" class="headerlink" title="适合创建小型个人网站的服务器类型"></a>适合创建小型个人网站的服务器类型</h4><p>建议选中 虚拟主机/vps，或者用 GitHub pages等；</p>
+<h3 id="apache的虚拟主机功能"><a href="#apache的虚拟主机功能" class="headerlink" title="apache的虚拟主机功能"></a>apache的虚拟主机功能</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>服务器基于用户请求的不同 IP 地址、主机域名或端口号<br>能够提供多个网站同时为外部提供访问服务的技术；<br>用户请求的资源不同，获取到的网页内容也不相同；</p>
+<h4 id="基于IP地址；"><a href="#基于IP地址；" class="headerlink" title="基于IP地址；"></a>基于IP地址；</h4><p>如果一台服务器有多个IP地址；<br>每个IP地址与服务器上部署的每个网站一一对应；<br>这样用户去请求访问不同IP地址的时候，会访问到不同网站的资源；<br>而且每个网站都有一个独立的IP</p>
+<h4 id="基于IP地址配置实战"><a href="#基于IP地址配置实战" class="headerlink" title="基于IP地址配置实战"></a>基于IP地址配置实战</h4><p>增加服务器IP的方式（增加两个IP 192.168.1.10  192.168.1.20）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"># 增加以下内容：</span><br><span class="line">IPADDR1=192.168.1.10</span><br><span class="line">PREFIX1=24</span><br><span class="line">NETMASK1=255.255.255.0</span><br><span class="line"></span><br><span class="line">IPADDR2=192.168.1.20</span><br><span class="line">PREFIX2=24</span><br><span class="line">NETMASK2=255.255.255.0</span><br><span class="line"></span><br><span class="line">systemctl restart network</span><br><span class="line"></span><br><span class="line"># 然后ping下看是否设置成功：</span><br><span class="line">ping 192.168.1.10</span><br><span class="line">ping 192.168.1.20</span><br></pre></td></tr></table></figure></p>
+<p>接上面的《配置实战 ：修改访问首页内容》</p>
+<p>我们在 <code>/home/web</code> 新增两个目录和文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/web/10</span><br><span class="line">mkdir /home/web/20</span><br><span class="line">echo &quot;ip : 192.168.1.10&quot; &gt;/home/web/10/index.html</span><br><span class="line">echo &quot;ip : 192.168.1.20&quot; &gt;/home/web/20/index.html</span><br></pre></td></tr></table></figure></p>
+<p><code>/etc/httpd/conf/httpd.conf</code>增加以下部分如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost 192.168.1.10&gt;</span><br><span class="line">    DocumentRoot /home/web/10</span><br><span class="line">    ServerName www.linuxabc.com</span><br><span class="line">    &lt;Directory &quot;/home/web&quot;&gt;</span><br><span class="line">        AllowOverride None</span><br><span class="line">        # Allow open access:</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost 192.168.1.20&gt;</span><br><span class="line">    DocumentRoot /home/web/20</span><br><span class="line">    ServerName www.linuxddd.com</span><br><span class="line">    &lt;Directory &quot;/home/web&quot;&gt;</span><br><span class="line">        AllowOverride None</span><br><span class="line">        # Allow open access:</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中上面 ServerName 随便设置；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload httpd # 重启，让配置生效</span><br></pre></td></tr></table></figure>
+<p>在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》：<br><a rel=linux笔记(震) href="/blog/image/linuxt/vi1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/vi1.png" class="url_for"></a><br><a rel=linux笔记(震) href="/blog/image/linuxt/vi2.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/vi2.png" class="url_for"></a></p>
+<p>问题，为什么这次设置后，就可以不受 SELinux 安全限制呢，<br>因为我们在 《配置实战 ：修改访问首页内容》已经对 /home/web 修改文件安全上下文 了，如果换其他目录，请按上面《修改文件安全上下文》修改上下文。</p>
+<h4 id="基于主机域名"><a href="#基于主机域名" class="headerlink" title="基于主机域名"></a>基于主机域名</h4><p>当你的服务器无法为每个网站分配独立的IP时，<br>你可以让apache去自动识别用户请求的域名，根据域名传输不同内容给用户；<br>这种情况，就只需保证服务器中只要有一个IP可用就行了</p>
+<h4 id="基于主机域名配置实战"><a href="#基于主机域名配置实战" class="headerlink" title="基于主机域名配置实战"></a>基于主机域名配置实战</h4><p>客户机中修改host:<br><code>C:\Windows\System32\drivers\etc</code><br>以管理员身份运行git bash ；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /c/Windows/System32/drivers/etc</span><br><span class="line">vi host</span><br></pre></td></tr></table></figure></p>
+<p>使用vi 编辑host:</p>
+<p><code>192.168.1.10 www.linuxabc.com www.linuxddd.com</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/web/abc</span><br><span class="line">mkdir /home/web/ddd</span><br><span class="line">echo &quot;host : www.linuxabc.com&quot; &gt;/home/web/abc/index.html</span><br><span class="line">echo &quot;ip : www.linuxddd.com&quot; &gt;/home/web/ddd/index.html</span><br></pre></td></tr></table></figure>
+<p><code>/etc/httpd/conf/httpd.conf</code>增加以下部分如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost 192.168.1.10&gt;</span><br><span class="line">    DocumentRoot /home/web/abc</span><br><span class="line">    ServerName www.linuxabc.com</span><br><span class="line">    &lt;Directory &quot;/home/web/abc&quot;&gt;</span><br><span class="line">        AllowOverride None</span><br><span class="line">        # Allow open access:</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost 192.168.1.10&gt;</span><br><span class="line">    DocumentRoot /home/web/ddd</span><br><span class="line">    ServerName www.linuxddd.com</span><br><span class="line">    &lt;Directory &quot;/home/web/ddd&quot;&gt;</span><br><span class="line">        AllowOverride None</span><br><span class="line">        # Allow open access:</span><br><span class="line">        Require all granted</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在客户机中访问页面，注意关闭防火墙 或其他透出80端口的方法，见《客户机如何访问服务器的Apache服务》<br>：<br><a rel=linux笔记(震) href="/blog/image/linuxt/vi3.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/vi3.png" class="url_for"></a><br><a rel=linux笔记(震) href="/blog/image/linuxt/vi4.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/vi4.png" class="url_for"></a></p>
+<p>注意的是，192.168.1.10 是我们之前 《基于IP地址》创建的，如果没有，你按照此创建；<br>另外，为了消除影响，可将上面《基于IP地址》中创建的 httpd配置 以及 /home/web/10 20 目录删除；</p>
+<h2 id="https"><a href="#https" class="headerlink" title="https"></a>https</h2><h3 id="为什么要https"><a href="#为什么要https" class="headerlink" title="为什么要https"></a>为什么要https</h3><p>https 可以确保所有经过服务器传输的数据包都是经过加密的；<br>使得假冒服务器无法冒充真正的服务器</p>
+<h3 id="CA"><a href="#CA" class="headerlink" title="CA"></a>CA</h3><h4 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h4><p>CA 证书公证权威机构<br>CA 用于为客户端确认所连接的网站的服务器提供的证书是否合法<br>数字证书是经过CA认证的公钥，其内容不仅包含公钥，还包含其他内容；</p>
+<h4 id="浏览器、服务器、ca证书机构-三者关系"><a href="#浏览器、服务器、ca证书机构-三者关系" class="headerlink" title="浏览器、服务器、ca证书机构 三者关系"></a>浏览器、服务器、ca证书机构 三者关系</h4><p>你可以生成私钥，制作出必要的证书数据 并向 ca机构注册，完成注册并生成已注册的证书(公钥)，</p>
+<p>浏览器浏览时，浏览器会主动向ca去确认证书是否是合法注册的；如何合法，浏览器将把自己的密钥通过 证书(公钥)加密，发给服务器；<br>服务器用上面的私钥 解密出 密钥，然后后续的电话都是通过这个密钥进行对称加密。</p>
+<p><a href="https://www.cnblogs.com/hthf/p/4986507.html" target="_blank" rel="noopener">read more</a></p>
+<h4 id="为什么CA能防止冒充真正的服务器"><a href="#为什么CA能防止冒充真正的服务器" class="headerlink" title="为什么CA能防止冒充真正的服务器"></a>为什么CA能防止冒充真正的服务器</h4><p>如上，浏览器会主动像ca去确认证书是否是服务器xxxx合法注册的；<br>此时有人假冒服务器xxx证书，<br>想假冒的人肯定需要向ca注册证书，但ca机构说服务器xxx已经注册证书了，你又来注册，你是骗子吧；<br>如果假冒的人不注册ca证书，不好意思，此证书直接无效；<br>ca会告诉浏览器，服务器xxx注册的证书是另外一个，不是当前这个假冒证书；<br>那么浏览器就会提示不安全，浏览器也不会后续活动；</p>
+<h4 id="浏览器-服务器-对话-对称加密和非对称加密"><a href="#浏览器-服务器-对话-对称加密和非对称加密" class="headerlink" title="浏览器/服务器 对话 对称加密和非对称加密"></a>浏览器/服务器 对话 对称加密和非对称加密</h4><p>如上，浏览器与服务器 通过非对称加密，加密 对称加密的密钥，<br>后续通过使用对称加密。</p>
+<h3 id="Apache-服务器配置HTTPS"><a href="#Apache-服务器配置HTTPS" class="headerlink" title="Apache 服务器配置HTTPS"></a>Apache 服务器配置HTTPS</h3><h4 id="防火墙放开443端口安全限制"><a href="#防火墙放开443端口安全限制" class="headerlink" title="防火墙放开443端口安全限制"></a>防火墙放开443端口安全限制</h4><p>防火墙放开443端口安全限制后，浏览器端将可以443端口（https默认端口）访问服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent  permanent永久</span><br><span class="line">firewall-cmd --reload  更新配置</span><br><span class="line">firewall-cmd --list-ports 查看已经放行的端口</span><br></pre></td></tr></table></figure></p>
+<h4 id="安装apache的SSL支持模块"><a href="#安装apache的SSL支持模块" class="headerlink" title="安装apache的SSL支持模块"></a>安装apache的SSL支持模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mod_ssl #apache的SSL支持模块 mod_ssl</span><br><span class="line">systemctl restart httpd #因为安装mod_ssl的过程，相当于配置了apache，需重启</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/46a911bd49a7" target="_blank" rel="noopener">PKI 体系概述 : 所有与数字证书相关的各种概念和技术，统称为 PKI</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /etc/httpd/conf.d/ssl.conf</span><br><span class="line">/etc/httpd/conf.d/ssl.conf #mod_ssl 针对 apache 的 ssl 配置文件</span><br><span class="line"># centos 默认提供ssl机制需要的证书文件和私钥</span><br><span class="line">[root@localhost ~]# ls /etc/pki/tls/private/localhost.key #centos 默认提供ssh私钥,可以用来制作证书</span><br><span class="line">/etc/pki/tls/private/localhost.key</span><br><span class="line">[root@localhost ~]# ls /etc/pki/tls/certs/ #这里是证书的集合目录</span><br><span class="line">ca-bundle.crt        localhost.crt    Makefile</span><br><span class="line">ca-bundle.trust.crt  make-dummy-cert  renew-dummy-cert</span><br><span class="line">[root@localhost ~]# ls /etc/pki/tls/certs/localhost.crt  #加密后证书的文件，也就是签名后的证书</span><br><span class="line">/etc/pki/tls/certs/localhost.crt</span><br></pre></td></tr></table></figure>
+<p>我们是通过mod_ssl 生成的 因此不是经过第三方认证注册的，所有谷歌浏览器才有以下提示；</p>
+<h4 id="请使用服务器主机IP"><a href="#请使用服务器主机IP" class="headerlink" title="请使用服务器主机IP"></a>请使用服务器主机IP</h4><p>注意这里用来访问的IP，请使用服务器主机IP，而不要使用虚拟IP，否则可能访问不成功。<br><a rel=linux笔记(震) href="/blog/image/linuxt/https1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/https1.png" class="url_for"></a><br><a rel=linux笔记(震) href="/blog/image/linuxt/https2.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/https2.png" class="url_for"></a></p>
+<a rel=linux笔记(震) href="/blog/image/linuxt/ca1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/ca1.png" class="url_for"></a>
+<p>公钥加密方法，使用期限默认一年<br><a rel=linux笔记(震) href="/blog/image/linuxt/ca2.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/ca2.png" class="url_for"></a></p>
+<h3 id="使用自签名的证书"><a href="#使用自签名的证书" class="headerlink" title="使用自签名的证书"></a>使用自签名的证书</h3><p>使用自签名的证书其实就是自己加密生成 证书(公钥)和私钥<br>需要用openssl这个软件来生成证书文件；</p>
+<h4 id="openssl生成私钥"><a href="#openssl生成私钥" class="headerlink" title="openssl生成私钥"></a>openssl生成私钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y openssl</span><br><span class="line">cd /etc/httpd #可以是任意目录，不过一般apache配置相关都放这里</span><br><span class="line">mkdir pki #所有与数字证书相关的各种概念 称之为pki，因此增加目录pki，</span><br><span class="line">#当然你可以命名任意名字</span><br><span class="line">cd pki pki</span><br><span class="line"></span><br><span class="line"># 使用 gen rsa 即 rsa 算法来生成私钥，私钥 名字为 server.key ,私钥是2048位</span><br><span class="line">openssl genrsa -out server.key 2048</span><br></pre></td></tr></table></figure>
+<h4 id="生成了server-crt证书"><a href="#生成了server-crt证书" class="headerlink" title="生成了server.crt证书"></a>生成了server.crt证书</h4><p>CSR 是 证书签名的请求 的意思；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@localhost pki]# ls</span><br><span class="line">server.csr  server.key #生成了 server.csr 这样一个证书请求</span><br><span class="line"></span><br><span class="line">#x509 类型的自签名证书，是一种标准签名证书</span><br><span class="line">#-days 3650 有效期 10年</span><br><span class="line"># -in server.csr 输入文件是server.csr</span><br><span class="line"># -signkey server.key 用私钥server.key来签名证书</span><br><span class="line"># -out server.crt输出得到的证书</span><br><span class="line">[root@localhost pki]# openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt</span><br><span class="line">Signature ok</span><br><span class="line">subject=/C=CN/ST=ZHEJIANG/L=HANGZHOU/O=ALI/OU=LINU/CN=192.168.1.109/emailAddress=AA.QQ.COM</span><br><span class="line">Getting Private key</span><br><span class="line">[root@localhost pki]#  ls</span><br><span class="line">server.crt  server.csr  server.key</span><br></pre></td></tr></table></figure></p>
+<h4 id="修改ssl配置文件"><a href="#修改ssl配置文件" class="headerlink" title="修改ssl配置文件"></a>修改ssl配置文件</h4><p>ssl是https加密配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim conf.d/ssl.conf</span><br></pre></td></tr></table></figure></p>
+<p>修改内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SSLCertificateFile /etc/pki/tls/certs/server.crt #证书</span><br><span class="line">SSLCertificateKeyFile /etc/pki/tls/private/server.key #私钥</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart httpd #重启 Apache服务</span><br></pre></td></tr></table></figure>
+<a rel=linux笔记(震) href="/blog/image/linuxt/cert1.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/cert1.png" class="url_for"></a>
+<a rel=linux笔记(震) href="/blog/image/linuxt/cert.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/cert.png" class="url_for"></a>
+<h4 id="为什么可以http访问"><a href="#为什么可以http访问" class="headerlink" title="为什么可以http访问"></a>为什么可以http访问</h4><p>值得注意的是，我们依然可以http访问，因为apache服务器中，我们也放开了防火墙80端口的监听<br>至于为什么我们可以用https访问，是一样的原因，在apache服务器中，我们也放开了防火墙443的监听；<br><a rel=linux笔记(震) href="/blog/image/linuxt/cert2.png" title="" data-fancybox="images"><img src="/blog/image/linuxt/cert2.png" class="url_for"></a></p>
+<h4 id="有些服务器能用http访问，不能用https"><a href="#有些服务器能用http访问，不能用https" class="headerlink" title="有些服务器能用http访问，不能用https"></a>有些服务器能用http访问，不能用https</h4><p>我们在调试的时候，有时候用webpack启动一个服务，然后通过http，是可以访问的，但换成https不能访问，<br>本质原因，就跟我们上面看到的，apache内放开了80端口防火墙时，我们可以http访问；<br>如果放开了 443 防火墙端口，我们可以通过https访问；<br>而webpack启动一份服务的时候，估计内部只做了http的80端口开放；没有做443端口开放；</p>
+<p>https 是否能访问服务器 ，本质是 看服务器是否放开 80和443端口，并配置相关页面资源。</p>
+<p>https 与 http 本质是 80 和 443 端口的不同<br>这就很好理解了，我们启动一个服务器，我们可能只启动一个80或一个443 是很合理的。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.801Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2021/05/30/linux_third/" target="_blank" rel="external">https://yewills.github.io/2021/05/30/linux_third/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2021/06/08/linux_fore/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">linux笔记(巽)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2021/05/21/linux_more/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">linux笔记(坤)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#管理服务器和服务"><span class="post-toc-number">1.</span> <span class="post-toc-text">管理服务器和服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#守护进程和初始化进程服务"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">守护进程和初始化进程服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进程"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">进程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#守护进程-特殊进程"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">守护进程 (特殊进程)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#linux操作系统的开机过程"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">linux操作系统的开机过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始化进程服务"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">初始化进程服务</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用systemd管理系统服务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">用systemd管理系统服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#systemd"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">systemd</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#管理进程的启动和停止"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">管理进程的启动和停止</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他命令"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">其他命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Apache"><span class="post-toc-number">2.</span> <span class="post-toc-text">Apache</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#httpd-与-Apache"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">httpd 与 Apache</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#systemctl-管理-httpd"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">systemctl 管理 httpd</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器ip在-客户机访问Apache首页"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">服务器ip在 客户机访问Apache首页</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户机如何访问服务器的Apache服务"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">客户机如何访问服务器的Apache服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置-Apache服务"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">配置 Apache服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下面是Apache服务的配置文件地址"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">下面是Apache服务的配置文件地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件有以下类型："><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">配置文件有以下类型：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下面是配置文件部分示例"><span class="post-toc-number">2.5.3.</span> <span class="post-toc-text">下面是配置文件部分示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件中常用的-httpd参数"><span class="post-toc-number">2.5.4.</span> <span class="post-toc-text">配置文件中常用的 httpd参数,</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SELinux-安全子系统"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">SELinux 安全子系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#防火墙和-SELinux-的区别"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">防火墙和 SELinux 的区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sestatus"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">sestatus</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置实战-：修改访问首页内容"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">配置实战 ：修改访问首页内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤如下"><span class="post-toc-number">2.7.1.</span> <span class="post-toc-text">步骤如下</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置的首页不生效"><span class="post-toc-number">2.7.2.</span> <span class="post-toc-text">配置的首页不生效</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置SELinux"><span class="post-toc-number">2.7.3.</span> <span class="post-toc-text">配置SELinux</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置不生效的本质原因"><span class="post-toc-number">2.7.4.</span> <span class="post-toc-text">配置不生效的本质原因</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改文件安全上下文"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">修改文件安全上下文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#semanage-命令"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">semanage 命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#yun-provides-semanage-命令"><span class="post-toc-number">2.8.2.</span> <span class="post-toc-text">yun provides semanage 命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#semanage-修改上下文"><span class="post-toc-number">2.8.3.</span> <span class="post-toc-text">semanage 修改上下文</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DHCP-动态、静态分配IP"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">DHCP 动态、静态分配IP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DHCP-动态主机配置协议"><span class="post-toc-number">2.9.1.</span> <span class="post-toc-text">DHCP: 动态主机配置协议</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置固定虚拟机的IP地址"><span class="post-toc-number">2.9.2.</span> <span class="post-toc-text">设置固定虚拟机的IP地址</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器主机的分类"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">服务器主机的分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#独立服务器"><span class="post-toc-number">2.10.1.</span> <span class="post-toc-text">独立服务器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#虚拟主机"><span class="post-toc-number">2.10.2.</span> <span class="post-toc-text">虚拟主机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#VPS"><span class="post-toc-number">2.10.3.</span> <span class="post-toc-text">VPS</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ECS"><span class="post-toc-number">2.10.4.</span> <span class="post-toc-text">ECS</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何选择服务器主机"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">如何选择服务器主机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#适合创业阶段的小站群体的服务器类型"><span class="post-toc-number">2.11.1.</span> <span class="post-toc-text">适合创业阶段的小站群体的服务器类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#适合创建小型个人网站的服务器类型"><span class="post-toc-number">2.11.2.</span> <span class="post-toc-text">适合创建小型个人网站的服务器类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#apache的虚拟主机功能"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">apache的虚拟主机功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">2.12.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于IP地址；"><span class="post-toc-number">2.12.2.</span> <span class="post-toc-text">基于IP地址；</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于IP地址配置实战"><span class="post-toc-number">2.12.3.</span> <span class="post-toc-text">基于IP地址配置实战</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于主机域名"><span class="post-toc-number">2.12.4.</span> <span class="post-toc-text">基于主机域名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基于主机域名配置实战"><span class="post-toc-number">2.12.5.</span> <span class="post-toc-text">基于主机域名配置实战</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#https"><span class="post-toc-number">3.</span> <span class="post-toc-text">https</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要https"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">为什么要https</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CA"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">CA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#浏览器、服务器、ca证书机构-三者关系"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">浏览器、服务器、ca证书机构 三者关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么CA能防止冒充真正的服务器"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">为什么CA能防止冒充真正的服务器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#浏览器-服务器-对话-对称加密和非对称加密"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">浏览器/服务器 对话 对称加密和非对称加密</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Apache-服务器配置HTTPS"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Apache 服务器配置HTTPS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#防火墙放开443端口安全限制"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">防火墙放开443端口安全限制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装apache的SSL支持模块"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">安装apache的SSL支持模块</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请使用服务器主机IP"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">请使用服务器主机IP</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用自签名的证书"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">使用自签名的证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#openssl生成私钥"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">openssl生成私钥</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成了server-crt证书"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">生成了server.crt证书</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改ssl配置文件"><span class="post-toc-number">3.4.3.</span> <span class="post-toc-text">修改ssl配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么可以http访问"><span class="post-toc-number">3.4.4.</span> <span class="post-toc-text">为什么可以http访问</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#有些服务器能用http访问，不能用https"><span class="post-toc-number">3.4.5.</span> <span class="post-toc-text">有些服务器能用http访问，不能用https</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2021/05/30/linux_third/&title=《linux笔记(震)》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aQW7DMAwEQP//0ynQU4HWyS6VFLA8OgWBFWl8YEhRxxGPx/d4/v3vzz/H2dyzWccnBgYGxmUZj6cj2WKyoc/NwsDAuA8jCaZtSF0J1vlcDAwMjLNnzr5Zx2NgYGCsB9xh6lZSMTAwMGZF7PMlk4Xz8cFaHAMD44KMtjHwn58/2N/AwMC4CGMWBPMitk00h7vCwMDYmrGe3uWJY7vppMQ9kveKgYFxcUZblCbBd6W12QZ3DAyMOzBmUSvZ3LtCcLJPDAyMOzDypK0tMvOgPMO/+PfAwMDYiLFyJWt2wSJPQ2c7xMDA2JsxayjOLknkKWP+IjAwMPZj5BNmR2az38nDLgYGxn0YbdDMw2L7mvJkEQMD4z6MduQ3OPIA2h7SYWBg3I2RH4HN2o1Jg6EtoU87GxgYGFsz3nVw36aGSeMzaUhgYGDcgfGuy2Ht3PwyR3RbBAMDY1NGssCsEE3C7uyY70UnFgMDY1PGylWJNrFrf6EogDEwMDZltEleUta21yZmTYJjJVfFwMC4IGO94GyP257Prf8AMDAwtmYUD40WztsMswsfGBgYd2A8ypEfsbVH/HkD4I+XhYGBsTWjDXPrbc68hJ6ti4GBsSujLVZb9vqFjGHOiIGBsR1jFmSHS45K2RdlMAYGBsZCAtc+M3xlGBgYGOWmZ0lhXhKf9jcwMDC2ZuSH9W1hvEIqfhkDA2NrxqwxUNzmCNK+9gLHEIOBgXE9xheD8Z6c4xo+aAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

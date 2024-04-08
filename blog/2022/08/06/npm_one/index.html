@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>npm官网笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="npm">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>npm官网笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">npm官网笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-08-06T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-08-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端工程/">前端工程</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-npm_one"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">npm官网笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-08-06 00:00:00" datetime="2022-08-06T00:00:00.000Z"  itemprop="datePublished">2022-08-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/前端工程/">前端工程</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="黑知识"><a href="#黑知识" class="headerlink" title="黑知识"></a>黑知识</h2><h3 id="由install预安装了解npm生命周期命令"><a href="#由install预安装了解npm生命周期命令" class="headerlink" title="由install预安装了解npm生命周期命令"></a>由install预安装了解npm生命周期命令</h3><h4 id="node-gyp"><a href="#node-gyp" class="headerlink" title="node-gyp"></a>node-gyp</h4><p><a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json#default-values" target="_blank" rel="noopener">参考 package-json</a></p>
+<blockquote>
+<p>If there is a binding.gyp file in the root of your package and you have not defined an install or preinstall script, npm will default the install command to compile using node-gyp.</p>
+</blockquote>
+<h4 id="preinstall-install-and-postinstall"><a href="#preinstall-install-and-postinstall" class="headerlink" title="preinstall, install, and postinstall"></a>preinstall, install, and postinstall</h4><p><a href="https://docs.npmjs.com/cli/v8/using-npm/config#foreground-scripts" target="_blank" rel="noopener">参考 foreground-scripts</a><br>Run all build scripts (ie, preinstall, install, and postinstall) scripts for installed packages in the foreground process, sharing standard input, output, and error with the main npm process.</p>
+<h4 id="了解npm生命周期命令"><a href="#了解npm生命周期命令" class="headerlink" title="了解npm生命周期命令"></a>了解npm生命周期命令</h4><p>npm 执行不同命令时，会相应执行对应的生命周期命令，详细查看：<br><a href="https://docs.npmjs.com/cli/v8/using-npm/scripts#life-cycle-scripts" target="_blank" rel="noopener">参考 life-cycle-scripts</a></p>
+<h3 id="别名-Aliases"><a href="#别名-Aliases" class="headerlink" title="别名 Aliases"></a>别名 Aliases</h3><p><a href="https://docs.npmjs.com/cli/v8/commands/npm-install#description" target="_blank" rel="noopener">参考 npm install <alias>@npm:<name></name></alias></a><br><a href="https://docs.npmjs.com/cli/v8/using-npm/package-spec#aliases" target="_blank" rel="noopener">参考 aliases</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">semver:@npm:@npmcli/semver-with-patch</span><br><span class="line">semver:@npm:semver@7.2.2</span><br><span class="line"></span><br><span class="line">比如执行命令：</span><br><span class="line">  npm install jquery2@npm:jquery@2</span><br><span class="line">  npm install jquery3@npm:jquery@3</span><br><span class="line">  npm install lodash@npm:lodash-es</span><br><span class="line"></span><br><span class="line">就会在package.json中写入：</span><br></pre></td></tr></table></figure></p>
+<p>  “dependencies”: {<br>    “jquery2”: “npm:jquery@^2.2.4”,<br>    “jquery3”: “npm:jquery@^3.6.0”,<br>    “lodash”: “npm:lodash-es@^4.17.21”<br>  }</p>
+<p>以上说明npm别名使用的场景：</p>
+<ul>
+<li>当需要在项目中使用多个版本的npm包时，比如上述的 使用jquery2 和 jquery3；</li>
+<li>老项目中已经大量使用lodash，我不想修改老项目的引用，但我想将lodash更换我一个加强版但lodash；<br><a href="https://docs.npmjs.com/cli/v8/commands/npm-install#description" target="_blank" rel="noopener">参考 npm install <alias>@npm:<name></name></alias></a><blockquote>
+<p>Install a package under a custom alias. Allows multiple versions of a same-name package side-by-side, more convenient import names for packages with otherwise long ones, and using git forks replacements or forked npm packages as replacements. Aliasing works only on your project and does not rename packages in transitive dependencies. Aliases should follow the naming conventions stated in validate-npm-package-name.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="scope命名带-与不带"><a href="#scope命名带-与不带" class="headerlink" title="scope命名带@与不带@"></a>scope命名带@与不带@</h3><p>不带@，就是github仓库的用户名+仓库地址<br><a href="https://docs.npmjs.com/cli/v8/using-npm/scope#installing-scoped-packages" target="_blank" rel="noopener">参考 Installing scoped packages</a><br>Note that if the @ symbol is omitted, in either case, npm will instead attempt to install from GitHub; see npm install.</p>
+<h3 id="npm-config-set-可简写为-npm-set"><a href="#npm-config-set-可简写为-npm-set" class="headerlink" title="npm config set 可简写为 npm set"></a>npm config set 可简写为 npm set</h3><p><a href="https://docs.npmjs.com/cli/v8/commands/npm-config#sub-commands" target="_blank" rel="noopener">参考 Sub-commands</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set key=value [key=value...]</span><br><span class="line">npm set key=value [key=value...]</span><br></pre></td></tr></table></figure></p>
+<h3 id="workspaces的原理小探"><a href="#workspaces的原理小探" class="headerlink" title="workspaces的原理小探"></a>workspaces的原理小探</h3><p><a href="https://docs.npmjs.com/cli/v8/using-npm/workspaces#defining-workspaces" target="_blank" rel="noopener">官网 defining-workspaces</a>对一个例子做如下说明：</p>
+<blockquote>
+<p>The expected result once running npm install in this current working directory . is that the folder packages/a will get symlinked to the node_modules folder of the current working dir.</p>
+</blockquote>
+<p>这其实说明了 workspaces 的本质，就是让npm install的时候，将pkg通过软链接的形式，放到 node_modules 中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">+-- node_modules</span><br><span class="line">|  `-- a -&gt; ../packages/a</span><br><span class="line">+-- package-lock.json</span><br><span class="line">+-- package.json</span><br><span class="line">`-- packages</span><br><span class="line">   +-- a</span><br><span class="line">   |   `-- package.json</span><br></pre></td></tr></table></figure></p>
+<p>这样，结合node js引擎原理，任何使用 requiry 的表达式，都会从根目录下的 node_modules 寻找引用包。</p>
+<p>以上就是 workspaces 软链接原理。</p>
+<p>workspaces 实现了 软链接 与 批量执行 npm 命令的 lerna 三个特性之二。<br>不过没有实现 lerna 第三个特性，就是批量管理 npm publish时，处理git与pkg版本号管理。</p>
+<p>就最小原则来讲，基建的事应该交给 lerna做， 包管理器就做包管理的问题，<br>所以lerna工具还是有存在的道理的。</p>
+<h4 id="workspaces软链接与npm-link-区别"><a href="#workspaces软链接与npm-link-区别" class="headerlink" title="workspaces软链接与npm link 区别"></a>workspaces软链接与npm link 区别</h4><p>前者详情参考上面，后者是先将代码软链接一份到全局的用户npm安装目录上，然后从全局的目录上 复制一个软链接到 消费者项目的node module中。<br>简言之，npm link 会对全局环境造成污染。</p>
+<h2 id="好用的npm-cli"><a href="#好用的npm-cli" class="headerlink" title="好用的npm cli"></a>好用的npm cli</h2><p>npm login<br>npm whoami  查看登陆名；<br>npm config list 可以查看当前的配置信息，包括登陆的token信息；</p>
+<h2 id="好用的npm-cli-1"><a href="#好用的npm-cli-1" class="headerlink" title="好用的npm cli"></a>好用的npm cli</h2><p>npm help adduser –viewer=browser   浏览器中打开 npm adduser 的说明文档；<br>npm find-dupes –dry-run  找出被重复引用的包；<br>npm why react 查看npm包被哪些包或项目引用，why 是 explain 的别名；<br>npm search umi  找出源中所有umi相关的包<br>npm help-search x  如果你对某一个npm 命令 或其他 有困惑，可以用这个命令，比如 x 是 npm exec 的别名，它就会列出相关的，其中exec就会列出来<br>npx npm-packlist 查看npm publish 会包含要上传的文件；<br>npm repo eslint  打开eslint的github<br>npm docs eslint  打开eslint的官网文档<br>npm bin –global  找出global npm 命令bin所在目录；<br>npm root -g 可以获取全局的npm install -g 安装的npm包位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm root -g</span><br><span class="line">/usr/local/lib/node_modules</span><br></pre></td></tr></table></figure></p>
+<p>意想不到的 别名</p>
+<p>npm adduser 别名为 npm login</p>
+<p>高级：<br>npm deprecate my-thing@”&lt; 0.2.3” “critical bug fixed in v0.2.3”  </p>
+<blockquote>
+<p>This command will update the npm registry entry for a package, providing a deprecation warning to all who attempt to install it.</p>
+</blockquote>
+<p>可以通过这个例子来看出 npm 中 – 的使用技巧 <a href="https://docs.npmjs.com/cli/v8/commands/npm-exec" target="_blank" rel="noopener">官网</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm exec -- &lt;pkg&gt;[@&lt;version&gt;] [args...]</span><br><span class="line">npm exec --package=&lt;pkg&gt;[@&lt;version&gt;] -- &lt;cmd&gt; [args...]</span><br><span class="line">npm exec -c &apos;&lt;cmd&gt; [args...]&apos;</span><br><span class="line">npm exec --package=foo -c &apos;&lt;cmd&gt; [args...]&apos;</span><br><span class="line"></span><br><span class="line">alias: x</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/08/06/npm_one/" target="_blank" rel="external">https://yewills.github.io/2022/08/06/npm_one/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/npm/">npm</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/06/npm_one/&title=《npm官网笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/06/npm_one/&title=《npm官网笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/08/08/yarn/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">yarn官网笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/07/27/monorepo/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">monorepo笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#黑知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">黑知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#由install预安装了解npm生命周期命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">由install预安装了解npm生命周期命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#node-gyp"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">node-gyp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#preinstall-install-and-postinstall"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">preinstall, install, and postinstall</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#了解npm生命周期命令"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">了解npm生命周期命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#别名-Aliases"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">别名 Aliases</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#scope命名带-与不带"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">scope命名带@与不带@</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm-config-set-可简写为-npm-set"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">npm config set 可简写为 npm set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#workspaces的原理小探"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">workspaces的原理小探</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#workspaces软链接与npm-link-区别"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">workspaces软链接与npm link 区别</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#好用的npm-cli"><span class="post-toc-number">2.</span> <span class="post-toc-text">好用的npm cli</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#好用的npm-cli-1"><span class="post-toc-number">3.</span> <span class="post-toc-text">好用的npm cli</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/08/06/npm_one/&title=《npm官网笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/08/06/npm_one/&title=《npm官网笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3a0W7CMAwFUP7/pztpT0gb7bVTpuGcPFUIQk4eLNf24xGv43s9Pz+v/Ds/93z1q8c7FgYGxscyjtP16ogJ6V7YxQ4YGBgbMNaDbBKsz6/v/Mou9sTAwMCIg2Aedl/9OwYGBsZ6wK1ieskfBgYGRu8ltnrE/F96wR0DA2MfRq8x8DfPb+9vYGBg/HvGUVwrrcc8fJdPhYGBMZqRFLzuLfHnh87LcxgYGDsweoWwPE/LW5vn1ORCMTAwpjJ6QxUrAbQ3nHGRhmJgYAxlrKdl1VfT/FIKzxgYGNswesMW1eZlr9pfCLgYGBijGb0xi5UhifXGQ9TfwMDAGMHoNQDKYbFVpIv2x8DA2IBRLW9Vy/fVJLIa0DEwMPZh9LoKeQqYUDEwMDDyRmae5FWbnUk7s9c6xcDAmMqobt0bm8hLafkY2UWGi4GBMYiRtyqrgPcF3ygpxMDAGMSolvWTV9aVq8n3j8bCMDAwRjB6QTMp4q+87p7DygAMDIwPZ+QB966mY3XwIrpWDAyMDRj562U+ZpFcR2/47JdzYmBgjGZUAb0UsJdKVlNVDAyMqYyjuKrH6gXx8qAYBgbGaMZKmEuOlQ9kVHfGwMDYjZEE2fw5KZYlITW/CAwMjH0Y559XqSul/15oxsDAwOiNeSWXslL4awZcDAyMbRi9sYyVAY6ohYmBgTGakaR9ebK4XtbPrwMDA2MHxr21rF65PwnKSXKJgYExjvEF9S4ZBoI3/8EAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>webpack源码系列(来)：主流程 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="webpack,webpack源码系列">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>webpack源码系列(来)：主流程</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">webpack源码系列(来)：主流程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-04-05T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2022-04-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/webpack源码系列/">webpack源码系列</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-webpack_three"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">webpack源码系列(来)：主流程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-04-05 00:00:00" datetime="2022-04-05T00:00:00.000Z"  itemprop="datePublished">2022-04-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/webpack源码系列/">webpack源码系列</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="compiler-钩子"><a href="#compiler-钩子" class="headerlink" title="compiler 钩子"></a>compiler 钩子</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules\webpack\lib\Compiler.js</span></span><br><span class="line">	<span class="built_in">Object</span>.keys(<span class="keyword">this</span>.hooks).forEach(<span class="function">(<span class="params">hookName</span>)=&gt;</span>&#123;</span><br><span class="line">			<span class="keyword">const</span> hook = <span class="keyword">this</span>.hooks[hookName];</span><br><span class="line">			<span class="keyword">if</span>(hook.tap)&#123;</span><br><span class="line">				hook.tap(<span class="string">'show'</span>,()=&gt;&#123;</span><br><span class="line">					<span class="keyword">const</span> hooktype = <span class="built_in">Object</span>.getPrototypeOf(hook).constructor.name;</span><br><span class="line">					<span class="built_in">console</span>.log(<span class="string">`comiler <span class="subst">$&#123;hookName&#125;</span> <span class="subst">$&#123;hooktype&#125;</span> <span class="subst">$&#123;hook._args&#125;</span> `</span>)</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
+<p>environment      【入参： Hook     设置node环境变量<br>afterEnvironment      【入参： Hook    设置环境变量完成<br>entryOption      【入参： Hook context,entry   解析入口文件<br>afterPlugins      【入参： Hook compiler   挂载插件结束， webpack.config.js上会挂载很多的插件<br>afterResolvers      【入参： Hook compiler  在路径解析器初始化后触发， 核心作用是给路径，然后生成绝对路径<br>initialize      【入参： Hook<br>beforeRun      【入参： Hook compiler<br>run      【入参： Hook compiler 开始编译<br>infrastructureLog      【入参： Hook origin,type,args<br>infrastructureLog      【入参： Hook origin,type,args<br>readRecords      【入参： Hook<br>normalModuleFactory      【入参： Hook normalModuleFactory  创建普通模块工厂 正常的文件；<br>contextModuleFactory      【入参： Hook contextModuleFactory  创建上下文模块工程 比如 通过cdn引入的全局变量 jquery 等等；<br>beforeCompile      【入参： Hook params<br>compile      【入参： Hook params  编译<br>thisCompilation      【入参： Hook compilation,params  开始启动编译<br>compilation      【入参： Hook compilation,params 创建一个 compilation<br>make      【入参： Hook compilation  最核心代码，是从入口文件开始编译</p>
+<p>finishMake      【入参： Hook compilation<br>afterCompile      【入参： Hook compilation  编译完成<br>shouldEmit      【入参： Hook compilation  询问是否要生成文件<br>emit      【入参： Hook compilation 生成文件<br>afterEmit      【入参： Hook compilation 生成完成<br>emitRecords      【入参： Hook<br>done      【入参： Hook stats 整个编译完成<br>shutdown      【入参： Hook</p>
+<p>afterDone      【入参： Hook stats<br>infrastructureLog      【入参： Hook origin,type,args</p>
+<h3 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h3><p>用上面《compiler 钩子》的代码，断点，每次进入生命周期的时候，通过调用栈的回滚 查看如何进入生命周期的</p>
+<h3 id="compilation-钩子"><a href="#compilation-钩子" class="headerlink" title="compilation 钩子"></a>compilation 钩子</h3><p>addEntry   【类型：SyncHook 入参：entry,name     添加入口<br>buildModule   【类型：SyncHook 入参：module   编译入口模块<br>normalModuleLoader   【类型：SyncHook 入参：loaderContext,module     拿到正常模块加载器<br>succeedModule   【类型：SyncHook 入参：module    成功加载模块<br>succeedEntry   【类型：SyncHook 入参：entry,name,module   入口解析成功<br>finishModules   【类型：AsyncSeriesHook 入参：modules   完成模块编译<br>seal   【类型：SyncHook 入参：   封包<br>optimizeDependenciesBasic   【类型：SyncBailHook 入参：modules   优化依赖项<br>optimizeDependencies   【类型：SyncBailHook 入参：modules<br>optimizeDependenciesAdvanced   【类型：SyncBailHook 入参：modules<br>afterOptimizeDependencies   【类型：SyncHook 入参：modules   </p>
+<p>beforeChunks   【类型：SyncHook 入参：    生成chunk<br>afterChunks   【类型：SyncHook 入参：chunks   完成生成chunk<br>optimize   【类型：SyncHook 入参：<br>optimizeModulesBasic   【类型：SyncBailHook 入参：modules   优化模块<br>optimizeModules   【类型：SyncBailHook 入参：modules<br>optimizeModulesAdvanced   【类型：SyncBailHook 入参：modules<br>afterOptimizeModules   【类型：SyncHook 入参：modules<br>optimizeChunksBasic   【类型：SyncBailHook 入参：chunks,chunkGroups   优化chunk<br>optimizeChunks   【类型：SyncBailHook 入参：chunks,chunkGroups<br>optimizeChunksAdvanced   【类型：SyncBailHook 入参：chunks,chunkGroups<br>afterOptimizeChunks   【类型：SyncHook 入参：chunks,chunkGroups<br>optimizeTree   【类型：AsyncSeriesHook 入参：chunks,modules<br>afterOptimizeTree   【类型：SyncHook 入参：chunks,modules<br>optimizeChunkModulesBasic   【类型：SyncBailHook 入参：chunks,modules   优化chunk module<br>optimizeChunkModules   【类型：SyncBailHook 入参：chunks,modules<br>optimizeChunkModulesAdvanced   【类型：SyncBailHook 入参：chunks,modules<br>afterOptimizeChunkModules   【类型：SyncHook 入参：chunks,modules<br>shouldRecord   【类型：SyncBailHook 入参：   是否要记录<br>reviveModules   【类型：SyncHook 入参：modules,records<br>optimizeModuleOrder   【类型：SyncHook 入参：modules   优化模块的顺序<br>advancedOptimizeModuleOrder   【类型：SyncHook 入参：modules<br>beforeModuleIds   【类型：SyncHook 入参：modules   处理moduleIds<br>moduleIds   【类型：SyncHook 入参：modules<br>optimizeModuleIds   【类型：SyncHook 入参：modules<br>afterOptimizeModuleIds   【类型：SyncHook 入参：modules<br>reviveChunks   【类型：SyncHook 入参：chunks,records<br>optimizeChunkOrder   【类型：SyncHook 入参：chunks   优化chunk 顺序<br>beforeChunkIds   【类型：SyncHook 入参：chunks<br>optimizeChunkIds   【类型：SyncHook 入参：chunks<br>afterOptimizeChunkIds   【类型：SyncHook 入参：chunks<br>recordModules   【类型：SyncHook 入参：modules,records   记录模块<br>recordChunks   【类型：SyncHook 入参：chunks,records   记录chunk<br>beforeHash   【类型：SyncHook 入参：   生成hash前<br>chunkHash   【类型：SyncHook 入参：chunk,chunkHash     生成chunkhash<br>contentHash   【类型：SyncHook 入参：chunk<br>afterHash   【类型：SyncHook 入参：<br>recordHash   【类型：SyncHook 入参：records   把hash值记录到stats文件里<br>beforeModuleAssets   【类型：SyncHook 入参：   生成模块之前资源<br>shouldGenerateChunkAssets   【类型：SyncBailHook 入参：    是否要生成模块资源<br>beforeChunkAssets   【类型：SyncHook 入参：   生成代码块资源之前<br>chunkAsset   【类型：SyncHook 入参：chunk,filename<br>additionalChunkAssets   【类型：SyncHook 入参：chunks<br>record   【类型：SyncHook 入参：compilation,records<br>additionalAssets   【类型：AsyncSeriesHook 入参：<br>optimizeChunkAssets   【类型：AsyncSeriesHook 入参：chunks<br>afterOptimizeChunkAssets   【类型：SyncHook 入参：chunks<br>optimizeAssets   【类型：AsyncSeriesHook 入参：assets<br>afterOptimizeAssets   【类型：SyncHook 入参：assets<br>needAdditionalSeal   【类型：SyncBailHook 入参：<br>afterSeal   【类型：AsyncSeriesHook 入参：<br>needAdditionalPass   【类型：SyncBailHook 入参：   </p>
+<h3 id="关于stats对象"><a href="#关于stats对象" class="headerlink" title="关于stats对象"></a>关于stats对象</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>关于 stats 对象 更多知识 参考 《webpack再出发(田)：chunk及之后的调试  – 生成Stats 对象》</p>
+<p>在webpack的回调函数中会得到 stats 对象；<br>这个对象实际来自于 <code>Compilation.getStats()</code> ，返回的是主要含有modules\chunks\assets三个属性值的对象；<br>stats对象本质上来自于 <code>lib/Stats.js</code> 的类实例；</p>
+<ul>
+<li>modules 记录了所有解析后的模块；</li>
+<li>chunks 记录了所有chunk；</li>
+<li>assets 记录了所有要生成的文件；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 必须要基于以下版本，否则报错</span><br><span class="line"># &quot;webpack&quot;: &quot;4.46.0&quot;,</span><br><span class="line"># &quot;webpack-cli&quot;: &quot;^3.2.0&quot;,</span><br><span class="line"># 生成资源文件</span><br><span class="line">npx webpack --profile  --json &gt; stats.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"errors"</span>: [],  <span class="comment">//编译中的错误</span></span><br><span class="line">  <span class="string">"warnings"</span>: [],</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"4.46.0"</span>, <span class="comment">//编译时webpack版本号</span></span><br><span class="line">  <span class="string">"hash"</span>: <span class="string">"a83d304015df9ab38759"</span>, <span class="comment">//本次编译hash</span></span><br><span class="line">  <span class="string">"time"</span>: <span class="number">363</span>, <span class="comment">//总共花费的时间 单位是ms</span></span><br><span class="line">  <span class="string">"builtAt"</span>: <span class="number">1649145924132</span>, <span class="comment">//构建时间</span></span><br><span class="line">  <span class="string">"publicPath"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"outputPath"</span>: <span class="string">"D:\\workplace\\webpack\\webpack-travel\\dist"</span>,</span><br><span class="line">  <span class="string">"assetsByChunkName"</span>: &#123; <span class="comment">//产出资源的代码块的名字</span></span><br><span class="line">    <span class="string">"main"</span>: <span class="string">"main.bundle.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"assets"</span>: [ <span class="comment">//产出的资源</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"main.bundle.js"</span>,  <span class="comment">//生成的文件名</span></span><br><span class="line">      <span class="string">"size"</span>: <span class="number">3925</span>, <span class="comment">//预估的生成文件大小</span></span><br><span class="line">      <span class="string">"chunks"</span>: [  <span class="comment">//这个文件里包含的代码块</span></span><br><span class="line">        <span class="string">"main"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"chunkNames"</span>: [</span><br><span class="line">        <span class="string">"main"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"info"</span>: &#123;&#125;,</span><br><span class="line">      <span class="string">"emitted"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"filteredAssets"</span>: <span class="number">0</span>, <span class="comment">//过滤资源</span></span><br><span class="line">  <span class="string">"entrypoints"</span>: &#123; <span class="comment">//入口点</span></span><br><span class="line">    <span class="string">"main"</span>: &#123;</span><br><span class="line">      <span class="string">"chunks"</span>: [</span><br><span class="line">        <span class="string">"main"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"assets"</span>: [</span><br><span class="line">        <span class="string">"main.bundle.js"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"children"</span>: &#123;&#125;,</span><br><span class="line">      <span class="string">"childAssets"</span>: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"namedChunkGroups"</span>: &#123;</span><br><span class="line">    <span class="string">"main"</span>: &#123;</span><br><span class="line">      <span class="string">"chunks"</span>: [</span><br><span class="line">        <span class="string">"main"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"assets"</span>: [</span><br><span class="line">        <span class="string">"main.bundle.js"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"children"</span>: &#123;&#125;,</span><br><span class="line">      <span class="string">"childAssets"</span>: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"chunks"</span>: [ <span class="comment">//代码块</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="string">"main"</span>,</span><br><span class="line">      <span class="string">"rendered"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"initial"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"entry"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"size"</span>: <span class="number">65</span>,</span><br><span class="line">      <span class="string">"names"</span>: [</span><br><span class="line">        <span class="string">"main"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"files"</span>: [</span><br><span class="line">        <span class="string">"main.bundle.js"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"hash"</span>: <span class="string">"012e07b641f6c138314f"</span>, <span class="comment">//chunkHash</span></span><br><span class="line">      <span class="string">"siblings"</span>: [],</span><br><span class="line">      <span class="string">"parents"</span>: [],</span><br><span class="line">      <span class="string">"children"</span>: [],</span><br><span class="line">      <span class="string">"childrenByOrder"</span>: &#123;&#125;,</span><br><span class="line">      <span class="string">"modules"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"id"</span>: <span class="string">"./src/index.js"</span>, <span class="comment">//模块id moduleId</span></span><br><span class="line">        <span class="comment">//   模块的绝对路径</span></span><br><span class="line">          <span class="string">"identifier"</span>: <span class="string">"D:\\workplace\\webpack\\webpack-travel\\node_modules\\babel-loader\\lib\\index.js!D:\\workplace\\webpack\\webpack-travel\\src\\index.js"</span>,</span><br><span class="line">          <span class="string">"name"</span>: <span class="string">"./src/index.js"</span>,</span><br><span class="line">          <span class="string">"index"</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">"index2"</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">"size"</span>: <span class="number">65</span>,</span><br><span class="line">          <span class="string">"cacheable"</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="string">"built"</span>: <span class="literal">true</span>, <span class="comment">//是否经过loader编译 (存疑， 经过试验，未经loader的js 编译后，此built也为true)</span></span><br><span class="line">          <span class="string">"optional"</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="string">"prefetched"</span>: <span class="literal">false</span>, <span class="comment">//是否要预取，编译好后，告诉浏览器 有空的时候 加载资源</span></span><br><span class="line">          <span class="string">"chunks"</span>: [</span><br><span class="line">            <span class="string">"main"</span></span><br><span class="line">          ],</span><br><span class="line">          <span class="string">"issuer"</span>: <span class="literal">null</span>,  <span class="comment">//谁用的，谁调用该文件的；</span></span><br><span class="line">          <span class="string">"issuerId"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"issuerName"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"issuerPath"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"profile"</span>: &#123;</span><br><span class="line">            <span class="string">"factory"</span>: <span class="number">19</span>,  <span class="comment">//工厂创建模块的时间</span></span><br><span class="line">            <span class="string">"building"</span>: <span class="number">323</span>  loader编译的时间</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">"failed"</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="string">"errors"</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">"warnings"</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">"assets"</span>: [],</span><br><span class="line">          <span class="string">"reasons"</span>: [  <span class="comment">//表示本模块被添加的原因</span></span><br><span class="line">            &#123;</span><br><span class="line">              <span class="string">"moduleId"</span>: <span class="literal">null</span>,  <span class="comment">//被引用的module的moduleId</span></span><br><span class="line">              <span class="string">"moduleIdentifier"</span>: <span class="literal">null</span>,</span><br><span class="line">              <span class="string">"module"</span>: <span class="literal">null</span>,</span><br><span class="line">              <span class="string">"moduleName"</span>: <span class="literal">null</span>,</span><br><span class="line">              <span class="string">"type"</span>: <span class="string">"single entry"</span>,  <span class="comment">//引用的方式：entry的方式引入，其他的有import</span></span><br><span class="line">              <span class="string">"userRequest"</span>: <span class="string">"./src/index.js"</span>,</span><br><span class="line">              <span class="string">"loc"</span>: <span class="string">"main"</span>  <span class="comment">//引入位置的具体信息，其他信息有行数</span></span><br><span class="line">            &#125;</span><br><span class="line">          ],</span><br><span class="line">          <span class="string">"providedExports"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"optimizationBailout"</span>: [],</span><br><span class="line">          <span class="string">"depth"</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="string">"source"</span>: <span class="string">"console.log('--------009883njoddsrg543ghjsdg112111111111111111');"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"filteredModules"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"origins"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"module"</span>: <span class="string">""</span>,</span><br><span class="line">          <span class="string">"moduleIdentifier"</span>: <span class="string">""</span>,</span><br><span class="line">          <span class="string">"moduleName"</span>: <span class="string">""</span>,</span><br><span class="line">          <span class="string">"loc"</span>: <span class="string">"main"</span>,</span><br><span class="line">          <span class="string">"request"</span>: <span class="string">"./src/index.js"</span>,</span><br><span class="line">          <span class="string">"reasons"</span>: []</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"modules"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"id"</span>: <span class="string">"./src/index.js"</span>,</span><br><span class="line">      <span class="string">"identifier"</span>: <span class="string">"D:\\workplace\\webpack\\webpack-travel\\node_modules\\babel-loader\\lib\\index.js!D:\\workplace\\webpack\\webpack-travel\\src\\index.js"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"./src/index.js"</span>,</span><br><span class="line">      <span class="string">"index"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"index2"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"size"</span>: <span class="number">65</span>,</span><br><span class="line">      <span class="string">"cacheable"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"built"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"optional"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"prefetched"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"chunks"</span>: [</span><br><span class="line">        <span class="string">"main"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"issuer"</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="string">"issuerId"</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="string">"issuerName"</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="string">"issuerPath"</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="string">"profile"</span>: &#123;</span><br><span class="line">        <span class="string">"factory"</span>: <span class="number">19</span>,</span><br><span class="line">        <span class="string">"building"</span>: <span class="number">323</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"failed"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"errors"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"warnings"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"assets"</span>: [],</span><br><span class="line">      <span class="string">"reasons"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">"moduleId"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"moduleIdentifier"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"module"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"moduleName"</span>: <span class="literal">null</span>,</span><br><span class="line">          <span class="string">"type"</span>: <span class="string">"single entry"</span>,</span><br><span class="line">          <span class="string">"userRequest"</span>: <span class="string">"./src/index.js"</span>,</span><br><span class="line">          <span class="string">"loc"</span>: <span class="string">"main"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="string">"providedExports"</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="string">"optimizationBailout"</span>: [],</span><br><span class="line">      <span class="string">"depth"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="string">"source"</span>: <span class="string">"console.log('--------009883njoddsrg543ghjsdg112111111111111111');"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"filteredModules"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="string">"logging"</span>: &#123;</span><br><span class="line">    <span class="string">"webpack.buildChunkGraph.visitModules"</span>: &#123;</span><br><span class="line">      <span class="string">"entries"</span>: [],</span><br><span class="line">      <span class="string">"filteredEntries"</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="string">"debug"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"children"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="关于module对象"><a href="#关于module对象" class="headerlink" title="关于module对象"></a>关于module对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// dependencies 说明参考 </span></span><br><span class="line">      dependencies: [</span><br><span class="line">        [HarmonyCompatibilityDependency], <span class="comment">//对应模板 `HarmonyExportDependencyTemplate` 会在源码里最前面添加如：`__webpack_require__.r(__webpack_exports__);` 的代码，用于定义 exports:__esModule</span></span><br><span class="line">        [HarmonyInitDependency],</span><br><span class="line">        [ConstDependency],</span><br><span class="line">        [HarmonyImportSideEffectDependency],</span><br><span class="line">        [ConstDependency],</span><br><span class="line">        [HarmonyImportSideEffectDependency],</span><br><span class="line">        [HarmonyImportSpecifierDependency],</span><br><span class="line">        [HarmonyImportSpecifierDependency]</span><br><span class="line">      ],</span><br><span class="line">      blocks: [],</span><br><span class="line">      variables: [],</span><br><span class="line">      type: <span class="string">'javascript/auto'</span>,</span><br><span class="line">      context: <span class="string">'D:\\workplace\\webpack\\webpack-travel\\src'</span>,</span><br><span class="line">      debugId: <span class="number">1000</span>,</span><br><span class="line">      hash: <span class="string">'27a8caa7dfc3e630b3401c5bf4817949'</span>,</span><br><span class="line">      renderedHash: <span class="string">'27a8caa7dfc3e630b340'</span>,</span><br><span class="line">      resolveOptions: &#123;&#125;,</span><br><span class="line">      factoryMeta: &#123;&#125;,</span><br><span class="line">      warnings: [],</span><br><span class="line">      errors: [],</span><br><span class="line">      buildMeta: &#123; <span class="attr">exportsType</span>: <span class="string">'namespace'</span>, <span class="attr">providedExports</span>: [] &#125;,</span><br><span class="line">      buildInfo: &#123;</span><br><span class="line">        cacheable: <span class="literal">true</span>,</span><br><span class="line">        fileDependencies: [<span class="built_in">Set</span>],</span><br><span class="line">        contextDependencies: <span class="built_in">Set</span>(<span class="number">0</span>) &#123;&#125;,</span><br><span class="line">        assets: <span class="literal">undefined</span>,</span><br><span class="line">        assetsInfo: <span class="literal">undefined</span>,</span><br><span class="line">        strict: <span class="literal">true</span>,</span><br><span class="line">        exportsArgument: <span class="string">'__webpack_exports__'</span>,</span><br><span class="line">        temporaryProvidedExports: <span class="literal">false</span></span><br><span class="line">      &#125;,</span><br><span class="line">      reasons: [ [ModuleReason] ],</span><br><span class="line">      _chunks: SortableSet(<span class="number">1</span>) [<span class="built_in">Set</span>] &#123;</span><br><span class="line">        [Chunk],</span><br><span class="line">        _sortFn: [<span class="built_in">Function</span>: sortById],</span><br><span class="line">        _lastActiveSortFn: <span class="literal">null</span>,</span><br><span class="line">        _cache: <span class="literal">undefined</span>,</span><br><span class="line">        _cacheOrderIndependent: <span class="literal">undefined</span></span><br><span class="line">      &#125;,</span><br><span class="line">      id: <span class="string">'./src/index.js'</span>,</span><br><span class="line">      index: <span class="number">0</span>,</span><br><span class="line">      index2: <span class="number">2</span>,</span><br><span class="line">      depth: <span class="number">0</span>,</span><br><span class="line">      issuer: <span class="literal">null</span>,</span><br><span class="line">      profile: <span class="literal">undefined</span>,</span><br><span class="line">      prefetched: <span class="literal">false</span>,</span><br><span class="line">      built: <span class="literal">true</span>,</span><br><span class="line">      used: <span class="literal">null</span>,</span><br><span class="line">      usedExports: <span class="literal">null</span>,</span><br><span class="line">      optimizationBailout: [],</span><br><span class="line">      _rewriteChunkInReasons: <span class="literal">undefined</span>,</span><br><span class="line">      useSourceMap: <span class="literal">false</span>,</span><br><span class="line">      _source: OriginalSource &#123;</span><br><span class="line">        _value: <span class="string">"import srctFn from './srctest';\n"</span> +</span><br><span class="line">          <span class="string">"import srcpage from './page/srcpage';\n"</span> +</span><br><span class="line">          <span class="string">"srctFn('ffffffffffffd');\n"</span> +</span><br><span class="line">          <span class="string">"srcpage('ffffffffffffd');\n"</span> +</span><br><span class="line">          <span class="string">"console.log('--index-page------009883njoddsrg543ghjsdg112111111111111111');"</span>,</span><br><span class="line">        _name: <span class="string">'D:\\workplace\\webpack\\webpack-travel\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\workplace\\webpack\\webpack-travel\\src\\index.js'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      request: <span class="string">'D:\\workplace\\webpack\\webpack-travel\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\workplace\\webpack\\webpack-travel\\src\\index.js'</span>,</span><br><span class="line">      userRequest: <span class="string">'D:\\workplace\\webpack\\webpack-travel\\src\\index.js'</span>,</span><br><span class="line">      rawRequest: <span class="string">'./src/index.js'</span>,</span><br><span class="line">      binary: <span class="literal">false</span>,</span><br><span class="line">      parser: Parser &#123;</span><br><span class="line">        _pluginCompat: [SyncBailHook],</span><br><span class="line">        hooks: [<span class="built_in">Object</span>],</span><br><span class="line">        options: &#123;&#125;,</span><br><span class="line">        sourceType: <span class="string">'auto'</span>,</span><br><span class="line">        scope: <span class="literal">undefined</span>,</span><br><span class="line">        state: <span class="literal">undefined</span>,</span><br><span class="line">        comments: <span class="literal">undefined</span></span><br><span class="line">      &#125;,</span><br><span class="line">      generator: JavascriptGenerator &#123;&#125;,</span><br><span class="line">      resource: <span class="string">'D:\\workplace\\webpack\\webpack-travel\\src\\index.js'</span>,</span><br><span class="line">      matchResource: <span class="literal">undefined</span>,</span><br><span class="line">      loaders: [ [<span class="built_in">Object</span>] ],</span><br><span class="line">      error: <span class="literal">null</span>,</span><br><span class="line">      _sourceSize: <span class="literal">null</span>,</span><br><span class="line">      _buildHash: <span class="string">'6e3735e813c76c2709c7d0f4f123937d'</span>,</span><br><span class="line">      buildTimestamp: <span class="number">1649210983865</span>,</span><br><span class="line">      _cachedSources: <span class="built_in">Map</span>(<span class="number">1</span>) &#123; <span class="string">'javascript'</span> =&gt; [<span class="built_in">Object</span>] &#125;,</span><br><span class="line">      lineToLine: <span class="literal">false</span>,</span><br><span class="line">      _lastSuccessfulBuildMeta: &#123; <span class="attr">exportsType</span>: <span class="string">'namespace'</span>, <span class="attr">providedExports</span>: [] &#125;,</span><br><span class="line">      _ast: <span class="literal">null</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="dependencies"><a href="#dependencies" class="headerlink" title="dependencies"></a>dependencies</h4><p> dependencies 说明 <a href="https://blog.flqin.com/378.html" target="_blank" rel="noopener">参考</a> </p>
+<h2 id="关于chunk"><a href="#关于chunk" class="headerlink" title="关于chunk"></a>关于chunk</h2><h3 id="生成chunk的情况"><a href="#生成chunk的情况" class="headerlink" title="生成chunk的情况"></a>生成chunk的情况</h3><ul>
+<li>每个入口文件是天然的chunk，入口文件及其依赖模块生成一个chunk；</li>
+<li>如果说某个模块里有动态引入语句import语句，就会由import单独生成一个新的代码块，这个代码块里放置这个动态引入的模块以及这个动态引入的模块依赖的模块。</li>
+<li>splitchunks，实现同步的代码分割。把多个代码里共同的模块提供成一个单独的代码块。还可以把某些模块，比如说node_modules里的模块单独提出来成立一个代码块。</li>
+</ul>
+<a rel=webpack源码系列(来)：主流程 href="/blog/image/webpack_one/chunk.jpg" title="" data-fancybox="images"><img src="/blog/image/webpack_one/chunk.jpg" class="url_for"></a>
+<p><a href="https://www.bilibili.com/video/BV1N5411j74S?p=14" target="_blank" rel="noopener">这个视频讲的更清楚-《任务14：14.如何调试和阅读webpack源码》-在最后几分钟内有讲到</a><br><a href="https://www.bilibili.com/video/BV1N5411j74S?p=15" target="_blank" rel="noopener">这个视频讲的更清楚-《任务15：15.webpack自定义loader》-在开始的几分钟内有讲到</a></p>
+<h2 id="webpack-主流程"><a href="#webpack-主流程" class="headerlink" title="webpack 主流程"></a>webpack 主流程</h2><h3 id="流程一"><a href="#流程一" class="headerlink" title="流程一"></a>流程一</h3><a rel=webpack源码系列(来)：主流程 href="/blog/image/webpack_one/m1.jpg" title="" data-fancybox="images"><img src="/blog/image/webpack_one/m1.jpg" class="url_for"></a>
+<a rel=webpack源码系列(来)：主流程 href="/blog/image/webpack_one/m2.jpg" title="" data-fancybox="images"><img src="/blog/image/webpack_one/m2.jpg" class="url_for"></a>
+<a rel=webpack源码系列(来)：主流程 href="/blog/image/webpack_one/m3.png" title="" data-fancybox="images"><img src="/blog/image/webpack_one/m3.png" class="url_for"></a>
+<a rel=webpack源码系列(来)：主流程 href="/blog/image/webpack_one/m4.jpg" title="" data-fancybox="images"><img src="/blog/image/webpack_one/m4.jpg" class="url_for"></a>
+<h3 id="流程二"><a href="#流程二" class="headerlink" title="流程二"></a>流程二</h3><p>下图也是 <a href="https://lxzjj.github.io/2017/11/02/%E7%8E%A9%E8%BD%ACwebpack%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">webpack的一段主流程图</a>，版本为 webpack 3.6.0</p>
+<a rel=webpack源码系列(来)：主流程 href="/blog/image/webpack_one/main1.svg" title="" data-fancybox="images"><img src="/blog/image/webpack_one/main1.svg" class="url_for"></a>
+<ul>
+<li>图中虚线表示存在循环流程</li>
+<li>上面展示的只是 webpack 构建的一部分，比如与 Module 相关的对象只画出了 NormalModuleFactory，与 Template 相关的对象也只画出了 MainTemplate等。原因在于上面的流程图已经足以说明主要的构建步骤，另外有没画出来的对象和任务点跟上述的类似，比如 ContextModuleFactory 跟 NormalModuleFactory 是十分相似的对象，也有相似的任务点。有兴趣的同学可以自行拓展探索流程图。</li>
+</ul>
+<h2 id="module阅读"><a href="#module阅读" class="headerlink" title="module阅读"></a>module阅读</h2><h3 id="Compilation实例的modules属性"><a href="#Compilation实例的modules属性" class="headerlink" title="Compilation实例的modules属性"></a>Compilation实例的modules属性</h3><p>所有解析完成后的module，最后都被保存在 modules上。</p>
+<blockquote>
+<p>它们将存储在 Compilation 实例的 modules 属性中，并触发任务点 finish-modules <a href="https://lxzjj.github.io/2017/11/02/%E7%8E%A9%E8%BD%ACwebpack%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">参考</a></p>
+</blockquote>
+<h4 id="源码调试"><a href="#源码调试" class="headerlink" title="源码调试"></a>源码调试</h4><p>明天是否可以直接先打印以下 modules 属性，看整个 modules 是一个什么对象，有什么内容，<br>这样已知结果了，那么就可以大致猜测到之前各个过程做了什么。</p>
+<h3 id="两个factory-create的执行顺序"><a href="#两个factory-create的执行顺序" class="headerlink" title="两个factory.create的执行顺序"></a>两个factory.create的执行顺序</h3><p>先执行 _addModuleChain 的 moduleFactory.create<br>后执行 addModuleDependencies 的 factory.create</p>
+<p>factory.create 其实就是的重复：</p>
+<blockquote>
+<p>NormalModuleFactory.create -&gt; resolve流程 -&gt; 初始化module -&gt; module build -&gt; afterBuild -&gt; processModuleDependencies …</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="参考文档或视频"><a href="#参考文档或视频" class="headerlink" title="参考文档或视频"></a>参考文档或视频</h3><p><a href="https://www.bilibili.com/video/BV1N5411j74S?p=14" target="_blank" rel="noopener">这个视频讲的更清楚-《任务14：14.如何调试和阅读webpack源码》-在最后几分钟内有讲到</a><br><a href="https://www.bilibili.com/video/BV1N5411j74S?p=15" target="_blank" rel="noopener">这个视频讲的更清楚-《任务15：15.webpack自定义loader》-在开始的几分钟内有讲到</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.809Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2022/04/05/webpack_three/" target="_blank" rel="external">https://yewills.github.io/2022/04/05/webpack_three/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack源码系列/">webpack源码系列</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/05/webpack_three/&title=《webpack源码系列(来)：主流程》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/05/webpack_three/&title=《webpack源码系列(来)：主流程》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2022/04/05/webpack_four/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack源码系列(誉)：module调试</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2022/03/23/webpack_two/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack源码系列(蹇)：loader</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#compiler-钩子"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">compiler 钩子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调试技巧"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">调试技巧</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#compilation-钩子"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">compilation 钩子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于stats对象"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">关于stats对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">概述</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于module对象"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">关于module对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dependencies"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">dependencies</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于chunk"><span class="post-toc-number">2.</span> <span class="post-toc-text">关于chunk</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生成chunk的情况"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">生成chunk的情况</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack-主流程"><span class="post-toc-number">3.</span> <span class="post-toc-text">webpack 主流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流程一"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">流程一</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流程二"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">流程二</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#module阅读"><span class="post-toc-number">4.</span> <span class="post-toc-text">module阅读</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Compilation实例的modules属性"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Compilation实例的modules属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#源码调试"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">源码调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两个factory-create的执行顺序"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">两个factory.create的执行顺序</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文档或视频"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">参考文档或视频</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2022/04/05/webpack_three/&title=《webpack源码系列(来)：主流程》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2022/04/05/webpack_three/&title=《webpack源码系列(来)：主流程》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQXLDMAgF0N7/0ukBOlY+4HQm+HmVSR2Z5wUViJ+f+HpdXH//enX/ec2rb26+MDAwvpbxOl75I/Nvqp/PsWFgYDyHcZXBzvec748ef0zQSWwYGBgY5xCTIPItIwYGBsa9jF6xWl0HAwMDo1rE9rpeSRBJyr6tFsfAwPhCRh7c/3/+yPkGBgbGVzFexWtybpi8oGZUGBgYqxnVpn/Cy7duhQI1GNTAwMDYypg0v/Kys7fHS5Jy4QQDAwNjBWOS+HrjF8nhZXSMioGBsZpRLSknDbg83CRQDAyMpzGSbVz+4OSR1Scmrw8DA2Mro9fur45KJKTeBrHw/jAwML6WkYRSbaL10m6v0RbNuGFgYKxgTMYpRk2x4lHBm5UxMDAewOgdJfaOEHqp9s2rwcDAWMq4K2lWQ6wWqM3CFQMDYwUj4TXbXsV1qik42nRiYGCsYFRDqZayH3nHGBgYD2b0lpgMgVV/e7kCBgbGakb1Z70JhzyxTsY4MDAwdjPmpWYvsU7uj4YtMDAwHsOoLpqvVk30ox4hBgbGCsZkqCLf9uUvpbwNxcDAWMqYNP3zrV4+LnZD/Y2BgbGOMZmwqg5vJaXyJ14TBgbGDkY1yeYla46pHjOU/3tgYGCsYCSlae8wMj94mESLgYGB0Wu09YrY5h4WAwMDo9X67x1JVsfFMDAwnsPIx7zypc9rTgppDAyMpzGq+65889drpfXG1DAwMJYyfgFNHmqY5Xcp/wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

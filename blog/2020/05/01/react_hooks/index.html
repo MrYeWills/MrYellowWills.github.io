@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>React hooks 笔记 | Mr.Yellow.Wills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="react hooks">
+    <link rel="shortcut icon" href="/blog/img/logo.jpg">
+    <link rel="stylesheet" href="/blog/css/jquery.fancybox.min.css?v=1.3.9">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.3.9">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/blog/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Yellow</h5>
+          <a href="mailto:601661706@qq.com" title="601661706@qq.com" class="mail">
+            
+              <span>6</span>
+            
+              <span>0</span>
+            
+              <span>1</span>
+            
+              <span>6</span>
+            
+              <span>6</span>
+            
+              <span>1</span>
+            
+              <span>7</span>
+            
+              <span>0</span>
+            
+              <span>6</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/YeWills/YeWills.github.io/tree/blog_code" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>React hooks 笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/blog/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">React hooks 笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-05-01T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2020-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/react/">react</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-react_hooks"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">React hooks 笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-05-01 00:00:00" datetime="2020-05-01T00:00:00.000Z"  itemprop="datePublished">2020-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/react/">react</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>以下内容很多是阅读react官网，做的读书笔记。</p>
+<h2 id="遗憾的是hooks并没增加新的能力"><a href="#遗憾的是hooks并没增加新的能力" class="headerlink" title="遗憾的是hooks并没增加新的能力"></a>遗憾的是hooks并没增加新的能力</h2><p>hooks相比之前的react，并没有增加新的功能，只是针对以前的功能的重新封装和优化，它没有增加新的功能，比如没有增加redux功能，更不可能替代redux，因此在项目中建议class与hooks一起写，而不是一味用hooks，至少当前阶段是这样。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="先在不复杂的新组件使用"><a href="#先在不复杂的新组件使用" class="headerlink" title="先在不复杂的新组件使用"></a>先在不复杂的新组件使用</h3><p>不建议重写原有的组件，开始“用 Hook 的方式思考”前，需要做一些思维上的转变。按照我们的经验，最好先在新的不复杂的组件中尝试使用 Hook，并确保团队中的每一位成员都能适应。</p>
+<h3 id="不用class就可用state-存在的意义"><a href="#不用class就可用state-存在的意义" class="headerlink" title="不用class就可用state -存在的意义"></a>不用class就可用state -存在的意义</h3><p>以前，如果组件有state就一定要使用class，hooks解决了这点，因此使用纯函数也可以拥有state变成了现实。这是hooks最大的变动。</p>
+<h3 id="靠Hook调用顺序对应state"><a href="#靠Hook调用顺序对应state" class="headerlink" title="靠Hook调用顺序对应state"></a>靠Hook调用顺序对应state</h3><p>那么 React 怎么知道哪个 state 对应哪个 useState？答案是 React 靠的是 Hook 调用的顺序。<br>react不是神，它是通过hook的顺序将不同的变量名对应到当时定义它的state中。<br>详细<a href="https://zh-hans.reactjs.org/docs/hooks-rules.html#explanation" target="_blank" rel="noopener">参考官网</a></p>
+<h3 id="hook的位置顺序至关重要"><a href="#hook的位置顺序至关重要" class="headerlink" title="hook的位置顺序至关重要"></a>hook的位置顺序至关重要</h3><p>参考上面的 《靠Hook调用顺序对应state》</p>
+<h3 id="任何时候保持顶层使用hook"><a href="#任何时候保持顶层使用hook" class="headerlink" title="任何时候保持顶层使用hook"></a>任何时候保持顶层使用hook</h3><p>无论是在函数组件内还是<strong>自定义的hook函数</strong>内，请都保证在顶层使用hook，原因见《靠Hook调用顺序对应state》</p>
+<h3 id="值相同，第二次后就不会再次render"><a href="#值相同，第二次后就不会再次render" class="headerlink" title="值相同，第二次后就不会再次render"></a>值相同，第二次后就不会再次render</h3><p>这是hooks自己做的优化，可在官网找到相关论述，无论是usestate还是useReducer都有这个现象，当state值相同时，渲染两次之后，不再渲染。<br>class组件无此现象。</p>
+<h3 id="父组件render会导致子render，但setState不一定"><a href="#父组件render会导致子render，但setState不一定" class="headerlink" title="父组件render会导致子render，但setState不一定"></a>父组件render会导致子render，但setState不一定</h3><p>父亲render的时候，肯定导致函数式组件render；<br>但这个函数式样组件内使用useState更新时，如果state值相同，两次后就不会render；</p>
+<h3 id="由useRef-createRef的区别-想到的"><a href="#由useRef-createRef的区别-想到的" class="headerlink" title="由useRef/createRef的区别 想到的"></a>由useRef/createRef的区别 想到的</h3><h4 id="一个用在function，一个用在class"><a href="#一个用在function，一个用在class" class="headerlink" title="一个用在function，一个用在class"></a>一个用在function，一个用在class</h4><p>详细参考<a href="https://juejin.im/post/5e5c5f6a6fb9a07cad3ba383" target="_blank" rel="noopener">useRef 与 createRef 的区别</a><br>useRef用在function组件内，后者用在class组件内，这是他们表现出来的主要区别。<br>useRef是hook它有这个能力，在function组件内，只在初始的时候运行一次；<br>而creatRef不是hook没有这个能力，是一个普通函数，在function组件内时，会每次都执行，因此不能用于function组件，<br>只用于class组件，并在class组件的constructor或didmount生命周期内定义。</p>
+<h4 id="一个定义在function内部，一个定义在装卸载时"><a href="#一个定义在function内部，一个定义在装卸载时" class="headerlink" title="一个定义在function内部，一个定义在装卸载时"></a>一个定义在function内部，一个定义在装卸载时</h4><p>参考上面</p>
+<h4 id="普通函数在hook组件内会被每次执行"><a href="#普通函数在hook组件内会被每次执行" class="headerlink" title="普通函数在hook组件内会被每次执行"></a>普通函数在hook组件内会被每次执行</h4><p>参考上面</p>
+<h4 id="hook函数基本是只执行一次"><a href="#hook函数基本是只执行一次" class="headerlink" title="hook函数基本是只执行一次"></a>hook函数基本是只执行一次</h4><p>参考上面《由useRef/createRef的区别 想到的》，hook函数的最大特征之一，有别于普通函数，hook函数在函数组件内，不会被多次执行。</p>
+<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><h3 id="是三合一的API"><a href="#是三合一的API" class="headerlink" title="是三合一的API"></a>是三合一的API</h3><p>useEffect 给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API。</p>
+<h3 id="运行时机"><a href="#运行时机" class="headerlink" title="运行时机"></a>运行时机</h3><p>当你调用 useEffect 时，就是在告诉 React 在完成对 DOM 的更改后运行你的“副作用”函数。由于副作用函数是在组件内声明的，所以它们可以访问到组件的 props 和 state。默认情况下，React 会在每次渲染后调用副作用函数 —— 包括第一次渲染的时候。</p>
+<h3 id="反模式的设计"><a href="#反模式的设计" class="headerlink" title="反模式的设计"></a>反模式的设计</h3><p>我们给useEffect每次传递的是一个崭新的函数，这样做的目的可能是这个崭新的函数每次可以获得组件内最新的上下文；官网对此做的解释如下，【每次我们重新渲染，都会生成新的 effect，替换掉之前的。某种意义上讲，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。】<a href="https://zh-hans.reactjs.org/docs/hooks-effect.html" target="_blank" rel="noopener">详见官网</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">   document.title = `You clicked $&#123;count&#125; times`;</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><h3 id="只会在组件的初始渲染中调用–使用函数设置初始值"><a href="#只会在组件的初始渲染中调用–使用函数设置初始值" class="headerlink" title="只会在组件的初始渲染中调用–使用函数设置初始值"></a>只会在组件的初始渲染中调用–使用函数设置初始值</h3><p>initialState 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> initialState = someExpensiveComputation(props);</span><br><span class="line">  <span class="keyword">return</span> initialState;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h2><h3 id="监听到变化后会渲染当前组建"><a href="#监听到变化后会渲染当前组建" class="headerlink" title="监听到变化后会渲染当前组建"></a>监听到变化后会渲染当前组建</h3><h3 id="需要配合hemeContext-Provider使用"><a href="#需要配合hemeContext-Provider使用" class="headerlink" title="需要配合hemeContext.Provider使用"></a>需要配合hemeContext.Provider使用</h3><h2 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h2><h3 id="useReducer-与-redux-的关系"><a href="#useReducer-与-redux-的关系" class="headerlink" title="useReducer 与 redux 的关系"></a>useReducer 与 redux 的关系</h3><h4 id="经典demo"><a href="#经典demo" class="headerlink" title="经典demo"></a>经典demo</h4><p>如下demo，<br>这里的dispatch就是redux的dispatch API；<br>这里的todos就相当于redux的全局的store 的state；<br>这里的Provider与context结构 就是 redux 结合react的 react-connect的一套；<br>所以useReducer在思想上深度模仿了redux，很像一个迷你的redux。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TodosDispatch = React.createContext(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TodosApp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 提示：`dispatch` 不会在重新渲染之间变化</span></span><br><span class="line">  <span class="keyword">const</span> [todos, dispatch] = useReducer(todosReducer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;TodosDispatch.Provider value=&#123;dispatch&#125;&gt;</span><br><span class="line">      &lt;DeepTree todos=&#123;todos&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/TodosDispatch.Provider&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="原理上借鉴了redux"><a href="#原理上借鉴了redux" class="headerlink" title="原理上借鉴了redux"></a>原理上借鉴了redux</h4><p>参考上面《经典demo》</p>
+<h4 id="就是一个迷你的redux"><a href="#就是一个迷你的redux" class="headerlink" title="就是一个迷你的redux"></a>就是一个迷你的redux</h4><p>参考上面《经典demo》</p>
+<h3 id="惰性初始化"><a href="#惰性初始化" class="headerlink" title="惰性初始化"></a>惰性初始化</h3><p>运用场景：第一次计算state的逻辑复杂，以后不复杂，可以将第一次的计算逻辑剥离出来；<br>好处除了上面说的，还有就是逻辑剥离出来后，代码更加清晰，维护容易；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">initialCount</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: initialCount&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'increment'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'decrement'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'reset'</span>:</span><br><span class="line">      <span class="keyword">return</span> init(action.payload);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialCount, init);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;state.count&#125;</span><br><span class="line">      &lt;button</span><br><span class="line">        onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'reset'</span>, <span class="attr">payload</span>: initialCount&#125;)&#125;&gt;</span><br><span class="line">        Reset</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;type: 'decrement'&#125;)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'increment'</span>&#125;)&#125;&gt;+&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="场景-深层子层改变顶层state-reducer-context"><a href="#场景-深层子层改变顶层state-reducer-context" class="headerlink" title="场景 - 深层子层改变顶层state (reducer/context)"></a>场景 - 深层子层改变顶层state (reducer/context)</h3><p>以前我们是将顶层setState的函数传给子层，现在我们建议使用<strong>context与reducer</strong>的方式，<br>参看<a href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down" target="_blank" rel="noopener">《如何避免向下传递回调》</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TodosDispatch = React.createContext(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TodosApp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 提示：`dispatch` 不会在重新渲染之间变化</span></span><br><span class="line">  <span class="keyword">const</span> [todos, dispatch] = useReducer(todosReducer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;TodosDispatch.Provider value=&#123;dispatch&#125;&gt;</span><br><span class="line">      &lt;DeepTree todos=&#123;todos&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/TodosDispatch.Provider&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function DeepChild(props) &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 如果我们想要执行一个 action，我们可以从 context 中获取 dispatch。</span></span><br><span class="line"><span class="regexp">  const dispatch = useContext(TodosDispatch);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  function handleClick() &#123;</span></span><br><span class="line"><span class="regexp">    dispatch(&#123; type: 'add', text: 'hello' &#125;);</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;handleClick&#125;&gt;Add todo&lt;/</span>button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="场景-如何避免向下传递回调"><a href="#场景-如何避免向下传递回调" class="headerlink" title="场景 - 如何避免向下传递回调"></a>场景 - 如何避免向下传递回调</h3><p>参考上面《场景 - 深层子层改变顶层state (reducer/context)》</p>
+<h2 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>useCallback的本质作用是将每次创建的函数都指向同一个引用对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> resultCallback = useCallback(fn, deps); <span class="comment">//resultCallback 可以认为就是fn</span></span><br><span class="line"><span class="keyword">const</span> resultMemo = useMemo(fn, deps);<span class="comment">//resultMemo 就是 fn的执行后的结果</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.teaspect.com/detail/5756" target="_blank" rel="noopener">更多介绍</a></p>
+<h3 id="可与React-memo或shouldComponentUpdate结合使用"><a href="#可与React-memo或shouldComponentUpdate结合使用" class="headerlink" title="可与React.memo或shouldComponentUpdate结合使用"></a>可与React.memo或shouldComponentUpdate结合使用</h3><p>useCallback并非一定要与以上一起使用，但与上面使用可体现它的威力，如果有其他场景，也可试试。</p>
+<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>传统用法和详细介绍，<a href="https://blog.csdn.net/hjc256/article/details/102587037" target="_blank" rel="noopener">参考</a>；<br>除了传统用法，useRef另外一个好处在于用来保存值，修改它，不会造成重新渲染。</p>
+<h3 id="给useRef设置一个值"><a href="#给useRef设置一个值" class="headerlink" title="给useRef设置一个值"></a>给useRef设置一个值</h3><p>刚开始不太理解设置一个值是什么意思，原来就是给current设置一个初始值。<br><a href="https://react.docschina.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily" target="_blank" rel="noopener">参考 如何惰性创建昂贵的对象？</a>；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ref = useRef(<span class="number">9999</span>);</span><br><span class="line"><span class="built_in">console</span>.log(ref)<span class="comment">//&#123;current: 9999&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="修改它不会造成组件重新渲染"><a href="#修改它不会造成组件重新渲染" class="headerlink" title="修改它不会造成组件重新渲染"></a>修改它不会造成组件重新渲染</h3><p><a href="https://blog.csdn.net/hjc256/article/details/102587037" target="_blank" rel="noopener">参考</a>；<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect, useMemo, useRef &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> doubleCount = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * count;</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timerID = useRef();</span><br><span class="line">  </span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    timerID.current = setInterval(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        setCount(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>); </span><br><span class="line">  &#125;, []);</span><br><span class="line">  </span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(count &gt; <span class="number">10</span>)&#123;</span><br><span class="line">          clearInterval(timerID.current);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;button ref=&#123;couterRef&#125; onClick=&#123;() =&gt; &#123;setCount(count + <span class="number">1</span>)&#125;&#125;&gt;Count: &#123;count&#125;, <span class="attr">double</span>: &#123;doubleCount&#125;&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a>useImperativeHandle</h2><p>与useRef、 forwardRef 一起使用，自定义暴露给父组件使用时的ref，也是比较有用的API，我觉得它的作用之一是将子组件的内部方法，很容易的传给父组件。，详细<a href="https://zh-hans.reactjs.org/docs/hooks-reference.html" target="_blank" rel="noopener">参考官网</a>。</p>
+<h2 id="useLayoutEffect"><a href="#useLayoutEffect" class="headerlink" title="useLayoutEffect"></a>useLayoutEffect</h2><p>用法同useEffect，只有在useEffect不满足情况下才使用，它的特点在于dom布局时同步触发，而不是渲染完成后触发，服务端不要使用此API。</p>
+<h2 id="hooks出现的意义"><a href="#hooks出现的意义" class="headerlink" title="hooks出现的意义"></a>hooks出现的意义</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>hooks 实现了state状态的复用，以前state状态的复用，只能通过高阶组件，<br>现在可以通过hooks，但hooks比高阶组件复用状态时，写法简单，方便，可读性，易维护性更强。</p>
+<p>以前必须使用高阶组件实现的state复用，现在只需要一段自定义hooks就可以马上实现非常简洁，清晰，易读易维护。<br><a href="https://blog.csdn.net/qq_40962320/article/details/87043581" target="_blank" rel="noopener">更多，参考这篇博客，讲的很好</a></p>
+<h3 id="非常重要：可读性易维护性"><a href="#非常重要：可读性易维护性" class="headerlink" title="非常重要：可读性易维护性"></a>非常重要：可读性易维护性</h3><p>hooks的重要意义一方面是增加了方便性，比如可以替代原来高阶组件所实现的功能。<br>另外一个重要的核心就是，增加了可读性，易维护性，这点非常重要。</p>
+<p>就好像es6没有出现前，一个变量可能被层层污染，不知道哪里被重新设置了，<br>es6的出现很好解决了这点。<br><a rel=React hooks 笔记 href="/blog/image/react/hooks-read.png" title="" data-fancybox="images"><img src="/blog/image/react/hooks-read.png" class="url_for"></a><br><a href="https://blog.csdn.net/weixin_43606158/article/details/106715134" target="_blank" rel="noopener">参考</a></p>
+<h3 id="功能是一方面，可读易维护也是重要方面"><a href="#功能是一方面，可读易维护也是重要方面" class="headerlink" title="功能是一方面，可读易维护也是重要方面"></a>功能是一方面，可读易维护也是重要方面</h3><p>参考上面《非常重要：可读性易维护性 》</p>
+<h3 id="hooks与高阶组件区别"><a href="#hooks与高阶组件区别" class="headerlink" title="hooks与高阶组件区别"></a>hooks与高阶组件区别</h3><p>hooks与高阶组件都可以实现代码复用，比如state复用，二者本质上无区别，<br>但使用方式上却一个繁杂沉余，且要多一层组件包裹。<br>但hooks写法灵活，简单，且可读性极强。<br><a href="https://blog.csdn.net/qq_40962320/article/details/87043581" target="_blank" rel="noopener">更多，参考这篇博客，讲的很好</a></p>
+<h2 id="FAQ之一"><a href="#FAQ之一" class="headerlink" title="FAQ之一"></a>FAQ之一</h2><h3 id="我应该使用单个还是多个-state-变量？"><a href="#我应该使用单个还是多个-state-变量？" class="headerlink" title="我应该使用单个还是多个 state 变量？"></a>我应该使用单个还是多个 state 变量？</h3><p>我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。<br>说的是，一个useState应该只改变 这个动作 改动的state；<br>比如一个是改变postion的，一个是改变宽高的，这两个应该写在不同state上，<br>当然，没有唯一的标准，靠自己平衡，分开与不分开，考虑的是后期维护性扩展和可读性，如果业务越来越复杂，应该碎片化state；<br>如果业务简单，是否分开可能作用不大，看个人的编程习惯。<br>详细<a href="https://react.docschina.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down" target="_blank" rel="noopener">查看官网 我应该使用单个还是多个 state 变量？</a></p>
+<h3 id="我可以只在更新时运行-effect-吗？-componentDidupdate"><a href="#我可以只在更新时运行-effect-吗？-componentDidupdate" class="headerlink" title="我可以只在更新时运行 effect 吗？(componentDidupdate)"></a>我可以只在更新时运行 effect 吗？(componentDidupdate)</h3><p>官网上的这个问题，讨论的就是如何使用useEffect 来模拟componentDidupdate，官网推荐方法是，使用Ref。</p>
+<h3 id="如何获取上一轮的-props-或-state？"><a href="#如何获取上一轮的-props-或-state？" class="headerlink" title="如何获取上一轮的 props 或 state？"></a>如何获取上一轮的 props 或 state？</h3><p>目前，你可以 通过 ref 来手动实现.详细参看官网。<br>也许你说，可以通过useReducer</p>
+<h3 id="ref-并非一定要跟子组件一起用，一定要嵌入子组件—ref大有可为，是新时代的实例对象和this不变指针。"><a href="#ref-并非一定要跟子组件一起用，一定要嵌入子组件—ref大有可为，是新时代的实例对象和this不变指针。" class="headerlink" title="ref 并非一定要跟子组件一起用，一定要嵌入子组件—ref大有可为，是新时代的实例对象和this不变指针。"></a>ref 并非一定要跟子组件一起用，一定要嵌入子组件—ref大有可为，是新时代的实例对象和this不变指针。</h3><p>比如 FAq <a href="https://react.docschina.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down" target="_blank" rel="noopener">为什么我会在我的函数中看到陈旧的 props 和 state ？ </a>也说到了ref的用处。</p>
+<h3 id="我该如何实现-getDerivedStateFromProps"><a href="#我该如何实现-getDerivedStateFromProps" class="headerlink" title="我该如何实现 getDerivedStateFromProps?"></a>我该如何实现 getDerivedStateFromProps?</h3><p><a href="https://react.docschina.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops" target="_blank" rel="noopener">参考官网</a>，模拟getDerivedStateFromProps的关键在于获取上一次的props和state。官网的例子设置一个不用于渲染的state存储prestate。这里的<strong>特别之处在于：</strong>一般认为state用于渲染组件的，不渲染组件时不要用state。<br>这里官网都推荐了，所以，凡事无固定，平衡就好。</p>
+<p>另外一种方式也可以通过 ref 来获取上一轮的props和state，也可以来模拟 getDerivedStateFromProps，参考上面的《如何获取上一轮的 props 或 state？》</p>
+<h3 id="为什么我会在我的函数中看到陈旧的-props-和-state-？–内部函数作用域问题"><a href="#为什么我会在我的函数中看到陈旧的-props-和-state-？–内部函数作用域问题" class="headerlink" title="为什么我会在我的函数中看到陈旧的 props 和 state ？–内部函数作用域问题"></a>为什么我会在我的函数中看到陈旧的 props 和 state ？–内部函数作用域问题</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Example</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleAlertClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      alert(<span class="string">'You clicked on: '</span> + count);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;p&gt;You clicked &#123;count&#125; times&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;</span></span><br><span class="line"><span class="regexp">        Click me</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;handleAlertClick&#125;&gt;</span><br><span class="line">        Show alert</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="有类似-forceUpdate-的东西吗？"><a href="#有类似-forceUpdate-的东西吗？" class="headerlink" title="有类似 forceUpdate 的东西吗？"></a>有类似 forceUpdate 的东西吗？</h3><p>使用计时器结合 useState等来做，值得注意的是，<strong>必须要用计时器，因为useState相同的值，两次后，都不会更新，这是hooks于setState的根本区别</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const [ignored, forceUpdate] = useReducer(x =&gt; x + 1, 0);</span><br><span class="line"></span><br><span class="line">function handleClick() &#123;</span><br><span class="line">  forceUpdate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="我该如何测量-DOM-节点？–-callback-ref-的使用"><a href="#我该如何测量-DOM-节点？–-callback-ref-的使用" class="headerlink" title="我该如何测量 DOM 节点？– callback ref 的使用"></a>我该如何测量 DOM 节点？– callback ref 的使用</h3><p>在这个案例中，我们没有选择使用 useRef，因为当 ref 是一个对象时它并不会把当前 ref 的值的 变化 通知到我们。使用 callback ref 可以确保 即便子组件延迟显示被测量的节点 。<br>值得注意的是，这里的callback ref其实就是老的class组件内使用的callback ref，没有区别。并不是hooks独创。<br>如果你可以定义一个实例唯一的函数，在下面代码中也可以不使用useCallback。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  function MeasureExample() &#123;</span><br><span class="line">  const [height, setHeight] = useState(0);</span><br><span class="line"></span><br><span class="line">  const measuredRef = useCallback(node =&gt; &#123;</span><br><span class="line">    if (node !== null) &#123;</span><br><span class="line">      setHeight(node.getBoundingClientRect().height);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1 ref=&#123;measuredRef&#125;&gt;Hello, world&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;The above header is &#123;Math.round(height)&#125;px tall&lt;/h2&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="形成闭包时，如何拿到最新的state"><a href="#形成闭包时，如何拿到最新的state" class="headerlink" title="形成闭包时，如何拿到最新的state"></a>形成闭包时，如何拿到最新的state</h3><p><a href="https://react.docschina.org/docs/hooks-faq.html" target="_blank" rel="noopener">详细参考官网 - 如果我的 effect 的依赖频繁变化，我该怎么办？</a><br>可通过函数式的useState：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> id = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>); <span class="comment">// ✅ 在这不依赖于外部的 `count` 变量</span></span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> clearInterval(id);</span><br><span class="line">  &#125;, []); <span class="comment">// ✅ 我们的 effect 不适用组件作用域中的任何变量</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="FAQ之二"><a href="#FAQ之二" class="headerlink" title="FAQ之二"></a>FAQ之二</h2><h3 id="获取pre-state和props的两种方式"><a href="#获取pre-state和props的两种方式" class="headerlink" title="获取pre state和props的两种方式"></a>获取pre state和props的两种方式</h3><h4 id="useState-1"><a href="#useState-1" class="headerlink" title="useState"></a>useState</h4><h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><h3 id="hooks-与-setState的渲染的最大区别之一"><a href="#hooks-与-setState的渲染的最大区别之一" class="headerlink" title="hooks 与 setState的渲染的最大区别之一"></a>hooks 与 setState的渲染的最大区别之一</h3><p>相同的值，两次后，将不再渲染，<a href="https://react.docschina.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops" target="_blank" rel="noopener">查看官网–有类似 forceUpdate 的东西吗？</a></p>
+<h3 id="如何给父组件暴露子组件的方法或自定义方法"><a href="#如何给父组件暴露子组件的方法或自定义方法" class="headerlink" title="如何给父组件暴露子组件的方法或自定义方法"></a>如何给父组件暴露子组件的方法或自定义方法</h3><p>通过  useImperativeHandle Hook 。</p>
+<h3 id="callback-ref-与-useRef-的区别"><a href="#callback-ref-与-useRef-的区别" class="headerlink" title="callback ref 与 useRef 的区别"></a>callback ref 与 useRef 的区别</h3><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>参考《我该如何测量 DOM 节点？》，要说的是：</p>
+<ul>
+<li>callback ref其实就是class组件以前使用的 函数 ref，并没有区别；</li>
+<li>useRef 其实就是以前class组件内的，给ref传一个字符串；</li>
+</ul>
+<p>二者的区别在于 前者可实时获取ref组件最新内容，后者不行。<br>也可以这样描述，callback形式的ref要比字符串形式的ref更能感知dom的信息，保证每次 didmount或didupdate前获得最新的dom。<a href="https://react.docschina.org/docs/refs-and-the-dom.html#callback-refs" target="_blank" rel="noopener">参考官网 - 回调 Refs</a></p>
+<h4 id="可以配合usecallback使用"><a href="#可以配合usecallback使用" class="headerlink" title="可以配合usecallback使用"></a>可以配合usecallback使用</h4><p>ref其实跟class版本的react使用一样，可以设定一个函数，在class组件中，这个函数通常是组件内部函数，通过this指向，属于实例范畴，因此升级到hooks，就是用usecallback来创建一个恒定不变的方法类似实例方法。<br>如果你有其他创建恒定函数的方式，也可以不用usecallback。</p>
+<h3 id="ref-代替原来的-this"><a href="#ref-代替原来的-this" class="headerlink" title="ref 代替原来的 this"></a>ref 代替原来的 this</h3><p>在官方文档中，多次提到了，如果要使用原来class组件的this，就使用ref代替；</p>
+<h3 id="函数式的的useState的妙用"><a href="#函数式的的useState的妙用" class="headerlink" title="函数式的的useState的妙用"></a>函数式的的useState的妙用</h3><h4 id="不依赖外层，通过参数就可拿到最新的state"><a href="#不依赖外层，通过参数就可拿到最新的state" class="headerlink" title="不依赖外层，通过参数就可拿到最新的state"></a>不依赖外层，通过参数就可拿到最新的state</h4><p>参考《形成闭包时，如何拿到最新的state》</p>
+<h4 id="减少计算"><a href="#减少计算" class="headerlink" title="减少计算"></a>减少计算</h4><p><a href="https://react.docschina.org/docs/hooks-faq.html" target="_blank" rel="noopener">如何惰性创建昂贵的对象？</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不推荐</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Table</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ⚠️ createRows() 每次渲染都会被调用</span></span><br><span class="line">  <span class="keyword">const</span> [rows, setRows] = useState(createRows(props.count));</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//推荐</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Table</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ✅ createRows() 只会被调用一次</span></span><br><span class="line">  <span class="keyword">const</span> [rows, setRows] = useState(<span class="function"><span class="params">()</span> =&gt;</span> createRows(props.count));</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="render-prop-是一种关键技术"><a href="#render-prop-是一种关键技术" class="headerlink" title="render prop 是一种关键技术"></a>render prop 是一种关键技术</h2><p>render prop 的介绍看<a href="https://react.docschina.org/docs/render-props.html" target="_blank" rel="noopener">官网</a>，或者看另外一篇博客《React 笔记 - 其他技术 – Render Props 代替 HOC 》。<br>据官网介绍，hooks的出现与 render prop的运用有很大关系<a href="https://react.docschina.org/docs/hooks-faq.html#what-is-the-prior-art-for-hooks" target="_blank" rel="noopener">参考—Hook 使用了哪些现有技术？</a>.<br>因此在react开发中，无论是hooks还是class组件，要注重这种思想的运用。</p>
+<p>更多参考，另外一篇笔记《React 笔记  –  组合模式 与 Render Props模式   –   Render Props模式》</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-04-08T08:44:59.805Z" itemprop="dateUpdated">2024-04-08 08:44:59</time>
+</span><br>
+
+
+        
+        博客内容均为原创，转载注明出处，原文地址：<a href="/blog/2020/05/01/react_hooks/" target="_blank" rel="external">https://yewills.github.io/2020/05/01/react_hooks/</a>
+        
+    </div>
+    <footer>
+        <a href="https://yewills.github.io">
+            <img src="/blog/img/avatar.jpg" alt="Mr.Yellow">
+            Mr.Yellow
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/react-hooks/">react hooks</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/05/01/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/05/01/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/blog/2020/05/01/react_router/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React Router</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/blog/2020/05/01/regex/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">正则表达式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#遗憾的是hooks并没增加新的能力"><span class="post-toc-number">1.</span> <span class="post-toc-text">遗憾的是hooks并没增加新的能力</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先在不复杂的新组件使用"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">先在不复杂的新组件使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不用class就可用state-存在的意义"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">不用class就可用state -存在的意义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#靠Hook调用顺序对应state"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">靠Hook调用顺序对应state</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hook的位置顺序至关重要"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">hook的位置顺序至关重要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任何时候保持顶层使用hook"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">任何时候保持顶层使用hook</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#值相同，第二次后就不会再次render"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">值相同，第二次后就不会再次render</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#父组件render会导致子render，但setState不一定"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">父组件render会导致子render，但setState不一定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#由useRef-createRef的区别-想到的"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">由useRef/createRef的区别 想到的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个用在function，一个用在class"><span class="post-toc-number">2.8.1.</span> <span class="post-toc-text">一个用在function，一个用在class</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一个定义在function内部，一个定义在装卸载时"><span class="post-toc-number">2.8.2.</span> <span class="post-toc-text">一个定义在function内部，一个定义在装卸载时</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#普通函数在hook组件内会被每次执行"><span class="post-toc-number">2.8.3.</span> <span class="post-toc-text">普通函数在hook组件内会被每次执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hook函数基本是只执行一次"><span class="post-toc-number">2.8.4.</span> <span class="post-toc-text">hook函数基本是只执行一次</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useEffect"><span class="post-toc-number">3.</span> <span class="post-toc-text">useEffect</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#是三合一的API"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">是三合一的API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行时机"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">运行时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反模式的设计"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">反模式的设计</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useState"><span class="post-toc-number">4.</span> <span class="post-toc-text">useState</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#只会在组件的初始渲染中调用–使用函数设置初始值"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">只会在组件的初始渲染中调用–使用函数设置初始值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useContext"><span class="post-toc-number">5.</span> <span class="post-toc-text">useContext</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#监听到变化后会渲染当前组建"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">监听到变化后会渲染当前组建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#需要配合hemeContext-Provider使用"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">需要配合hemeContext.Provider使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useReducer"><span class="post-toc-number">6.</span> <span class="post-toc-text">useReducer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#useReducer-与-redux-的关系"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">useReducer 与 redux 的关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#经典demo"><span class="post-toc-number">6.1.1.</span> <span class="post-toc-text">经典demo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原理上借鉴了redux"><span class="post-toc-number">6.1.2.</span> <span class="post-toc-text">原理上借鉴了redux</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#就是一个迷你的redux"><span class="post-toc-number">6.1.3.</span> <span class="post-toc-text">就是一个迷你的redux</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#惰性初始化"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">惰性初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景-深层子层改变顶层state-reducer-context"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">场景 - 深层子层改变顶层state (reducer/context)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景-如何避免向下传递回调"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">场景 - 如何避免向下传递回调</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useCallback"><span class="post-toc-number">7.</span> <span class="post-toc-text">useCallback</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可与React-memo或shouldComponentUpdate结合使用"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">可与React.memo或shouldComponentUpdate结合使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useRef"><span class="post-toc-number">8.</span> <span class="post-toc-text">useRef</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#介绍-1"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给useRef设置一个值"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">给useRef设置一个值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改它不会造成组件重新渲染"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">修改它不会造成组件重新渲染</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useImperativeHandle"><span class="post-toc-number">9.</span> <span class="post-toc-text">useImperativeHandle</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#useLayoutEffect"><span class="post-toc-number">10.</span> <span class="post-toc-text">useLayoutEffect</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hooks出现的意义"><span class="post-toc-number">11.</span> <span class="post-toc-text">hooks出现的意义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非常重要：可读性易维护性"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">非常重要：可读性易维护性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#功能是一方面，可读易维护也是重要方面"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">功能是一方面，可读易维护也是重要方面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hooks与高阶组件区别"><span class="post-toc-number">11.4.</span> <span class="post-toc-text">hooks与高阶组件区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FAQ之一"><span class="post-toc-number">12.</span> <span class="post-toc-text">FAQ之一</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我应该使用单个还是多个-state-变量？"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">我应该使用单个还是多个 state 变量？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我可以只在更新时运行-effect-吗？-componentDidupdate"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">我可以只在更新时运行 effect 吗？(componentDidupdate)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何获取上一轮的-props-或-state？"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">如何获取上一轮的 props 或 state？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ref-并非一定要跟子组件一起用，一定要嵌入子组件—ref大有可为，是新时代的实例对象和this不变指针。"><span class="post-toc-number">12.4.</span> <span class="post-toc-text">ref 并非一定要跟子组件一起用，一定要嵌入子组件—ref大有可为，是新时代的实例对象和this不变指针。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我该如何实现-getDerivedStateFromProps"><span class="post-toc-number">12.5.</span> <span class="post-toc-text">我该如何实现 getDerivedStateFromProps?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么我会在我的函数中看到陈旧的-props-和-state-？–内部函数作用域问题"><span class="post-toc-number">12.6.</span> <span class="post-toc-text">为什么我会在我的函数中看到陈旧的 props 和 state ？–内部函数作用域问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有类似-forceUpdate-的东西吗？"><span class="post-toc-number">12.7.</span> <span class="post-toc-text">有类似 forceUpdate 的东西吗？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我该如何测量-DOM-节点？–-callback-ref-的使用"><span class="post-toc-number">12.8.</span> <span class="post-toc-text">我该如何测量 DOM 节点？– callback ref 的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#形成闭包时，如何拿到最新的state"><span class="post-toc-number">12.9.</span> <span class="post-toc-text">形成闭包时，如何拿到最新的state</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FAQ之二"><span class="post-toc-number">13.</span> <span class="post-toc-text">FAQ之二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取pre-state和props的两种方式"><span class="post-toc-number">13.1.</span> <span class="post-toc-text">获取pre state和props的两种方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#useState-1"><span class="post-toc-number">13.1.1.</span> <span class="post-toc-text">useState</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ref"><span class="post-toc-number">13.1.2.</span> <span class="post-toc-text">ref</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hooks-与-setState的渲染的最大区别之一"><span class="post-toc-number">13.2.</span> <span class="post-toc-text">hooks 与 setState的渲染的最大区别之一</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何给父组件暴露子组件的方法或自定义方法"><span class="post-toc-number">13.3.</span> <span class="post-toc-text">如何给父组件暴露子组件的方法或自定义方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#callback-ref-与-useRef-的区别"><span class="post-toc-number">13.4.</span> <span class="post-toc-text">callback ref 与 useRef 的区别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区别"><span class="post-toc-number">13.4.1.</span> <span class="post-toc-text">区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可以配合usecallback使用"><span class="post-toc-number">13.4.2.</span> <span class="post-toc-text">可以配合usecallback使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ref-代替原来的-this"><span class="post-toc-number">13.5.</span> <span class="post-toc-text">ref 代替原来的 this</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数式的的useState的妙用"><span class="post-toc-number">13.6.</span> <span class="post-toc-text">函数式的的useState的妙用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不依赖外层，通过参数就可拿到最新的state"><span class="post-toc-number">13.6.1.</span> <span class="post-toc-text">不依赖外层，通过参数就可拿到最新的state</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#减少计算"><span class="post-toc-number">13.6.2.</span> <span class="post-toc-text">减少计算</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#render-prop-是一种关键技术"><span class="post-toc-number">14.</span> <span class="post-toc-text">render prop 是一种关键技术</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/blog/img/reward-wechat.jpg" data-alipay="/blog/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+        <footer class="footer">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                Mr.Yellow &copy; 2017 - 2024
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://yewills.github.io/2020/05/01/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&pic=https://yewills.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://yewills.github.io/2020/05/01/react_hooks/&title=《React hooks 笔记》 — Mr.Yellow.Wills&source=hellow kity" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3aQW6EMAwF0Ln/pekB2jDfTqhE8liNEEp4LDx27M8nvq5fV+/+aM3RncUXBgbGaxnX7XW/wf0zozvV3/fvhoGBcQ5jFMHun0kA1eCb7IuBgYExHxxzXu/zYWBgYOSvnq9TRWJgYGD0itjREr1EMP9ki2txDAyMFzLyU/f///1IfwMDA+NVjKt4VQPuE0d1f+yCgYGxNSMPcHlCVn0yv/9lFwwMjK0Zq8JffvSfBO686MXAwNibUU3jkuP++9J3VZNgmOFiYGBsx6i2GJO0LC93e8E3CrsYGBjbMfISMQ+gvVefGQHBwMA4gdEb6sqf6SV85eQVAwNjU8bM8NYTrcre2AcGBsaujFXhLy938wK4sA4GBsYxjLwQ7Q1JRKNdLRIGBsbejDy0VQNu7xhuZlAMAwNjb0a1DZAvPTNkVn0fDAyMXRnJEtUjsF4iWO2yYmBgnMOoFof5686kksnfAAYGxpmM/LV6R2Az4xrNyREMDIyNGPmgw9Otzfz3cGYEAwPjSEbe1MzTviTVS4IsBgbGaYxqgOuVu73VoiIWAwNjU8ZMQzH5BKuaCl+oGBgYWzNWjYutKn2rBW0ZhoGB8VrG/MhFr2Qt57DVnBEDA2M7Rp72VbdP2gbVIhYDAwMjZ+TNyGqK2ZwTwcDAwCge/c8A8iM5DAyMcxj5wER1+2qTICmkMTAwTmM8d5Y1c+j2SFMTAwPjfYwfeLO8KuIjuAYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="/blog/js/plugins/jquery-2.1.1.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/fastclick.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/ios-orientationchange-fix.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/jquery.fancybox.min.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathJax.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/TeX-AMS-MML_HTMLorMML.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathMenu.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/plugins/MathZoom.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/plugins/waves.min.js?v=1.3.9"></script>
+
+<script type="text/javascript" src="/blog/js/method.js?v=1.3.9"></script>
+<script type="text/javascript" src="/blog/js/blog.js?v=1.3.9"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/blog/js/plugins/local_search.js?v=1.3.9"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/blog/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=""></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
