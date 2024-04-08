@@ -8,7 +8,7 @@ series: 基建
 ---
 
 
-本篇是对一个[中台项目](https://github.com/YeWills/dashboard)架构中要考虑的主要点做一个介绍，一些细节在这里不多做介绍，直接看项目即可。
+本篇是对一个[中台项目](https://github.com/YeWills/dashboard)架构中要考虑的主要点做一个介绍，一些细节在这里不多做介绍，直接看[项目](https://github.com/YeWills/dashboard)即可。
 
 ## 如何快速阅读框架源码，或大组件
 
