@@ -1,10 +1,9 @@
 ---
 title: d3图形、demo讲解、使用经验
 date: 2020/5/1
-tags: [d3.js]
+tags: [d3.js, 图形化]
 categories: 
-- 图形化
-series: d3
+- 前端
 ---
 ## d3图形图解
 {% img url_for /image/d3/all/images.jpg %}

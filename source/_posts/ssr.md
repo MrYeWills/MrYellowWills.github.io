@@ -1,5 +1,5 @@
 ---
-title: 服务端渲染ssr
+title: 掘金小册笔记：服务端渲染ssr
 date: 2023/06/25
 tags: ssr
 categories: 

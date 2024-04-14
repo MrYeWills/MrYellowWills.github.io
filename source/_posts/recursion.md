@@ -10,7 +10,6 @@ series: recursion
 主要是递归专项练习笔记，另外附带其他算法练习。
 
 ## 有关tree树的数据处理
-### 需求：
 #### 需求
 ```js
 const list = [

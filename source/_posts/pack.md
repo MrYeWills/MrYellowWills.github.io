@@ -3,7 +3,7 @@ title: 关于依赖和编译
 date: 2023/05/29
 tags: [rollup, webpack, npm, yalc]
 categories: 
-- rollup
+- 前端工程
 ---
 
 

@@ -3,7 +3,7 @@ title: github笔记
 date: 2020/5/1
 tags: [github]
 categories:
-- github
+- 工具
 ---
 
 

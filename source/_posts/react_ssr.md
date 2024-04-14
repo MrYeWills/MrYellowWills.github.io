@@ -3,7 +3,7 @@ title: react服务端渲染
 date: 2022/11/12
 tags: [服务端渲染, react]
 categories: 
-- react
+- ssr
 ---
 
 ## 服务端渲染理解

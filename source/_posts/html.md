@@ -3,8 +3,7 @@ title: html笔记
 date: 2020/5/1
 tags: [html5, html]
 categories: 
-- html
-series: html
+- 前端
 ---
 
 ## html知识

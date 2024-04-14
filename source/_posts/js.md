@@ -1,5 +1,5 @@
 ---
-title: js笔记(一)
+title: js笔记
 date: 2019/5/21
 tags: [自运行函数写法形式]
 categories: 

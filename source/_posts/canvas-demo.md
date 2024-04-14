@@ -1,9 +1,9 @@
 ---
 title: canvas demo
 date: 2020/5/1
-tags: [canvas]
+tags: [canvas, 图形化]
 categories: 
-- 图形化
+- 前端
 ---
 
 ## 写一个字

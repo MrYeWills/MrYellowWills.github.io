@@ -3,8 +3,7 @@ title: js调试
 date: 2022/9/15
 tags: [js调试]
 categories: 
-- 调试
-series: js调试
+- 工具
 ---
 
 ## try catch

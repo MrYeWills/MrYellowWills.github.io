@@ -1,9 +1,9 @@
 ---
 title: svg笔记
 date: 2020/5/1
-tags: [svg]
+tags: [svg, 图形化]
 categories: 
-- 图形化
+- 前端
 ---
 
 ## svg知识

@@ -1,9 +1,9 @@
 ---
 title: http协议
 date: 2019/5/21
-tags: [前端, http协议]
+tags: [前端, http, http协议]
 categories: 
-- http
+- 运维
 ---
 
 ## html协议基础

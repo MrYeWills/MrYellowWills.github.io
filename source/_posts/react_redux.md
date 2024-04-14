@@ -4,8 +4,6 @@ date: 2020/5/1
 tags: react react-redux
 categories: 
 - react
-- react-redux
-series: 前端框架
 ---
 
 ## react-redux 源码解读

@@ -3,8 +3,7 @@ title: git笔记
 date: 2020/5/1
 tags: [git]
 categories: 
-- git
-series: git
+- 工具
 ---
 
 一直在用git，也想总结一点git笔记，因此就有了本篇。

@@ -1,9 +1,9 @@
 ---
 title: canvas笔记
 date: 2020/5/1
-tags: [canvas]
+tags: [canvas, 图形化]
 categories: 
-- 图形化
+- 前端
 ---
 
 ## 基础知识
