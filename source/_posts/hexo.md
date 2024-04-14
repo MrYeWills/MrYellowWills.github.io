@@ -112,15 +112,15 @@ menu:
     url: /
     icon: home
   th-list:
-    text: CATEGORIES
+    text: 分类
     url: /categories
     icon: th-list
   tags:
-    text: TAGS
+    text: 标签
     url: /tags
     icon: tags
   archives:
-    text: ARCHIVES
+    text: 归档
     url: /archives
     icon: archives
 ```
