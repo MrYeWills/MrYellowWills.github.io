@@ -1,5 +1,5 @@
 ---
-title: 计算机基础(一)：基础知识
+title: 计算机基础知识
 date: 2022/9/14
 tags: 计算机基础
 categories: 
