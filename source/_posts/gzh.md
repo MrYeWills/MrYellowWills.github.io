@@ -94,7 +94,6 @@ CPU：2核
 
 ### 项目启动
 node写后台，平时写的少，因此先爬服务端的坑，
-网上搜索了下相关的node项目来写增删改查，有mysql的，有mongodb的，
 考虑到自己的业务足够简单，以及想快速交付，于是使用mongodb，它不需要写sql表，
 
 于是网上找了一个相关的增删改查项目，启动该项目，参照原来的接口写接口，节约时间。
@@ -744,78 +743,6 @@ location /api {
 #### 踩坑：nginx代理后请求报错
 注意要加上 `proxy_set_header Host $host;` 否则会请求报错。
 
-
-### mongodb数据库遭受攻击的处理
-参考 [mongoDB 数据莫名其妙的没了](https://blog.csdn.net/u013513053/article/details/105785980)
-
-#### 修改mongodb.conf 更改端口
-查询mongodb目录
-[root@xx]# which mongod
-/usr/local/mongodb/bin/mongod
-
-mongodb.conf改成：
-```conf
-dbpath=/usr/local/mongodb/data/db
-# 日志文件存放目录
-logpath=/usr/local/mongodb/data/log/mongodb.log
-# 日志追加方式
-logappend=true
-# 端口
-port=11198
-# 是否认证
-auth=true
-# 以守护进程方式在后台运行
-fork=true
-# 远程连接要指定ip，否则无法连接；0.0.0.0代表不限制ip访问
-bind_ip=0.0.0.0
-```
-
-
-#### 创建账号
-切到 admin 数据库下，创建超级用户
-```conf
-db.createUser(
-    {
-        user:"admin",
-        pwd:"xxxx",
-        roles:[
-          #赋权给数据库admin
-            {role:"userAdminAnyDatabase",db:"admin"},
-            {role:"readWrite",db:"admin"}
-        ]
-    }
-);
-```
-重新生效后，使用 admin 数据库，
-```conf
-use admin
-db.auth("admin","admin")
-
-然后创建 业务账户，赋权给业务数据库expressdbs
-db.createUser(
-    {
-        user:"hz",
-        pwd:"xxxxx设置密码",
-        roles:[
-          #赋权给数据库expressdbs
-          {role:"readWrite",db:"expressdbs"},
-          {role:"dbOwner",db:"expressdbs"},
-        ]
-    }
-)
-```
-#### mongodb业务操作命令修改
-经过上面更改后，后期进行mongodb 业务操作命令变成：
-```s
-mongo --port 11198  -u hz -p xxx密码  --authenticationDatabase=expressdbs
-
-# admin数据库操作：
-mongo --port 11198  -u admin -p xxx密码  --authenticationDatabase=admin
-
-# 进行导入等操作：
-mongoimport -h localhost:11198 -d expressdbs -c counters /Users/yewills/xxx/counters.json -u hz -p xxx密码 --authenticationDatabase=expressdbs
-
-```
 
 
 至此，整个工程在线下功能算串好了。
