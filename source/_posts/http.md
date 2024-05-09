@@ -170,6 +170,8 @@ Cache-control是服务端设置，告诉浏览器资源的缓存方式,可取的
 - public 允许包含**代理**客户端的所有客户端进行缓存
 - private 只允许发起请求的客户端进行缓存
 - no-cache 允许客户端(使用)缓存资源，但需要到服务器上去验证
+>[摘自](https://www.cnblogs.com/gxw123/p/13288320.html)
+虽然在返回 304 的时候已经做了一次数据库查询，但是可以避免接下来更多的数据库查询，并且没有返回页面内容而只是一个 HTTP Header，从而大大的降低带宽的消耗，对于用户的感觉也是提高。
 - no-store 不允许客户端缓存
 其他指：
 - max-age 缓存过期时间
@@ -182,6 +184,30 @@ app.use(async (ctx, next) => {
   await next();
 });
 ```
+
+### 缓存试验
+后端设置 `max-age=20, public`, 前端发起请求时，
+第一次 响应码为 200，服务端能够接收到请求；
+第二次（20秒内）响应码为 200（form disk cache），服务端没有接收到前端请求；
+第三次（超过20秒）响应码为 200，请求会再次发送到服务端，服务端能够接收到请求；
+
+```js
+app.use(async (req, res, next) => {
+    res.set('Cache-control', 'max-age=20, public'); //可以一次设置多个值
+    res.set('Content-Type', 'text/javascript');
+    res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    await next();
+  });
+```
+
+### 强制缓存与协商缓存
+
+强制缓存，接口请求不会到达服务端；
+协商缓存，接口请求到达服务端，返回304，告诉浏览器直接使用缓存，不需要返回body数据，节省了流量；
+
+更多，参考《前端笔记-浏览器缓存》
+也可(参考这篇博客:彻底理解浏览器的缓存机制](https://juejin.cn/post/6844903593275817998#heading-2)
+
 ### 浏览器读取缓存的过程
 #### 把本地缓存当成一个本地服务器
 浏览器发起请求，首先读取本地缓存，然后读取代理缓存，如果都没有命中，就从服务器获取资源。
@@ -192,6 +218,9 @@ app.use(async (ctx, next) => {
 原来请求直接到了浏览器的缓存服务器上。
 #### 注意，有个代理缓存
 参考上图。
+
+#### POST请求无法被缓存
+缓存一般只适用于那些不会更新服务端数据的请求。一般 Get 请求都是查找请求，不会对服务器资源数据造成修改，而 Post 请求一般都会对服务器数据造成修改，所以，一般会对 GEt 请求进行缓存，很少会对 Post 请求进行缓存。
 
 ### 缓存验证 - Last-Modified和Etag的使用
 
@@ -327,10 +356,10 @@ http请求是建立在tcp连接上的，一个tcp连接可发多个http连接；
 ```
 #### 控制台查看connect-id
 一个tcp连接会产生一个对应的connect-id作为标识。可通过connectid来看建立了多少个tcp连接。
-{% img url_for /image/http/setcookie2.jpg %}
+{% img url_for /image/http/connect.jpg %}
 #### 不同域名下的请求，connect-id不一样
 在谷歌浏览器用的是http2，一个页面只有一个tcp连接，都是长链接，所以只有一个connectid，不过不同域名的资源需要再建一个tcp连接。
-#### http1.1 tcp最大http请求数为6
+#### http1.1 最大可连接6个tcp
 
 ### Content-Type (数据协商)
 #### 请求头的Content-Type
