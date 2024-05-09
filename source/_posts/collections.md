@@ -62,7 +62,7 @@ useLayoutEffect和componentDidMount、componentDidUpdate触发时机一致
 [精读React hooks（六）：useLayoutEffect解决了什么问题？](https://blog.csdn.net/BigYe_ChengPu/article/details/135241438)
 
 
-### 通缉star增长的网址
+### 统计star增长的网址
 [JavaScript Rising Stars](https://risingstars.js.org/2020/en)
 
 react vue star 增长趋势：
