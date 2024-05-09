@@ -6,7 +6,23 @@ categories:
 - [前端]
 ---
 
+
+此篇用于随笔记录，后期进行分类整理
 ## 杂记
+
+### 统计star增长的网址
+记录历年前端所有库的star增长情况，可以以此查看每年前端流行技术，非常好的一个网站
+[JavaScript Rising Stars](https://risingstars.js.org/2020/en)
+
+react vue star 增长趋势：
+```
+年份
+16 17 18 19 20 21 22 21
+react
+22 27 34 22 19 18 19 16
+vue 
+26 40 45 31 22 14  9  7
+```
 
 ### 生成指定长度的数组
 ```js
@@ -62,15 +78,3 @@ useLayoutEffect和componentDidMount、componentDidUpdate触发时机一致
 [精读React hooks（六）：useLayoutEffect解决了什么问题？](https://blog.csdn.net/BigYe_ChengPu/article/details/135241438)
 
 
-### 统计star增长的网址
-[JavaScript Rising Stars](https://risingstars.js.org/2020/en)
-
-react vue star 增长趋势：
-```
-年份
-16 17 18 19 20 21 22 21
-react
-22 27 34 22 19 18 19 16
-vue 
-26 40 45 31 22 14  9  7
-```
