@@ -17,7 +17,7 @@ categories:
 前端代码通过webpack全部打包到一个index.js文件中；
 - 服务端运行依赖node_modules，客户端将node_modules打包到index.js中
 后端代码通过babel转义js后，babel并没有能力向webpack一样实现一套 import能力，因此经过编译后，其代码最终是采用
-common.js形势：
+common.js形式：
 ```js
 var _react = _interopRequireDefault(require("react"));
 ```
