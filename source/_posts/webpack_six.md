@@ -1,5 +1,5 @@
 ---
-title: webpack源码系列(获)：核心概念
+title: webpack源码系列(六)：核心概念
 date: 2022/4/12
 tags: [webpack, webpack源码系列]
 categories: 

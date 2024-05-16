@@ -1,5 +1,5 @@
 ---
-title: webpack源码系列(往)：开篇
+title: webpack源码系列(一)：开篇
 date: 2022/3/23
 tags: [webpack, webpack源码系列]
 categories: 
