@@ -252,7 +252,7 @@ cellphone 订阅者对外暴露给新闻公司自己接收消息的方式，用�
 #### 示例代码
 此代码针对上面解说而写的，此示例代码的好处是可以很好地先理解好观察者到底是一个什么东西。
 但此代码也有弊端，例如NewsCompany不易维护性，NewsCompany中维护了food，house，如果将来增加了money等等呢，需要改写NewsCompany内部。所以NewsCompany需要进一步优化。
-```
+```js
 // 主题，接收状态变化，触发每个观察者
 
 class NewsCompany {
@@ -331,7 +331,7 @@ newsCompany.deliveryState('房产新闻','house');//给每个订阅者发布消�
 对示例代码优化及延伸方式一：
 上面代码不易扩展，将上面代码优化：NewsCompany中去掉constructor，并且改写food与house切换，将cellphone改为callback不再统一管理callback：
 
-```
+```js
 class NewsCompany {
     deliveryState(state,deliveryType) {
         this[`${deliveryType}State`] = state;
@@ -397,7 +397,7 @@ newsCompany.deliveryState('房产新闻','house');
 删除Observer类，直接用参数来代替，
 参数因为可能会超过3个改成options对象方式容易扩展
 
-```
+```js
 
 let newsCompany = new NewsCompany()
 //state, newsCompany, observerMyself 将newsCompany和observerMyself都传给callback，以备不时之需
@@ -430,7 +430,7 @@ newsCompany.deliveryState('奶制食品新闻','food');
 由于js天生可以很优雅地使用花括号来构造一个对象，而不用通过class实例化，因此我们可很容易通过es5来写一个观察者与订阅模式示例：
 
 #### 示例代码
-```
+```js
 var Event = (function(){
     var ClientList = {},
     listen,
@@ -446,7 +446,7 @@ var Event = (function(){
         var key = Array.prototype.shift.call(arguments),
         fns = ClientList[key];
         if(!fns || fns.listen === 0){
-            return false;
+            return;
         }
         for(var i = 0; i<fns.length; i++){
             fns[i].apply(this,arguments);
@@ -489,7 +489,7 @@ Event.creat(namespace).trigger(add),详细可看 《js设计模式》书
 #### 应用场景：
 
 一个按钮被点击时，出发一个div显示最新的count值。
-```
+```html
 <body>
 <button id="count">click</button>
 <div id="show"></div>
