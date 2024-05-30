@@ -502,6 +502,26 @@ npx eslint --init
 ### 实践
 把[umijs/fabric](https://github.com/umijs/fabric)源码多研究几次。`umijs/fabric`不一定适合你公司的需求，不过里面的设计思路非常好，对ts与js的eslint项目配置差异讲解不错。
 
+## cosmiconfig标准
+prettier eslint  stylelint 都使用这种配置标准：
+[cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
+
+```
+By default, Cosmiconfig will start where you tell it to start and search up the directory tree for the following:
+
+a package.json property
+a JSON or YAML, extensionless "rc file"
+an "rc file" with the extensions .json, .yaml, .yml, .js, or .cjs
+a .config.js or .config.cjs CommonJS module
+For example, if your module's name is "myapp", cosmiconfig will search up the directory tree for configuration in the following places:
+
+a myapp property in package.json
+a .myapprc file in JSON or YAML format
+a .myapprc.json, .myapprc.yaml, .myapprc.yml, .myapprc.js, or .myapprc.cjs file
+a myapp.config.js or myapp.config.cjs CommonJS module exporting an object
+Cosmiconfig continues to search up the directory tree, checking each of these places in each directory, until it finds some acceptable configuration (or hits the home directory).
+```
+
 ## 参考
 
 ### 理论篇
@@ -616,23 +636,4 @@ https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser
 ### 查看eslint-plugin-import所有的rules
 直接去[eslint-plugin-import官网](https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules)查看，查询其他eslint包的rules，可以此类推
 
-### cosmiconfig标准
-prettier eslint  stylelint 都使用这种配置标准：
-[cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
-
-```
-By default, Cosmiconfig will start where you tell it to start and search up the directory tree for the following:
-
-a package.json property
-a JSON or YAML, extensionless "rc file"
-an "rc file" with the extensions .json, .yaml, .yml, .js, or .cjs
-a .config.js or .config.cjs CommonJS module
-For example, if your module's name is "myapp", cosmiconfig will search up the directory tree for configuration in the following places:
-
-a myapp property in package.json
-a .myapprc file in JSON or YAML format
-a .myapprc.json, .myapprc.yaml, .myapprc.yml, .myapprc.js, or .myapprc.cjs file
-a myapp.config.js or myapp.config.cjs CommonJS module exporting an object
-Cosmiconfig continues to search up the directory tree, checking each of these places in each directory, until it finds some acceptable configuration (or hits the home directory).
-```
 

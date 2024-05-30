@@ -43,3 +43,90 @@ function debounce(fn, delay, immediate) {
 ```
 https://github.com/YvetteLau/Blog/issues/31
 ```
+
+## 异步队列并发执行工具
+实现一个 taskpool类，其至少具有 add 方法和最大并发数 max，该 add 方法接收函数(返回值为 promise)，
+当前执行的任务数小于设定值 max 时，立即执行，大于 max，则等待任务空闲时执行该任务，模版代码如下:
+```js
+// 预期输出
+// 2s 后
+// task0 complete
+// task1 complete
+// 再 2s 后
+// task2 complete
+// task3 complete
+// 再 2s 后
+// task4 complete
+// task5 complete
+// ...
+// task8 complete
+// task9 complete
+
+```
+```js
+class TaskPool {
+  constructor(max) {
+    this.max = max;
+    this.tasks = [];
+    this.isRun = false;
+  }
+
+  add(task) {
+    this.tasks.push(task);
+    if (this.isRun) return;
+    this.isRun = true;
+    setTimeout(() => {
+      this.run();
+    });
+  }
+
+  run() {
+    this.splitTask();
+  }
+
+  // 执行每个并发任务
+  executeTask = () => {
+    return new Promise((resolve) => {
+      const { max } = this;
+      let cur = 0;
+      const allPromise = [];
+      while (cur < max) {
+        if (this.tasks.length) {
+          const task = this.tasks.shift();
+          allPromise.push(task());
+        }
+        cur++;
+      }
+      Promise.all(allPromise).then(() => {
+        resolve();
+      });
+    });
+  };
+
+  // 所有的任务 按 最大并发数量 分组执行
+  splitTask = async () => {
+    const taskLeng = this.tasks.length;
+    // 向上取整
+    const loopNum = Math.ceil(taskLeng / this.max);
+    let loopCur = 0;
+    while (loopCur < loopNum) {
+      // eslint-disable-next-line no-await-in-loop
+      await this.executeTask();
+      loopCur++;
+    }
+  };
+}
+
+const taskpool = new TaskPool(4);
+
+for (let i = 0; i < 10; i++) {
+  const task = () =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(`task${i}`);
+      }, 2000);
+    });
+  taskpool.add(task);
+}
+
+```

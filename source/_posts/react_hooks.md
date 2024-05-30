@@ -366,6 +366,63 @@ function Counter() {
 相同的值，两次后，将不再渲染，[查看官网--有类似 forceUpdate 的东西吗？](https://react.docschina.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops)
 ### 如何给父组件暴露子组件的方法或自定义方法
 通过  useImperativeHandle Hook 。
+
+### useImperativeHandle的等效(替代)方案之一
+```js
+// useImperativeHandle方式
+import React, { useRef, forwardRef, useImperativeHandle, useState } from 'react';
+
+const Child = forwardRef((props, ref) => {
+  const [num, setNum] = useState(1);
+
+  useImperativeHandle(ref, () => ({
+    upNum: () => {
+      setNum(num + 1);
+    },
+  }));
+  return <div>{num}</div>;
+});
+
+export default function Parent() {
+  const childRef = useRef();
+
+  return (
+    <div>
+      <button onClick={() => childRef.current.upNum()}>增加数量</button>
+      <Child ref={childRef} />
+    </div>
+  );
+}
+
+```
+
+```js
+// 替代上面的实现
+import React, { useState, useEffect } from 'react';
+
+const Child = ({ upNumKey }) => {
+  const [num, setNum] = useState(0);
+
+  useEffect(() => {
+    setNum(num + 1);
+  }, [upNumKey]);
+
+  return <div>{num}</div>;
+};
+
+export default function Parent() {
+  const [upNumKey, setKey] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setKey(upNumKey + 1)}>优化写法-增加数量</button>
+      <Child upNumKey={upNumKey} />
+    </div>
+  );
+}
+
+```
+
 ### callback ref 与 useRef 的区别
 #### 区别
 参考《我该如何测量 DOM 节点？》，要说的是：
@@ -410,6 +467,137 @@ render prop 的介绍看[官网](https://react.docschina.org/docs/render-props.h
 因此在react开发中，无论是hooks还是class组件，要注重这种思想的运用。
 
 更多参考，另外一篇笔记《React 笔记  --  组合模式 与 Render Props模式   --   Render Props模式》
+
+
+## react的一点实用经验
+
+### 受控状态与非受控状态
+受控状态 value、data
+非受控状态 defaultValue、defaultData
+受控的状态的好处在于父级组件能很好控制子组件，扩展性比较好，是一种状态提升的设计；
+缺点是要修改这个状态的时候，需要同时查看子组件和父组件，增加了一定的繁杂性；
+
+非受控状态由于状态只存在于子组件内部，修改和开发起来比较方便快速；
+缺点是无法及时响应父组件的状态变化；
+
+### 状态提升
+react要做好状态设计，它有多种方式，其中状态提升非常常用和关键。
+redux就是一种状态提升方式。
+
+### 不要过度使用useMemo或useCallback
+若非必要，不要使用这些，因为浏览器的运行效率足够快了，不需要过度优化，简单使用 useState useEffect 即可，这样代码更加简洁、易读。
+
+### 一种替代useImperativeHandle方案
+```js
+// 这是useImperativeHandle方案
+import React, { useRef, forwardRef, useImperativeHandle, useState } from 'react';
+
+const Child = forwardRef((props, ref) => {
+  const [num, setNum] = useState(1);
+
+  useImperativeHandle(ref, () => ({
+    upNum: () => {
+      setNum(num + 1);
+    },
+  }));
+  return <div>{num}</div>;
+});
+
+export default function Parent() {
+  const childRef = useRef();
+
+  return (
+    <div>
+      <button onClick={() => childRef.current.upNum()}>增加数量</button>
+      <Child ref={childRef} />
+    </div>
+  );
+}
+
+```
+
+如果你更加喜欢用简单的react hooks，可以使用下面的方案
+```js
+import React, { useState, useEffect } from 'react';
+
+const Child = ({ upNumKey }) => {
+  const [num, setNum] = useState(0);
+
+  useEffect(() => {
+    setNum(num + 1);
+  }, [upNumKey]);
+
+  return <div>{num}</div>;
+};
+
+export default function Parent() {
+  const [upNumKey, setKey] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setKey(upNumKey + 1)}>优化写法-增加数量</button>
+      <Child upNumKey={upNumKey} />
+    </div>
+  );
+}
+
+```
+
+### key
+key可用于组件的销毁和重新挂载，配合非受控组件使用，既可获得受控组件般的响应父组件状态，又得到了非受控组件简单性和操作方便,常用的场景有，在列表页打开详情弹框：
+```js
+import React, { useEffect, useState } from 'react';
+
+const Child = ({ defaultId }) => {
+  const [id, setDetail] = useState();
+  // 模拟接口请求
+  const post = () => {
+    setTimeout(() => {
+      setDetail(defaultId);
+    }, 300);
+  };
+
+  useEffect(() => {
+    post();
+  }, []);
+
+  return <div>{id && <div>这是店铺{id}详情</div>}</div>;
+};
+
+export default function Parent() {
+  const [detailId, setDetail] = useState();
+  const [resetKey, setResetKey] = useState(0);
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          setDetail(1);
+          setResetKey(resetKey + 1);
+        }}
+      >
+        查看店铺1详情
+      </button>
+      <button
+        onClick={() => {
+          setDetail(2);
+          setResetKey(resetKey + 1);
+        }}
+      >
+        查看店铺2详情
+      </button>
+      <Child key={resetKey} defaultId={detailId} />
+    </div>
+  );
+}
+
+
+```
+
+
+### render props
+好处非常多，可以参考：
+[React新特性Hooks使用教学，以及与高阶组件、renderProps模式的对比](https://blog.csdn.net/qq_40962320/article/details/87043581)
 
 
 

@@ -754,6 +754,16 @@ setState 本身并非异步，但对state的处理机制给人一种异步的假
  showDlgStatus(true);
 ```
 
+## 好文
+- react作者博客：
+[编写有弹性的组件](https://chojaehun.github.io/zh-hans/writing-resilient-components/)
+对应的英文版：
+[Writing Resilient Components](https://overreacted.io/writing-resilient-components/)
+
+阅读这篇文章能够获取到很多来自官方认可的，react使用的实用技巧。
+
+
+- [React新特性Hooks使用教学，以及与高阶组件、renderProps模式的对比](https://blog.csdn.net/qq_40962320/article/details/87043581)
 
 
 
